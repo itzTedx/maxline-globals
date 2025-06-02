@@ -13,7 +13,7 @@ export default function Home() {
           <span className="text-secondary">Land, Air, and Sea</span>
         </h1>
 
-        <div className="relative mx-auto mt-8 max-w-md">
+        <div className="relative mx-auto my-8 max-w-md">
           <Input
             id="track"
             className="pe-9 shadow-none"
@@ -27,7 +27,7 @@ export default function Home() {
             <IconArrowRight size={16} aria-hidden="true" />
           </button>
         </div>
-        <div className="relative aspect-16/7">
+        <div className="relative aspect-16/6">
           <Image
             src="/images/container.png"
             alt=""
