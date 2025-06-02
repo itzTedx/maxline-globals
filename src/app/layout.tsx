@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 
+import { radioGrostek } from "@/assets/fonts";
 import { Navbar } from "@/components/layout/navbar";
 
 import "./globals.css";
@@ -22,7 +23,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.className} antialiased`}>
+      <body
+        className={`${(geistSans.className, radioGrostek.variable)} antialiased`}
+      >
         <Navbar />
         {children}
       </body>

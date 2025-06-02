@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <main>
       <header className="py-20">
-        <h1 className="text-brand-dark mx-auto max-w-6xl px-3 text-center text-8xl tracking-tight">
+        <h1 className="text-brand-dark font-grotesk mx-auto max-w-5xl px-3 text-center text-8xl tracking-tight">
           Delivering Excellence Across{" "}
           <span className="text-secondary">Land, Air, and Sea</span>
         </h1>
@@ -36,6 +36,18 @@ export default function Home() {
           />
         </div>
       </header>
+      <section className="container grid grid-cols-2 gap-12 pb-20">
+        <h2 className="text-brand-dark font-grotesk text-6xl tracking-tight">
+          Reliable Logistics Solutions
+          <span className="text-secondary"> Across the Globe</span>
+        </h2>
+        <p className="text-2xl leading-relaxed">
+          At Maxline Global, we connect businesses to markets across the world.
+          With our comprehensive logistics solutions and commitment to service
+          excellence, we ensure your cargo moves with speed, safety, and
+          precision.
+        </p>
+      </section>
     </main>
   );
 }
