@@ -27,12 +27,7 @@ export const metadata: Metadata = {
       "Delivering excellence across land, air, and sea with comprehensive logistics solutions.",
     type: "website",
   },
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 5,
-  },
-  themeColor: "#ffffff",
+
   robots: {
     index: true,
     follow: true,

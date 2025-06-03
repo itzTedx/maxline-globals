@@ -89,6 +89,7 @@ export default function Home() {
           muted
           preload="true"
           autoPlay
+          playsInline
           className="mb-20 overflow-hidden rounded-2xl"
         >
           <source src="/videos/maxline-web.webm" type="video/webm" />
