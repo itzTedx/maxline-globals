@@ -2,6 +2,7 @@ import Image from "next/image";
 
 import { IconArrowRight } from "@tabler/icons-react";
 
+import { TransportTypes } from "@/assets/transport-types";
 import { Input } from "@/components/ui/input";
 
 export default function Home() {
@@ -27,26 +28,37 @@ export default function Home() {
             <IconArrowRight size={16} aria-hidden="true" />
           </button>
         </div>
-        <div className="relative aspect-16/6">
-          <Image
-            src="/images/container.png"
-            alt=""
-            fill
-            className="object-contain"
-          />
-        </div>
+
+        <Image
+          src="/images/container.png"
+          alt=""
+          height={580}
+          width={1920}
+          className="object-contain"
+        />
       </header>
-      <section className="container grid grid-cols-2 gap-12 pb-20">
-        <h2 className="text-brand-dark font-grotesk text-6xl tracking-tight">
+      <section className="relative container grid grid-cols-2 gap-9 pb-20">
+        <h2 className="text-brand-dark font-grotesk text-6xl tracking-tight text-balance">
           Reliable Logistics Solutions
           <span className="text-secondary"> Across the Globe</span>
         </h2>
-        <p className="text-2xl leading-relaxed">
+        <p className="text-brand-gray text-2xl leading-relaxed font-light text-balance">
           At Maxline Global, we connect businesses to markets across the world.
           With our comprehensive logistics solutions and commitment to service
           excellence, we ensure your cargo moves with speed, safety, and
           precision.
         </p>
+        <div className="absolute top-0 left-0 aspect-video h-96">
+          <Image
+            src="/images/maxline-plane.png"
+            fill
+            alt=""
+            className="object-contain"
+          />
+        </div>
+        <div className="col-start-2 flex items-center justify-center">
+          <TransportTypes />
+        </div>
       </section>
     </main>
   );
