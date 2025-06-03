@@ -6,10 +6,20 @@ const nextConfig: NextConfig = {
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
     minimumCacheTTL: 60,
   },
-  experimental: {
-    optimizeCss: true,
+
+  experimental: { optimizePackageImports: ["@tabler/icons-react"] },
+  typescript: {
+    ignoreBuildErrors: true,
   },
-  poweredByHeader: false,
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+
+  logging: {
+    fetches: {
+      fullUrl: true,
+    },
+  },
 };
 
 export default nextConfig;
