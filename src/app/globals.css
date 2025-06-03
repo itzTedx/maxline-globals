@@ -7,7 +7,6 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
   --font-grotesk: var(--font-radio-grostek);
   --color-brand-dark: var(--brand-dark);
   --color-sidebar-ring: var(--sidebar-ring);
@@ -48,6 +47,7 @@
 :root {
   --radius: 0.625rem;
   --brand-dark: oklch(0.4028 0.1058 247.93);
+  --brand-gray: oklch(0.3079 0.0162 280.39);
   --background: oklch(0.9285 0.0115 252.09);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);

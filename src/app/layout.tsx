@@ -1,15 +1,10 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
 
-import { radioGrostek } from "@/assets/fonts";
+import { geistSans, radioGrostek } from "@/assets/fonts";
 import { Navbar } from "@/components/layout/navbar";
+import { cn } from "@/lib/utils";
 
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -24,7 +19,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${(geistSans.className, radioGrostek.variable)} antialiased`}
+        className={cn(
+          "antialiased",
+          geistSans.className,
+          radioGrostek.variable
+        )}
       >
         <Navbar />
         {children}
