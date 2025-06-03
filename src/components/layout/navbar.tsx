@@ -54,7 +54,7 @@ export const Navbar = () => {
           </li>
           <li>
             <Button asChild size="btnIcon">
-              <Link href="/quote" className="text-brand-dark">
+              <Link href="/quote" className="text-brand-dark gap-3">
                 Get A Quote
                 <div className="bg-primary text-brand-dark flex size-8 items-center justify-center rounded">
                   <IconArrowRight />
