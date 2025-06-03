@@ -87,7 +87,7 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply from-background to-brand-dark text-foreground bg-gradient-to-b from-80% to-80%;
   }
 }
 
