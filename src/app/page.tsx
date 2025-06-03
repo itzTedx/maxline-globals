@@ -5,6 +5,7 @@ import { IconArrowRight } from "@tabler/icons-react";
 
 import { TransportTypes } from "@/assets/transport-types";
 import { XIcon } from "@/assets/x-icon";
+import Letter3DSwap from "@/components/animation/letter-3d-swap";
 import {
   Accordion,
   AccordionContent,
@@ -147,9 +148,19 @@ export default function Home() {
         </ul>
 
         <div className="relative flex flex-col items-center gap-4">
-          <h3 className="text-secondary font-grotesk z-10 pt-20 text-center text-8xl">
+          <Letter3DSwap
+            mainClassName="font-grotesk z-10 pt-20 text-center text-8xl"
+            frontFaceClassName={`bg-background text-secondary`}
+            secondFaceClassName={`bg-background text-secondary`}
+            rotateDirection="top"
+            staggerDuration={0.03}
+            staggerFrom="first"
+            as={"h3"}
+            transition={{ type: "spring", damping: 25, stiffness: 160 }}
+          >
             Logistics Without Limits
-          </h3>
+          </Letter3DSwap>
+
           <p className="text-brand-gray z-10 mx-auto max-w-3xl pb-12 text-center text-2xl font-light tracking-tight text-pretty">
             Our tailored freight solutions are engineered to meet the demands of
             modern trade - ensuring every shipment arrives on time, on budget,

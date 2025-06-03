@@ -130,4 +130,16 @@ export const FAQS = [
     content:
       "Maxline Global combines deep industry experience, a global network, and advanced logistics technology to offer flexible, scalable, and cost-effective supply chain solutions. We prioritize customer satisfaction, accuracy, and on-time delivery for every shipment.",
   },
+  {
+    id: "11",
+    title: "What types of cargo does Maxline Global handle?",
+    content:
+      "Maxline Global handles a wide range of cargo, including general freight, hazardous and non-hazardous goods, temperature-sensitive shipments, oversized project cargo, and time-critical deliveries by land, sea, and air.",
+  },
+  {
+    id: "12",
+    title: "Do you provide customs clearance services?",
+    content:
+      "Yes, we offer comprehensive customs brokerage services for import, export, and transshipment across sea and air freight. Our team ensures compliance and smooth clearance through all major ports.",
+  },
 ];
