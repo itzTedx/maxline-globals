@@ -68,3 +68,66 @@ export const SERVICES = [
     href: "/services/project-forwarding",
   },
 ];
+
+export const FAQS = [
+  {
+    id: "1",
+    title: "What logistics services does Maxline Global offer?",
+    content:
+      "Maxline Global provides a full range of logistics solutions including sea, air, and land freight, customs clearance, warehousing, project cargo handling, chartering, and more — tailored to your business needs across the GCC and beyond.",
+  },
+  {
+    id: "2",
+    title: "Which regions or countries does Maxline Global serve?",
+    content:
+      "We operate globally with a strong presence across the GCC countries, Asia, Europe, Africa, and the Americas. Our network enables seamless international trade and efficient cargo movement across all major trade lanes.",
+  },
+  {
+    id: "3",
+    title: "Do you handle dangerous or hazardous cargo?",
+    content:
+      "Yes. Maxline Global is certified and experienced in handling hazardous and non-hazardous materials, including chemicals and reefer (temperature-controlled) cargo. Our team follows strict safety standards and international regulations.",
+  },
+  {
+    id: "4",
+    title: "Can you manage oversized or project cargo?",
+    content:
+      "Absolutely. We offer project logistics solutions including heavy lift transport, Ro/Ro services, aircraft/ship chartering, and military or government shipment handling. We also provide port supervision and route planning for complex cargo.",
+  },
+  {
+    id: "5",
+    title: "Do you provide warehousing and distribution services?",
+    content:
+      "Yes. We operate modern warehousing facilities in and around Jebel Ali Free Zone (JAFZA) with services like palletizing, shrink wrapping, labeling, and web-based inventory management. We also offer local and international distribution services.",
+  },
+  {
+    id: "6",
+    title: "How can I track my shipment?",
+    content:
+      "We provide an easy-to-use Track & Trace system for real-time shipment updates. Clients can log in to our portal to view current location, estimated delivery time, and shipment history.",
+  },
+  {
+    id: "7",
+    title: "Do you provide door-to-door logistics services?",
+    content:
+      "Yes. We offer door-to-door, door-to-port, and port-to-door services for both LCL (Less than Container Load) and FCL (Full Container Load) shipments. This includes document handling, customs clearance, and final delivery.",
+  },
+  {
+    id: "8",
+    title: "How do I get a quote for freight services?",
+    content:
+      "Our team is available Monday to Friday, from 9:00 AM to 6:00 PM (UAE time). We are closed on weekends and public holidays. For urgent shipments, we can make special arrangements.",
+  },
+  {
+    id: "9",
+    title: "What are your business hours?",
+    content:
+      "Our team is available Monday to Friday, from 9:00 AM to 6:00 PM (UAE time). We are closed on weekends and public holidays. For urgent shipments, we can make special arrangements.",
+  },
+  {
+    id: "10",
+    title: "Why should I choose Maxline Global as my logistics partner?",
+    content:
+      "Maxline Global combines deep industry experience, a global network, and advanced logistics technology to offer flexible, scalable, and cost-effective supply chain solutions. We prioritize customer satisfaction, accuracy, and on-time delivery for every shipment.",
+  },
+];

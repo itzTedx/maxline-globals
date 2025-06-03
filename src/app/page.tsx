@@ -5,9 +5,15 @@ import { IconArrowRight } from "@tabler/icons-react";
 
 import { TransportTypes } from "@/assets/transport-types";
 import { XIcon } from "@/assets/x-icon";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { SERVICES } from "@/constants";
+import { FAQS, SERVICES } from "@/constants";
 import { cn } from "@/lib/utils";
 
 export default function Home() {
@@ -164,7 +170,7 @@ export default function Home() {
       </section>
 
       <section
-        className="container grid grid-cols-2 gap-9 py-20"
+        className="z-10 container grid grid-cols-2 gap-9 py-20"
         aria-labelledby="faq-heading"
       >
         <div className="sticky top-[20vh] h-fit space-y-8">
@@ -182,6 +188,23 @@ export default function Home() {
             services, capabilities, and commitment to smooth, secure, and
             on-time delivery.
           </p>
+        </div>
+        <div className="z-10">
+          <Accordion
+            type="multiple"
+            className="divide-secondary/50 w-full divide-y"
+          >
+            {FAQS.map((item) => (
+              <AccordionItem value={item.title} key={item.id} className="py-4">
+                <AccordionTrigger className="cursor-pointer py-2 text-lg font-normal hover:no-underline">
+                  {item.title}
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground pb-2 text-lg font-light">
+                  {item.content}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
         </div>
       </section>
     </main>
