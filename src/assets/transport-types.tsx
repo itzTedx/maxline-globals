@@ -12,6 +12,15 @@ export const TransportTypes = (
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
+      <image
+        href="/images/transportation-types.jpg"
+        x="83"
+        y="21"
+        width="300"
+        height="300"
+        preserveAspectRatio="xMidYMid slice"
+        clipPath="url(#circleClip)"
+      />
       <circle cx="232" cy="171" r="162.5" stroke="url(#paint0_linear_3_6)" />
       <circle cx="162" cy="25" r="10" fill="white" fillOpacity="0.25" />
       <circle cx="162" cy="25" r="8" fill="white" />
@@ -50,9 +59,12 @@ export const TransportTypes = (
         textAnchor="middle"
         dominantBaseline="middle"
       >
-        03 / Road
+        03 / Road{" "}
       </text>
       <defs>
+        <clipPath id="circleClip">
+          <circle cx="233" cy="171" r="150" />
+        </clipPath>
         <linearGradient
           id="paint0_linear_3_6"
           x1="68"

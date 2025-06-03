@@ -8,13 +8,5 @@
     "*.css": "tailwindcss"
   },
   "typescript.tsdk": "node_modules/typescript/lib",
-  "cSpell.words": [
-    "NAVLINKS",
-    "plaiceholder",
-    "signup",
-    "Tiktok",
-    "uploadthing",
-    "ziron",
-    "zustand"
-  ]
+  "cSpell.words": ["NAVLINKS", "ziron", "zustand", "maxline"]
 }
