@@ -143,3 +143,98 @@ export const FAQS = [
       "Yes, we offer comprehensive customs brokerage services for import, export, and transshipment across sea and air freight. Our team ensures compliance and smooth clearance through all major ports.",
   },
 ];
+
+export const FOOTER_LINKS = [
+  {
+    header: "General",
+    links: [
+      {
+        title: "Home",
+        href: "/",
+      },
+      {
+        title: "About",
+        href: "/company/about",
+      },
+      {
+        title: "Team",
+        href: "/company/team",
+      },
+      {
+        title: "Contact",
+        href: "/contact",
+      },
+    ],
+  },
+  {
+    header: "Services",
+    links: [
+      {
+        title: "Air Freight",
+        href: "/",
+      },
+      {
+        title: "Sea Freight",
+        href: "/",
+      },
+      {
+        title: "Land Freight",
+        href: "/",
+      },
+      {
+        title: "Project Forwarding",
+        href: "/",
+      },
+      {
+        title: "Packing",
+        href: "/",
+      },
+      {
+        title: "Warehousing",
+        href: "/",
+      },
+      {
+        title: "Exhibition Cargo",
+        href: "/",
+      },
+    ],
+  },
+  {
+    header: "Support",
+    links: [
+      {
+        title: "Track your Shipment",
+        href: "/",
+      },
+      {
+        title: "Get Quote",
+        href: "/",
+      },
+      {
+        title: "Technical Support",
+        href: "/contact",
+      },
+    ],
+  },
+  {
+    header: "Social",
+    links: [
+      {
+        title: "Linkedin",
+        href: "/",
+      },
+      {
+        title: "Instagram",
+        href: "/",
+      },
+      {
+        title: "Facebook",
+        href: "/",
+      },
+      {
+        title: "X (Formerly Twitter)",
+        href: "/",
+      },
+    ],
+  },
+];

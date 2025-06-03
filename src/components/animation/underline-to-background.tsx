@@ -19,7 +19,7 @@ const UnderlineToBackground = ({
   className,
   onClick,
   transition = { type: "spring", damping: 30, stiffness: 300 },
-  underlineHeightRatio = 0.1, // Default to 10% of font size
+  underlineHeightRatio = 0.005, // Default to 10% of font size
   underlinePaddingRatio = 0.01, // Default to 1% of font size
   targetTextColor = "#fef",
   ...props

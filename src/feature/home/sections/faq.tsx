@@ -1,0 +1,47 @@
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { FAQS } from "@/constants";
+
+export const FaqSection = () => {
+  return (
+    <section
+      className="z-10 container grid grid-cols-2 gap-9 py-20"
+      aria-labelledby="faq-heading"
+    >
+      <div className="sticky top-[15vh] h-fit space-y-8">
+        <h2 id="faq-heading" className="font-grotesk text-brand-dark text-5xl">
+          Frequently Asked Questions
+        </h2>
+        <div className="bg-brand-gray/10 aspect-video"></div>
+        <p className="text-brand-gray text-xl font-light">
+          Discover quick answers to the questions our clients ask most. From
+          shipment tracking to specialized cargo handling, our FAQ section
+          covers everything you need to know about Maxline Global&apos;s
+          services, capabilities, and commitment to smooth, secure, and on-time
+          delivery.
+        </p>
+      </div>
+      <div className="z-10">
+        <Accordion
+          type="multiple"
+          className="divide-secondary/50 w-full divide-y"
+        >
+          {FAQS.map((item) => (
+            <AccordionItem value={item.title} key={item.id} className="py-4">
+              <AccordionTrigger className="cursor-pointer py-2 text-lg font-normal hover:no-underline">
+                {item.title}
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground pb-2 text-lg font-light">
+                {item.content}
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
+      </div>
+    </section>
+  );
+};

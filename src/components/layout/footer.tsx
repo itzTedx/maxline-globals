@@ -2,19 +2,22 @@ import Link from "next/link";
 
 import { IconArrowRight, IconMapPin } from "@tabler/icons-react";
 
+import { Logo } from "@/assets/logo";
 import { XSolidIcon } from "@/assets/x-icon";
 import LetterSwapPingPong from "@/components/animation/letter-swap-pingpong-anim";
 import CenterUnderline from "@/components/animation/underline-center";
+import { FOOTER_LINKS } from "@/constants";
 
 import { Button } from "../ui/button";
 import { Separator } from "../ui/separator";
 
 export const Footer = () => {
   return (
-    <footer className="bg-brand-dark text-background sticky bottom-0 left-0 z-0 w-full overflow-hidden py-14">
-      <div className="relative z-10 container grid grid-cols-12 gap-3">
-        <h5 className="font-grotesk col-span-5 text-7xl">
-          Your trusted logistics partner, moving forward, every day.
+    <footer className="bg-brand-dark text-background sticky bottom-0 left-0 z-0 w-full overflow-hidden">
+      <div className="relative z-10 container grid grid-cols-12 gap-12 py-20">
+        <h5 className="font-grotesk col-span-5 text-7xl leading-tight">
+          Your trusted logistics partner, moving forward,{" "}
+          <span className="text-primary">every day.</span>
         </h5>
         <div className="col-span-7 space-y-6">
           <div className="grid grid-cols-3 items-center justify-between">
@@ -49,15 +52,40 @@ export const Footer = () => {
           </div>
 
           <Separator />
+
+          <nav className="grid grid-cols-4 gap-6">
+            {FOOTER_LINKS.map((section) => (
+              <div key={section.header} className="mb-6">
+                <h6 className="text-primary mb-3 font-semibold uppercase">
+                  {section.header}
+                </h6>
+                <ul className="space-y-4">
+                  {section.links.map((link) => (
+                    <li key={link.title}>
+                      <Link
+                        href={link.href}
+                        className="font-grotesk font-black"
+                      >
+                        <CenterUnderline label={link.title} />
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </nav>
         </div>
       </div>
-      <XSolidIcon className="absolute -bottom-1/4 left-1/2 -translate-x-1/2" />
+      <div className="container">
+        <Separator />
+      </div>
+      <div className="z-10 container flex items-center justify-between py-9">
+        <Logo className="text-background" />
+        <p>
+          © {new Date().getFullYear()} Maxline Globals. All Rights Reserved.
+        </p>
+      </div>
+      <XSolidIcon className="pointer-events-none absolute -bottom-[30%] left-1/2 -translate-x-1/2 select-none" />
     </footer>
   );
 };
-
-//  <UnderlineToBackground
-//                 label="Jebel Ali Free Zone, Dubai."
-//                 targetTextColor="#ffffff"
-//                 className="text-primary cursor-pointer"
-//               />

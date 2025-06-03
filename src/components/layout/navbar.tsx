@@ -16,7 +16,7 @@ export const Navbar = () => {
         aria-hidden="true"
       />
       <div className="relative z-50 container flex items-center justify-between gap-3">
-        <Logo />
+        <Logo className="text-[#231F20]" />
         <ul className="flex items-center gap-2">
           {NAVLINKS.map((link) => (
             <li key={link.title}>
