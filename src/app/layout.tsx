@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: "your-google-site-verification",
+    google: "-",
   },
   alternates: {
     canonical: "https://maxlineglobal.com",
@@ -55,17 +55,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link
-          rel="preload"
-          href="/images/container.png"
-          as="image"
-          type="image/png"
-        />
-        <link
-          rel="preconnect"
-          href="https://fonts.googleapis.com"
-          crossOrigin="anonymous"
-        />
         <Script
           id="schema-org"
           type="application/ld+json"
