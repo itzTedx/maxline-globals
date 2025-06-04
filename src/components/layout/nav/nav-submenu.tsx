@@ -57,7 +57,7 @@ export const NavSubmenu = ({
         >
           <motion.ul
             className={cn(
-              "mt-2 grid items-center gap-2 overflow-hidden rounded-md bg-white p-2",
+              "mt-2 grid items-center gap-2 overflow-hidden rounded-md bg-white p-2 shadow-lg",
               parentTitle === "Company" ? "grid-cols-3" : "grid-cols-4"
             )}
             role="menu"

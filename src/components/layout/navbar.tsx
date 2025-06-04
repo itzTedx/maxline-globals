@@ -13,18 +13,33 @@ import { QuoteButton } from "./nav/quote-button";
 
 export const Navbar = () => {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
-  const [maxSubmenuHeight, setMaxSubmenuHeight] = useState<number>(0);
-  const submenuRef = useRef<HTMLDivElement>(null);
+  const [submenuHeights, setSubmenuHeights] = useState<Map<string, number>>(
+    new Map()
+  );
+  const submenuRefs = useRef<Map<string, HTMLDivElement>>(new Map());
 
   // Update submenu height when active menu changes
   useEffect(() => {
-    if (
-      submenuRef.current &&
-      submenuRef.current.scrollHeight > maxSubmenuHeight
-    ) {
-      setMaxSubmenuHeight(submenuRef.current.scrollHeight);
+    if (activeMenu && submenuRefs.current.has(activeMenu)) {
+      const submenuElement = submenuRefs.current.get(activeMenu);
+      if (
+        submenuElement &&
+        submenuElement.scrollHeight > (submenuHeights.get(activeMenu) || 0)
+      ) {
+        setSubmenuHeights((prev) =>
+          new Map(prev).set(activeMenu, submenuElement.scrollHeight)
+        );
+      }
     }
-  }, [activeMenu, maxSubmenuHeight]);
+  }, [activeMenu, submenuHeights]);
+
+  const handleMouseEnter = (title: string) => {
+    setActiveMenu(title);
+  };
+
+  const handleMouseLeave = () => {
+    setActiveMenu(null);
+  };
 
   return (
     <nav
@@ -41,31 +56,36 @@ export const Navbar = () => {
           <Logo className="text-[#231F20]" />
         </Link>
 
-        <ul className="relative flex items-center gap-2" role="menubar">
+        <ul
+          className="relative flex items-center justify-center gap-2"
+          role="menubar"
+        >
           {NAVLINKS.map((link) => (
             <li
               key={link.title}
               className="group"
               role="none"
-              onMouseEnter={() => setActiveMenu(link.title)}
-              onMouseLeave={() => setActiveMenu(null)}
+              onMouseEnter={() => handleMouseEnter(link.title)}
+              onMouseLeave={handleMouseLeave}
             >
               <NavLink
                 title={link.title}
                 href={link.href}
                 hasSubmenu={!!link.submenu}
                 isActive={activeMenu === link.title}
-                onMouseEnter={() => setActiveMenu(link.title)}
-                onMouseLeave={() => setActiveMenu(null)}
               />
 
               {link.submenu && (
-                <div ref={submenuRef}>
+                <div
+                  ref={(el) => {
+                    if (el) submenuRefs.current.set(link.title, el);
+                  }}
+                >
                   <NavSubmenu
                     isOpen={activeMenu === link.title}
                     items={link.submenu}
                     parentTitle={link.title}
-                    maxHeight={maxSubmenuHeight}
+                    maxHeight={submenuHeights.get(link.title) || 0}
                   />
                 </div>
               )}
