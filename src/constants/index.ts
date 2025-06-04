@@ -81,26 +81,31 @@ export const SERVICES = [
     title: "Land Freight",
     description: "Efficient and Secure Road Transportation Across the GCC.",
     href: "/services/land-freight",
+    image: "/images/truck.webp",
   },
   {
     title: "Air Freight",
     description: "Swift Air Freight Solutions for Global Reach.",
     href: "/services/air-freight",
+    image: "/images/plane.webp",
   },
   {
     title: "Sea Freight",
     description: "Reliable Sea Freight Services Across Continents.",
     href: "/services/sea-freight",
+    image: "/images/ship.webp",
   },
   {
     title: "Warehousing",
     description: "Strategic Warehousing and Distribution Solutions.",
     href: "/services/warehousing-and-distribution",
+    image: "/images/lifter.webp",
   },
   {
     title: "Project Forwarding",
     description: "Specialized Handling for Heavy and Oversized Cargo.",
     href: "/services/project-forwarding",
+    image: "/images/container.webp",
   },
 ];
 

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import { IconArrowRight } from "@tabler/icons-react";
@@ -23,6 +24,7 @@ export const ServicesSection = () => {
           muted
           preload="true"
           autoPlay
+          loop
           playsInline
           className="relative z-10 mb-20 overflow-hidden rounded-2xl border"
         >
@@ -41,11 +43,12 @@ export const ServicesSection = () => {
           controls={false}
           muted
           preload="true"
+          loop
           autoPlay
           playsInline
           className="absolute inset-0 mb-20 rounded-2xl blur-3xl"
         >
-          <source src="/videos/maxline-web.webm" type="video/webm" />
+          <source src="/videos/maxline-web-low.webm" type="video/webm" />
           <track
             src="/path/to/captions.vtt"
             kind="subtitles"
@@ -76,15 +79,27 @@ export const ServicesSection = () => {
               "rounded-md px-16 py-20"
             )}
           >
-            <div className="relative z-10">
+            <div className="relative z-20">
               <h3 className="text-4xl font-semibold">{service.title}</h3>
-              <p className="text-primary">{service.description}</p>
+              <p className="text-secondary group-first:text-background max-w-sm text-xl font-light">
+                {service.description}
+              </p>
             </div>
-            <Button asChild size="icon" variant="icon" className="z-10">
+
+            <Button asChild size="icon" variant="icon" className="z-20">
               <Link href={service.href}>
                 <IconArrowRight className="siz-4" />
               </Link>
             </Button>
+            <div className="absolute right-0 z-10 aspect-4/3 h-[140%]">
+              <Image
+                src={service.image}
+                alt=""
+                fill
+                className="object-contain"
+              />
+            </div>
+
             <div
               aria-hidden
               className={cn(
