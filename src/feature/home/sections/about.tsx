@@ -5,7 +5,7 @@ import { TransportTypes } from "@/assets/transport-types";
 export const AboutSection = () => {
   return (
     <section
-      className="relative container grid grid-cols-2 gap-9 pb-20"
+      className="relative container grid grid-cols-2 gap-x-9 gap-y-20 pb-20"
       aria-labelledby="solutions-heading"
     >
       <h2

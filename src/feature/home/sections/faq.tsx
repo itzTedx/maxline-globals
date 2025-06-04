@@ -1,3 +1,5 @@
+import Script from "next/script";
+
 import {
   Accordion,
   AccordionContent,
@@ -7,11 +9,29 @@ import {
 import { FAQS } from "@/constants";
 
 export const FaqSection = () => {
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: FAQS.map((faq) => ({
+      "@type": "Question",
+      name: faq.title,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.content,
+      },
+    })),
+  };
+
   return (
     <section
       className="z-10 container grid grid-cols-2 gap-9 py-20"
       aria-labelledby="faq-heading"
     >
+      <Script
+        id="faq-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="sticky top-[15vh] h-fit space-y-8">
         <h2 id="faq-heading" className="font-grotesk text-brand-dark text-5xl">
           Frequently Asked Questions
