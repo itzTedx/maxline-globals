@@ -278,3 +278,37 @@ export const FOOTER_LINKS = [
     ],
   },
 ];
+
+export const CAROUSEL_IMAGES = [
+  "/images/carousel/logistics-means-transport-together-with-technological-futuristic-holograms copy.jpg",
+  "/images/carousel/scene-with-photorealistic-logistics-operations-proceedings.jpg",
+  "/images/carousel/technological-futuristic-holograms-logistics-means-transport.jpg",
+  "/images/carousel/transport-logistics-products.jpg",
+];
+
+export const PRINCIPLES = [
+  {
+    head: "Vision",
+    title: "Leading with Vision, Moving with Purpose.",
+    description:
+      "Our vision is to be the foremost leader in the freight forwarding industry, renowned for our innovative, sustainable, and customer-centric logistics solutions that redefine industry standards.",
+  },
+  {
+    head: "Mission",
+    title: "Driven by Purpose. Defined by Progress.",
+    description:
+      "Our mission is to deliver unparalleled excellence in freight forwarding by providing innovative, sustainable, and customer-focused solutions. We strive to exceed expectations, create lasting value for our clients, and drive progress in the logistics sector.",
+  },
+  {
+    head: "Fast Service",
+    title: "Logistics at the Speed of Business.",
+    description:
+      "We are committed to providing fast and reliable logistics services, ensuring the timely and efficient delivery of your goods. Our focus is on meeting and exceeding your expectations, helping your business thrive in today's fast-paced market. Experience the speed and efficiency of our logistics solutions.",
+  },
+  {
+    head: "100% Accuracy",
+    title: "Delivering Accuracy, Every Time.",
+    description:
+      "We guarantee 100% accuracy in every shipment through meticulous planning, streamlined processes, and efficient communication. Leveraging advanced technologies like real-time tracking and automation, we ensure precision and reliability, giving you peace of mind with every delivery. Trust us for accurate and dependable logistics solutions.",
+  },
+];
