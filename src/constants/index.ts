@@ -12,8 +12,12 @@ export const NAVLINKS = [
         href: "/company/about",
       },
       {
-        title: "Careers",
-        href: "/company/careers",
+        title: "Leadership Team",
+        href: "/company/team",
+      },
+      {
+        title: "Insights & News",
+        href: "/company/insights",
       },
     ],
   },
@@ -22,12 +26,33 @@ export const NAVLINKS = [
     href: "/company",
     submenu: [
       {
-        title: "About Us",
-        href: "/company/about",
+        title: "Air Freight",
+        href: "/services/air-freight",
       },
       {
-        title: "Careers",
-        href: "/company/careers",
+        title: "Sea Freight",
+        href: "/services/air-freight",
+      },
+      {
+        title: "Land Freight",
+        href: "/services/air-freight",
+      },
+
+      {
+        title: "Project Forwarding",
+        href: "/services/project-forwarding",
+      },
+      {
+        title: "Packing",
+        href: "/services/packing",
+      },
+      {
+        title: "Warehousing",
+        href: "/services/warehousing",
+      },
+      {
+        title: "Exhibition Cargo",
+        href: "/services/exhibition-cargo",
       },
     ],
   },
