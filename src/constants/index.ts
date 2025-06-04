@@ -10,14 +10,17 @@ export const NAVLINKS = [
       {
         title: "About Us",
         href: "/company/about",
+        img: "/images/about-us.webp",
       },
       {
         title: "Leadership Team",
         href: "/company/team",
+        img: "/images/meeting-1.webp",
       },
       {
         title: "Insights & News",
         href: "/company/insights",
+        img: "/images/insights.webp",
       },
     ],
   },
@@ -28,31 +31,38 @@ export const NAVLINKS = [
       {
         title: "Air Freight",
         href: "/services/air-freight",
+        img: "/images/air-freight.webp",
       },
       {
         title: "Sea Freight",
         href: "/services/air-freight",
+        img: "/images/sea-freight.webp",
       },
       {
         title: "Land Freight",
         href: "/services/air-freight",
+        img: "/images/blogs/transport-logistics-products.jpg",
       },
 
       {
         title: "Project Forwarding",
         href: "/services/project-forwarding",
+        img: "/images/transportation-types.jpg",
       },
       {
         title: "Packing",
         href: "/services/packing",
+        img: "/images/packing.webp",
       },
       {
         title: "Warehousing",
         href: "/services/warehousing",
+        img: "/images/warehousing.webp",
       },
       {
         title: "Exhibition Cargo",
         href: "/services/exhibition-cargo",
+        img: "/images/exhibition-cargo.webp",
       },
     ],
   },

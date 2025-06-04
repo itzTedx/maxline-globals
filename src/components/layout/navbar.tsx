@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
@@ -38,7 +39,9 @@ export const Navbar = () => {
         aria-hidden="true"
       />
       <div className="relative z-50 container flex items-center justify-between gap-3">
-        <Logo className="text-[#231F20]" />
+        <Link href="/">
+          <Logo className="text-[#231F20]" />
+        </Link>
         <ul className="relative flex items-center gap-2">
           {NAVLINKS.map((link) => (
             <li
@@ -127,7 +130,7 @@ export const Navbar = () => {
                             }}
                             whileHover={{ scale: 1.01 }}
                             className={cn(
-                              "bg-brand-dark text-background rounded-sm p-3",
+                              "bg-secondary text-background overflow-hidden rounded-sm",
                               link.title === "Company"
                                 ? "aspect-4/3"
                                 : "aspect-square"
@@ -135,12 +138,22 @@ export const Navbar = () => {
                           >
                             <Link
                               href={sub.href}
-                              className="group/submenu flex h-full flex-col justify-between"
+                              className="group/submenu relative flex h-full flex-col justify-between"
                             >
-                              <div className="bg-primary text-brand-dark flex size-8 items-center justify-center self-end rounded">
-                                <IconArrowUpRight className="size-4 transition-transform ease-out group-hover/submenu:rotate-45" />
+                              <div className="relative z-50 flex h-full flex-col justify-between p-3">
+                                <div className="text-brand-dark flex size-8 items-center justify-center self-end rounded bg-white/80 backdrop-blur-2xl">
+                                  <IconArrowUpRight className="size-4 transition-transform ease-out group-hover/submenu:rotate-45" />
+                                </div>
+                                <p className="z-10 font-medium">{sub.title}</p>
+                                <div className="from-secondary/80 absolute bottom-0 left-0 h-full w-full bg-gradient-to-t to-transparent" />
                               </div>
-                              {sub.title}
+                              <div className="bg-secondary absolute inset-0 z-10 mix-blend-color" />
+                              <Image
+                                src={sub.img}
+                                fill
+                                alt=""
+                                className="object-cover mix-blend-multiply brightness-125"
+                              />
                             </Link>
                           </motion.li>
                         ))}
