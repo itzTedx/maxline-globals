@@ -14,12 +14,13 @@ import { Logo } from "@/assets/logo";
 import { NAVLINKS } from "@/constants";
 import { cn } from "@/lib/utils";
 
+import LetterSwapPingPong from "../animation/letter-swap-pingpong-anim";
 import { Button } from "../ui/button";
 
 export const Navbar = () => {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [maxSubmenuHeight, setMaxSubmenuHeight] = useState<number>(0);
-  const submenuRef = useRef<HTMLUListElement>(null);
+  const submenuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (
@@ -49,13 +50,19 @@ export const Navbar = () => {
               <Link
                 href={link.href}
                 className={cn(
-                  "text-brand-dark flex h-11 items-center justify-center gap-2.5 rounded-md bg-white font-medium",
+                  "text-brand-dark hover:bg-primary flex h-11 items-center justify-center gap-2.5 rounded-md bg-white font-medium transition duration-500",
                   link.submenu ? "pr-1.5 pl-4" : "px-4"
                 )}
               >
-                {link.title}
+                <LetterSwapPingPong
+                  label={link.title}
+                  staggerFrom={"first"}
+                  reverse={false}
+                  className="w-full justify-start font-semibold"
+                />
+
                 {link.submenu && (
-                  <div className="bg-background flex size-8 items-center justify-center rounded">
+                  <div className="bg-background flex size-8 shrink-0 items-center justify-center rounded">
                     <IconArrowDown className="size-4" />
                   </div>
                 )}
@@ -63,7 +70,7 @@ export const Navbar = () => {
               {link.submenu && (
                 <AnimatePresence>
                   {activeMenu === link.title && (
-                    <motion.ul
+                    <motion.div
                       ref={submenuRef}
                       initial={{ opacity: 0, height: 0, y: 20 }}
                       animate={{
@@ -87,52 +94,58 @@ export const Navbar = () => {
                           y: { duration: 0.2, ease: "easeIn" },
                         },
                       }}
-                      className={cn(
-                        "absolute left-0 mt-2 grid w-full items-center gap-2 overflow-hidden rounded-md bg-white p-2",
-                        link.title === "Company" ? "grid-cols-3" : "grid-cols-4"
-                      )}
+                      className={cn("absolute top-full left-0 w-full")}
                     >
-                      {link.submenu.map((sub, index) => (
-                        <motion.li
-                          key={sub.title}
-                          initial={{ opacity: 0, y: 40 }}
-                          animate={{
-                            opacity: 1,
-                            y: 0,
-                            transition: {
-                              duration: 0.3,
-                              delay: 0.1 + index * 0.01,
-                              ease: "easeOut",
-                            },
-                          }}
-                          exit={{
-                            opacity: 0,
-                            y: 20,
-                            transition: {
-                              duration: 0.2,
-                              ease: "easeIn",
-                            },
-                          }}
-                          whileHover={{ scale: 1.01 }}
-                          className={cn(
-                            "bg-brand-dark text-background rounded-sm p-3",
-                            link.title === "Company"
-                              ? "aspect-4/3"
-                              : "aspect-square"
-                          )}
-                        >
-                          <Link
-                            href={sub.href}
-                            className="group/submenu flex h-full flex-col justify-between"
+                      <motion.ul
+                        className={cn(
+                          "mt-2 grid items-center gap-2 overflow-hidden rounded-md bg-white p-2",
+                          link.title === "Company"
+                            ? "grid-cols-3"
+                            : "grid-cols-4"
+                        )}
+                      >
+                        {link.submenu.map((sub, index) => (
+                          <motion.li
+                            key={sub.title}
+                            initial={{ opacity: 0, y: 40 }}
+                            animate={{
+                              opacity: 1,
+                              y: 0,
+                              transition: {
+                                duration: 0.3,
+                                delay: 0.1 + index * 0.01,
+                                ease: "easeOut",
+                              },
+                            }}
+                            exit={{
+                              opacity: 0,
+                              y: 20,
+                              transition: {
+                                duration: 0.2,
+                                ease: "easeIn",
+                              },
+                            }}
+                            whileHover={{ scale: 1.01 }}
+                            className={cn(
+                              "bg-brand-dark text-background rounded-sm p-3",
+                              link.title === "Company"
+                                ? "aspect-4/3"
+                                : "aspect-square"
+                            )}
                           >
-                            <div className="bg-primary text-brand-dark flex size-8 items-center justify-center self-end rounded">
-                              <IconArrowUpRight className="size-4 transition-transform ease-out group-hover/submenu:rotate-45" />
-                            </div>
-                            {sub.title}
-                          </Link>
-                        </motion.li>
-                      ))}
-                    </motion.ul>
+                            <Link
+                              href={sub.href}
+                              className="group/submenu flex h-full flex-col justify-between"
+                            >
+                              <div className="bg-primary text-brand-dark flex size-8 items-center justify-center self-end rounded">
+                                <IconArrowUpRight className="size-4 transition-transform ease-out group-hover/submenu:rotate-45" />
+                              </div>
+                              {sub.title}
+                            </Link>
+                          </motion.li>
+                        ))}
+                      </motion.ul>
+                    </motion.div>
                   )}
                 </AnimatePresence>
               )}
