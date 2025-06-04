@@ -1,6 +1,8 @@
 import Image from "next/image";
 
 import { TransportTypes } from "@/assets/transport-types";
+import { StaggeredText } from "@/components/animation/staggered-text";
+import { TextAnimate } from "@/components/animation/text-animate";
 
 export const AboutSection = () => {
   return (
@@ -12,15 +14,22 @@ export const AboutSection = () => {
         id="solutions-heading"
         className="text-brand-dark font-grotesk text-6xl tracking-tight text-balance"
       >
-        Reliable Logistics Solutions
-        <span className="text-secondary"> Across the Globe</span>
+        <StaggeredText
+          text="Reliable Logistics Solutions Across the Globe"
+          className="[&>span:nth-last-child(-n+3)]:text-secondary"
+          staggerChildren={0.03}
+          duration={0.7}
+        />
       </h2>
-      <p className="text-brand-gray text-2xl leading-relaxed font-light text-balance">
-        At Maxline Global, we connect businesses to markets across the world.
-        With our comprehensive logistics solutions and commitment to service
-        excellence, we ensure your cargo moves with speed, safety, and
-        precision.
-      </p>
+
+      <TextAnimate
+        animation="blurInUp"
+        by="character"
+        className="text-brand-gray text-2xl leading-relaxed font-light text-balance"
+      >
+        {`At Maxline Global, we connect businesses to markets across the world. With our comprehensive logistics solutions and commitment to service excellence, we ensure your cargo moves with speed, safety, and precision.`}
+      </TextAnimate>
+
       <div className="absolute -bottom-12 -left-1/2 aspect-video h-[831px] translate-x-20">
         <Image
           src="/images/maxline-plane.png"

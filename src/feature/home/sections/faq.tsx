@@ -1,5 +1,6 @@
 import Script from "next/script";
 
+import { StaggeredText } from "@/components/animation/staggered-text";
 import {
   Accordion,
   AccordionContent,
@@ -38,11 +39,11 @@ export const FaqSection = () => {
         </h2>
         <div className="bg-brand-gray/10 aspect-video"></div>
         <p className="text-brand-gray text-xl font-light">
-          Discover quick answers to the questions our clients ask most. From
-          shipment tracking to specialized cargo handling, our FAQ section
-          covers everything you need to know about Maxline Global&apos;s
-          services, capabilities, and commitment to smooth, secure, and on-time
-          delivery.
+          <StaggeredText
+            text="Discover quick answers to the questions our clients ask most. From shipment tracking to specialized cargo handling, our FAQ section covers everything you need to know about Maxline Global's services, capabilities, and commitment to smooth, secure, and on-time delivery."
+            staggerChildren={0.03}
+            duration={0.7}
+          />
         </p>
       </div>
       <div className="z-10">

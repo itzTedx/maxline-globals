@@ -8,22 +8,49 @@ import LetterSwapPingPong from "@/components/animation/letter-swap-pingpong-anim
 import CenterUnderline from "@/components/animation/underline-center";
 import { FOOTER_LINKS } from "@/constants";
 
+import VerticalCutReveal from "../animation/vertical-cut-reveal";
 import { Button } from "../ui/button";
 import { Separator } from "../ui/separator";
 
 export const Footer = () => {
   return (
-    <footer className="bg-brand-dark text-background sticky bottom-0 left-0 z-0 w-full overflow-hidden">
+    <footer className="bg-brand-dark text-background z-0 w-full overflow-hidden">
+      {/* <footer className="bg-brand-dark text-background sticky bottom-0 z-0 w-full overflow-hidden"> */}
       <div className="relative z-10 container grid grid-cols-12 gap-12 py-20">
         <h5 className="font-grotesk col-span-5 text-7xl leading-tight">
-          Your trusted logistics partner, moving forward,{" "}
-          <span className="text-primary">every day.</span>
+          <VerticalCutReveal
+            splitBy="characters"
+            staggerDuration={0.025}
+            staggerFrom="first"
+            transition={{
+              type: "spring",
+              stiffness: 200,
+              damping: 21,
+            }}
+          >
+            {`Your trusted logistics partner, moving forward,`}
+          </VerticalCutReveal>
+          <VerticalCutReveal
+            containerClassName="text-primary"
+            splitBy="characters"
+            staggerDuration={0.025}
+            staggerFrom="first"
+            transition={{
+              delay: 1,
+              type: "spring",
+              stiffness: 200,
+              damping: 21,
+            }}
+          >
+            {`every day.`}
+          </VerticalCutReveal>
         </h5>
+
         <div className="col-span-7 space-y-6">
           <div className="grid grid-cols-3 items-center justify-between">
             <Link
               href={"https://maps.app.goo.gl/VWxy5XYwqrDr9etT7"}
-              className="bg-background/20 border-background col-span-2 flex w-fit items-center justify-start gap-1.5 rounded-full border px-2.5 py-1.5 backdrop-blur-xl"
+              className="bg-background/20 border-background col-span-2 flex w-fit items-center justify-start gap-1.5 rounded-full border px-2.5 py-1.5 backdrop-blur-xl transition-transform hover:scale-105"
             >
               <IconMapPin className="size-5 stroke-1" />
               <p className="font-light">
@@ -39,7 +66,7 @@ export const Footer = () => {
               <Link href="/quote" className="text-brand-dark group">
                 <LetterSwapPingPong
                   label="Get A Quote"
-                  staggerFrom={"first"}
+                  staggerFrom="first"
                   reverse={false}
                   className="w-full justify-start font-semibold"
                 />
@@ -85,6 +112,7 @@ export const Footer = () => {
           © {new Date().getFullYear()} Maxline Globals. All Rights Reserved.
         </p>
       </div>
+
       <XSolidIcon className="pointer-events-none absolute -bottom-[30%] left-1/2 -translate-x-1/2 select-none" />
     </footer>
   );

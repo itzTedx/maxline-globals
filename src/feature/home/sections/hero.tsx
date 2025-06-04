@@ -1,17 +1,12 @@
-"use client";
-
-import Image from "next/image";
-import { useRef } from "react";
-
 import { IconArrowRight } from "@tabler/icons-react";
 
 import { Input } from "@/components/ui/input";
 
-export const HeroSection = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
+import { HeroImage } from "../components/hero-image";
 
+export const HeroSection = () => {
   return (
-    <header className="py-20" role="banner" ref={containerRef}>
+    <header className="py-20" role="banner">
       <h1 className="text-brand-dark font-grotesk mx-auto max-w-5xl px-3 text-center text-8xl tracking-tight">
         Delivering Excellence Across{" "}
         <span className="text-secondary">Land, Air, and Sea</span>
@@ -33,15 +28,7 @@ export const HeroSection = () => {
         </button>
       </div>
 
-      <Image
-        src="/images/container.png"
-        alt="Container ship docked at a port representing Maxline Global's sea freight services"
-        height={580}
-        width={1920}
-        className="object-contain"
-        priority
-        loading="eager"
-      />
+      <HeroImage />
     </header>
   );
 };

@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { XIcon } from "@/assets/x-icon";
+import VerticalCutReveal from "@/components/animation/vertical-cut-reveal";
 
 export const Cta = () => {
   return (
@@ -19,10 +20,33 @@ export const Cta = () => {
         <div className="relative z-10 grid grid-cols-3 items-center gap-2 px-24 py-28">
           <div className="col-span-2 space-y-4">
             <h4 className="font-grotesk leading-tighter text-6xl font-black">
-              Ready to move your business forward?
+              <VerticalCutReveal
+                splitBy="characters"
+                staggerDuration={0.015}
+                staggerFrom="first"
+                transition={{
+                  type: "spring",
+                  stiffness: 200,
+                  damping: 21,
+                }}
+              >
+                {`Ready to move your business forward?`}
+              </VerticalCutReveal>
             </h4>
             <p className="font-grotesk text-xl font-light">
-              Partner with Maxline Global for reliable logistics solutions.
+              <VerticalCutReveal
+                splitBy="characters"
+                staggerDuration={0.025}
+                staggerFrom="first"
+                transition={{
+                  delay: 0.5,
+                  type: "spring",
+                  stiffness: 200,
+                  damping: 21,
+                }}
+              >
+                {`Partner with Maxline Global for reliable logistics solutions.`}
+              </VerticalCutReveal>
             </p>
           </div>
           <ul className="flex flex-col gap-2">
