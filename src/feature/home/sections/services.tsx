@@ -15,25 +15,46 @@ export const ServicesSection = () => {
       className="container max-w-7xl py-20"
       aria-labelledby="services-heading"
     >
-      <video
-        width="1920"
-        height="1080"
-        controls={false}
-        muted
-        preload="true"
-        autoPlay
-        playsInline
-        className="mb-20 overflow-hidden rounded-2xl"
-      >
-        <source src="/videos/maxline-web.webm" type="video/webm" />
-        <track
-          src="/path/to/captions.vtt"
-          kind="subtitles"
-          srcLang="en"
-          label="English"
-        />
-        Your browser does not support the video tag.
-      </video>
+      <div className="relative">
+        <video
+          width="1920"
+          height="1080"
+          controls={false}
+          muted
+          preload="true"
+          autoPlay
+          playsInline
+          className="relative z-10 mb-20 overflow-hidden rounded-2xl border"
+        >
+          <source src="/videos/maxline-web.webm" type="video/webm" />
+          <track
+            src="/path/to/captions.vtt"
+            kind="subtitles"
+            srcLang="en"
+            label="English"
+          />
+          Your browser does not support the video tag.
+        </video>
+        <video
+          width="1920"
+          height="1080"
+          controls={false}
+          muted
+          preload="true"
+          autoPlay
+          playsInline
+          className="absolute inset-0 mb-20 rounded-2xl blur-3xl"
+        >
+          <source src="/videos/maxline-web.webm" type="video/webm" />
+          <track
+            src="/path/to/captions.vtt"
+            kind="subtitles"
+            srcLang="en"
+            label="English"
+          />
+          Your browser does not support the video tag.
+        </video>
+      </div>
 
       <h2
         id="services-heading"
