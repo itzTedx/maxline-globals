@@ -21,7 +21,7 @@ export const AboutHeroSection = () => {
         </h1>
         <XIcon className="absolute top-1/2 -translate-y-1/2 opacity-60" />
       </header>
-      <section className="relative flex flex-col items-center justify-center overflow-hidden">
+      <section className="relative flex flex-col items-center justify-center overflow-hidden py-3">
         <div className="flex flex-col items-center justify-center space-y-2 sm:space-y-3 md:space-y-4">
           <SimpleMarquee
             className="w-full"

@@ -1,5 +1,7 @@
 "use client";
 
+import { CertificatesSection } from "@/feature/about/sections/certificates";
+import { CompanySection } from "@/feature/about/sections/company";
 import { AboutHeroSection } from "@/feature/about/sections/hero";
 import { LeaderWords } from "@/feature/about/sections/leader-words";
 import { Principles } from "@/feature/about/sections/principles";
@@ -14,7 +16,8 @@ export default function AboutPage() {
 
       <Principles />
       <LeaderWords />
-
+      <CompanySection />
+      <CertificatesSection />
       <Cta />
     </main>
   );
