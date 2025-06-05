@@ -30,10 +30,9 @@ const ServiceCard = memo(
         "bg-input first:bg-brand-dark first:text-background text-brand-dark",
         "group relative transition-colors",
         "cursor-pointer overflow-hidden",
-        "col-span-1 flex items-center justify-between gap-3",
+        "col-span-2 flex items-center justify-between gap-3",
         "rounded-md px-4 py-8 md:px-8 md:py-12 lg:px-16 lg:py-20",
-        !isExpanded && "last:col-span-1 nth-last-[2]:col-span-1",
-        isExpanded && "md:col-span-2"
+        !isExpanded && "last:col-span-1 nth-last-[2]:col-span-1"
       )}
     >
       <Link
@@ -90,7 +89,7 @@ export const ServicesGrid = memo(
   ({ services, isExpanded }: ServicesGridProps) => {
     return (
       <ul
-        className="relative z-10 grid grid-cols-1 gap-3 md:grid-cols-2"
+        className="relative z-10 grid grid-cols-1 gap-3 pt-12 pb-20 md:grid-cols-2"
         role="list"
       >
         {services.map((service, index) => (
