@@ -25,7 +25,7 @@ export const FaqSection = () => {
 
   return (
     <section
-      className="z-10 container grid grid-cols-2 gap-9 py-20"
+      className="z-10 container grid grid-cols-1 gap-6 py-10 md:grid-cols-2 md:gap-9 md:py-20"
       aria-labelledby="faq-heading"
     >
       <Script
@@ -33,12 +33,15 @@ export const FaqSection = () => {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      <div className="sticky top-[15vh] h-fit space-y-8">
-        <h2 id="faq-heading" className="font-grotesk text-brand-dark text-5xl">
+      <div className="h-fit space-y-6 md:sticky md:top-[15vh] md:space-y-8">
+        <h2
+          id="faq-heading"
+          className="font-grotesk text-brand-dark text-3xl md:text-5xl"
+        >
           Frequently Asked Questions
         </h2>
         <div className="bg-brand-gray/10 aspect-video"></div>
-        <p className="text-brand-gray text-xl font-light">
+        <p className="text-brand-gray text-lg font-light md:text-xl">
           <StaggeredText
             text="Discover quick answers to the questions our clients ask most. From shipment tracking to specialized cargo handling, our FAQ section covers everything you need to know about Maxline Global's services, capabilities, and commitment to smooth, secure, and on-time delivery."
             staggerChildren={0.03}
@@ -52,11 +55,15 @@ export const FaqSection = () => {
           className="divide-secondary/50 w-full divide-y"
         >
           {FAQS.map((item) => (
-            <AccordionItem value={item.title} key={item.id} className="py-4">
-              <AccordionTrigger className="cursor-pointer py-2 text-lg font-normal hover:no-underline">
+            <AccordionItem
+              value={item.title}
+              key={item.id}
+              className="py-3 md:py-4"
+            >
+              <AccordionTrigger className="cursor-pointer py-2 text-base font-normal hover:no-underline md:text-lg">
                 {item.title}
               </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground pb-2 text-lg font-light">
+              <AccordionContent className="text-muted-foreground pb-2 text-base font-light md:text-lg">
                 {item.content}
               </AccordionContent>
             </AccordionItem>

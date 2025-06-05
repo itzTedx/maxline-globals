@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
+import { IconMenu2, IconX } from "@tabler/icons-react";
+
 import { Logo } from "@/assets/logo";
 import { NAVLINKS } from "@/constants";
 
@@ -13,6 +15,7 @@ import { QuoteButton } from "./nav/quote-button";
 
 export const Navbar = () => {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [submenuHeights, setSubmenuHeights] = useState<Map<string, number>>(
     new Map()
   );
@@ -41,6 +44,10 @@ export const Navbar = () => {
     setActiveMenu(null);
   };
 
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
   return (
     <nav
       className="sticky top-0 z-50 py-4"
@@ -56,8 +63,9 @@ export const Navbar = () => {
           <Logo className="text-[#231F20]" />
         </Link>
 
+        {/* Desktop Navigation */}
         <ul
-          className="relative flex items-center justify-center gap-2"
+          className="relative hidden items-center justify-center gap-2 lg:flex"
           role="menubar"
         >
           {NAVLINKS.map((link) => (
@@ -93,7 +101,7 @@ export const Navbar = () => {
           ))}
         </ul>
 
-        <menu className="flex items-center gap-2">
+        <menu className="hidden items-center gap-2 lg:flex">
           <li>
             <LanguageSelector />
           </li>
@@ -101,6 +109,73 @@ export const Navbar = () => {
             <QuoteButton />
           </li>
         </menu>
+
+        {/* Mobile Menu Button */}
+        <button
+          className="text-brand-dark lg:hidden"
+          onClick={toggleMobileMenu}
+          aria-label="Toggle mobile menu"
+          aria-expanded={isMobileMenuOpen}
+        >
+          {isMobileMenuOpen ? (
+            <IconX className="size-6" />
+          ) : (
+            <IconMenu2 className="size-6" />
+          )}
+        </button>
+      </div>
+
+      {/* Mobile Navigation */}
+      <div
+        className={`bg-background/95 fixed inset-0 z-40 backdrop-blur-sm transition-transform duration-300 lg:hidden ${
+          isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
+        }`}
+      >
+        <div className="container flex h-full flex-col gap-8 py-20">
+          <ul className="flex flex-col gap-4">
+            {NAVLINKS.map((link) => (
+              <li key={link.title}>
+                <NavLink
+                  title={link.title}
+                  href={link.href}
+                  hasSubmenu={!!link.submenu}
+                  isActive={activeMenu === link.title}
+                  onClick={() => {
+                    if (link.submenu) {
+                      setActiveMenu(
+                        activeMenu === link.title ? null : link.title
+                      );
+                    } else {
+                      setIsMobileMenuOpen(false);
+                    }
+                  }}
+                />
+                {link.submenu && activeMenu === link.title && (
+                  <div className="mt-2 pl-4">
+                    <ul className="flex flex-col gap-2">
+                      {link.submenu.map((sub) => (
+                        <li key={sub.title}>
+                          <Link
+                            href={sub.href}
+                            className="text-brand-dark hover:bg-primary block rounded-md px-4 py-2"
+                            onClick={() => setIsMobileMenuOpen(false)}
+                          >
+                            {sub.title}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </li>
+            ))}
+          </ul>
+
+          <div className="flex flex-col gap-4">
+            <LanguageSelector />
+            <QuoteButton />
+          </div>
+        </div>
       </div>
 
       <div className="gradient-blur">

@@ -15,6 +15,7 @@ interface NavLinkProps {
   isActive?: boolean;
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
+  onClick?: () => void;
 }
 
 export const NavLink = ({
@@ -24,6 +25,7 @@ export const NavLink = ({
   isActive,
   onMouseEnter,
   onMouseLeave,
+  onClick,
 }: NavLinkProps) => {
   return (
     <Link
@@ -34,6 +36,7 @@ export const NavLink = ({
       )}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
+      onClick={onClick}
       aria-expanded={isActive}
     >
       <LetterSwapPingPong

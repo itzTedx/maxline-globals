@@ -78,7 +78,7 @@ export const BlogsCarousel = () => {
 
   return (
     <section
-      className="w-full overflow-hidden py-20"
+      className="w-full overflow-hidden py-10 md:py-16 lg:py-20"
       aria-label="Blog posts carousel"
     >
       <Carousel
@@ -88,21 +88,21 @@ export const BlogsCarousel = () => {
         }}
       >
         <div className="container">
-          <div className="flex items-end justify-between gap-4">
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <h2 className="font-grotesk text-secondary text-5xl tracking-tight">
+              <h2 className="font-grotesk text-secondary text-3xl tracking-tight sm:text-4xl lg:text-5xl">
                 <span className="text-brand-dark">Maxline</span> Insights &
                 Updates
               </h2>
-              <p className="text-brand-gray pt-2 text-2xl font-light tracking-tight">
+              <p className="text-brand-gray pt-2 text-lg font-light tracking-tight sm:text-xl lg:text-2xl">
                 Stay ahead with the latest in logistics, trade, and
-                <br />
+                <br className="hidden sm:block" />
                 global supply chain trends.
               </p>
             </div>
             <div className="flex items-center gap-2">
               <Button
-                className="aspect-square size-11 shrink-0"
+                className="aspect-square size-9 shrink-0 sm:size-11"
                 variant="outline"
                 asChild
                 aria-label="Previous slide"
@@ -110,7 +110,7 @@ export const BlogsCarousel = () => {
                 <CarouselPrevious className="static shrink-0 translate-y-0" />
               </Button>
               <Button
-                className="aspect-square size-11 shrink-0"
+                className="aspect-square size-9 shrink-0 sm:size-11"
                 variant="outline"
                 asChild
                 aria-label="Next slide"
@@ -118,7 +118,7 @@ export const BlogsCarousel = () => {
                 <CarouselNext className="static shrink-0 translate-y-0" />
               </Button>
 
-              <Button asChild size="btnIcon">
+              <Button asChild size="btnIcon" className="hidden sm:inline-flex">
                 <Link
                   href="/blog"
                   className="text-brand-dark gap-3"
@@ -133,23 +133,23 @@ export const BlogsCarousel = () => {
             </div>
           </div>
         </div>
-        <div className="relative mt-12 overflow-hidden">
+        <div className="relative mt-8 overflow-hidden sm:mt-12">
           <div
-            className="from-background absolute left-0 z-10 h-full w-24 bg-gradient-to-r to-transparent"
+            className="from-background absolute left-0 z-10 hidden h-full w-12 bg-gradient-to-r to-transparent sm:w-24 md:block"
             aria-hidden="true"
           />
           <div
-            className="from-background absolute right-0 z-10 h-full w-24 bg-gradient-to-l to-transparent"
+            className="from-background absolute right-0 z-10 hidden h-full w-12 bg-gradient-to-l to-transparent sm:w-24 md:block"
             aria-hidden="true"
           />
           <CarouselContent className="container">
             {blogs.map((blog) => (
               <CarouselItem
                 key={blog.id}
-                className="pl-2 md:basis-1/2 lg:basis-1/3"
+                className="basis-1/2 pl-0.5 md:pl-2 lg:basis-1/3"
               >
                 <div className="p-1">
-                  <Card className="gap-4 overflow-hidden p-0">
+                  <Card className="gap-0 overflow-hidden p-0 md:gap-4">
                     <CardContent className="relative px-0">
                       <div className="relative aspect-4/3">
                         <Image
@@ -157,22 +157,22 @@ export const BlogsCarousel = () => {
                           alt={`Illustration for article: ${blog.title}`}
                           className="object-cover"
                           fill
-                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                           loading="lazy"
                           priority={false}
                         />
                       </div>
-                      <CardHeader className="p-6">
-                        <CardTitle className="text-xl font-medium">
+                      <CardHeader className="p-4 sm:p-6">
+                        <CardTitle className="text-base font-medium max-sm:leading-tight sm:text-xl">
                           {blog.title}
                         </CardTitle>
-                        <CardDescription className="text-brand-gray line-clamp-3 text-base font-light">
+                        <CardDescription className="text-brand-gray line-clamp-3 text-xs font-light sm:text-base">
                           {blog.description}
                         </CardDescription>
                       </CardHeader>
                     </CardContent>
-                    <CardFooter className="w-full pb-6">
-                      <Button asChild size="btnIcon">
+                    <CardFooter className="w-full pb-4 max-sm:px-4 sm:pb-6">
+                      <Button asChild size="btnIcon" className="w-full">
                         <Link
                           href={`/blog/${blog.slug}`}
                           className="text-brand-dark group w-full"
@@ -182,11 +182,14 @@ export const BlogsCarousel = () => {
                             label="Read Article"
                             staggerFrom={"first"}
                             reverse={false}
-                            className="w-full justify-start font-semibold"
+                            className="w-full justify-start text-sm font-semibold sm:text-base"
                           />
 
-                          <div className="bg-primary text-brand-dark group-hover:bg-background pointer-events-none ml-auto flex size-8 shrink-0 touch-none items-center justify-center rounded transition-colors select-none">
-                            <IconArrowRight aria-hidden="true" />
+                          <div className="bg-primary text-brand-dark group-hover:bg-background pointer-events-none ml-auto flex size-7 shrink-0 touch-none items-center justify-center rounded transition-colors select-none sm:size-8">
+                            <IconArrowRight
+                              className="size-4 sm:size-5"
+                              aria-hidden="true"
+                            />
                           </div>
                         </Link>
                       </Button>
@@ -195,13 +198,13 @@ export const BlogsCarousel = () => {
                 </div>
               </CarouselItem>
             ))}
-            <CarouselItem className="pl-2 md:basis-1/2 lg:basis-1/3">
+            <CarouselItem className="basis-full pl-2 sm:basis-1/2 lg:basis-1/3">
               <div className="h-full p-1">
                 <Card className="h-full gap-4 overflow-hidden p-0">
-                  <CardContent className="text-brand-gray relative flex h-full flex-col items-center justify-center px-0 text-2xl font-medium">
+                  <CardContent className="text-brand-gray relative flex h-full flex-col items-center justify-center px-0 text-xl font-medium sm:text-2xl">
                     <p className="mb-3">Explore More</p>
-                    <div className="flex size-9 items-center justify-center rounded-full border">
-                      <IconArrowUpRight />
+                    <div className="flex size-8 items-center justify-center rounded-full border sm:size-9">
+                      <IconArrowUpRight className="size-4 sm:size-5" />
                     </div>
                   </CardContent>
                 </Card>

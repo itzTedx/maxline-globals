@@ -10,7 +10,7 @@ export const ServicesBottomCTA = () => {
   return (
     <div className="relative flex flex-col items-center gap-4">
       <Letter3DSwap
-        mainClassName="font-grotesk z-10 pt-20 text-center text-8xl"
+        mainClassName="font-grotesk z-10 pt-10 text-center text-4xl md:pt-16 md:text-6xl lg:pt-20 lg:text-8xl"
         frontFaceClassName={`bg-background text-secondary`}
         secondFaceClassName={`bg-background text-secondary`}
         rotateDirection="top"
@@ -22,7 +22,7 @@ export const ServicesBottomCTA = () => {
         Logistics Without Limits
       </Letter3DSwap>
 
-      <p className="text-brand-gray z-10 mx-auto max-w-3xl pb-12 text-center text-2xl font-light tracking-tight text-pretty">
+      <p className="text-brand-gray z-10 mx-auto max-w-3xl pb-8 text-center text-lg font-light tracking-tight text-pretty md:pb-10 md:text-xl lg:pb-12 lg:text-2xl">
         Our tailored freight solutions are engineered to meet the demands of
         modern trade - ensuring every shipment arrives on time, on budget, and
         without compromise.
@@ -38,7 +38,7 @@ export const ServicesBottomCTA = () => {
       </Button>
 
       <XIcon
-        className="absolute -top-12 left-1/2 -translate-x-1/2 opacity-60"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-60 md:-top-10 lg:-top-12"
         aria-hidden="true"
       />
     </div>

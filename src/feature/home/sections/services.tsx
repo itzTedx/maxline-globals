@@ -11,7 +11,7 @@ export const ServicesSection = () => {
     <>
       <ServicesSchema services={SERVICES} />
       <section
-        className="container max-w-7xl py-20"
+        className="container max-w-7xl overflow-hidden py-10 md:py-16 lg:py-20"
         aria-labelledby="services-heading"
         itemScope
         itemType="https://schema.org/Service"
@@ -20,7 +20,7 @@ export const ServicesSection = () => {
 
         <h2
           id="services-heading"
-          className="mx-auto max-w-3xl pb-20 text-center text-6xl font-medium tracking-tight text-balance text-[#5C5E70]"
+          className="mx-auto max-w-3xl pb-10 text-center text-4xl font-medium tracking-tight text-balance text-[#5C5E70] md:pb-16 md:text-5xl lg:pb-20 lg:text-6xl"
           itemProp="name"
         >
           <StaggeredText
