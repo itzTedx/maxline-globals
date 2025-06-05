@@ -3,8 +3,10 @@
 import Link from "next/link";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+import { IconArrowRight } from "@tabler/icons-react";
 import { useForm } from "react-hook-form";
 
+import LetterSwapPingPong from "@/components/animation/letter-swap-pingpong-anim";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
@@ -240,8 +242,22 @@ export function ContactForm() {
             </FormItem>
           )}
         />
+        <Button
+          size="btnIcon"
+          type="submit"
+          className="group w-full justify-start"
+        >
+          <LetterSwapPingPong
+            label="Send Message"
+            staggerFrom="first"
+            reverse={false}
+            className="w-full justify-start font-semibold"
+          />
 
-        <Button type="submit">Submit</Button>
+          <div className="bg-primary text-brand-dark group-hover:bg-background pointer-events-none ml-auto flex size-8 shrink-0 touch-none items-center justify-center rounded transition-colors select-none">
+            <IconArrowRight />
+          </div>
+        </Button>
       </form>
     </Form>
   );

@@ -26,7 +26,7 @@ export default function ContactPage() {
         <div className="relative space-y-9">
           <div className="relative overflow-hidden rounded-2xl p-12">
             <div className="relative z-10">
-              <h2 className="text-primary mb-2 text-2xl">
+              <h2 className="text-primary mb-1 text-2xl">
                 Corporate Headquarters
               </h2>
               <p className="text-2xl font-medium text-white">
@@ -44,7 +44,7 @@ export default function ContactPage() {
           </div>
           <div className="relative overflow-hidden rounded-2xl p-12">
             <div className="relative z-10">
-              <h2 className="text-primary mb-2 text-2xl">Branch Office</h2>
+              <h2 className="text-primary mb-1 text-2xl">Branch Office</h2>
               <p className="text-2xl font-medium text-white">
                 33, 6A Street, Ras Al khor Industrial Area - 2, Dubai, United
                 Arab Emirates.
