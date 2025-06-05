@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Script from "next/script";
 
 import { StaggeredText } from "@/components/animation/staggered-text";
@@ -25,7 +26,7 @@ export const FaqSection = () => {
 
   return (
     <section
-      className="z-10 container grid grid-cols-1 gap-6 py-10 md:grid-cols-2 md:gap-9 md:py-20"
+      className="z-10 container grid grid-cols-1 gap-6 py-10 md:grid-cols-2 md:gap-20 md:py-20"
       aria-labelledby="faq-heading"
     >
       <Script
@@ -40,7 +41,14 @@ export const FaqSection = () => {
         >
           Frequently Asked Questions
         </h2>
-        <div className="bg-brand-gray/10 aspect-video"></div>
+        <div className="relative aspect-video overflow-hidden rounded-2xl">
+          <Image
+            src="/images/faq.webp"
+            alt="FAQ"
+            className="object-cover"
+            fill
+          />
+        </div>
         <p className="text-brand-gray text-lg font-light md:text-xl">
           <StaggeredText
             text="Discover quick answers to the questions our clients ask most. From shipment tracking to specialized cargo handling, our FAQ section covers everything you need to know about Maxline Global's services, capabilities, and commitment to smooth, secure, and on-time delivery."

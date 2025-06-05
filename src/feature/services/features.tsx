@@ -8,6 +8,7 @@ export const Features = ({ overview, features }: FeaturesProps) => {
       <section
         className="container grid grid-cols-3 gap-3 py-12"
         aria-labelledby="overview-title"
+        id="overview"
       >
         <h2
           id="overview-title"
@@ -25,6 +26,7 @@ export const Features = ({ overview, features }: FeaturesProps) => {
       <section
         className="relative container grid grid-cols-2 gap-20 py-20"
         aria-labelledby="features-title"
+        id="features"
       >
         <div className="sticky top-[20vh] h-fit">
           <h3 id="features-title" className="text-brand-dark mb-6 text-5xl/16">

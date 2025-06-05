@@ -35,12 +35,12 @@ export const NAVLINKS = [
       },
       {
         title: "Sea Freight",
-        href: "/services/air-freight",
+        href: "/services/sea-freight",
         img: "/images/sea-freight.webp",
       },
       {
         title: "Land Freight",
-        href: "/services/air-freight",
+        href: "/services/land-freight",
         img: "/images/blogs/transport-logistics-products.jpg",
       },
 
