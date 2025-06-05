@@ -2,6 +2,7 @@ import Image from "next/image";
 
 import { XIcon } from "@/assets/x-icon";
 import { HeroHeader } from "@/components/hero-header";
+import { ContactForm } from "@/feature/forms/contact-form";
 
 export default function ContactPage() {
   return (
@@ -56,9 +57,9 @@ export default function ContactPage() {
               className="object-cover"
             />
           </div>
-          <form className="min-h-screen"></form>
+          <ContactForm />
 
-          <XIcon className="absolute right-0 bottom-0" />
+          <XIcon className="absolute right-0 -bottom-1/4 -translate-y-1/4" />
         </div>
       </section>
       <div className="relative my-20 h-72 w-full">

@@ -16,7 +16,7 @@ export const HeroSection = () => {
         <Input
           id="track"
           aria-label="Track your shipment"
-          className="pe-9 text-sm shadow-none md:text-base"
+          className="placeholder:text-brand-dark/50 bg-white pe-9 text-sm font-semibold shadow-none md:text-base"
           placeholder="Track your shipment"
           type="text"
         />
