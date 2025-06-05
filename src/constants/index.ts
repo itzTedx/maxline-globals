@@ -26,7 +26,7 @@ export const NAVLINKS = [
   },
   {
     title: "Services",
-    href: "/company",
+    href: "/services",
     submenu: [
       {
         title: "Air Freight",

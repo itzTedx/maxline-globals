@@ -14,7 +14,7 @@ import { Separator } from "../ui/separator";
 
 export const Footer = () => {
   return (
-    <footer className="bg-brand-dark text-background z-0 w-full overflow-hidden">
+    <footer className="bg-brand-dark text-background relative z-0 w-full overflow-hidden">
       {/* <footer className="bg-brand-dark text-background sticky bottom-0 z-0 w-full overflow-hidden"> */}
       <div className="relative z-10 container grid grid-cols-12 gap-12 py-20">
         <h5 className="font-grotesk col-span-5 text-7xl leading-tight">

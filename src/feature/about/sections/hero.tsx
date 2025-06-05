@@ -4,11 +4,16 @@ import React from "react";
 import { XIcon } from "@/assets/x-icon";
 import SimpleMarquee from "@/components/animation/simple-marquee";
 import { StaggeredText } from "@/components/animation/staggered-text";
+import { HeroHeader } from "@/components/hero-header";
 import { CAROUSEL_IMAGES } from "@/constants";
 
 export const AboutHeroSection = () => {
   return (
     <div>
+      <HeroHeader
+        subtitle="About us"
+        title="Building Smarter Supply Chains for a Connected World."
+      />
       <header className="relative container max-w-7xl py-20 text-center">
         <p className="text-secondary z-10 text-2xl">About us</p>
         <h1 className="font-grotesk text-brand-dark relative z-10 text-8xl/26 tracking-tight">

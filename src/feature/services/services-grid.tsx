@@ -11,20 +11,34 @@ import type { Service } from "@/types";
 
 interface ServicesGridProps {
   services: Service[];
+  isExpanded?: boolean;
 }
 
 const ServiceCard = memo(
-  ({ service, isFirst }: { service: Service; isFirst: boolean }) => (
+  ({
+    service,
+    isFirst,
+    isExpanded,
+  }: {
+    service: Service;
+    isFirst: boolean;
+    isExpanded?: boolean;
+  }) => (
     <SpotlightCard
       spotlightColor="rgba(0, 200, 255, 0.5)"
       className={cn(
         "bg-input first:bg-brand-dark first:text-background text-brand-dark",
         "group relative transition-colors",
-        "overflow-hidden",
-        "col-span-2 flex items-center justify-between gap-3 last:col-span-1 nth-last-[2]:col-span-1",
-        "rounded-md px-16 py-20"
+        "cursor-pointer overflow-hidden",
+        "col-span-2 flex items-center justify-between gap-3",
+        "rounded-md px-16 py-20",
+        !isExpanded && "last:col-span-1 nth-last-[2]:col-span-1"
       )}
     >
+      <Link
+        href={service.href}
+        className="absolute inset-0 z-30 select-none"
+      ></Link>
       <div className="relative z-20">
         <h3 className="font-grotesk mb-2 text-4xl">{service.title}</h3>
         <p className="text-secondary group-first:text-background max-w-xs text-xl font-light text-balance">
@@ -59,7 +73,8 @@ const ServiceCard = memo(
         aria-hidden
         className={cn(
           "from-primary absolute z-0 size-52 rounded-full bg-radial to-transparent blur-2xl",
-          "top-1/2 left-3/4 translate-x-1/2 -translate-y-1/2 group-last:left-3/4 group-nth-last-[2]:left-3/4"
+          "top-1/2 left-3/4 translate-x-1/2 -translate-y-1/2",
+          !isExpanded && "group-last:left-3/4 group-nth-last-[2]:left-3/4"
         )}
       />
     </SpotlightCard>
@@ -68,18 +83,21 @@ const ServiceCard = memo(
 
 ServiceCard.displayName = "ServiceCard";
 
-export const ServicesGrid = memo(({ services }: ServicesGridProps) => {
-  return (
-    <ul className="grid grid-cols-2 gap-3" role="list">
-      {services.map((service, index) => (
-        <ServiceCard
-          key={service.title}
-          service={service}
-          isFirst={index === 0}
-        />
-      ))}
-    </ul>
-  );
-});
+export const ServicesGrid = memo(
+  ({ services, isExpanded }: ServicesGridProps) => {
+    return (
+      <ul className="grid grid-cols-2 gap-3" role="list">
+        {services.map((service, index) => (
+          <ServiceCard
+            isExpanded={isExpanded}
+            key={service.title}
+            service={service}
+            isFirst={index === 0}
+          />
+        ))}
+      </ul>
+    );
+  }
+);
 
 ServicesGrid.displayName = "ServicesGrid";

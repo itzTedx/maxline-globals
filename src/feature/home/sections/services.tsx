@@ -1,8 +1,8 @@
 import { StaggeredText } from "@/components/animation/staggered-text";
 import { SERVICES } from "@/constants";
 
+import { ServicesGrid } from "../../services/services-grid";
 import { ServicesBottomCTA } from "../components/services-bottom-cta";
-import { ServicesGrid } from "../components/services-grid";
 import { ServicesHeroVideo } from "../components/services-hero-video";
 import { ServicesSchema } from "../schema/services-schema";
 
