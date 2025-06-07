@@ -201,6 +201,10 @@ export const FOOTER_LINKS = [
         href: "/company/team",
       },
       {
+        title: "Insights & Updates",
+        href: "/insights",
+      },
+      {
         title: "Contact",
         href: "/contact",
       },

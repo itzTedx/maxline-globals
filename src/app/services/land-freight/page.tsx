@@ -12,8 +12,8 @@ import {
 import SimpleMarquee from "@/components/animation/simple-marquee";
 import SpotlightCard from "@/components/animation/spotlight-card";
 import { StaggeredText } from "@/components/animation/staggered-text";
-import { BlogsCarousel } from "@/feature/blogs/blogs-carousel";
 import { Cta } from "@/feature/cta";
+import { InsightsCarousel } from "@/feature/insights/components/insights-carousel";
 import { Commitment } from "@/feature/services/commitment";
 import { Features } from "@/feature/services/features";
 import { Hero } from "@/feature/services/hero";
@@ -216,7 +216,7 @@ export default function ServicePage() {
         </ul>
       </section>
       <Commitment />
-      <BlogsCarousel />
+      <InsightsCarousel />
       <Cta />
     </main>
   );

@@ -87,15 +87,6 @@ export const TransportTypes = (
     },
   };
 
-  const textContainerStyle = {
-    clipPath: "inset(0 0 0 0)", // This creates a clip boundary
-    width: "100%",
-    height: "100%",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  };
-
   const textVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: (i: number) => ({
@@ -188,25 +179,23 @@ export const TransportTypes = (
             variants={boxVariants}
           />
           <foreignObject x="102" y="0" width="61" height="26">
-            <div style={textContainerStyle}>
-              <motion.text
-                x="132.5"
-                y="14"
-                fontSize="12"
-                fill="black"
-                textAnchor="middle"
-                dominantBaseline="middle"
-                variants={textVariants}
-                custom={0}
-                style={{
-                  fontSize: "12px",
-                  display: "block",
-                  textAlign: "center",
-                }}
-              >
-                01 / Air
-              </motion.text>
-            </div>
+            <motion.text
+              x="132.5"
+              y="14"
+              fontSize="12"
+              fill="black"
+              textAnchor="middle"
+              dominantBaseline="middle"
+              variants={textVariants}
+              custom={0}
+              style={{
+                fontSize: "12px",
+                display: "block",
+                textAlign: "center",
+              }}
+            >
+              01 / Air
+            </motion.text>
           </foreignObject>
         </motion.g>
 
@@ -220,25 +209,23 @@ export const TransportTypes = (
             variants={boxVariants}
           />
           <foreignObject x="0" y="145" width="69" height="26">
-            <div style={textContainerStyle}>
-              <motion.text
-                x="34.5"
-                y="159"
-                fontSize="12"
-                fill="black"
-                textAnchor="middle"
-                dominantBaseline="middle"
-                variants={textVariants}
-                custom={1}
-                style={{
-                  fontSize: "12px",
-                  display: "block",
-                  textAlign: "center",
-                }}
-              >
-                02 / Sea
-              </motion.text>
-            </div>
+            <motion.text
+              x="34.5"
+              y="159"
+              fontSize="12"
+              fill="black"
+              textAnchor="middle"
+              dominantBaseline="middle"
+              variants={textVariants}
+              custom={1}
+              style={{
+                fontSize: "12px",
+                display: "block",
+                textAlign: "center",
+              }}
+            >
+              02 / Sea
+            </motion.text>
           </foreignObject>
         </motion.g>
 
@@ -253,25 +240,23 @@ export const TransportTypes = (
             variants={boxVariants}
           />
           <foreignObject x="68" y="283" width="74" height="26">
-            <div style={textContainerStyle}>
-              <motion.text
-                x="105"
-                y="309"
-                fontSize="12"
-                fill="black"
-                textAnchor="middle"
-                dominantBaseline="middle"
-                variants={textVariants}
-                custom={2}
-                style={{
-                  fontSize: "12px",
-                  display: "inline-block",
-                  textAlign: "center",
-                }}
-              >
-                03 / Road
-              </motion.text>
-            </div>
+            <motion.text
+              x="105"
+              y="309"
+              fontSize="12"
+              fill="black"
+              textAnchor="middle"
+              dominantBaseline="middle"
+              variants={textVariants}
+              custom={2}
+              style={{
+                fontSize: "12px",
+                display: "inline-block",
+                textAlign: "center",
+              }}
+            >
+              03 / Road
+            </motion.text>
           </foreignObject>
         </motion.g>
       </motion.g>

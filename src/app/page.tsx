@@ -1,9 +1,9 @@
-import { BlogsCarousel } from "@/feature/blogs/blogs-carousel";
 import { Cta } from "@/feature/cta";
 import { AboutSection } from "@/feature/home/sections/about";
 import { FaqSection } from "@/feature/home/sections/faq";
 import { HeroSection } from "@/feature/home/sections/hero";
 import { ServicesSection } from "@/feature/home/sections/services";
+import { InsightsCarousel } from "@/feature/insights/components/insights-carousel";
 
 export default function Home() {
   return (
@@ -13,7 +13,7 @@ export default function Home() {
       <AboutSection />
       <ServicesSection />
       <FaqSection />
-      <BlogsCarousel />
+      <InsightsCarousel />
       <Cta />
     </main>
   );
