@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { Suspense } from "react";
 
 import { RedirectWithLoading } from "./redirect-with-loading";
 
@@ -15,5 +16,9 @@ export const metadata: Metadata = {
 };
 
 export default function TrackingRedirect() {
-  return <RedirectWithLoading />;
+  return (
+    <Suspense>
+      <RedirectWithLoading />;
+    </Suspense>
+  );
 }
