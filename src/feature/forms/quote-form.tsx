@@ -1,10 +1,12 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+import { IconArrowRight } from "@tabler/icons-react";
 import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
 import { Control, FieldValues, Path, useForm } from "react-hook-form";
 
+import LetterSwapPingPong from "@/components/animation/letter-swap-pingpong-anim";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import {
@@ -436,8 +438,21 @@ export const QuoteForm = () => {
             )}
           />
         </FormSection>
-        <Button type="submit" className="bg-secondary w-full" size="lg">
-          Submit Quote
+        <Button
+          size="btnIcon"
+          variant="secondary"
+          className="bg-secondary text-background h-16 w-full pr-1 pl-6 text-xl"
+        >
+          <LetterSwapPingPong
+            label="Get A Quote"
+            staggerFrom="first"
+            reverse={false}
+            className="w-full justify-start font-semibold"
+          />
+
+          <div className="bg-background text-brand-dark group-hover:bg-background pointer-events-none ml-auto flex size-14 shrink-0 touch-none items-center justify-center rounded transition-colors select-none">
+            <IconArrowRight className="size-6 stroke-[1.5]" />
+          </div>
         </Button>
       </form>
     </Form>

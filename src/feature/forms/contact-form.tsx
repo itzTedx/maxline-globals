@@ -55,7 +55,7 @@ export function ContactForm() {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="relative z-10 space-y-6 rounded-2xl bg-white p-6 md:space-y-8 md:p-9"
+        className="relative z-10 space-y-6 rounded-2xl bg-white p-4 sm:p-6 md:space-y-8 md:p-9"
       >
         <div>
           <h3 className="font-grotesk text-secondary text-2xl sm:text-3xl md:text-4xl">
@@ -244,8 +244,8 @@ export function ContactForm() {
         />
         <Button
           size="btnIcon"
-          type="submit"
-          className="group w-full justify-start"
+          variant="secondary"
+          className="bg-secondary text-background h-16 w-full pr-1 pl-6 text-xl"
         >
           <LetterSwapPingPong
             label="Send Message"
@@ -254,8 +254,8 @@ export function ContactForm() {
             className="w-full justify-start font-semibold"
           />
 
-          <div className="bg-primary text-brand-dark group-hover:bg-background pointer-events-none ml-auto flex size-8 shrink-0 touch-none items-center justify-center rounded transition-colors select-none">
-            <IconArrowRight />
+          <div className="bg-background text-brand-dark group-hover:bg-background pointer-events-none ml-auto flex size-14 shrink-0 touch-none items-center justify-center rounded transition-colors select-none">
+            <IconArrowRight className="size-6 stroke-[1.5]" />
           </div>
         </Button>
       </form>
