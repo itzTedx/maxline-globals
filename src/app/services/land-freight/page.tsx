@@ -205,7 +205,7 @@ export default function ServicePage() {
               className="overflow-hidden rounded-xl bg-white p-10"
             >
               <div className="bg-muted flex size-20 items-center justify-center rounded-full">
-                <item.icon className="text-brand-gray size-12 stroke-2" />
+                <item.icon className="text-brand-gray size-12 stroke-[1.5]" />
               </div>
               <h5 className="font-grotesk text-brand-dark mt-12 mb-3 text-4xl">
                 {item.title}

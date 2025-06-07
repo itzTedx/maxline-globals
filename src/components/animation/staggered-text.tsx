@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 import { cn } from "@/lib/utils";
 
@@ -35,6 +35,13 @@ export const StaggeredText = ({
         ease,
       },
     }),
+    exit: {
+      opacity: 0,
+      transition: {
+        staggerChildren: staggerChildren,
+        staggerDirection: -1,
+      },
+    },
   };
 
   // Word animation
@@ -53,25 +60,35 @@ export const StaggeredText = ({
       opacity: 0,
       y: 20,
     },
+    exit: {
+      opacity: 0,
+      y: -20,
+      transition: {
+        duration: duration / 2,
+      },
+    },
   };
 
   return (
-    <motion.span
-      variants={container}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
-      className={cn("overflow-hidden", className)}
-    >
-      {words.map((word, index) => (
-        <motion.span
-          variants={child}
-          key={index}
-          className="inline-block whitespace-pre"
-        >
-          {word}{" "}
-        </motion.span>
-      ))}
-    </motion.span>
+    <AnimatePresence mode="wait">
+      <motion.span
+        key={text}
+        variants={container}
+        initial="hidden"
+        animate="visible"
+        exit="exit"
+        className={cn("overflow-hidden", className)}
+      >
+        {words.map((word, index) => (
+          <motion.span
+            variants={child}
+            key={index}
+            className="inline-block whitespace-pre"
+          >
+            {word}{" "}
+          </motion.span>
+        ))}
+      </motion.span>
+    </AnimatePresence>
   );
 };
