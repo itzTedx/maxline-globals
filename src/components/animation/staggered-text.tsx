@@ -75,7 +75,8 @@ export const StaggeredText = ({
         key={text}
         variants={container}
         initial="hidden"
-        animate="visible"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
         exit="exit"
         className={cn("overflow-hidden", className)}
       >

@@ -60,7 +60,7 @@ export function HeroHeader({
             )}
             role="doc-subtitle"
           >
-            {subtitle}
+            <StaggeredText text={subtitle} />
           </p>
         )}
         <h1

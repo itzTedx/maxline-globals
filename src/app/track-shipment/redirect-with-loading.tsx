@@ -1,17 +1,25 @@
 "use client";
 
+import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 
 import { StaggeredText } from "@/components/animation/staggered-text";
 
 export function RedirectWithLoading() {
+  const searchParams = useSearchParams();
+  const trackingId = searchParams.get("id");
+
   useEffect(() => {
     const timer = setTimeout(() => {
-      window.location.href = "https://flotillacloud.com/track";
+      const baseUrl = "https://flotillacloud.com/track";
+      const redirectUrl = trackingId
+        ? `${baseUrl}?id=${encodeURIComponent(trackingId)}`
+        : baseUrl;
+      window.location.href = redirectUrl;
     }, 2000);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [trackingId]);
 
   return (
     <main className="container flex min-h-[60vh] flex-col items-center justify-center py-20">

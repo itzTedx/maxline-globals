@@ -3,8 +3,9 @@
 import Image from "next/image";
 import { Fragment, useEffect, useRef, useState } from "react";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
+import { StaggeredText } from "@/components/animation/staggered-text";
 import { Separator } from "@/components/ui/separator";
 import { PRINCIPLES } from "@/constants";
 
@@ -17,25 +18,12 @@ const images = [
 
 export const Principles = () => {
   const [currentImage, setCurrentImage] = useState(0);
-  const [previousImage, setPreviousImage] = useState(0);
-  const [scrollDirection, setScrollDirection] = useState<"up" | "down">("down");
+  const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
+  const imageSectionRef = useRef<HTMLDivElement>(null);
   const elementRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const lastScrollY = useRef(0);
+
   useEffect(() => {
-    // Scroll direction detection
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      if (currentScrollY > lastScrollY.current) {
-        setScrollDirection("down");
-      } else {
-        setScrollDirection("up");
-      }
-      lastScrollY.current = currentScrollY;
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -44,7 +32,6 @@ export const Principles = () => {
               (ref) => ref === entry.target
             );
             if (index !== -1) {
-              setPreviousImage(currentImage);
               setCurrentImage(index);
             }
           }
@@ -62,22 +49,41 @@ export const Principles = () => {
 
     return () => {
       observer.disconnect();
-      window.removeEventListener("scroll", handleScroll);
     };
   }, [currentImage]);
 
+  useEffect(() => {
+    const imageObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+          }
+        });
+      },
+      {
+        threshold: 0.2,
+      }
+    );
+
+    if (imageSectionRef.current) {
+      imageObserver.observe(imageSectionRef.current);
+    }
+
+    return () => {
+      imageObserver.disconnect();
+    };
+  }, []);
+
   return (
     <section className="relative container grid grid-cols-2 gap-36 py-20">
-      <div className="space-y-20" ref={sectionRef}>
-        <h2 className="font-grotesk text-brand-dark text-6xl/18">
-          Our Core
-          <br />
-          Principles:
+      <div className="space-y-28" ref={sectionRef}>
+        <h2 className="font-grotesk text-brand-dark max-w-xs text-6xl/18">
+          <StaggeredText text="Our Core Principles:" />
         </h2>
         <Separator />
         {PRINCIPLES.map((p, index) => (
           <Fragment key={p.head}>
-            {" "}
             <div
               ref={(el) => {
                 if (el) elementRefs.current[index] = el;
@@ -85,66 +91,64 @@ export const Principles = () => {
               className="grid grid-cols-3 gap-3"
             >
               <h3 className="text-secondary mt-2.5 text-xl font-light uppercase">
-                {p.head}
+                <StaggeredText text={p.head} />
               </h3>
               <div className="col-span-2">
-                <h4 className="font-grotesk text-brand-dark text-5xl/14 text-balance">
-                  {p.title}
+                <h4 className="font-grotesk text-brand-dark text-5xl/16 text-balance">
+                  <StaggeredText text={p.title} delay={0.2} />
                 </h4>
-                <p className="pt-4 text-2xl leading-normal font-light">
-                  {p.description}
+                <p className="pt-4 text-2xl leading-relaxed font-light">
+                  <StaggeredText text={p.description} delay={0.35} />
                 </p>
               </div>
             </div>
             <Separator />
           </Fragment>
         ))}
-      </div>{" "}
-      <div className="text-brand-gray sticky top-[18vh] h-fit text-3xl leading-normal font-light tracking-tight text-balance">
-        {" "}
+      </div>
+      <div
+        ref={imageSectionRef}
+        className="text-brand-gray sticky top-[18vh] h-fit text-3xl leading-normal font-light tracking-tight text-balance"
+      >
         <div className="relative aspect-square overflow-hidden rounded-2xl">
-          {/* Base/Previous Image Layer */}
-          <div className="absolute inset-0">
-            <Image
-              src={images[previousImage % images.length]}
-              alt=""
-              fill
-              className="object-cover"
-            />
-          </div>
-
-          {/* Animated Current Image Layer */}
-          <AnimatePresence mode="wait">
+          {images.map((image, index) => (
             <motion.div
-              key={currentImage}
+              key={image}
               initial={{
-                clipPath:
-                  scrollDirection === "down"
-                    ? "inset(0 0 100% 0)"
-                    : "inset(100% 0 0 0)",
+                clipPath: "inset(50% 50% 50% 50%)",
+                scale: 1,
+                zIndex: index === currentImage ? 2 : 1,
               }}
-              animate={{ clipPath: "inset(0 0 0 0)" }}
-              exit={{
+              animate={{
                 clipPath:
-                  scrollDirection === "down"
-                    ? "inset(100% 0 0 0)"
-                    : "inset(0 0 100% 0)",
+                  index === currentImage && isVisible
+                    ? "inset(0% 0% 0% 0%)"
+                    : "inset(50% 50% 50% 50%)",
+                scale: index === currentImage && isVisible ? 1.1 : 1,
+                zIndex: index === currentImage ? 2 : 1,
               }}
               transition={{
-                duration: 1.2,
-                ease: [0.645, 0.045, 0.355, 1],
+                clipPath: {
+                  duration: 1.2,
+                  ease: [0.645, 0.045, 0.355, 1],
+                },
+                scale: {
+                  duration: 0.8,
+                  ease: [0.645, 0.045, 0.355, 1],
+                  delay: 0.2,
+                },
               }}
               className="absolute inset-0"
             >
               <Image
-                src={images[currentImage % images.length]}
+                src={image}
                 alt=""
                 fill
                 className="object-cover"
-                priority
+                priority={index === currentImage}
               />
             </motion.div>
-          </AnimatePresence>
+          ))}
         </div>
       </div>
     </section>
