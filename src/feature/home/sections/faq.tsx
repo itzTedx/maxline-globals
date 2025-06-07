@@ -1,5 +1,10 @@
+"use client";
+
 import Image from "next/image";
 import Script from "next/script";
+import { useRef } from "react";
+
+import { motion, useScroll, useTransform } from "framer-motion";
 
 import { StaggeredText } from "@/components/animation/staggered-text";
 import {
@@ -11,6 +16,20 @@ import {
 import { FAQS } from "@/constants";
 
 export const FaqSection = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"],
+  });
+
+  // Add clipPath animation for centered rectangle reveal
+  const clipPath = useTransform(
+    scrollYProgress,
+    [0, 0.25],
+    ["inset(50% 50% 50% 50%)", "inset(0% 0% 0% 0%)"]
+  );
+
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -26,6 +45,7 @@ export const FaqSection = () => {
 
   return (
     <section
+      ref={containerRef}
       className="z-10 container grid grid-cols-1 gap-6 py-10 md:grid-cols-2 md:gap-20 md:py-20"
       aria-labelledby="faq-heading"
     >
@@ -39,16 +59,19 @@ export const FaqSection = () => {
           id="faq-heading"
           className="font-grotesk text-brand-dark text-3xl md:text-5xl"
         >
-          Frequently Asked Questions
+          <StaggeredText text="Frequently Asked Questions" />
         </h2>
-        <div className="relative aspect-video overflow-hidden rounded-2xl">
+        <motion.div
+          style={{ clipPath }}
+          className="relative aspect-video overflow-hidden rounded-2xl"
+        >
           <Image
             src="/images/faq.webp"
             alt="FAQ"
             className="object-cover"
             fill
           />
-        </div>
+        </motion.div>
         <p className="text-brand-gray text-lg font-light md:text-xl">
           <StaggeredText
             text="Discover quick answers to the questions our clients ask most. From shipment tracking to specialized cargo handling, our FAQ section covers everything you need to know about Maxline Global's services, capabilities, and commitment to smooth, secure, and on-time delivery."

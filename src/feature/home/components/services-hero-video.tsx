@@ -2,12 +2,23 @@
 
 import { useEffect, useRef, useState } from "react";
 
+import { motion, useScroll, useTransform } from "framer-motion";
+
 import { cn } from "@/lib/utils";
 
 export const ServicesHeroVideo = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const blurVideoRef = useRef<HTMLVideoElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"],
+  });
+
+  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.3]);
+  const y = useTransform(scrollYProgress, [0, 0.5], [0, -100]);
 
   useEffect(() => {
     const loadVideo = async () => {
@@ -28,12 +39,13 @@ export const ServicesHeroVideo = () => {
   }, []);
 
   return (
-    <div className="relative">
-      <div
+    <div ref={containerRef} className="relative z-40 container max-w-7xl py-36">
+      <motion.div
         className={cn(
-          "transition-opacity duration-1000",
+          "relative transition-opacity duration-1000",
           !isLoaded && "opacity-0"
         )}
+        style={{ scale, y }}
       >
         <video
           ref={videoRef}
@@ -45,7 +57,7 @@ export const ServicesHeroVideo = () => {
           autoPlay
           loop
           playsInline
-          className="relative z-10 mb-20 overflow-hidden rounded-2xl border"
+          className="relative z-10 h-full w-full rounded-2xl border object-cover"
           aria-label="Maxline logistics services showcase video"
         >
           <source src="/videos/maxline-web.webm" type="video/webm" />
@@ -61,12 +73,12 @@ export const ServicesHeroVideo = () => {
           loop
           autoPlay
           playsInline
-          className="absolute inset-0 mb-20 rounded-2xl blur-3xl"
+          className="absolute inset-0 h-full w-full object-cover blur-3xl"
           aria-hidden="true"
         >
           <source src="/videos/maxline-web-low.webm" type="video/webm" />
         </video>
-      </div>
+      </motion.div>
 
       {!isLoaded && (
         <div className="absolute inset-0 flex items-center justify-center">

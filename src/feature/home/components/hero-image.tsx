@@ -9,10 +9,10 @@ export const HeroImage = () => {
     <motion.div
       initial={{ opacity: 0, scale: 0.98, y: 30 }}
       animate={{ opacity: 1, scale: 1, y: 0 }}
-      transition={{ delay: 0.5, duration: 0.8, ease: "easeOut", once: true }}
+      transition={{ delay: 0.2, duration: 0.8, ease: "easeOut", once: true }}
     >
       <Image
-        src="/images/container.png"
+        src="/images/container-hero.webp"
         alt="Container ship docked at a port representing Maxline Global's sea freight services"
         height={580}
         width={1920}
