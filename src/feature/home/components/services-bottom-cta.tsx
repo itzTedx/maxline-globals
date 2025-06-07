@@ -29,7 +29,7 @@ export const ServicesBottomCTA = () => {
       </p>
 
       <Button asChild size="btnIcon">
-        <Link href="/login" className="text-brand-dark z-10">
+        <Link href="/services" className="text-brand-dark z-10">
           Explore More
           <div className="bg-primary text-brand-dark flex size-8 items-center justify-center rounded">
             <IconArrowRight />
@@ -38,7 +38,7 @@ export const ServicesBottomCTA = () => {
       </Button>
 
       <XIcon
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-60 md:-top-10 lg:-top-12"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-60"
         aria-hidden="true"
       />
     </div>

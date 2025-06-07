@@ -1,9 +1,7 @@
 import Image from "next/image";
 import React from "react";
 
-import { XIcon } from "@/assets/x-icon";
 import SimpleMarquee from "@/components/animation/simple-marquee";
-import { StaggeredText } from "@/components/animation/staggered-text";
 import { HeroHeader } from "@/components/hero-header";
 import { CAROUSEL_IMAGES } from "@/constants";
 
@@ -11,21 +9,17 @@ export const AboutHeroSection = () => {
   return (
     <div>
       <HeroHeader
+        className="max-w-7xl"
         subtitle="About us"
-        title="Building Smarter Supply Chains for a Connected World."
+        title={[
+          { text: "Building Smarter Supply Chains for a" },
+          {
+            text: "Connected World.",
+            className: "text-secondary",
+          },
+        ]}
       />
-      <header className="relative container max-w-7xl py-20 text-center">
-        <p className="text-secondary z-10 text-2xl">About us</p>
-        <h1 className="font-grotesk text-brand-dark relative z-10 text-8xl/26 tracking-tight">
-          <StaggeredText
-            text="Building Smarter Supply Chains for a Connected World."
-            className="[&>span:nth-last-child(-n+2)]:text-secondary"
-            staggerChildren={0.03}
-            duration={0.7}
-          />
-        </h1>
-        <XIcon className="absolute top-1/2 -translate-y-1/2 opacity-60" />
-      </header>
+
       <section className="relative flex flex-col items-center justify-center overflow-hidden py-3">
         <div className="flex flex-col items-center justify-center space-y-2 sm:space-y-3 md:space-y-4">
           <SimpleMarquee
