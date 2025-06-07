@@ -11,7 +11,7 @@ export const ServicesSection = () => {
     <>
       <ServicesSchema services={SERVICES} />
       <section
-        className="container max-w-7xl overflow-hidden py-10 md:py-16 lg:py-20"
+        className="container overflow-hidden py-10 md:py-16 lg:py-36"
         aria-labelledby="services-heading"
         itemScope
         itemType="https://schema.org/Service"

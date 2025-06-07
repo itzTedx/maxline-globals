@@ -64,7 +64,7 @@ const ServiceCard = memo(
           src={service.image}
           alt={`${service.title} service illustration`}
           fill
-          className="object-contain"
+          className="scale-110 object-contain transition-transform duration-500 ease-out group-hover:scale-100"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           priority={isFirst}
           loading={isFirst ? "eager" : "lazy"}
@@ -89,7 +89,7 @@ export const ServicesGrid = memo(
   ({ services, isExpanded }: ServicesGridProps) => {
     return (
       <ul
-        className="relative z-10 grid grid-cols-1 gap-3 pt-12 pb-20 md:grid-cols-2"
+        className="relative z-10 container grid max-w-7xl grid-cols-1 gap-3 pt-12 pb-20 md:grid-cols-2"
         role="list"
       >
         {services.map((service, index) => (

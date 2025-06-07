@@ -149,13 +149,13 @@ export const BlogsCarousel = () => {
                 className="basis-1/2 pl-0.5 md:pl-2 lg:basis-1/3"
               >
                 <div className="p-1">
-                  <Card className="gap-0 overflow-hidden p-0 md:gap-4">
+                  <Card className="group gap-0 overflow-hidden p-0 md:gap-4">
                     <CardContent className="relative px-0">
-                      <div className="relative aspect-4/3">
+                      <div className="relative aspect-4/3 overflow-hidden">
                         <Image
                           src={blog.image}
                           alt={`Illustration for article: ${blog.title}`}
-                          className="object-cover"
+                          className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
                           fill
                           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                           loading="lazy"
