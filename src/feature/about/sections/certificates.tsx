@@ -14,9 +14,9 @@ const logos = [
 
 export const CertificatesSection = () => {
   return (
-    <section className="container py-20">
+    <section className="container py-12 md:py-16 lg:py-20">
       <div className="container mb-9 text-center">
-        <h2 className="font-grotesk text-brand-dark relative z-10 container mx-auto mb-4 max-w-4xl text-6xl/16 tracking-tight">
+        <h2 className="font-grotesk text-brand-dark relative z-10 container mx-auto mb-4 max-w-4xl text-3xl tracking-tight md:text-4xl lg:text-6xl/16">
           <StaggeredText
             text="Certified for Excellence in Global Logistics"
             className="[&>span:nth-last-child(n+4)]:text-secondary"
@@ -24,7 +24,7 @@ export const CertificatesSection = () => {
             duration={0.7}
           />
         </h2>
-        <p className="text-brand-gray text-lg font-light">
+        <p className="text-brand-gray font-light md:text-lg">
           <StaggeredText
             text="Maxline Global’s certifications demonstrate our commitment to safe, efficient, and compliant logistics across air, sea, and land. We meet international standards in freight forwarding, warehousing, customs, and hazardous cargo—ensuring trust and reliability throughout the supply chain."
             className=""

@@ -93,25 +93,27 @@ export const InsightsCarousel = () => {
                 global supply chain trends.
               </p>
             </div>
-            <div className="flex items-center gap-2">
-              <Button
-                className="aspect-square size-9 shrink-0 sm:size-11"
-                variant="outline"
-                asChild
-                aria-label="Previous slide"
-              >
-                <CarouselPrevious className="static shrink-0 translate-y-0" />
-              </Button>
-              <Button
-                className="aspect-square size-9 shrink-0 sm:size-11"
-                variant="outline"
-                asChild
-                aria-label="Next slide"
-              >
-                <CarouselNext className="static shrink-0 translate-y-0" />
-              </Button>
+            <div className="flex items-center justify-between gap-2">
+              <div className="flex items-center gap-2">
+                <Button
+                  className="aspect-square size-9 shrink-0 sm:size-11"
+                  variant="outline"
+                  asChild
+                  aria-label="Previous slide"
+                >
+                  <CarouselPrevious className="static shrink-0 translate-y-0" />
+                </Button>
+                <Button
+                  className="aspect-square size-9 shrink-0 sm:size-11"
+                  variant="outline"
+                  asChild
+                  aria-label="Next slide"
+                >
+                  <CarouselNext className="static shrink-0 translate-y-0" />
+                </Button>
+              </div>
 
-              <Button asChild size="btnIcon" className="hidden sm:inline-flex">
+              <Button asChild size="btnIcon">
                 <Link
                   href="/blog"
                   className="text-brand-dark gap-3"
@@ -146,7 +148,7 @@ export const InsightsCarousel = () => {
                 </div>
               </CarouselItem>
             ))}
-            <CarouselItem className="basis-full pl-2 sm:basis-1/2 lg:basis-1/3">
+            <CarouselItem className="basis-1/2 pl-0.5 md:pl-2 lg:basis-1/3">
               <div className="h-full p-1">
                 <Card className="h-full gap-4 overflow-hidden p-0">
                   <CardContent className="text-brand-gray relative flex h-full flex-col items-center justify-center px-0 text-xl font-medium sm:text-2xl">

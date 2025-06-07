@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 
 export const ServicesBottomCTA = () => {
   return (
-    <div className="relative flex flex-col items-center gap-4">
+    <div className="relative flex flex-col items-center gap-4 overflow-hidden py-20">
       <Letter3DSwap
         mainClassName="font-grotesk z-10 pt-10 text-center text-4xl md:pt-16 md:text-6xl lg:pt-20 lg:text-8xl"
         frontFaceClassName={`bg-background text-secondary`}

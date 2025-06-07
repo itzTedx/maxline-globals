@@ -16,17 +16,22 @@ export const Hero = ({
 }: HeroProps) => {
   return (
     <header
-      className="relative -mt-20 grid min-h-[70svh] grid-cols-2 overflow-hidden bg-white"
+      className="relative -mt-20 grid min-h-[50svh] overflow-hidden bg-white md:min-h-[70svh] md:grid-cols-2"
       role="banner"
     >
-      <div className="container flex flex-col items-start justify-between pt-40 pb-20">
-        <div className="space-y-6">
-          <h1 id="page-title" className="font-grotesk text-brand-dark text-6xl">
+      <div className="container flex flex-col items-start justify-between px-4 pt-24 pb-12 md:pt-40 md:pb-20">
+        <div className="space-y-4 md:space-y-6">
+          <h1
+            id="page-title"
+            className="font-grotesk text-brand-dark text-4xl md:text-5xl lg:text-6xl"
+          >
             {title}
           </h1>
-          <p className="text-brand-gray text-2xl font-light">{description}</p>
+          <p className="text-brand-gray text-lg font-light md:text-xl lg:text-2xl">
+            {description}
+          </p>
         </div>
-        <Button asChild size="btnIcon">
+        <Button asChild size="btnIcon" className="mt-8 md:mt-0">
           <Link href={ctaLink} className="text-brand-dark gap-3">
             {ctaText}
             <div className="bg-primary text-brand-dark flex size-8 items-center justify-center rounded">
@@ -35,13 +40,13 @@ export const Hero = ({
           </Link>
         </Button>
       </div>
-      <div className="absolute -right-20 -bottom-1/4">
+      <div className="absolute -right-20 -bottom-1/4 h-[300px] md:-right-20 md:-bottom-1/4 md:h-auto">
         <Image
           src={image.src}
           alt={image.alt}
           height={image.height}
           width={image.width}
-          className="object-contain"
+          className="h-full w-full object-contain"
           priority
         />
       </div>

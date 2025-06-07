@@ -6,17 +6,17 @@ export const Features = ({ overview, features }: FeaturesProps) => {
   return (
     <>
       <section
-        className="container grid grid-cols-3 gap-3 py-12"
+        className="container grid grid-cols-1 gap-3 py-8 md:grid-cols-3 md:py-12"
         aria-labelledby="overview-title"
         id="overview"
       >
         <h2
           id="overview-title"
-          className="text-brand-dark font-grotesk text-6xl/16 tracking-tight"
+          className="text-brand-dark font-grotesk text-4xl tracking-tight md:text-6xl/16"
         >
           {overview.title}
         </h2>
-        <p className="col-span-2 pl-9 text-2xl leading-normal font-light">
+        <p className="col-span-1 text-xl leading-normal font-light md:col-span-2 md:pl-9 md:text-2xl">
           {overview.description}
         </p>
       </section>
@@ -24,25 +24,28 @@ export const Features = ({ overview, features }: FeaturesProps) => {
         <Separator />
       </div>
       <section
-        className="relative container grid grid-cols-2 gap-20 py-20"
+        className="relative container grid grid-cols-1 gap-8 py-12 lg:grid-cols-2 lg:gap-20 lg:py-20"
         aria-labelledby="features-title"
         id="features"
       >
-        <div className="sticky top-[20vh] h-fit">
-          <h3 id="features-title" className="text-brand-dark mb-6 text-5xl/16">
+        <div className="h-fit lg:sticky lg:top-[20vh]">
+          <h3
+            id="features-title"
+            className="text-brand-dark mb-4 text-3xl md:text-5xl/16 lg:mb-6"
+          >
             {features.title}
           </h3>
-          <p className="text-brand-gray text-xl leading-snug font-light text-balance">
+          <p className="text-brand-gray text-lg leading-snug font-light text-balance md:text-xl">
             {features.description}
           </p>
         </div>
         <ul className="divide-secondary flex flex-col divide-y" role="list">
           {features.items.map((item, index) => (
-            <li className="py-16 first:pt-0" key={index}>
-              <h4 className="text-secondary font-grotesk mb-4 text-3xl">
+            <li className="py-8 first:pt-0 md:py-16" key={index}>
+              <h4 className="text-secondary font-grotesk mb-3 text-2xl md:mb-4 md:text-3xl">
                 {item.title}
               </h4>
-              <p className="text-2xl leading-snug font-light text-balance">
+              <p className="text-xl leading-snug font-light text-balance md:text-2xl">
                 {item.description}
               </p>
             </li>

@@ -44,8 +44,17 @@ const FormSection = ({
   children: React.ReactNode;
   className?: string;
 }) => (
-  <div className={cn("space-y-6 rounded-2xl bg-white p-10", className)}>
-    {title && <h3 className="text-secondary text-4xl">{title}</h3>}
+  <div
+    className={cn(
+      "space-y-6 rounded-2xl bg-white p-4 sm:p-6 md:p-10",
+      className
+    )}
+  >
+    {title && (
+      <h3 className="text-secondary text-2xl sm:text-3xl md:text-4xl">
+        {title}
+      </h3>
+    )}
     {children}
   </div>
 );
@@ -246,14 +255,14 @@ export const QuoteForm = () => {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="container space-y-3"
+        className="container space-y-3 px-4 sm:px-6 md:px-8"
       >
         <FormSection>
           <div className="space-y-4">
-            <h2 className="font-grotesk text-brand-dark text-5xl tracking-tight text-balance">
+            <h2 className="font-grotesk text-brand-dark text-3xl tracking-tight text-balance sm:text-4xl md:text-5xl">
               Request Your Logistics Quote
             </h2>
-            <p className="text-brand-gray text-xl leading-normal font-light">
+            <p className="text-brand-gray text-lg leading-normal font-light sm:text-xl">
               Get a personalized logistics quote from Maxline Global. Whether
               it&apos;s land, air, or sea freight, our team will provide you
               with a tailored, cost-effective solution that fits your schedule,
@@ -261,9 +270,11 @@ export const QuoteForm = () => {
               logistics partner today.
             </p>
             <Separator />
-            <h3 className="text-secondary text-4xl">Basic Information</h3>
+            <h3 className="text-secondary text-2xl sm:text-3xl md:text-4xl">
+              Basic Information
+            </h3>
           </div>
-          <div className="grid grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4">
             <FormInput<QuoteFormData>
               control={form.control}
               name="customerName"
@@ -292,7 +303,7 @@ export const QuoteForm = () => {
           </div>
         </FormSection>
 
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
           <FormSection title="Sender Information">
             <FormInput<QuoteFormData>
               control={form.control}
@@ -325,7 +336,7 @@ export const QuoteForm = () => {
         </div>
 
         <FormSection title="Shipping information">
-          <div className="grid grid-cols-4 gap-3">
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-4">
             <FormDatePicker<QuoteFormData>
               control={form.control}
               name="preferredDeliveryDate"
@@ -362,7 +373,7 @@ export const QuoteForm = () => {
           </div>
         </FormSection>
         <FormSection title="Package Information">
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
             <FormInput<QuoteFormData>
               control={form.control}
               name="pieces"
@@ -391,7 +402,7 @@ export const QuoteForm = () => {
             name="packageDescription"
             label="Package Description"
             placeholder="Enter package description"
-            className="col-span-2"
+            className="col-span-1 sm:col-span-2"
           />
 
           <FormTextarea<QuoteFormData>
@@ -399,14 +410,14 @@ export const QuoteForm = () => {
             name="additionalInformation"
             label="Additional Information (Optional)"
             placeholder="Enter any additional information"
-            className="col-span-2"
+            className="col-span-1 sm:col-span-2"
           />
 
           <FormField
             control={form.control}
             name="attachFiles"
             render={({ field: { onChange, ...field } }) => (
-              <FormItem className="col-span-2">
+              <FormItem className="col-span-1 sm:col-span-2">
                 <FormLabel>Attach Files (Optional)</FormLabel>
                 <FormControl>
                   <Input

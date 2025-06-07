@@ -5,9 +5,10 @@ import { ServicesGrid } from "@/feature/services/services-grid";
 
 export default function ServicesPage() {
   return (
-    <main className="bg-background relative z-10 rounded-b-3xl pb-20 shadow-xl">
+    <main className="bg-background relative z-10 overflow-hidden rounded-b-3xl pb-20 shadow-xl">
       <HeroHeader
         subtitle="Services"
+        className="container"
         title="Logistics Solutions That Move Business Forward"
         description="Explore our full suite of global logistics services—from air, sea, and road freight to warehousing, customs clearance, and project cargo management. Maxline Global delivers reliable, scalable, and end-to-end solutions for every supply chain challenge."
       />

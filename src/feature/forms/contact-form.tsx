@@ -55,13 +55,13 @@ export function ContactForm() {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="relative z-10 space-y-8 rounded-2xl bg-white p-9"
+        className="relative z-10 space-y-6 rounded-2xl bg-white p-6 md:space-y-8 md:p-9"
       >
         <div>
-          <h3 className="font-grotesk text-secondary text-4xl">
+          <h3 className="font-grotesk text-secondary text-2xl sm:text-3xl md:text-4xl">
             Have a Question? We&apos;re Here to Help
           </h3>
-          <p className="text-brand-gray mt-2 text-xl font-light">
+          <p className="text-brand-gray mt-2 text-base font-light sm:text-lg md:text-xl">
             Have a shipment, question, or custom logistics need? Fill out the
             form and our team will get back to you with the right solution -
             fast, reliable, and tailored to your goals.
@@ -137,7 +137,7 @@ export function ContactForm() {
               <FormLabel>Service Type</FormLabel>
 
               <FormControl>
-                <div className="flex flex-wrap items-center gap-2">
+                <div className="grid grid-cols-1 items-center gap-2 sm:grid-cols-2 lg:flex lg:flex-wrap">
                   {Object.entries(SERVICE_TYPE_LABELS).map(([value, label]) => (
                     <div
                       key={value}
@@ -183,7 +183,7 @@ export function ContactForm() {
               <FormControl>
                 <Textarea
                   placeholder="Enter your message"
-                  className="min-h-[120px]"
+                  className="min-h-[100px] sm:min-h-[120px]"
                   {...field}
                 />
               </FormControl>
@@ -226,7 +226,7 @@ export function ContactForm() {
                 />
               </FormControl>
               <div>
-                <FormLabel className="block leading-snug font-light">
+                <FormLabel className="block text-sm leading-snug font-light sm:text-base">
                   I agree to the{" "}
                   <Link
                     href="/privacy-policy"

@@ -148,8 +148,8 @@ export default function ServicePage() {
     >
       <Hero {...mockData.hero} />
       <Features {...mockData.features} />{" "}
-      <section className="relative overflow-hidden pb-20">
-        <h3 className="font-grotesk text-brand-dark container mb-12 text-6xl">
+      <section className="relative overflow-hidden pb-10 md:pb-20">
+        <h3 className="font-grotesk text-brand-dark container mb-8 text-4xl md:mb-12 md:text-6xl">
           Industries we move the <br />
           <span className="text-secondary">Maxline Global</span> way
         </h3>
@@ -168,7 +168,7 @@ export default function ServicePage() {
         >
           {mockData.industries.map((item, i) => (
             <MarqueeItem key={i}>
-              <div className="text-background font-grotesk relative aspect-4/3 h-80 overflow-hidden rounded-2xl p-9 text-4xl">
+              <div className="text-background font-grotesk relative aspect-4/3 h-60 overflow-hidden rounded-2xl p-6 text-2xl md:h-80 md:p-9 md:text-4xl">
                 <h4 className="relative z-20 flex h-full items-end">
                   {item.title}
                 </h4>
@@ -185,10 +185,10 @@ export default function ServicePage() {
           ))}
         </SimpleMarquee>
       </section>
-      <section className="container py-20">
+      <section className="container py-10 md:py-20">
         <h4
           id="hero-title"
-          className="font-grotesk text-brand-gray relative z-10 container mb-3 max-w-6xl text-center text-6xl/16 tracking-tight text-balance"
+          className="font-grotesk text-brand-gray relative z-10 container mb-3 max-w-6xl text-center text-3xl tracking-tight text-balance md:text-6xl/16"
         >
           <StaggeredText
             text={`Expanded Land Freight Capabilities for Faster, Smarter Delivery`}
@@ -197,20 +197,20 @@ export default function ServicePage() {
             className="[&>span:nth-child(2)]:text-secondary [&>span:nth-child(3)]:text-secondary [&>span:nth-child(4)]:text-secondary"
           />
         </h4>
-        <ul className="grid grid-cols-3 gap-2 pt-9">
+        <ul className="grid grid-cols-1 gap-4 pt-6 md:grid-cols-2 md:gap-2 md:pt-9 lg:grid-cols-3">
           {mockData.capabilities.map((item) => (
             <SpotlightCard
               key={item.title}
               spotlightColor="rgba(0, 200, 255, 0.3)"
-              className="overflow-hidden rounded-xl bg-white p-10"
+              className="overflow-hidden rounded-xl bg-white p-6 md:p-10"
             >
-              <div className="bg-muted flex size-20 items-center justify-center rounded-full">
-                <item.icon className="text-brand-gray size-12 stroke-[1.5]" />
+              <div className="bg-muted flex size-16 items-center justify-center rounded-full md:size-20">
+                <item.icon className="text-brand-gray size-8 stroke-[1.5] md:size-12" />
               </div>
-              <h5 className="font-grotesk text-brand-dark mt-12 mb-3 text-4xl">
+              <h5 className="font-grotesk text-brand-dark mt-8 mb-2 text-2xl md:mt-12 md:mb-3 md:text-4xl">
                 {item.title}
               </h5>
-              <p>{item.description}</p>
+              <p className="text-sm md:text-base">{item.description}</p>
             </SpotlightCard>
           ))}
         </ul>
@@ -223,7 +223,7 @@ export default function ServicePage() {
 }
 
 const MarqueeItem = ({ children }: { children: React.ReactNode }) => (
-  <div className="mx-2.5 cursor-pointer duration-300 ease-in-out hover:scale-105">
+  <div className="mx-1 cursor-pointer duration-300 ease-in-out hover:scale-105 md:mx-2.5">
     {children}
   </div>
 );

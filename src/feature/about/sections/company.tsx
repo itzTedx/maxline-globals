@@ -2,10 +2,10 @@ import { StaggeredText } from "@/components/animation/staggered-text";
 
 export const CompanySection = () => {
   return (
-    <section className="container py-20">
+    <section className="container py-12 md:py-16 lg:py-20">
       <div className="container max-w-5xl text-center">
-        <p className="text-secondary z-10 text-2xl">Our clients</p>
-        <h2 className="font-grotesk text-brand-dark relative z-10 mb-16 text-6xl/16 tracking-tight">
+        <p className="text-secondary z-10 text-lg md:text-2xl">Our clients</p>
+        <h2 className="font-grotesk text-brand-dark relative z-10 mb-16 text-3xl tracking-tight md:text-4xl lg:text-6xl/16">
           <StaggeredText
             text="These Companies Trust Us to Deliver Their Vision"
             className="[&>span:nth-last-child(-n+2)]:text-secondary"
@@ -14,7 +14,7 @@ export const CompanySection = () => {
           />
         </h2>
       </div>
-      <div className="container grid grid-cols-4 gap-5">
+      <div className="container grid items-center justify-center gap-5 md:grid-cols-2 lg:grid-cols-4">
         <svg
           width="219"
           height="42"

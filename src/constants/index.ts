@@ -19,7 +19,7 @@ export const NAVLINKS = [
       },
       {
         title: "Insights & News",
-        href: "/company/insights",
+        href: "/insights",
         img: "/images/insights.webp",
       },
     ],

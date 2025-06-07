@@ -76,9 +76,9 @@ export const Principles = () => {
   }, []);
 
   return (
-    <section className="relative container grid grid-cols-2 gap-36 py-20">
-      <div className="space-y-28" ref={sectionRef}>
-        <h2 className="font-grotesk text-brand-dark max-w-xs text-6xl/18">
+    <section className="relative container grid gap-36 py-20 md:grid-cols-2">
+      <div className="space-y-12 md:space-y-20 lg:space-y-28" ref={sectionRef}>
+        <h2 className="font-grotesk text-brand-dark text-3xl md:max-w-xs md:text-5xl lg:text-6xl/18">
           <StaggeredText text="Our Core Principles:" />
         </h2>
         <Separator />
@@ -88,16 +88,16 @@ export const Principles = () => {
               ref={(el) => {
                 if (el) elementRefs.current[index] = el;
               }}
-              className="grid grid-cols-3 gap-3"
+              className="grid grid-cols-4 gap-3 md:grid-cols-3"
             >
-              <h3 className="text-secondary mt-2.5 text-xl font-light uppercase">
+              <h3 className="text-secondary mt-2.5 text-xs font-medium uppercase md:text-lg md:font-light lg:text-xl">
                 <StaggeredText text={p.head} />
               </h3>
-              <div className="col-span-2">
-                <h4 className="font-grotesk text-brand-dark text-5xl/16 text-balance">
+              <div className="col-span-3 md:col-span-2">
+                <h4 className="font-grotesk text-brand-dark text-3xl text-balance md:text-4xl lg:text-5xl/16">
                   <StaggeredText text={p.title} delay={0.2} />
                 </h4>
-                <p className="pt-4 text-2xl leading-relaxed font-light">
+                <p className="pt-4 text-lg leading-relaxed font-light md:text-xl lg:text-2xl">
                   <StaggeredText text={p.description} delay={0.35} />
                 </p>
               </div>
@@ -108,7 +108,7 @@ export const Principles = () => {
       </div>
       <div
         ref={imageSectionRef}
-        className="text-brand-gray sticky top-[18vh] h-fit text-3xl leading-normal font-light tracking-tight text-balance"
+        className="text-brand-gray sticky top-[15vh] hidden h-fit text-3xl leading-normal font-light tracking-tight text-balance md:block"
       >
         <div className="relative aspect-square overflow-hidden rounded-2xl">
           {images.map((image, index) => (

@@ -57,19 +57,19 @@ export const ServicesCenteredContent = ({
     <motion.div
       ref={containerRef}
       className={cn(
-        "sticky top-1/2 left-1/2 z-20 -translate-y-1/2 text-center",
+        "z-20 px-4 text-center md:sticky md:top-1/2 md:left-1/2 md:-translate-y-1/2 md:px-6 lg:px-8",
         className
       )}
       style={{ opacity, scale }}
     >
       <div className="mx-auto max-w-4xl">
         <motion.h2
-          className="text-brand-dark font-grotesk mb-12 text-4xl font-medium tracking-tight md:text-5xl lg:text-7xl"
+          className="text-brand-dark font-grotesk mb-6 text-3xl font-medium tracking-tight md:mb-12 md:text-5xl lg:text-7xl"
           style={{
             y: useTransform(
               scrollYProgress,
               [0, 0.25, 0.5, 0.75, 1],
-              [-100, 0, 0, 0, -100]
+              [-50, 0, 0, 0, -50]
             ),
           }}
         >
@@ -78,10 +78,10 @@ export const ServicesCenteredContent = ({
           <span className="text-secondary">Efficiency</span>
         </motion.h2>
 
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+        <div className="grid grid-cols-2 gap-4 md:gap-8">
           <motion.div
             style={{ x: leftX, clipPath }}
-            className="relative aspect-video overflow-hidden rounded-lg"
+            className="relative aspect-[4/3] overflow-hidden rounded-lg md:aspect-video"
           >
             <Image
               fill
@@ -92,7 +92,7 @@ export const ServicesCenteredContent = ({
           </motion.div>
           <motion.div
             style={{ x: rightX, clipPath }}
-            className="relative aspect-video overflow-hidden rounded-lg"
+            className="relative aspect-[4/3] overflow-hidden rounded-lg md:aspect-video"
           >
             <Image
               fill
@@ -104,7 +104,7 @@ export const ServicesCenteredContent = ({
         </div>
 
         <motion.p
-          className="text-brand-gray my-8 text-lg font-light md:text-xl"
+          className="text-brand-gray my-6 text-base font-light md:my-8 md:text-lg lg:text-xl"
           style={{
             y: bottomToTop,
           }}
@@ -118,6 +118,7 @@ export const ServicesCenteredContent = ({
             y: bottomToTop,
             opacity: useTransform(scrollYProgress, [0.2, 0.4], [0, 1]),
           }}
+          className="flex justify-center md:justify-start"
         >
           <Button asChild size="btnIcon">
             <Link href="/services" className="text-brand-dark group gap-3">

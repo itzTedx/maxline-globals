@@ -29,7 +29,12 @@ export function InsightCard({
   slug,
 }: InsightCardProps) {
   return (
-    <Card className="group gap-0 overflow-hidden p-0 md:gap-4">
+    <Card className="group relative gap-0 overflow-hidden p-0 md:gap-4">
+      <Link
+        href={`/insights/${slug}`}
+        className="absolute inset-0 z-10"
+        title={title}
+      ></Link>
       <CardContent className="relative px-0">
         <div className="relative aspect-4/3 overflow-hidden">
           <Image
@@ -52,22 +57,20 @@ export function InsightCard({
         </CardHeader>
       </CardContent>
       <CardFooter className="w-full pb-4 max-sm:px-4 sm:pb-6">
-        <Button asChild size="btnIcon" className="w-full">
-          <Link
-            href={`/blog/${slug}`}
-            className="text-brand-dark group w-full"
-            aria-label={`Read full article: ${title}`}
-          >
-            <LetterSwapPingPong
-              label="Read Article"
-              staggerFrom={"first"}
-              reverse={false}
-              className="w-full justify-start text-sm font-semibold sm:text-base"
-            />
-            <div className="bg-primary text-brand-dark group-hover:bg-background pointer-events-none ml-auto flex size-7 shrink-0 touch-none items-center justify-center rounded transition-colors select-none sm:size-8">
-              <IconArrowRight className="size-4 sm:size-5" aria-hidden="true" />
-            </div>
-          </Link>
+        <Button
+          size="btnIcon"
+          className="text-background hover:text-brand-dark group w-full"
+          aria-label={`Read full article: ${title}`}
+        >
+          <LetterSwapPingPong
+            label="Read Article"
+            staggerFrom={"first"}
+            reverse={false}
+            className="w-full justify-start text-sm font-semibold sm:text-base"
+          />
+          <div className="bg-primary text-brand-dark group-hover:bg-background pointer-events-none ml-auto flex size-7 shrink-0 touch-none items-center justify-center rounded transition-colors select-none sm:size-8">
+            <IconArrowRight className="size-4 sm:size-5" aria-hidden="true" />
+          </div>
         </Button>
       </CardFooter>
     </Card>

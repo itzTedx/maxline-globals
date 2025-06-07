@@ -7,7 +7,8 @@ const mockBlogs = [
     title: "The Future of Supply Chain Technology",
     description:
       "Exploring how AI and blockchain are revolutionizing global logistics and supply chain management.",
-    image: "/images/blog/supply-chain-tech.jpg",
+    image:
+      "/images/blogs/scene-with-photorealistic-logistics-operations-proceedings.jpg",
     slug: "future-supply-chain-technology",
   },
   {
@@ -15,7 +16,8 @@ const mockBlogs = [
     title: "Sustainable Logistics Practices",
     description:
       "How companies are implementing eco-friendly solutions in their logistics operations.",
-    image: "/images/blog/sustainable-logistics.jpg",
+    image:
+      "/images/blogs/scene-with-photorealistic-logistics-operations-proceedings.jpg",
     slug: "sustainable-logistics-practices",
   },
   {
@@ -23,7 +25,8 @@ const mockBlogs = [
     title: "Global Trade Trends 2024",
     description:
       "An in-depth analysis of emerging trends and challenges in international trade and logistics.",
-    image: "/images/blog/global-trade.jpg",
+    image:
+      "/images/blogs/scene-with-photorealistic-logistics-operations-proceedings.jpg",
     slug: "global-trade-trends-2024",
   },
   {
@@ -31,7 +34,8 @@ const mockBlogs = [
     title: "The Future of Supply Chain Technology",
     description:
       "Exploring how AI and blockchain are revolutionizing global logistics and supply chain management.",
-    image: "/images/blog/supply-chain-tech.jpg",
+    image:
+      "/images/blogs/scene-with-photorealistic-logistics-operations-proceedings.jpg",
     slug: "future-supply-chain-technology",
   },
   {
@@ -39,7 +43,8 @@ const mockBlogs = [
     title: "Sustainable Logistics Practices",
     description:
       "How companies are implementing eco-friendly solutions in their logistics operations.",
-    image: "/images/blog/sustainable-logistics.jpg",
+    image:
+      "/images/blogs/scene-with-photorealistic-logistics-operations-proceedings.jpg",
     slug: "sustainable-logistics-practices",
   },
   {
@@ -47,7 +52,8 @@ const mockBlogs = [
     title: "Global Trade Trends 2024",
     description:
       "An in-depth analysis of emerging trends and challenges in international trade and logistics.",
-    image: "/images/blog/global-trade.jpg",
+    image:
+      "/images/blogs/scene-with-photorealistic-logistics-operations-proceedings.jpg",
     slug: "global-trade-trends-2024",
   },
 ];

@@ -7,9 +7,9 @@ import { CAROUSEL_IMAGES } from "@/constants";
 
 export const AboutHeroSection = () => {
   return (
-    <div>
+    <div className="overflow-hidden">
       <HeroHeader
-        className="max-w-7xl"
+        className="container"
         subtitle="About us"
         title={[
           { text: "Building Smarter Supply Chains for a" },

@@ -48,14 +48,14 @@ export function HeroHeader({
 
   return (
     <section
-      className={cn("relative container py-20 text-center", className)}
+      className={cn("relative py-12 text-center md:py-14 lg:py-20", className)}
       aria-labelledby="hero-title"
     >
       <div className="relative z-10">
         {subtitle && (
           <p
             className={cn(
-              "text-secondary z-10 mb-2 text-2xl",
+              "text-secondary z-10 mb-2 text-base md:text-xl lg:text-2xl",
               subtitleClassName
             )}
             role="doc-subtitle"
@@ -66,7 +66,7 @@ export function HeroHeader({
         <h1
           id="hero-title"
           className={cn(
-            "font-grotesk text-brand-dark relative z-10 mb-3 text-8xl/26 tracking-tight",
+            "font-grotesk text-brand-dark relative z-10 mb-3 text-5xl tracking-tight md:text-7xl/18 lg:text-8xl/26",
             titleClassName
           )}
         >
@@ -75,7 +75,7 @@ export function HeroHeader({
         {description && (
           <p
             className={cn(
-              "text-brand-gray mb-16 text-xl font-light text-balance",
+              "text-brand-gray mb-16 font-light text-balance md:text-xl",
               descriptionClassName
             )}
             role="doc-subtitle"
