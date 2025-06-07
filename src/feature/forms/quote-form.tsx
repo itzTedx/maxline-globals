@@ -255,7 +255,7 @@ export const QuoteForm = () => {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="container space-y-3 px-4 sm:px-6 md:px-8"
+        className="container max-w-7xl space-y-3 px-4 sm:px-6 md:px-8"
       >
         <FormSection>
           <div className="space-y-4">
@@ -274,7 +274,7 @@ export const QuoteForm = () => {
               Basic Information
             </h3>
           </div>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <FormInput<QuoteFormData>
               control={form.control}
               name="customerName"
@@ -336,7 +336,7 @@ export const QuoteForm = () => {
         </div>
 
         <FormSection title="Shipping information">
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-4">
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
             <FormDatePicker<QuoteFormData>
               control={form.control}
               name="preferredDeliveryDate"

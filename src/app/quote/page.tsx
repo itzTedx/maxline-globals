@@ -30,9 +30,9 @@ export default function QuotePage() {
 
   return (
     <main className="bg-background relative z-10 rounded-b-3xl pb-20 shadow-xl">
-      <header className="container grid grid-cols-1 gap-3 pt-10 pb-3 md:grid-cols-3 md:pt-20">
+      <header className="container grid grid-cols-1 gap-3 pb-3 md:grid-cols-3">
         <HeroHeader
-          className="col-span-1 mx-0 h-fit px-0 py-0 text-start md:col-span-2"
+          className="col-span-1 mx-0 px-0 py-0 text-start md:col-span-2"
           subtitle="Get a Quote"
           title={[
             { text: "Let's Move Your Cargo –" },
@@ -41,7 +41,7 @@ export default function QuotePage() {
               className: "text-secondary",
             },
           ]}
-          titleClassName="text-3xl md:text-[4rem]/18 mb-6 max-w-lg"
+          titleClassName="text-3xl lg:text-[4.5rem] mb-6 max-w-xl"
           description="Get a personalized logistics quote from Maxline Global. Whether it's land, air, or sea freight, our team will provide you with a tailored, cost-effective solution that fits your schedule, cargo type, and destination. Start your journey with a trusted logistics partner today."
           isLogo={false}
         />
