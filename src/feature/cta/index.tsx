@@ -6,7 +6,13 @@ import VerticalCutReveal from "@/components/animation/vertical-cut-reveal";
 
 export const Cta = () => {
   return (
-    <section className="text-background relative container overflow-hidden">
+    <section
+      id="cta"
+      aria-label="Call to Action"
+      className="text-background relative container overflow-hidden"
+      itemScope
+      itemType="https://schema.org/Organization"
+    >
       <div className="relative overflow-hidden rounded-3xl">
         <div className="absolute z-0 flex h-full w-full overflow-hidden">
           <Image
@@ -14,12 +20,17 @@ export const Cta = () => {
             fill
             alt=""
             className="object-cover object-left md:object-right"
-            quality={100}
+            quality={90}
+            priority
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         </div>
         <div className="relative z-10 grid grid-cols-1 items-center gap-4 p-12 md:grid-cols-3 md:gap-2 md:px-12 md:py-20 lg:px-24 lg:py-20">
           <div className="col-span-1 space-y-2 md:col-span-2 md:space-y-4">
-            <h4 className="font-grotesk leading-tighter text-4xl font-black md:text-5xl lg:text-6xl">
+            <h4
+              className="font-grotesk leading-tighter text-4xl font-black md:text-5xl lg:text-6xl"
+              itemProp="name"
+            >
               <VerticalCutReveal
                 splitBy="characters"
                 staggerDuration={0.015}
@@ -33,7 +44,10 @@ export const Cta = () => {
                 {`Ready to move your business forward?`}
               </VerticalCutReveal>
             </h4>
-            <p className="font-grotesk text-lg font-light md:text-xl">
+            <p
+              className="font-grotesk text-lg font-light md:text-xl"
+              itemProp="description"
+            >
               <VerticalCutReveal
                 splitBy="characters"
                 staggerDuration={0.025}

@@ -19,10 +19,12 @@ const ServiceCard = memo(
     service,
     isFirst,
     isExpanded,
+    index,
   }: {
     service: Service;
     isFirst: boolean;
     isExpanded?: boolean;
+    index?: number;
   }) => (
     <SpotlightCard
       spotlightColor="rgba(0, 200, 255, 0.5)"
@@ -34,16 +36,24 @@ const ServiceCard = memo(
         "rounded-md p-9 md:px-8 md:py-12 lg:px-16 lg:py-20",
         !isExpanded && "md:last:col-span-1 md:nth-last-[2]:col-span-1"
       )}
+      itemProp="itemListElement"
+      itemScope
+      itemType="https://schema.org/Service"
     >
+      {index ? <meta itemProp="position" content={String(index + 1)} /> : null}
       <Link
         href={service.href}
         className="absolute inset-0 z-30 select-none"
-      ></Link>
+        aria-label={`Learn more about ${service.title}`}
+      />
       <div className="relative z-20">
-        <h3 className="font-grotesk mb-2 text-3xl lg:text-4xl">
+        <h3 className="font-grotesk mb-2 text-3xl lg:text-4xl" itemProp="name">
           {service.title}
         </h3>
-        <p className="text-secondary group-first:text-background max-w-xs text-base font-light text-balance md:text-lg lg:text-xl">
+        <p
+          className="text-secondary group-first:text-background max-w-xs text-base font-light text-balance md:text-lg lg:text-xl"
+          itemProp="description"
+        >
           {service.description}
         </p>
       </div>
@@ -68,6 +78,8 @@ const ServiceCard = memo(
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           priority={isFirst}
           loading={isFirst ? "eager" : "lazy"}
+          quality={85}
+          itemProp="image"
         />
       </div>
 
@@ -91,13 +103,16 @@ export const ServicesGrid = memo(
       <ul
         className="relative z-10 container grid max-w-7xl grid-cols-1 gap-3 pb-20 md:grid-cols-2 md:pt-12"
         role="list"
+        itemScope
+        itemType="https://schema.org/ItemList"
       >
         {services.map((service, index) => (
           <ServiceCard
+            key={index}
             isExpanded={isExpanded}
-            key={service.title}
             service={service}
             isFirst={index === 0}
+            index={index}
           />
         ))}
       </ul>

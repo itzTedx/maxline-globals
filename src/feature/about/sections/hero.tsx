@@ -5,6 +5,16 @@ import SimpleMarquee from "@/components/animation/simple-marquee";
 import { HeroHeader } from "@/components/hero-header";
 import { CAROUSEL_IMAGES } from "@/constants";
 
+const MarqueeItem = React.memo(
+  ({ children }: { children: React.ReactNode }) => (
+    <div className="mx-2.5 cursor-pointer duration-300 ease-in-out hover:scale-105">
+      {children}
+    </div>
+  )
+);
+
+MarqueeItem.displayName = "MarqueeItem";
+
 export const AboutHeroSection = () => {
   return (
     <div className="overflow-hidden">
@@ -40,9 +50,12 @@ export const AboutHeroSection = () => {
                 <div className="relative aspect-4/3 h-96">
                   <Image
                     src={src}
-                    alt={`Image ${i + 1}`}
+                    alt={`Logistics and supply chain image ${i + 1}`}
                     className="rounded-2xl object-cover"
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    priority={i < 2}
+                    loading={i < 2 ? "eager" : "lazy"}
                   />
                 </div>
               </MarqueeItem>
@@ -53,9 +66,3 @@ export const AboutHeroSection = () => {
     </div>
   );
 };
-
-const MarqueeItem = ({ children }: { children: React.ReactNode }) => (
-  <div className="mx-2.5 cursor-pointer duration-300 ease-in-out hover:scale-105">
-    {children}
-  </div>
-);

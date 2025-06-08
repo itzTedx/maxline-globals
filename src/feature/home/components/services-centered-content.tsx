@@ -118,7 +118,7 @@ export const ServicesCenteredContent = ({
             y: bottomToTop,
             opacity: useTransform(scrollYProgress, [0.2, 0.4], [0, 1]),
           }}
-          className="flex justify-center md:justify-start"
+          className="flex justify-center"
         >
           <Button asChild size="btnIcon">
             <Link href="/services" className="text-brand-dark group gap-3">

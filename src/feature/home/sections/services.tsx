@@ -1,3 +1,5 @@
+import { memo } from "react";
+
 import { StaggeredText } from "@/components/animation/staggered-text";
 import { SERVICES } from "@/constants";
 
@@ -7,7 +9,7 @@ import { ServicesCenteredContent } from "../components/services-centered-content
 import { ServicesHeroVideo } from "../components/services-hero-video";
 import { ServicesSchema } from "../schema/services-schema";
 
-export const ServicesSection = () => {
+export const ServicesSection = memo(() => {
   return (
     <>
       <ServicesSchema services={SERVICES} />
@@ -31,15 +33,30 @@ export const ServicesSection = () => {
             <StaggeredText
               text="Integrated freight solutions tailored to your exact specifications."
               className="[&>span:nth-last-child(-n+2)]:text-secondary"
-              staggerChildren={0.03}
-              duration={0.7}
+              staggerChildren={0.02}
+              duration={0.5}
             />
           </h2>
 
-          <ServicesGrid services={SERVICES} />
-          <ServicesBottomCTA />
+          <div itemProp="offers" itemScope itemType="https://schema.org/Offer">
+            <ServicesGrid services={SERVICES} />
+          </div>
+
+          <div
+            itemProp="provider"
+            itemScope
+            itemType="https://schema.org/Organization"
+          >
+            <ServicesBottomCTA />
+          </div>
         </div>
+
+        <meta itemProp="serviceType" content="Logistics and Freight Services" />
+        <meta itemProp="areaServed" content="Worldwide" />
+        <meta itemProp="provider" content="Maxline Global" />
       </section>
     </>
   );
-};
+});
+
+ServicesSection.displayName = "ServicesSection";

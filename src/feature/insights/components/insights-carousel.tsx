@@ -115,9 +115,9 @@ export const InsightsCarousel = () => {
 
               <Button asChild size="btnIcon">
                 <Link
-                  href="/blog"
+                  href="/insights"
                   className="text-brand-dark gap-3"
-                  aria-label="View all blog posts"
+                  aria-label="View all insights and news"
                 >
                   More
                   <div className="bg-primary text-brand-dark flex size-8 items-center justify-center rounded">

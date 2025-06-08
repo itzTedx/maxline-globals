@@ -9,14 +9,20 @@ export const Features = ({ overview, features }: FeaturesProps) => {
         className="container grid grid-cols-1 gap-3 py-8 md:grid-cols-3 md:py-12"
         aria-labelledby="overview-title"
         id="overview"
+        itemScope
+        itemType="https://schema.org/Service"
       >
         <h2
           id="overview-title"
           className="text-brand-dark font-grotesk text-4xl tracking-tight md:text-6xl/16"
+          itemProp="name"
         >
           {overview.title}
         </h2>
-        <p className="col-span-1 text-xl leading-normal font-light md:col-span-2 md:pl-9 md:text-2xl">
+        <p
+          className="col-span-1 text-xl leading-normal font-light md:col-span-2 md:pl-9 md:text-2xl"
+          itemProp="description"
+        >
           {overview.description}
         </p>
       </section>
@@ -39,13 +45,31 @@ export const Features = ({ overview, features }: FeaturesProps) => {
             {features.description}
           </p>
         </div>
-        <ul className="divide-secondary flex flex-col divide-y" role="list">
+        <ul
+          className="divide-secondary flex flex-col divide-y"
+          role="list"
+          itemScope
+          itemType="https://schema.org/ItemList"
+        >
           {features.items.map((item, index) => (
-            <li className="py-8 first:pt-0 md:py-16" key={index}>
-              <h4 className="text-secondary font-grotesk mb-3 text-2xl md:mb-4 md:text-3xl">
+            <li
+              className="py-8 first:pt-0 md:py-16"
+              key={index}
+              itemProp="itemListElement"
+              itemScope
+              itemType="https://schema.org/Service"
+            >
+              <meta itemProp="position" content={String(index + 1)} />
+              <h4
+                className="text-secondary font-grotesk mb-3 text-2xl md:mb-4 md:text-3xl"
+                itemProp="name"
+              >
                 {item.title}
               </h4>
-              <p className="text-xl leading-snug font-light text-balance md:text-2xl">
+              <p
+                className="text-xl leading-snug font-light text-balance md:text-2xl"
+                itemProp="description"
+              >
                 {item.description}
               </p>
             </li>

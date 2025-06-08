@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Fragment, useEffect, useRef, useState } from "react";
+import React, { Fragment, useEffect, useRef, useState } from "react";
 
 import { motion } from "framer-motion";
 
@@ -15,6 +15,60 @@ const images = [
   "/images/carousel/transport-logistics-products.jpg",
   "/images/carousel/logistics-means-transport-together-with-technological-futuristic-holograms copy.jpg",
 ];
+
+const PrincipleImage = React.memo(
+  ({
+    image,
+    index,
+    currentImage,
+    isVisible,
+  }: {
+    image: string;
+    index: number;
+    currentImage: number;
+    isVisible: boolean;
+  }) => (
+    <motion.div
+      key={image}
+      initial={{
+        clipPath: "inset(50% 50% 50% 50%)",
+        scale: 1,
+        zIndex: index === currentImage ? 2 : 1,
+      }}
+      animate={{
+        clipPath:
+          index === currentImage && isVisible
+            ? "inset(0% 0% 0% 0%)"
+            : "inset(50% 50% 50% 50%)",
+        scale: index === currentImage && isVisible ? 1.1 : 1,
+        zIndex: index === currentImage ? 2 : 1,
+      }}
+      transition={{
+        clipPath: {
+          duration: 1.2,
+          ease: [0.645, 0.045, 0.355, 1],
+        },
+        scale: {
+          duration: 0.8,
+          ease: [0.645, 0.045, 0.355, 1],
+          delay: 0.2,
+        },
+      }}
+      className="absolute inset-0"
+    >
+      <Image
+        src={image}
+        alt={`Principle ${index + 1} illustration`}
+        fill
+        className="object-cover"
+        priority={index === currentImage}
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+      />
+    </motion.div>
+  )
+);
+
+PrincipleImage.displayName = "PrincipleImage";
 
 export const Principles = () => {
   const [currentImage, setCurrentImage] = useState(0);
@@ -112,42 +166,13 @@ export const Principles = () => {
       >
         <div className="relative aspect-square overflow-hidden rounded-2xl">
           {images.map((image, index) => (
-            <motion.div
+            <PrincipleImage
               key={image}
-              initial={{
-                clipPath: "inset(50% 50% 50% 50%)",
-                scale: 1,
-                zIndex: index === currentImage ? 2 : 1,
-              }}
-              animate={{
-                clipPath:
-                  index === currentImage && isVisible
-                    ? "inset(0% 0% 0% 0%)"
-                    : "inset(50% 50% 50% 50%)",
-                scale: index === currentImage && isVisible ? 1.1 : 1,
-                zIndex: index === currentImage ? 2 : 1,
-              }}
-              transition={{
-                clipPath: {
-                  duration: 1.2,
-                  ease: [0.645, 0.045, 0.355, 1],
-                },
-                scale: {
-                  duration: 0.8,
-                  ease: [0.645, 0.045, 0.355, 1],
-                  delay: 0.2,
-                },
-              }}
-              className="absolute inset-0"
-            >
-              <Image
-                src={image}
-                alt=""
-                fill
-                className="object-cover"
-                priority={index === currentImage}
-              />
-            </motion.div>
+              image={image}
+              index={index}
+              currentImage={currentImage}
+              isVisible={isVisible}
+            />
           ))}
         </div>
       </div>

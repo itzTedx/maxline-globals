@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Script from "next/script";
-import { useRef } from "react";
+import { memo, useRef } from "react";
 
 import { motion, useScroll, useTransform } from "framer-motion";
 
@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/accordion";
 import { FAQS } from "@/constants";
 
-export const FaqSection = () => {
+export const FaqSection = memo(() => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({
@@ -48,6 +48,8 @@ export const FaqSection = () => {
       ref={containerRef}
       className="z-10 container grid grid-cols-1 gap-6 py-10 md:grid-cols-2 md:gap-20 md:py-20"
       aria-labelledby="faq-heading"
+      itemScope
+      itemType="https://schema.org/FAQPage"
     >
       <Script
         id="faq-schema"
@@ -59,28 +61,43 @@ export const FaqSection = () => {
           id="faq-heading"
           className="font-grotesk text-brand-dark text-3xl md:text-5xl"
         >
-          <StaggeredText text="Frequently Asked Questions" />
+          <StaggeredText
+            text="Frequently Asked Questions"
+            staggerChildren={0.02}
+            duration={0.5}
+          />
         </h2>
         <motion.div
           style={{ clipPath }}
           className="relative aspect-video overflow-hidden rounded-2xl"
+          itemProp="image"
         >
           <Image
             src="/images/faq.webp"
             alt="FAQ"
             className="object-cover"
             fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            loading="lazy"
+            quality={75}
           />
         </motion.div>
-        <p className="text-brand-gray text-lg font-light md:text-xl">
+        <p
+          className="text-brand-gray text-lg font-light md:text-xl"
+          itemProp="description"
+        >
           <StaggeredText
             text="Discover quick answers to the questions our clients ask most. From shipment tracking to specialized cargo handling, our FAQ section covers everything you need to know about Maxline Global's services, capabilities, and commitment to smooth, secure, and on-time delivery."
-            staggerChildren={0.03}
-            duration={0.7}
+            staggerChildren={0.02}
+            duration={0.5}
           />
         </p>
       </div>
-      <div className="z-10">
+      <div
+        itemProp="mainEntity"
+        itemScope
+        itemType="https://schema.org/Question"
+      >
         <Accordion
           type="multiple"
           className="divide-secondary/50 w-full divide-y"
@@ -90,12 +107,23 @@ export const FaqSection = () => {
               value={item.title}
               key={item.id}
               className="py-3 md:py-4"
+              itemProp="mainEntity"
+              itemScope
+              itemType="https://schema.org/Question"
             >
-              <AccordionTrigger className="cursor-pointer py-2 text-base font-normal hover:no-underline md:text-lg">
+              <AccordionTrigger
+                className="cursor-pointer py-2 text-base font-normal hover:no-underline md:text-lg"
+                itemProp="name"
+              >
                 {item.title}
               </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground pb-2 text-base font-light md:text-lg">
-                {item.content}
+              <AccordionContent
+                className="text-muted-foreground pb-2 text-base font-light md:text-lg"
+                itemProp="acceptedAnswer"
+                itemScope
+                itemType="https://schema.org/Answer"
+              >
+                <span itemProp="text">{item.content}</span>
               </AccordionContent>
             </AccordionItem>
           ))}
@@ -103,4 +131,6 @@ export const FaqSection = () => {
       </div>
     </section>
   );
-};
+});
+
+FaqSection.displayName = "FaqSection";

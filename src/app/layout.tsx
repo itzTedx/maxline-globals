@@ -5,29 +5,31 @@ import { geistSans, radioGrostek } from "@/assets/fonts";
 import BreakpointIndicator from "@/components/breakpoint-indicator";
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
+import { siteConfig } from "@/constants/site-config";
 import { cn } from "@/lib/utils";
 
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Maxline Global | Global Logistics & Freight Solutions",
-  description:
-    "Maxline Global delivers excellence across land, air, and sea with comprehensive logistics solutions. Track shipments, explore freight services, and connect with our global network.",
-  keywords: [
-    "logistics",
-    "freight",
-    "shipping",
-    "cargo",
-    "transportation",
-    "warehousing",
-    "supply chain",
-  ],
-  authors: [{ name: "Maxline Global" }],
+  title: {
+    default: siteConfig.title.default,
+    template: siteConfig.title.template,
+  },
+  description: siteConfig.description,
+  keywords: [...siteConfig.keywords],
+  authors: [{ name: siteConfig.name }],
   openGraph: {
-    title: "Maxline Global | Global Logistics & Freight Solutions",
-    description:
-      "Delivering excellence across land, air, and sea with comprehensive logistics solutions.",
+    title: siteConfig.title.default,
+    description: siteConfig.title.template,
     type: "website",
+    videos: [
+      {
+        url: "https://maxlineglobal.com/videos/maxline-web.webm",
+        type: "video/mp4",
+        width: 1920,
+        height: 1080,
+      },
+    ],
   },
 
   robots: {
@@ -45,7 +47,7 @@ export const metadata: Metadata = {
     google: "-",
   },
   alternates: {
-    canonical: "https://maxlineglobal.com",
+    canonical: siteConfig.site,
   },
 };
 
@@ -80,6 +82,25 @@ export default function RootLayout({
                 telephone: "+971-XXXXXXXXX",
                 contactType: "customer service",
               },
+            }),
+          }}
+        />
+        <Script
+          id="video-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "VideoObject",
+              name: "Maxline Global Logistics Services",
+              description:
+                "Overview of Maxline Global's comprehensive logistics and freight solutions",
+              thumbnailUrl:
+                "https://maxlineglobal.com/images/video-thumbnail.jpg", // Replace with your actual thumbnail URL
+              uploadDate: "2024-03-20", // Replace with your actual upload date
+              duration: "PT2M30S", // Replace with your actual video duration in ISO 8601 format
+              contentUrl: "https://maxlineglobal.com/video/your-video.mp4", // Replace with your actual video URL
+              embedUrl: "https://maxlineglobal.com/embed/video", // Replace with your actual embed URL if available
             }),
           }}
         />
