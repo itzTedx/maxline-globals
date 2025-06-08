@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import { IconArrowRight, IconArrowUpRight } from "@tabler/icons-react";
 
+import LetterSwapPingPong from "@/components/animation/letter-swap-pingpong-anim";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -112,16 +113,21 @@ export const InsightsCarousel = () => {
                   <CarouselNext className="static shrink-0 translate-y-0" />
                 </Button>
               </div>
-
               <Button asChild size="btnIcon">
                 <Link
-                  href="/insights"
-                  className="text-brand-dark gap-3"
+                  href="/services"
+                  className="text-brand-dark group z-10"
                   aria-label="View all insights and news"
                 >
-                  More
-                  <div className="bg-primary text-brand-dark flex size-8 items-center justify-center rounded">
-                    <IconArrowRight aria-hidden="true" />
+                  <LetterSwapPingPong
+                    label="More"
+                    staggerFrom="first"
+                    reverse={false}
+                    className="w-full justify-start font-semibold"
+                  />
+
+                  <div className="bg-primary text-brand-dark group-hover:bg-background flex size-8 shrink-0 items-center justify-center rounded">
+                    <IconArrowRight />
                   </div>
                 </Link>
               </Button>

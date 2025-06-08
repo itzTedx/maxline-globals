@@ -48,7 +48,7 @@ export function InsightCard({
           />
         </div>
         <CardHeader className="p-4 sm:p-6">
-          <CardTitle className="text-base font-medium max-sm:leading-tight sm:text-xl">
+          <CardTitle className="font-grotesk text-brand-dark text-base font-normal max-sm:leading-tight sm:text-2xl">
             {title}
           </CardTitle>
           <CardDescription className="text-brand-gray line-clamp-3 text-xs font-light sm:text-base">
@@ -59,7 +59,7 @@ export function InsightCard({
       <CardFooter className="w-full pb-4 max-sm:px-4 sm:pb-6">
         <Button
           size="btnIcon"
-          className="text-background hover:text-brand-dark group w-full"
+          className="text-background hover:text-brand-dark group z-10 w-full"
           aria-label={`Read full article: ${title}`}
         >
           <LetterSwapPingPong

@@ -4,6 +4,7 @@ import { IconArrowRight } from "@tabler/icons-react";
 
 import { XIcon } from "@/assets/x-icon";
 import Letter3DSwap from "@/components/animation/letter-3d-swap";
+import LetterSwapPingPong from "@/components/animation/letter-swap-pingpong-anim";
 import { Button } from "@/components/ui/button";
 
 export const ServicesBottomCTA = () => {
@@ -29,9 +30,15 @@ export const ServicesBottomCTA = () => {
       </p>
 
       <Button asChild size="btnIcon">
-        <Link href="/services" className="text-brand-dark z-10">
-          Explore More
-          <div className="bg-primary text-brand-dark flex size-8 items-center justify-center rounded">
+        <Link href="/services" className="text-brand-dark group z-10">
+          <LetterSwapPingPong
+            label="Explore More"
+            staggerFrom="first"
+            reverse={false}
+            className="w-full justify-start font-semibold"
+          />
+
+          <div className="bg-primary text-brand-dark group-hover:bg-background flex size-8 shrink-0 items-center justify-center rounded">
             <IconArrowRight />
           </div>
         </Link>

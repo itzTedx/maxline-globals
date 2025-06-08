@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { XIcon } from "@/assets/x-icon";
+import CenterUnderline from "@/components/animation/underline-center";
 import VerticalCutReveal from "@/components/animation/vertical-cut-reveal";
 
 export const Cta = () => {
@@ -18,11 +19,13 @@ export const Cta = () => {
           <Image
             src="/images/cta-bg-v2.jpg"
             fill
-            alt=""
+            alt="Maxline Global logistics facility with modern shipping containers and trucks"
             className="object-cover object-left md:object-right"
             quality={90}
             priority
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            loading="eager"
+            sizes="(max-width: 768px) 100vw, "
+            fetchPriority="high"
           />
         </div>
         <div className="relative z-10 grid grid-cols-1 items-center gap-4 p-12 md:grid-cols-3 md:gap-2 md:px-12 md:py-20 lg:px-24 lg:py-20">
@@ -70,7 +73,7 @@ export const Cta = () => {
                 href="tel:+97142822022"
                 className="text-brand-dark text-lg font-bold md:text-xl"
               >
-                +97142822022
+                <CenterUnderline label="+97142822022" />
               </Link>
             </li>
             <li className="bg-background/70 rounded-md p-4 backdrop-blur-xl md:p-6">
@@ -79,7 +82,7 @@ export const Cta = () => {
                 href="mailto:reception@maxlineglobal.com"
                 className="text-brand-dark text-lg font-bold md:text-xl"
               >
-                reception@maxlineglobal.com
+                <CenterUnderline label="reception@maxlineglobal.com" />
               </Link>
             </li>
           </ul>

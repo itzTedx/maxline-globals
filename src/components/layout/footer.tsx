@@ -50,18 +50,30 @@ export const Footer = () => {
           <div className="grid grid-cols-1 items-center justify-between gap-4 sm:grid-cols-3 sm:gap-0">
             <Link
               href={"https://maps.app.goo.gl/VWxy5XYwqrDr9etT7"}
-              className="bg-background/20 border-background col-span-1 flex w-fit items-center justify-start gap-1.5 rounded-full border px-2.5 py-1.5 backdrop-blur-xl transition-transform hover:scale-105 sm:col-span-2"
+              className="bg-background/20 border-background col-span-1 flex w-fit items-center justify-start gap-1.5 rounded-full border px-2.5 py-1.5 backdrop-blur-xl transition-transform sm:col-span-2"
+              itemScope
+              itemType="https://schema.org/Place"
             >
               <IconMapPin className="size-5 stroke-1" />
               <p className="text-sm font-light sm:text-base">
                 Location:{" "}
-                <CenterUnderline
-                  label="Jebel Ali Free Zone, Dubai."
-                  className="font-medium"
-                />
+                <span
+                  itemProp="address"
+                  itemScope
+                  itemType="https://schema.org/PostalAddress"
+                >
+                  <span itemProp="streetAddress">
+                    <CenterUnderline
+                      label="Jebel Ali Free Zone, Dubai."
+                      className="font-medium"
+                    />
+                  </span>
+                  <meta itemProp="addressLocality" content="Dubai" />
+                  <meta itemProp="addressCountry" content="UAE" />
+                  <meta itemProp="postalCode" content="232939" />
+                </span>
               </p>
             </Link>
-
             <Button
               asChild
               size="btnIcon"
