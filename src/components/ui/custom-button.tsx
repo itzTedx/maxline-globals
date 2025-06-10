@@ -32,7 +32,7 @@ export const Button = ({
     <ShadBtn
       asChild
       size="btnIcon"
-      className={cn("text-brand-dark group gap-3", className)}
+      className={cn("group/btn gap-3", className)}
       {...props}
     >
       <Link href={href}>
@@ -41,13 +41,16 @@ export const Button = ({
             label={label}
             staggerFrom="first"
             reverse={false}
-            className={cn("w-full justify-start font-semibold", textClassName)}
+            className={cn(
+              "text-background w-full justify-start font-semibold",
+              textClassName
+            )}
           />
         )}
         {showIcon && (
           <div
             className={cn(
-              "bg-primary text-brand-dark group-hover:bg-background flex size-8 shrink-0 items-center justify-center rounded transition duration-500",
+              "bg-primary text-brand-dark group-hover/btn:bg-background flex size-8 shrink-0 items-center justify-center rounded transition duration-500",
               iconClassName
             )}
           >

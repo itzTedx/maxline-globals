@@ -5,7 +5,9 @@ import Script from "next/script";
 import { XIcon } from "@/assets/x-icon";
 import { StaggeredText } from "@/components/animation/staggered-text";
 import { HeroHeader } from "@/components/hero-header";
+import { Button } from "@/components/ui/custom-button";
 import { siteConfig } from "@/constants/site-config";
+import { Cta } from "@/feature/cta";
 import { ContactForm } from "@/feature/forms/contact-form";
 
 const PAGE_TITLE =
@@ -199,7 +201,7 @@ export default function ContactPage() {
             Maxline Global Logistics Operations Center
           </figcaption>
         </figure>
-        <section className="container">
+        <section className="container max-w-6xl">
           <h3 className="text-brand-dark font-grotesk mx-auto max-w-lg text-center text-6xl">
             <StaggeredText
               text="Maxline Global Around the World"
@@ -209,13 +211,13 @@ export default function ContactPage() {
           <p className="text-brand-gray mx-auto max-w-4xl pt-4 text-center text-2xl font-light text-balance">
             <StaggeredText text="Our strategically located offices empower us to manage international shipments with local insight. Wherever you are, Maxline is never far." />
           </p>
-          <ul className="grid grid-cols-2 gap-12 pt-12">
+          <ul className="grid grid-cols-2 gap-9 pt-12">
             {Array.from({ length: 2 }).map((_, index) => (
               <li
                 key={index}
                 className="group overflow-hidden rounded-2xl bg-white"
               >
-                <div className="relative aspect-video">
+                <div className="relative aspect-video overflow-hidden">
                   <Image
                     src="/images/placeholder.jpg"
                     alt=""
@@ -223,10 +225,104 @@ export default function ContactPage() {
                     className="object-cover transition-transform duration-500 group-hover:scale-125"
                   />
                 </div>
+                <div className="p-2 text-center">
+                  <p className="text-brand-dark pb-2 font-light">
+                    <StaggeredText text="Head Office (UAE)" />
+                  </p>
+                  <h4 className="font-grotesk text-secondary px-4 pb-4 text-2xl">
+                    <StaggeredText text="Maxline LLC, Mina Jebel Ali, Dubai Aid City, Dubai - United Arab Emirates" />
+                  </h4>
+                  <ul className="divide-primary/20 mb-4 divide-y">
+                    <li className="py-1">
+                      <StaggeredText
+                        text="Phone: + 971 4 2822022"
+                        delay={0.1}
+                      />
+                    </li>
+                    <li className="py-1">
+                      <StaggeredText
+                        text="Mobile: + 971 4 2822023"
+                        delay={0.1}
+                      />
+                    </li>
+                    <li className="py-1">
+                      <StaggeredText
+                        text="Email: ajith@maxlineglobal.com"
+                        delay={0.1}
+                      />
+                    </li>
+                    <li className="py-1">
+                      <StaggeredText
+                        text="Sales: reception@maxlineglobal.com"
+                        delay={0.1}
+                      />
+                    </li>
+                  </ul>
+                  <Button label="View in map" className="w-full" />
+                </div>
               </li>
             ))}
           </ul>
         </section>
+        <section className="container py-20">
+          <h3 className="text-secondary font-grotesk mx-auto max-w-lg text-center text-6xl">
+            <StaggeredText text="Branches" />
+          </h3>
+
+          <ul className="grid grid-cols-3 gap-4 pt-12">
+            {Array.from({ length: 8 }).map((_, index) => (
+              <li
+                key={index}
+                className="group overflow-hidden rounded-2xl bg-white"
+              >
+                <div className="relative aspect-video overflow-hidden">
+                  <Image
+                    src="/images/placeholder.jpg"
+                    alt=""
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-125"
+                  />
+                </div>
+                <div className="p-2 text-center">
+                  <p className="text-brand-dark pb-2 font-light">
+                    <StaggeredText text="Head Office (UAE)" />
+                  </p>
+                  <h4 className="font-grotesk text-secondary px-4 pb-4 text-2xl">
+                    <StaggeredText text="Maxline LLC, Mina Jebel Ali, Dubai Aid City, Dubai - United Arab Emirates" />
+                  </h4>
+                  <ul className="divide-primary/20 mb-4 divide-y">
+                    <li className="py-1">
+                      <StaggeredText
+                        text="Phone: + 971 4 2822022"
+                        delay={0.1}
+                      />
+                    </li>
+                    <li className="py-1">
+                      <StaggeredText
+                        text="Mobile: + 971 4 2822023"
+                        delay={0.1}
+                      />
+                    </li>
+                    <li className="py-1">
+                      <StaggeredText
+                        text="Email: ajith@maxlineglobal.com"
+                        delay={0.1}
+                      />
+                    </li>
+                    <li className="py-1">
+                      <StaggeredText
+                        text="Sales: reception@maxlineglobal.com"
+                        delay={0.1}
+                      />
+                    </li>
+                  </ul>
+                  <Button label="View in map" className="w-full" />
+                </div>
+              </li>
+            ))}
+          </ul>
+        </section>
+        <Cta />
       </main>
     </>
   );
