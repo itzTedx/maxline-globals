@@ -1,3 +1,4 @@
+import { StaggeredText } from "@/components/animation/staggered-text";
 import { Separator } from "@/components/ui/separator";
 
 import { FeaturesProps } from "./types/types";
@@ -17,13 +18,13 @@ export const Features = ({ overview, features }: FeaturesProps) => {
           className="text-brand-dark font-grotesk text-4xl tracking-tight md:text-6xl/16"
           itemProp="name"
         >
-          {overview.title}
+          <StaggeredText text={overview.title} />
         </h2>
         <p
           className="col-span-1 text-xl leading-normal font-light md:col-span-2 md:pl-9 md:text-2xl"
           itemProp="description"
         >
-          {overview.description}
+          <StaggeredText text={overview.description} />
         </p>
       </section>
       <div className="container">
@@ -39,10 +40,10 @@ export const Features = ({ overview, features }: FeaturesProps) => {
             id="features-title"
             className="text-brand-dark mb-4 text-3xl md:text-5xl/16 lg:mb-6"
           >
-            {features.title}
+            <StaggeredText text={features.title} />
           </h3>
           <p className="text-brand-gray text-lg leading-snug font-light text-balance md:text-xl">
-            {features.description}
+            <StaggeredText text={features.description} />
           </p>
         </div>
         <ul
@@ -64,13 +65,13 @@ export const Features = ({ overview, features }: FeaturesProps) => {
                 className="text-secondary font-grotesk mb-3 text-2xl md:mb-4 md:text-3xl"
                 itemProp="name"
               >
-                {item.title}
+                <StaggeredText text={item.title} />
               </h4>
               <p
                 className="text-xl leading-snug font-light text-balance md:text-2xl"
                 itemProp="description"
               >
-                {item.description}
+                <StaggeredText text={item.description} />
               </p>
             </li>
           ))}

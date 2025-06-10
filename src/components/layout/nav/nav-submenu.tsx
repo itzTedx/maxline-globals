@@ -18,46 +18,53 @@ interface NavSubmenuProps {
   isOpen: boolean;
   items: SubmenuItem[];
   parentTitle: string;
-  maxHeight: number;
 }
 
-export const NavSubmenu = ({
-  isOpen,
-  items,
-  parentTitle,
-  maxHeight,
-}: NavSubmenuProps) => {
+export const NavSubmenu = ({ isOpen, items, parentTitle }: NavSubmenuProps) => {
   return (
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          initial={{ opacity: 0, height: 0, y: 20 }}
+          initial={{ opacity: 0, height: 0 }}
           animate={{
             opacity: 1,
             height: "auto",
-            minHeight: maxHeight,
-            y: 0,
             transition: {
-              height: { duration: 0.3, ease: "easeOut" },
-              opacity: { duration: 0.2 },
-              y: { duration: 0.3, ease: "easeOut" },
+              height: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
+              opacity: { duration: 0.3 },
             },
           }}
           exit={{
             opacity: 0,
             height: 0,
-            y: 20,
             transition: {
-              height: { duration: 0.3, ease: "easeIn" },
+              height: { duration: 0.4, ease: [0.16, 1, 0.3, 1] },
               opacity: { duration: 0.2 },
-              y: { duration: 0.2, ease: "easeIn" },
             },
           }}
-          className={cn("absolute top-full left-0 w-full")}
+          className={cn("absolute top-full left-0 w-full overflow-hidden")}
         >
           <motion.ul
+            initial={{ opacity: 0, y: 20 }}
+            animate={{
+              opacity: 1,
+              y: 0,
+              transition: {
+                duration: 0.3,
+                delay: 0.2,
+                ease: [0.16, 1, 0.3, 1],
+              },
+            }}
+            exit={{
+              opacity: 0,
+              y: 20,
+              transition: {
+                duration: 0.2,
+                ease: [0.16, 1, 0.3, 1],
+              },
+            }}
             className={cn(
-              "mt-2 grid items-center gap-2 overflow-hidden rounded-md bg-white p-2 shadow-lg",
+              "mt-2 grid items-center gap-2 rounded-md bg-white p-2 shadow-lg",
               parentTitle === "Company" ? "grid-cols-3" : "grid-cols-4"
             )}
             role="menu"

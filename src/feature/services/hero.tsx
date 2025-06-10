@@ -21,7 +21,7 @@ export const Hero = ({
       itemScope
       itemType="https://schema.org/Service"
     >
-      <div className="container flex flex-col items-start justify-between px-4 pt-24 pb-12 md:pt-40 md:pb-20">
+      <div className="container flex flex-col items-start justify-between pt-24 pb-12 md:pt-40 md:pb-20">
         <div className="space-y-4 md:space-y-6">
           <h1
             id="page-title"

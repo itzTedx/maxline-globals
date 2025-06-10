@@ -44,7 +44,7 @@ export const Navbar = () => {
 
   return (
     <nav
-      className="sticky top-0 z-50 py-4"
+      className="sticky top-0 z-50 py-4 transition-all duration-300 ease-in-out"
       role="navigation"
       aria-label="Main navigation"
     >
@@ -87,7 +87,6 @@ export const Navbar = () => {
                     isOpen={activeMenu === link.title}
                     items={link.submenu}
                     parentTitle={link.title}
-                    maxHeight={submenuHeights.get(link.title) || 0}
                   />
                 </div>
               )}
