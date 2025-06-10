@@ -112,9 +112,7 @@ export default function AboutPage() {
       />
       <main className="bg-background relative z-10 rounded-b-3xl pb-20 shadow-xl">
         <article>
-          <Suspense fallback={<div>Loading...</div>}>
-            <AboutHeroSection />
-          </Suspense>
+          <AboutHeroSection />
 
           <Suspense fallback={<div>Loading...</div>}>
             <WhoWeAre />

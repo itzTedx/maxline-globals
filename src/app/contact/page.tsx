@@ -3,6 +3,7 @@ import Image from "next/image";
 import Script from "next/script";
 
 import { XIcon } from "@/assets/x-icon";
+import { StaggeredText } from "@/components/animation/staggered-text";
 import { HeroHeader } from "@/components/hero-header";
 import { siteConfig } from "@/constants/site-config";
 import { ContactForm } from "@/feature/forms/contact-form";
@@ -198,6 +199,34 @@ export default function ContactPage() {
             Maxline Global Logistics Operations Center
           </figcaption>
         </figure>
+        <section className="container">
+          <h3 className="text-brand-dark font-grotesk mx-auto max-w-lg text-center text-6xl">
+            <StaggeredText
+              text="Maxline Global Around the World"
+              className="[&>span:nth-child(-n+2)]:text-secondary"
+            />
+          </h3>
+          <p className="text-brand-gray mx-auto max-w-4xl pt-4 text-center text-2xl font-light text-balance">
+            <StaggeredText text="Our strategically located offices empower us to manage international shipments with local insight. Wherever you are, Maxline is never far." />
+          </p>
+          <ul className="grid grid-cols-2 gap-12 pt-12">
+            {Array.from({ length: 2 }).map((_, index) => (
+              <li
+                key={index}
+                className="group overflow-hidden rounded-2xl bg-white"
+              >
+                <div className="relative aspect-video">
+                  <Image
+                    src="/images/placeholder.jpg"
+                    alt=""
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-125"
+                  />
+                </div>
+              </li>
+            ))}
+          </ul>
+        </section>
       </main>
     </>
   );
