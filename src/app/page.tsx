@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <>
       <main
-        className="bg-background relative z-10 rounded-b-3xl pb-20 shadow-xl"
+        className="bg-background relative z-10 rounded-b-3xl pb-20"
         role="main"
       >
         <HeroSection />

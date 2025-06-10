@@ -1,4 +1,16 @@
-export const NAVLINKS = [
+type SubMenuItem = {
+  title: string;
+  href: string;
+  img: string;
+};
+
+export type NavLink = {
+  title: string;
+  href: string;
+  submenu?: SubMenuItem[];
+};
+
+export const NAVLINKS: NavLink[] = [
   {
     title: "Home",
     href: "/",

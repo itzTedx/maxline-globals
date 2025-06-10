@@ -201,17 +201,17 @@ export default function ContactPage() {
             Maxline Global Logistics Operations Center
           </figcaption>
         </figure>
-        <section className="container max-w-6xl">
-          <h3 className="text-brand-dark font-grotesk mx-auto max-w-lg text-center text-6xl">
+        <section className="container md:max-w-6xl">
+          <h3 className="text-brand-dark font-grotesk mx-auto max-w-lg text-center text-2xl md:text-4xl lg:text-6xl">
             <StaggeredText
               text="Maxline Global Around the World"
               className="[&>span:nth-child(-n+2)]:text-secondary"
             />
           </h3>
-          <p className="text-brand-gray mx-auto max-w-4xl pt-4 text-center text-2xl font-light text-balance">
+          <p className="text-brand-gray mx-auto max-w-4xl pt-2 text-center text-lg font-light text-balance md:pt-4 md:text-xl lg:text-2xl">
             <StaggeredText text="Our strategically located offices empower us to manage international shipments with local insight. Wherever you are, Maxline is never far." />
           </p>
-          <ul className="grid grid-cols-2 gap-9 pt-12">
+          <ul className="grid grid-cols-1 gap-9 pt-12 sm:grid-cols-2">
             {Array.from({ length: 2 }).map((_, index) => (
               <li
                 key={index}
@@ -265,11 +265,11 @@ export default function ContactPage() {
           </ul>
         </section>
         <section className="container py-20">
-          <h3 className="text-secondary font-grotesk mx-auto max-w-lg text-center text-6xl">
+          <h3 className="text-secondary font-grotesk mx-auto max-w-lg text-center text-2xl md:text-4xl lg:text-6xl">
             <StaggeredText text="Branches" />
           </h3>
 
-          <ul className="grid grid-cols-3 gap-4 pt-12">
+          <ul className="grid grid-cols-1 gap-4 pt-12 sm:grid-cols-2 md:grid-cols-3">
             {Array.from({ length: 8 }).map((_, index) => (
               <li
                 key={index}
