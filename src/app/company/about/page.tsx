@@ -123,11 +123,11 @@ export default function AboutPage() {
           </Suspense>
 
           <Suspense fallback={<div>Loading...</div>}>
-            <LeaderWords />
+            <CompanySection />
           </Suspense>
 
           <Suspense fallback={<div>Loading...</div>}>
-            <CompanySection />
+            <LeaderWords />
           </Suspense>
 
           <Suspense fallback={<div>Loading...</div>}>
