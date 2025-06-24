@@ -5,6 +5,7 @@ import { geistSans, radioGrostek } from "@/assets/fonts";
 import BreakpointIndicator from "@/components/breakpoint-indicator";
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
+import Providers from "@/components/providers";
 import { siteConfig } from "@/constants/site-config";
 import { cn } from "@/lib/utils";
 
@@ -112,8 +113,10 @@ export default function RootLayout({
           radioGrostek.variable
         )}
       >
-        <Navbar />
-        {children}
+        <Providers>
+          <Navbar />
+          {children}
+        </Providers>
         <BreakpointIndicator />
 
         <Footer />
