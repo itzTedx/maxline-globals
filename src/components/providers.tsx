@@ -9,6 +9,7 @@ const Providers = ({ children }: { children: React.ReactNode }) => {
       color="#078CD9"
       options={{ showSpinner: false }}
       shallowRouting
+      memo
     >
       {children}
     </ProgressProvider>
