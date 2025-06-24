@@ -2,8 +2,8 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
-import { motion, useScroll, useTransform } from "framer-motion";
 import { Volume2, VolumeX } from "lucide-react";
+import { motion, useScroll, useTransform } from "motion/react";
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";

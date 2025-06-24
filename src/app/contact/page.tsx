@@ -247,13 +247,13 @@ export default function ContactPage() {
                     </li>
                     <li className="py-1">
                       <StaggeredText
-                        text="Email: ajith@maxlineglobal.com"
+                        text="Email: hello@maxlineglobal.com"
                         delay={0.1}
                       />
                     </li>
                     <li className="py-1">
                       <StaggeredText
-                        text="Sales: reception@maxlineglobal.com"
+                        text="Sales: desk@maxlineglobal.com"
                         delay={0.1}
                       />
                     </li>

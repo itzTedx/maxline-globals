@@ -5,6 +5,8 @@ import { useState } from "react";
 import { debounce } from "lodash";
 import { AnimationOptions, motion, stagger, useAnimate } from "motion/react";
 
+import { cn } from "@/lib/utils";
+
 interface TextProps {
   label: string;
   reverse?: boolean;
@@ -87,7 +89,10 @@ const LetterSwapPingPong = ({
 
   return (
     <motion.span
-      className={`relative flex items-center justify-center overflow-hidden ${className} `}
+      className={cn(
+        className,
+        "relative flex items-center justify-center overflow-hidden"
+      )}
       onHoverStart={hoverStart}
       onHoverEnd={hoverEnd}
       onClick={onClick}

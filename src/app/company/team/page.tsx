@@ -157,7 +157,8 @@ export default function TeamPage() {
                     label="Linkedin Profile"
                     href="/"
                     variant="secondary"
-                    className="w-full"
+                    className="text-brand-dark w-full"
+                    textClassName="text-brand-dark"
                   />
                 </div>
               </li>
