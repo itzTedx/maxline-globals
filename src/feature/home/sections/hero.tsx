@@ -11,13 +11,13 @@ export const HeroSection = memo(() => {
       <div className="container mx-auto px-4">
         <h1 className="text-brand-dark font-grotesk mx-auto max-w-5xl text-center text-4xl tracking-tight sm:text-5xl md:text-6xl lg:text-8xl">
           <StaggeredText
-            text="Delivering Excellence Across"
+            text="Your Trusted Partner in"
             staggerChildren={0.01}
             duration={0.3}
           />
           <span className="text-secondary">
             <StaggeredText
-              text="Land, Air, and Sea"
+              text="Logistics and Freight Delivery"
               staggerChildren={0.01}
               duration={0.3}
             />
