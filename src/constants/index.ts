@@ -108,16 +108,23 @@ export const SERVICES = [
     image: "/images/ship.webp",
   },
   {
+    title: "Project Cargo",
+    description: "Specialized Handling for Heavy and Oversized Cargo.",
+    href: "/services/project-cargo",
+    image: "/images/container.webp",
+  },
+  {
     title: "Warehousing",
     description: "Strategic Warehousing and Distribution Solutions.",
     href: "/services/warehousing-and-distribution",
     image: "/images/lifter.webp",
   },
+
   {
-    title: "Project Forwarding",
-    description: "Specialized Handling for Heavy and Oversized Cargo.",
-    href: "/services/project-forwarding",
-    image: "/images/container.webp",
+    title: "Movers & Lashing",
+    description: "Professional Relocation and Cargo Securing for Safe Transit.",
+    href: "/services/project-cargo",
+    image: "/images/movers.webp",
   },
 ];
 

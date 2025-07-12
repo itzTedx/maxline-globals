@@ -43,10 +43,10 @@ const ServiceCard = memo(
       {index ? <meta itemProp="position" content={String(index + 1)} /> : null}
       <Link
         href={service.href}
-        className="absolute inset-0 z-30 select-none"
+        className="absolute inset-0 z-40 select-none"
         aria-label={`Learn more about ${service.title}`}
       />
-      <div className="relative z-20">
+      <div className="relative z-30">
         <h3 className="font-grotesk mb-2 text-3xl lg:text-4xl" itemProp="name">
           {service.title}
         </h3>
@@ -58,6 +58,7 @@ const ServiceCard = memo(
         </p>
       </div>
 
+      <div className="from-input absolute inset-0 z-20 to-transparent md:group-nth-last-[1]:bg-gradient-to-r" />
       <Button
         asChild
         size="icon"

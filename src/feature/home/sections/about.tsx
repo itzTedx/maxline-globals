@@ -19,7 +19,7 @@ export const AboutSection = memo(() => {
         itemProp="name"
       >
         <StaggeredText
-          text="Reliable Logistics Solutions Across the Globe"
+          text="Reliable Logistics Partner Across the Globe"
           className="[&>span:nth-last-child(-n+3)]:text-secondary"
           staggerChildren={0.02}
           duration={0.5}
@@ -29,10 +29,13 @@ export const AboutSection = memo(() => {
       <div itemProp="description">
         <TextAnimate
           animation="blurInUp"
-          by="character"
+          by="line"
           className="text-brand-gray text-xl leading-relaxed font-light text-balance md:text-2xl"
         >
-          {`At Maxline Global, we connect businesses to markets across the world. With our comprehensive logistics solutions and commitment to service excellence, we ensure your cargo moves with speed, safety, and precision.`}
+          At Maxline Global, we connect businesses to markets across the world.
+          With our comprehensive logistics partner and commitment to service
+          excellence, we ensure your cargo moves with speed, safety, and
+          precision.
         </TextAnimate>
       </div>
 

@@ -16,16 +16,7 @@ export default function Home() {
       >
         <HeroSection />
 
-        <Suspense
-          fallback={
-            <div
-              className="h-96 w-full animate-pulse bg-gray-200"
-              aria-label="Loading content"
-            />
-          }
-        >
-          <AboutSection />
-        </Suspense>
+        <AboutSection />
 
         <Suspense
           fallback={
@@ -38,16 +29,7 @@ export default function Home() {
           <ServicesSection />
         </Suspense>
 
-        <Suspense
-          fallback={
-            <div
-              className="h-96 w-full animate-pulse bg-gray-200"
-              aria-label="Loading content"
-            />
-          }
-        >
-          <FaqSection />
-        </Suspense>
+        <FaqSection />
 
         <Suspense
           fallback={
