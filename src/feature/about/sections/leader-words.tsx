@@ -3,7 +3,7 @@ import { XIcon } from "@/assets/x-icon";
 export const LeaderWords = () => {
   return (
     <section
-      className="container py-12 md:py-16 lg:py-20"
+      className="container pt-12 md:pt-16 lg:pt-20"
       aria-label="Leadership Message"
     >
       <div className="bg-brand-dark text-background relative space-y-6 overflow-hidden rounded-3xl px-12 py-16 text-center md:px-16 md:py-20 lg:px-24 lg:py-32">
@@ -16,7 +16,7 @@ export const LeaderWords = () => {
           This promise drives how we train our teams, apply smart logistics
           technology, and serve clients worldwide.
         </blockquote>
-        <div className="text-primary relative z-10 flex items-center justify-center gap-4">
+        {/* <div className="text-primary relative z-10 flex items-center justify-center gap-4">
           <div
             className="bg-accent size-10 rounded-full md:size-12"
             aria-hidden="true"
@@ -24,7 +24,7 @@ export const LeaderWords = () => {
           <p className="text-primary text-lg font-semibold uppercase md:text-xl">
             Saji Thomas, CFO
           </p>
-        </div>
+        </div> */}
         <XIcon
           className="absolute top-1/2 left-1/2 -translate-1/2 -translate-x-1/2 opacity-60"
           aria-hidden="true"

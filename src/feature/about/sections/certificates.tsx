@@ -33,7 +33,7 @@ CertificateLogo.displayName = "CertificateLogo";
 export const CertificatesSection = () => {
   return (
     <section
-      className="container py-12 md:py-16 lg:py-20"
+      className="container max-w-7xl py-12 md:py-16 lg:py-20"
       aria-label="Certifications"
     >
       <div className="container mb-9 text-center">
