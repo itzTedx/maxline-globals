@@ -1,4 +1,5 @@
 import { IconArrowRight, IconArrowUpRight } from "@tabler/icons-react";
+import { useTranslations } from "next-intl";
 
 import LetterSwapPingPong from "@/components/animation/letter-swap-pingpong-anim";
 import { Button } from "@/components/ui/button";
@@ -69,6 +70,7 @@ const blogs: InsightCardProps[] = [
 ];
 
 export const InsightsCarousel = () => {
+  const t = useTranslations("HomePage");
   return (
     <section
       className="w-full overflow-hidden py-10 md:py-16 lg:py-20"
@@ -84,13 +86,14 @@ export const InsightsCarousel = () => {
           <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <h2 className="font-grotesk text-secondary text-3xl tracking-tight sm:text-4xl lg:text-5xl">
-                <span className="text-brand-dark">Maxline</span> Insights &
-                Updates
+                {t.rich("insights.title", {
+                  span: (chunks) => (
+                    <span className="text-brand-dark">{chunks}</span>
+                  ),
+                })}
               </h2>
-              <p className="text-brand-gray pt-2 text-lg font-light tracking-tight sm:text-xl lg:text-2xl">
-                Stay ahead with the latest in logistics, trade, and
-                <br className="hidden sm:block" />
-                global supply chain trends.
+              <p className="text-brand-gray max-w-xl pt-2 text-lg font-light tracking-tight text-balance sm:text-xl lg:text-2xl">
+                {t("insights.description")}
               </p>
             </div>
             <div className="flex items-center justify-between gap-2">
@@ -119,7 +122,7 @@ export const InsightsCarousel = () => {
                   aria-label="View all insights and news"
                 >
                   <LetterSwapPingPong
-                    label="More"
+                    label={t("insights.btnText")}
                     staggerFrom="first"
                     reverse={false}
                     className="w-full justify-start font-semibold"
