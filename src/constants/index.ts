@@ -10,6 +10,50 @@ export type NavLink = {
   submenu?: SubMenuItem[];
 };
 
+const SERVICES_LINKS = [
+  {
+    title: "Air Freight",
+    href: "/services/air-freight",
+    img: "/images/air-freight.webp",
+  },
+  {
+    title: "Sea Freight",
+    href: "/services/sea-freight",
+    img: "/images/sea-freight.webp",
+  },
+  {
+    title: "Land Freight",
+    href: "/services/land-freight",
+    img: "/images/blogs/transport-logistics-products.jpg",
+  },
+
+  {
+    title: "Project Cargo",
+    href: "/services/project-cargo",
+    img: "/images/transportation-types.jpg",
+  },
+  {
+    title: "Packing",
+    href: "/services/packing",
+    img: "/images/packing.webp",
+  },
+  {
+    title: "Warehousing",
+    href: "/services/warehousing",
+    img: "/images/warehousing.webp",
+  },
+  {
+    title: "Exhibition Cargo",
+    href: "/services/exhibition-cargo",
+    img: "/images/exhibition-cargo.webp",
+  },
+  {
+    title: "Movers & Lashing",
+    href: "/services/movers-lashing",
+    img: "/images/movers.webp",
+  },
+];
+
 export const NAVLINKS: NavLink[] = [
   {
     title: "Home",
@@ -39,49 +83,7 @@ export const NAVLINKS: NavLink[] = [
   {
     title: "Services",
     href: "/services",
-    submenu: [
-      {
-        title: "Air Freight",
-        href: "/services/air-freight",
-        img: "/images/air-freight.webp",
-      },
-      {
-        title: "Sea Freight",
-        href: "/services/sea-freight",
-        img: "/images/sea-freight.webp",
-      },
-      {
-        title: "Land Freight",
-        href: "/services/land-freight",
-        img: "/images/blogs/transport-logistics-products.jpg",
-      },
-
-      {
-        title: "Project Cargo",
-        href: "/services/project-cargo",
-        img: "/images/transportation-types.jpg",
-      },
-      {
-        title: "Packing",
-        href: "/services/packing",
-        img: "/images/packing.webp",
-      },
-      {
-        title: "Warehousing",
-        href: "/services/warehousing",
-        img: "/images/warehousing.webp",
-      },
-      {
-        title: "Exhibition Cargo",
-        href: "/services/exhibition-cargo",
-        img: "/images/exhibition-cargo.webp",
-      },
-      {
-        title: "Movers & Lashing",
-        href: "/services/movers-lashing",
-        img: "/images/movers.webp",
-      },
-    ],
+    submenu: SERVICES_LINKS,
   },
   {
     title: "Track Shipment",
@@ -236,47 +238,18 @@ export const FOOTER_LINKS = [
   },
   {
     header: "Services",
-    links: [
-      {
-        title: "Air Freight",
-        href: "/",
-      },
-      {
-        title: "Sea Freight",
-        href: "/",
-      },
-      {
-        title: "Land Freight",
-        href: "/",
-      },
-      {
-        title: "Project Forwarding",
-        href: "/",
-      },
-      {
-        title: "Packing",
-        href: "/",
-      },
-      {
-        title: "Warehousing",
-        href: "/",
-      },
-      {
-        title: "Exhibition Cargo",
-        href: "/",
-      },
-    ],
+    links: SERVICES_LINKS,
   },
   {
     header: "Support",
     links: [
       {
         title: "Track your Shipment",
-        href: "/",
+        href: "/track-shipment",
       },
       {
         title: "Get Quote",
-        href: "/",
+        href: "/quote",
       },
       {
         title: "Technical Support",
@@ -300,7 +273,7 @@ export const FOOTER_LINKS = [
         href: "/",
       },
       {
-        title: "X (Formerly Twitter)",
+        title: "X",
         href: "/",
       },
     ],
