@@ -87,8 +87,8 @@ export const AboutSection = memo(() => {
         className="absolute -bottom-[20%] -left-1/2 hidden aspect-video h-[400px] translate-x-20 md:block md:h-[600px] lg:h-[800px]"
         itemProp="image"
         animate={{
-          opacity: active === "road" ? 1 : 0,
-          scale: active === "road" ? 1.05 : 1,
+          opacity: active === "sea" ? 1 : 0,
+          scale: active === "sea" ? 1.05 : 1,
         }}
         transition={{ duration: 0.5 }}
       >
