@@ -19,7 +19,7 @@ export const Footer = () => {
     <footer className="bg-brand-dark text-background relative z-0 w-full overflow-hidden">
       {/* <footer className="bg-brand-dark text-background sticky bottom-0 z-0 w-full overflow-hidden"> */}
       <div className="relative z-10 container grid grid-cols-1 gap-6 py-10 md:grid-cols-12 md:gap-12 md:py-20">
-        <h5 className="font-grotesk col-span-1 text-4xl leading-tight md:col-span-5 md:text-7xl">
+        <h5 className="font-grotesk col-span-1 text-4xl leading-tight md:col-span-5 md:text-7xl rtl:md:text-6xl">
           <VerticalCutReveal
             splitBy="characters"
             staggerDuration={0.025}
