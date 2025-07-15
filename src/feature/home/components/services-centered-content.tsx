@@ -5,6 +5,7 @@ import { useRef } from "react";
 
 import { IconArrowRight } from "@tabler/icons-react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 import LetterSwapPingPong from "@/components/animation/letter-swap-pingpong-anim";
 import { Button } from "@/components/ui/button";
@@ -52,7 +53,7 @@ export const ServicesCenteredContent = ({
 
   // Add bottom-to-top animation for description and button
   const bottomToTop = useTransform(scrollYProgress, [0.2, 0.4], [100, 0]);
-
+  const t = useTranslations("HomePage");
   return (
     <motion.div
       ref={containerRef}
@@ -73,9 +74,9 @@ export const ServicesCenteredContent = ({
             ),
           }}
         >
-          Built to Empower
+          {t("service.heading.first")}
           <br />
-          <span className="text-secondary">Efficiency</span>
+          <span className="text-secondary"> {t("service.heading.second")}</span>
         </motion.h2>
 
         <div className="grid grid-cols-2 gap-4 md:gap-8">
@@ -109,9 +110,7 @@ export const ServicesCenteredContent = ({
             y: bottomToTop,
           }}
         >
-          Maxline turns fragmented workflows into unified strategies. Whether
-          you&apos;re in the office or across the globe, we&apos;re one
-          connected force.
+          {t("service.description")}
         </motion.p>
         <motion.div
           style={{
@@ -123,7 +122,7 @@ export const ServicesCenteredContent = ({
           <Button asChild size="btnIcon">
             <Link href="/services" className="text-brand-dark group gap-3">
               <LetterSwapPingPong
-                label="Explore our services"
+                label={t("service.btnText")}
                 staggerFrom="first"
                 reverse={false}
                 className="w-full justify-start font-semibold"

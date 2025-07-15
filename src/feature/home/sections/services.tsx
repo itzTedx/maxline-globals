@@ -1,5 +1,7 @@
 import { memo } from "react";
 
+import { useTranslations } from "next-intl";
+
 import { StaggeredText } from "@/components/animation/staggered-text";
 import { SERVICES } from "@/constants";
 
@@ -10,6 +12,7 @@ import { ServicesHeroVideo } from "../components/services-hero-video";
 import { ServicesSchema } from "../schema/services-schema";
 
 export const ServicesSection = memo(() => {
+  const t = useTranslations("HomePage");
   return (
     <>
       <ServicesSchema services={SERVICES} />
@@ -31,7 +34,7 @@ export const ServicesSection = memo(() => {
             itemProp="name"
           >
             <StaggeredText
-              text="Integrated freight solutions tailored to your exact specifications."
+              text={t("service.title")}
               className="[&>span:nth-last-child(-n+2)]:text-secondary"
               staggerChildren={0.02}
               duration={0.5}

@@ -2,19 +2,6 @@
 // See: https://next-intl.dev/docs/workflows/typescript#messages-arguments
 
 declare const messages: {
-  "HomePage": {
-    "hero": {
-      "title": {
-        "firstLine": "Your Trusted Partner in",
-        "secondLine": "Logistics and Freight Delivery"
-      },
-      "inputPlaceholder": "Track your shipment"
-    },
-    "about": {
-      "title": "Reliable Logistics Partner Across the Globe",
-      "description": "At Maxline Global, we connect businesses to markets across the world. With our comprehensive logistics partner and commitment to service excellence, we ensure your cargo moves with speed, safety, and precision."
-    }
-  },
   "Navigation": {
     "home": "Home",
     "company": "Company",
@@ -33,6 +20,33 @@ declare const messages: {
     "trackShipment": "Track Shipment",
     "contact": "Contact",
     "getQuote": "Get a Quote"
+  },
+  "HomePage": {
+    "hero": {
+      "title": {
+        "firstLine": "Your Trusted Partner in",
+        "secondLine": "Logistics and Freight Delivery"
+      },
+      "inputPlaceholder": "Track your shipment"
+    },
+    "about": {
+      "title": "Reliable Logistics Partner Across the Globe",
+      "description": "At Maxline Global, we connect businesses to markets across the world. With our comprehensive logistics partner and commitment to service excellence, we ensure your cargo moves with speed, safety, and precision.",
+      "type": {
+        "air": "Air / 01",
+        "sea": "Sea / 02",
+        "road": "Road / 03"
+      }
+    },
+    "service": {
+      "heading": {
+        "first": "Built to Empower",
+        "second": "Efficiency"
+      },
+      "description": "Maxline turns fragmented workflows into unified strategies. Whether you're in the office or across the globe, we're one connected force",
+      "btnText": "Explore our services",
+      "title": "Integrated freight solutions tailored to your exact specifications."
+    }
   }
 };
 export default messages;

@@ -102,7 +102,7 @@ export const AboutSection = memo(() => {
         />
       </motion.div>
       <div
-        className="relative col-start-1 flex items-center justify-center md:col-start-2"
+        className="relative col-start-1 flex items-center justify-center md:col-start-2 rtl:md:col-start-1"
         itemProp="serviceType"
       >
         <div className="relative">
@@ -114,7 +114,7 @@ export const AboutSection = memo(() => {
             onMouseEnter={() => setActive("air")}
           >
             <div className="group-hover:bg-primary absolute -top-1/2 z-10 grid h-6 w-16 origin-right -translate-x-[85%] -translate-y-1/4 place-content-center rounded-sm bg-white text-xs font-medium transition-colors">
-              01 / Air
+              {t("about.type.air")}
             </div>
             <div className="group-hover:bg-primary/20 absolute top-1/2 left-1/2 size-6 -translate-x-1/2 -translate-y-1/2 animate-pulse rounded-full bg-white/50 transition-colors" />
           </div>
@@ -126,7 +126,7 @@ export const AboutSection = memo(() => {
             onMouseEnter={() => setActive("sea")}
           >
             <div className="group-hover:bg-primary absolute -top-1/2 z-10 grid h-6 w-16 origin-right -translate-x-[85%] -translate-y-1/4 place-content-center rounded-sm bg-white text-xs font-medium transition-colors">
-              02 / Sea
+              {t("about.type.sea")}
             </div>
             <div className="group-hover:bg-primary/20 absolute top-1/2 left-1/2 size-6 -translate-x-1/2 -translate-y-1/2 animate-pulse rounded-full bg-white/50 transition-colors" />
           </div>
@@ -138,7 +138,7 @@ export const AboutSection = memo(() => {
             onMouseEnter={() => setActive("road")}
           >
             <div className="group-hover:bg-primary absolute -top-1/2 z-10 grid h-6 w-[4.5rem] origin-right -translate-x-[85%] -translate-y-1/4 place-content-center rounded-sm bg-white text-xs font-medium transition-colors">
-              03 / Road
+              {t("about.type.road")}
             </div>
             <div className="group-hover:bg-primary/20 absolute top-1/2 left-1/2 size-6 -translate-x-1/2 -translate-y-1/2 animate-pulse rounded-full bg-white/50 transition-colors" />
           </div>
