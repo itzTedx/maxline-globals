@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import { IconArrowRight } from "@tabler/icons-react";
+import { useTranslations } from "next-intl";
 
 import LetterSwapPingPong from "@/components/animation/letter-swap-pingpong-anim";
 import { Button } from "@/components/ui/button";
@@ -28,6 +29,7 @@ export function InsightCard({
   image,
   slug,
 }: InsightCardProps) {
+  const t = useTranslations("HomePage");
   return (
     <Card className="group relative gap-0 overflow-hidden p-0 md:gap-4">
       <Link
@@ -63,7 +65,7 @@ export function InsightCard({
           aria-label={`Read full article: ${title}`}
         >
           <LetterSwapPingPong
-            label="Read Article"
+            label={t("insights.readBtn")}
             staggerFrom={"first"}
             reverse={false}
             className="w-full justify-start text-sm font-semibold sm:text-base"

@@ -132,7 +132,86 @@
     "insights": {
       "title": "مستجدات وتحديثات <span>ماكسلاين</span>",
       "description": "ابق على اطلاع بأحدث الاتجاهات في مجال الخدمات اللوجستية والتجارة وسلسلة التوريد العالمية.",
-      "btnText": "أكثر"
-    }
+      "btnText": "أكثر",
+      "readBtn": "اقرأ المقال",
+      "exploreBtn": "اكتشف المزيد"
+    },
+    "insightsList": [
+      {
+        "id": 1,
+        "title": "ما هو الشحن العابر ومتى يكون الخيار الأفضل؟",
+        "description": "نظرة سريعة على كيفية عمل الشحن العابر، ومتى يجب استخدامه، وكيف تجعل ماكسلاين جلوبال العملية سلسة.",
+        "image": "/images/blogs/scene-with-photorealistic-logistics-operations-proceedings.jpg",
+        "slug": "cross-trade-shipping-guide"
+      },
+      {
+        "id": 2,
+        "title": "ما هو الشحن العابر ومتى يكون الخيار الأفضل؟",
+        "description": "نظرة سريعة على كيفية عمل الشحن العابر، ومتى يجب استخدامه، وكيف تجعل ماكسلاين جلوبال العملية سلسة.",
+        "image": "/images/blogs/transport-logistics-products (2).jpg",
+        "slug": "cross-trade-shipping-guide"
+      },
+      {
+        "id": 3,
+        "title": "ما هو الشحن العابر ومتى يكون الخيار الأفضل؟",
+        "description": "نظرة سريعة على كيفية عمل الشحن العابر، ومتى يجب استخدامه، وكيف تجعل ماكسلاين جلوبال العملية سلسة.",
+        "image": "/images/blogs/transport-logistics-products.jpg",
+        "slug": "cross-trade-shipping-guide"
+      },
+      {
+        "id": 4,
+        "title": "ما هو الشحن العابر ومتى يكون الخيار الأفضل؟",
+        "description": "نظرة سريعة على كيفية عمل الشحن العابر، ومتى يجب استخدامه، وكيف تجعل ماكسلاين جلوبال العملية سلسة.",
+        "image": "/images/blogs/truck-logistics-operation-dusk.jpg",
+        "slug": "cross-trade-shipping-guide"
+      },
+      {
+        "id": 5,
+        "title": "ما هو الشحن العابر ومتى يكون الخيار الأفضل؟",
+        "description": "نظرة سريعة على كيفية عمل الشحن العابر، ومتى يجب استخدامه، وكيف تجعل ماكسلاين جلوبال العملية سلسة.",
+        "image": "/images/blogs/scene-with-photorealistic-logistics-operations-proceedings.jpg",
+        "slug": "cross-trade-shipping-guide"
+      },
+      {
+        "id": 6,
+        "title": "ما هو الشحن العابر ومتى يكون الخيار الأفضل؟",
+        "description": "نظرة سريعة على كيفية عمل الشحن العابر، ومتى يجب استخدامه، وكيف تجعل ماكسلاين جلوبال العملية سلسة.",
+        "image": "/images/blogs/scene-with-photorealistic-logistics-operations-proceedings.jpg",
+        "slug": "cross-trade-shipping-guide"
+      }
+    ]
+  },
+  "Cta": {
+    "title": "هل أنت مستعد لدفع عملك إلى الأمام؟",
+    "description": "تعاون مع ماكسلاين جلوبال للحصول على حلول لوجستية موثوقة.",
+    "call": "اتصل للاستفسار",
+    "email": "أرسل لنا بريدًا إلكترونيًا",
+    "phone": "+97142822022",
+    "emailAddress": "reception@maxlineglobal.com"
+  },
+  "Footer": {
+    "slogan1": "شريكك اللوجستي الموثوق، نمضي قدماً،",
+    "slogan2": "كل يوم.",
+    "locationLabel": "الموقع:",
+    "locationAddress": "منطقة جبل علي الحرة، دبي.",
+    "getQuote": "احصل على عرض سعر",
+    "general": "عام",
+    "about": "من نحن",
+    "team": "الفريق",
+    "insights": "الرؤى والتحديثات",
+    "contact": "اتصل بنا",
+    "services": "الخدمات",
+    "support": "الدعم",
+    "trackShipment": "تتبع شحنتك",
+    "getQuoteShort": "عرض سعر",
+    "technicalSupport": "الدعم الفني",
+    "social": "اجتماعي",
+    "linkedin": "لينكدإن",
+    "instagram": "انستغرام",
+    "facebook": "فيسبوك",
+    "x": "إكس",
+    "copyright": "© {year} ماكسلاين جلوبال. جميع الحقوق محفوظة.",
+    "designedBy": "تصميم وتطوير بواسطة {agency}",
+    "agencyName": "زيرون ميديا"
   }
 }

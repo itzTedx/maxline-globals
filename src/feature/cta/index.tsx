@@ -1,4 +1,8 @@
+"use client";
+
 import Image from "next/image";
+
+import { useTranslations } from "next-intl";
 
 import { XIcon } from "@/assets/x-icon";
 import CenterUnderline from "@/components/animation/underline-center";
@@ -6,6 +10,7 @@ import VerticalCutReveal from "@/components/animation/vertical-cut-reveal";
 import { Link } from "@/i18n/navigation";
 
 export const Cta = () => {
+  const t = useTranslations("Cta");
   return (
     <section
       id="cta"
@@ -15,7 +20,7 @@ export const Cta = () => {
       itemType="https://schema.org/Organization"
     >
       <div className="relative overflow-hidden rounded-3xl">
-        <div className="absolute z-0 flex h-full w-full overflow-hidden">
+        <div className="absolute z-0 flex h-full w-full overflow-hidden rtl:-scale-x-100">
           <Image
             src="/images/cta-bg-v2.jpg"
             fill
@@ -44,7 +49,7 @@ export const Cta = () => {
                   damping: 21,
                 }}
               >
-                {`Ready to move your business forward?`}
+                {t("title")}
               </VerticalCutReveal>
             </h4>
             <p
@@ -62,27 +67,27 @@ export const Cta = () => {
                   damping: 21,
                 }}
               >
-                {`Partner with Maxline Global for reliable logistics solutions.`}
+                {t("description")}
               </VerticalCutReveal>
             </p>
           </div>
           <ul className="flex flex-col gap-4 md:gap-2">
             <li className="bg-background/70 rounded-md p-4 backdrop-blur-xl md:p-6">
-              <h5 className="text-secondary font-light">Call for enquiry</h5>
+              <h5 className="text-secondary font-light">{t("call")}</h5>
               <Link
-                href="tel:+97142822022"
+                href={`tel:${t("phone")}`}
                 className="text-brand-dark text-lg font-bold md:text-xl"
               >
-                <CenterUnderline label="+97142822022" />
+                <CenterUnderline label={t("phone")} />
               </Link>
             </li>
             <li className="bg-background/70 rounded-md p-4 backdrop-blur-xl md:p-6">
-              <h5 className="text-secondary font-light">Send us email</h5>
+              <h5 className="text-secondary font-light">{t("email")}</h5>
               <Link
-                href="mailto:reception@maxlineglobal.com"
+                href={`mailto:${t("emailAddress")}`}
                 className="text-brand-dark text-lg font-bold md:text-xl"
               >
-                <CenterUnderline label="reception@maxlineglobal.com" />
+                <CenterUnderline label={t("emailAddress")} />
               </Link>
             </li>
           </ul>

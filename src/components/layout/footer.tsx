@@ -1,4 +1,5 @@
 import { IconArrowRight, IconMapPin } from "@tabler/icons-react";
+import { useTranslations } from "next-intl";
 
 import { Logo } from "@/assets/logo";
 import { XSolidIcon } from "@/assets/x-icon";
@@ -12,6 +13,7 @@ import { Button } from "../ui/button";
 import { Separator } from "../ui/separator";
 
 export const Footer = () => {
+  const t = useTranslations("Footer");
   return (
     <footer className="bg-brand-dark text-background relative z-0 w-full overflow-hidden">
       {/* <footer className="bg-brand-dark text-background sticky bottom-0 z-0 w-full overflow-hidden"> */}
@@ -27,7 +29,7 @@ export const Footer = () => {
               damping: 21,
             }}
           >
-            {`Your trusted logistics partner, moving forward,`}
+            {t("slogan1")}
           </VerticalCutReveal>
           <VerticalCutReveal
             containerClassName="text-primary"
@@ -41,7 +43,7 @@ export const Footer = () => {
               damping: 21,
             }}
           >
-            {`every day.`}
+            {t("slogan2")}
           </VerticalCutReveal>
         </h5>
 
@@ -55,7 +57,7 @@ export const Footer = () => {
             >
               <IconMapPin className="size-5 stroke-1" />
               <p className="text-sm font-light sm:text-base">
-                Location:{" "}
+                {t("locationLabel") + " "}
                 <span
                   itemProp="address"
                   itemScope
@@ -63,7 +65,7 @@ export const Footer = () => {
                 >
                   <span itemProp="streetAddress">
                     <CenterUnderline
-                      label="Jebel Ali Free Zone, Dubai."
+                      label={t("locationAddress")}
                       className="font-medium"
                     />
                   </span>
@@ -81,7 +83,7 @@ export const Footer = () => {
             >
               <Link href="/quote" className="text-brand-dark group">
                 <LetterSwapPingPong
-                  label="Get A Quote"
+                  label={t("getQuote")}
                   staggerFrom="first"
                   reverse={false}
                   className="w-full justify-start font-semibold"
@@ -100,7 +102,7 @@ export const Footer = () => {
             {FOOTER_LINKS.map((section) => (
               <div key={section.header} className="mb-6">
                 <h6 className="text-primary mb-3 text-sm font-semibold uppercase sm:text-base">
-                  {section.header}
+                  {t(section.header as string, section.header)}
                 </h6>
                 <ul className="space-y-2 sm:space-y-4">
                   {section.links.map((link) => (
@@ -109,7 +111,9 @@ export const Footer = () => {
                         href={link.href}
                         className="font-grotesk text-sm font-black sm:text-base"
                       >
-                        <CenterUnderline label={link.title} />
+                        <CenterUnderline
+                          label={t(link.title as string, link.title)}
+                        />
                       </Link>
                     </li>
                   ))}
@@ -125,14 +129,13 @@ export const Footer = () => {
       <div className="z-10 container flex flex-col items-center justify-between gap-4 py-6 sm:flex-row sm:py-9">
         <Logo className="text-background" />
         <p className="text-center text-sm sm:text-left sm:text-base">
-          © {new Date().getFullYear()} Maxline Globals. All Rights Reserved.
+          {t("copyright", { year: String(new Date().getFullYear()) })}
         </p>
         <Link
           href="https://www.zironmedia.com"
           className="text-muted-foreground text-xs font-light"
         >
-          Designed & Developed by{" "}
-          <span className="font-medium">Ziron Media</span>
+          {t("designedBy", { agency: t("agencyName") })}
         </Link>
       </div>
 

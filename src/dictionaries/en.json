@@ -132,7 +132,86 @@
     "insights": {
       "title": "<span>Maxline</span> Insights & Updates",
       "description": "Stay ahead with the latest in logistics, trade, and global supply chain trends.",
-      "btnText": "More"
-    }
+      "btnText": "More",
+      "readBtn": "Read Article",
+      "exploreBtn": "Explore More"
+    },
+    "insightsList": [
+      {
+        "id": 1,
+        "title": "What is cross-trade shipping and when is it the best option?",
+        "description": "A quick look at how cross-trade shipping works, when to use it, and how Maxline Global makes it seamless.",
+        "image": "/images/blogs/scene-with-photorealistic-logistics-operations-proceedings.jpg",
+        "slug": "cross-trade-shipping-guide"
+      },
+      {
+        "id": 2,
+        "title": "What is cross-trade shipping and when is it the best option?",
+        "description": "A quick look at how cross-trade shipping works, when to use it, and how Maxline Global makes it seamless.",
+        "image": "/images/blogs/transport-logistics-products (2).jpg",
+        "slug": "cross-trade-shipping-guide"
+      },
+      {
+        "id": 3,
+        "title": "What is cross-trade shipping and when is it the best option?",
+        "description": "A quick look at how cross-trade shipping works, when to use it, and how Maxline Global makes it seamless.",
+        "image": "/images/blogs/transport-logistics-products.jpg",
+        "slug": "cross-trade-shipping-guide"
+      },
+      {
+        "id": 4,
+        "title": "What is cross-trade shipping and when is it the best option?",
+        "description": "A quick look at how cross-trade shipping works, when to use it, and how Maxline Global makes it seamless.",
+        "image": "/images/blogs/truck-logistics-operation-dusk.jpg",
+        "slug": "cross-trade-shipping-guide"
+      },
+      {
+        "id": 5,
+        "title": "What is cross-trade shipping and when is it the best option?",
+        "description": "A quick look at how cross-trade shipping works, when to use it, and how Maxline Global makes it seamless.",
+        "image": "/images/blogs/scene-with-photorealistic-logistics-operations-proceedings.jpg",
+        "slug": "cross-trade-shipping-guide"
+      },
+      {
+        "id": 6,
+        "title": "What is cross-trade shipping and when is it the best option?",
+        "description": "A quick look at how cross-trade shipping works, when to use it, and how Maxline Global makes it seamless.",
+        "image": "/images/blogs/scene-with-photorealistic-logistics-operations-proceedings.jpg",
+        "slug": "cross-trade-shipping-guide"
+      }
+    ]
+  },
+  "Cta": {
+    "title": "Ready to move your business forward?",
+    "description": "Partner with Maxline Global for reliable logistics solutions.",
+    "call": "Call for enquiry",
+    "email": "Send us email",
+    "phone": "+97142822022",
+    "emailAddress": "reception@maxlineglobal.com"
+  },
+  "Footer": {
+    "slogan1": "Your trusted logistics partner, moving forward,",
+    "slogan2": "every day.",
+    "locationLabel": "Location:",
+    "locationAddress": "Jebel Ali Free Zone, Dubai.",
+    "getQuote": "Get A Quote",
+    "general": "General",
+    "about": "About",
+    "team": "Team",
+    "insights": "Insights & Updates",
+    "contact": "Contact",
+    "services": "Services",
+    "support": "Support",
+    "trackShipment": "Track your Shipment",
+    "getQuoteShort": "Get Quote",
+    "technicalSupport": "Technical Support",
+    "social": "Social",
+    "linkedin": "Linkedin",
+    "instagram": "Instagram",
+    "facebook": "Facebook",
+    "x": "X",
+    "copyright": "© {year} Maxline Globals. All Rights Reserved.",
+    "designedBy": "Designed & Developed by {agency}",
+    "agencyName": "Ziron Media"
   }
 }

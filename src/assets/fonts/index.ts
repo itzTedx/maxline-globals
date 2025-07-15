@@ -1,4 +1,4 @@
-import { Geist } from "next/font/google";
+import { Geist, IBM_Plex_Sans_Arabic } from "next/font/google";
 import localFont from "next/font/local";
 
 export const geistSans = Geist({
@@ -28,4 +28,11 @@ export const radioGrostek = localFont({
       path: "./PPRadioGrotesk-Black.otf",
     },
   ],
+});
+
+export const ibmPlexSansArabic = IBM_Plex_Sans_Arabic({
+  variable: "--font-ibm-plex",
+  weight: ["300", "400", "500", "600", "700"],
+  subsets: ["arabic"],
+  display: "swap",
 });

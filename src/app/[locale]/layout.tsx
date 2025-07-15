@@ -4,7 +4,7 @@ import Script from "next/script";
 
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 
-import { geistSans, radioGrostek } from "@/assets/fonts";
+import { geistSans, ibmPlexSansArabic, radioGrostek } from "@/assets/fonts";
 import BreakpointIndicator from "@/components/breakpoint-indicator";
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
@@ -124,9 +124,10 @@ export default async function RootLayout({
       </head>
       <body
         className={cn(
-          "antialiased",
+          "rtl:font-ibm-plex antialiased",
           geistSans.className,
-          radioGrostek.variable
+          radioGrostek.variable,
+          ibmPlexSansArabic.variable
         )}
       >
         <NextIntlClientProvider locale={locale} messages={messages}>

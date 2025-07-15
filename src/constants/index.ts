@@ -26,7 +26,6 @@ const SERVICES_LINKS = [
     href: "/services/land-freight",
     img: "/images/blogs/transport-logistics-products.jpg",
   },
-
   {
     title: "Project Cargo",
     href: "/services/project-cargo",
@@ -207,70 +206,34 @@ export const FAQS = [
 
 export const FOOTER_LINKS = [
   {
-    header: "General",
+    header: "general",
     links: [
-      {
-        title: "Home",
-        href: "/",
-      },
-      {
-        title: "About",
-        href: "/company/about",
-      },
-      {
-        title: "Team",
-        href: "/company/team",
-      },
-      {
-        title: "Insights & Updates",
-        href: "/insights",
-      },
-      {
-        title: "Contact",
-        href: "/contact",
-      },
+      { title: "home", href: "/" },
+      { title: "about", href: "/company/about" },
+      { title: "team", href: "/company/team" },
+      { title: "insights", href: "/insights" },
+      { title: "contact", href: "/contact" },
     ],
   },
   {
-    header: "Services",
+    header: "services",
     links: SERVICES_LINKS,
   },
   {
-    header: "Support",
+    header: "support",
     links: [
-      {
-        title: "Track your Shipment",
-        href: "/track-shipment",
-      },
-      {
-        title: "Get Quote",
-        href: "/quote",
-      },
-      {
-        title: "Technical Support",
-        href: "/contact",
-      },
+      { title: "trackShipment", href: "/track-shipment" },
+      { title: "getQuoteShort", href: "/quote" },
+      { title: "technicalSupport", href: "/contact" },
     ],
   },
   {
-    header: "Social",
+    header: "social",
     links: [
-      {
-        title: "Linkedin",
-        href: "/",
-      },
-      {
-        title: "Instagram",
-        href: "/",
-      },
-      {
-        title: "Facebook",
-        href: "/",
-      },
-      {
-        title: "X",
-        href: "/",
-      },
+      { title: "linkedin", href: "/" },
+      { title: "instagram", href: "/" },
+      { title: "facebook", href: "/" },
+      { title: "x", href: "/" },
     ],
   },
 ];

@@ -1,5 +1,5 @@
 import { IconArrowRight, IconArrowUpRight } from "@tabler/icons-react";
-import { useTranslations } from "next-intl";
+import { getLocale, getTranslations } from "next-intl/server";
 
 import LetterSwapPingPong from "@/components/animation/letter-swap-pingpong-anim";
 import { Button } from "@/components/ui/button";
@@ -15,62 +15,12 @@ import { Link } from "@/i18n/navigation";
 
 import { InsightCard, InsightCardProps } from "./insight-card";
 
-const blogs: InsightCardProps[] = [
-  {
-    id: 1,
-    title: "What is cross-trade shipping and when is it the best option?",
-    description:
-      "A quick look at how cross-trade shipping works, when to use it, and how Maxline Global makes it seamless.",
-    image:
-      "/images/blogs/scene-with-photorealistic-logistics-operations-proceedings.jpg",
-    slug: "cross-trade-shipping-guide",
-  },
-  {
-    id: 2,
-    title: "What is cross-trade shipping and when is it the best option?",
-    description:
-      "A quick look at how cross-trade shipping works, when to use it, and how Maxline Global makes it seamless.",
-    image: "/images/blogs/transport-logistics-products (2).jpg",
-    slug: "cross-trade-shipping-guide",
-  },
-  {
-    id: 3,
-    title: "What is cross-trade shipping and when is it the best option?",
-    description:
-      "A quick look at how cross-trade shipping works, when to use it, and how Maxline Global makes it seamless.",
-    image: "/images/blogs/transport-logistics-products.jpg",
-    slug: "cross-trade-shipping-guide",
-  },
-  {
-    id: 4,
-    title: "What is cross-trade shipping and when is it the best option?",
-    description:
-      "A quick look at how cross-trade shipping works, when to use it, and how Maxline Global makes it seamless.",
-    image: "/images/blogs/truck-logistics-operation-dusk.jpg",
-    slug: "cross-trade-shipping-guide",
-  },
-  {
-    id: 5,
-    title: "What is cross-trade shipping and when is it the best option?",
-    description:
-      "A quick look at how cross-trade shipping works, when to use it, and how Maxline Global makes it seamless.",
-    image:
-      "/images/blogs/scene-with-photorealistic-logistics-operations-proceedings.jpg",
-    slug: "cross-trade-shipping-guide",
-  },
-  {
-    id: 6,
-    title: "What is cross-trade shipping and when is it the best option?",
-    description:
-      "A quick look at how cross-trade shipping works, when to use it, and how Maxline Global makes it seamless.",
-    image:
-      "/images/blogs/scene-with-photorealistic-logistics-operations-proceedings.jpg",
-    slug: "cross-trade-shipping-guide",
-  },
-];
-
-export const InsightsCarousel = () => {
-  const t = useTranslations("HomePage");
+export const InsightsCarousel = async () => {
+  const t = await getTranslations("HomePage");
+  // Get blogs from i18n
+  const blogs: InsightCardProps[] = t.raw ? t.raw("insightsList") : [];
+  const locale = await getLocale();
+  const isRTL = locale === "ar";
   return (
     <section
       className="w-full overflow-hidden py-10 md:py-16 lg:py-20"
@@ -78,8 +28,10 @@ export const InsightsCarousel = () => {
     >
       <Carousel
         className="w-full"
+        dir={isRTL ? "rtl" : "ltr"}
         opts={{
           align: "start",
+          direction: isRTL ? "rtl" : "ltr",
         }}
       >
         <div className="container">
@@ -160,7 +112,7 @@ export const InsightsCarousel = () => {
               <div className="h-full p-1">
                 <Card className="h-full gap-4 overflow-hidden p-0">
                   <CardContent className="text-brand-gray relative flex h-full flex-col items-center justify-center px-0 text-xl font-medium sm:text-2xl">
-                    <p className="mb-3">Explore More</p>
+                    <p className="mb-3">{t("insights.exploreBtn")}</p>
                     <div className="flex size-8 items-center justify-center rounded-full border sm:size-9">
                       <IconArrowUpRight className="size-4 sm:size-5" />
                     </div>
