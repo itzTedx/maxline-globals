@@ -5,6 +5,7 @@ import { Logo } from "@/assets/logo";
 import { XSolidIcon } from "@/assets/x-icon";
 import LetterSwapPingPong from "@/components/animation/letter-swap-pingpong-anim";
 import CenterUnderline from "@/components/animation/underline-center";
+import type { FooterKey } from "@/constants";
 import { FOOTER_LINKS } from "@/constants";
 import { Link } from "@/i18n/navigation";
 
@@ -102,7 +103,7 @@ export const Footer = () => {
             {FOOTER_LINKS.map((section) => (
               <div key={section.header} className="mb-6">
                 <h6 className="text-primary mb-3 text-sm font-semibold uppercase sm:text-base">
-                  {t(section.header as string, section.header)}
+                  {t(section.header as FooterKey)}
                 </h6>
                 <ul className="space-y-2 sm:space-y-4">
                   {section.links.map((link) => (
@@ -111,9 +112,7 @@ export const Footer = () => {
                         href={link.href}
                         className="font-grotesk text-sm font-black sm:text-base"
                       >
-                        <CenterUnderline
-                          label={t(link.title as string, link.title)}
-                        />
+                        <CenterUnderline label={t(link.title as FooterKey)} />
                       </Link>
                     </li>
                   ))}

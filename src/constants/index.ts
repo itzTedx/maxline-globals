@@ -12,42 +12,42 @@ export type NavLink = {
 
 const SERVICES_LINKS = [
   {
-    title: "Air Freight",
+    title: "airFreight",
     href: "/services/air-freight",
     img: "/images/air-freight.webp",
   },
   {
-    title: "Sea Freight",
+    title: "seaFreight",
     href: "/services/sea-freight",
     img: "/images/sea-freight.webp",
   },
   {
-    title: "Land Freight",
+    title: "landFreight",
     href: "/services/land-freight",
     img: "/images/blogs/transport-logistics-products.jpg",
   },
   {
-    title: "Project Cargo",
+    title: "projectCargo",
     href: "/services/project-cargo",
     img: "/images/transportation-types.jpg",
   },
   {
-    title: "Packing",
+    title: "packing",
     href: "/services/packing",
     img: "/images/packing.webp",
   },
   {
-    title: "Warehousing",
+    title: "warehousing",
     href: "/services/warehousing",
     img: "/images/warehousing.webp",
   },
   {
-    title: "Exhibition Cargo",
+    title: "exhibitionCargo",
     href: "/services/exhibition-cargo",
     img: "/images/exhibition-cargo.webp",
   },
   {
-    title: "Moving & Lashing",
+    title: "MovingLashing",
     href: "/services/movers-lashing",
     img: "/images/movers.webp",
   },
@@ -326,3 +326,21 @@ export const LOCATIONS = [
     link: "",
   },
 ];
+
+export type FooterKey =
+  | "home"
+  | "general"
+  | "about"
+  | "team"
+  | "insights"
+  | "contact"
+  | "services"
+  | "support"
+  | "trackShipment"
+  | "getQuoteShort"
+  | "technicalSupport"
+  | "social"
+  | "linkedin"
+  | "instagram"
+  | "facebook"
+  | "x";

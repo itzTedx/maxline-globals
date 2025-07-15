@@ -11,14 +11,14 @@ declare const messages: {
     "services": "الخدمات",
     "trackShipment": "تتبع الشحنة",
     "contact": "اتصل بنا",
-    "Air Freight": "الشحن الجوي",
-    "Sea Freight": "الشحن البحري",
-    "Land Freight": "الشحن البري",
-    "Project Cargo": "المشاريع والشحنات الضخمة",
-    "Packing": "التغليف",
-    "Warehousing": "التخزين",
-    "Exhibition Cargo": "شحن المعارض",
-    "Moving & Lashing": "النقل والتثبيت",
+    "airFreight": "الشحن الجوي",
+    "seaFreight": "الشحن البحري",
+    "landFreight": "الشحن البري",
+    "projectCargo": "بضائع المشروع",
+    "packing": "التعبئة",
+    "warehousing": "التخزين",
+    "exhibitionCargo": "معرض البضائع",
+    "MovingLashing": "النقل والربط",
     "getQuote": "يقتبس"
   },
   "HomePage": {
@@ -200,6 +200,7 @@ declare const messages: {
     "getQuote": "احصل على عرض سعر",
     "general": "عام",
     "about": "من نحن",
+    "home": "الرئيسية",
     "team": "الفريق",
     "insights": "الرؤى والتحديثات",
     "contact": "اتصل بنا",
@@ -215,7 +216,15 @@ declare const messages: {
     "x": "إكس",
     "copyright": "© {year} ماكسلاين جلوبال. جميع الحقوق محفوظة.",
     "designedBy": "تصميم وتطوير بواسطة {agency}",
-    "agencyName": "زيرون ميديا"
+    "agencyName": "زيرون ميديا",
+    "airFreight": "الشحن الجوي",
+    "seaFreight": "الشحن البحري",
+    "landFreight": "الشحن البري",
+    "projectCargo": "بضائع المشروع",
+    "packing": "التعبئة",
+    "warehousing": "التخزين",
+    "exhibitionCargo": "معرض البضائع",
+    "MovingLashing": "النقل والربط"
   }
 };
 export default messages;
