@@ -14,7 +14,11 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { FAQS } from "@/constants";
+
+type Faq = {
+  question: string;
+  answer: string;
+};
 
 export const FaqSection = memo(() => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -31,19 +35,20 @@ export const FaqSection = memo(() => {
     ["inset(50% 50% 50% 50%)", "inset(0% 0% 0% 0%)"]
   );
 
+  const t = useTranslations("HomePage");
+  const faqs: Faq[] = t.raw ? t.raw("faqList") : [];
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: FAQS.map((faq) => ({
+    mainEntity: faqs.map((faq: Faq) => ({
       "@type": "Question",
-      name: faq.title,
+      name: faq.question,
       acceptedAnswer: {
         "@type": "Answer",
-        text: faq.content,
+        text: faq.answer,
       },
     })),
   };
-  const t = useTranslations("HomePage");
 
   return (
     <section
@@ -104,10 +109,10 @@ export const FaqSection = memo(() => {
           type="multiple"
           className="divide-secondary/50 w-full divide-y"
         >
-          {FAQS.map((item) => (
+          {faqs.map((item: Faq, idx: number) => (
             <AccordionItem
-              value={item.title}
-              key={item.id}
+              value={item.question}
+              key={idx}
               className="py-3 md:py-4"
               itemProp="mainEntity"
               itemScope
@@ -117,7 +122,7 @@ export const FaqSection = memo(() => {
                 className="cursor-pointer py-2 text-base font-normal hover:no-underline md:text-lg"
                 itemProp="name"
               >
-                {item.title}
+                {item.question}
               </AccordionTrigger>
               <AccordionContent
                 className="text-muted-foreground pb-2 text-base font-light md:text-lg"
@@ -125,7 +130,7 @@ export const FaqSection = memo(() => {
                 itemScope
                 itemType="https://schema.org/Answer"
               >
-                <span itemProp="text">{item.content}</span>
+                <span itemProp="text">{item.answer}</span>
               </AccordionContent>
             </AccordionItem>
           ))}

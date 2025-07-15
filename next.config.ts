@@ -26,10 +26,7 @@ const nextConfig: NextConfig = {
 
 const withNextIntl = createNextIntlPlugin({
   experimental: {
-    createMessagesDeclaration: [
-      "./src/dictionaries/en.json",
-      "./src/dictionaries/ar.json",
-    ],
+    createMessagesDeclaration: ["./src/dictionaries/en.json"],
   },
 });
 

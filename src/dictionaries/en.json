@@ -78,6 +78,60 @@
     "faq": {
       "title": "Frequently Asked Questions",
       "description": "Discover quick answers to the questions our clients ask most. From shipment tracking to specialized cargo handling, our FAQ section covers everything you need to know about Maxline Global's services, capabilities, and commitment to smooth, secure, and on-time delivery."
+    },
+    "faqList": [
+      {
+        "question": "What logistics services does Maxline Global offer?",
+        "answer": "Maxline Global provides a full range of logistics solutions including sea, air, and land freight, customs clearance, warehousing, project cargo handling, chartering, and more — tailored to your business needs across the GCC and beyond."
+      },
+      {
+        "question": "Which regions or countries does Maxline Global serve?",
+        "answer": "We operate globally with a strong presence across the GCC countries, Asia, Europe, Africa, and the Americas. Our network enables seamless international trade and efficient cargo movement across all major trade lanes."
+      },
+      {
+        "question": "Do you handle dangerous or hazardous cargo?",
+        "answer": "Yes. Maxline Global is certified and experienced in handling hazardous and non-hazardous materials, including chemicals and reefer (temperature-controlled) cargo. Our team follows strict safety standards and international regulations."
+      },
+      {
+        "question": "Can you manage oversized or project cargo?",
+        "answer": "Absolutely. We offer project logistics solutions including heavy lift transport, Ro/Ro services, aircraft/ship chartering, and military or government shipment handling. We also provide port supervision and route planning for complex cargo."
+      },
+      {
+        "question": "Do you provide warehousing and distribution services?",
+        "answer": "Yes. We operate modern warehousing facilities in and around Jebel Ali Free Zone (JAFZA) with services like palletizing, shrink wrapping, labeling, and web-based inventory management. We also offer local and international distribution services."
+      },
+      {
+        "question": "How can I track my shipment?",
+        "answer": "We provide an easy-to-use Track & Trace system for real-time shipment updates. Clients can log in to our portal to view current location, estimated delivery time, and shipment history."
+      },
+      {
+        "question": "Do you provide door-to-door logistics services?",
+        "answer": "Yes. We offer door-to-door, door-to-port, and port-to-door services for both LCL (Less than Container Load) and FCL (Full Container Load) shipments. This includes document handling, customs clearance, and final delivery."
+      },
+      {
+        "question": "How do I get a quote for freight services?",
+        "answer": "Our team is available Monday to Friday, from 9:00 AM to 6:00 PM (UAE time). We are closed on weekends and public holidays. For urgent shipments, we can make special arrangements."
+      },
+      {
+        "question": "What are your business hours?",
+        "answer": "Our team is available Monday to Friday, from 9:00 AM to 6:00 PM (UAE time). We are closed on weekends and public holidays. For urgent shipments, we can make special arrangements."
+      },
+      {
+        "question": "Why should I choose Maxline Global as my logistics partner?",
+        "answer": "Maxline Global combines deep industry experience, a global network, and advanced logistics technology to offer flexible, scalable, and cost-effective supply chain solutions. We prioritize customer satisfaction, accuracy, and on-time delivery for every shipment."
+      },
+      {
+        "question": "What types of cargo does Maxline Global handle?",
+        "answer": "Maxline Global handles a wide range of cargo, including general freight, hazardous and non-hazardous goods, temperature-sensitive shipments, oversized project cargo, and time-critical deliveries by land, sea, and air."
+      },
+      {
+        "question": "Do you provide customs clearance services?",
+        "answer": "Yes, we offer comprehensive customs brokerage services for import, export, and transshipment across sea and air freight. Our team ensures compliance and smooth clearance through all major ports."
+      }
+    ],
+    "insights": {
+      "title": "Maxline Insights & Updates",
+      "description": "Stay ahead with the latest in logistics, trade, and global supply chain trends."
     }
   }
 }
