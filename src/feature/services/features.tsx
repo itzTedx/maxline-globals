@@ -7,7 +7,7 @@ export const Features = ({ overview, features }: FeaturesProps) => {
   return (
     <>
       <section
-        className="container grid grid-cols-1 gap-3 py-8 md:grid-cols-3 md:py-12"
+        className="container grid grid-cols-1 gap-3 py-8 md:grid-cols-5 md:py-12"
         aria-labelledby="overview-title"
         id="overview"
         itemScope
@@ -15,13 +15,13 @@ export const Features = ({ overview, features }: FeaturesProps) => {
       >
         <h2
           id="overview-title"
-          className="text-brand-dark font-grotesk text-4xl tracking-tight md:text-6xl/16"
+          className="text-brand-dark font-grotesk text-4xl tracking-tight md:col-span-2 md:text-6xl/16"
           itemProp="name"
         >
           <StaggeredText text={overview.title} />
         </h2>
         <p
-          className="col-span-1 text-xl leading-normal font-light md:col-span-2 md:pl-9 md:text-2xl"
+          className="col-span-1 text-xl leading-normal font-light md:col-span-3 md:pl-9 md:text-2xl"
           itemProp="description"
         >
           <StaggeredText text={overview.description} />

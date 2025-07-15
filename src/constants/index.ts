@@ -78,8 +78,8 @@ export const NAVLINKS: NavLink[] = [
       },
       {
         title: "Movers & Lashing",
-        href: "/services/exhibition-cargo",
-        img: "/images/exhibition-cargo.webp",
+        href: "/services/movers-lashing",
+        img: "/images/movers.webp",
       },
     ],
   },
