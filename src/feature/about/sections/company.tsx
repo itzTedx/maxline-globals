@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 
 import { AnimatePresence, motion } from "motion/react";
+import { useTranslations } from "next-intl";
 
 import { Logo1, Logo2, Logo3, Logo4, Logo5, Logo6 } from "@/assets/mock-logos";
 import { StaggeredText } from "@/components/animation/staggered-text";
@@ -20,6 +21,7 @@ const items = [
 
 export const CompanySection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const t = useTranslations("AboutPage");
 
   useEffect(() => {
     const nextIndex = activeIndex === items.length - 1 ? 0 : activeIndex + 1;
@@ -30,10 +32,12 @@ export const CompanySection = () => {
   return (
     <section className="overflow-hidden py-12 md:py-16 lg:py-20">
       <div className="container max-w-5xl text-center">
-        <p className="text-secondary z-10 text-lg md:text-2xl">Our clients</p>
+        <p className="text-secondary z-10 text-lg md:text-2xl">
+          {t("clients.label")}
+        </p>
         <h2 className="font-grotesk text-brand-dark relative z-10 mb-16 text-3xl tracking-tight md:text-4xl lg:text-6xl/16">
           <StaggeredText
-            text="These Companies Trust Us to Deliver Their Vision"
+            text={t("clients.title")}
             className="[&>span:nth-last-child(-n+2)]:text-secondary"
             staggerChildren={0.03}
             duration={0.7}

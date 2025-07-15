@@ -1,6 +1,8 @@
 import Image from "next/image";
 import React from "react";
 
+import { useTranslations } from "next-intl";
+
 import SimpleMarquee from "@/components/animation/simple-marquee";
 import { HeroHeader } from "@/components/hero-header";
 import { CAROUSEL_IMAGES } from "@/constants";
@@ -16,17 +18,17 @@ const MarqueeItem = React.memo(
 MarqueeItem.displayName = "MarqueeItem";
 
 export const AboutHeroSection = () => {
+  const t = useTranslations("AboutPage");
+  const heroTitle = t("heroTitle");
+  // Optionally split heroTitle for styling if needed
   return (
     <div className="overflow-hidden">
       <HeroHeader
         className="container"
-        subtitle="About us"
+        subtitle={t("badge")}
         title={[
-          { text: "Building Smarter Supply Chains for a" },
-          {
-            text: "Connected World.",
-            className: "text-secondary",
-          },
+          { text: heroTitle.split(".")[0] },
+          { text: heroTitle.split(".")[1] || "", className: "text-secondary" },
         ]}
       />
 

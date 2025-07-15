@@ -222,5 +222,47 @@
     "warehousing": "Warehousing",
     "exhibitionCargo": "Exhibition Cargo",
     "MovingLashing": "Moving & Lashing"
+  },
+  "AboutPage": {
+    "badge": "About us",
+    "heroTitle": "Building Smarter Supply Chains for a Connected World.",
+    "whatWeDo": {
+      "title": "What we do?",
+      "description": "At <span>Maxline global</span> logistics solutions, our mission is to provide exceptional logistics services to our clients, enabling them to streamline their supply chain and focus on their core business operations. We have been serving our clients with top-notch freight forwarding end-to-end service from its inception."
+    },
+    "principles": {
+      "title": "Our Core Principles:",
+      "list": [
+        {
+          "label": "Vision",
+          "title": "Leading with Vision, Moving with Purpose.",
+          "description": "Our vision is to be the foremost leader in the freight forwarding industry, renowned for our innovative, sustainable, and customer-centric logistics solutions that redefine industry standards."
+        },
+        {
+          "label": "Mission",
+          "title": "Driven by Purpose. Defined by Progress.",
+          "description": "Our mission is to deliver unparalleled excellence in freight forwarding by providing innovative, sustainable, and customer-focused solutions. We strive to exceed expectations, create lasting value for our clients, and drive progress in the logistics sector."
+        },
+        {
+          "label": "Fast Service",
+          "title": "Logistics at the Speed of Business.",
+          "description": "We are committed to providing fast and reliable logistics services, ensuring the timely and efficient delivery of your goods. Our focus is on meeting and exceeding your expectations, helping your business thrive in today's fast-paced market. Experience the speed and efficiency of our logistics solutions."
+        },
+        {
+          "label": "100% Accuracy",
+          "title": "Delivering Accuracy, Every Time.",
+          "description": "We guarantee 100% accuracy in every shipment through meticulous planning, streamlined processes, and efficient communication. Leveraging advanced technologies like real-time tracking and automation, we ensure precision and reliability, giving you peace of mind with every delivery. Trust us for accurate and dependable logistics solutions."
+        }
+      ]
+    },
+    "clients": {
+      "label": "Our clients",
+      "title": "These Companies Trust Us to Deliver Their Vision"
+    },
+    "words": "In a world where delays and cost overruns are common, Maxline Global Logistics delivers with precision. We commit to timelines and budgets—and we deliver. This promise drives how we train our teams, apply smart logistics technology, and serve clients worldwide.",
+    "certification": {
+      "title": "Certified for Excellence in Global Logistics",
+      "description": "Maxline Global's certifications demonstrate our commitment to safe, efficient, and compliant logistics across air, sea, and land. We meet international standards in freight forwarding, warehousing, customs, and hazardous cargo-ensuring trust and reliability throughout the supply chain."
+    }
   }
 }

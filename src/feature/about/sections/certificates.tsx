@@ -1,6 +1,8 @@
 import Image from "next/image";
 import React from "react";
 
+import { useTranslations } from "next-intl";
+
 import { StaggeredText } from "@/components/animation/staggered-text";
 
 // Add your logo filenames here
@@ -31,6 +33,7 @@ const CertificateLogo = React.memo(
 CertificateLogo.displayName = "CertificateLogo";
 
 export const CertificatesSection = () => {
+  const t = useTranslations("AboutPage");
   return (
     <section
       className="container max-w-7xl py-12 md:py-16 lg:py-20"
@@ -39,7 +42,7 @@ export const CertificatesSection = () => {
       <div className="container mb-9 text-center">
         <h2 className="font-grotesk text-brand-dark relative z-10 container mx-auto mb-4 max-w-4xl text-3xl tracking-tight md:text-4xl lg:text-6xl/16">
           <StaggeredText
-            text="Certified for Excellence in Global Logistics"
+            text={t("certification.title")}
             className="[&>span:nth-last-child(n+4)]:text-secondary"
             staggerChildren={0.03}
             duration={0.7}
@@ -47,7 +50,7 @@ export const CertificatesSection = () => {
         </h2>
         <p className="text-brand-gray font-light md:text-lg">
           <StaggeredText
-            text="Maxline Global's certifications demonstrate our commitment to safe, efficient, and compliant logistics across air, sea, and land. We meet international standards in freight forwarding, warehousing, customs, and hazardous cargo—ensuring trust and reliability throughout the supply chain."
+            text={t("certification.description")}
             className=""
             staggerChildren={0.03}
             duration={0.7}

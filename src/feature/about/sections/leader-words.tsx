@@ -1,6 +1,9 @@
+import { useTranslations } from "next-intl";
+
 import { XIcon } from "@/assets/x-icon";
 
 export const LeaderWords = () => {
+  const t = useTranslations("AboutPage");
   return (
     <section
       className="container pt-12 md:pt-16 lg:pt-20"
@@ -8,13 +11,7 @@ export const LeaderWords = () => {
     >
       <div className="bg-brand-dark text-background relative space-y-6 overflow-hidden rounded-3xl px-12 py-16 text-center md:px-16 md:py-20 lg:px-24 lg:py-32">
         <blockquote className="font-grotesk relative z-10 text-2xl text-balance md:text-3xl lg:text-4xl/12">
-          In a world where delays and cost overruns are common, Maxline Global
-          Logistics delivers with precision.{" "}
-          <span className="text-primary">
-            We commit to timelines and budgets—and we deliver.
-          </span>{" "}
-          This promise drives how we train our teams, apply smart logistics
-          technology, and serve clients worldwide.
+          {t("words")}
         </blockquote>
         {/* <div className="text-primary relative z-10 flex items-center justify-center gap-4">
           <div

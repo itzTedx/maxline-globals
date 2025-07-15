@@ -4,10 +4,10 @@ import Image from "next/image";
 import React, { Fragment, useEffect, useRef, useState } from "react";
 
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 import { StaggeredText } from "@/components/animation/staggered-text";
 import { Separator } from "@/components/ui/separator";
-import { PRINCIPLES } from "@/constants";
 
 const images = [
   "/images/carousel/technological-futuristic-holograms-logistics-means-transport.jpg",
@@ -71,7 +71,15 @@ const PrincipleImage = React.memo(
 
 PrincipleImage.displayName = "PrincipleImage";
 
+type Principle = {
+  label: string;
+  title: string;
+  description: string;
+};
+
 export const Principles = () => {
+  const t = useTranslations("AboutPage");
+  const principles = t.raw("principles.list") as Principle[];
   const [currentImage, setCurrentImage] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -134,11 +142,11 @@ export const Principles = () => {
     <section className="relative container grid gap-36 py-20 md:grid-cols-2">
       <div className="space-y-12 md:space-y-20 lg:space-y-28" ref={sectionRef}>
         <h2 className="font-grotesk text-brand-dark text-3xl md:max-w-xs md:text-5xl lg:text-6xl/18">
-          <StaggeredText text="Our Core Principles:" />
+          <StaggeredText text={t("principles.title")} />
         </h2>
         <Separator />
-        {PRINCIPLES.map((p, index) => (
-          <Fragment key={p.head}>
+        {principles.map((p: Principle, index: number) => (
+          <Fragment key={p.label}>
             <div
               ref={(el) => {
                 if (el) elementRefs.current[index] = el;
@@ -146,7 +154,7 @@ export const Principles = () => {
               className="grid grid-cols-4 gap-3 md:grid-cols-3"
             >
               <h3 className="text-secondary mt-2.5 text-xs font-medium uppercase md:text-lg md:font-light lg:text-xl">
-                <StaggeredText text={p.head} />
+                <StaggeredText text={p.label} />
               </h3>
               <div className="col-span-3 md:col-span-2">
                 <h4 className="font-grotesk text-brand-dark text-3xl text-balance md:text-4xl lg:text-5xl/16">
