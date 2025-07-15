@@ -1,9 +1,8 @@
-import Link from "next/link";
-
 import { IconArrowRight } from "@tabler/icons-react";
 import { type VariantProps } from "class-variance-authority";
 
 import LetterSwapPingPong from "@/components/animation/letter-swap-pingpong-anim";
+import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 
 import { Button as ShadBtn } from "./button";

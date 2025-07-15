@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 import { IconMenu2 } from "@tabler/icons-react";
 
 import { Logo } from "@/assets/logo";
@@ -16,6 +14,7 @@ import {
 } from "@/components/ui/drawer";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { NavLink } from "@/constants";
+import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 
 import { QuoteButton } from "./quote-button";

@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import Script from "next/script";
+
+import { NextIntlClientProvider, hasLocale } from "next-intl";
 
 import { geistSans, radioGrostek } from "@/assets/fonts";
 import BreakpointIndicator from "@/components/breakpoint-indicator";
@@ -7,6 +10,7 @@ import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
 import Providers from "@/components/providers";
 import { siteConfig } from "@/constants/site-config";
+import { routing } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
 
 import "./globals.css";
@@ -52,13 +56,23 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
+  params,
 }: Readonly<{
   children: React.ReactNode;
+  params: Promise<{ locale: string }>;
 }>) {
+  const { locale } = await params;
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
+  const messages = (await import(`@/dictionaries/${locale}.json`)).default;
+
+  console.log(messages);
+
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang={locale} className="scroll-smooth">
       <head>
         <Script
           id="schema-org"
@@ -113,13 +127,15 @@ export default function RootLayout({
           radioGrostek.variable
         )}
       >
-        <Providers>
-          <Navbar />
-          {children}
-        </Providers>
-        <BreakpointIndicator />
+        <NextIntlClientProvider locale={locale} messages={messages}>
+          <Providers>
+            <Navbar />
+            {children}
+          </Providers>
+          <BreakpointIndicator />
 
-        <Footer />
+          <Footer />
+        </NextIntlClientProvider>
       </body>
     </html>
   );

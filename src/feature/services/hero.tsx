@@ -1,9 +1,9 @@
 import Image from "next/image";
-import Link from "next/link";
 
 import { IconArrowDown } from "@tabler/icons-react";
 
 import { Button } from "@/components/ui/button";
+import { Link } from "@/i18n/navigation";
 
 import { HeroProps } from "./types/types";
 

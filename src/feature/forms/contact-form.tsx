@@ -1,7 +1,5 @@
 "use client";
 
-import Link from "next/link";
-
 import { zodResolver } from "@hookform/resolvers/zod";
 import { IconArrowRight } from "@tabler/icons-react";
 import { useForm } from "react-hook-form";
@@ -20,6 +18,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { Link } from "@/i18n/navigation";
 
 import {
   ContactFormData,

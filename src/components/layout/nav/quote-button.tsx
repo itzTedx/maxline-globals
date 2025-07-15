@@ -1,8 +1,7 @@
-import Link from "next/link";
-
 import { IconArrowRight } from "@tabler/icons-react";
 
 import LetterSwapPingPong from "@/components/animation/letter-swap-pingpong-anim";
+import { Link } from "@/i18n/navigation";
 
 import { Button } from "../../ui/button";
 

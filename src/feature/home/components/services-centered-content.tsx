@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useRef } from "react";
 
 import { IconArrowRight } from "@tabler/icons-react";
@@ -9,6 +8,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 
 import LetterSwapPingPong from "@/components/animation/letter-swap-pingpong-anim";
 import { Button } from "@/components/ui/button";
+import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 
 interface ServicesCenteredContentProps {

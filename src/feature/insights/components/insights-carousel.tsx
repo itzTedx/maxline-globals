@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 import { IconArrowRight, IconArrowUpRight } from "@tabler/icons-react";
 
 import LetterSwapPingPong from "@/components/animation/letter-swap-pingpong-anim";
@@ -12,6 +10,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { Link } from "@/i18n/navigation";
 
 import { InsightCard, InsightCardProps } from "./insight-card";
 

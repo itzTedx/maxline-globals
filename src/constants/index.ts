@@ -48,7 +48,7 @@ const SERVICES_LINKS = [
     img: "/images/exhibition-cargo.webp",
   },
   {
-    title: "Movers & Lashing",
+    title: "Moving & Lashing",
     href: "/services/movers-lashing",
     img: "/images/movers.webp",
   },
@@ -128,7 +128,7 @@ export const SERVICES = [
   },
 
   {
-    title: "Movers & Lashing",
+    title: "Moving & Lashing",
     description: "Professional Relocation and Cargo Securing for Safe Transit.",
     href: "/services/project-cargo",
     image: "/images/movers.webp",

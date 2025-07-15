@@ -1,11 +1,11 @@
 import Image from "next/image";
-import Link from "next/link";
 import { memo } from "react";
 
 import { IconArrowRight } from "@tabler/icons-react";
 
 import SpotlightCard from "@/components/animation/spotlight-card";
 import { Button } from "@/components/ui/button";
+import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 import type { Service } from "@/types";
 

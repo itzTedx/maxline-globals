@@ -1,4 +1,7 @@
-import { Suspense } from "react";
+import { Suspense, use } from "react";
+
+import { Locale, useTranslations } from "next-intl";
+import { setRequestLocale } from "next-intl/server";
 
 import { Cta } from "@/feature/cta";
 import { AboutSection } from "@/feature/home/sections/about";
@@ -7,13 +10,25 @@ import { HeroSection } from "@/feature/home/sections/hero";
 import { ServicesSection } from "@/feature/home/sections/services";
 import { InsightsCarousel } from "@/feature/insights/components/insights-carousel";
 
-export default function Home() {
+type Props = {
+  params: Promise<{ locale: Locale }>;
+};
+
+export default function Home({ params }: Props) {
+  const { locale } = use(params);
+
+  // Enable static rendering
+  setRequestLocale(locale);
+
+  const t = useTranslations("HomePage");
+
   return (
     <>
       <main
         className="bg-background relative z-10 rounded-b-3xl pb-20"
         role="main"
       >
+        {t("title")}
         <HeroSection />
 
         <AboutSection />

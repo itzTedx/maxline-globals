@@ -828,7 +828,7 @@ export const SERVICES = [
   {
     slug: "movers-lashing",
     hero: {
-      title: "Movers & Lashing Services",
+      title: "Moving & Lashing Services",
       description:
         "Secure and professional cargo lashing, securing, and relocation services—ensuring safe transport for local and international moves.",
       image: {
@@ -847,7 +847,7 @@ export const SERVICES = [
           "Maxline Global offers specialized movers and lashing services to ensure your cargo—whether industrial machinery, containers, or household items—is properly secured for safe transportation. We follow international standards to provide robust and compliant securing, minimizing risk during road, sea, or air transport.",
       },
       features: {
-        title: "Why Maxline for Movers & Lashing?",
+        title: "Why Maxline for Moving & Lashing?",
         description:
           "We provide end-to-end cargo securing and relocation solutions using certified materials and trained experts. Whether you’re moving factory equipment, containers, or personal belongings, we ensure everything is packed, lashed, and transported with the highest safety and operational efficiency.",
         items: [

@@ -1,11 +1,10 @@
-import Link from "next/link";
-
 import { IconArrowRight } from "@tabler/icons-react";
 
 import { XIcon } from "@/assets/x-icon";
 import Letter3DSwap from "@/components/animation/letter-3d-swap";
 import LetterSwapPingPong from "@/components/animation/letter-swap-pingpong-anim";
 import { Button } from "@/components/ui/button";
+import { Link } from "@/i18n/navigation";
 
 export const ServicesBottomCTA = () => {
   return (

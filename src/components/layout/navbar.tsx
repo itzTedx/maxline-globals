@@ -1,10 +1,10 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 import { Logo } from "@/assets/logo";
 import { NAVLINKS } from "@/constants";
+import { Link } from "@/i18n/navigation";
 
 import { LanguageSelector } from "./nav/language-selector";
 import { MobileNav } from "./nav/mobile-nav";

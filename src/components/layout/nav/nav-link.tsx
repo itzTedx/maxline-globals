@@ -1,9 +1,8 @@
 "use client";
 
-import Link from "next/link";
-
 import { IconArrowDown } from "@tabler/icons-react";
 
+import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 
 import LetterSwapPingPong from "../../animation/letter-swap-pingpong-anim";

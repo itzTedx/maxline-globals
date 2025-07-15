@@ -1,9 +1,9 @@
 import Image from "next/image";
-import Link from "next/link";
 
 import { XIcon } from "@/assets/x-icon";
 import CenterUnderline from "@/components/animation/underline-center";
 import VerticalCutReveal from "@/components/animation/vertical-cut-reveal";
+import { Link } from "@/i18n/navigation";
 
 export const Cta = () => {
   return (

@@ -1,12 +1,12 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect } from "react";
 
 import { IconArrowRight } from "@tabler/icons-react";
 
 import LetterSwapPingPong from "@/components/animation/letter-swap-pingpong-anim";
 import { Button } from "@/components/ui/button";
+import { Link } from "@/i18n/navigation";
 
 export default function Error({
   error,

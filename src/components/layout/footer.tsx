@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 import { IconArrowRight, IconMapPin } from "@tabler/icons-react";
 
 import { Logo } from "@/assets/logo";
@@ -7,6 +5,7 @@ import { XSolidIcon } from "@/assets/x-icon";
 import LetterSwapPingPong from "@/components/animation/letter-swap-pingpong-anim";
 import CenterUnderline from "@/components/animation/underline-center";
 import { FOOTER_LINKS } from "@/constants";
+import { Link } from "@/i18n/navigation";
 
 import VerticalCutReveal from "../animation/vertical-cut-reveal";
 import { Button } from "../ui/button";
@@ -49,7 +48,7 @@ export const Footer = () => {
         <div className="col-span-1 space-y-6 md:col-span-7">
           <div className="grid grid-cols-1 items-center justify-between gap-4 sm:grid-cols-3 sm:gap-0">
             <Link
-              href={"https://maps.app.goo.gl/VWxy5XYwqrDr9etT7"}
+              href="https://maps.app.goo.gl/VWxy5XYwqrDr9etT7"
               className="bg-background/20 border-background col-span-1 flex w-fit items-center justify-start gap-1.5 rounded-full border px-2.5 py-1.5 backdrop-blur-xl transition-transform sm:col-span-2"
               itemScope
               itemType="https://schema.org/Place"
@@ -128,6 +127,13 @@ export const Footer = () => {
         <p className="text-center text-sm sm:text-left sm:text-base">
           © {new Date().getFullYear()} Maxline Globals. All Rights Reserved.
         </p>
+        <Link
+          href="https://www.zironmedia.com"
+          className="text-muted-foreground text-xs font-light"
+        >
+          Designed & Developed by{" "}
+          <span className="font-medium">Ziron Media</span>
+        </Link>
       </div>
 
       <XSolidIcon className="pointer-events-none absolute -bottom-[30%] left-1/2 -translate-x-1/2 opacity-50 select-none sm:opacity-100" />

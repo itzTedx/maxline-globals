@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 
 import { IconArrowRight } from "@tabler/icons-react";
 
@@ -13,6 +12,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Link } from "@/i18n/navigation";
 
 export interface InsightCardProps {
   id: number;
