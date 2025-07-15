@@ -710,4 +710,225 @@ export const SERVICES = [
       },
     ],
   },
+  {
+    slug: "exhibition-cargo",
+    hero: {
+      title: "Exhibition & Event Cargo",
+      description:
+        "Reliable and time-critical logistics for exhibitions and events—door-to-stand delivery with full customs and venue coordination.",
+      image: {
+        src: "/images/exhibition-cargo.png",
+        alt: "Maxline Global team handling exhibition cargo with booths and crates at an event venue",
+        width: 816,
+        height: 626,
+      },
+      ctaLink: "#features",
+      ctaText: "Learn More",
+    },
+    features: {
+      overview: {
+        title: "Specialized Exhibition Cargo Solutions",
+        description:
+          "Maxline Global provides comprehensive logistics for exhibitions, trade shows, and live events across the UAE and internationally. From pre-show storage and customs clearance to delivery, setup, and return, our team ensures your materials arrive safely and on time—ready for showtime.",
+      },
+      features: {
+        title: "Why Choose Maxline for Exhibition Logistics?",
+        description:
+          "We understand the time-sensitive, high-visibility nature of exhibition cargo. That’s why we offer dedicated planning, priority handling, and venue coordination to ensure your stands, samples, AV gear, and promotional materials reach the venue on schedule and in perfect condition.",
+        items: [
+          {
+            title: "Door-to-Stand Delivery",
+            description:
+              "We handle the entire journey from your warehouse to your exhibition booth, including unpacking and positioning.",
+          },
+          {
+            title: "Pre & Post Event Storage",
+            description:
+              "Temporary warehousing before and after events to manage returns or multiple show schedules.",
+          },
+          {
+            title: "Venue Access & Scheduling",
+            description:
+              "Coordination with exhibition organizers for on-site handling, timed deliveries, and approvals.",
+          },
+          {
+            title: "Customs Clearance for Temporary Imports",
+            description:
+              "ATA Carnet and temporary import/export documentation support for international exhibitions.",
+          },
+          {
+            title: "Fragile & High-Value Cargo Handling",
+            description:
+              "Special packaging and handling for electronics, display units, samples, and promotional gear.",
+          },
+          {
+            title: "Return Logistics & Reverse Shipping",
+            description:
+              "Post-event pickup and shipment back to origin or to the next exhibition destination.",
+          },
+        ],
+      },
+    },
+    industries: [
+      { title: "Trade Shows", image: "/images/industries/tradeshow.webp" },
+      { title: "Fashion & Retail", image: "/images/industries/fashion.webp" },
+      { title: "Automotive", image: "/images/industries/automotive.webp" },
+      {
+        title: "Technology & Electronics",
+        image: "/images/industries/electronics.webp",
+      },
+      {
+        title: "Media & Entertainment",
+        image: "/images/industries/media.webp",
+      },
+      {
+        title: "Government & Diplomacy",
+        image: "/images/industries/government.webp",
+      },
+    ],
+    capabilities: [
+      {
+        icon: IconDoor,
+        title: "Booth-to-Booth Handling",
+        description:
+          "We manage logistics between consecutive exhibitions or events, including repacking and routing.",
+      },
+      {
+        icon: IconMap2,
+        title: "International Event Logistics",
+        description:
+          "Cross-border planning for global exhibitions, ensuring timely delivery and regulatory compliance.",
+      },
+      {
+        icon: IconSnowflake,
+        title: "Climate-Controlled Transport",
+        description:
+          "Protect temperature-sensitive displays or equipment during transit and storage.",
+      },
+      {
+        icon: IconClock,
+        title: "Time-Sensitive Delivery Windows",
+        description:
+          "Timed unloading and entry to match venue access slots and strict exhibitor schedules.",
+      },
+      {
+        icon: IconUserHexagon,
+        title: "Onsite Support Staff",
+        description:
+          "Experienced personnel at venue for supervision, unloading, and booth coordination.",
+      },
+      {
+        icon: IconFileDescription,
+        title: "ATA Carnet & Temporary Clearance",
+        description:
+          "Expert handling of temporary admission paperwork, re-export formalities, and customs compliance.",
+      },
+    ],
+  },
+  {
+    slug: "movers-lashing",
+    hero: {
+      title: "Movers & Lashing Services",
+      description:
+        "Secure and professional cargo lashing, securing, and relocation services—ensuring safe transport for local and international moves.",
+      image: {
+        src: "/images/movers-lashing.png",
+        alt: "Maxline Global team performing container lashing and industrial moving services",
+        width: 816,
+        height: 626,
+      },
+      ctaLink: "#features",
+      ctaText: "Learn More",
+    },
+    features: {
+      overview: {
+        title: "Professional Lashing & Relocation Services",
+        description:
+          "Maxline Global offers specialized movers and lashing services to ensure your cargo—whether industrial machinery, containers, or household items—is properly secured for safe transportation. We follow international standards to provide robust and compliant securing, minimizing risk during road, sea, or air transport.",
+      },
+      features: {
+        title: "Why Maxline for Movers & Lashing?",
+        description:
+          "We provide end-to-end cargo securing and relocation solutions using certified materials and trained experts. Whether you’re moving factory equipment, containers, or personal belongings, we ensure everything is packed, lashed, and transported with the highest safety and operational efficiency.",
+        items: [
+          {
+            title: "Industrial Machinery Moving",
+            description:
+              "Heavy and delicate machinery relocation with full disassembly, packing, transport, and reassembly.",
+          },
+          {
+            title: "Container Lashing & Securing",
+            description:
+              "Use of chains, straps, and wooden blocks to secure cargo inside containers, flat racks, and trailers.",
+          },
+          {
+            title: "ISPM-15 Certified Wood Blocking",
+            description:
+              "Treated wood chocking, bracing, and dunnage that meets international shipping standards.",
+          },
+          {
+            title: "Personal & Office Relocation",
+            description:
+              "Local and international moving services for homes and corporate offices with safe packing and handling.",
+          },
+          {
+            title: "Vessel & Port Lashing",
+            description:
+              "On-board cargo securing at ports for sea export and import shipments, following marine standards.",
+          },
+          {
+            title: "Rigging & Crating Services",
+            description:
+              "Lifting, hoisting, and securing of large or awkward loads using proper tools and equipment.",
+          },
+        ],
+      },
+    },
+    industries: [
+      { title: "Manufacturing", image: "/images/industries/industrial.webp" },
+      { title: "Oil & Gas", image: "/images/industries/oil-gas.webp" },
+      { title: "Energy & Utilities", image: "/images/industries/energy.webp" },
+      { title: "Construction", image: "/images/industries/construction.webp" },
+      { title: "Residential & Office", image: "/images/industries/fmcg.webp" },
+      { title: "Shipping & Ports", image: "/images/industries/port.webp" },
+    ],
+    capabilities: [
+      {
+        icon: IconDoor,
+        title: "End-to-End Relocation",
+        description:
+          "Comprehensive local and international moving solutions with packing, transport, and unpacking services.",
+      },
+      {
+        icon: IconMap2,
+        title: "Onsite Lashing & Supervision",
+        description:
+          "Lashing performed at warehouses, ports, factories, or client sites with certified staff and inspection.",
+      },
+      {
+        icon: IconSnowflake,
+        title: "Delicate Equipment Handling",
+        description:
+          "Soft lashing and shock absorption for sensitive instruments and precision machinery.",
+      },
+      {
+        icon: IconClock,
+        title: "Quick Turnaround & Emergency Moves",
+        description:
+          "Rapid deployment for urgent relocation, export, or site transfer needs with full support.",
+      },
+      {
+        icon: IconUserHexagon,
+        title: "Experienced Moving Crews",
+        description:
+          "Professional handlers, riggers, and lashers with deep expertise in industrial and commercial cargo movement.",
+      },
+      {
+        icon: IconFileDescription,
+        title: "Lashing Certificates & Inspection Reports",
+        description:
+          "Documentation provided for customs, shipping lines, or compliance requirements.",
+      },
+    ],
+  },
 ];

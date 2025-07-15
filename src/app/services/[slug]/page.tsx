@@ -14,32 +14,45 @@ import { Hero } from "@/feature/services/hero";
 
 type Params = Promise<{ slug: string }>;
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Params;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const service = SERVICES.find((s) => s.slug === slug);
+
+  if (!service)
+    return {
+      title: "Service not available right now",
+    };
+
   return {
-    title: "Land Freight Services | Maxline Global",
-    description:
-      "Efficient land freight solutions across the GCC—FTL, LTL, and oversized cargo delivered with speed and reliability.",
+    title: service.hero.title,
+    description: service.hero.description,
     openGraph: {
-      title: "Land Freight Services | Maxline Global",
-      description:
-        "Efficient land freight solutions across the GCC—FTL, LTL, and oversized cargo delivered with speed and reliability.",
+      title: service.hero.title,
+      description: service.hero.description,
       images: [
         {
-          url: "/images/truck-full.png",
+          url: service.hero.image.src,
           width: 816,
           height: 626,
-          alt: "Maxline Global's modern freight truck representing our land freight capabilities",
+          alt: service.hero.image.alt,
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title: "Land Freight Services | Maxline Global",
-      description:
-        "Efficient land freight solutions across the GCC—FTL, LTL, and oversized cargo delivered with speed and reliability.",
-      images: ["/images/truck-full.png"],
+      title: service.hero.title,
+      description: service.hero.description,
+      images: [service.hero.image.src],
     },
   };
+}
+
+export async function generateStaticParams() {
+  return SERVICES.map((service) => ({ slug: service.slug }));
 }
 
 // Structured data for the service page
