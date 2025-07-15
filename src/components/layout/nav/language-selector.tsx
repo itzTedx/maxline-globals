@@ -47,7 +47,7 @@ export function LanguageSelector() {
         <motion.button
           type="button"
           className={cn(
-            "text-brand-dark flex h-11 items-center justify-center gap-2.5 rounded-md bg-white pr-1.5 pl-4 font-medium rtl:pr-4 rtl:pl-1.5",
+            "text-brand-dark flex h-11 cursor-pointer items-center justify-center gap-2.5 rounded-md bg-white pr-1.5 pl-4 font-medium rtl:pr-4 rtl:pl-1.5",
             isPending && "pointer-events-none opacity-50"
           )}
           role="button"

@@ -42,7 +42,7 @@ export const NavLink = ({
         label={title}
         staggerFrom="first"
         reverse={false}
-        className="w-full justify-start font-semibold"
+        className="w-full justify-start font-semibold rtl:text-lg"
       />
 
       {hasSubmenu && (
