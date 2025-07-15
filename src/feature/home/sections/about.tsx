@@ -16,7 +16,7 @@ export const AboutSection = memo(() => {
   const t = useTranslations("HomePage");
   return (
     <section
-      className="relative container grid grid-cols-1 gap-x-4 gap-y-12 pb-12 md:grid-cols-2 md:gap-x-9 md:gap-y-20 md:pb-20"
+      className="relative container grid grid-cols-1 gap-x-4 gap-y-12 overflow-hidden pb-12 md:grid-cols-2 md:gap-x-9 md:gap-y-20 md:pb-20"
       aria-labelledby="solutions-heading"
       itemScope
       itemType="https://schema.org/Organization"

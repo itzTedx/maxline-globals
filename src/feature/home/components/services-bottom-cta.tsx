@@ -1,4 +1,5 @@
 import { IconArrowRight } from "@tabler/icons-react";
+import { useTranslations } from "next-intl";
 
 import { XIcon } from "@/assets/x-icon";
 import Letter3DSwap from "@/components/animation/letter-3d-swap";
@@ -7,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/navigation";
 
 export const ServicesBottomCTA = () => {
+  const t = useTranslations("HomePage");
   return (
     <div className="relative flex flex-col items-center gap-4 overflow-hidden py-20">
       <Letter3DSwap
@@ -19,19 +21,17 @@ export const ServicesBottomCTA = () => {
         as={"h3"}
         transition={{ type: "spring", damping: 25, stiffness: 160 }}
       >
-        Logistics Without Limits
+        {t("services.cta.title")}
       </Letter3DSwap>
 
       <p className="text-brand-gray z-10 mx-auto max-w-3xl pb-8 text-center text-lg font-light tracking-tight text-pretty md:pb-10 md:text-xl lg:pb-12 lg:text-2xl">
-        Our tailored freight solutions are engineered to meet the demands of
-        modern trade - ensuring every shipment arrives on time, on budget, and
-        without compromise.
+        {t("services.cta.description")}
       </p>
 
       <Button asChild size="btnIcon">
         <Link href="/services" className="text-brand-dark group z-10">
           <LetterSwapPingPong
-            label="Explore More"
+            label={t("services.cta.btnText")}
             staggerFrom="first"
             reverse={false}
             className="w-full justify-start font-semibold"

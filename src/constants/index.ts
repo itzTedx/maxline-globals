@@ -93,38 +93,37 @@ export const NAVLINKS: NavLink[] = [
 
 export const SERVICES = [
   {
-    title: "Land Freight",
+    title: "landFreight",
     description: "Efficient and Secure Road Transportation Across the GCC.",
     href: "/services/land-freight",
     image: "/images/truck.webp",
   },
   {
-    title: "Air Freight",
+    title: "airFreight",
     description: "Swift Air Freight Solutions for Global Reach.",
     href: "/services/air-freight",
     image: "/images/plane.webp",
   },
   {
-    title: "Sea Freight",
+    title: "seaFreight",
     description: "Reliable Sea Freight Services Across Continents.",
     href: "/services/sea-freight",
     image: "/images/ship.webp",
   },
   {
-    title: "Project Cargo",
+    title: "projectCargo",
     description: "Specialized Handling for Heavy and Oversized Cargo.",
     href: "/services/project-cargo",
     image: "/images/container.webp",
   },
   {
-    title: "Warehousing",
+    title: "warehousing",
     description: "Strategic Warehousing and Distribution Solutions.",
     href: "/services/warehousing-and-distribution",
     image: "/images/lifter.webp",
   },
-
   {
-    title: "Moving & Lashing",
+    title: "movingLashing",
     description: "Professional Relocation and Cargo Securing for Safe Transit.",
     href: "/services/project-cargo",
     image: "/images/movers.webp",

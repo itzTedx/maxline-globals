@@ -30,11 +30,11 @@ export const ServicesSection = memo(() => {
         <div className="relative z-30">
           <h2
             id="services-heading"
-            className="mx-auto max-w-3xl pb-10 text-center text-4xl font-medium tracking-tight text-balance text-[#5C5E70] max-md:pt-10 md:text-5xl lg:pb-20 lg:text-6xl"
+            className="mx-auto max-w-3xl pb-10 text-center text-4xl font-medium tracking-tight text-balance text-[#5C5E70] max-md:pt-10 md:text-5xl lg:pb-20 lg:text-6xl rtl:leading-snug"
             itemProp="name"
           >
             <StaggeredText
-              text={t("service.title")}
+              text={t("services.title")}
               className="[&>span:nth-last-child(-n+2)]:text-secondary"
               staggerChildren={0.02}
               duration={0.5}

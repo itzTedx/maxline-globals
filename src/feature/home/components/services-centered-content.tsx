@@ -74,9 +74,12 @@ export const ServicesCenteredContent = ({
             ),
           }}
         >
-          {t("service.heading.first")}
+          {t("services.heading.first")}
           <br />
-          <span className="text-secondary"> {t("service.heading.second")}</span>
+          <span className="text-secondary">
+            {" "}
+            {t("services.heading.second")}
+          </span>
         </motion.h2>
 
         <div className="grid grid-cols-2 gap-4 md:gap-8">
@@ -110,7 +113,7 @@ export const ServicesCenteredContent = ({
             y: bottomToTop,
           }}
         >
-          {t("service.description")}
+          {t("services.description")}
         </motion.p>
         <motion.div
           style={{
@@ -122,7 +125,7 @@ export const ServicesCenteredContent = ({
           <Button asChild size="btnIcon">
             <Link href="/services" className="text-brand-dark group gap-3">
               <LetterSwapPingPong
-                label={t("service.btnText")}
+                label={t("services.btnText")}
                 staggerFrom="first"
                 reverse={false}
                 className="w-full justify-start font-semibold"

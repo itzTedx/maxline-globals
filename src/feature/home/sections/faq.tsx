@@ -5,6 +5,7 @@ import Script from "next/script";
 import { memo, useRef } from "react";
 
 import { motion, useScroll, useTransform } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 import { StaggeredText } from "@/components/animation/staggered-text";
 import {
@@ -42,6 +43,7 @@ export const FaqSection = memo(() => {
       },
     })),
   };
+  const t = useTranslations("HomePage");
 
   return (
     <section
@@ -62,7 +64,7 @@ export const FaqSection = memo(() => {
           className="font-grotesk text-brand-dark text-3xl md:text-5xl"
         >
           <StaggeredText
-            text="Frequently Asked Questions"
+            text={t("faq.title")}
             staggerChildren={0.02}
             duration={0.5}
           />
@@ -87,7 +89,7 @@ export const FaqSection = memo(() => {
           itemProp="description"
         >
           <StaggeredText
-            text="Discover quick answers to the questions our clients ask most. From shipment tracking to specialized cargo handling, our FAQ section covers everything you need to know about Maxline Global's services, capabilities, and commitment to smooth, secure, and on-time delivery."
+            text={t("faq.description")}
             staggerChildren={0.02}
             duration={0.5}
           />

@@ -39,6 +39,13 @@ const extractTextFromChildren = (children: React.ReactNode): string => {
   );
 };
 
+// Helper to detect if text is RTL
+const isRTL = (text: string): boolean => {
+  // Unicode ranges for Hebrew, Arabic, etc.
+  const rtlPattern = /[\u0591-\u07FF\uFB1D-\uFDFD\uFE70-\uFEFC]/;
+  return rtlPattern.test(text);
+};
+
 /**
  * Internal helper interface for representing a word in the text with its characters and spacing information
  */
@@ -110,14 +117,38 @@ const Letter3DSwap = ({
   frontFaceClassName,
   secondFaceClassName,
   staggerDuration = 0.05,
-  staggerFrom = "first",
+  staggerFrom: staggerFromProp,
   transition = { type: "spring", damping: 30, stiffness: 300 },
-  rotateDirection = "right",
+  rotateDirection: rotateDirectionProp,
   ...props
 }: Letter3DSwapProps) => {
   const [isAnimating, setIsAnimating] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
   const [scope, animate] = useAnimate();
+
+  // Convert children to string for processing with error handling
+  const text = useMemo(() => {
+    try {
+      return extractTextFromChildren(children);
+    } catch (error) {
+      console.error(error);
+      return "";
+    }
+  }, [children]);
+
+  // Detect RTL
+  const rtl = useMemo(() => isRTL(text), [text]);
+
+  // Auto-adjust staggerFrom and rotateDirection for RTL if not set
+  const staggerFrom = useMemo(() => {
+    if (staggerFromProp !== undefined) return staggerFromProp;
+    return rtl ? "last" : "first";
+  }, [staggerFromProp, rtl]);
+
+  const rotateDirection = useMemo(() => {
+    if (rotateDirectionProp !== undefined) return rotateDirectionProp;
+    return rtl ? "left" : "right";
+  }, [rotateDirectionProp, rtl]);
 
   // Determine rotation transform based on direction
   const rotationTransform = (() => {
@@ -135,29 +166,30 @@ const Letter3DSwap = ({
     }
   })();
 
-  // Convert children to string for processing with error handling
-  const text = useMemo(() => {
-    try {
-      return extractTextFromChildren(children);
-    } catch (error) {
-      console.error(error);
-      return "";
-    }
-  }, [children]);
-
   // Splitting the text into animation segments
   const characters = useMemo(() => {
-    const t = text.split(" ");
-    const result = t.map((word: string, i: number) => ({
-      characters: splitIntoCharacters(word),
-      needsSpace: i !== t.length - 1,
-    }));
-    return result;
-  }, [text]);
+    if (rtl) {
+      // For RTL: split by words, not characters
+      const words = text.split(" ");
+      return words.map((word: string, i: number) => ({
+        characters: [word], // treat the whole word as a single animation unit
+        needsSpace: i !== words.length - 1,
+      }));
+    } else {
+      // For LTR: split by characters as before
+      const t = text.split(" ");
+      const result = t.map((word: string, i: number) => ({
+        characters: splitIntoCharacters(word),
+        needsSpace: i !== t.length - 1,
+      }));
+      return result;
+    }
+  }, [text, rtl]);
 
   // Helper function to calculate stagger delay for each text segment
   const getStaggerDelay = useCallback(
     (index: number, totalChars: number) => {
+      if (rtl) return 0; // Disable stagger for RTL: all animate at once
       const total = totalChars;
       if (staggerFrom === "first") return index * staggerDuration;
       if (staggerFrom === "last") return (total - 1 - index) * staggerDuration;
@@ -171,7 +203,7 @@ const Letter3DSwap = ({
       }
       return Math.abs(staggerFrom - index) * staggerDuration;
     },
-    [staggerFrom, staggerDuration]
+    [staggerFrom, staggerDuration, rtl]
   );
 
   // Handle hover start - trigger the rotation

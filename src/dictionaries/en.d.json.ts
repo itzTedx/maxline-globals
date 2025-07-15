@@ -38,14 +38,49 @@ declare const messages: {
         "road": "Road / 03"
       }
     },
-    "service": {
+    "services": {
       "heading": {
         "first": "Built to Empower",
         "second": "Efficiency"
       },
       "description": "Maxline turns fragmented workflows into unified strategies. Whether you're in the office or across the globe, we're one connected force",
       "btnText": "Explore our services",
-      "title": "Integrated freight solutions tailored to your exact specifications."
+      "title": "Integrated freight solutions tailored to your exact specifications.",
+      "service": {
+        "landFreight": {
+          "title": "Land Freight",
+          "description": "Efficient and Secure Road Transportation Across the GCC."
+        },
+        "airFreight": {
+          "title": "Air Freight",
+          "description": "Swift Air Freight Solutions for Global Reach."
+        },
+        "seaFreight": {
+          "title": "Sea Freight",
+          "description": "Reliable Sea Freight Services Across Continents."
+        },
+        "projectCargo": {
+          "title": "Project Cargo",
+          "description": "Specialized Handling for Heavy and Oversized Cargo."
+        },
+        "warehousing": {
+          "title": "Warehousing",
+          "description": "Strategic Warehousing and Distribution Solutions."
+        },
+        "movingLashing": {
+          "title": "Moving & Lashing",
+          "description": "Professional Relocation and Cargo Securing for Safe Transit.."
+        }
+      },
+      "cta": {
+        "title": "Logistics Without Limits",
+        "description": "Our tailored freight solutions are engineered to meet the demands of  modern trade - ensuring every shipment arrives on time, on budget, and without compromise.",
+        "btnText": "Explore more"
+      }
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "description": "Discover quick answers to the questions our clients ask most. From shipment tracking to specialized cargo handling, our FAQ section covers everything you need to know about Maxline Global's services, capabilities, and commitment to smooth, secure, and on-time delivery."
     }
   }
 };
