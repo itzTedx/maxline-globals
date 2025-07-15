@@ -68,7 +68,10 @@ export default function InsightsSlugPage() {
           __html: JSON.stringify(articleStructuredData),
         }}
       />
-      <main className="bg-background relative z-10 container rounded-b-3xl pb-20 shadow-xl">
+      <main
+        className="bg-background relative z-10 container rounded-b-3xl pb-20 shadow-xl"
+        dir="ltr"
+      >
         <HeroHeader
           className="mx-auto max-w-6xl"
           subtitle="Insights & News"

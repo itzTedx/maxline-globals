@@ -1,5 +1,7 @@
 import { Metadata } from "next";
 
+import { useTranslations } from "next-intl";
+
 import { HeroHeader } from "@/components/hero-header";
 import { InsightsList } from "@/feature/insights/components/insights-list";
 
@@ -82,13 +84,33 @@ const mockBlogs = [
   },
 ];
 
+// Define Blog type based on mockBlogs structure
+interface Blog {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+  slug: string;
+  datePublished?: string;
+  author?: string;
+}
+
 export default function InsightsPage() {
+  const t = useTranslations("HomePage");
+
+  // Try to get translated blogs, fallback to mockBlogs if not present
+  let blogs: Blog[] = [];
+  try {
+    blogs = t.raw ? t.raw("insightsList") : mockBlogs;
+  } catch {
+    blogs = mockBlogs;
+  }
+
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Blog",
     name: "Maxline Global Logistics Insights",
-    description:
-      "Discover insights, trends, and expert perspectives shaping the future of global logistics.",
+    description: t("insights.description"),
     url: "https://maxline.global/insights",
     publisher: {
       "@type": "Organization",
@@ -98,7 +120,7 @@ export default function InsightsPage() {
         url: "https://maxline.global/logo.png",
       },
     },
-    blogPost: mockBlogs.map((blog) => ({
+    blogPost: blogs.map((blog: Blog) => ({
       "@type": "BlogPosting",
       headline: blog.title,
       description: blog.description,
@@ -120,12 +142,16 @@ export default function InsightsPage() {
       />
       <main className="bg-background relative z-10 container rounded-b-3xl pb-20 shadow-xl">
         <HeroHeader
-          subtitle="Insights & News"
-          title="Explore the Ideas Driving Global Logistics Forward"
-          description="Discover insights, trends, and expert perspectives shaping the future of global logistics. From supply chain innovations to freight solutions, stay informed with the ideas that move businesses forward."
+          subtitle={t.rich("insights.title", {
+            span: (chunks) => <span>{chunks}</span>,
+          })}
+          title={t.rich("insights.title", {
+            span: (chunks) => <span>{chunks}</span>,
+          })}
+          description={t("insights.description")}
         />
         <section aria-label="Insights and Articles">
-          <InsightsList initialInsights={mockBlogs} />
+          <InsightsList initialInsights={blogs} />
         </section>
       </main>
     </>

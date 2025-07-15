@@ -1,3 +1,5 @@
+import React from "react";
+
 import { XIcon } from "@/assets/x-icon";
 import { StaggeredText } from "@/components/animation/staggered-text";
 import { cn } from "@/lib/utils";
@@ -8,9 +10,9 @@ interface TitleSegment {
 }
 
 interface HeroHeaderProps {
-  title: string | TitleSegment[];
+  title: string | TitleSegment[] | React.ReactNode;
   description?: string;
-  subtitle?: string;
+  subtitle?: string | React.ReactNode;
   titleClassName?: string;
   descriptionClassName?: string;
   subtitleClassName?: string;
@@ -34,16 +36,29 @@ export function HeroHeader({
         <StaggeredText text={title} staggerChildren={0.03} duration={0.7} />
       );
     }
-
-    return title.map((segment, index) => (
-      <span key={index} className={cn(segment.className)}>
-        <StaggeredText
-          text={segment.text}
-          staggerChildren={0.03}
-          duration={0.7}
-        />
-      </span>
-    ));
+    if (
+      Array.isArray(title) &&
+      title.length > 0 &&
+      typeof title[0] === "object" &&
+      title[0] !== null &&
+      "text" in title[0]
+    ) {
+      return title.map((segment, index) => (
+        <span key={index} className={cn(segment.className)}>
+          <StaggeredText
+            text={segment.text}
+            staggerChildren={0.03}
+            duration={0.7}
+          />
+        </span>
+      ));
+    }
+    // If it's an array but not TitleSegment[], join as string
+    if (Array.isArray(title)) {
+      return title.join("");
+    }
+    // If it's a ReactNode (from t.rich) or anything else
+    return title;
   };
 
   return (
@@ -60,7 +75,11 @@ export function HeroHeader({
             )}
             role="doc-subtitle"
           >
-            <StaggeredText text={subtitle} />
+            {typeof subtitle === "string" ? (
+              <StaggeredText text={subtitle} />
+            ) : (
+              subtitle
+            )}
           </p>
         )}
         <h1

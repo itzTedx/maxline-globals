@@ -264,5 +264,25 @@
       "title": "Certified for Excellence in Global Logistics",
       "description": "Maxline Global's certifications demonstrate our commitment to safe, efficient, and compliant logistics across air, sea, and land. We meet international standards in freight forwarding, warehousing, customs, and hazardous cargo-ensuring trust and reliability throughout the supply chain."
     }
+  },
+  "ServicesPage": {
+    "title": "Logistics Services | Maxline Global",
+    "description": "Explore our full suite of global logistics services—from air, sea, and road freight to warehousing, customs clearance, and project cargo management. Maxline Global delivers reliable, scalable, and end-to-end solutions for every supply chain challenge.",
+    "keywords": "logistics services, global logistics, air freight, sea freight, road freight, warehousing, customs clearance, project cargo, supply chain solutions",
+    "subtitle": "Services",
+    "mainTitle": "Logistics Solutions That Move Business Forward",
+    "ourServices": "Our Services"
+  },
+  "TeamPage": {
+    "heroSubtitle": "Our Team",
+    "heroTitle": "Here's the team that works hard to Deliver your vision, faster",
+    "heroDescription": "Get to know the expert team behind Maxline Global. Our logistics professionals deliver innovative, efficient, and reliable supply chain solutions across the globe.",
+    "leadershipTitle": "Leadership That Moves the World",
+    "specialistsTitle": "Specialists in Motion",
+    "personName": "Person Name",
+    "designation": "Designation",
+    "linkedinProfile": "Linkedin Profile",
+    "departmentName": "Logistics Department",
+    "departmentDescription": "Expert team handling freight forwarding, customs clearance, and supply chain solutions"
   }
 }
