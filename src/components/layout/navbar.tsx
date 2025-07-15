@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 
+import { useTranslations } from "next-intl";
+
 import { Logo } from "@/assets/logo";
 import { NAVLINKS } from "@/constants";
 import { Link } from "@/i18n/navigation";
@@ -13,6 +15,7 @@ import { NavSubmenu } from "./nav/nav-submenu";
 import { QuoteButton } from "./nav/quote-button";
 
 export const Navbar = () => {
+  const t = useTranslations("Navigation");
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [submenuHeights, setSubmenuHeights] = useState<Map<string, number>>(
     new Map()
@@ -71,7 +74,7 @@ export const Navbar = () => {
               onMouseLeave={handleMouseLeave}
             >
               <NavLink
-                title={link.title}
+                title={t(link.title as Parameters<typeof t>[0])}
                 href={link.href}
                 hasSubmenu={!!link.submenu}
                 isActive={activeMenu === link.title}
@@ -85,7 +88,10 @@ export const Navbar = () => {
                 >
                   <NavSubmenu
                     isOpen={activeMenu === link.title}
-                    items={link.submenu}
+                    items={link.submenu.map((item) => ({
+                      ...item,
+                      title: t(item.title as Parameters<typeof t>[0]),
+                    }))}
                     parentTitle={link.title}
                   />
                 </div>

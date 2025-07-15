@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { debounce } from "lodash";
 import { AnimationOptions, motion, stagger, useAnimate } from "motion/react";
@@ -15,6 +15,12 @@ interface TextProps {
   staggerFrom?: "first" | "last" | "center" | number;
   className?: string;
   onClick?: () => void;
+}
+
+// Utility to auto-detect RTL
+function isRTL(text: string) {
+  const rtlChars = /[\u0591-\u07FF\uFB1D-\uFDFD\uFE70-\uFEFC]/;
+  return rtlChars.test(text);
 }
 
 const LetterSwapPingPong = ({
@@ -32,11 +38,42 @@ const LetterSwapPingPong = ({
 }: TextProps) => {
   const [scope, animate] = useAnimate();
   const [isHovered, setIsHovered] = useState(false);
+  const [direction, setDirection] = useState<"ltr" | "rtl">("ltr");
+  const containerRef = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    let dir: "ltr" | "rtl" = "ltr";
+    if (containerRef.current) {
+      // Try to get direction from the DOM
+      const domDir =
+        containerRef.current.dir ||
+        getComputedStyle(containerRef.current).direction;
+      if (domDir === "rtl" || domDir === "ltr") {
+        dir = domDir;
+      } else if (isRTL(label)) {
+        dir = "rtl";
+      }
+    } else if (isRTL(label)) {
+      dir = "rtl";
+    }
+    setDirection(dir);
+  }, [label]);
+
+  // Adjust flex and stagger for RTL
+  const flexDirection = direction === "rtl" ? "flex-row-reverse" : "";
+  const effectiveStaggerFrom =
+    direction === "rtl"
+      ? staggerFrom === "first"
+        ? "last"
+        : staggerFrom === "last"
+          ? "first"
+          : staggerFrom
+      : staggerFrom;
 
   const mergeTransition = (baseTransition: AnimationOptions) => ({
     ...baseTransition,
     delay: stagger(staggerDuration, {
-      from: staggerFrom,
+      from: effectiveStaggerFrom,
     }),
   });
 
@@ -91,35 +128,57 @@ const LetterSwapPingPong = ({
     <motion.span
       className={cn(
         className,
-        "relative flex items-center justify-center overflow-hidden"
+        "relative flex items-center justify-center overflow-hidden",
+        flexDirection
       )}
+      ref={(el) => {
+        // Assign to both refs
+        if (el) {
+          (scope as React.MutableRefObject<HTMLSpanElement | null>).current =
+            el;
+          containerRef.current = el;
+        }
+      }}
       onHoverStart={hoverStart}
       onHoverEnd={hoverEnd}
       onClick={onClick}
-      ref={scope}
       {...props}
     >
       <span className="sr-only">{label}</span>
 
-      {label.split("").map((letter: string, i: number) => {
-        return (
-          <span
-            className="relative flex whitespace-pre"
-            key={i}
-            aria-hidden={true}
+      {direction === "rtl" ? (
+        <span className="relative flex whitespace-pre" aria-hidden={true}>
+          <motion.span className={`letter relative`} style={{ top: 0 }}>
+            {label}
+          </motion.span>
+          <motion.span
+            className="letter-secondary absolute"
+            style={{ top: reverse ? "-100%" : "100%" }}
           >
-            <motion.span className={`letter relative`} style={{ top: 0 }}>
-              {letter}
-            </motion.span>
-            <motion.span
-              className="letter-secondary absolute"
-              style={{ top: reverse ? "-100%" : "100%" }}
+            {label}
+          </motion.span>
+        </span>
+      ) : (
+        label.split("").map((letter: string, i: number) => {
+          return (
+            <span
+              className="relative flex whitespace-pre"
+              key={i}
+              aria-hidden={true}
             >
-              {letter}
-            </motion.span>
-          </span>
-        );
-      })}
+              <motion.span className={`letter relative`} style={{ top: 0 }}>
+                {letter}
+              </motion.span>
+              <motion.span
+                className="letter-secondary absolute"
+                style={{ top: reverse ? "-100%" : "100%" }}
+              >
+                {letter}
+              </motion.span>
+            </span>
+          );
+        })
+      )}
     </motion.span>
   );
 };

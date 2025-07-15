@@ -1,4 +1,5 @@
 import { IconArrowRight } from "@tabler/icons-react";
+import { useTranslations } from "next-intl";
 
 import LetterSwapPingPong from "@/components/animation/letter-swap-pingpong-anim";
 import { Link } from "@/i18n/navigation";
@@ -6,11 +7,12 @@ import { Link } from "@/i18n/navigation";
 import { Button } from "../../ui/button";
 
 export const QuoteButton = () => {
+  const t = useTranslations("Navigation");
   return (
     <Button asChild size="btnIcon">
       <Link href="/quote" className="text-brand-dark group gap-3">
         <LetterSwapPingPong
-          label="Get A Quote"
+          label={t("getQuote")}
           staggerFrom="first"
           reverse={false}
           className="w-full justify-start font-semibold"

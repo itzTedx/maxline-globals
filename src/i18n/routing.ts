@@ -6,4 +6,9 @@ export const routing = defineRouting({
 
   // Used when no locale matches
   defaultLocale: "en",
+
+  localeCookie: {
+    // Custom cookie name
+    name: "MAXLINE_LOCALE",
+  },
 });

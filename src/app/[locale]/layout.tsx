@@ -69,10 +69,12 @@ export default async function RootLayout({
   }
   const messages = (await import(`@/dictionaries/${locale}.json`)).default;
 
-  console.log(messages);
-
   return (
-    <html lang={locale} className="scroll-smooth">
+    <html
+      lang={locale}
+      className="scroll-smooth"
+      dir={locale === "ar" ? "rtl" : "ltr"}
+    >
       <head>
         <Script
           id="schema-org"

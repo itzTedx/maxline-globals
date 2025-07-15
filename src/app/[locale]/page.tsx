@@ -1,6 +1,6 @@
 import { Suspense, use } from "react";
 
-import { Locale, useTranslations } from "next-intl";
+import { Locale } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 
 import { Cta } from "@/feature/cta";
@@ -20,15 +20,12 @@ export default function Home({ params }: Props) {
   // Enable static rendering
   setRequestLocale(locale);
 
-  const t = useTranslations("HomePage");
-
   return (
     <>
       <main
         className="bg-background relative z-10 rounded-b-3xl pb-20"
         role="main"
       >
-        {t("title")}
         <HeroSection />
 
         <AboutSection />

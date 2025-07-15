@@ -3,8 +3,36 @@
 
 declare const messages: {
   "HomePage": {
-    "title": "Hello world!",
-    "about": "Go to the about page"
+    "hero": {
+      "title": {
+        "firstLine": "Your Trusted Partner in",
+        "secondLine": "Logistics and Freight Delivery"
+      },
+      "inputPlaceholder": "Track your shipment"
+    },
+    "about": {
+      "title": "Reliable Logistics Partner Across the Globe",
+      "description": "At Maxline Global, we connect businesses to markets across the world. With our comprehensive logistics partner and commitment to service excellence, we ensure your cargo moves with speed, safety, and precision."
+    }
+  },
+  "Navigation": {
+    "home": "Home",
+    "company": "Company",
+    "aboutUs": "About Us",
+    "leadershipTeam": "Leadership Team",
+    "insights": "Insights & News",
+    "Air Freight": "Air Freight",
+    "Sea Freight": "Sea Freight",
+    "Land Freight": "Land Freight",
+    "Project Cargo": "Project Cargo",
+    "Packing": "Packing",
+    "Warehousing": "Warehousing",
+    "Exhibition Cargo": "Exhibition Cargo",
+    "Moving & Lashing": "Moving & Lashing",
+    "services": "Services",
+    "trackShipment": "Track Shipment",
+    "contact": "Contact",
+    "getQuote": "Get a Quote"
   }
 };
 export default messages;

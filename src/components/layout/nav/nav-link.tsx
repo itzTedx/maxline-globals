@@ -31,7 +31,7 @@ export const NavLink = ({
       href={href}
       className={cn(
         "text-brand-dark hover:bg-primary flex h-11 items-center justify-center gap-2.5 rounded-md bg-white font-medium transition duration-500",
-        hasSubmenu ? "pr-1.5 pl-4" : "px-4"
+        hasSubmenu ? "pr-1.5 pl-4 rtl:pr-4 rtl:pl-1.5" : "px-4"
       )}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}

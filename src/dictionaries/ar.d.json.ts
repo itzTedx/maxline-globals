@@ -3,8 +3,36 @@
 
 declare const messages: {
   "HomePage": {
-    "title": "Hello world!",
-    "about": "Go to the about page"
+    "hero": {
+      "title": {
+        "firstLine": "شريكك الموثوق في الخدمات ",
+        "secondLine": "اللوجستية وتوصيل البضائع"
+      },
+      "inputPlaceholder": "تتبع الشحنة الخاصة بك"
+    },
+    "about": {
+      "title": "شريك لوجستي موثوق به في جميع أنحاء العالم",
+      "description": "في ماكسلاين جلوبال، نربط الشركات بالأسواق العالمية. بفضل شريكنا اللوجستي الشامل والتزامنا بتقديم خدمة ممتازة، نضمن لكم نقل بضائعكم بسرعة وأمان ودقة."
+    }
+  },
+  "Navigation": {
+    "home": "الرئيسية",
+    "company": "الشركة",
+    "aboutUs": "من نحن",
+    "leadershipTeam": "فريق القيادة",
+    "insights": "الرؤى والأخبار",
+    "services": "الخدمات",
+    "trackShipment": "تتبع الشحنة",
+    "contact": "اتصل بنا",
+    "Air Freight": "الشحن الجوي",
+    "Sea Freight": "الشحن البحري",
+    "Land Freight": "الشحن البري",
+    "Project Cargo": "المشاريع والشحنات الضخمة",
+    "Packing": "التغليف",
+    "Warehousing": "التخزين",
+    "Exhibition Cargo": "شحن المعارض",
+    "Moving & Lashing": "النقل والتثبيت",
+    "getQuote": "يقتبس"
   }
 };
 export default messages;

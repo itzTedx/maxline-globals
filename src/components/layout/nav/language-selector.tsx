@@ -1,9 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useParams } from "next/navigation";
+import { useTransition } from "react";
 
 import { IconArrowDown } from "@tabler/icons-react";
 import { motion } from "motion/react";
+import { Locale } from "next-intl";
 
 import {
   DropdownMenu,
@@ -12,6 +14,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { usePathname, useRouter } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 
 const LANGUAGES = [
@@ -19,94 +22,62 @@ const LANGUAGES = [
   { code: "ar", label: "AR" },
 ];
 
-export const LanguageSelector = () => {
-  const [selected, setSelected] = useState("en");
+export function LanguageSelector() {
+  const router = useRouter();
+  const [isPending, startTransition] = useTransition();
+  const pathname = usePathname();
+  const params = useParams();
+
+  const currentLocale = (params?.locale as Locale) || "en";
 
   const handleSelect = (code: string) => {
-    setSelected(code);
-    // TODO: Add logic to change language in your app
+    const nextLocale = code as Locale;
+    startTransition(() => {
+      router.replace(
+        // @ts-expect-error -- TypeScript will validate that only known `params` are used in combination with a given `pathname`. Since the two will always match for the current route, we can skip runtime checks.
+        { pathname, params },
+        { locale: nextLocale }
+      );
+    });
   };
 
   return (
-    <>
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            type="button"
-            className={cn(
-              "text-brand-dark flex h-11 items-center justify-center gap-2.5 rounded-md bg-white pr-1.5 pl-4 font-medium"
-            )}
-            role="button"
-          >
-            {LANGUAGES.find((l) => l.code === selected)?.label}
-            <div className="bg-background flex size-8 items-center justify-center rounded">
-              <IconArrowDown className={cn("size-4 transition-transform")} />
-            </div>
-          </motion.button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent className="w-fit">
-          <DropdownMenuGroup>
-            {LANGUAGES.map((lang) => (
-              <DropdownMenuItem key={lang.code}>
-                <button
-                  className={cn(
-                    "w-full rounded-md text-left transition hover:bg-gray-100",
-                    selected === lang.code && "text-primary font-bold"
-                  )}
-                  onClick={() => handleSelect(lang.code)}
-                  role="menuitem"
-                >
-                  {lang.label}
-                </button>
-              </DropdownMenuItem>
-            ))}
-          </DropdownMenuGroup>
-        </DropdownMenuContent>
-      </DropdownMenu>
-    </>
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <motion.button
+          type="button"
+          className={cn(
+            "text-brand-dark flex h-11 items-center justify-center gap-2.5 rounded-md bg-white pr-1.5 pl-4 font-medium rtl:pr-4 rtl:pl-1.5",
+            isPending && "pointer-events-none opacity-50"
+          )}
+          role="button"
+          disabled={isPending}
+        >
+          <span>{LANGUAGES.find((l) => l.code === currentLocale)?.label}</span>
+          <div className="bg-background flex size-8 items-center justify-center rounded">
+            <IconArrowDown className={cn("size-4 transition-transform")} />
+          </div>
+        </motion.button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="w-fit">
+        <DropdownMenuGroup>
+          {LANGUAGES.map((lang) => (
+            <DropdownMenuItem key={lang.code}>
+              <button
+                className={cn(
+                  "w-full rounded-md text-left transition hover:bg-gray-100",
+                  currentLocale === lang.code && "text-primary font-bold"
+                )}
+                onClick={() => handleSelect(lang.code)}
+                role="menuitem"
+                disabled={isPending}
+              >
+                {lang.label}
+              </button>
+            </DropdownMenuItem>
+          ))}
+        </DropdownMenuGroup>
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
-};
-
-// <div
-//   className="relative"
-//   onMouseEnter={handleMouseEnter}
-//   onMouseLeave={handleMouseLeave}
-// >
-//   <button
-//     type="button"
-//     className={cn(
-//       "text-brand-dark flex h-11 items-center justify-center gap-2.5 rounded-md bg-white pr-1.5 pl-4 font-medium"
-//     )}
-//     role="button"
-//   >
-//     {LANGUAGES.find((l) => l.code === selected)?.label}
-//     <div className="bg-background flex size-8 items-center justify-center rounded">
-//       <IconArrowDown
-//         className={cn("size-4 transition-transform", open && "rotate-180")}
-//       />
-//     </div>
-//   </button>
-//   {open && (
-//     <ul
-//       className="absolute right-0 z-50 mt-2 w-28 rounded-md border bg-white p-1 shadow-lg"
-//       role="menu"
-//     >
-//       {LANGUAGES.map((lang) => (
-//         <li key={lang.code}>
-//           <button
-//             className={cn(
-//               "w-full rounded-md px-4 py-2 text-left transition hover:bg-gray-100",
-//               selected === lang.code && "text-primary font-bold"
-//             )}
-//             onClick={() => handleSelect(lang.code)}
-//             role="menuitem"
-//           >
-//             {lang.label}
-//           </button>
-//         </li>
-//       ))}
-//     </ul>
-//   )}
-// </div>;
+}

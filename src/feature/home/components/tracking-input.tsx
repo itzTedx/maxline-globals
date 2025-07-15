@@ -5,10 +5,12 @@ import { FormEvent, useState } from "react";
 
 import { IconArrowRight } from "@tabler/icons-react";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 import { Input } from "@/components/ui/input";
 
 export const TrackingInput = () => {
+  const t = useTranslations("HomePage");
   const router = useRouter();
   const [trackingId, setTrackingId] = useState("");
 
@@ -31,9 +33,9 @@ export const TrackingInput = () => {
       <form onSubmit={handleSubmit}>
         <Input
           id="track"
-          aria-label="Track your shipment"
+          aria-label={t("hero.inputPlaceholder")}
           className="placeholder:text-brand-dark/50 bg-white pe-9 text-sm font-semibold shadow-none md:text-base"
-          placeholder="Track your shipment"
+          placeholder={t("hero.inputPlaceholder")}
           type="text"
           value={trackingId}
           onChange={(e) => setTrackingId(e.target.value)}
@@ -45,7 +47,11 @@ export const TrackingInput = () => {
           className="text-brand-dark bg-primary hover:text-foreground focus-visible:border-ring focus-visible:ring-ring/50 absolute inset-y-1/2 end-1.5 flex size-8 -translate-y-1/2 items-center justify-center rounded transition-[color,box-shadow] outline-none focus:z-10 focus-visible:ring-[3px] disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:size-9"
           aria-label="Track Shipment"
         >
-          <IconArrowRight size={16} aria-hidden="true" />
+          <IconArrowRight
+            size={16}
+            aria-hidden="true"
+            className="rtl:rotate-180"
+          />
         </motion.button>
       </form>
     </motion.div>

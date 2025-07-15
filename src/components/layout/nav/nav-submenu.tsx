@@ -65,7 +65,7 @@ export const NavSubmenu = ({ isOpen, items, parentTitle }: NavSubmenuProps) => {
             }}
             className={cn(
               "mt-2 grid items-center gap-2 rounded-md bg-white p-2 shadow-lg",
-              parentTitle === "Company" ? "grid-cols-3" : "grid-cols-4"
+              parentTitle === "company" ? "grid-cols-3" : "grid-cols-4"
             )}
             role="menu"
           >

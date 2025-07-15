@@ -56,41 +56,37 @@ const SERVICES_LINKS = [
 
 export const NAVLINKS: NavLink[] = [
   {
-    title: "Home",
+    title: "home",
     href: "/",
   },
   {
-    title: "Company",
+    title: "company",
     href: "/company",
     submenu: [
       {
-        title: "About Us",
+        title: "aboutUs",
         href: "/company/about",
         img: "/images/about-us.webp",
       },
       {
-        title: "Leadership Team",
+        title: "leadershipTeam",
         href: "/company/team",
         img: "/images/meeting-1.webp",
       },
-      {
-        title: "Insights & News",
-        href: "/insights",
-        img: "/images/insights.webp",
-      },
+      { title: "insights", href: "/insights", img: "/images/insights.webp" },
     ],
   },
   {
-    title: "Services",
+    title: "services",
     href: "/services",
     submenu: SERVICES_LINKS,
   },
   {
-    title: "Track Shipment",
+    title: "trackShipment",
     href: "/track-shipment",
   },
   {
-    title: "Contact",
+    title: "contact",
     href: "/contact",
   },
 ];

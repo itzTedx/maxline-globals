@@ -4,6 +4,7 @@ import Image from "next/image";
 import { memo, useState } from "react";
 
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 import { TransportTypes } from "@/assets/transport-types";
 import { StaggeredText } from "@/components/animation/staggered-text";
@@ -12,6 +13,7 @@ import { cn } from "@/lib/utils";
 
 export const AboutSection = memo(() => {
   const [active, setActive] = useState<"air" | "sea" | "road">("air");
+  const t = useTranslations("HomePage");
   return (
     <section
       className="relative container grid grid-cols-1 gap-x-4 gap-y-12 pb-12 md:grid-cols-2 md:gap-x-9 md:gap-y-20 md:pb-20"
@@ -25,7 +27,7 @@ export const AboutSection = memo(() => {
         itemProp="name"
       >
         <StaggeredText
-          text="Reliable Logistics Partner Across the Globe"
+          text={t("about.title")}
           className="[&>span:nth-last-child(-n+3)]:text-secondary"
           staggerChildren={0.02}
           duration={0.5}
@@ -38,10 +40,7 @@ export const AboutSection = memo(() => {
           by="line"
           className="text-brand-gray text-xl leading-relaxed font-light text-balance md:text-2xl"
         >
-          At Maxline Global, we connect businesses to markets across the world.
-          With our comprehensive logistics partner and commitment to service
-          excellence, we ensure your cargo moves with speed, safety, and
-          precision.
+          {t("about.description")}
         </TextAnimate>
       </div>
 
