@@ -18,25 +18,6 @@ export const TransportTypes = (
     }
   }, [controls]);
 
-  const containerVariants = {
-    hidden: {},
-    visible: {
-      transition: {
-        delayChildren: 0.8,
-        staggerChildren: 0.4, // Increased to give more time between groups
-      },
-    },
-  };
-
-  const boxGroupVariants = {
-    hidden: {},
-    visible: (i: number) => ({
-      transition: {
-        delayChildren: i * 0.4,
-      },
-    }),
-  };
-
   const largeCircleVariants = {
     hidden: { pathLength: 0 },
     visible: {
@@ -48,229 +29,61 @@ export const TransportTypes = (
     },
   };
 
-  const circleVariants = {
-    hidden: { scale: 0 },
-    visible: {
-      scale: 1,
-      transition: {
-        type: "spring",
-        duration: 0.6,
-        bounce: 0.4,
-      },
-    },
-  };
-
-  const pulseVariants = {
-    hidden: { scale: 1 },
-    visible: {
-      scale: [0.8, 1.2, 0.8],
-      opacity: [0, 0.8, 0],
-      transition: {
-        duration: 1.5,
-        repeat: Infinity,
-        ease: "easeInOut",
-        delay: 0.8, // Start pulsing after the circle appears
-      },
-    },
-  };
-
-  const boxVariants = {
-    hidden: { scale: 0, x: -20 },
-    visible: {
-      scale: 1,
-      x: 0,
-      transition: {
-        type: "spring",
-        duration: 0.5,
-        bounce: 0.4,
-      },
-    },
-  };
-
-  const textVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: (i: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-        delay: 2 + i * 0.8,
-      },
-    }),
-  };
-
   return (
     <motion.svg
       {...(props as SVGMotionProps<SVGSVGElement>)}
-      width="395"
-      height="334"
-      viewBox="0 0 395 334"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
+      width="326"
+      height="326"
+      viewBox="0 0 326 326"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
     >
+      <motion.circle
+        variants={largeCircleVariants}
+        style={{ pathLength: 0 }}
+        cx="163"
+        cy="163"
+        r="147"
+        fill="url(#pattern0_503_1621)"
+      />
+      <motion.circle
+        variants={largeCircleVariants}
+        style={{ pathLength: 0 }}
+        cx="163"
+        cy="163"
+        r="162.5"
+        stroke="url(#paint0_linear_503_1621)"
+      />
       <image
         href="/images/transportation-types.jpg"
-        x="83"
-        y="21"
-        width="300"
-        height="300"
+        x="5"
+        y="5"
+        width="320"
+        height="320"
         preserveAspectRatio="xMidYMid slice"
         clipPath="url(#circleClip)"
       />
-
-      <motion.circle
-        cx="232"
-        cy="171"
-        r="162.5"
-        stroke="url(#paint0_linear_3_6)"
-        strokeWidth="1"
-        fill="none"
-        variants={largeCircleVariants}
-        style={{ pathLength: 0 }}
-      />
-
-      <motion.g variants={containerVariants}>
-        <motion.g variants={circleVariants}>
-          <motion.circle
-            variants={pulseVariants}
-            cx="162"
-            cy="25"
-            r="10"
-            fill="#00C8FF"
-            fillOpacity="0.25"
-          />
-          <circle cx="162" cy="25" r="8" fill="white" />
-        </motion.g>
-
-        <motion.g variants={circleVariants}>
-          <motion.circle
-            variants={pulseVariants}
-            cx="69"
-            cy="171"
-            r="10"
-            fill="#00C8FF"
-            fillOpacity="0.25"
-          />
-          <circle cx="69" cy="171" r="8" fill="white" />
-        </motion.g>
-
-        <motion.g variants={circleVariants}>
-          <motion.circle
-            variants={pulseVariants}
-            cx="142"
-            cy="308"
-            r="10"
-            fill="#00C8FF"
-            fillOpacity="0.25"
-          />
-          <circle cx="142" cy="308" r="8" fill="white" />
-        </motion.g>
-
-        <motion.g variants={boxGroupVariants} custom={0}>
-          <motion.rect
-            x="102"
-            width="61"
-            height="26"
-            rx="5"
-            fill="white"
-            variants={boxVariants}
-          />
-          <foreignObject x="102" y="0" width="61" height="26">
-            <motion.text
-              x="132.5"
-              y="14"
-              fontSize="12"
-              fill="black"
-              textAnchor="middle"
-              dominantBaseline="middle"
-              variants={textVariants}
-              custom={0}
-              style={{
-                fontSize: "12px",
-                display: "block",
-                textAlign: "center",
-              }}
-            >
-              01 / Air
-            </motion.text>
-          </foreignObject>
-        </motion.g>
-
-        <motion.g variants={boxGroupVariants} custom={1}>
-          <motion.rect
-            y="145"
-            width="69"
-            height="26"
-            rx="5"
-            fill="white"
-            variants={boxVariants}
-          />
-          <foreignObject x="0" y="145" width="69" height="26">
-            <motion.text
-              x="34.5"
-              y="159"
-              fontSize="12"
-              fill="black"
-              textAnchor="middle"
-              dominantBaseline="middle"
-              variants={textVariants}
-              custom={1}
-              style={{
-                fontSize: "12px",
-                display: "block",
-                textAlign: "center",
-              }}
-            >
-              02 / Sea
-            </motion.text>
-          </foreignObject>
-        </motion.g>
-
-        <motion.g variants={boxGroupVariants} custom={2}>
-          <motion.rect
-            x="68"
-            y="283"
-            width="74"
-            height="26"
-            rx="5"
-            fill="white"
-            variants={boxVariants}
-          />
-          <foreignObject x="68" y="283" width="74" height="26">
-            <motion.text
-              x="105"
-              y="309"
-              fontSize="12"
-              fill="black"
-              textAnchor="middle"
-              dominantBaseline="middle"
-              variants={textVariants}
-              custom={2}
-              style={{
-                fontSize: "12px",
-                display: "inline-block",
-                textAlign: "center",
-              }}
-            >
-              03 / Road
-            </motion.text>
-          </foreignObject>
-        </motion.g>
-      </motion.g>
-
       <defs>
         <clipPath id="circleClip">
-          <circle cx="233" cy="171" r="150" />
+          <circle cx="163" cy="163" r="150" />
         </clipPath>
+        <pattern
+          id="pattern0_503_1621"
+          patternContentUnits="objectBoundingBox"
+          width="1"
+          height="1"
+        >
+          <use xlinkHref="#image0_503_1621" transform="scale(0.000308642)" />
+        </pattern>
         <linearGradient
-          id="paint0_linear_3_6"
-          x1="68"
-          y1="175"
-          x2="395"
-          y2="175"
+          id="paint0_linear_503_1621"
+          x1="-0.999997"
+          y1="167"
+          x2="326"
+          y2="167"
           gradientUnits="userSpaceOnUse"
         >
           <stop stopColor="white" />

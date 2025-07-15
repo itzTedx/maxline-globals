@@ -54,10 +54,19 @@ export const AboutSection = memo(() => {
         />
       </div>
       <div
-        className="col-start-1 flex items-center justify-center md:col-start-2"
+        className="relative col-start-1 flex items-center justify-center md:col-start-2"
         itemProp="serviceType"
       >
-        <TransportTypes />
+        <div className="relative">
+          {/* <div className="absolute inset-0 -z-10 bg-red-400" /> */}
+          <div className="absolute top-1/2 left-0 size-4 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white">
+            <div className="absolute -top-1/2 z-10 grid h-6 w-16 origin-right -translate-x-[85%] -translate-y-1/4 place-content-center rounded-sm bg-white text-xs">
+              02 / Sea
+            </div>
+            <div className="absolute top-1/2 left-1/2 size-6 -translate-x-1/2 -translate-y-1/2 animate-pulse rounded-full bg-white/50" />
+          </div>
+          <TransportTypes />
+        </div>
       </div>
 
       <meta itemProp="url" content="https://maxlineglobal.com" />
