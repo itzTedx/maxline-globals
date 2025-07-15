@@ -57,8 +57,8 @@ export const NAVLINKS: NavLink[] = [
       },
 
       {
-        title: "Project Forwarding",
-        href: "/services/project-forwarding",
+        title: "Project Cargo",
+        href: "/services/project-cargo",
         img: "/images/transportation-types.jpg",
       },
       {
@@ -73,6 +73,11 @@ export const NAVLINKS: NavLink[] = [
       },
       {
         title: "Exhibition Cargo",
+        href: "/services/exhibition-cargo",
+        img: "/images/exhibition-cargo.webp",
+      },
+      {
+        title: "Movers & Lashing",
         href: "/services/exhibition-cargo",
         img: "/images/exhibition-cargo.webp",
       },
