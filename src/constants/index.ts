@@ -313,3 +313,58 @@ export const PRINCIPLES = [
       "We guarantee 100% accuracy in every shipment through meticulous planning, streamlined processes, and efficient communication. Leveraging advanced technologies like real-time tracking and automation, we ensure precision and reliability, giving you peace of mind with every delivery. Trust us for accurate and dependable logistics solutions.",
   },
 ];
+
+export const LOCATIONS = [
+  {
+    title: "Head Office (UAE)",
+    address:
+      "Maxline LLC, Mina Jebel Ali, Dubai Aid City, Dubai - United Arab Emirates",
+    phone: "+971 4 282 2022",
+    mobile: "+971 4 282 2022",
+    email: "reception@maxlineglobal.com",
+    link: "",
+  },
+  {
+    title: "Maxline LLC - Ras Al Khor",
+    address: "6a Street, Ras Al Khor Industrial 2, Dubai, UAE",
+    phone: "+971 4 282 2022 EXT 201",
+    mobile: "+971 4 282 2022",
+    email: "reception@maxlineglobal.com",
+    link: "",
+  },
+  {
+    title: "Maxline Oman",
+    address:
+      "Unit No 24, 2nd floor Building 537, Way No 5016,  Ghala Heights Azaibaa South, Muscat, Sultanate Of Oman",
+    phone: "+971 4 282 2022 EXT 401",
+    mobile: "+971 4 282 2022",
+    email: "reception@maxlineglobal.com",
+    link: "",
+  },
+  {
+    title: "Maxline Bahrain",
+    address:
+      "Office No 58, Building 2568, Road/Street 4450, Block 744, Al Ramli, Kingdom of Bahrain",
+    phone: "+971 4 282 2022 EXT 702",
+    mobile: "+971 4 282 2022",
+    email: "reception@maxlineglobal.com",
+    link: "",
+  },
+  {
+    title: "Maxline Qatar",
+    address: "Door 33 1st floor Mamoura plaza  Abuhamour, Doha, Qatar",
+    phone: "+971 4 282 2022 EXT 601",
+    mobile: "+971 4 282 2022",
+    email: "reception@maxlineglobal.com",
+    link: "",
+  },
+  {
+    title: "Maxline KSA",
+    address:
+      "Shiny Gulf, Abu ishaq Al Rifay street, Khalidiya Al Janubiyyah, Port Road, Saudi Arabia",
+    phone: "+971 4 282 2022 EXT 801",
+    mobile: "+971 4 282 2022",
+    email: "reception@maxlineglobal.com",
+    link: "",
+  },
+];

@@ -6,6 +6,7 @@ import { XIcon } from "@/assets/x-icon";
 import { StaggeredText } from "@/components/animation/staggered-text";
 import { HeroHeader } from "@/components/hero-header";
 import { Button } from "@/components/ui/custom-button";
+import { LOCATIONS } from "@/constants";
 import { siteConfig } from "@/constants/site-config";
 import { Cta } from "@/feature/cta";
 import { ContactForm } from "@/feature/forms/contact-form";
@@ -270,12 +271,12 @@ export default function ContactPage() {
           </h3>
 
           <ul className="grid grid-cols-1 gap-4 pt-12 sm:grid-cols-2 md:grid-cols-3">
-            {Array.from({ length: 8 }).map((_, index) => (
+            {LOCATIONS.map((loc, index) => (
               <li
                 key={index}
-                className="group overflow-hidden rounded-2xl bg-white"
+                className="group relative flex h-full flex-col overflow-hidden rounded-2xl bg-white"
               >
-                <div className="relative aspect-video overflow-hidden">
+                <div className="relative aspect-video shrink-0 overflow-hidden">
                   <Image
                     src="/images/placeholder.jpg"
                     alt=""
@@ -283,39 +284,35 @@ export default function ContactPage() {
                     className="object-cover transition-transform duration-500 group-hover:scale-125"
                   />
                 </div>
-                <div className="p-2 text-center">
-                  <p className="text-brand-dark pb-2 font-light">
-                    <StaggeredText text="Head Office (UAE)" />
-                  </p>
-                  <h4 className="font-grotesk text-secondary px-4 pb-4 text-2xl">
-                    <StaggeredText text="Maxline LLC, Mina Jebel Ali, Dubai Aid City, Dubai - United Arab Emirates" />
-                  </h4>
-                  <ul className="divide-primary/20 mb-4 divide-y">
-                    <li className="py-1">
-                      <StaggeredText
-                        text="Phone: + 971 4 2822022"
-                        delay={0.1}
-                      />
-                    </li>
-                    <li className="py-1">
-                      <StaggeredText
-                        text="Mobile: + 971 4 2822023"
-                        delay={0.1}
-                      />
-                    </li>
-                    <li className="py-1">
-                      <StaggeredText
-                        text="Email: ajith@maxlineglobal.com"
-                        delay={0.1}
-                      />
-                    </li>
-                    <li className="py-1">
-                      <StaggeredText
-                        text="Sales: reception@maxlineglobal.com"
-                        delay={0.1}
-                      />
-                    </li>
-                  </ul>
+                <div className="flex h-full flex-col items-center justify-between p-2 text-center">
+                  <div>
+                    <p className="text-brand-dark pb-2 font-light text-balance">
+                      <StaggeredText text={loc.title} />
+                    </p>
+                    <h4 className="font-grotesk text-secondary px-4 pb-4 text-2xl">
+                      <StaggeredText text={loc.address} />
+                    </h4>
+                    <ul className="divide-primary/20 mb-4 divide-y">
+                      <li className="py-1">
+                        <StaggeredText
+                          text={`Phone: ${loc.phone}`}
+                          delay={0.1}
+                        />
+                      </li>
+                      <li className="py-1">
+                        <StaggeredText
+                          text={`Mobile: ${loc.mobile}`}
+                          delay={0.1}
+                        />
+                      </li>
+                      <li className="py-1">
+                        <StaggeredText
+                          text={`Email: ${loc.email}`}
+                          delay={0.1}
+                        />
+                      </li>
+                    </ul>
+                  </div>
                   <Button label="View in map" className="w-full" />
                 </div>
               </li>
