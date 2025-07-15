@@ -73,23 +73,22 @@ export default function QuotePage() {
         </h2>
         <ul className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3">
           {features.map((item) => (
-            <li key={item.title}>
-              <SpotlightCard
-                spotlightColor="rgba(0, 200, 255, 0.3)"
-                className="overflow-hidden rounded-xl bg-white p-6 md:p-10"
-              >
-                <div className="bg-muted flex size-16 items-center justify-center rounded-full md:size-20">
-                  <item.icon
-                    className="text-brand-gray size-10 stroke-[1.5] md:size-12"
-                    aria-hidden="true"
-                  />
-                </div>
-                <h3 className="font-grotesk text-brand-dark mt-8 mb-3 text-2xl md:mt-12 md:text-4xl">
-                  {item.title}
-                </h3>
-                <p className="text-sm md:text-base">{item.description}</p>
-              </SpotlightCard>
-            </li>
+            <SpotlightCard
+              key={item.title}
+              spotlightColor="rgba(0, 200, 255, 0.3)"
+              className="overflow-hidden rounded-xl bg-white p-6 md:p-10"
+            >
+              <div className="bg-muted flex size-16 items-center justify-center rounded-full md:size-20">
+                <item.icon
+                  className="text-brand-gray size-10 stroke-[1.5] md:size-12"
+                  aria-hidden="true"
+                />
+              </div>
+              <h3 className="font-grotesk text-brand-dark mt-8 mb-3 text-2xl md:mt-12 md:text-4xl">
+                {item.title}
+              </h3>
+              <p className="text-sm md:text-base">{item.description}</p>
+            </SpotlightCard>
           ))}
         </ul>
       </section>

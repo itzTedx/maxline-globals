@@ -62,7 +62,8 @@ const PrincipleImage = React.memo(
         fill
         className="object-cover"
         priority={index === currentImage}
-        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        quality={100}
+        sizes="(max-width: 768px) 100vw,  75vw"
       />
     </motion.div>
   )

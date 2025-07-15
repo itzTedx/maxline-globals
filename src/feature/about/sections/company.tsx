@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 
 import { AnimatePresence, motion } from "motion/react";
 
-import { Logo1, Logo2, Logo3, Logo4 } from "@/assets/mock-logos";
+import { Logo1, Logo2, Logo3, Logo4, Logo5, Logo6 } from "@/assets/mock-logos";
 import { StaggeredText } from "@/components/animation/staggered-text";
 
 interface LogoRowProps {
@@ -15,8 +15,7 @@ interface LogoRowProps {
 
 const items = [
   [Logo1, Logo2, Logo3, Logo4],
-  [Logo1, Logo2, Logo3, Logo4],
-  [Logo1, Logo2, Logo3, Logo4],
+  [Logo5, Logo6, Logo2, Logo3],
 ];
 
 export const CompanySection = () => {
@@ -42,7 +41,7 @@ export const CompanySection = () => {
         </h2>
       </div>
 
-      <div className="relative container w-full max-w-7xl">
+      <div className="relative container w-full max-w-4xl">
         {items.map((logos, index) => (
           <LogoRow
             key={index}
@@ -72,11 +71,11 @@ const LogoRow = ({ logos, index, activeIndex }: LogoRowProps) => {
   return (
     <AnimatePresence>
       {isActive && (
-        <div className="absolute top-0 left-0 grid h-full w-full grid-cols-4 gap-3 px-5 md:gap-x-6 md:px-8">
+        <div className="absolute top-0 left-0 grid h-full w-full grid-cols-4 items-center justify-center gap-3 px-5 md:gap-x-6 md:px-8">
           {logos.map((logo, logoIndex) => (
             <motion.div
               key={logoIndex}
-              className="scale-90"
+              className="grid scale-90 place-content-center"
               initial={{ y: 40, opacity: 0, filter: "blur(10px)" }}
               animate={{
                 y: 0,
