@@ -1,11 +1,17 @@
+"use client";
+
 import Image from "next/image";
-import { memo } from "react";
+import { memo, useState } from "react";
+
+import { motion } from "framer-motion";
 
 import { TransportTypes } from "@/assets/transport-types";
 import { StaggeredText } from "@/components/animation/staggered-text";
 import { TextAnimate } from "@/components/animation/text-animate";
+import { cn } from "@/lib/utils";
 
 export const AboutSection = memo(() => {
+  const [active, setActive] = useState<"air" | "sea" | "road">("air");
   return (
     <section
       className="relative container grid grid-cols-1 gap-x-4 gap-y-12 pb-12 md:grid-cols-2 md:gap-x-9 md:gap-y-20 md:pb-20"
@@ -39,12 +45,17 @@ export const AboutSection = memo(() => {
         </TextAnimate>
       </div>
 
-      <div
-        className="absolute -bottom-12 -left-1/2 hidden aspect-video h-[400px] translate-x-20 md:block md:h-[600px] lg:h-[831px]"
+      <motion.div
+        className="absolute -bottom-0 -left-1/2 hidden aspect-video h-[400px] translate-x-20 md:block md:h-[600px] lg:h-[800px]"
         itemProp="image"
+        animate={{
+          opacity: active === "air" ? 1 : 0,
+          scale: active === "air" ? 1.05 : 1,
+        }}
+        transition={{ duration: 0.5 }}
       >
         <Image
-          src="/images/maxline-plane.png"
+          src="/images/maxline-plane.webp"
           fill
           alt="Cargo plane representing Maxline Global's air freight capabilities"
           quality={100}
@@ -52,18 +63,85 @@ export const AboutSection = memo(() => {
           loading="lazy"
           sizes="(max-width: 768px) 100vw,"
         />
-      </div>
+      </motion.div>
+      <motion.div
+        className="absolute -bottom-[20%] -left-1/2 hidden aspect-video h-[400px] translate-x-32 md:block md:h-[600px] lg:h-[750px]"
+        itemProp="image"
+        animate={{
+          opacity: active === "road" ? 1 : 0,
+          scale: active === "road" ? 1.05 : 1,
+        }}
+        transition={{ duration: 0.5 }}
+      >
+        <Image
+          src="/images/maxline-truck.webp"
+          fill
+          alt="Cargo truck representing Maxline Global's road freight capabilities"
+          quality={100}
+          className="object-contain"
+          loading="lazy"
+          sizes="(max-width: 768px) 100vw,"
+        />
+      </motion.div>
+      <motion.div
+        className="absolute -bottom-[20%] -left-1/2 hidden aspect-video h-[400px] translate-x-20 md:block md:h-[600px] lg:h-[800px]"
+        itemProp="image"
+        animate={{
+          opacity: active === "road" ? 1 : 0,
+          scale: active === "road" ? 1.05 : 1,
+        }}
+        transition={{ duration: 0.5 }}
+      >
+        <Image
+          src="/images/maxline-ship.webp"
+          fill
+          alt="Cargo ship representing Maxline Global's sea freight capabilities"
+          quality={100}
+          className="object-contain"
+          loading="lazy"
+          sizes="(max-width: 768px) 100vw,"
+        />
+      </motion.div>
       <div
         className="relative col-start-1 flex items-center justify-center md:col-start-2"
         itemProp="serviceType"
       >
         <div className="relative">
-          {/* <div className="absolute inset-0 -z-10 bg-red-400" /> */}
-          <div className="absolute top-1/2 left-0 size-4 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white">
-            <div className="absolute -top-1/2 z-10 grid h-6 w-16 origin-right -translate-x-[85%] -translate-y-1/4 place-content-center rounded-sm bg-white text-xs">
+          <div
+            className={cn(
+              "group absolute top-[10%] left-[12%] size-4 translate-x-1/2 -translate-y-[12%] cursor-pointer rounded-full bg-white transition-colors",
+              active === "air" && "ring-primary ring-2"
+            )}
+            onMouseEnter={() => setActive("air")}
+          >
+            <div className="group-hover:bg-primary absolute -top-1/2 z-10 grid h-6 w-16 origin-right -translate-x-[85%] -translate-y-1/4 place-content-center rounded-sm bg-white text-xs font-medium transition-colors">
+              01 / Air
+            </div>
+            <div className="group-hover:bg-primary/20 absolute top-1/2 left-1/2 size-6 -translate-x-1/2 -translate-y-1/2 animate-pulse rounded-full bg-white/50 transition-colors" />
+          </div>
+          <div
+            className={cn(
+              "group absolute top-1/2 left-0 size-4 -translate-x-1/2 -translate-y-1/2 cursor-pointer rounded-full bg-white transition-colors",
+              active === "sea" && "ring-primary ring-2"
+            )}
+            onMouseEnter={() => setActive("sea")}
+          >
+            <div className="group-hover:bg-primary absolute -top-1/2 z-10 grid h-6 w-16 origin-right -translate-x-[85%] -translate-y-1/4 place-content-center rounded-sm bg-white text-xs font-medium transition-colors">
               02 / Sea
             </div>
-            <div className="absolute top-1/2 left-1/2 size-6 -translate-x-1/2 -translate-y-1/2 animate-pulse rounded-full bg-white/50" />
+            <div className="group-hover:bg-primary/20 absolute top-1/2 left-1/2 size-6 -translate-x-1/2 -translate-y-1/2 animate-pulse rounded-full bg-white/50 transition-colors" />
+          </div>
+          <div
+            className={cn(
+              "group absolute bottom-[10%] left-[17%] size-4 -translate-x-1/2 translate-y-[12%] cursor-pointer rounded-full bg-white transition-colors",
+              active === "road" && "ring-primary ring-2"
+            )}
+            onMouseEnter={() => setActive("road")}
+          >
+            <div className="group-hover:bg-primary absolute -top-1/2 z-10 grid h-6 w-[4.5rem] origin-right -translate-x-[85%] -translate-y-1/4 place-content-center rounded-sm bg-white text-xs font-medium transition-colors">
+              03 / Road
+            </div>
+            <div className="group-hover:bg-primary/20 absolute top-1/2 left-1/2 size-6 -translate-x-1/2 -translate-y-1/2 animate-pulse rounded-full bg-white/50 transition-colors" />
           </div>
           <TransportTypes />
         </div>
