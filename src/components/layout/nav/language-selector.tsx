@@ -62,7 +62,7 @@ export function LanguageSelector({ className }: Props) {
           disabled={isPending}
         >
           <span className="text-sm font-semibold">{currentLang?.label}</span>
-          <div className="bg-background flex size-8 items-center justify-center rounded">
+          <div className="bg-background flex size-8 shrink-0 items-center justify-center rounded">
             <IconArrowDown className={cn("size-4 transition-transform")} />
           </div>
         </motion.button>

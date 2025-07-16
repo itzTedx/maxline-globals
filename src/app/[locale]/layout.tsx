@@ -54,6 +54,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: siteConfig.site,
   },
+  metadataBase: new URL(siteConfig.site),
 };
 
 export default async function RootLayout({

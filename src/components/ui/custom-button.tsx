@@ -16,6 +16,7 @@ interface ButtonProps
   iconClassName?: string;
   textClassName?: string;
   showIcon?: boolean;
+  openExternal?: boolean;
 }
 
 export const Button = ({
@@ -24,9 +25,12 @@ export const Button = ({
   className,
   iconClassName,
   textClassName,
+  openExternal,
   showIcon = true,
   ...props
 }: ButtonProps) => {
+  const isExternal = openExternal ?? /^(http|https):\/\//.test(href);
+
   return (
     <ShadBtn
       asChild
@@ -34,7 +38,12 @@ export const Button = ({
       className={cn("group/btn gap-3", className)}
       {...props}
     >
-      <Link href={href}>
+      <Link
+        href={href}
+        {...(isExternal
+          ? { target: "_blank", rel: "noopener noreferrer" }
+          : {})}
+      >
         {label && (
           <LetterSwapPingPong
             label={label}

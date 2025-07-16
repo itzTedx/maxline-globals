@@ -9,7 +9,7 @@ export const HeroImage = () => {
     <motion.div
       initial={{ opacity: 0, scale: 0.98, y: 30 }}
       animate={{ opacity: 1, scale: 1, y: 0 }}
-      transition={{ delay: 0.2, duration: 0.8, ease: "easeOut", once: true }}
+      transition={{ delay: 0.2, duration: 0.8, ease: "easeOut" }}
     >
       <Image
         src="/images/container-hero.webp"

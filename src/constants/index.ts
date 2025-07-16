@@ -272,7 +272,7 @@ export const PRINCIPLES = [
   },
 ];
 
-export const LOCATIONS = [
+export const HEAD_LOCATION = [
   {
     title: "Head Office (UAE)",
     address:
@@ -280,7 +280,8 @@ export const LOCATIONS = [
     phone: "+971 4 282 2022",
     mobile: "+971 4 282 2022",
     email: "reception@maxlineglobal.com",
-    link: "",
+    link: "https://maps.app.goo.gl/c1RSTpvWAZ15ygXB8",
+    image: "/images/head-office-uae.webp",
   },
   {
     title: "Maxline LLC - Ras Al Khor",
@@ -288,8 +289,12 @@ export const LOCATIONS = [
     phone: "+971 4 282 2022 EXT 201",
     mobile: "+971 4 282 2022",
     email: "reception@maxlineglobal.com",
-    link: "",
+    link: "https://maps.app.goo.gl/ykDrLpasCmGDcbZn6",
+    image: "/images/about-us.webp",
   },
+];
+
+export const LOCATIONS = [
   {
     title: "Maxline Oman",
     address:
@@ -297,7 +302,8 @@ export const LOCATIONS = [
     phone: "+971 4 282 2022 EXT 401",
     mobile: "+971 4 282 2022",
     email: "reception@maxlineglobal.com",
-    link: "",
+    link: "https://maps.app.goo.gl/7jJzQmP4dTtzdnwo7",
+    image: "/images/oman.webp",
   },
   {
     title: "Maxline Bahrain",
@@ -306,7 +312,8 @@ export const LOCATIONS = [
     phone: "+971 4 282 2022 EXT 702",
     mobile: "+971 4 282 2022",
     email: "reception@maxlineglobal.com",
-    link: "",
+    link: "https://maps.app.goo.gl/MC9ytBbkqutWaX756",
+    image: "/images/bahrain.webp",
   },
   {
     title: "Maxline Qatar",
@@ -315,6 +322,7 @@ export const LOCATIONS = [
     mobile: "+971 4 282 2022",
     email: "reception@maxlineglobal.com",
     link: "",
+    image: "/images/qatar.webp",
   },
   {
     title: "Maxline KSA",
@@ -324,6 +332,7 @@ export const LOCATIONS = [
     mobile: "+971 4 282 2022",
     email: "reception@maxlineglobal.com",
     link: "",
+    image: "/images/ksa.webp",
   },
 ];
 

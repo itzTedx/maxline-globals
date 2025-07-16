@@ -6,7 +6,7 @@ import { XIcon } from "@/assets/x-icon";
 import { StaggeredText } from "@/components/animation/staggered-text";
 import { HeroHeader } from "@/components/hero-header";
 import { Button } from "@/components/ui/custom-button";
-import { LOCATIONS } from "@/constants";
+import { HEAD_LOCATION, LOCATIONS } from "@/constants";
 import { siteConfig } from "@/constants/site-config";
 import { Cta } from "@/feature/cta";
 import { ContactForm } from "@/feature/forms/contact-form";
@@ -213,14 +213,14 @@ export default function ContactPage() {
             <StaggeredText text="Our strategically located offices empower us to manage international shipments with local insight. Wherever you are, Maxline is never far." />
           </p>
           <ul className="grid grid-cols-1 gap-9 pt-12 sm:grid-cols-2">
-            {Array.from({ length: 2 }).map((_, index) => (
+            {HEAD_LOCATION.map((loc, index) => (
               <li
                 key={index}
                 className="group overflow-hidden rounded-2xl bg-white"
               >
                 <div className="relative aspect-video overflow-hidden">
                   <Image
-                    src="/images/placeholder.jpg"
+                    src={loc.image}
                     alt=""
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-125"
@@ -228,38 +228,30 @@ export default function ContactPage() {
                 </div>
                 <div className="p-2 text-center">
                   <p className="text-brand-dark pb-2 font-light">
-                    <StaggeredText text="Head Office (UAE)" />
+                    <StaggeredText text={loc.title} />
                   </p>
                   <h4 className="font-grotesk text-secondary px-4 pb-4 text-2xl">
-                    <StaggeredText text="Maxline LLC, Mina Jebel Ali, Dubai Aid City, Dubai - United Arab Emirates" />
+                    <StaggeredText text={loc.address} />
                   </h4>
                   <ul className="divide-primary/20 mb-4 divide-y">
                     <li className="py-1">
+                      <StaggeredText text={`Phone: ${loc.phone}`} delay={0.1} />
+                    </li>
+                    <li className="py-1">
                       <StaggeredText
-                        text="Phone: + 971 4 2822022"
+                        text={`Mobile: ${loc.mobile}`}
                         delay={0.1}
                       />
                     </li>
                     <li className="py-1">
-                      <StaggeredText
-                        text="Mobile: + 971 4 2822023"
-                        delay={0.1}
-                      />
-                    </li>
-                    <li className="py-1">
-                      <StaggeredText
-                        text="Email: hello@maxlineglobal.com"
-                        delay={0.1}
-                      />
-                    </li>
-                    <li className="py-1">
-                      <StaggeredText
-                        text="Sales: desk@maxlineglobal.com"
-                        delay={0.1}
-                      />
+                      <StaggeredText text={`Email: ${loc.email}`} delay={0.1} />
                     </li>
                   </ul>
-                  <Button label="View in map" className="w-full" />
+                  <Button
+                    label="View in map"
+                    className="w-full"
+                    href={loc.link}
+                  />
                 </div>
               </li>
             ))}
@@ -278,7 +270,7 @@ export default function ContactPage() {
               >
                 <div className="relative aspect-video shrink-0 overflow-hidden">
                   <Image
-                    src="/images/placeholder.jpg"
+                    src={loc.image}
                     alt=""
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-125"
@@ -313,7 +305,11 @@ export default function ContactPage() {
                       </li>
                     </ul>
                   </div>
-                  <Button label="View in map" className="w-full" />
+                  <Button
+                    label="View in map"
+                    className="w-full"
+                    href={loc.link}
+                  />
                 </div>
               </li>
             ))}
