@@ -3,6 +3,7 @@ import { Suspense, use } from "react";
 import { Locale } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 
+import { CertificatesSection } from "@/feature/about/sections/certificates";
 import { Cta } from "@/feature/cta";
 import { AboutSection } from "@/feature/home/sections/about";
 import { FaqSection } from "@/feature/home/sections/faq";
@@ -42,6 +43,7 @@ export default function Home({ params }: Props) {
         </Suspense>
 
         <FaqSection />
+        <CertificatesSection />
 
         <Suspense
           fallback={
