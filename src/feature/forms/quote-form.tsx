@@ -1,5 +1,7 @@
 "use client";
 
+import { useState, useTransition } from "react";
+
 import { zodResolver } from "@hookform/resolvers/zod";
 import { IconArrowRight } from "@tabler/icons-react";
 import { format } from "date-fns";
@@ -7,6 +9,7 @@ import { CalendarIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Control, FieldValues, Path, useForm } from "react-hook-form";
 
+import { sendQuote } from "@/app/actions/sendQuote";
 import LetterSwapPingPong from "@/components/animation/letter-swap-pingpong-anim";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
@@ -235,6 +238,11 @@ const FormSelect = <T extends FieldValues>({
 
 export const QuoteForm = () => {
   const t = useTranslations("QuoteForm");
+  const [isPending, startTransition] = useTransition();
+  const [result, setResult] = useState<null | {
+    success: boolean;
+    error?: unknown;
+  }>(null);
   const form = useForm<QuoteFormData>({
     resolver: zodResolver(quoteSchema),
     defaultValues: {
@@ -252,7 +260,21 @@ export const QuoteForm = () => {
   });
 
   function onSubmit(values: QuoteFormData) {
-    console.log(values);
+    const formData = new FormData();
+    Object.entries(values).forEach(([key, value]) => {
+      if (key === "attachFiles" && Array.isArray(value)) {
+        value.forEach((file) => file && formData.append("attachFiles", file));
+      } else if (value instanceof Date) {
+        formData.append(key, value.toISOString());
+      } else if (typeof value !== "undefined" && value !== null) {
+        formData.append(key, value as string | Blob);
+      }
+    });
+    startTransition(async () => {
+      const res = await sendQuote(formData);
+      setResult(res);
+      if (res.success) form.reset();
+    });
   }
 
   return (
@@ -261,6 +283,13 @@ export const QuoteForm = () => {
         onSubmit={form.handleSubmit(onSubmit)}
         className="container max-w-7xl space-y-3 px-4 sm:px-6 md:px-8"
       >
+        {result && (
+          <div className={result.success ? "text-green-600" : "text-red-600"}>
+            {result.success
+              ? "Your quote request was sent successfully."
+              : "There was an error sending your quote request. Please try again."}
+          </div>
+        )}
         <FormSection>
           <div className="space-y-4">
             <h2 className="font-grotesk text-brand-dark text-3xl tracking-tight text-balance sm:text-4xl md:text-5xl">
@@ -465,6 +494,8 @@ export const QuoteForm = () => {
           size="btnIcon"
           variant="secondary"
           className="bg-secondary text-background h-16 w-full pr-1 pl-6 text-xl"
+          type="submit"
+          disabled={isPending}
         >
           <LetterSwapPingPong
             label={t("submit")}
