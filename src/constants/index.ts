@@ -353,3 +353,31 @@ export type FooterKey =
   | "instagram"
   | "facebook"
   | "x";
+
+export const TEAMS = [
+  {
+    name: "",
+    designation: "",
+    link: "",
+  },
+  {
+    name: "",
+    designation: "",
+    link: "",
+  },
+  {
+    name: "",
+    designation: "",
+    link: "",
+  },
+  {
+    name: "",
+    designation: "",
+    link: "",
+  },
+  {
+    name: "",
+    designation: "",
+    link: "",
+  },
+];

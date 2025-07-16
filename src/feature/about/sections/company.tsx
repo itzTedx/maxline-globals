@@ -30,7 +30,7 @@ export const CompanySection = () => {
     return () => clearInterval(intervalId);
   }, [activeIndex]);
   return (
-    <section className="overflow-hidden py-12 md:py-16 lg:py-20">
+    <section className="py-12 pb-30 md:overflow-hidden md:py-16 lg:py-20">
       <div className="container max-w-5xl text-center">
         <p className="text-secondary z-10 text-lg md:text-2xl">
           {t("clients.label")}
@@ -75,11 +75,11 @@ const LogoRow = ({ logos, index, activeIndex }: LogoRowProps) => {
   return (
     <AnimatePresence>
       {isActive && (
-        <div className="absolute top-0 left-0 grid h-full w-full grid-cols-4 items-center justify-center gap-3 px-5 md:gap-x-6 md:px-8">
+        <div className="absolute top-0 left-0 grid h-full w-full grid-cols-2 items-center justify-center gap-9 px-5 md:grid-cols-4 md:gap-x-6 md:px-8">
           {logos.map((logo, logoIndex) => (
             <motion.div
               key={logoIndex}
-              className="grid scale-90 place-content-center"
+              className="grid scale-75 place-content-center sm:scale-90"
               initial={{ y: 40, opacity: 0, filter: "blur(10px)" }}
               animate={{
                 y: 0,

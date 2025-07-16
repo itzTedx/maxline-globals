@@ -49,7 +49,7 @@ export const AboutHeroSection = () => {
           >
             {CAROUSEL_IMAGES.map((src, i) => (
               <MarqueeItem key={i}>
-                <div className="relative aspect-4/3 h-96">
+                <div className="relative aspect-4/3 h-60 md:h-96">
                   <Image
                     src={src}
                     alt={`Logistics and supply chain image ${i + 1}`}

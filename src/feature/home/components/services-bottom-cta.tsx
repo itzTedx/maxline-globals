@@ -10,7 +10,7 @@ import { Link } from "@/i18n/navigation";
 export const ServicesBottomCTA = () => {
   const t = useTranslations("HomePage");
   return (
-    <div className="relative flex flex-col items-center gap-4 overflow-hidden py-20">
+    <div className="relative flex flex-col items-center gap-4 overflow-hidden py-9 sm:py-12 md:py-20">
       <Letter3DSwap
         mainClassName="font-grotesk z-10 pt-10 text-center text-4xl md:pt-16 md:text-6xl lg:pt-20 lg:text-8xl"
         frontFaceClassName={`bg-background text-secondary`}

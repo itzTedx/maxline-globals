@@ -16,7 +16,7 @@ export const AboutSection = memo(() => {
   const t = useTranslations("HomePage");
   return (
     <section
-      className="relative container grid grid-cols-1 gap-x-4 gap-y-12 overflow-hidden pb-12 md:grid-cols-2 md:gap-x-9 md:gap-y-20 md:pb-20"
+      className="relative container gap-x-4 gap-y-12 sm:grid sm:grid-cols-1 sm:overflow-hidden sm:pb-12 md:grid-cols-2 md:gap-x-9 md:gap-y-20 md:pb-20"
       aria-labelledby="solutions-heading"
       itemScope
       itemType="https://schema.org/Organization"
@@ -102,7 +102,7 @@ export const AboutSection = memo(() => {
         />
       </motion.div>
       <div
-        className="relative col-start-1 flex items-center justify-center max-sm:scale-75 md:col-start-2 rtl:md:col-start-1"
+        className="relative flex items-center justify-center max-sm:scale-85 sm:col-start-1 md:col-start-2 rtl:md:col-start-1"
         itemProp="serviceType"
       >
         <div className="relative">

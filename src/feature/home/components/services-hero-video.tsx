@@ -142,7 +142,7 @@ export const ServicesHeroVideo = () => {
       ...videoProps,
       className: cn(
         "absolute inset-0 h-full w-full object-cover",
-        isMobile ? "blur-xl" : "blur-2xl sm:blur-3xl"
+        isMobile ? "blur-lg" : "blur-2xl sm:blur-3xl"
       ),
       "aria-hidden": true,
     }),
@@ -152,7 +152,7 @@ export const ServicesHeroVideo = () => {
   return (
     <div
       ref={containerRef}
-      className="relative z-40 container max-w-7xl px-4 py-16 sm:py-24 md:py-32 lg:py-36"
+      className="relative z-40 container max-w-7xl px-4 py-9 sm:py-24 md:py-32 lg:py-36"
       onClick={handleInteraction}
     >
       <motion.div
