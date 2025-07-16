@@ -76,11 +76,26 @@ export const FaqSection = memo(() => {
         </h2>
         <motion.div
           style={{ clipPath }}
-          className="relative aspect-video overflow-hidden rounded-2xl"
+          className="relative aspect-video overflow-hidden rounded-2xl rtl:hidden"
           itemProp="image"
         >
           <Image
             src="/images/faq.webp"
+            alt="FAQ"
+            className="object-cover"
+            fill
+            sizes="(max-width: 768px) 100vw, 50vw"
+            loading="lazy"
+            quality={75}
+          />
+        </motion.div>
+        <motion.div
+          style={{ clipPath }}
+          className="relative aspect-video overflow-hidden rounded-2xl ltr:hidden"
+          itemProp="image"
+        >
+          <Image
+            src="/images/faq-rtl.webp"
             alt="FAQ"
             className="object-cover"
             fill

@@ -287,6 +287,173 @@ declare const messages: {
     "linkedinProfile": "Linkedin Profile",
     "departmentName": "Logistics Department",
     "departmentDescription": "Expert team handling freight forwarding, customs clearance, and supply chain solutions"
+  },
+  "ContactPage": {
+    "subtitle": "Contact us",
+    "heroTitle1": "Let's Move Your Business",
+    "heroTitle2": "Forward,",
+    "heroTitle3": "Together",
+    "heroDescription": "Get in touch to start a logistics project, explore partnership opportunities, or learn how Maxline Global delivers supply chain solutions with precision, speed, and care. We're here to support your business - every step of the way.",
+    "contactLocations": "Contact Locations",
+    "corporateHeadquarters": "Corporate Headquarters",
+    "hqAddressLine1": "P.O. Box: 232939, Jebel Ali Free Zone,",
+    "hqAddressLine2": "Dubai, United Arab Emirates.",
+    "hqImageAlt": "Maxline Global Corporate Headquarters in Dubai",
+    "branchOffice": "Branch Office",
+    "branchAddress": "33, 6A Street, Ras Al khor Industrial Area - 2, Dubai, United Arab Emirates.",
+    "branchImageAlt": "Maxline Global Branch Office in Dubai",
+    "contactForm": "Contact Form",
+    "contactImageAlt": "Maxline Global Logistics Operations",
+    "contactImageCaption": "Maxline Global Logistics Operations Center",
+    "aroundWorldTitle": "Maxline Global Around the World",
+    "aroundWorldDescription": "Our strategically located offices empower us to manage international shipments with local insight. Wherever you are, Maxline is never far.",
+    "phoneLabel": "Phone",
+    "mobileLabel": "Mobile",
+    "emailLabel": "Email",
+    "viewInMap": "View in map",
+    "branchesTitle": "Branches"
+  },
+  "ContactForm": {
+    "heading": "Have a Question? We're Here to Help",
+    "description": "Have a shipment, question, or custom logistics need? Fill out the form and our team will get back to you with the right solution - fast, reliable, and tailored to your goals.",
+    "fullNameLabel": "Full Name",
+    "fullNamePlaceholder": "Enter your full name",
+    "companyNameLabel": "Company Name",
+    "companyNamePlaceholder": "Enter your company name",
+    "emailLabel": "Email",
+    "emailPlaceholder": "Enter your email",
+    "phoneLabel": "Phone Number",
+    "phonePlaceholder": "Enter your phone number",
+    "serviceTypeLabel": "Service Type",
+    "serviceType": {
+      "general_inquiry": "General Inquiry",
+      "freight_forwarding": "Freight forwarding",
+      "warehousing_distribution": "Warehousing & Distribution",
+      "customs_brokerage": "Customs brokerage",
+      "project_cargo": "Project Cargo",
+      "partnership_inquiry": " Partnership Inquiry",
+      "other": "Other"
+    },
+    "subjectLabel": "Subject",
+    "subjectPlaceholder": "Enter subject",
+    "messageLabel": "Message",
+    "messagePlaceholder": "Enter your message",
+    "fileUploadLabel": "File Upload (Optional - for RFPs, project docs, etc.)",
+    "privacyPolicyConsent": "I agree to the <privacyPolicy>Privacy Policy</privacyPolicy> and consent to having this website store my submitted information.",
+    "sendMessage": "Send Message"
+  },
+  "PrivacyPolicy": {
+    "title": "Privacy Policy",
+    "introduction": {
+      "title": "Introduction",
+      "text1": "This Privacy Policy describes how Maxline Global, a premier freight forwarding and logistics provider, collects, uses, processes, and discloses your information when you use our website and services. We specialize in providing integrated freight solutions across air, sea, and land transportation, warehousing, and project forwarding services.",
+      "text2": "By using our website and submitting information through our forms, you agree to the collection and use of information in accordance with this policy. If you do not agree with our policies and practices, please do not use our website or submit information through our forms."
+    },
+    "informationWeCollect": {
+      "title": "Information We Collect",
+      "informationYouProvide": {
+        "title": "Information You Provide",
+        "text": "When you use our contact and quote request forms, we collect:",
+        "personalInformation": {
+          "title": "Personal Information:",
+          "fullName": "Full name",
+          "companyName": "Company name",
+          "emailAddress": "Email address",
+          "phoneNumber": "Phone number"
+        },
+        "shippingInformation": {
+          "title": "Shipping Information:",
+          "senderRecipient": "Sender and recipient details",
+          "shippingAddresses": "Shipping addresses",
+          "packageDescriptions": "Package descriptions",
+          "weightVolume": "Weight and volume specifications",
+          "preferredDates": "Preferred delivery dates",
+          "transportMode": "Transport mode preferences (Air, Sea, Land)",
+          "customsDocumentation": "Customs documentation"
+        },
+        "serviceInformation": {
+          "title": "Service Information:",
+          "serviceType": "Service type preferences (FTL, LTL, Project Cargo)",
+          "industryRequirements": "Industry-specific requirements",
+          "customLogistics": "Custom logistics needs",
+          "additionalSpecs": "Additional specifications"
+        },
+        "documentation": {
+          "title": "Documentation:",
+          "attachedFiles": "Attached files (up to 5MB per file)",
+          "projectDocumentation": "Project documentation",
+          "customRequirements": "Custom requirements",
+          "certificatesPermits": "Certificates and permits"
+        }
+      },
+      "automaticallyCollected": {
+        "title": "Automatically Collected Information",
+        "text": "When you visit our website, we automatically collect:",
+        "deviceInfo": "Device information (IP address, browser type, operating system)",
+        "usageData": "Usage data (pages visited, time spent, links clicked)",
+        "locationInfo": "Location information (if permitted by your device settings)",
+        "referralSource": "Referral source",
+        "deviceIdentifiers": "Device identifiers"
+      }
+    },
+    "howWeUseYourInformation": {
+      "title": "How We Use Your Information",
+      "text": "We use the information we collect to:",
+      "processRequests": "Process and respond to your quote requests and inquiries",
+      "provideSolutions": "Provide personalized logistics solutions across air, sea, and land transportation",
+      "manageWarehousing": "Manage warehousing and distribution services",
+      "handleProjectForwarding": "Handle project forwarding and specialized cargo",
+      "facilitateCustoms": "Facilitate customs clearance and documentation",
+      "communicateShipments": "Communicate with you about your shipments and services",
+      "sendNotices": "Send you technical notices, updates, and support messages",
+      "improveServices": "Improve our services and customer experience",
+      "complyLegal": "Comply with legal and regulatory requirements",
+      "protectFraud": "Protect against fraud and unauthorized transactions"
+    },
+    "informationSharing": {
+      "title": "Information Sharing and Disclosure",
+      "text": "We may share your information with:",
+      "logisticsPartners": "Our logistics partners and service providers",
+      "customsAuthorities": "Customs and regulatory authorities",
+      "shippingCarriers": "Shipping carriers and transportation providers",
+      "warehousingPartners": "Warehousing and distribution partners",
+      "professionalAdvisors": "Professional advisors (lawyers, accountants, etc.)",
+      "lawEnforcement": "Law enforcement when required by law"
+    },
+    "dataSecurity": {
+      "title": "Data Security",
+      "text": "We implement appropriate technical and organizational measures to protect your personal information, including:",
+      "encryption": "Encryption of data in transit and at rest",
+      "secureSubmission": "Secure form submission and data processing",
+      "accessControls": "Access controls and authentication procedures",
+      "securityAssessments": "Regular security assessments and audits",
+      "employeeTraining": "Employee training on data security",
+      "disclaimer": "While we strive to protect your information, no method of transmission over the Internet or electronic storage is 100% secure. We cannot guarantee absolute security."
+    },
+    "yourRights": {
+      "title": "Your Rights and Choices",
+      "text": "You have certain rights regarding your personal information:",
+      "access": "Access your personal information",
+      "correct": "Correct inaccurate information",
+      "delete": "Request deletion of your information",
+      "object": "Object to processing of your information",
+      "withdraw": "Withdraw consent at any time",
+      "optOut": "Opt-out of marketing communications",
+      "contact": "To exercise these rights, please contact us using the information provided below."
+    },
+    "internationalTransfers": {
+      "title": "International Data Transfers",
+      "text": "As a global logistics provider operating across multiple countries including the UAE, Saudi Arabia, Oman, Kuwait, Bahrain, Qatar, and the United Kingdom, your information may be transferred to and processed in countries other than your country of residence. These countries may have different data protection laws. We ensure appropriate safeguards are in place to protect your information when transferred internationally."
+    },
+    "changesToPolicy": {
+      "title": "Changes to This Policy",
+      "text": "We may update this privacy policy from time to time. We will notify you of any changes by posting the new privacy policy on this page and updating the \"Last Updated\" date. We encourage you to review this policy periodically."
+    },
+    "contactUs": {
+      "title": "Contact Us",
+      "text": "If you have any questions, concerns, or requests regarding this Privacy Policy or our privacy practices, please contact us at:"
+    },
+    "lastUpdated": "Last Updated: 8/6/2025"
   }
 };
 export default messages;

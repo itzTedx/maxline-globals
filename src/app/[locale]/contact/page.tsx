@@ -2,6 +2,8 @@ import { Metadata } from "next";
 import Image from "next/image";
 import Script from "next/script";
 
+import { getTranslations } from "next-intl/server";
+
 import { XIcon } from "@/assets/x-icon";
 import { StaggeredText } from "@/components/animation/staggered-text";
 import { HeroHeader } from "@/components/hero-header";
@@ -95,7 +97,8 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ContactPage() {
+export default async function ContactPage() {
+  const t = await getTranslations("ContactPage");
   return (
     <>
       <Script
@@ -113,17 +116,17 @@ export default function ContactPage() {
           <header className="z-10 h-fit px-0 py-0 text-start md:sticky md:top-[20vh]">
             <HeroHeader
               className="z-10 h-fit px-0 py-0 text-start md:sticky md:top-[20vh]"
-              subtitle="Contact us"
+              subtitle={t("subtitle")}
               title={[
-                { text: "Let's Move Your Business" },
+                { text: t("heroTitle1") },
                 {
-                  text: "Forward,",
+                  text: t("heroTitle2"),
                   className: "text-secondary",
                 },
-                { text: "Together" },
+                { text: t("heroTitle3") },
               ]}
               titleClassName="text-3xl md:text-4xl lg:text-[4rem]/18 mb-6"
-              description="Get in touch to start a logistics project, explore partnership opportunities, or learn how Maxline Global delivers supply chain solutions with precision, speed, and care. We're here to support your business - every step of the way."
+              description={t("heroDescription")}
               isLogo={false}
             />
           </header>
@@ -133,23 +136,23 @@ export default function ContactPage() {
             aria-labelledby="contact-locations"
           >
             <h2 id="contact-locations" className="sr-only">
-              Contact Locations
+              {t("contactLocations")}
             </h2>
 
             <article className="relative overflow-hidden rounded-2xl p-6 md:p-12">
               <div className="relative z-10">
                 <h3 className="text-primary mb-1 text-xl md:text-2xl">
-                  Corporate Headquarters
+                  {t("corporateHeadquarters")}
                 </h3>
                 <address className="text-lg font-medium text-white not-italic md:text-2xl">
-                  P.O. Box: 232939, Jebel Ali Free Zone,
+                  {t("hqAddressLine1")}
                   <br />
-                  Dubai, United Arab Emirates.
+                  {t("hqAddressLine2")}
                 </address>
               </div>
               <Image
                 src={HEADQUARTERS_IMAGE}
-                alt="Maxline Global Corporate Headquarters in Dubai"
+                alt={t("hqImageAlt")}
                 fill
                 className="object-cover"
                 priority
@@ -160,16 +163,15 @@ export default function ContactPage() {
             <article className="relative overflow-hidden rounded-2xl p-6 md:p-12">
               <div className="relative z-10">
                 <h3 className="text-primary mb-1 text-xl md:text-2xl">
-                  Branch Office
+                  {t("branchOffice")}
                 </h3>
                 <address className="text-lg font-medium text-white not-italic md:text-2xl">
-                  33, 6A Street, Ras Al khor Industrial Area - 2, Dubai, United
-                  Arab Emirates.
+                  {t("branchAddress")}
                 </address>
               </div>
               <Image
                 src={HEADQUARTERS_IMAGE}
-                alt="Maxline Global Branch Office in Dubai"
+                alt={t("branchImageAlt")}
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -178,7 +180,7 @@ export default function ContactPage() {
 
             <section aria-labelledby="contact-form-title">
               <h2 id="contact-form-title" className="sr-only">
-                Contact Form
+                {t("contactForm")}
               </h2>
               <ContactForm />
             </section>
@@ -194,23 +196,23 @@ export default function ContactPage() {
           <Image
             src="/images/contact-container.webp"
             fill
-            alt="Maxline Global Logistics Operations"
+            alt={t("contactImageAlt")}
             className="object-cover"
             sizes="100vw"
           />
           <figcaption className="sr-only">
-            Maxline Global Logistics Operations Center
+            {t("contactImageCaption")}
           </figcaption>
         </figure>
         <section className="container md:max-w-6xl">
           <h3 className="text-brand-dark font-grotesk mx-auto max-w-lg text-center text-2xl md:text-4xl lg:text-6xl">
             <StaggeredText
-              text="Maxline Global Around the World"
+              text={t("aroundWorldTitle")}
               className="[&>span:nth-child(-n+2)]:text-secondary"
             />
           </h3>
           <p className="text-brand-gray mx-auto max-w-4xl pt-2 text-center text-lg font-light text-balance md:pt-4 md:text-xl lg:text-2xl">
-            <StaggeredText text="Our strategically located offices empower us to manage international shipments with local insight. Wherever you are, Maxline is never far." />
+            <StaggeredText text={t("aroundWorldDescription")} />
           </p>
           <ul className="grid grid-cols-1 gap-9 pt-12 sm:grid-cols-2">
             {HEAD_LOCATION.map((loc, index) => (
@@ -227,28 +229,37 @@ export default function ContactPage() {
                   />
                 </div>
                 <div className="p-2 text-center">
-                  <p className="text-brand-dark pb-2 font-light">
+                  <p className="text-brand-dark pb-2 font-light" dir="ltr">
                     <StaggeredText text={loc.title} />
                   </p>
-                  <h4 className="font-grotesk text-secondary px-4 pb-4 text-2xl">
+                  <h4
+                    className="font-grotesk text-secondary px-4 pb-4 text-2xl"
+                    dir="ltr"
+                  >
                     <StaggeredText text={loc.address} />
                   </h4>
                   <ul className="divide-primary/20 mb-4 divide-y">
                     <li className="py-1">
-                      <StaggeredText text={`Phone: ${loc.phone}`} delay={0.1} />
-                    </li>
-                    <li className="py-1">
                       <StaggeredText
-                        text={`Mobile: ${loc.mobile}`}
+                        text={`${t("phoneLabel")}: ${loc.phone}`}
                         delay={0.1}
                       />
                     </li>
                     <li className="py-1">
-                      <StaggeredText text={`Email: ${loc.email}`} delay={0.1} />
+                      <StaggeredText
+                        text={`${t("mobileLabel")}: ${loc.mobile}`}
+                        delay={0.1}
+                      />
+                    </li>
+                    <li className="py-1">
+                      <StaggeredText
+                        text={`${t("emailLabel")}: ${loc.email}`}
+                        delay={0.1}
+                      />
                     </li>
                   </ul>
                   <Button
-                    label="View in map"
+                    label={t("viewInMap")}
                     className="w-full"
                     href={loc.link}
                   />
@@ -259,7 +270,7 @@ export default function ContactPage() {
         </section>
         <section className="container py-20">
           <h3 className="text-secondary font-grotesk mx-auto max-w-lg text-center text-2xl md:text-4xl lg:text-6xl">
-            <StaggeredText text="Branches" />
+            <StaggeredText text={t("branchesTitle")} />
           </h3>
 
           <ul className="grid grid-cols-1 gap-4 pt-12 sm:grid-cols-2 md:grid-cols-3">
@@ -278,35 +289,41 @@ export default function ContactPage() {
                 </div>
                 <div className="flex h-full flex-col items-center justify-between p-2 text-center">
                   <div>
-                    <p className="text-brand-dark pb-2 font-light text-balance">
+                    <p
+                      className="text-brand-dark pb-2 font-light text-balance"
+                      dir="ltr"
+                    >
                       <StaggeredText text={loc.title} />
                     </p>
-                    <h4 className="font-grotesk text-secondary px-4 pb-4 text-2xl">
+                    <h4
+                      className="font-grotesk text-secondary px-4 pb-4 text-2xl"
+                      dir="ltr"
+                    >
                       <StaggeredText text={loc.address} />
                     </h4>
                     <ul className="divide-primary/20 mb-4 divide-y">
                       <li className="py-1">
                         <StaggeredText
-                          text={`Phone: ${loc.phone}`}
+                          text={`${t("phoneLabel")}: ${loc.phone}`}
                           delay={0.1}
                         />
                       </li>
                       <li className="py-1">
                         <StaggeredText
-                          text={`Mobile: ${loc.mobile}`}
+                          text={`${t("mobileLabel")}: ${loc.mobile}`}
                           delay={0.1}
                         />
                       </li>
                       <li className="py-1">
                         <StaggeredText
-                          text={`Email: ${loc.email}`}
+                          text={`${t("emailLabel")}: ${loc.email}`}
                           delay={0.1}
                         />
                       </li>
                     </ul>
                   </div>
                   <Button
-                    label="View in map"
+                    label={t("viewInMap")}
                     className="w-full"
                     href={loc.link}
                   />

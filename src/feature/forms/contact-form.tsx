@@ -2,6 +2,7 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { IconArrowRight } from "@tabler/icons-react";
+import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
 
 import LetterSwapPingPong from "@/components/animation/letter-swap-pingpong-anim";
@@ -27,6 +28,7 @@ import {
 } from "./schema/contact-schema";
 
 export function ContactForm() {
+  const t = useTranslations("ContactForm");
   // 1. Define your form.
   const form = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
@@ -58,12 +60,10 @@ export function ContactForm() {
       >
         <div>
           <h3 className="font-grotesk text-secondary text-2xl sm:text-3xl md:text-4xl">
-            Have a Question? We&apos;re Here to Help
+            {t("heading")}
           </h3>
           <p className="text-brand-gray mt-2 text-base font-light sm:text-lg md:text-xl">
-            Have a shipment, question, or custom logistics need? Fill out the
-            form and our team will get back to you with the right solution -
-            fast, reliable, and tailored to your goals.
+            {t("description")}
           </p>
         </div>
 
@@ -72,9 +72,9 @@ export function ContactForm() {
           name="fullName"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Full Name</FormLabel>
+              <FormLabel>{t("fullNameLabel")}</FormLabel>
               <FormControl>
-                <Input placeholder="Enter your full name" {...field} />
+                <Input placeholder={t("fullNamePlaceholder")} {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -86,9 +86,9 @@ export function ContactForm() {
           name="companyName"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Company Name</FormLabel>
+              <FormLabel>{t("companyNameLabel")}</FormLabel>
               <FormControl>
-                <Input placeholder="Enter your company name" {...field} />
+                <Input placeholder={t("companyNamePlaceholder")} {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -100,11 +100,11 @@ export function ContactForm() {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email</FormLabel>
+                <FormLabel>{t("emailLabel")}</FormLabel>
                 <FormControl>
                   <Input
                     type="email"
-                    placeholder="Enter your email"
+                    placeholder={t("emailPlaceholder")}
                     {...field}
                   />
                 </FormControl>
@@ -118,9 +118,9 @@ export function ContactForm() {
             name="phoneNumber"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Phone Number</FormLabel>
+                <FormLabel>{t("phoneLabel")}</FormLabel>
                 <FormControl>
-                  <Input placeholder="Enter your phone number" {...field} />
+                  <Input placeholder={t("phonePlaceholder")} {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -133,21 +133,25 @@ export function ContactForm() {
           name="serviceType"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Service Type</FormLabel>
+              <FormLabel>{t("serviceTypeLabel")}</FormLabel>
 
               <FormControl>
                 <div className="grid grid-cols-1 items-center gap-2 sm:grid-cols-2 lg:flex lg:flex-wrap">
-                  {Object.entries(SERVICE_TYPE_LABELS).map(([value, label]) => (
+                  {Object.entries(SERVICE_TYPE_LABELS).map(([value]) => (
                     <div
                       key={value}
-                      className="border-muted-foreground/20 bg-muted has-data-[state=checked]:border-secondary/50 has-data-[state=checked]:bg-primary/10 text-brand-gray relative flex items-center justify-center gap-2 rounded-md border p-1 pl-3 outline-none"
+                      className="border-muted-foreground/20 bg-muted has-data-[state=checked]:border-secondary/50 has-data-[state=checked]:bg-primary/10 text-brand-gray relative flex items-center justify-center gap-2 rounded-md border p-1 outline-none ltr:pl-3 rtl:pr-3"
                     >
                       <Checkbox
                         className="order-1 after:absolute after:inset-0"
                         {...field}
                       />
                       <div className="grid grow gap-2">
-                        <Label>{label}</Label>
+                        <Label>
+                          {t(
+                            `serviceType.${value}` as `serviceType.${keyof typeof SERVICE_TYPE_LABELS}`
+                          )}
+                        </Label>
                       </div>
                     </div>
                   ))}
@@ -164,9 +168,9 @@ export function ContactForm() {
           name="subject"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Subject</FormLabel>
+              <FormLabel>{t("subjectLabel")}</FormLabel>
               <FormControl>
-                <Input placeholder="Enter subject" {...field} />
+                <Input placeholder={t("subjectPlaceholder")} {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -178,10 +182,10 @@ export function ContactForm() {
           name="message"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Message</FormLabel>
+              <FormLabel>{t("messageLabel")}</FormLabel>
               <FormControl>
                 <Textarea
-                  placeholder="Enter your message"
+                  placeholder={t("messagePlaceholder")}
                   className="min-h-[100px] sm:min-h-[120px]"
                   {...field}
                 />
@@ -196,9 +200,7 @@ export function ContactForm() {
           name="fileUpload"
           render={({ field: { onChange, onBlur, name, ref } }) => (
             <FormItem>
-              <FormLabel>
-                File Upload (Optional - for RFPs, project docs, etc.)
-              </FormLabel>
+              <FormLabel>{t("fileUploadLabel")}</FormLabel>
               <FormControl>
                 <Input
                   type="file"
@@ -226,15 +228,16 @@ export function ContactForm() {
               </FormControl>
               <div>
                 <FormLabel className="block text-sm leading-snug font-light sm:text-base">
-                  I agree to the{" "}
-                  <Link
-                    href="/privacy-policy"
-                    className="text-secondary hover:underline"
-                  >
-                    Privacy Policy
-                  </Link>{" "}
-                  and consent to having this website store my submitted
-                  information.
+                  {t.rich("privacyPolicyConsent", {
+                    privacyPolicy: (chunks) => (
+                      <Link
+                        href="/privacy-policy"
+                        className="text-secondary hover:underline"
+                      >
+                        {chunks}
+                      </Link>
+                    ),
+                  })}
                 </FormLabel>
                 <FormMessage />
               </div>
@@ -247,7 +250,7 @@ export function ContactForm() {
           className="bg-secondary text-background h-16 w-full pr-1 pl-6 text-xl"
         >
           <LetterSwapPingPong
-            label="Send Message"
+            label={t("sendMessage")}
             staggerFrom="first"
             reverse={false}
             className="w-full justify-start font-semibold"
