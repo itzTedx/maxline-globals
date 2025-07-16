@@ -50,8 +50,8 @@ export const Button = ({
             staggerFrom="first"
             reverse={false}
             className={cn(
-              textClassName,
-              "text-background w-full justify-start font-semibold"
+              "text-background w-full justify-start font-semibold",
+              textClassName
             )}
           />
         )}

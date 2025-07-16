@@ -142,12 +142,8 @@ export default function InsightsPage() {
       />
       <main className="bg-background relative z-10 container rounded-b-3xl pb-20 shadow-xl">
         <HeroHeader
-          subtitle={t.rich("insights.title", {
-            span: (chunks) => <span>{chunks}</span>,
-          })}
-          title={t.rich("insights.title", {
-            span: (chunks) => <span>{chunks}</span>,
-          })}
+          subtitle={t("insights.label")}
+          title={t.rich("insights.title")}
           description={t("insights.description")}
         />
         <section aria-label="Insights and Articles">

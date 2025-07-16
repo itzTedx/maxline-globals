@@ -106,8 +106,8 @@ export default async function TeamPage() {
           <h2 className="font-grotesk text-secondary text-center text-5xl">
             <StaggeredText text={t("leadershipTitle")} />
           </h2>
-          <ul className="grid grid-cols-3 gap-6 pt-12">
-            {Array.from({ length: 3 }).map((item, i) => (
+          <ul className="grid grid-cols-4 gap-4 pt-12">
+            {Array.from({ length: 4 }).map((item, i) => (
               <li key={i} className="bg-brand-dark overflow-hidden rounded-xl">
                 <div className="relative aspect-5/4">
                   <Image
@@ -127,7 +127,8 @@ export default async function TeamPage() {
                     label={t("linkedinProfile")}
                     href="/"
                     variant="secondary"
-                    className="w-full"
+                    className="text-brand-dark w-full"
+                    textClassName="text-brand-dark"
                   />
                 </div>
               </li>
@@ -170,7 +171,9 @@ export default async function TeamPage() {
         <Suspense fallback={<div>Loading...</div>}>
           <CompanySection />
         </Suspense>
-        <Cta />
+        <div className="pt-20">
+          <Cta />
+        </div>
       </main>
     </>
   );

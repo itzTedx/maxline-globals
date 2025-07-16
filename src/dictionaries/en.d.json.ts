@@ -133,7 +133,8 @@ declare const messages: {
       }
     ],
     "insights": {
-      "title": "<span>Maxline</span> Insights & Updates",
+      "label": "Maxline Insights & Updates",
+      "title": "Explore the Ideas Driving Global Logistics Forward",
       "description": "Stay ahead with the latest in logistics, trade, and global supply chain trends.",
       "btnText": "More",
       "readBtn": "Read Article",
