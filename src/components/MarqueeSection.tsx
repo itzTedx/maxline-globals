@@ -1,10 +1,15 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 import React from "react";
 
-import SimpleMarquee from "@/components/animation/simple-marquee";
+// import SimpleMarquee from "@/components/animation/simple-marquee";
+const SimpleMarquee = dynamic(
+  () => import("@/components/animation/simple-marquee"),
+  { ssr: false }
+);
 
 export type ServiceMessages = {
   industriesTitle?: string;
@@ -31,7 +36,7 @@ export default function MarqueeSection({
   const isRTL = locale === "ar";
   return (
     <section className="relative overflow-hidden pb-10 md:pb-20">
-      <h3 className="font-grotesk text-brand-dark container mb-8 text-4xl md:mb-12 md:text-6xl">
+      <h3 className="font-grotesk text-brand-dark container mx-0 mb-8 max-w-4xl text-4xl text-balance md:mb-12 md:text-6xl">
         {messages[serviceKey]?.industriesTitle ||
           "Industries we move the Maxline Global way"}
       </h3>

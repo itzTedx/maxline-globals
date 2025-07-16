@@ -73,7 +73,9 @@
         "title": "Customs Clearance Support",
         "description": "Expert assistance to navigate complex regulations, ensuring smooth and efficient customs processing."
       }
-    ]
+    ],
+    "industriesTitle": "Industries we move the Maxline Global way",
+    "capabilitiesTitle": "Expanded Land Freight Capabilities for Faster, Smarter Delivery"
   },
   "airFreight": {
     "hero": {
@@ -149,7 +151,9 @@
         "title": "Air Freight Documentation Support",
         "description": "Accurate and compliant airway bills, customs declarations, and import/export documents."
       }
-    ]
+    ],
+    "industriesTitle": "Industries we move the Maxline Global way",
+    "capabilitiesTitle": "Expanded Air Freight Capabilities for Global Delivery"
   },
   "seaFreight": {
     "hero": {
@@ -303,7 +307,9 @@
         "title": "Regulatory & Customs Compliance",
         "description": "Full assistance with import/export licenses, special handling approvals, and local regulations."
       }
-    ]
+    ],
+    "industriesTitle": "Industries we move the Maxline Global way",
+    "capabilitiesTitle": "Expanded Project Cargo Capabilities for Complex Logistics"
   },
   "packing": {
     "hero": {
@@ -379,7 +385,9 @@
         "title": "Compliance & Export Documentation",
         "description": "Full support for packing lists, certifications, and customs-ready documentation."
       }
-    ]
+    ],
+    "industriesTitle": "Industries we move the Maxline Global way",
+    "capabilitiesTitle": "Expanded Packing Capabilities for Safe, Compliant Delivery"
   },
   "warehousing": {
     "hero": {
@@ -455,7 +463,9 @@
         "title": "Integrated Inventory Reporting",
         "description": "Detailed tracking, analytics, and inventory reporting via our warehouse management system (WMS)."
       }
-    ]
+    ],
+    "industriesTitle": "Industries we move the Maxline Global way",
+    "capabilitiesTitle": "Expanded Warehousing Capabilities for Smart Distribution"
   },
   "exhibitionCargo": {
     "hero": {
@@ -531,7 +541,9 @@
         "title": "ATA Carnet & Temporary Clearance",
         "description": "Expert handling of temporary admission paperwork, re-export formalities, and customs compliance."
       }
-    ]
+    ],
+    "industriesTitle": "Industries we move the Maxline Global way",
+    "capabilitiesTitle": "Expanded Exhibition Cargo Capabilities for Event Success"
   },
   "moversLashing": {
     "hero": {
@@ -607,6 +619,8 @@
         "title": "Lashing Certificates & Inspection Reports",
         "description": "Documentation provided for customs, shipping lines, or compliance requirements."
       }
-    ]
+    ],
+    "industriesTitle": "Industries we move the Maxline Global way",
+    "capabilitiesTitle": "Expanded Moving & Lashing Capabilities for Secure Relocation"
   }
 }
