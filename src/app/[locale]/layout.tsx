@@ -21,16 +21,13 @@ export function generateStaticParams() {
 }
 
 export const metadata: Metadata = {
-  title: {
-    default: siteConfig.title.default,
-    template: siteConfig.title.template,
-  },
+  title: siteConfig.title.default,
   description: siteConfig.description,
   keywords: [...siteConfig.keywords],
   authors: [{ name: siteConfig.name }],
   openGraph: {
     title: siteConfig.title.default,
-    description: siteConfig.title.template,
+    description: siteConfig.description,
     type: "website",
     videos: [
       {
