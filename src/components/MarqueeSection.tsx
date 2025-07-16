@@ -50,7 +50,10 @@ export default function MarqueeSection({
       >
         {industries.map((item, i) => (
           <MarqueeItem key={i}>
-            <div className="text-background font-grotesk relative aspect-4/3 h-60 overflow-hidden rounded-2xl p-6 text-2xl md:h-80 md:p-9 md:text-4xl">
+            <div
+              className="text-background font-grotesk relative aspect-4/3 h-60 overflow-hidden rounded-2xl p-6 text-2xl md:h-80 md:p-9 md:text-4xl"
+              dir={locale === "ar" ? "rtl" : "ltr"}
+            >
               <h4 className="relative z-20 flex h-full items-end">
                 {
                   (
