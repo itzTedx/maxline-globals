@@ -337,7 +337,9 @@
     "messagePlaceholder": "أدخل رسالتك",
     "fileUploadLabel": "رفع ملف (اختياري - لعروض الأسعار أو مستندات المشاريع وغيرها)",
     "privacyPolicyConsent": "أوافق على <privacyPolicy>سياسة الخصوصية</privacyPolicy> وأسمح لهذا الموقع بتخزين المعلومات التي أرسلتها.",
-    "sendMessage": "إرسال الرسالة"
+    "sendMessage": "إرسال الرسالة",
+    "successMessage": "تم إرسال رسالتك بنجاح!",
+    "errorMessage": "حدث خطأ أثناء إرسال رسالتك. يرجى المحاولة مرة أخرى لاحقًا."
   },
   "PrivacyPolicy": {
     "title": "سياسة الخصوصية",

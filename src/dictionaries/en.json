@@ -337,7 +337,9 @@
     "messagePlaceholder": "Enter your message",
     "fileUploadLabel": "File Upload (Optional - for RFPs, project docs, etc.)",
     "privacyPolicyConsent": "I agree to the <privacyPolicy>Privacy Policy</privacyPolicy> and consent to having this website store my submitted information.",
-    "sendMessage": "Send Message"
+    "sendMessage": "Send Message",
+    "successMessage": "Your message has been sent!",
+    "errorMessage": "There was an error sending your message. Please try again later."
   },
   "PrivacyPolicy": {
     "title": "Privacy Policy",

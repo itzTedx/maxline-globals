@@ -50,19 +50,19 @@ export const contactSchema = z.object({
     .min(10, "Message must be at least 10 characters")
     .max(1000, "Message must not exceed 1000 characters"),
 
-  fileUpload: z
-    .instanceof(File)
-    .optional()
-    .refine(
-      (file) => {
-        if (!file) return true;
-        const maxSize = 5 * 1024 * 1024; // 5MB
-        return file.size <= maxSize;
-      },
-      {
-        message: "File size must be less than 5MB",
-      }
-    ),
+  // fileUpload: z
+  //   .instanceof(File)
+  //   .optional()
+  //   .refine(
+  //     (file) => {
+  //       if (!file) return true;
+  //       const maxSize = 5 * 1024 * 1024; // 5MB
+  //       return file.size <= maxSize;
+  //     },
+  //     {
+  //       message: "File size must be less than 5MB",
+  //     }
+  //   ),
 
   privacyPolicyConsent: z.boolean().refine((val) => val === true, {
     message: "You must agree to the Privacy Policy",

@@ -109,14 +109,14 @@ export default async function TeamPage() {
           <ul className="grid grid-cols-3 gap-6 pt-12">
             {Array.from({ length: 3 }).map((item, i) => (
               <li key={i} className="bg-brand-dark overflow-hidden rounded-xl">
-                <div className="relative aspect-square">
+                <div className="relative aspect-5/4">
                   <Image
                     src="/images/placeholder.jpg"
                     fill
                     alt=""
                     className="object-cover"
                   />
-                  <div className="from-brand-dark absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t to-transparent" />
+                  <div className="from-brand-dark absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t to-transparent" />
                 </div>
                 <div className="text-background p-2 text-center">
                   <h3 className="font-grotesk text-4xl">{t("personName")}</h3>
@@ -134,7 +134,7 @@ export default async function TeamPage() {
             ))}
           </ul>
         </section>
-        <section className="container py-20">
+        {/* <section className="container py-20">
           <h2 className="font-grotesk text-secondary text-center text-5xl">
             <StaggeredText text={t("specialistsTitle")} />
           </h2>
@@ -166,7 +166,7 @@ export default async function TeamPage() {
               </li>
             ))}
           </ul>
-        </section>
+        </section> */}
         <Suspense fallback={<div>Loading...</div>}>
           <CompanySection />
         </Suspense>

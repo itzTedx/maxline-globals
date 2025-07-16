@@ -1,5 +1,7 @@
 "use client";
 
+import { useState, useTransition } from "react";
+
 import { zodResolver } from "@hookform/resolvers/zod";
 import { IconArrowRight } from "@tabler/icons-react";
 import { useTranslations } from "next-intl";
@@ -18,9 +20,11 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Textarea } from "@/components/ui/textarea";
 import { Link } from "@/i18n/navigation";
 
+import { sendContactEmail } from "./contact-action";
 import {
   ContactFormData,
   SERVICE_TYPE_LABELS,
@@ -29,6 +33,11 @@ import {
 
 export function ContactForm() {
   const t = useTranslations("ContactForm");
+  const [submitResult, setSubmitResult] = useState<null | {
+    success: boolean;
+    error?: string;
+  }>(null);
+  const [isPending, startTransition] = useTransition();
   // 1. Define your form.
   const form = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
@@ -36,7 +45,7 @@ export function ContactForm() {
       fullName: "",
       companyName: "",
       email: "",
-      fileUpload: undefined,
+      // fileUpload: undefined,
       message: "",
       phoneNumber: "",
       privacyPolicyConsent: false,
@@ -46,11 +55,26 @@ export function ContactForm() {
   });
 
   // 2. Define a submit handler.
-  function onSubmit(values: ContactFormData) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
+  async function onSubmit(values: ContactFormData) {
+    const formData = new FormData();
+    Object.entries(values).forEach(([key, value]) => {
+      if (typeof value !== "undefined" && value !== null) {
+        formData.append(key, String(value));
+      }
+    });
+    startTransition(async () => {
+      const result = await sendContactEmail(formData);
+      setSubmitResult(result);
+      if (result.success) {
+        form.reset();
+      }
+    });
   }
+
+  const formValues = form.watch();
+
+  const validation = contactSchema.safeParse(formValues);
+  console.log(validation);
 
   return (
     <Form {...form}>
@@ -58,6 +82,17 @@ export function ContactForm() {
         onSubmit={form.handleSubmit(onSubmit)}
         className="relative z-10 space-y-6 rounded-2xl bg-white p-4 sm:p-6 md:space-y-8 md:p-9"
       >
+        {submitResult && (
+          <div
+            className={`mb-4 rounded p-3 text-center text-base font-medium ${
+              submitResult.success
+                ? "bg-green-100 text-green-800"
+                : "bg-red-100 text-red-800"
+            }`}
+          >
+            {submitResult.success ? t("successMessage") : t("errorMessage")}
+          </div>
+        )}
         <div>
           <h3 className="font-grotesk text-secondary text-2xl sm:text-3xl md:text-4xl">
             {t("heading")}
@@ -136,26 +171,57 @@ export function ContactForm() {
               <FormLabel>{t("serviceTypeLabel")}</FormLabel>
 
               <FormControl>
-                <div className="grid grid-cols-1 items-center gap-2 sm:grid-cols-2 lg:flex lg:flex-wrap">
+                <RadioGroup
+                  className="grid grid-cols-1 items-center gap-2 sm:grid-cols-2 lg:flex lg:flex-wrap"
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}
+                >
                   {Object.entries(SERVICE_TYPE_LABELS).map(([value]) => (
                     <div
                       key={value}
-                      className="border-muted-foreground/20 bg-muted has-data-[state=checked]:border-secondary/50 has-data-[state=checked]:bg-primary/10 text-brand-gray relative flex items-center justify-center gap-2 rounded-md border p-1 outline-none ltr:pl-3 rtl:pr-3"
+                      className="border-muted-foreground/20 bg-muted has-data-[state=checked]:border-secondary/50 has-data-[state=checked]:bg-primary/10 text-brand-gray relative flex items-center justify-center gap-2 rounded-md border p-2 outline-none"
                     >
-                      <Checkbox
-                        className="order-1 after:absolute after:inset-0"
-                        {...field}
-                      />
-                      <div className="grid grow gap-2">
-                        <Label>
-                          {t(
-                            `serviceType.${value}` as `serviceType.${keyof typeof SERVICE_TYPE_LABELS}`
-                          )}
-                        </Label>
+                      <Label htmlFor={field.name}>
+                        {t(
+                          `serviceType.${value}` as `serviceType.${keyof typeof SERVICE_TYPE_LABELS}`
+                        )}
+                      </Label>
+                      <div className="flex justify-between gap-2">
+                        <RadioGroupItem
+                          id={field.name}
+                          value={value}
+                          className="order-1 after:absolute after:inset-0"
+                        />
                       </div>
                     </div>
-                  ))}
-                </div>
+
+                    // <div
+                    //   key={value}
+                    //   className="border-muted-foreground/20 bg-muted has-data-[state=checked]:border-secondary/50 has-data-[state=checked]:bg-primary/10 text-brand-gray relative flex items-center justify-center gap-2 rounded-md border p-1 outline-none ltr:pl-3 rtl:pr-3"
+                    // >
+                    //   <Checkbox
+                    //     className="order-1 after:absolute after:inset-0"
+                    //     checked={field.value?.includes(value)}
+                    //     onCheckedChange={(checked) => {
+                    //       return checked
+                    //         ? field.onChange([...field.value, value])
+                    //         : field.onChange(
+                    //             field.value?.filter(
+                    //               (value) => value !== item.id
+                    //             )
+                    //           )
+                    //     }}
+                    //   />
+                    //   <div className="grid grow gap-2">
+                    //     <Label>
+                    //       {t(
+                    //         `serviceType.${value}` as `serviceType.${keyof typeof SERVICE_TYPE_LABELS}`
+                    //       )}
+                    //     </Label>
+                    //   </div>
+                    // </div>
+                  ))}{" "}
+                </RadioGroup>
               </FormControl>
 
               <FormMessage />
@@ -195,7 +261,7 @@ export function ContactForm() {
           )}
         />
 
-        <FormField
+        {/* <FormField
           control={form.control}
           name="fileUpload"
           render={({ field: { onChange, onBlur, name, ref } }) => (
@@ -213,7 +279,7 @@ export function ContactForm() {
               <FormMessage />
             </FormItem>
           )}
-        />
+        /> */}
 
         <FormField
           control={form.control}
@@ -248,17 +314,24 @@ export function ContactForm() {
           size="btnIcon"
           variant="secondary"
           className="bg-secondary text-background h-16 w-full pr-1 pl-6 text-xl"
+          type="submit"
+          disabled={isPending}
         >
-          <LetterSwapPingPong
-            label={t("sendMessage")}
-            staggerFrom="first"
-            reverse={false}
-            className="w-full justify-start font-semibold"
-          />
-
-          <div className="bg-background text-brand-dark group-hover:bg-background pointer-events-none ml-auto flex size-14 shrink-0 touch-none items-center justify-center rounded transition-colors select-none">
-            <IconArrowRight className="size-6 stroke-[1.5]" />
-          </div>
+          {isPending ? (
+            <span>Sending...</span>
+          ) : (
+            <>
+              <LetterSwapPingPong
+                label={t("sendMessage")}
+                staggerFrom="first"
+                reverse={false}
+                className="w-full justify-start font-semibold"
+              />
+              <div className="bg-background text-brand-dark group-hover:bg-background pointer-events-none ml-auto flex size-14 shrink-0 touch-none items-center justify-center rounded transition-colors select-none">
+                <IconArrowRight className="size-6 stroke-[1.5]" />
+              </div>
+            </>
+          )}
         </Button>
       </form>
     </Form>
