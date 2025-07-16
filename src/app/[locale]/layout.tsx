@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Script from "next/script";
 
 import { NextIntlClientProvider, hasLocale } from "next-intl";
+import { setRequestLocale } from "next-intl/server";
 
 import { geistSans, ibmPlexSansArabic, radioGrostek } from "@/assets/fonts";
 import BreakpointIndicator from "@/components/breakpoint-indicator";
@@ -14,6 +15,10 @@ import { routing } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
 
 import "./globals.css";
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
 
 export const metadata: Metadata = {
   title: {
@@ -68,6 +73,10 @@ export default async function RootLayout({
   if (!hasLocale(routing.locales, locale)) {
     notFound();
   }
+
+  // Enable static rendering
+  setRequestLocale(locale);
+
   const messages = (await import(`@/dictionaries/${locale}.json`)).default;
 
   return (
