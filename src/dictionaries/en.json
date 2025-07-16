@@ -563,5 +563,10 @@
       "attachFiles": { "label": "Attach Files (Optional)" }
     },
     "submit": "Get A Quote"
+  },
+  "TrackingPage": {
+    "title": "Tracking page is under development",
+    "description": "We’re currently working on bringing you a powerful, real-time tracking experience to monitor your shipments with precision and ease. Our new tracking system is under development and will be launching soon.",
+    "assistance": "For immediate assistance or tracking inquiries, please contact our support team below"
   }
 }
