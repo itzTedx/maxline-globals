@@ -60,7 +60,7 @@ export const NAVLINKS: NavLink[] = [
   },
   {
     title: "company",
-    href: "/company",
+    href: "#",
     submenu: [
       {
         title: "aboutUs",

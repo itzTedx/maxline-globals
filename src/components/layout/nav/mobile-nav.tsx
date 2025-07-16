@@ -1,4 +1,5 @@
 import { IconMenu2 } from "@tabler/icons-react";
+import { useTranslations } from "next-intl";
 
 import { Logo } from "@/assets/logo";
 import { Button } from "@/components/ui/button";
@@ -17,6 +18,7 @@ import { NavLink } from "@/constants";
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 
+import { LanguageSelector } from "./language-selector";
 import { QuoteButton } from "./quote-button";
 
 interface Props {
@@ -24,6 +26,7 @@ interface Props {
 }
 
 export const MobileNav = ({ links }: Props) => {
+  const t = useTranslations("Navigation");
   return (
     <Drawer>
       <DrawerTrigger
@@ -59,7 +62,7 @@ export const MobileNav = ({ links }: Props) => {
                         : "py-2 font-medium"
                     )}
                   >
-                    {link.title}
+                    {t(link.title as Parameters<typeof t>[0])}
                   </Link>
                 </DrawerClose>
                 {link.submenu && (
@@ -71,7 +74,7 @@ export const MobileNav = ({ links }: Props) => {
                             href={submenu.href}
                             className="block p-2 font-medium"
                           >
-                            {submenu.title}
+                            {t(submenu.title as Parameters<typeof t>[0])}
                           </Link>
                         </DrawerClose>
                       </li>
@@ -83,7 +86,11 @@ export const MobileNav = ({ links }: Props) => {
           </ul>
         </ScrollArea>
         <DrawerFooter>
-          <QuoteButton />
+          <div className="grid w-full grid-cols-5 items-start justify-start gap-2">
+            <QuoteButton className="col-span-4" />
+
+            <LanguageSelector className="bg-muted" />
+          </div>
         </DrawerFooter>
       </DrawerContent>
     </Drawer>

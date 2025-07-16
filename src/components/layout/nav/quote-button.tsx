@@ -3,13 +3,18 @@ import { useTranslations } from "next-intl";
 
 import LetterSwapPingPong from "@/components/animation/letter-swap-pingpong-anim";
 import { Link } from "@/i18n/navigation";
+import { cn } from "@/lib/utils";
 
 import { Button } from "../../ui/button";
 
-export const QuoteButton = () => {
+interface Props {
+  className?: string;
+}
+
+export const QuoteButton = ({ className }: Props) => {
   const t = useTranslations("Navigation");
   return (
-    <Button asChild size="btnIcon">
+    <Button asChild size="btnIcon" className={cn(className)}>
       <Link href="/quote" className="text-brand-dark group gap-3">
         <LetterSwapPingPong
           label={t("getQuote")}
