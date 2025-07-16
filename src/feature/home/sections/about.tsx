@@ -102,7 +102,7 @@ export const AboutSection = memo(() => {
         />
       </motion.div>
       <div
-        className="relative col-start-1 flex items-center justify-center md:col-start-2 rtl:md:col-start-1"
+        className="relative col-start-1 flex items-center justify-center max-sm:scale-75 md:col-start-2 rtl:md:col-start-1"
         itemProp="serviceType"
       >
         <div className="relative">

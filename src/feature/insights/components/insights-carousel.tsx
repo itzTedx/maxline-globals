@@ -38,11 +38,7 @@ export const InsightsCarousel = async () => {
           <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <h2 className="font-grotesk text-secondary text-3xl tracking-tight sm:text-4xl lg:text-5xl">
-                {t.rich("insights.title", {
-                  span: (chunks) => (
-                    <span className="text-brand-dark">{chunks}</span>
-                  ),
-                })}
+                {t.rich("insights.title")}
               </h2>
               <p className="text-brand-gray max-w-xl pt-2 text-lg font-light tracking-tight text-balance sm:text-xl lg:text-2xl">
                 {t("insights.description")}
@@ -101,7 +97,7 @@ export const InsightsCarousel = async () => {
             {blogs.map((blog) => (
               <CarouselItem
                 key={blog.id}
-                className="basis-1/2 pl-0.5 md:pl-2 lg:basis-1/3"
+                className="pl-0.5 sm:basis-1/2 md:pl-2 lg:basis-1/3"
               >
                 <div className="p-1">
                   <InsightCard {...blog} />

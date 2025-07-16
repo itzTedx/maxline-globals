@@ -33,7 +33,7 @@ export const Cta = () => {
             fetchPriority="high"
           />
         </div>
-        <div className="relative z-10 grid grid-cols-1 items-center gap-4 p-12 md:grid-cols-3 md:gap-2 md:px-12 md:py-20 lg:px-24 lg:py-20">
+        <div className="relative z-10 grid grid-cols-1 items-center gap-4 p-8 sm:p-12 md:grid-cols-3 md:gap-2 md:px-12 md:py-20 lg:px-24 lg:py-20">
           <div className="col-span-1 space-y-2 md:col-span-2 md:space-y-4">
             <h4
               className="font-grotesk leading-tighter text-4xl font-black md:text-5xl lg:text-6xl"

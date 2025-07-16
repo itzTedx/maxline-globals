@@ -37,7 +37,7 @@ const ServiceCard = memo(
           "group relative transition-colors",
           "cursor-pointer overflow-hidden",
           "col-span-2 flex items-center justify-between gap-3",
-          "rounded-md p-9 md:px-8 md:py-12 lg:px-16 lg:py-20",
+          "rounded-md px-4 py-5 md:px-8 md:py-12 lg:px-16 lg:py-20",
           !isExpanded && "md:last:col-span-1 md:nth-last-[2]:col-span-1"
         )}
         itemProp="itemListElement"
@@ -87,7 +87,7 @@ const ServiceCard = memo(
             <IconArrowRight className="siz-4" />
           </Link>
         </Button>
-        <div className="absolute z-10 aspect-4/3 h-[128%] ltr:-right-9 rtl:-left-9">
+        <div className="absolute z-10 aspect-4/3 h-[128%] ltr:-right-20 ltr:sm:-right-9 rtl:-left-9">
           <Image
             src={service.image}
             alt={`${service.title} service illustration`}
