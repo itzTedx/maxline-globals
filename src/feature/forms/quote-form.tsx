@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { IconArrowRight } from "@tabler/icons-react";
 import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { Control, FieldValues, Path, useForm } from "react-hook-form";
 
 import LetterSwapPingPong from "@/components/animation/letter-swap-pingpong-anim";
@@ -233,6 +234,7 @@ const FormSelect = <T extends FieldValues>({
 );
 
 export const QuoteForm = () => {
+  const t = useTranslations("QuoteForm");
   const form = useForm<QuoteFormData>({
     resolver: zodResolver(quoteSchema),
     defaultValues: {
@@ -262,139 +264,160 @@ export const QuoteForm = () => {
         <FormSection>
           <div className="space-y-4">
             <h2 className="font-grotesk text-brand-dark text-3xl tracking-tight text-balance sm:text-4xl md:text-5xl">
-              Request Your Logistics Quote
+              {t("main.title")}
             </h2>
             <p className="text-brand-gray text-lg leading-normal font-light sm:text-xl">
-              Get a personalized logistics quote from Maxline Global. Whether
-              it&apos;s land, air, or sea freight, our team will provide you
-              with a tailored, cost-effective solution that fits your schedule,
-              cargo type, and destination. Start your journey with a trusted
-              logistics partner today.
+              {t("main.description")}
             </p>
             <Separator />
             <h3 className="text-secondary text-2xl sm:text-3xl md:text-4xl">
-              Basic Information
+              {t("basicInfo.sectionTitle")}
             </h3>
           </div>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <FormInput<QuoteFormData>
               control={form.control}
               name="customerName"
-              label="Customer Name"
-              placeholder="Enter customer name"
+              label={t("basicInfo.customerName.label")}
+              placeholder={t("basicInfo.customerName.placeholder")}
             />
             <FormInput<QuoteFormData>
               control={form.control}
               name="companyName"
-              label="Company Name (Optional)"
-              placeholder="Enter company name"
+              label={t("basicInfo.companyName.label")}
+              placeholder={t("basicInfo.companyName.placeholder")}
             />
             <FormInput<QuoteFormData>
               control={form.control}
               name="email"
-              label="Email"
-              placeholder="Enter email"
+              label={t("basicInfo.email.label")}
+              placeholder={t("basicInfo.email.placeholder")}
               type="email"
             />
             <FormInput<QuoteFormData>
               control={form.control}
               name="phone"
-              label="Phone"
-              placeholder="Enter phone number"
+              label={t("basicInfo.phone.label")}
+              placeholder={t("basicInfo.phone.placeholder")}
             />
           </div>
         </FormSection>
 
         <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
-          <FormSection title="Sender Information">
+          <FormSection title={t("senderInfo.sectionTitle")}>
             <FormInput<QuoteFormData>
               control={form.control}
               name="senderName"
-              label="Sender Name"
-              placeholder="Enter sender name"
+              label={t("senderInfo.senderName.label")}
+              placeholder={t("senderInfo.senderName.placeholder")}
             />
             <FormTextarea<QuoteFormData>
               control={form.control}
               name="senderAddress"
-              label="Sender Address"
-              placeholder="Enter sender address"
+              label={t("senderInfo.senderAddress.label")}
+              placeholder={t("senderInfo.senderAddress.placeholder")}
             />
           </FormSection>
 
-          <FormSection title="Recipient Information">
+          <FormSection title={t("recipientInfo.sectionTitle")}>
             <FormInput<QuoteFormData>
               control={form.control}
               name="recipientName"
-              label="Recipient Name"
-              placeholder="Enter recipient name"
+              label={t("recipientInfo.recipientName.label")}
+              placeholder={t("recipientInfo.recipientName.placeholder")}
             />
             <FormTextarea<QuoteFormData>
               control={form.control}
               name="recipientAddress"
-              label="Recipient Address"
-              placeholder="Enter recipient address"
+              label={t("recipientInfo.recipientAddress.label")}
+              placeholder={t("recipientInfo.recipientAddress.placeholder")}
             />
           </FormSection>
         </div>
 
-        <FormSection title="Shipping information">
+        <FormSection title={t("shippingInfo.sectionTitle")}>
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
             <FormDatePicker<QuoteFormData>
               control={form.control}
               name="preferredDeliveryDate"
-              label="Preferred Delivery Date"
+              label={t("shippingInfo.preferredDeliveryDate.label")}
             />
             <FormSelect<QuoteFormData>
               control={form.control}
               name="preferredModeOfTransport"
-              label="Preferred Mode of Transport"
-              placeholder="Select transport mode"
+              label={t("shippingInfo.preferredModeOfTransport.label")}
+              placeholder={t(
+                "shippingInfo.preferredModeOfTransport.placeholder"
+              )}
               options={[
-                { value: "air", label: "Air" },
-                { value: "sea", label: "Sea" },
-                { value: "land", label: "Land" },
+                {
+                  value: "air",
+                  label: t("shippingInfo.preferredModeOfTransport.options.air"),
+                },
+                {
+                  value: "sea",
+                  label: t("shippingInfo.preferredModeOfTransport.options.sea"),
+                },
+                {
+                  value: "land",
+                  label: t(
+                    "shippingInfo.preferredModeOfTransport.options.land"
+                  ),
+                },
               ]}
             />
             <FormSelect<QuoteFormData>
               control={form.control}
               name="typeOfPackaging"
-              label="Type of Packaging"
-              placeholder="Select packaging type"
+              label={t("shippingInfo.typeOfPackaging.label")}
+              placeholder={t("shippingInfo.typeOfPackaging.placeholder")}
               options={[
-                { value: "standard", label: "Standard" },
-                { value: "express", label: "Express" },
-                { value: "fragile", label: "Fragile" },
-                { value: "custom", label: "Custom" },
+                {
+                  value: "standard",
+                  label: t("shippingInfo.typeOfPackaging.options.standard"),
+                },
+                {
+                  value: "express",
+                  label: t("shippingInfo.typeOfPackaging.options.express"),
+                },
+                {
+                  value: "fragile",
+                  label: t("shippingInfo.typeOfPackaging.options.fragile"),
+                },
+                {
+                  value: "custom",
+                  label: t("shippingInfo.typeOfPackaging.options.custom"),
+                },
               ]}
             />
             <FormDatePicker<QuoteFormData>
               control={form.control}
               name="shippingDate"
-              label="Shipping Date"
+              label={t("shippingInfo.shippingDate.label")}
             />
           </div>
         </FormSection>
-        <FormSection title="Package Information">
+        <FormSection title={t("packageInfo.sectionTitle")}>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
             <FormInput<QuoteFormData>
               control={form.control}
               name="pieces"
-              label="Pieces"
-              placeholder="Enter number of pieces"
+              label={t("packageInfo.pieces.label")}
+              placeholder={t("packageInfo.pieces.placeholder")}
               type="number"
             />
             <FormInput<QuoteFormData>
               control={form.control}
               name="weight"
-              label="Weight (kg)"
-              placeholder="Enter weight"
+              label={t("packageInfo.weight.label")}
+              placeholder={t("packageInfo.weight.placeholder")}
               type="number"
             />
             <FormInput<QuoteFormData>
               control={form.control}
               name="volume"
-              label="Volume (m³)"
-              placeholder="Enter volume"
+              label={t("packageInfo.volume.label")}
+              placeholder={t("packageInfo.volume.placeholder")}
               type="number"
             />
           </div>
@@ -402,16 +425,16 @@ export const QuoteForm = () => {
           <FormTextarea<QuoteFormData>
             control={form.control}
             name="packageDescription"
-            label="Package Description"
-            placeholder="Enter package description"
+            label={t("packageInfo.packageDescription.label")}
+            placeholder={t("packageInfo.packageDescription.placeholder")}
             className="col-span-1 sm:col-span-2"
           />
 
           <FormTextarea<QuoteFormData>
             control={form.control}
             name="additionalInformation"
-            label="Additional Information (Optional)"
-            placeholder="Enter any additional information"
+            label={t("packageInfo.additionalInformation.label")}
+            placeholder={t("packageInfo.additionalInformation.placeholder")}
             className="col-span-1 sm:col-span-2"
           />
 
@@ -420,7 +443,7 @@ export const QuoteForm = () => {
             name="attachFiles"
             render={({ field: { onChange, ...field } }) => (
               <FormItem className="col-span-1 sm:col-span-2">
-                <FormLabel>Attach Files (Optional)</FormLabel>
+                <FormLabel>{t("packageInfo.attachFiles.label")}</FormLabel>
                 <FormControl>
                   <Input
                     type="file"
@@ -444,7 +467,7 @@ export const QuoteForm = () => {
           className="bg-secondary text-background h-16 w-full pr-1 pl-6 text-xl"
         >
           <LetterSwapPingPong
-            label="Get A Quote"
+            label={t("submit")}
             staggerFrom="first"
             reverse={false}
             className="w-full justify-start font-semibold"

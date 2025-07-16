@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 
 import { IconClock, IconPackage, IconUsers } from "@tabler/icons-react";
+import { useTranslations } from "next-intl";
 
 import SpotlightCard from "@/components/animation/spotlight-card";
 import { HeroHeader } from "@/components/hero-header";
@@ -23,23 +24,22 @@ export const metadata: Metadata = {
 };
 
 export default function QuotePage() {
+  const t = useTranslations("QuotePage");
+
   const features = [
     {
-      title: "All-In-One Logistics",
-      description:
-        "Integrated land, air, and sea freight services with warehousing and customs support.",
+      title: t("features.allInOne.title"),
+      description: t("features.allInOne.description"),
       icon: IconPackage,
     },
     {
-      title: "Fast Response Times",
-      description:
-        "Get detailed quotes within 24 hours, based on your exact shipment requirements.",
+      title: t("features.fastResponse.title"),
+      description: t("features.fastResponse.description"),
       icon: IconClock,
     },
     {
-      title: "Expert Guidance",
-      description:
-        "Our team will guide you through customs, documentation, and cargo-specific needs.",
+      title: t("features.expertGuidance.title"),
+      description: t("features.expertGuidance.description"),
       icon: IconUsers,
     },
   ];
@@ -49,16 +49,16 @@ export default function QuotePage() {
       <header className="container grid grid-cols-1 gap-3 pb-3 md:grid-cols-3">
         <HeroHeader
           className="col-span-1 mx-0 px-0 py-0 text-start md:col-span-2"
-          subtitle="Get a Quote"
+          subtitle={t("hero.subtitle")}
           title={[
-            { text: "Let's Move Your Cargo –" },
+            { text: t("hero.title1") },
             {
-              text: "Fast, Safe, and Smart",
+              text: t("hero.title2"),
               className: "text-secondary",
             },
           ]}
           titleClassName="text-3xl lg:text-[4.5rem] mb-6 max-w-xl"
-          description="Get a personalized logistics quote from Maxline Global. Whether it's land, air, or sea freight, our team will provide you with a tailored, cost-effective solution that fits your schedule, cargo type, and destination. Start your journey with a trusted logistics partner today."
+          description={t("hero.description")}
           isLogo={false}
         />
       </header>
@@ -69,7 +69,7 @@ export default function QuotePage() {
 
       <section className="container" aria-label="Our Features">
         <h2 className="font-grotesk text-brand-dark pt-10 pb-6 text-center text-4xl md:pt-20 md:pb-9 md:text-6xl">
-          What sets us apart
+          {t("features.sectionTitle")}
         </h2>
         <ul className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3">
           {features.map((item) => (

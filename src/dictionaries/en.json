@@ -451,5 +451,117 @@
       "text": "If you have any questions, concerns, or requests regarding this Privacy Policy or our privacy practices, please contact us at:"
     },
     "lastUpdated": "Last Updated: 8/6/2025"
+  },
+  "QuotePage": {
+    "meta": {
+      "title": "Get a Logistics Quote | Maxline Global",
+      "description": "Get a personalized logistics quote from Maxline Global. Fast, safe, and smart cargo solutions for land, air, and sea freight with expert guidance.",
+      "keywords": "logistics quote, cargo shipping, freight services, customs support, warehousing, air freight, sea freight, land freight"
+    },
+    "hero": {
+      "subtitle": "Get a Quote",
+      "title1": "Let's Move Your Cargo -",
+      "title2": "Fast, Safe, and Smart",
+      "description": "Get a personalized logistics quote from Maxline Global. Whether it's land, air, or sea freight, our team will provide you with a tailored, cost-effective solution that fits your schedule, cargo type, and destination. Start your journey with a trusted logistics partner today."
+    },
+    "features": {
+      "sectionTitle": "What sets us apart",
+      "allInOne": {
+        "title": "All-In-One Logistics",
+        "description": "Integrated land, air, and sea freight services with warehousing and customs support."
+      },
+      "fastResponse": {
+        "title": "Fast Response Times",
+        "description": "Get detailed quotes within 24 hours, based on your exact shipment requirements."
+      },
+      "expertGuidance": {
+        "title": "Expert Guidance",
+        "description": "Our team will guide you through customs, documentation, and cargo-specific needs."
+      }
+    }
+  },
+  "QuoteForm": {
+    "main": {
+      "title": "Request Your Logistics Quote",
+      "description": "Get a personalized logistics quote from Maxline Global. Whether it's land, air, or sea freight, our team will provide you with a tailored, cost-effective solution that fits your schedule, cargo type, and destination. Start your journey with a trusted logistics partner today."
+    },
+    "basicInfo": {
+      "sectionTitle": "Basic Information",
+      "customerName": {
+        "label": "Customer Name",
+        "placeholder": "Enter customer name"
+      },
+      "companyName": {
+        "label": "Company Name (Optional)",
+        "placeholder": "Enter company name"
+      },
+      "email": { "label": "Email", "placeholder": "Enter email" },
+      "phone": { "label": "Phone", "placeholder": "Enter phone number" }
+    },
+    "senderInfo": {
+      "sectionTitle": "Sender Information",
+      "senderName": {
+        "label": "Sender Name",
+        "placeholder": "Enter sender name"
+      },
+      "senderAddress": {
+        "label": "Sender Address",
+        "placeholder": "Enter sender address"
+      }
+    },
+    "recipientInfo": {
+      "sectionTitle": "Recipient Information",
+      "recipientName": {
+        "label": "Recipient Name",
+        "placeholder": "Enter recipient name"
+      },
+      "recipientAddress": {
+        "label": "Recipient Address",
+        "placeholder": "Enter recipient address"
+      }
+    },
+    "shippingInfo": {
+      "sectionTitle": "Shipping information",
+      "preferredDeliveryDate": {
+        "label": "Preferred Delivery Date",
+        "placeholder": "Pick a date"
+      },
+      "preferredModeOfTransport": {
+        "label": "Preferred Mode of Transport",
+        "placeholder": "Select transport mode",
+        "options": {
+          "air": "Air",
+          "sea": "Sea",
+          "land": "Land"
+        }
+      },
+      "typeOfPackaging": {
+        "label": "Type of Packaging",
+        "placeholder": "Select packaging type",
+        "options": {
+          "standard": "Standard",
+          "express": "Express",
+          "fragile": "Fragile",
+          "custom": "Custom"
+        }
+      },
+      "shippingDate": { "label": "Shipping Date", "placeholder": "Pick a date" }
+    },
+    "packageInfo": {
+      "sectionTitle": "Package Information",
+      "pieces": { "label": "Pieces", "placeholder": "Enter number of pieces" },
+      "weight": { "label": "Weight (kg)", "placeholder": "Enter weight" },
+      "volume": { "label": "Volume (m³)", "placeholder": "Enter volume" },
+      "packageDescription": {
+        "label": "Package Description",
+        "placeholder": "Enter package description"
+      },
+      "additionalInformation": {
+        "label": "Additional Information (Optional)",
+        "placeholder": "Enter any additional information"
+      },
+      "attachFiles": { "label": "Attach Files (Optional)" }
+    },
+    "submit": "Get A Quote"
   }
 }
