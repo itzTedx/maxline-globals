@@ -112,7 +112,8 @@ export async function sendContactEmail(values: {
 
   // Compose email
   const mailOptions = {
-    from: `"${fullName}" <${email}>`,
+    from: `${name} <${process.env.EMAIL_USER}>`,
+    replyTo: `"${fullName}" <${email}>`,
     to: process.env.CONTACT_RECEIVER_EMAIL,
     subject: subject || "New Contact Form Submission",
     text: `\n      Name: ${fullName}\n      Company: ${companyName}\n      Email: ${email}\n      Phone: ${phoneNumber}\n      Service: ${serviceType}\n      Message: ${message}\n    `,
