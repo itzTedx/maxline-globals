@@ -7,7 +7,7 @@ export const Commitment = () => {
       itemScope
       itemType="https://schema.org/Organization"
     >
-      <div className="bg-brand-dark text-background relative rounded-3xl px-6 py-16 text-center sm:px-12 sm:py-20 md:px-16 md:py-24 lg:px-24 lg:py-32">
+      <div className="bg-brand-dark text-background relative overflow-hidden rounded-3xl px-6 py-16 text-center sm:px-12 sm:py-20 md:px-16 md:py-24 lg:px-24 lg:py-32">
         <h5
           className="font-grotesk relative z-10 mb-4 text-3xl sm:mb-5 sm:text-4xl md:mb-6 md:text-5xl"
           itemProp="name"
