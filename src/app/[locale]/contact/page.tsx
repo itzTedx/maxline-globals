@@ -238,13 +238,13 @@ export default async function ContactPage() {
                     <StaggeredText text={loc.address} />
                   </h4>
                   <ul className="divide-primary/20 mb-4 divide-y">
-                    <li className="py-1">
+                    <li className="py-1" dir="ltr">
                       <StaggeredText
                         text={`${t("phoneLabel")}: ${loc.phone}`}
                         delay={0.1}
                       />
                     </li>
-                    <li className="py-1">
+                    <li className="py-1" dir="ltr">
                       <StaggeredText
                         text={`${t("mobileLabel")}: ${loc.mobile}`}
                         delay={0.1}

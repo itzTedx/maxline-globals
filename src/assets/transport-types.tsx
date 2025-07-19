@@ -2,11 +2,16 @@
 
 import React, { useEffect, useRef } from "react";
 
-import { SVGMotionProps, motion, useAnimationControls } from "framer-motion";
+import {
+  SVGMotionProps,
+  easeInOut,
+  motion,
+  useAnimationControls,
+} from "motion/react";
 
-export const TransportTypes = (
-  props: React.JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>
-) => {
+type TransportTypesProps = React.SVGProps<SVGSVGElement> & { rtl?: boolean };
+
+export const TransportTypes = (props: TransportTypesProps) => {
   const circleRef = useRef<SVGCircleElement>(null);
   const controls = useAnimationControls();
 
@@ -24,14 +29,21 @@ export const TransportTypes = (
       pathLength: 1,
       transition: {
         duration: 0.8,
-        ease: "easeInOut",
+        ease: easeInOut,
       },
     },
   };
 
+  const { rtl, ...svgProps } = props;
+
+  // Gradient direction based on RTL
+  const gradientProps = rtl
+    ? { x1: "326", y1: "167", x2: "-0.999997", y2: "167" }
+    : { x1: "-0.999997", y1: "167", x2: "326", y2: "167" };
+
   return (
     <motion.svg
-      {...(props as SVGMotionProps<SVGSVGElement>)}
+      {...(svgProps as SVGMotionProps<SVGSVGElement>)}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
@@ -80,10 +92,7 @@ export const TransportTypes = (
         </pattern>
         <linearGradient
           id="paint0_linear_503_1621"
-          x1="-0.999997"
-          y1="167"
-          x2="326"
-          y2="167"
+          {...gradientProps}
           gradientUnits="userSpaceOnUse"
         >
           <stop stopColor="white" />

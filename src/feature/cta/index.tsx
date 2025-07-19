@@ -77,6 +77,7 @@ export const Cta = () => {
               <Link
                 href={`tel:${t("phone")}`}
                 className="text-brand-dark text-lg font-bold md:text-xl"
+                dir="ltr"
               >
                 <CenterUnderline label={t("phone")} />
               </Link>

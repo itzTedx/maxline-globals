@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useParams } from "next/navigation";
 import { memo, useState } from "react";
 
 import { motion } from "framer-motion";
@@ -12,6 +13,7 @@ import { TextAnimate } from "@/components/animation/text-animate";
 import { cn } from "@/lib/utils";
 
 export const AboutSection = memo(() => {
+  const params = useParams<{ locale: string }>();
   const [active, setActive] = useState<"air" | "sea" | "road">("air");
   const t = useTranslations("HomePage");
   return (
@@ -102,47 +104,47 @@ export const AboutSection = memo(() => {
         />
       </motion.div>
       <div
-        className="relative flex items-center justify-center max-sm:scale-85 sm:col-start-1 md:col-start-2 rtl:md:col-start-1"
+        className="relative flex items-center justify-center max-sm:scale-85 sm:col-start-1 md:col-start-2 rtl:-translate-x-4 rtl:md:col-start-1"
         itemProp="serviceType"
       >
         <div className="relative">
           <div
             className={cn(
-              "group absolute top-[10%] left-[12%] size-4 translate-x-1/2 -translate-y-[12%] cursor-pointer rounded-full bg-white transition-colors",
+              "group absolute top-[10%] size-4 translate-x-1/2 -translate-y-[12%] cursor-pointer rounded-full bg-white transition-colors ltr:left-[12%] rtl:right-[17%]",
               active === "air" && "ring-primary ring-2"
             )}
             onMouseEnter={() => setActive("air")}
           >
-            <div className="group-hover:bg-primary absolute -top-1/2 z-10 grid h-6 w-16 origin-right -translate-x-[85%] -translate-y-1/4 place-content-center rounded-sm bg-white text-xs font-medium transition-colors">
+            <div className="group-hover:bg-primary absolute -top-1/2 z-10 grid h-6 w-16 origin-right -translate-y-1/4 place-content-center rounded-sm bg-white text-xs font-medium transition-colors ltr:-translate-x-[85%] rtl:translate-x-[85%]">
               {t("about.type.air")}
             </div>
             <div className="group-hover:bg-primary/20 absolute top-1/2 left-1/2 size-6 -translate-x-1/2 -translate-y-1/2 animate-pulse rounded-full bg-white/50 transition-colors" />
           </div>
           <div
             className={cn(
-              "group absolute top-1/2 left-0 size-4 -translate-x-1/2 -translate-y-1/2 cursor-pointer rounded-full bg-white transition-colors",
+              "group absolute top-1/2 size-4 -translate-y-1/2 cursor-pointer rounded-full bg-white transition-colors ltr:left-0 ltr:-translate-x-1/2 rtl:right-0 rtl:translate-x-1/2",
               active === "sea" && "ring-primary ring-2"
             )}
             onMouseEnter={() => setActive("sea")}
           >
-            <div className="group-hover:bg-primary absolute -top-1/2 z-10 grid h-6 w-16 origin-right -translate-x-[85%] -translate-y-1/4 place-content-center rounded-sm bg-white text-xs font-medium transition-colors">
+            <div className="group-hover:bg-primary absolute -top-1/2 z-10 grid h-6 w-16 origin-right -translate-y-1/4 place-content-center rounded-sm bg-white text-xs font-medium transition-colors ltr:-translate-x-[85%] rtl:translate-x-[85%]">
               {t("about.type.sea")}
             </div>
             <div className="group-hover:bg-primary/20 absolute top-1/2 left-1/2 size-6 -translate-x-1/2 -translate-y-1/2 animate-pulse rounded-full bg-white/50 transition-colors" />
           </div>
           <div
             className={cn(
-              "group absolute bottom-[10%] left-[17%] size-4 -translate-x-1/2 translate-y-[12%] cursor-pointer rounded-full bg-white transition-colors",
+              "group absolute bottom-[10%] size-4 -translate-x-1/2 translate-y-[12%] cursor-pointer rounded-full bg-white transition-colors ltr:left-[17%] rtl:right-[12%]",
               active === "road" && "ring-primary ring-2"
             )}
             onMouseEnter={() => setActive("road")}
           >
-            <div className="group-hover:bg-primary absolute -top-1/2 z-10 grid h-6 w-[4.5rem] origin-right -translate-x-[85%] -translate-y-1/4 place-content-center rounded-sm bg-white text-xs font-medium transition-colors">
+            <div className="group-hover:bg-primary absolute -top-1/2 z-10 grid h-6 w-[4.5rem] origin-right -translate-y-1/4 place-content-center rounded-sm bg-white text-xs font-medium transition-colors ltr:-translate-x-[85%] rtl:translate-x-[85%]">
               {t("about.type.road")}
             </div>
             <div className="group-hover:bg-primary/20 absolute top-1/2 left-1/2 size-6 -translate-x-1/2 -translate-y-1/2 animate-pulse rounded-full bg-white/50 transition-colors" />
           </div>
-          <TransportTypes />
+          <TransportTypes rtl={params.locale === "ar"} />
         </div>
       </div>
 
