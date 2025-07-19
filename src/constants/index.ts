@@ -356,28 +356,25 @@ export type FooterKey =
 
 export const TEAMS = [
   {
-    name: "",
-    designation: "",
-    link: "",
+    nameKey: "AjithKumar",
+    designationKey: "ChairmanAndMD",
+    link: "https://www.linkedin.com/in/ajith-kumar-7a4977345/",
+    image: "/images/teams/ajith-kumar.webp",
   },
   {
-    name: "",
-    designation: "",
-    link: "",
+    nameKey: "PadmaAjith",
+    designationKey: "Director",
+    image: "/images/teams/padma.webp",
   },
   {
-    name: "",
-    designation: "",
-    link: "",
+    nameKey: "SajiThomas",
+    designationKey: "CFO",
+    link: "https://www.linkedin.com/in/saji-thomas-48559ba1/",
+    image: "/images/teams/saji.webp",
   },
   {
-    name: "",
-    designation: "",
-    link: "",
-  },
-  {
-    name: "",
-    designation: "",
-    link: "",
+    nameKey: "PrakashMadhavan",
+    designationKey: "GeneralManager",
+    image: "/images/teams/prakash.webp",
   },
 ];

@@ -51,7 +51,7 @@ export const Footer = () => {
         <div className="col-span-1 space-y-6 md:col-span-7">
           <div className="grid grid-cols-1 items-center justify-between gap-4 sm:grid-cols-3 sm:gap-0">
             <Link
-              href="https://maps.app.goo.gl/VWxy5XYwqrDr9etT7"
+              href="https://maps.app.goo.gl/72pq7QV898ZUF1zw5 "
               className="bg-background/20 border-background col-span-1 flex w-fit items-center justify-start gap-1.5 rounded-full border px-2.5 py-1.5 backdrop-blur-xl transition-transform sm:col-span-2"
               itemScope
               itemType="https://schema.org/Place"

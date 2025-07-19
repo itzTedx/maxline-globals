@@ -63,7 +63,10 @@ export function HeroHeader({
 
   return (
     <section
-      className={cn("relative py-12 text-center md:py-14 lg:py-20", className)}
+      className={cn(
+        "relative overflow-hidden py-12 text-center md:py-14 lg:py-20",
+        className
+      )}
       aria-labelledby="hero-title"
     >
       <div className="relative z-10">

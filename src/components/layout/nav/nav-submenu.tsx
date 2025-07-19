@@ -108,12 +108,12 @@ export const NavSubmenu = ({ isOpen, items, parentTitle }: NavSubmenuProps) => {
                     <p className="z-10 font-medium">{sub.title}</p>
                     <div className="from-secondary/80 absolute bottom-0 left-0 h-full w-full bg-gradient-to-t to-transparent" />
                   </div>
-                  <div className="bg-secondary absolute inset-0 z-10 mix-blend-color" />
+                  <div className="bg-secondary/5 absolute inset-0 z-10 mix-blend-color" />
                   <Image
                     src={sub.img}
                     fill
                     alt={`${sub.title} services at Maxline Global`}
-                    className="object-cover mix-blend-multiply brightness-125"
+                    className="object-cover transition-[filter] group-hover/submenu:brightness-110"
                     loading="lazy"
                   />
                 </Link>

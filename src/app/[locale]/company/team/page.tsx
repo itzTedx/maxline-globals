@@ -8,6 +8,7 @@ import { getTranslations } from "next-intl/server";
 import { StaggeredText } from "@/components/animation/staggered-text";
 import { HeroHeader } from "@/components/hero-header";
 import { Button } from "@/components/ui/custom-button";
+import { TEAMS } from "@/constants";
 import { siteConfig } from "@/constants/site-config";
 import { CompanySection } from "@/feature/about/sections/company";
 import { Cta } from "@/feature/cta";
@@ -106,12 +107,15 @@ export default async function TeamPage() {
           <h2 className="font-grotesk text-secondary text-center text-5xl">
             <StaggeredText text={t("leadershipTitle")} />
           </h2>
-          <ul className="grid grid-cols-4 gap-4 pt-12">
-            {Array.from({ length: 4 }).map((item, i) => (
-              <li key={i} className="bg-brand-dark overflow-hidden rounded-xl">
-                <div className="relative aspect-5/4">
+          <ul className="grid grid-cols-1 gap-4 pt-12 sm:grid-cols-2 lg:grid-cols-4">
+            {TEAMS.map((team, i) => (
+              <li
+                key={`${team.nameKey}-${i}`}
+                className="bg-brand-dark overflow-hidden rounded-xl"
+              >
+                <div className="relative aspect-5/6">
                   <Image
-                    src="/images/placeholder.jpg"
+                    src={team.image}
                     fill
                     alt=""
                     className="object-cover"
@@ -119,17 +123,25 @@ export default async function TeamPage() {
                   <div className="from-brand-dark absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t to-transparent" />
                 </div>
                 <div className="text-background p-2 text-center">
-                  <h3 className="font-grotesk text-4xl">{t("personName")}</h3>
-                  <p className="font-grotesk text-primary pb-6 text-xl">
-                    {t("designation")}
+                  <h3 className="font-grotesk text-4xl">
+                    {t(team.nameKey as unknown as Parameters<typeof t>[0])}
+                  </h3>
+
+                  <p className="font-grotesk text-primary text-xl sm:text-lg">
+                    {t(
+                      team.designationKey as unknown as Parameters<typeof t>[0]
+                    )}
                   </p>
-                  <Button
-                    label={t("linkedinProfile")}
-                    href="/"
-                    variant="secondary"
-                    className="text-brand-dark w-full"
-                    textClassName="text-brand-dark"
-                  />
+                  {team.link && (
+                    <Button
+                      label={t("linkedinProfile")}
+                      href={team.link}
+                      openExternal
+                      variant="secondary"
+                      className="text-brand-dark mt-2 w-full"
+                      textClassName="text-brand-dark"
+                    />
+                  )}
                 </div>
               </li>
             ))}

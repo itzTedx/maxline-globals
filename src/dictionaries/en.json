@@ -188,7 +188,7 @@
     "call": "Call for enquiry",
     "email": "Send us email",
     "phone": "+971 4 282 2022",
-    "emailAddress": "reception@maxlineglobal.com"
+    "emailAddress": "enquires@maxlineglobal.com"
   },
   "Footer": {
     "slogan1": "Your trusted logistics partner, moving forward,",
@@ -284,7 +284,15 @@
     "designation": "Designation",
     "linkedinProfile": "Linkedin Profile",
     "departmentName": "Logistics Department",
-    "departmentDescription": "Expert team handling freight forwarding, customs clearance, and supply chain solutions"
+    "departmentDescription": "Expert team handling freight forwarding, customs clearance, and supply chain solutions",
+    "AjithKumar": "Ajith Kumar",
+    "PadmaAjith": "Padma Ajith",
+    "SajiThomas": "Saji Thomas",
+    "PrakashMadhavan": "Prakash Madhavan",
+    "ChairmanAndMD": "Chairman and Managing Director",
+    "Director": "Director",
+    "CFO": "CFO",
+    "GeneralManager": "General Manager"
   },
   "ContactPage": {
     "subtitle": "Contact us",
@@ -298,7 +306,7 @@
     "hqAddressLine2": "Dubai, United Arab Emirates.",
     "hqImageAlt": "Maxline Global Corporate Headquarters in Dubai",
     "branchOffice": "Branch Office",
-    "branchAddress": "33, 6A Street, Ras Al khor Industrial Area - 2, Dubai, United Arab Emirates.",
+    "branchAddress": "MO 0753, JAFZA North, Dubai, UAE ",
     "branchImageAlt": "Maxline Global Branch Office in Dubai",
     "contactForm": "Contact Form",
     "contactImageAlt": "Maxline Global Logistics Operations",

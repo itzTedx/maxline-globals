@@ -188,7 +188,7 @@
     "call": "اتصل للاستفسار",
     "email": "أرسل لنا بريدًا إلكترونيًا",
     "phone": "+971 4 282 2022",
-    "emailAddress": "reception@maxlineglobal.com"
+    "emailAddress": "enquires@maxlineglobal.com"
   },
   "Footer": {
     "slogan1": "شريكك اللوجستي الموثوق، نمضي قدماً،",
@@ -284,7 +284,15 @@
     "designation": "المسمى الوظيفي",
     "linkedinProfile": "ملف لينكدإن الشخصي",
     "departmentName": "قسم الخدمات اللوجستية",
-    "departmentDescription": "فريق خبراء يتعامل مع الشحن والتخليص الجمركي وحلول سلسلة الإمداد"
+    "departmentDescription": "فريق خبراء يتعامل مع الشحن والتخليص الجمركي وحلول سلسلة الإمداد",
+    "AjithKumar": "أجيث كومار",
+    "PadmaAjith": "بادما أجيث",
+    "SajiThomas": "ساجي توماس",
+    "PrakashMadhavan": "براكيش مادهفان",
+    "ChairmanAndMD": "رئيس مجلس الإدارة والمدير العام",
+    "Director": "مدير",
+    "CFO": "المدير المالي",
+    "GeneralManager": "المدير العام"
   },
   "ContactPage": {
     "subtitle": "تواصل معنا",
@@ -298,7 +306,7 @@
     "hqAddressLine2": "دبي، الإمارات العربية المتحدة.",
     "hqImageAlt": "المقر الرئيسي لماكسلاين جلوبال في دبي",
     "branchOffice": "الفرع",
-    "branchAddress": "33، شارع 6A، منطقة رأس الخور الصناعية - 2، دبي، الإمارات العربية المتحدة.",
+    "branchAddress": "MO 0753، جافزا الشمالية، دبي، الإمارات العربية المتحدة",
     "branchImageAlt": "فرع ماكسلاين جلوبال في دبي",
     "contactForm": "نموذج التواصل",
     "contactImageAlt": "عمليات ماكسلاين جلوبال اللوجستية",

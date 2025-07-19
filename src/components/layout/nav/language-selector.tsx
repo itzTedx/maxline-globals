@@ -67,13 +67,16 @@ export function LanguageSelector({ className }: Props) {
           </div>
         </motion.button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="min-w-fit">
-        <DropdownMenuGroup>
+      <DropdownMenuContent className="md:min-w-fit" align="start">
+        <DropdownMenuGroup className="flex flex-col gap-1">
           {LANGUAGES.map((lang) => (
-            <DropdownMenuItem key={lang.code}>
+            <DropdownMenuItem
+              key={lang.code}
+              className="max-md:px-3 max-md:py-2.5"
+            >
               <button
                 className={cn(
-                  "flex cursor-pointer items-center gap-1.5 rounded-md text-left transition",
+                  "flex cursor-pointer items-center gap-2 rounded-md text-left transition md:gap-1.5",
                   currentLocale === lang.code && "text-brand-dark font-bold"
                 )}
                 onClick={() => handleSelect(lang.code)}
