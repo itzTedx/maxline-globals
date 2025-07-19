@@ -9,7 +9,6 @@ import { CalendarIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Control, FieldValues, Path, useForm } from "react-hook-form";
 
-import { sendQuote } from "@/app/actions/sendQuote";
 import LetterSwapPingPong from "@/components/animation/letter-swap-pingpong-anim";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
@@ -36,6 +35,7 @@ import {
 } from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
 import { Textarea } from "@/components/ui/textarea";
+import { sendQuote } from "@/feature/forms/sendQuote";
 import { cn } from "@/lib/utils";
 
 import { type QuoteFormData, quoteSchema } from "./schema/quote-schema";
@@ -260,18 +260,8 @@ export const QuoteForm = () => {
   });
 
   function onSubmit(values: QuoteFormData) {
-    const formData = new FormData();
-    Object.entries(values).forEach(([key, value]) => {
-      if (key === "attachFiles" && Array.isArray(value)) {
-        value.forEach((file) => file && formData.append("attachFiles", file));
-      } else if (value instanceof Date) {
-        formData.append(key, value.toISOString());
-      } else if (typeof value !== "undefined" && value !== null) {
-        formData.append(key, value as string | Blob);
-      }
-    });
     startTransition(async () => {
-      const res = await sendQuote(formData);
+      const res = await sendQuote(values);
       setResult(res);
       if (res.success) form.reset();
     });

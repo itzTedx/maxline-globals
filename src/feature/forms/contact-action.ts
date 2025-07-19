@@ -6,19 +6,29 @@ import { contactSchema } from "./schema/contact-schema";
 
 export type ContactActionResult = { success: boolean; error?: string };
 
-export async function sendContactEmail(
-  formData: FormData
-): Promise<ContactActionResult> {
-  // Extract fields
-  const fullName = formData.get("fullName") as string;
-  const companyName = formData.get("companyName") as string;
-  const email = formData.get("email") as string;
-  const phoneNumber = formData.get("phoneNumber") as string;
-  const serviceType = formData.get("serviceType") as string;
-  const subject = formData.get("subject") as string;
-  const message = formData.get("message") as string;
-  const privacyPolicyConsent = formData.get("privacyPolicyConsent") === "true";
-  const file = formData.get("fileUpload") as File | null;
+export async function sendContactEmail(values: {
+  fullName: string;
+  companyName: string;
+  email: string;
+  phoneNumber: string;
+  serviceType?: string;
+  subject: string;
+  message: string;
+  privacyPolicyConsent: boolean;
+  fileUpload?: File | null;
+}): Promise<ContactActionResult> {
+  const {
+    fullName,
+    companyName,
+    email,
+    phoneNumber,
+    serviceType,
+    subject,
+    message,
+    privacyPolicyConsent,
+    fileUpload,
+  } = values;
+  const file = fileUpload ?? null;
 
   console.log("[sendContactEmail] Extracted fields:", {
     fullName,
@@ -53,11 +63,31 @@ export async function sendContactEmail(
     return { success: false, error: "Invalid form data" };
   }
 
+  // Validate file attachment (only one file, jpg/jpeg/png/pdf, max 4MB)
+  if (file) {
+    const allowedTypes = [
+      "image/jpeg",
+      "image/jpg",
+      "image/png",
+      "application/pdf",
+    ];
+    const maxSize = 4 * 1024 * 1024; // 4MB
+    if (!allowedTypes.includes(file.type)) {
+      return {
+        success: false,
+        error: "Only JPG, JPEG, PNG, or PDF files are allowed.",
+      };
+    }
+    if (file.size > maxSize) {
+      return { success: false, error: "File size must be less than 4MB." };
+    }
+  }
+
   // Configure transporter
   const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST,
     port: Number(process.env.SMTP_PORT),
-    secure: false,
+    secure: true,
     auth: {
       user: process.env.SMTP_USER,
       pass: process.env.SMTP_PASS,
@@ -85,14 +115,7 @@ export async function sendContactEmail(
     from: `"${fullName}" <${email}>`,
     to: process.env.CONTACT_RECEIVER_EMAIL,
     subject: subject || "New Contact Form Submission",
-    text: `
-      Name: ${fullName}
-      Company: ${companyName}
-      Email: ${email}
-      Phone: ${phoneNumber}
-      Service: ${serviceType}
-      Message: ${message}
-    `,
+    text: `\n      Name: ${fullName}\n      Company: ${companyName}\n      Email: ${email}\n      Phone: ${phoneNumber}\n      Service: ${serviceType}\n      Message: ${message}\n    `,
     attachments,
   };
 

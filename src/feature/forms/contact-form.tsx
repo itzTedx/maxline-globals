@@ -38,32 +38,26 @@ export function ContactForm() {
     error?: string;
   }>(null);
   const [isPending, startTransition] = useTransition();
-  // 1. Define your form.
+
   const form = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
     defaultValues: {
       fullName: "",
       companyName: "",
       email: "",
-      // fileUpload: undefined,
+      fileUpload: undefined,
       message: "",
       phoneNumber: "",
       privacyPolicyConsent: false,
       serviceType: undefined,
       subject: "",
     },
+    mode: "onBlur",
   });
 
-  // 2. Define a submit handler.
   async function onSubmit(values: ContactFormData) {
-    const formData = new FormData();
-    Object.entries(values).forEach(([key, value]) => {
-      if (typeof value !== "undefined" && value !== null) {
-        formData.append(key, String(value));
-      }
-    });
     startTransition(async () => {
-      const result = await sendContactEmail(formData);
+      const result = await sendContactEmail(values);
       setSubmitResult(result);
       if (result.success) {
         form.reset();
@@ -71,10 +65,10 @@ export function ContactForm() {
     });
   }
 
-  const formValues = form.watch();
+  // const formValues = form.watch();
 
-  const validation = contactSchema.safeParse(formValues);
-  console.log(validation);
+  // const validation = contactSchema.safeParse(formValues);
+  // console.log(validation);
 
   return (
     <Form {...form}>
@@ -261,7 +255,7 @@ export function ContactForm() {
           )}
         />
 
-        {/* <FormField
+        <FormField
           control={form.control}
           name="fileUpload"
           render={({ field: { onChange, onBlur, name, ref } }) => (
@@ -270,6 +264,7 @@ export function ContactForm() {
               <FormControl>
                 <Input
                   type="file"
+                  accept=".jpg,.jpeg,.png,.pdf"
                   onChange={(e) => onChange(e.target.files?.[0])}
                   onBlur={onBlur}
                   name={name}
@@ -279,7 +274,7 @@ export function ContactForm() {
               <FormMessage />
             </FormItem>
           )}
-        /> */}
+        />
 
         <FormField
           control={form.control}
