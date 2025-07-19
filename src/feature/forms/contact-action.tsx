@@ -1,6 +1,9 @@
 "use server";
 
+import { render } from "@react-email/components";
 import nodemailer from "nodemailer";
+
+import ContactFormSubmission from "@/emails/contact-template";
 
 import { contactSchema } from "./schema/contact-schema";
 
@@ -110,13 +113,15 @@ export async function sendContactEmail(values: {
     });
   }
 
+  const emailHtml = await render(<ContactFormSubmission data={parsed.data} />);
+
   // Compose email
   const mailOptions = {
     from: `${fullName} <${process.env.EMAIL_USER}>`,
     replyTo: email,
     to: process.env.CONTACT_RECEIVER_EMAIL,
     subject: subject || "New Contact Form Submission",
-    text: `\n      Name: ${fullName}\n      Company: ${companyName}\n      Email: ${email}\n      Phone: ${phoneNumber}\n      Service: ${serviceType}\n      Message: ${message}\n    `,
+    html: emailHtml,
     attachments,
   };
 
@@ -125,7 +130,7 @@ export async function sendContactEmail(values: {
     replyTo: mailOptions.replyTo,
     to: mailOptions.to,
     subject: mailOptions.subject,
-    text: mailOptions.text,
+    html: mailOptions.html,
     attachments: attachments.length
       ? attachments.map((a) => ({
           filename: a.filename,
