@@ -8,15 +8,16 @@ import { QuoteRequestEmail } from "@/emails/quote-template";
 import { quoteSchema } from "@/feature/forms/schema/quote-schema";
 
 // Configure your SMTP transport here
-const transporter = nodemailer.createTransport({
-  host: process.env.SMTP_HOST,
-  port: Number(process.env.SMTP_PORT),
-  secure: true, // true for 465, false for other ports
-  auth: {
-    user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASS,
-  },
-});
+
+  const transporter = nodemailer.createTransport({
+    host: process.env.SMTP_HOST,
+    port: Number(process.env.SMTP_PORT),
+    secure: true,
+    auth: {
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS,
+    },
+  });
 
 // Change function signature to accept QuoteFormData
 type QuoteFormData = typeof quoteSchema._type;
@@ -32,7 +33,8 @@ export async function sendQuote(data: QuoteFormData) {
 
   // Prepare email
   const mailOptions: SendMailOptions = {
-    from: process.env.SMTP_FROM || process.env.SMTP_USER,
+    from: `${parsed.data.customerName} <${process.env.EMAIL_USER}>`,
+    replyTo: parsed.data.email,
     to: process.env.SMTP_TO || process.env.SMTP_USER,
     subject: "New Quote Request",
     text: JSON.stringify(parsed.data, null, 2),
