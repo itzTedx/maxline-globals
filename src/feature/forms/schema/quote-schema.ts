@@ -65,7 +65,27 @@ export const quoteSchema = z.object({
     })
     .min(new Date(), "Shipping date must be in the future"),
 
-  attachFiles: z.array(z.instanceof(File)).optional(),
+  attachFiles: z
+    .instanceof(File)
+    .or(z.null())
+    .or(z.undefined())
+    .refine(
+      (file) => {
+        if (!file) return true;
+        const allowedTypes = [
+          "image/jpeg",
+          "image/jpg",
+          "image/png",
+          "application/pdf",
+        ];
+        const maxSize = 4 * 1024 * 1024; // 4MB
+        return allowedTypes.includes(file.type) && file.size <= maxSize;
+      },
+      {
+        message: "Only one JPG, JPEG, PNG, or PDF file under 4MB is allowed.",
+      }
+    )
+    .optional(),
 
   pieces: z
     .number({

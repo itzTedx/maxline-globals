@@ -10,6 +10,7 @@ import BreakpointIndicator from "@/components/breakpoint-indicator";
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
 import Providers from "@/components/providers";
+import { Toaster } from "@/components/ui/sonner";
 import { siteConfig } from "@/constants/site-config";
 import { routing } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
@@ -142,6 +143,7 @@ export default async function RootLayout({
             <Navbar />
             {children}
           </Providers>
+          <Toaster />
           <BreakpointIndicator />
 
           <Footer />

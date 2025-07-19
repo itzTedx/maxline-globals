@@ -48,7 +48,7 @@ export default function QuotePage() {
     <main className="bg-background relative z-10 rounded-b-3xl pb-20 shadow-xl">
       <header className="container grid grid-cols-1 gap-3 pb-3 md:grid-cols-3">
         <HeroHeader
-          className="col-span-1 mx-0 px-0 py-0 text-start md:col-span-2"
+          className="col-span-1 mx-0 px-0 py-0 text-start md:col-span-2 lg:py-0 lg:pt-20 lg:pb-6"
           subtitle={t("hero.subtitle")}
           title={[
             { text: t("hero.title1") },
@@ -59,6 +59,7 @@ export default function QuotePage() {
           ]}
           titleClassName="text-3xl lg:text-[4.5rem] mb-6 max-w-xl"
           description={t("hero.description")}
+          descriptionClassName="mb-6"
           isLogo={false}
         />
       </header>

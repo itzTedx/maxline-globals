@@ -32,7 +32,7 @@ export default function ContactFormSubmission(props: Props) {
   const fileName = fileUpload ? fileUpload.name : undefined;
   const fileType = fileUpload ? fileUpload.type : undefined;
   const hasAttachment = !!fileUpload;
-  const companyLogo = "/maxline-global-logo.png";
+  const companyLogo = "https://maxlineglobal.com/maxline-global-logo.png";
 
   return (
     <Html>

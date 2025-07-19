@@ -64,7 +64,7 @@ export function QuoteRequestEmail(props: QuoteRequestEmailProps) {
           {/* Header */}
           <Section style={header as React.CSSProperties}>
             <Img
-              src="/maxline-global-logo.png"
+              src="https://maxlineglobal.com/maxline-global-logo.png"
               width="50"
               height="50"
               alt="Maxline Logo"
@@ -157,15 +157,11 @@ export function QuoteRequestEmail(props: QuoteRequestEmailProps) {
               </>
             )}
 
-            {attachFiles && attachFiles.length > 0 && (
+            {attachFiles && (
               <>
                 <Hr style={divider} />
-                <Text style={sectionTitle}>Attached Files</Text>
-                {attachFiles.map((file: File, index: number) => (
-                  <Text key={index} style={detailText}>
-                    - {file.name}
-                  </Text>
-                ))}
+                <Text style={sectionTitle}>Attached File</Text>
+                <Text style={detailText}>- {attachFiles.name}</Text>
               </>
             )}
           </Section>

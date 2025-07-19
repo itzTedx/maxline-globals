@@ -8,6 +8,7 @@ import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Control, FieldValues, Path, useForm } from "react-hook-form";
+import { toast } from "sonner";
 
 import LetterSwapPingPong from "@/components/animation/letter-swap-pingpong-anim";
 import { Button } from "@/components/ui/button";
@@ -256,14 +257,48 @@ export const QuoteForm = () => {
       recipientAddress: "",
       packageDescription: "",
       additionalInformation: "",
+      attachFiles: undefined,
+      pieces: undefined,
+      preferredDeliveryDate: undefined,
+      preferredModeOfTransport: undefined,
+      shippingDate: undefined,
+      typeOfPackaging: "",
+      volume: undefined,
+      weight: undefined,
     },
+    mode: "onTouched",
   });
 
   function onSubmit(values: QuoteFormData) {
     startTransition(async () => {
       const res = await sendQuote(values);
-      setResult(res);
-      if (res.success) form.reset();
+      if (res.success) {
+        setResult(res);
+        toast.success("Your quote request was sent successfully.");
+        form.reset();
+      } else {
+        // If error is an object with field errors
+        if (res.error && typeof res.error === "object") {
+          Object.entries(res.error).forEach(([field, messages]) => {
+            form.setError(field as keyof QuoteFormData, {
+              type: "server",
+              message: Array.isArray(messages)
+                ? messages.join(", ")
+                : String(messages),
+            });
+          });
+          toast.error(
+            "There was an error with your submission. Please check the form for details."
+          );
+        } else if (typeof res.error === "string") {
+          toast.error(res.error);
+        } else {
+          toast.error(
+            "There was an error sending your quote request. Please try again."
+          );
+        }
+        setResult(res);
+      }
     });
   }
 
@@ -466,11 +501,8 @@ export const QuoteForm = () => {
                 <FormControl>
                   <Input
                     type="file"
-                    multiple
-                    onChange={(e) => {
-                      const files = Array.from(e.target.files || []);
-                      onChange(files);
-                    }}
+                    accept=".jpg,.jpeg,.png,.pdf"
+                    onChange={(e) => onChange(e.target.files?.[0])}
                     {...field}
                     value={undefined}
                   />

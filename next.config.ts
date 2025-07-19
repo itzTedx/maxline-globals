@@ -9,7 +9,17 @@ const nextConfig: NextConfig = {
     minimumCacheTTL: 60,
   },
 
-  experimental: { optimizePackageImports: ["@tabler/icons-react"] },
+  experimental: {
+    optimizePackageImports: [
+      "@tabler/icons-react",
+      "lucide-react",
+      "date-fns",
+      "lodash",
+    ],
+    serverActions: {
+      bodySizeLimit: "2mb",
+    },
+  },
   typescript: {
     ignoreBuildErrors: true,
   },
