@@ -145,8 +145,9 @@ export default async function ContactPage() {
                   {t("corporateHeadquarters")}
                 </h3>
                 <address className="text-lg font-medium text-white not-italic md:text-2xl">
-                  Maxline LLC, Mina Jebel Ali, Dubai Aid City, Dubai - United
-                  Arab Emirates
+                  {t("hqAddress")}
+                  {/* Maxline LLC, Mina Jebel Ali, Dubai Aid City, Dubai - United
+                  Arab Emirates */}
                 </address>
               </div>
               <Image

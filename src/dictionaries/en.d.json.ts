@@ -190,8 +190,8 @@ declare const messages: {
     "description": "Partner with Maxline Global for reliable logistics solutions.",
     "call": "Call for enquiry",
     "email": "Send us email",
-    "phone": "+97142822022",
-    "emailAddress": "reception@maxlineglobal.com"
+    "phone": "+971 4 282 2022",
+    "emailAddress": "enquires@maxlineglobal.com"
   },
   "Footer": {
     "slogan1": "Your trusted logistics partner, moving forward,",
@@ -287,7 +287,15 @@ declare const messages: {
     "designation": "Designation",
     "linkedinProfile": "Linkedin Profile",
     "departmentName": "Logistics Department",
-    "departmentDescription": "Expert team handling freight forwarding, customs clearance, and supply chain solutions"
+    "departmentDescription": "Expert team handling freight forwarding, customs clearance, and supply chain solutions",
+    "AjithKumar": "Ajith Kumar",
+    "PadmaAjith": "Padma Ajith",
+    "SajiThomas": "Saji Thomas",
+    "PrakashMadhavan": "Prakash Madhavan",
+    "ChairmanAndMD": "Chairman and Managing Director",
+    "Director": "Director",
+    "CFO": "CFO",
+    "GeneralManager": "General Manager"
   },
   "ContactPage": {
     "subtitle": "Contact us",
@@ -297,11 +305,10 @@ declare const messages: {
     "heroDescription": "Get in touch to start a logistics project, explore partnership opportunities, or learn how Maxline Global delivers supply chain solutions with precision, speed, and care. We're here to support your business - every step of the way.",
     "contactLocations": "Contact Locations",
     "corporateHeadquarters": "Corporate Headquarters",
-    "hqAddressLine1": "P.O. Box: 232939, Jebel Ali Free Zone,",
-    "hqAddressLine2": "Dubai, United Arab Emirates.",
+    "hqAddress": "P.O. Box: 232939, Jebel Ali Free Zone, Dubai, United Arab Emirates.",
     "hqImageAlt": "Maxline Global Corporate Headquarters in Dubai",
     "branchOffice": "Branch Office",
-    "branchAddress": "33, 6A Street, Ras Al khor Industrial Area - 2, Dubai, United Arab Emirates.",
+    "branchAddress": "MO 0753, JAFZA North, Dubai, UAE ",
     "branchImageAlt": "Maxline Global Branch Office in Dubai",
     "contactForm": "Contact Form",
     "contactImageAlt": "Maxline Global Logistics Operations",
