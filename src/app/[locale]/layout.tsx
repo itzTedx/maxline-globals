@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: "-",
+    google: "Drogeolds3k4v2f4gsSZZKN4BYOqG_ioxZHWLqpmv04",
   },
   alternates: {
     canonical: siteConfig.site,
