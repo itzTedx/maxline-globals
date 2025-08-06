@@ -263,10 +263,10 @@ export default function PrivacyPolicyPage() {
               {t("contactUs.text")}
               <br />
               <a
-                href="mailto:info@maxlineglobals.com"
+                href="mailto:info@maxlineglobal.com"
                 className="text-primary hover:underline"
               >
-                info@maxlineglobals.com
+                info@maxlineglobal.com
               </a>
             </p>
           </section>

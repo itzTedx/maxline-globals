@@ -343,7 +343,7 @@ declare const messages: {
       "applyNow": "تقدم الآن",
       "emailUs": "راسلنا",
       "resumeText": "أرسل سيرتك الذاتية إلى",
-      "email": "enquires@maxlineglobals.com"
+      "email": "enquires@maxlineglobal.com"
     }
   }
 };
