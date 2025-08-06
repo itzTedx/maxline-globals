@@ -5,25 +5,51 @@ import { useTranslations } from "next-intl";
 import { HeroHeader } from "@/components/hero-header";
 import { InsightsList } from "@/feature/insights/components/insights-list";
 
-export const metadata: Metadata = {
-  title: "Insights & News | Maxline Global Logistics",
-  description:
-    "Discover insights, trends, and expert perspectives shaping the future of global logistics. From supply chain innovations to freight solutions, stay informed with the ideas that move businesses forward.",
-  openGraph: {
-    title: "Insights & News | Maxline Global Logistics",
-    description:
-      "Discover insights, trends, and expert perspectives shaping the future of global logistics.",
-    type: "website",
-    locale: "en_US",
-    siteName: "Maxline Global Logistics",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Insights & News | Maxline Global Logistics",
-    description:
-      "Discover insights, trends, and expert perspectives shaping the future of global logistics.",
-  },
-};
+// Dynamic metadata generation based on locale
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  
+  const title = locale === "ar" 
+    ? "الرؤى والأخبار | ماكسلاين جلوبال لوجستكس"
+    : "Insights & News | Maxline Global Logistics";
+  
+  const description = locale === "ar"
+    ? "اكتشف الرؤى والاتجاهات والمنظورات الخبيرة التي تشكل مستقبل اللوجستية العالمية. من ابتكارات سلسلة التوريد إلى حلول الشحن، ابق على اطلاع بالأفكار التي تدفع الأعمال إلى الأمام."
+    : "Discover insights, trends, and expert perspectives shaping the future of global logistics. From supply chain innovations to freight solutions, stay informed with the ideas that move businesses forward.";
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description: locale === "ar"
+        ? "اكتشف الرؤى والاتجاهات والمنظورات الخبيرة التي تشكل مستقبل اللوجستية العالمية."
+        : "Discover insights, trends, and expert perspectives shaping the future of global logistics.",
+      type: "website",
+      locale: locale === "ar" ? "ar_SA" : "en_US",
+      alternateLocale: locale === "ar" ? "en_US" : "ar_SA",
+      siteName: "Maxline Global Logistics",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description: locale === "ar"
+        ? "اكتشف الرؤى والاتجاهات والمنظورات الخبيرة التي تشكل مستقبل اللوجستية العالمية."
+        : "Discover insights, trends, and expert perspectives shaping the future of global logistics.",
+    },
+    alternates: {
+      canonical: `https://www.maxlineglobal.com/${locale}/insights`,
+      languages: {
+        "en": "https://www.maxlineglobal.com/en/insights",
+        "ar": "https://www.maxlineglobal.com/ar/insights",
+      },
+    },
+  };
+}
 
 const mockBlogs = [
   {

@@ -13,92 +13,116 @@ import { siteConfig } from "@/constants/site-config";
 import { Cta } from "@/feature/cta";
 import { ContactForm } from "@/feature/forms/contact-form";
 
-const PAGE_TITLE =
-  "Contact Maxline Global | Logistics & Supply Chain Solutions";
-const PAGE_DESCRIPTION =
-  "Get in touch with Maxline Global for logistics projects, partnership opportunities, and supply chain solutions. Contact our Dubai headquarters or branch office.";
-const PAGE_KEYWORDS =
-  "contact Maxline Global, logistics contact, supply chain solutions, Dubai logistics, UAE logistics";
-const SITE_URL = siteConfig.site;
-const HEADQUARTERS_IMAGE = "/images/head-office.webp";
+// Dynamic metadata generation based on locale
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  
+  const PAGE_TITLE = locale === "ar" 
+    ? "تواصل مع ماكسلاين جلوبال | حلول اللوجستية وسلسلة التوريد"
+    : "Contact Maxline Global | Logistics & Supply Chain Solutions";
+  
+  const PAGE_DESCRIPTION = locale === "ar"
+    ? "تواصل مع ماكسلاين جلوبال لمشاريع اللوجستية وفرص الشراكة وحلول سلسلة التوريد. اتصل بمقرنا الرئيسي في دبي أو مكتب الفرع."
+    : "Get in touch with Maxline Global for logistics projects, partnership opportunities, and supply chain solutions. Contact our Dubai headquarters or branch office.";
+  
+  const PAGE_KEYWORDS = locale === "ar"
+    ? "تواصل ماكسلاين جلوبال، اتصال لوجستي، حلول سلسلة التوريد، لوجستية دبي، لوجستية الإمارات"
+    : "contact Maxline Global, logistics contact, supply chain solutions, Dubai logistics, UAE logistics";
+  
+  const SITE_URL = siteConfig.site;
+  const HEADQUARTERS_IMAGE = "/images/head-office.webp";
 
-const openGraphData = {
-  title: PAGE_TITLE,
-  description: PAGE_DESCRIPTION,
-  type: "website",
-  locale: "en_US",
-  siteName: siteConfig.name,
-  images: [
-    {
-      url: HEADQUARTERS_IMAGE,
-      width: siteConfig.image.width,
-      height: siteConfig.image.height,
-      alt: siteConfig.image.alt,
-    },
-  ],
-};
+  const openGraphData = {
+    title: PAGE_TITLE,
+    description: PAGE_DESCRIPTION,
+    type: "website",
+    locale: locale === "ar" ? "ar_SA" : "en_US",
+    alternateLocale: locale === "ar" ? "en_US" : "ar_SA",
+    siteName: siteConfig.name,
+    images: [
+      {
+        url: HEADQUARTERS_IMAGE,
+        width: siteConfig.image.width,
+        height: siteConfig.image.height,
+        alt: siteConfig.image.alt,
+      },
+    ],
+  };
 
-const twitterData = {
-  card: "summary_large_image",
-  title: PAGE_TITLE,
-  description: PAGE_DESCRIPTION,
-  images: [HEADQUARTERS_IMAGE],
-};
+  const twitterData = {
+    card: "summary_large_image",
+    title: PAGE_TITLE,
+    description: PAGE_DESCRIPTION,
+    images: [HEADQUARTERS_IMAGE],
+  };
 
-const robotsData = {
-  index: true,
-  follow: true,
-  googleBot: {
+  const robotsData = {
     index: true,
     follow: true,
-    "max-video-preview": -1,
-    "max-image-preview": "large" as const,
-    "max-snippet": -1,
-  },
-};
-
-const organizationSchema = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: siteConfig.name,
-  url: SITE_URL,
-  logo: `${SITE_URL}/images/logo.png`,
-  description: siteConfig.description,
-  contactPoint: [
-    {
-      "@type": "ContactPoint",
-      telephone: "+971-4-123-4567",
-      contactType: "customer service",
-      areaServed: "AE",
-      availableLanguage: ["English", "Arabic"],
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large" as const,
+      "max-snippet": -1,
     },
-  ],
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "P.O. Box: 232939, Jebel Ali Free Zone",
-    addressLocality: "Dubai",
-    addressCountry: "AE",
-  },
-  sameAs: [
-    "https://www.linkedin.com/company/maxline-global",
-    "https://twitter.com/maxlineglobal",
-  ],
-};
+  };
 
-export const metadata: Metadata = {
-  title: PAGE_TITLE,
-  description: PAGE_DESCRIPTION,
-  keywords: [...siteConfig.keywords, ...PAGE_KEYWORDS.split(", ")],
-  openGraph: openGraphData,
-  twitter: twitterData,
-  robots: robotsData,
-  alternates: {
-    canonical: `${SITE_URL}/contact`,
-  },
-};
+  return {
+    title: PAGE_TITLE,
+    description: PAGE_DESCRIPTION,
+    keywords: [...siteConfig.keywords, ...PAGE_KEYWORDS.split(", ")],
+    openGraph: openGraphData,
+    twitter: twitterData,
+    robots: robotsData,
+    alternates: {
+      canonical: `${SITE_URL}/${locale}/contact`,
+      languages: {
+        "en": `${SITE_URL}/en/contact`,
+        "ar": `${SITE_URL}/ar/contact`,
+      },
+    },
+  };
+}
 
 export default async function ContactPage() {
   const t = await getTranslations("ContactPage");
+  
+  const SITE_URL = siteConfig.site;
+  const HEADQUARTERS_IMAGE = "/images/head-office.webp";
+  
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: siteConfig.name,
+    url: SITE_URL,
+    logo: `${SITE_URL}/images/logo.png`,
+    description: siteConfig.description,
+    contactPoint: [
+      {
+        "@type": "ContactPoint",
+        telephone: "+971-4-123-4567",
+        contactType: "customer service",
+        areaServed: "AE",
+        availableLanguage: ["English", "Arabic"],
+      },
+    ],
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "P.O. Box: 232939, Jebel Ali Free Zone",
+      addressLocality: "Dubai",
+      addressCountry: "AE",
+    },
+    sameAs: [
+      "https://www.linkedin.com/company/maxline-global",
+      "https://twitter.com/maxlineglobal",
+    ],
+  };
+  
   return (
     <>
       <Script

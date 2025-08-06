@@ -9,19 +9,46 @@ import { Cta } from "@/feature/cta";
 import { QuoteForm } from "@/feature/forms/quote-form";
 import { FaqSection } from "@/feature/home/sections/faq";
 
-export const metadata: Metadata = {
-  title: "Get a Logistics Quote | Maxline Global",
-  description:
-    "Get a personalized logistics quote from Maxline Global. Fast, safe, and smart cargo solutions for land, air, and sea freight with expert guidance.",
-  keywords:
-    "logistics quote, cargo shipping, freight services, customs support, warehousing, air freight, sea freight, land freight",
-  openGraph: {
-    title: "Get a Logistics Quote | Maxline Global",
-    description:
-      "Get a personalized logistics quote from Maxline Global. Fast, safe, and smart cargo solutions for land, air, and sea freight with expert guidance.",
-    type: "website",
-  },
-};
+// Dynamic metadata generation based on locale
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  
+  const title = locale === "ar" 
+    ? "احصل على عرض أسعار لوجستي | ماكسلاين جلوبال"
+    : "Get a Logistics Quote | Maxline Global";
+  
+  const description = locale === "ar"
+    ? "احصل على عرض أسعار لوجستي مخصص من ماكسلاين جلوبال. حلول شحن سريعة وآمنة وذكية عبر البر والجو والبحر مع إرشاد الخبراء."
+    : "Get a personalized logistics quote from Maxline Global. Fast, safe, and smart cargo solutions for land, air, and sea freight with expert guidance.";
+  
+  const keywords = locale === "ar"
+    ? "عرض أسعار لوجستي، شحن بضائع، خدمات الشحن، دعم الجمارك، التخزين، الشحن الجوي، الشحن البحري، الشحن البري"
+    : "logistics quote, cargo shipping, freight services, customs support, warehousing, air freight, sea freight, land freight";
+
+  return {
+    title,
+    description,
+    keywords: keywords.split(", "),
+    openGraph: {
+      title,
+      description,
+      type: "website",
+      locale: locale === "ar" ? "ar_SA" : "en_US",
+      alternateLocale: locale === "ar" ? "en_US" : "ar_SA",
+    },
+    alternates: {
+      canonical: `https://www.maxlineglobal.com/${locale}/quote`,
+      languages: {
+        "en": "https://www.maxlineglobal.com/en/quote",
+        "ar": "https://www.maxlineglobal.com/ar/quote",
+      },
+    },
+  };
+}
 
 export default function QuotePage() {
   const t = useTranslations("QuotePage");

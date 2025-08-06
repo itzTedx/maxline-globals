@@ -2,6 +2,12 @@
 // See: https://next-intl.dev/docs/workflows/typescript#messages-arguments
 
 declare const messages: {
+  "Common": {
+    "title": "Logistics Services | Maxline Global",
+    "templateTitle": "| Maxline Global",
+    "description": "Explore our full suite of global logistics services—from air, sea, and road freight to warehousing, customs clearance, and project cargo management. Maxline Global delivers reliable, scalable, and end-to-end solutions for every supply chain challenge.",
+    "keywords": "logistics services, global logistics, air freight, sea freight, road freight, warehousing, customs clearance, project cargo, supply chain solutions"
+  },
   "Navigation": {
     "home": "Home",
     "company": "Company",

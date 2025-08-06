@@ -21,44 +21,79 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-export const metadata: Metadata = {
-  title: siteConfig.title.default,
-  description: siteConfig.description,
-  keywords: [...siteConfig.keywords],
-  authors: [{ name: siteConfig.name }],
-  openGraph: {
-    title: siteConfig.title.default,
-    description: siteConfig.description,
-    type: "website",
-    videos: [
-      {
-        url: "https://maxlineglobal.com/videos/maxline-web.webm",
-        type: "video/mp4",
-        width: 1920,
-        height: 1080,
-      },
-    ],
-  },
+// Dynamic metadata generation based on locale
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
 
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
+  // Import the appropriate dictionary based on locale
+  const messages = (await import(`@/dictionaries/${locale}.json`)).default;
+  
+  const title = messages.Common.title;
+  const description = messages.Common.description;
+  const keywords = messages.Common.keywords;
+  const templateTitle = messages.Common.templateTitle;
+
+  return {
+    title: {
+      default: title,
+      template: templateTitle,
+    },
+    description,
+    keywords: keywords.split(", "),
+    authors: [{ name: siteConfig.name }],
+    openGraph: {
+      title,
+      description,
+      type: "website",
+      locale: locale === "ar" ? "ar_SA" : "en_US",
+      alternateLocale: locale === "ar" ? "en_US" : "ar_SA",
+      videos: [
+        {
+          url: "https://maxlineglobal.com/videos/maxline-web.webm",
+          type: "video/mp4",
+          width: 1920,
+          height: 1080,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [siteConfig.image.url],
+    },
+    robots: {
       index: true,
       follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
     },
-  },
-  verification: {
-    google: "Drogeolds3k4v2f4gsSZZKN4BYOqG_ioxZHWLqpmv04",
-  },
-  alternates: {
-    canonical: siteConfig.site,
-  },
-  metadataBase: new URL(siteConfig.site),
-};
+    verification: {
+      google: "Drogeolds3k4v2f4gsSZZKN4BYOqG_ioxZHWLqpmv04",
+    },
+    alternates: {
+      canonical: `${siteConfig.site}/${locale}`,
+      languages: {
+        "en": `${siteConfig.site}/en`,
+        "ar": `${siteConfig.site}/ar`,
+      },
+    },
+    metadataBase: new URL(siteConfig.site),
+  };
+}
 
 export default async function RootLayout({
   children,
@@ -92,7 +127,9 @@ export default async function RootLayout({
               "@context": "https://schema.org",
               "@type": "Organization",
               name: "Maxline Global",
-              description: "Global logistics and freight solutions provider",
+              description: locale === "ar" 
+                ? "مزود حلول لوجستية وشحن عالمية"
+                : "Global logistics and freight solutions provider",
               url: "https://maxlineglobal.com",
               sameAs: [
                 "https://twitter.com/maxlineglobal",
@@ -117,15 +154,18 @@ export default async function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "VideoObject",
-              name: "Maxline Global Logistics Services",
-              description:
-                "Overview of Maxline Global's comprehensive logistics and freight solutions",
+              name: locale === "ar" 
+                ? "خدمات ماكسلاين جلوبال اللوجستية"
+                : "Maxline Global Logistics Services",
+              description: locale === "ar"
+                ? "نظرة عامة على حلول ماكسلاين جلوبال الشاملة للوجستية والشحن"
+                : "Overview of Maxline Global's comprehensive logistics and freight solutions",
               thumbnailUrl:
-                "https://maxlineglobal.com/images/video-thumbnail.jpg", // Replace with your actual thumbnail URL
-              uploadDate: "2024-03-20", // Replace with your actual upload date
-              duration: "PT2M30S", // Replace with your actual video duration in ISO 8601 format
-              contentUrl: "https://maxlineglobal.com/video/your-video.mp4", // Replace with your actual video URL
-              embedUrl: "https://maxlineglobal.com/embed/video", // Replace with your actual embed URL if available
+                "https://maxlineglobal.com/images/video-thumbnail.jpg",
+              uploadDate: "2024-03-20",
+              duration: "PT2M30S",
+              contentUrl: "https://maxlineglobal.com/video/your-video.mp4",
+              embedUrl: "https://maxlineglobal.com/embed/video",
             }),
           }}
         />

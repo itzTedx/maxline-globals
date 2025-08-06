@@ -13,51 +13,86 @@ import { siteConfig } from "@/constants/site-config";
 import { CompanySection } from "@/feature/about/sections/company";
 import { Cta } from "@/feature/cta";
 
-const PAGE_TITLE =
-  "Meet the Maxline Global Team - Logistics Experts Driving Supply Chain Excellence";
-const PAGE_DESCRIPTION =
-  "Get to know the expert team behind Maxline Global. Our logistics professionals deliver innovative, efficient, and reliable supply chain solutions across the globe.";
+// Dynamic metadata generation based on locale
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  
+  const PAGE_TITLE = locale === "ar"
+    ? "تعرف على فريق ماكسلاين جلوبال - خبراء اللوجستية الذين يقودون التميز في سلسلة التوريد"
+    : "Meet the Maxline Global Team - Logistics Experts Driving Supply Chain Excellence";
+  
+  const PAGE_DESCRIPTION = locale === "ar"
+    ? "تعرف على الفريق الخبير وراء ماكسلاين جلوبال. يقدم محترفونا في مجال اللوجستية حلول سلسلة إمداد مبتكرة وفعالة وموثوقة في جميع أنحاء العالم."
+    : "Get to know the expert team behind Maxline Global. Our logistics professionals deliver innovative, efficient, and reliable supply chain solutions across the globe.";
 
-export const metadata: Metadata = {
-  title: PAGE_TITLE,
-  description: PAGE_DESCRIPTION,
-  keywords: [
-    "Maxline Global team",
-    "logistics experts",
-    "freight forwarding team",
-    "supply chain professionals",
-    "logistics specialists",
-    "freight solutions team",
-    "GCC logistics experts",
-    "customs clearance team",
-    "warehousing specialists",
-    "project cargo experts",
-  ],
-  openGraph: {
+  const keywords = locale === "ar"
+    ? [
+        "فريق ماكسلاين جلوبال",
+        "خبراء اللوجستية",
+        "فريق الشحن",
+        "محترفو سلسلة التوريد",
+        "متخصصو اللوجستية",
+        "فريق حلول الشحن",
+        "خبراء لوجستية مجلس التعاون الخليجي",
+        "فريق التخليص الجمركي",
+        "متخصصو التخزين",
+        "خبراء شحنات المشاريع",
+      ]
+    : [
+        "Maxline Global team",
+        "logistics experts",
+        "freight forwarding team",
+        "supply chain professionals",
+        "logistics specialists",
+        "freight solutions team",
+        "GCC logistics experts",
+        "customs clearance team",
+        "warehousing specialists",
+        "project cargo experts",
+      ];
+
+  return {
     title: PAGE_TITLE,
     description: PAGE_DESCRIPTION,
-    type: "website",
-    url: `${siteConfig.site}/company/team`,
-    siteName: siteConfig.name,
-    images: [
-      {
-        url: "/images/team/team-hero.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Maxline Global Team - Expert Logistics Professionals",
+    keywords,
+    openGraph: {
+      title: PAGE_TITLE,
+      description: PAGE_DESCRIPTION,
+      type: "website",
+      url: `${siteConfig.site}/${locale}/company/team`,
+      locale: locale === "ar" ? "ar_SA" : "en_US",
+      alternateLocale: locale === "ar" ? "en_US" : "ar_SA",
+      siteName: siteConfig.name,
+      images: [
+        {
+          url: "/images/team/team-hero.jpg",
+          width: 1200,
+          height: 630,
+          alt: locale === "ar" 
+            ? "فريق ماكسلاين جلوبال - محترفو اللوجستية الخبراء"
+            : "Maxline Global Team - Expert Logistics Professionals",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: PAGE_TITLE,
+      description: PAGE_DESCRIPTION,
+      images: ["/images/team/team-hero.jpg"],
+    },
+    alternates: {
+      canonical: `${siteConfig.site}/${locale}/company/team`,
+      languages: {
+        "en": `${siteConfig.site}/en/company/team`,
+        "ar": `${siteConfig.site}/ar/company/team`,
       },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: PAGE_TITLE,
-    description: PAGE_DESCRIPTION,
-    images: ["/images/team/team-hero.jpg"],
-  },
-  alternates: {
-    canonical: `${siteConfig.site}/company/team`,
-  },
-};
+    },
+  };
+}
 
 export default async function TeamPage() {
   const t = await getTranslations("TeamPage");

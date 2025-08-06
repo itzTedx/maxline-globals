@@ -11,63 +11,107 @@ import { Principles } from "@/feature/about/sections/principles";
 import { WhoWeAre } from "@/feature/about/sections/who-we-are";
 import { Cta } from "@/feature/cta";
 
-export const metadata: Metadata = {
-  title:
-    "About Maxline Global | Leading Freight Forwarding & Logistics Company",
-  description:
-    "Discover Maxline Global's journey as a premier freight forwarding and logistics provider. Learn about our leadership, values, certifications, and commitment to excellence in global supply chain solutions.",
-  keywords: [
-    "Maxline Global",
-    "about us",
-    "company history",
-    "leadership",
-    "company values",
-    "corporate principles",
-    "freight forwarding",
-    "logistics company",
-    "supply chain solutions",
-    "Dubai logistics",
-    "global logistics",
-    "certified logistics provider",
-  ],
-  openGraph: {
-    title: "About Maxline Global | Our Story, Values & Leadership",
-    description:
-      "Discover Maxline's journey, leadership, and the principles that shape our success. Learn about our commitment to excellence and innovation in global logistics.",
-    type: "website",
-    url: `${siteConfig.site}/company/about`,
-    siteName: siteConfig.name,
-    images: [
-      {
-        url: siteConfig.image.url,
-        width: siteConfig.image.width,
-        height: siteConfig.image.height,
-        alt: siteConfig.image.alt,
+// Dynamic metadata generation based on locale
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  
+  const title = locale === "ar"
+    ? "من نحن | ماكسلاين جلوبال - شركة الشحن واللوجستية الرائدة"
+    : "About Maxline Global | Leading Freight Forwarding & Logistics Company";
+  
+  const description = locale === "ar"
+    ? "اكتشف رحلة ماكسلاين جلوبال كمزود رائد للشحن واللوجستية. تعرف على قيادتنا وقيمنا وشهاداتنا والتزامنا بالتميز في حلول سلسلة التوريد العالمية."
+    : "Discover Maxline Global's journey as a premier freight forwarding and logistics provider. Learn about our leadership, values, certifications, and commitment to excellence in global supply chain solutions.";
+  
+  const ogTitle = locale === "ar"
+    ? "من نحن | ماكسلاين جلوبال - قصتنا وقيمنا وقيادتنا"
+    : "About Maxline Global | Our Story, Values & Leadership";
+  
+  const ogDescription = locale === "ar"
+    ? "اكتشف رحلة ماكسلاين وقيادتها والمبادئ التي تشكل نجاحنا. تعرف على التزامنا بالتميز والابتكار في اللوجستية العالمية."
+    : "Discover Maxline's journey, leadership, and the principles that shape our success. Learn about our commitment to excellence and innovation in global logistics.";
+  
+  const keywords = locale === "ar"
+    ? [
+        "ماكسلاين جلوبال",
+        "من نحن",
+        "تاريخ الشركة",
+        "القيادة",
+        "قيم الشركة",
+        "المبادئ المؤسسية",
+        "الشحن",
+        "شركة لوجستية",
+        "حلول سلسلة التوريد",
+        "لوجستية دبي",
+        "اللوجستية العالمية",
+        "مزود لوجستي معتمد",
+      ]
+    : [
+        "Maxline Global",
+        "about us",
+        "company history",
+        "leadership",
+        "company values",
+        "corporate principles",
+        "freight forwarding",
+        "logistics company",
+        "supply chain solutions",
+        "Dubai logistics",
+        "global logistics",
+        "certified logistics provider",
+      ];
+
+  return {
+    title,
+    description,
+    keywords,
+    openGraph: {
+      title: ogTitle,
+      description: ogDescription,
+      type: "website",
+      url: `${siteConfig.site}/${locale}/company/about`,
+      locale: locale === "ar" ? "ar_SA" : "en_US",
+      alternateLocale: locale === "ar" ? "en_US" : "ar_SA",
+      siteName: siteConfig.name,
+      images: [
+        {
+          url: siteConfig.image.url,
+          width: siteConfig.image.width,
+          height: siteConfig.image.height,
+          alt: siteConfig.image.alt,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: ogTitle,
+      description: ogDescription,
+      images: [siteConfig.image.url],
+    },
+    alternates: {
+      canonical: `${siteConfig.site}/${locale}/company/about`,
+      languages: {
+        "en": `${siteConfig.site}/en/company/about`,
+        "ar": `${siteConfig.site}/ar/company/about`,
       },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "About Maxline Global | Our Story, Values & Leadership",
-    description:
-      "Discover Maxline's journey, leadership, and the principles that shape our success. Learn about our commitment to excellence and innovation in global logistics.",
-    images: [siteConfig.image.url],
-  },
-  alternates: {
-    canonical: `${siteConfig.site}/company/about`,
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
+    },
+    robots: {
       index: true,
       follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
     },
-  },
-};
+  };
+}
 
 export default function AboutPage() {
   return (

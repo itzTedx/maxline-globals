@@ -58,7 +58,7 @@ export async function generateMetadata({
     };
 
   return {
-    title: t(`${serviceKey}.hero.title`),
+    title: t(`${serviceKey}.hero.title`) + t("Common.templateTitle"),
     description: t(`${serviceKey}.hero.description`),
     openGraph: {
       title: t(`${serviceKey}.hero.title`),

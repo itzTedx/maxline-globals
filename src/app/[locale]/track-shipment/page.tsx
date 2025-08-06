@@ -5,17 +5,41 @@ import { useTranslations } from "next-intl";
 import { StaggeredText } from "@/components/animation/staggered-text";
 import { Cta } from "@/feature/cta";
 
-export const metadata: Metadata = {
-  title: "Track Your Shipment | Maxline Global",
-  description:
-    "Track your shipment status with Maxline Global's real-time tracking system. Get instant updates on your cargo's location and delivery status.",
-  openGraph: {
-    title: "Track Your Shipment | Maxline Global",
-    description:
-      "Track your shipment status with Maxline Global's real-time tracking system. Get instant updates on your cargo's location and delivery status.",
-    type: "website",
-  },
-};
+// Dynamic metadata generation based on locale
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  
+  const title = locale === "ar" 
+    ? "تتبع شحنتك | ماكسلاين جلوبال"
+    : "Track Your Shipment | Maxline Global";
+  
+  const description = locale === "ar"
+    ? "تتبع حالة شحنتك مع نظام التتبع الفوري لماكسلاين جلوبال. احصل على تحديثات فورية حول موقع شحنتك وحالة التسليم."
+    : "Track your shipment status with Maxline Global's real-time tracking system. Get instant updates on your cargo's location and delivery status.";
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      type: "website",
+      locale: locale === "ar" ? "ar_SA" : "en_US",
+      alternateLocale: locale === "ar" ? "en_US" : "ar_SA",
+    },
+    alternates: {
+      canonical: `https://www.maxlineglobal.com/${locale}/track-shipment`,
+      languages: {
+        "en": "https://www.maxlineglobal.com/en/track-shipment",
+        "ar": "https://www.maxlineglobal.com/ar/track-shipment",
+      },
+    },
+  };
+}
 
 export default function TrackingRedirect() {
   const t = useTranslations("TrackingPage");
