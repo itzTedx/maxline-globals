@@ -190,7 +190,7 @@
     "call": "Call for enquiry",
     "email": "Send us email",
     "phone": "+971 4 282 2022",
-    "emailAddress": "enquires@maxlineglobal.com"
+    "emailAddress": "enquires@maxlineglobals.com"
   },
   "Footer": {
     "slogan1": "Your trusted logistics partner, moving forward,",
@@ -576,9 +576,67 @@
     },
     "submit": "Get A Quote"
   },
+  "CareersPage": {
+    "hero": {
+      "subtitle": "Join Our Team",
+      "title": {
+        "first": "Careers at ",
+        "second": "Maxline",
+        "third": " Globals"
+      },
+      "description": "Join a team that's powering the future of technology and logistics."
+    },
+    "mission": {
+      "title": "Building Careers, Not Just Jobs",
+      "description1": "At Maxline Globals, we don't just offer jobs—we build careers. As a leading provider of cutting-edge technology solutions, logistics innovations, and global distribution, we're on a mission to simplify and transform industries through smart, scalable solutions.",
+      "description2": "We believe that our success is driven by the talent, passion, and innovation of our people. If you're looking for a place where your ideas are valued, your growth is supported, and your work truly matters—you're in the right place.",
+      "whyChoose": {
+        "title": "Why Choose Maxline?",
+        "benefits": [
+          "Innovation-driven culture",
+          "Global team collaboration",
+          "International opportunities",
+          "Work-life balance focus"
+        ]
+      }
+    },
+    "benefits": {
+      "title": "Why Work with Us?",
+      "list": [
+        {
+          "title": "Innovative Environment",
+          "description": "Work on forward-thinking projects in tech, logistics, and global distribution."
+        },
+        {
+          "title": "Career Growth",
+          "description": "Get the support and tools to advance your skills and grow within the company."
+        },
+        {
+          "title": "Inclusive Culture",
+          "description": "Join a diverse, collaborative team that values transparency and integrity."
+        },
+        {
+          "title": "Global Impact",
+          "description": "Be part of a company making waves across international markets."
+        },
+        {
+          "title": "Work-Life Balance",
+          "description": "We value your well-being and offer flexible working opportunities where possible."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Ready to Power the Future?",
+      "description": "Whether you're an experienced professional or just starting out, Maxline Globals is a place to grow, innovate, and lead. Join us in shaping the future.",
+      "applyNow": "Apply Now",
+      "emailUs": "Email Us",
+      "resumeText": "Send your resume to",
+      "email": "enquires@maxlineglobals.com"
+    }
+  },
   "TrackingPage": {
     "title": "Tracking page is under development",
-    "description": "We’re currently working on bringing you a powerful, real-time tracking experience to monitor your shipments with precision and ease. Our new tracking system is under development and will be launching soon.",
+    "description": "We're currently working on bringing you a powerful, real-time tracking experience to monitor your shipments with precision and ease. Our new tracking system is under development and will be launching soon.",
     "assistance": "For immediate assistance or tracking inquiries, please contact our support team below"
   }
 }
