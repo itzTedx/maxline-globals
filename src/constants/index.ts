@@ -16,15 +16,16 @@ const SERVICES_LINKS = [
     href: "/services/air-freight",
     img: "/images/air-freight.webp",
   },
-  {
-    title: "seaFreight",
-    href: "/services/sea-freight",
-    img: "/images/sea-freight.webp",
-  },
+ 
   {
     title: "landFreight",
     href: "/services/land-freight",
     img: "/images/blogs/transport-logistics-products.jpg",
+  },
+  {
+    title: "seaFreight",
+    href: "/services/sea-freight",
+    img: "/images/sea-freight.webp",
   },
   {
     title: "projectCargo",
@@ -49,7 +50,7 @@ const SERVICES_LINKS = [
   {
     title: "MovingLashing",
     href: "/services/movers-lashing",
-    img: "/images/movers.webp",
+    img: "/images/movers-nav.webp",
   },
 ];
 

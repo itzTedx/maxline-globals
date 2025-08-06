@@ -51,7 +51,7 @@ export const Hero = ({
         </Button>
       </div>
       <div
-        className="absolute -right-20 -bottom-1/4 h-[300px] md:-right-20 md:-bottom-[15%] md:h-auto"
+        className="absolute -right-20 bottom-0 h-[150px] md:-right-20 md:-bottom-[15%] md:h-auto"
         itemProp="image"
       >
         <Image

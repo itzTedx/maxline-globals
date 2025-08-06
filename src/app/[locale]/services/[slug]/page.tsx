@@ -3,8 +3,6 @@ import { notFound } from "next/navigation";
 
 import { getLocale } from "next-intl/server";
 
-import type { ServiceMessages } from "@/components/MarqueeSection";
-import MarqueeSection from "@/components/MarqueeSection";
 import SpotlightCard from "@/components/animation/spotlight-card";
 import { StaggeredText } from "@/components/animation/staggered-text";
 import { Cta } from "@/feature/cta";
@@ -170,11 +168,11 @@ export default async function ServicePage({ params }: { params: Params }) {
             })),
           }}
         />
-        <MarqueeSection
+        {/* <MarqueeSection
           industries={service.industries}
           messages={messages as Record<string, ServiceMessages>}
           serviceKey={serviceKey}
-        />
+        /> */}
         <section className="container py-10 md:py-20">
           <h4
             id="hero-title"

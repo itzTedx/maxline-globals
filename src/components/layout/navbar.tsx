@@ -55,7 +55,7 @@ export const Navbar = () => {
         className="from-background to-background/0 absolute top-0 z-10 h-full w-full bg-gradient-to-b"
         aria-hidden="true"
       />
-      <div className="relative z-50 container grid grid-cols-4 items-center justify-center gap-3">
+      <div className="relative z-50 container flex md:grid md:grid-cols-4 items-center justify-between md:justify-center gap-3">
         <Link href="/" aria-label="Maxline Global - Home">
           <Logo className="text-[#231F20]" />
         </Link>
