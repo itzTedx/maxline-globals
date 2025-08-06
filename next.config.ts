@@ -7,6 +7,7 @@ const nextConfig: NextConfig = {
     formats: ["image/avif", "image/webp"],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
     minimumCacheTTL: 60,
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
 
   experimental: {
@@ -14,12 +15,16 @@ const nextConfig: NextConfig = {
       "@tabler/icons-react",
       "lucide-react",
       "date-fns",
+      "@radix-ui",
       "lodash",
     ],
     serverActions: {
       bodySizeLimit: "2mb",
     },
   },
+    // Compression settings
+  compress: true,
+    
   typescript: {
     ignoreBuildErrors: true,
   },
@@ -35,9 +40,9 @@ const nextConfig: NextConfig = {
 };
 
 const withNextIntl = createNextIntlPlugin({
-  // experimental: {
-  //   createMessagesDeclaration: ["./src/dictionaries/en.json"],
-  // },
+  experimental: {
+    createMessagesDeclaration: ["./src/dictionaries/en.json"],
+  },
 });
 
 export default withNextIntl(nextConfig);

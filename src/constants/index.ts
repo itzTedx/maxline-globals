@@ -73,6 +73,7 @@ export const NAVLINKS: NavLink[] = [
         img: "/images/meeting-1.webp",
       },
       { title: "insights", href: "/insights", img: "/images/insights.webp" },
+      { title: "careers", href: "/company/careers", img: "/images/insights.webp" },
     ],
   },
   {

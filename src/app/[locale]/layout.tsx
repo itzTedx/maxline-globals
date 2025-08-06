@@ -142,11 +142,11 @@ export default async function RootLayout({
           <Providers>
             <Navbar />
             {children}
-          </Providers>
-          <Toaster />
-          <BreakpointIndicator />
+            <Toaster />
+            <BreakpointIndicator />
 
-          <Footer />
+            <Footer />
+          </Providers>
         </NextIntlClientProvider>
       </body>
     </html>

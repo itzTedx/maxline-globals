@@ -8,6 +8,7 @@ declare const messages: {
     "aboutUs": "About Us",
     "leadershipTeam": "Leadership Team",
     "insights": "Insights & News",
+    "careers": "Careers",
     "airFreight": "Air Freight",
     "seaFreight": "Sea Freight",
     "landFreight": "Land Freight",
@@ -19,7 +20,8 @@ declare const messages: {
     "services": "Services",
     "trackShipment": "Track Shipment",
     "contact": "Contact",
-    "getQuote": "Get a Quote"
+    "getQuote": "Get a Quote",
+    "exploreServices": "The Right Solution for Every Challenge - See What's Next"
   },
   "HomePage": {
     "hero": {

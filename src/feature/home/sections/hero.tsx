@@ -12,7 +12,7 @@ export const HeroSection = memo(() => {
   return (
     <header className="py-10 md:py-16 lg:py-20" role="banner">
       <div className="container mx-auto px-4">
-        <h1 className="text-brand-dark font-grotesk mx-auto max-w-5xl text-center text-4xl tracking-tight sm:text-5xl md:text-6xl lg:text-8xl">
+        <h1 className="text-brand-dark font-grotesk mx-auto max-w-5xl text-center text-4xl tracking-tight sm:text-5xl md:text-6xl lg:text-[4.95rem]">
           <StaggeredText
             text={t("hero.title.firstLine")}
             staggerChildren={0.01}

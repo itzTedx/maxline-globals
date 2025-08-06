@@ -55,14 +55,14 @@ export const Navbar = () => {
         className="from-background to-background/0 absolute top-0 z-10 h-full w-full bg-gradient-to-b"
         aria-hidden="true"
       />
-      <div className="relative z-50 container flex items-center justify-between gap-3">
+      <div className="relative z-50 container grid grid-cols-4 items-center justify-center gap-3">
         <Link href="/" aria-label="Maxline Global - Home">
           <Logo className="text-[#231F20]" />
         </Link>
 
         {/* Desktop Navigation */}
         <ul
-          className="relative hidden items-center justify-center gap-2 lg:flex"
+          className="relative hidden items-center justify-center gap-2 lg:flex col-span-2"
           role="menubar"
         >
           {NAVLINKS.map((link) => (
@@ -94,13 +94,14 @@ export const Navbar = () => {
                     }))}
                     parentTitle={link.title}
                   />
+                 
                 </div>
               )}
             </li>
           ))}
         </ul>
 
-        <menu className="hidden items-center gap-2 lg:flex">
+        <menu className="hidden items-center gap-2 lg:flex justify-end">
           <li>
             <LanguageSelector />
           </li>

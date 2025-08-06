@@ -5,6 +5,7 @@
     "aboutUs": "من نحن",
     "leadershipTeam": "فريق القيادة",
     "insights": "الرؤى والأخبار",
+    "careers": "الوظائف",
     "services": "الخدمات",
     "trackShipment": "تتبع الشحنة",
     "contact": "اتصل بنا",
@@ -16,7 +17,8 @@
     "warehousing": "التخزين",
     "exhibitionCargo": "معرض البضائع",
     "MovingLashing": "النقل والربط",
-    "getQuote": "يقتبس"
+    "getQuote": "يقتبس",
+    "exploreServices": "الحل الصحيح لكل تحدي - اكتشف المزيد"
   },
   "HomePage": {
     "hero": {
