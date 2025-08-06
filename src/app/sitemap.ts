@@ -12,17 +12,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   for (const locale of routing.locales) {
     entries.push({ url: `${base}/${locale}`, priority: 1.0 });
-    entries.push({ url: `${base}/${locale}/privacy-policy`, priority: 0.8 });
     entries.push({ url: `${base}/${locale}/quote`, priority: 0.8 });
-    entries.push({ url: `${base}/${locale}/track-shipment`, priority: 0.8 });
+    entries.push({ url: `${base}/${locale}/track-shipment`, priority: 0.6 });
     entries.push({ url: `${base}/${locale}/contact`, priority: 0.8 });
-    entries.push({ url: `${base}/${locale}/company`, priority: 0.8 });
-    entries.push({ url: `${base}/${locale}/company/team`, priority: 0.8 });
+    entries.push({ url: `${base}/${locale}/company`, priority: 0.7 });
+    entries.push({ url: `${base}/${locale}/company/team`, priority: 0.6 });
     entries.push({ url: `${base}/${locale}/company/about`, priority: 0.8 });
     for (const slug of serviceSlugs) {
       entries.push({
         url: `${base}/${locale}/services/${slug}`,
-        priority: 0.6,
+        priority: 0.9,
       });
     }
     for (const slug of insightSlugs) {
