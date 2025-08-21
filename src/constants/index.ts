@@ -278,7 +278,7 @@ export const HEAD_LOCATION = [
   {
     title: "Head Office (UAE)",
     address:
-      "Maxline LLC, Mina Jebel Ali, Dubai Aid City, Dubai - United Arab Emirates",
+      "MO 0753, Jafza North  Dubai - United Arab Emirates",
     phone: "+971 4 282 2022",
     mobile: "+971 4 282 2022",
     email: "reception@maxlineglobal.com",

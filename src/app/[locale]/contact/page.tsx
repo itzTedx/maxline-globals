@@ -20,19 +20,22 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  
-  const PAGE_TITLE = locale === "ar" 
-    ? "تواصل مع ماكسلاين جلوبال | حلول اللوجستية وسلسلة التوريد"
-    : "Contact Maxline Global | Logistics & Supply Chain Solutions";
-  
-  const PAGE_DESCRIPTION = locale === "ar"
-    ? "تواصل مع ماكسلاين جلوبال لمشاريع اللوجستية وفرص الشراكة وحلول سلسلة التوريد. اتصل بمقرنا الرئيسي في دبي أو مكتب الفرع."
-    : "Get in touch with Maxline Global for logistics projects, partnership opportunities, and supply chain solutions. Contact our Dubai headquarters or branch office.";
-  
-  const PAGE_KEYWORDS = locale === "ar"
-    ? "تواصل ماكسلاين جلوبال، اتصال لوجستي، حلول سلسلة التوريد، لوجستية دبي، لوجستية الإمارات"
-    : "contact Maxline Global, logistics contact, supply chain solutions, Dubai logistics, UAE logistics";
-  
+
+  const PAGE_TITLE =
+    locale === "ar"
+      ? "تواصل مع ماكسلاين جلوبال | حلول اللوجستية وسلسلة التوريد"
+      : "Contact Maxline Global | Logistics & Supply Chain Solutions";
+
+  const PAGE_DESCRIPTION =
+    locale === "ar"
+      ? "تواصل مع ماكسلاين جلوبال لمشاريع اللوجستية وفرص الشراكة وحلول سلسلة التوريد. اتصل بمقرنا الرئيسي في دبي أو مكتب الفرع."
+      : "Get in touch with Maxline Global for logistics projects, partnership opportunities, and supply chain solutions. Contact our Dubai headquarters or branch office.";
+
+  const PAGE_KEYWORDS =
+    locale === "ar"
+      ? "تواصل ماكسلاين جلوبال، اتصال لوجستي، حلول سلسلة التوريد، لوجستية دبي، لوجستية الإمارات"
+      : "contact Maxline Global, logistics contact, supply chain solutions, Dubai logistics, UAE logistics";
+
   const SITE_URL = siteConfig.site;
   const HEADQUARTERS_IMAGE = "/images/head-office.webp";
 
@@ -82,8 +85,8 @@ export async function generateMetadata({
     alternates: {
       canonical: `${SITE_URL}/${locale}/contact`,
       languages: {
-        "en": `${SITE_URL}/en/contact`,
-        "ar": `${SITE_URL}/ar/contact`,
+        en: `${SITE_URL}/en/contact`,
+        ar: `${SITE_URL}/ar/contact`,
       },
     },
   };
@@ -91,10 +94,10 @@ export async function generateMetadata({
 
 export default async function ContactPage() {
   const t = await getTranslations("ContactPage");
-  
+
   const SITE_URL = siteConfig.site;
   const HEADQUARTERS_IMAGE = "/images/head-office.webp";
-  
+
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -122,7 +125,7 @@ export default async function ContactPage() {
       "https://twitter.com/maxlineglobal",
     ],
   };
-  
+
   return (
     <>
       <Script
@@ -184,7 +187,7 @@ export default async function ContactPage() {
               />
             </article>
 
-            <article className="relative overflow-hidden rounded-2xl p-6 md:p-12">
+            {/* <article className="relative overflow-hidden rounded-2xl p-6 md:p-12">
               <div className="relative z-10">
                 <h3 className="text-primary mb-1 text-xl md:text-2xl">
                   {t("branchOffice")}
@@ -200,7 +203,7 @@ export default async function ContactPage() {
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
-            </article>
+            </article> */}
 
             <section aria-labelledby="contact-form-title">
               <h2 id="contact-form-title" className="sr-only">
