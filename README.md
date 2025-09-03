@@ -23,6 +23,7 @@ A modern, multilingual logistics company website built with Next.js 15, featurin
 - **RTL Layout Support**: Complete right-to-left layout for Arabic
 - **Dynamic Language Switching**: Seamless language transitions
 - **Localized Content**: All content, forms, and UI elements translated
+- **Auto-generated Types**: TypeScript definitions for type-safe translations
 
 ### 🎨 **Modern UI/UX**
 - **Responsive Design**: Optimized for all devices and screen sizes
@@ -30,6 +31,7 @@ A modern, multilingual logistics company website built with Next.js 15, featurin
 - **Smooth Animations**: Framer Motion powered interactions
 - **Accessibility**: WCAG compliant with proper ARIA labels
 - **Modern Components**: Radix UI primitives with custom styling
+- **Carousel Support**: Embla carousel with wheel gestures
 
 ### 🚢 **Logistics Services**
 - **Land Freight**: FTL, LTL, and oversized cargo across GCC
@@ -61,9 +63,9 @@ A modern, multilingual logistics company website built with Next.js 15, featurin
 ## 🛠️ Tech Stack
 
 ### **Frontend Framework**
-- **Next.js 15**: App Router with server components
-- **React 19**: Latest React features and hooks
-- **TypeScript**: Full type safety and IntelliSense
+- **Next.js 15.4.5**: App Router with server components
+- **React 19.0.0**: Latest React features and hooks
+- **TypeScript 5.0**: Full type safety and IntelliSense
 
 ### **Styling & UI**
 - **Tailwind CSS 4**: Utility-first CSS framework
@@ -71,6 +73,7 @@ A modern, multilingual logistics company website built with Next.js 15, featurin
 - **Lucide React**: Beautiful icon library
 - **Tabler Icons**: Additional icon set
 - **Framer Motion**: Smooth animations and transitions
+- **Embla Carousel**: Touch-friendly carousel with wheel gestures
 
 ### **Forms & Validation**
 - **React Hook Form**: Performant form handling
@@ -78,7 +81,7 @@ A modern, multilingual logistics company website built with Next.js 15, featurin
 - **@hookform/resolvers**: Form validation integration
 
 ### **Internationalization**
-- **next-intl**: Complete i18n solution
+- **next-intl 4.3.4**: Complete i18n solution
 - **Middleware**: Automatic locale detection and routing
 
 ### **Email & Communication**
@@ -87,8 +90,8 @@ A modern, multilingual logistics company website built with Next.js 15, featurin
 - **File Upload**: Multer-style file handling
 
 ### **Development Tools**
-- **ESLint**: Code linting and quality
-- **Prettier**: Code formatting
+- **ESLint 9**: Code linting and quality
+- **Prettier 3.5.3**: Code formatting with import sorting
 - **TypeScript**: Static type checking
 - **TurboPack**: Fast development bundler
 
@@ -116,6 +119,250 @@ npm run build
 npm start
 ```
 
+## 🚀 AWS VPS Deployment Guide
+
+This guide covers deploying your Maxline Global website to an AWS EC2 instance with Ubuntu.
+
+### **Prerequisites**
+- AWS Account with EC2 access
+- Domain name (optional but recommended)
+- SSH key pair for EC2 access
+
+### **Step 1: Launch EC2 Instance**
+
+1. **Launch Instance**:
+   - Go to AWS Console → EC2 → Launch Instance
+   - Choose **Ubuntu Server 22.04 LTS** (free tier eligible)
+   - Select **t2.micro** (free tier) or **t3.small** for production
+   - Configure Security Group with these rules:
+     ```
+     SSH (22): 0.0.0.0/0 (or your IP)
+     HTTP (80): 0.0.0.0/0
+     HTTPS (443): 0.0.0.0/0
+     Custom TCP (3000): 0.0.0.0/0 (for Next.js)
+     ```
+
+2. **Connect to Instance**:
+   ```bash
+   ssh -i your-key.pem ubuntu@your-ec2-public-ip
+   ```
+
+### **Step 2: Server Setup**
+
+1. **Update System**:
+   ```bash
+   sudo apt update && sudo apt upgrade -y
+   ```
+
+2. **Install Node.js 18+**:
+   ```bash
+   curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+   sudo apt-get install -y nodejs
+   node --version  # Should show v18+
+   ```
+
+3. **Install PM2 (Process Manager)**:
+   ```bash
+   sudo npm install -g pm2
+   ```
+
+4. **Install Nginx**:
+   ```bash
+   sudo apt install nginx -y
+   sudo systemctl enable nginx
+   sudo systemctl start nginx
+   ```
+
+5. **Install Certbot for SSL**:
+   ```bash
+   sudo apt install certbot python3-certbot-nginx -y
+   ```
+
+### **Step 3: Deploy Application**
+
+1. **Clone Repository**:
+   ```bash
+   cd /home/ubuntu
+   git clone https://github.com/itzTedx/maxline-globals.git
+   cd maxline-globals
+   ```
+
+2. **Install Dependencies**:
+   ```bash
+   npm install
+   ```
+
+3. **Set Environment Variables**:
+   ```bash
+   cp .env.example .env.local
+   nano .env.local
+   # Add your production environment variables
+   ```
+
+4. **Build Application**:
+   ```bash
+   npm run build
+   ```
+
+5. **Start with PM2**:
+   ```bash
+   pm2 start npm --name "maxline-globals" -- start
+   pm2 save
+   pm2 startup
+   ```
+
+### **Step 4: Configure Nginx**
+
+1. **Create Nginx Configuration**:
+   ```bash
+   sudo nano /etc/nginx/sites-available/maxline-globals
+   ```
+
+2. **Add Configuration**:
+   ```nginx
+   server {
+       listen 80;
+       server_name your-domain.com www.your-domain.com;
+       
+       location / {
+           proxy_pass http://localhost:3000;
+           proxy_http_version 1.1;
+           proxy_set_header Upgrade $http_upgrade;
+           proxy_set_header Connection 'upgrade';
+           proxy_set_header Host $host;
+           proxy_set_header X-Real-IP $remote_addr;
+           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+           proxy_set_header X-Forwarded-Proto $scheme;
+           proxy_cache_bypass $http_upgrade;
+       }
+   }
+   ```
+
+3. **Enable Site**:
+   ```bash
+   sudo ln -s /etc/nginx/sites-available/maxline-globals /etc/nginx/sites-enabled/
+   sudo nginx -t
+   sudo systemctl reload nginx
+   ```
+
+### **Step 5: SSL Certificate (Optional but Recommended)**
+
+1. **Get SSL Certificate**:
+   ```bash
+   sudo certbot --nginx -d your-domain.com -d www.your-domain.com
+   ```
+
+2. **Auto-renewal**:
+   ```bash
+   sudo crontab -e
+   # Add this line:
+   0 12 * * * /usr/bin/certbot renew --quiet
+   ```
+
+### **Step 6: Domain Configuration**
+
+1. **Point Domain to EC2**:
+   - Go to your domain registrar's DNS settings
+   - Add A record: `@` → `your-ec2-public-ip`
+   - Add A record: `www` → `your-ec2-public-ip`
+
+2. **Wait for DNS Propagation** (can take up to 48 hours)
+
+### **Step 7: Monitoring & Maintenance**
+
+1. **Check Application Status**:
+   ```bash
+   pm2 status
+   pm2 logs maxline-globals
+   ```
+
+2. **Update Application**:
+   ```bash
+   cd /home/ubuntu/maxline-globals
+   git pull origin main
+   npm install
+   npm run build
+   pm2 restart maxline-globals
+   ```
+
+3. **Monitor Resources**:
+   ```bash
+   htop
+   df -h
+   free -h
+   ```
+
+### **Step 8: Backup & Security**
+
+1. **Regular Backups**:
+   ```bash
+   # Create backup script
+   nano /home/ubuntu/backup.sh
+   ```
+
+   ```bash
+   #!/bin/bash
+   DATE=$(date +%Y%m%d_%H%M%S)
+   BACKUP_DIR="/home/ubuntu/backups"
+   mkdir -p $BACKUP_DIR
+   
+   # Backup application
+   tar -czf $BACKUP_DIR/app_$DATE.tar.gz /home/ubuntu/maxline-globals
+   
+   # Backup environment file
+   cp /home/ubuntu/maxline-globals/.env.local $BACKUP_DIR/env_$DATE.backup
+   
+   # Keep only last 7 backups
+   find $BACKUP_DIR -name "*.tar.gz" -mtime +7 -delete
+   find $BACKUP_DIR -name "*.backup" -mtime +7 -delete
+   ```
+
+2. **Security Updates**:
+   ```bash
+   # Add to crontab
+   sudo crontab -e
+   # Add: 0 2 * * 0 /usr/bin/apt update && /usr/bin/apt upgrade -y
+   ```
+
+### **Troubleshooting**
+
+1. **Application Not Starting**:
+   ```bash
+   pm2 logs maxline-globals
+   cd /home/ubuntu/maxline-globals
+   npm run build
+   pm2 restart maxline-globals
+   ```
+
+2. **Nginx Issues**:
+   ```bash
+   sudo nginx -t
+   sudo systemctl status nginx
+   sudo tail -f /var/log/nginx/error.log
+   ```
+
+3. **Port Issues**:
+   ```bash
+   sudo netstat -tlnp | grep :3000
+   sudo ufw status
+   ```
+
+### **Cost Optimization**
+
+- **Free Tier**: Use t2.micro for development/testing
+- **Production**: Consider t3.small or t3.medium for better performance
+- **Reserved Instances**: Save up to 72% for long-term usage
+- **Auto Scaling**: Scale down during low-traffic periods
+
+### **Performance Tips**
+
+1. **Enable Gzip Compression** in Nginx
+2. **Use PM2 Cluster Mode** for multiple CPU cores
+3. **Implement CDN** for static assets
+4. **Monitor with AWS CloudWatch**
+
+---
+
 ## 🌐 Environment Variables
 
 Create a `.env.local` file with the following variables:
@@ -140,42 +387,70 @@ NEXT_PUBLIC_SITE_URL=https://maxlineglobal.com
 | `npm run build` | Build for production with TurboPack |
 | `npm run start` | Start production server |
 | `npm run lint` | Run ESLint for code quality |
-| `npm run type-check` | Run TypeScript type checking |
 
 ## 📁 Project Structure
 
 ```
-src/
-├── app/[locale]/          # Localized pages with App Router
-│   ├── company/           # Company information pages
-│   ├── services/          # Service detail pages
-│   ├── contact/           # Contact page
-│   ├── track-shipment/    # Shipment tracking
-│   ├── quote/             # Quote request page
-│   ├── insights/          # Blog and insights
-│   └── privacy-policy/    # Legal pages
-├── components/            # Reusable UI components
-│   ├── ui/               # Radix UI components
-│   ├── layout/           # Layout components
-│   └── animation/        # Animation components
-├── feature/              # Feature-based components
-│   ├── forms/            # Form components and actions
-│   ├── services/         # Service-related components
-│   ├── home/             # Homepage components
-│   ├── about/            # About page components
-│   ├── insights/         # Blog components
-│   └── cta/              # Call-to-action components
-├── dictionaries/         # Translation files
-│   ├── en.json          # English translations
-│   ├── ar.json          # Arabic translations
-│   └── services.*.json  # Service-specific translations
-├── emails/              # React Email templates
-├── lib/                 # Utility functions
-├── hooks/               # Custom React hooks
-├── types/               # TypeScript type definitions
-├── constants/           # Application constants
-├── i18n/                # Internationalization config
-└── assets/              # Static assets
+maxline-globals/
+├── src/
+│   ├── app/                    # Next.js App Router
+│   │   ├── [locale]/          # Localized pages
+│   │   │   ├── company/       # Company information pages
+│   │   │   ├── services/      # Service detail pages
+│   │   │   ├── contact/       # Contact page
+│   │   │   ├── track-shipment/ # Shipment tracking
+│   │   │   ├── quote/         # Quote request page
+│   │   │   ├── insights/      # Blog and insights
+│   │   │   ├── privacy-policy/ # Legal pages
+│   │   │   ├── layout.tsx     # Root layout with providers
+│   │   │   ├── page.tsx       # Homepage
+│   │   │   ├── globals.css    # Global styles
+│   │   │   └── not-found.tsx  # 404 page
+│   │   ├── sitemap.ts         # Dynamic sitemap generation
+│   │   ├── robots.ts          # Robots.txt configuration
+│   │   └── manifest.json      # PWA manifest
+│   ├── components/            # Reusable UI components
+│   │   ├── ui/               # Radix UI components
+│   │   ├── layout/           # Layout components
+│   │   ├── animation/        # Animation components
+│   │   ├── hero-header.tsx   # Hero section component
+│   │   ├── MarqueeSection.tsx # Marquee text component
+│   │   ├── providers.tsx     # Context providers
+│   │   └── breakpoint-indicator.tsx # Dev tool
+│   ├── feature/              # Feature-based components
+│   │   ├── forms/            # Form components and actions
+│   │   ├── services/         # Service-related components
+│   │   ├── home/             # Homepage components
+│   │   ├── about/            # About page components
+│   │   ├── insights/         # Blog components
+│   │   └── cta/              # Call-to-action components
+│   ├── dictionaries/         # Translation files
+│   │   ├── en.json          # English translations
+│   │   ├── ar.json          # Arabic translations
+│   │   ├── services.en.json # Service-specific English
+│   │   ├── services.ar.json # Service-specific Arabic
+│   │   ├── en.d.json.ts     # Auto-generated English types
+│   │   └── ar.d.json.ts     # Auto-generated Arabic types
+│   ├── emails/              # React Email templates
+│   ├── lib/                 # Utility functions
+│   ├── hooks/               # Custom React hooks
+│   ├── types/               # TypeScript type definitions
+│   ├── constants/           # Application constants
+│   ├── i18n/                # Internationalization config
+│   ├── assets/              # Static assets
+│   ├── global.d.ts          # Global type declarations
+│   └── middleware.ts        # i18n middleware
+├── public/                  # Static files
+├── .vscode/                 # VS Code configuration
+├── next.config.ts           # Next.js configuration
+├── tsconfig.json            # TypeScript configuration
+├── tailwind.config.js       # Tailwind CSS configuration
+├── components.json          # Radix UI configuration
+├── postcss.config.mjs       # PostCSS configuration
+├── eslint.config.mjs        # ESLint configuration
+├── .eslintrc.json           # ESLint rules
+├── .prettierrc              # Prettier configuration
+└── package.json             # Dependencies and scripts
 ```
 
 ## 🌍 Internationalization
@@ -190,6 +465,7 @@ The website supports multiple languages with complete localization:
 - **Main Content**: `src/dictionaries/en.json` and `src/dictionaries/ar.json`
 - **Services**: `src/dictionaries/services.en.json` and `src/dictionaries/services.ar.json`
 - **Auto-generated Types**: TypeScript definitions for type-safe translations
+- **Type Safety**: `.d.json.ts` files provide IntelliSense for translations
 
 ### **Features**
 - **Automatic Locale Detection**: Middleware-based routing
@@ -272,7 +548,7 @@ The website supports multiple languages with complete localization:
 
 ### **Code Quality**
 - **ESLint**: Code quality and consistency
-- **Prettier**: Consistent code formatting
+- **Prettier**: Consistent code formatting with import sorting
 - **TypeScript**: Type safety and error prevention
 - **Git Hooks**: Pre-commit quality checks
 
@@ -292,6 +568,7 @@ We welcome contributions! Please see our contributing guidelines:
 - Ensure all tests pass
 - Update documentation as needed
 - Follow the existing code style
+- Use Prettier for consistent formatting
 
 ## 📄 License
 
