@@ -240,7 +240,7 @@ export function ContactForm() {
           )}
         />
 
-        <FormField
+        {/* <FormField
           control={form.control}
           name="fileUpload"
           render={({ field: { onChange, onBlur, name, ref } }) => (
@@ -259,7 +259,7 @@ export function ContactForm() {
               <FormMessage />
             </FormItem>
           )}
-        />
+        /> */}
 
         <FormField
           control={form.control}

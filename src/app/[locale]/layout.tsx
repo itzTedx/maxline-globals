@@ -28,24 +28,20 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  
+
   if (!hasLocale(routing.locales, locale)) {
     notFound();
   }
 
   // Import the appropriate dictionary based on locale
   const messages = (await import(`@/dictionaries/${locale}.json`)).default;
-  
-  const title = messages.Common.title;
-  const description = messages.Common.description;
-  const keywords = messages.Common.keywords;
-  const templateTitle = messages.Common.templateTitle;
+
+  const title = messages.meta.home.title;
+  const description = messages.meta.home.description;
+  const keywords = messages.meta.home.keywords;
 
   return {
-    title: {
-      default: title,
-      template: templateTitle,
-    },
+    title,
     description,
     keywords: keywords.split(", "),
     authors: [{ name: siteConfig.name }],
@@ -54,7 +50,7 @@ export async function generateMetadata({
       description,
       type: "website",
       locale: locale === "ar" ? "ar_SA" : "en_US",
-      alternateLocale: locale === "ar" ? "en_US" : "ar_SA",
+      alternateLocale: ["ar_SA", "en_US"],
       videos: [
         {
           url: "https://maxlineglobal.com/videos/maxline-web.webm",
@@ -87,8 +83,8 @@ export async function generateMetadata({
     alternates: {
       canonical: `${siteConfig.site}/${locale}`,
       languages: {
-        "en": `${siteConfig.site}/en`,
-        "ar": `${siteConfig.site}/ar`,
+        en: `${siteConfig.site}/en`,
+        ar: `${siteConfig.site}/ar`,
       },
     },
     metadataBase: new URL(siteConfig.site),
@@ -127,9 +123,10 @@ export default async function RootLayout({
               "@context": "https://schema.org",
               "@type": "Organization",
               name: "Maxline Global",
-              description: locale === "ar" 
-                ? "مزود حلول لوجستية وشحن عالمية"
-                : "Global logistics and freight solutions provider",
+              description:
+                locale === "ar"
+                  ? "مزود حلول لوجستية وشحن عالمية"
+                  : "Global logistics and freight solutions provider",
               url: "https://maxlineglobal.com",
               sameAs: [
                 "https://twitter.com/maxlineglobal",
@@ -154,12 +151,14 @@ export default async function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "VideoObject",
-              name: locale === "ar" 
-                ? "خدمات ماكسلاين جلوبال اللوجستية"
-                : "Maxline Global Logistics Services",
-              description: locale === "ar"
-                ? "نظرة عامة على حلول ماكسلاين جلوبال الشاملة للوجستية والشحن"
-                : "Overview of Maxline Global's comprehensive logistics and freight solutions",
+              name:
+                locale === "ar"
+                  ? "خدمات ماكسلاين جلوبال اللوجستية"
+                  : "Maxline Global Logistics Services",
+              description:
+                locale === "ar"
+                  ? "نظرة عامة على حلول ماكسلاين جلوبال الشاملة للوجستية والشحن"
+                  : "Overview of Maxline Global's comprehensive logistics and freight solutions",
               thumbnailUrl:
                 "https://maxlineglobal.com/images/video-thumbnail.jpg",
               uploadDate: "2024-03-20",

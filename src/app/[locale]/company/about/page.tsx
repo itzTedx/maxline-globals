@@ -2,6 +2,8 @@ import { Metadata } from "next";
 import Script from "next/script";
 import { Suspense } from "react";
 
+import { getTranslations } from "next-intl/server";
+
 import { siteConfig } from "@/constants/site-config";
 import { CertificatesSection } from "@/feature/about/sections/certificates";
 import { CompanySection } from "@/feature/about/sections/company";
@@ -18,52 +20,14 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  
-  const title = locale === "ar"
-    ? "من نحن | ماكسلاين جلوبال - شركة الشحن واللوجستية الرائدة"
-    : "About Maxline Global | Leading Freight Forwarding & Logistics Company";
-  
-  const description = locale === "ar"
-    ? "اكتشف رحلة ماكسلاين جلوبال كمزود رائد للشحن واللوجستية. تعرف على قيادتنا وقيمنا وشهاداتنا والتزامنا بالتميز في حلول سلسلة التوريد العالمية."
-    : "Discover Maxline Global's journey as a premier freight forwarding and logistics provider. Learn about our leadership, values, certifications, and commitment to excellence in global supply chain solutions.";
-  
-  const ogTitle = locale === "ar"
-    ? "من نحن | ماكسلاين جلوبال - قصتنا وقيمنا وقيادتنا"
-    : "About Maxline Global | Our Story, Values & Leadership";
-  
-  const ogDescription = locale === "ar"
-    ? "اكتشف رحلة ماكسلاين وقيادتها والمبادئ التي تشكل نجاحنا. تعرف على التزامنا بالتميز والابتكار في اللوجستية العالمية."
-    : "Discover Maxline's journey, leadership, and the principles that shape our success. Learn about our commitment to excellence and innovation in global logistics.";
-  
-  const keywords = locale === "ar"
-    ? [
-        "ماكسلاين جلوبال",
-        "من نحن",
-        "تاريخ الشركة",
-        "القيادة",
-        "قيم الشركة",
-        "المبادئ المؤسسية",
-        "الشحن",
-        "شركة لوجستية",
-        "حلول سلسلة التوريد",
-        "لوجستية دبي",
-        "اللوجستية العالمية",
-        "مزود لوجستي معتمد",
-      ]
-    : [
-        "Maxline Global",
-        "about us",
-        "company history",
-        "leadership",
-        "company values",
-        "corporate principles",
-        "freight forwarding",
-        "logistics company",
-        "supply chain solutions",
-        "Dubai logistics",
-        "global logistics",
-        "certified logistics provider",
-      ];
+  const t = await getTranslations("meta.about");
+
+  const title = t("title");
+  const description = t("description");
+  const keywords = t("keywords");
+
+  const ogTitle = t("title");
+  const ogDescription = t("description");
 
   return {
     title,
@@ -75,7 +39,7 @@ export async function generateMetadata({
       type: "website",
       url: `${siteConfig.site}/${locale}/company/about`,
       locale: locale === "ar" ? "ar_SA" : "en_US",
-      alternateLocale: locale === "ar" ? "en_US" : "ar_SA",
+      alternateLocale: ["ar_SA", "en_US"],
       siteName: siteConfig.name,
       images: [
         {
@@ -95,8 +59,8 @@ export async function generateMetadata({
     alternates: {
       canonical: `${siteConfig.site}/${locale}/company/about`,
       languages: {
-        "en": `${siteConfig.site}/en/company/about`,
-        "ar": `${siteConfig.site}/ar/company/about`,
+        en: `${siteConfig.site}/en/company/about`,
+        ar: `${siteConfig.site}/ar/company/about`,
       },
     },
     robots: {

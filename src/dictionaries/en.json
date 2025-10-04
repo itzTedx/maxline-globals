@@ -1,4 +1,33 @@
 {
+  "meta": {
+    "home": {
+      "title": "Maxline Global | Freight Forwarding, Logistics & Supply Chain Solutions",
+      "description": "We delivers reliable freight forwarding, warehousing, and logistics services across the GCC and beyond, ensuring efficiency, compliance, and end-to-end visibility",
+      "keywords": "freight forwarding, logistics services, GCC logistics, land freight, air freight, sea freight, customs clearance, Maxline Global, supply chain solutions, warehousing Dubai, project cargo"
+    },
+    "about": {
+      "title": "About Maxline Global - Leading Freight Forwarding & Logistics Company",
+      "description": "Discover Maxline Global's journey as a premier freight forwarding and logistics provider. Learn about our leadership, values, certifications, and commitment to excellence in global supply chain solutions.",
+      "keywords": "about us, company history, Dubai, freight forwarding, logistics services, GCC logistics, land freight, air freight, sea freight, customs clearance, Maxline Global, supply chain solutions, warehousing Dubai, project cargo"
+    },
+   "careers": {
+      "title": "Careers at Maxline Global | Build Your Future in Logistics & Technology",
+      "description": "Join Maxline Global and be part of a global logistics and technology powerhouse. Discover career opportunities that empower innovation, growth, and impact across international markets.",
+      "keywords": "careers, jobs at Maxline Global, logistics careers, technology jobs, freight forwarding careers, supply chain jobs, Dubai logistics company, international opportunities, Maxline Global careers, join our team"
+    },
+
+    "team": {
+      "title": "Meet the Maxline Global Team - Logistics Experts Driving Supply Chain Excellence",
+      "description": "Get to know the expert team behind Maxline Global. Our logistics professionals deliver innovative, efficient, and reliable supply chain solutions across the globe.",
+      "keywords": "Maxline Global team, logistics experts, freight forwarding team, supply chain professionals, logistics specialists, freight solutions team, GCC logistics experts, customs clearance team, warehousing specialists, project cargo experts"
+    },
+   "contact": {
+      "title": "Contact Maxline Global | Freight Forwarding, Logistics & Supply Chain Solutions",
+      "description": "Get in touch with Maxline Global to start your logistics project or partnership. Reach our Dubai headquarters or any of our branches in Oman, Bahrain, Qatar, or Saudi Arabia for freight forwarding, warehousing, and supply chain solutions.",
+      "keywords": "contact Maxline Global, logistics contact, freight forwarding Dubai, logistics company UAE, supply chain contact, Maxline Global branches, Jebel Ali logistics, Oman logistics, Bahrain freight, Qatar shipping, Saudi Arabia logistics, warehousing Dubai"
+    }
+
+  },
   "Common": {
     "title": "Logistics Services | Maxline Global",
     "templateTitle": "| Maxline Global",

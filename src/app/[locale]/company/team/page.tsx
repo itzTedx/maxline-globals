@@ -20,75 +20,48 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  
-  const PAGE_TITLE = locale === "ar"
-    ? "تعرف على فريق ماكسلاين جلوبال - خبراء اللوجستية الذين يقودون التميز في سلسلة التوريد"
-    : "Meet the Maxline Global Team - Logistics Experts Driving Supply Chain Excellence";
-  
-  const PAGE_DESCRIPTION = locale === "ar"
-    ? "تعرف على الفريق الخبير وراء ماكسلاين جلوبال. يقدم محترفونا في مجال اللوجستية حلول سلسلة إمداد مبتكرة وفعالة وموثوقة في جميع أنحاء العالم."
-    : "Get to know the expert team behind Maxline Global. Our logistics professionals deliver innovative, efficient, and reliable supply chain solutions across the globe.";
 
-  const keywords = locale === "ar"
-    ? [
-        "فريق ماكسلاين جلوبال",
-        "خبراء اللوجستية",
-        "فريق الشحن",
-        "محترفو سلسلة التوريد",
-        "متخصصو اللوجستية",
-        "فريق حلول الشحن",
-        "خبراء لوجستية مجلس التعاون الخليجي",
-        "فريق التخليص الجمركي",
-        "متخصصو التخزين",
-        "خبراء شحنات المشاريع",
-      ]
-    : [
-        "Maxline Global team",
-        "logistics experts",
-        "freight forwarding team",
-        "supply chain professionals",
-        "logistics specialists",
-        "freight solutions team",
-        "GCC logistics experts",
-        "customs clearance team",
-        "warehousing specialists",
-        "project cargo experts",
-      ];
+  const t = await getTranslations("meta.team");
+
+  const title = t("title");
+  const description = t("description");
+  const keywords = t("keywords");
 
   return {
-    title: PAGE_TITLE,
-    description: PAGE_DESCRIPTION,
+    title: title,
+    description: description,
     keywords,
     openGraph: {
-      title: PAGE_TITLE,
-      description: PAGE_DESCRIPTION,
+      title: title,
+      description: description,
       type: "website",
       url: `${siteConfig.site}/${locale}/company/team`,
       locale: locale === "ar" ? "ar_SA" : "en_US",
-      alternateLocale: locale === "ar" ? "en_US" : "ar_SA",
+      alternateLocale: ["ar_SA", "en_US"],
       siteName: siteConfig.name,
       images: [
         {
           url: "/images/team/team-hero.jpg",
           width: 1200,
           height: 630,
-          alt: locale === "ar" 
-            ? "فريق ماكسلاين جلوبال - محترفو اللوجستية الخبراء"
-            : "Maxline Global Team - Expert Logistics Professionals",
+          alt:
+            locale === "ar"
+              ? "فريق ماكسلاين جلوبال - محترفو اللوجستية الخبراء"
+              : "Maxline Global Team - Expert Logistics Professionals",
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title: PAGE_TITLE,
-      description: PAGE_DESCRIPTION,
+      title: title,
+      description: description,
       images: ["/images/team/team-hero.jpg"],
     },
     alternates: {
       canonical: `${siteConfig.site}/${locale}/company/team`,
       languages: {
-        "en": `${siteConfig.site}/en/company/team`,
-        "ar": `${siteConfig.site}/ar/company/team`,
+        en: `${siteConfig.site}/en/company/team`,
+        ar: `${siteConfig.site}/ar/company/team`,
       },
     },
   };

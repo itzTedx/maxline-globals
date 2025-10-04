@@ -21,27 +21,18 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
 
-  const PAGE_TITLE =
-    locale === "ar"
-      ? "تواصل مع ماكسلاين جلوبال | حلول اللوجستية وسلسلة التوريد"
-      : "Contact Maxline Global | Logistics & Supply Chain Solutions";
+  const t = await getTranslations("meta.about");
 
-  const PAGE_DESCRIPTION =
-    locale === "ar"
-      ? "تواصل مع ماكسلاين جلوبال لمشاريع اللوجستية وفرص الشراكة وحلول سلسلة التوريد. اتصل بمقرنا الرئيسي في دبي أو مكتب الفرع."
-      : "Get in touch with Maxline Global for logistics projects, partnership opportunities, and supply chain solutions. Contact our Dubai headquarters or branch office.";
-
-  const PAGE_KEYWORDS =
-    locale === "ar"
-      ? "تواصل ماكسلاين جلوبال، اتصال لوجستي، حلول سلسلة التوريد، لوجستية دبي، لوجستية الإمارات"
-      : "contact Maxline Global, logistics contact, supply chain solutions, Dubai logistics, UAE logistics";
+  const title = t("title");
+  const description = t("description");
+  const keywords = t("keywords");
 
   const SITE_URL = siteConfig.site;
   const HEADQUARTERS_IMAGE = "/images/head-office.webp";
 
   const openGraphData = {
-    title: PAGE_TITLE,
-    description: PAGE_DESCRIPTION,
+    title,
+    description,
     type: "website",
     locale: locale === "ar" ? "ar_SA" : "en_US",
     alternateLocale: locale === "ar" ? "en_US" : "ar_SA",
@@ -58,8 +49,8 @@ export async function generateMetadata({
 
   const twitterData = {
     card: "summary_large_image",
-    title: PAGE_TITLE,
-    description: PAGE_DESCRIPTION,
+    title,
+    description,
     images: [HEADQUARTERS_IMAGE],
   };
 
@@ -76,9 +67,9 @@ export async function generateMetadata({
   };
 
   return {
-    title: PAGE_TITLE,
-    description: PAGE_DESCRIPTION,
-    keywords: [...siteConfig.keywords, ...PAGE_KEYWORDS.split(", ")],
+    title,
+    description,
+    keywords: [...siteConfig.keywords, keywords],
     openGraph: openGraphData,
     twitter: twitterData,
     robots: robotsData,
