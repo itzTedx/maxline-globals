@@ -21,10 +21,10 @@ export async function sendQuote(data: QuoteFormData) {
     return { success: false, error: parsed.error.flatten() };
   }
 
-  let emailHtml;
+  let html;
   try {
-    emailHtml = await render(<QuoteRequestEmail data={parsed.data} />);
-    console.log("[sendQuote] Rendered email HTML:", emailHtml);
+    html = await render(<QuoteRequestEmail data={parsed.data} />);
+    console.log("[sendQuote] Rendered email HTML:", html);
   } catch (renderError) {
     console.log("[sendQuote] Error rendering email HTML:", renderError);
     return { success: false, error: "Failed to render email template." };
@@ -66,11 +66,9 @@ export async function sendQuote(data: QuoteFormData) {
   try {
     const result = await sendMicrosoftEmail({
       subject: "New Quote Request",
-      emailHtml,
-      fromName: "Maxline Global",
+      html,
+      name: parsed.data.customerName,
       replyToEmail: parsed.data.email,
-      replyToName: parsed.data.customerName,
-      fileUpload: file,
     });
 
     if (result.success) {

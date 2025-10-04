@@ -86,7 +86,7 @@ export async function sendContactEmail(values: {
     }
   }
 
-  const emailHtml = await render(<ContactFormSubmission data={parsed.data} />);
+  const html = await render(<ContactFormSubmission data={parsed.data} />);
 
   console.log("[sendContactEmail] Preparing Microsoft Graph API call:", {
     fullName,
@@ -97,12 +97,10 @@ export async function sendContactEmail(values: {
 
   try {
     const result = await sendMicrosoftEmail({
-      subject: subject || "New Contact Form Submission",
-      emailHtml,
-      fromName: "Maxline Global",
+      subject: subject ?? "New Contact Form Submission",
+      html,
+      name: fullName,
       replyToEmail: email,
-      replyToName: fullName,
-      fileUpload: file,
     });
 
     if (result.success) {
@@ -112,7 +110,10 @@ export async function sendContactEmail(values: {
       return { success: true };
     } else {
       console.error("[sendContactEmail] Failed to send email:", result.error);
-      return { success: false, error: result.error || "Failed to send email" };
+      return {
+        success: false,
+        error: (result.error as string) || "Failed to send email",
+      };
     }
   } catch (error) {
     console.error("[sendContactEmail] Failed to send email:", error);

@@ -13,51 +13,35 @@ const SCOPES = ["https://graph.microsoft.com/.default"];
 
 const cca = new ConfidentialClientApplication(config);
 
-export async function sendMicrosoftEmail(emailParams: {
-  subject: string;
-  emailHtml: string;
-  fromName: string;
-  replyToEmail: string;
-  replyToName?: string;
-  fileUpload?: File | null;
+export async function sendMicrosoftEmail(data: {
+    subject: string;
+    html: string;
+    replyToEmail: string,
+    name: string
 }) {
-  try {
+    try {
+      const {subject, html, replyToEmail, name} = data;
+
     const tokenResponse = await cca.acquireTokenByClientCredential({ scopes: SCOPES });
     const accessToken = tokenResponse?.accessToken;
     if (!accessToken) throw new Error("Failed to acquire access token");
 
-    const { subject, emailHtml, fromName, replyToEmail, replyToName, fileUpload } = emailParams;
-
-    // Prepare attachments if file exists
-    const attachments = [];
-    if (fileUpload) {
-      const arrayBuffer = await fileUpload.arrayBuffer();
-      const base64Content = Buffer.from(arrayBuffer).toString('base64');
-      attachments.push({
-        "@odata.type": "#microsoft.graph.fileAttachment",
-        name: fileUpload.name,
-        contentType: fileUpload.type,
-        contentBytes: base64Content,
-      });
-    }
-
-    const graphEmailData = {
+    const emailData = {
       message: {
-        subject: subject || "New Contact Form Submission",
+        subject,
         body: {
           contentType: "HTML",
-          content: emailHtml,
+          content: html,
         },
         toRecipients: [{ emailAddress: { address: "melwinafs@gmail.com" } }],
         from: { emailAddress: { address: "enquires@maxlineglobal.com" } },
-        replyTo: [{ emailAddress: { address: replyToEmail, name: replyToName || fromName } }],
-        attachments: attachments.length > 0 ? attachments : undefined,
+        replyTo: [{ emailAddress: { address: replyToEmail, name } }],
       },
     };
 
     const response = await axios.post(
       "https://graph.microsoft.com/v1.0/users/enquires@maxlineglobal.com/sendMail",
-      graphEmailData,
+      emailData,
       {
         headers: {
           Authorization: `Bearer ${accessToken}`,
@@ -71,10 +55,10 @@ export async function sendMicrosoftEmail(emailParams: {
       return { success: true };
     } else {
       console.error(`❌ Failed to send email: ${response.statusText}`);
-      return { success: false, error: "Failed to send email" };
+      return { success: false, error: response.statusText };
     }
   } catch (err) {
-    console.error("Error sending mail via Microsoft Graph:", err);
-    return { success: false, error: "Failed to send email" };
+        console.error("Error sending mail via Microsoft Graph:", err);
+        return { success: false, error: err };
   }
 }
