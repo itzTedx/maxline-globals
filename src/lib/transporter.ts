@@ -33,7 +33,7 @@ export async function sendMicrosoftEmail(data: {
           contentType: "HTML",
           content: html,
         },
-        toRecipients: [{ emailAddress: { address: "melwinafs@gmail.com" } }],
+        toRecipients: [{ emailAddress: { address: process.env.CONTACT_RECEIVER_EMAIL!} }],
         from: { emailAddress: { address: "enquires@maxlineglobal.com" } },
         replyTo: [{ emailAddress: { address: replyToEmail, name } }],
       },
