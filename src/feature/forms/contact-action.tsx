@@ -1,9 +1,9 @@
 "use server";
 
 import { render } from "@react-email/components";
-import nodemailer from "nodemailer";
 
 import ContactFormSubmission from "@/emails/contact-template";
+import { sendMicrosoftEmail } from "@/lib/transporter";
 
 import { contactSchema } from "./schema/contact-schema";
 
@@ -86,64 +86,34 @@ export async function sendContactEmail(values: {
     }
   }
 
-  // Configure transporter
-  const transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
-    port: Number(process.env.SMTP_PORT),
-    secure: true,
-    auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS,
-    },
-  });
-
-  // Prepare attachments if file exists
-  const attachments = [];
-  if (file) {
-    const arrayBuffer = await file.arrayBuffer();
-    attachments.push({
-      filename: file.name,
-      content: Buffer.from(arrayBuffer),
-      contentType: file.type,
-    });
-    console.log("[sendContactEmail] Prepared attachment:", {
-      filename: file.name,
-      contentType: file.type,
-      size: file.size,
-    });
-  }
-
   const emailHtml = await render(<ContactFormSubmission data={parsed.data} />);
 
-  // Compose email
-  const mailOptions = {
-    from: `${fullName} <${process.env.EMAIL_USER}>`,
-    replyTo: email,
-    to: process.env.CONTACT_RECEIVER_EMAIL,
+  console.log("[sendContactEmail] Preparing Microsoft Graph API call:", {
+    fullName,
+    email,
     subject: subject || "New Contact Form Submission",
-    html: emailHtml,
-    attachments,
-  };
-
-  console.log("[sendContactEmail] Mail options:", {
-    from: mailOptions.from,
-    replyTo: mailOptions.replyTo,
-    to: mailOptions.to,
-    subject: mailOptions.subject,
-    html: mailOptions.html,
-    attachments: attachments.length
-      ? attachments.map((a) => ({
-          filename: a.filename,
-          contentType: a.contentType,
-          size: a.content.length,
-        }))
-      : undefined,
+    file: file ? { name: file.name, type: file.type, size: file.size } : null,
   });
 
   try {
-    await transporter.sendMail(mailOptions);
-    console.log("[sendContactEmail] Email sent successfully");
-    return { success: true };
+    const result = await sendMicrosoftEmail({
+      subject: subject || "New Contact Form Submission",
+      emailHtml,
+      fromName: "Maxline Global",
+      replyToEmail: email,
+      replyToName: fullName,
+      fileUpload: file,
+    });
+
+    if (result.success) {
+      console.log(
+        "[sendContactEmail] Email sent successfully via Microsoft Graph API"
+      );
+      return { success: true };
+    } else {
+      console.error("[sendContactEmail] Failed to send email:", result.error);
+      return { success: false, error: result.error || "Failed to send email" };
+    }
   } catch (error) {
     console.error("[sendContactEmail] Failed to send email:", error);
     return { success: false, error: "Failed to send email" };

@@ -1,23 +1,12 @@
 "use server";
 
 import { render } from "@react-email/components";
-import type { SendMailOptions } from "nodemailer";
-import nodemailer from "nodemailer";
 
 import { QuoteRequestEmail } from "@/emails/quote-template";
 import { quoteSchema } from "@/feature/forms/schema/quote-schema";
+import { sendMicrosoftEmail } from "@/lib/transporter";
 
-// Configure your SMTP transport here
-
-const transporter = nodemailer.createTransport({
-  host: process.env.SMTP_HOST,
-  port: Number(process.env.SMTP_PORT),
-  secure: true,
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
-});
+// Microsoft Graph API is now used instead of SMTP
 
 // Change function signature to accept QuoteFormData
 type QuoteFormData = typeof quoteSchema._type;
@@ -40,17 +29,6 @@ export async function sendQuote(data: QuoteFormData) {
     console.log("[sendQuote] Error rendering email HTML:", renderError);
     return { success: false, error: "Failed to render email template." };
   }
-
-  // Prepare email
-  const mailOptions: SendMailOptions = {
-    from: `${parsed.data.customerName} <${process.env.EMAIL_USER}>`,
-    replyTo: parsed.data.email,
-    to: process.env.CONTACT_RECEIVER_EMAIL,
-    subject: "New Quote Request",
-    text: JSON.stringify(parsed.data, null, 2),
-    html: emailHtml,
-  };
-  console.log("[sendQuote] Mail options before attachments:", mailOptions);
 
   // Handle file attachment if any
   const ALLOWED_TYPES = [
@@ -77,19 +55,33 @@ export async function sendQuote(data: QuoteFormData) {
         },
       };
     }
-    mailOptions.attachments = [
-      {
-        filename: file.name,
-        content: Buffer.from(await file.arrayBuffer()),
-      },
-    ];
-    console.log("[sendQuote] Mail options with attachment:", mailOptions);
   }
 
+  console.log("[sendQuote] Preparing Microsoft Graph API call:", {
+    customerName: parsed.data.customerName,
+    email: parsed.data.email,
+    file: file ? { name: file.name, type: file.type, size: file.size } : null,
+  });
+
   try {
-    const sendResult = await transporter.sendMail(mailOptions);
-    console.log("[sendQuote] Email sent successfully:", sendResult);
-    return { success: true };
+    const result = await sendMicrosoftEmail({
+      subject: "New Quote Request",
+      emailHtml,
+      fromName: "Maxline Global",
+      replyToEmail: parsed.data.email,
+      replyToName: parsed.data.customerName,
+      fileUpload: file,
+    });
+
+    if (result.success) {
+      console.log(
+        "[sendQuote] Email sent successfully via Microsoft Graph API"
+      );
+      return { success: true };
+    } else {
+      console.error("[sendQuote] Failed to send email:", result.error);
+      return { success: false, error: result.error || "Failed to send email" };
+    }
   } catch (error) {
     console.log("[sendQuote] Error sending email:", error);
     return {

@@ -39,10 +39,5 @@ const nextConfig: NextConfig = {
   },
 };
 
-const withNextIntl = createNextIntlPlugin({
-  // experimental: {
-  //   createMessagesDeclaration: ["./src/dictionaries/en.json"],
-  // },
-});
-
+const withNextIntl = createNextIntlPlugin();
 export default withNextIntl(nextConfig);
