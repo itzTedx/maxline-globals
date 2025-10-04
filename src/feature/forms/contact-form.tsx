@@ -1,11 +1,12 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useTransition } from "react";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { IconArrowRight } from "@tabler/icons-react";
 import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 
 import LetterSwapPingPong from "@/components/animation/letter-swap-pingpong-anim";
 import { Button } from "@/components/ui/button";
@@ -33,10 +34,7 @@ import {
 
 export function ContactForm() {
   const t = useTranslations("ContactForm");
-  const [submitResult, setSubmitResult] = useState<null | {
-    success: boolean;
-    error?: string;
-  }>(null);
+
   const [isPending, startTransition] = useTransition();
 
   const form = useForm<ContactFormData>({
@@ -58,17 +56,15 @@ export function ContactForm() {
   async function onSubmit(values: ContactFormData) {
     startTransition(async () => {
       const result = await sendContactEmail(values);
-      setSubmitResult(result);
+
       if (result.success) {
         form.reset();
+        toast.success(t("successMessage"));
+      } else {
+        toast.error(t("errorMessage"));
       }
     });
   }
-
-  // const formValues = form.watch();
-
-  // const validation = contactSchema.safeParse(formValues);
-  // console.log(validation);
 
   return (
     <Form {...form}>
@@ -76,17 +72,6 @@ export function ContactForm() {
         onSubmit={form.handleSubmit(onSubmit)}
         className="relative z-10 space-y-6 rounded-2xl bg-white p-4 sm:p-6 md:space-y-8 md:p-9"
       >
-        {submitResult && (
-          <div
-            className={`mb-4 rounded p-3 text-center text-base font-medium ${
-              submitResult.success
-                ? "bg-green-100 text-green-800"
-                : "bg-red-100 text-red-800"
-            }`}
-          >
-            {submitResult.success ? t("successMessage") : t("errorMessage")}
-          </div>
-        )}
         <div>
           <h3 className="font-grotesk text-secondary text-2xl sm:text-3xl md:text-4xl">
             {t("heading")}
