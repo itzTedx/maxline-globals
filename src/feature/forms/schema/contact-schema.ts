@@ -50,31 +50,6 @@ export const contactSchema = z.object({
     .min(10, "Message must be at least 10 characters")
     .max(1000, "Message must not exceed 1000 characters"),
 
-  /**
-   * Only one file is allowed. Accepts a single File instance or undefined/null.
-   * Validation ensures type and size as before.
-   */
-  fileUpload: z
-    .instanceof(File)
-    .or(z.null())
-    .or(z.undefined())
-    .refine(
-      (file) => {
-        if (!file) return true;
-        const allowedTypes = [
-          "image/jpeg",
-          "image/jpg",
-          "image/png",
-          "application/pdf",
-        ];
-        const maxSize = 4 * 1024 * 1024; // 4MB
-        return allowedTypes.includes(file.type) && file.size <= maxSize;
-      },
-      {
-        message: "Only one JPG, JPEG, PNG, or PDF file under 4MB is allowed.",
-      }
-    ),
-
   privacyPolicyConsent: z.boolean().refine((val) => val === true, {
     message: "You must agree to the Privacy Policy",
   }),

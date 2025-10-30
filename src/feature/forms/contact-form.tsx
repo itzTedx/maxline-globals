@@ -43,7 +43,6 @@ export function ContactForm() {
       fullName: "",
       companyName: "",
       email: "",
-      fileUpload: undefined,
       message: "",
       phoneNumber: "",
       privacyPolicyConsent: false,
@@ -173,33 +172,7 @@ export function ContactForm() {
                         />
                       </div>
                     </div>
-
-                    // <div
-                    //   key={value}
-                    //   className="border-muted-foreground/20 bg-muted has-data-[state=checked]:border-secondary/50 has-data-[state=checked]:bg-primary/10 text-brand-gray relative flex items-center justify-center gap-2 rounded-md border p-1 outline-none ltr:pl-3 rtl:pr-3"
-                    // >
-                    //   <Checkbox
-                    //     className="order-1 after:absolute after:inset-0"
-                    //     checked={field.value?.includes(value)}
-                    //     onCheckedChange={(checked) => {
-                    //       return checked
-                    //         ? field.onChange([...field.value, value])
-                    //         : field.onChange(
-                    //             field.value?.filter(
-                    //               (value) => value !== item.id
-                    //             )
-                    //           )
-                    //     }}
-                    //   />
-                    //   <div className="grid grow gap-2">
-                    //     <Label>
-                    //       {t(
-                    //         `serviceType.${value}` as `serviceType.${keyof typeof SERVICE_TYPE_LABELS}`
-                    //       )}
-                    //     </Label>
-                    //   </div>
-                    // </div>
-                  ))}{" "}
+                  ))}
                 </RadioGroup>
               </FormControl>
 
@@ -239,27 +212,6 @@ export function ContactForm() {
             </FormItem>
           )}
         />
-
-        {/* <FormField
-          control={form.control}
-          name="fileUpload"
-          render={({ field: { onChange, onBlur, name, ref } }) => (
-            <FormItem>
-              <FormLabel>{t("fileUploadLabel")}</FormLabel>
-              <FormControl>
-                <Input
-                  type="file"
-                  accept=".jpg,.jpeg,.png,.pdf"
-                  onChange={(e) => onChange(e.target.files?.[0])}
-                  onBlur={onBlur}
-                  name={name}
-                  ref={ref}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        /> */}
 
         <FormField
           control={form.control}
