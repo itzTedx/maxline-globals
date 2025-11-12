@@ -232,10 +232,9 @@ export const FOOTER_LINKS = [
   {
     header: "social",
     links: [
-      { title: "linkedin", href: "/" },
-      { title: "instagram", href: "/" },
-      { title: "facebook", href: "/" },
-      { title: "x", href: "/" },
+      { title: "linkedin", href: "https://www.linkedin.com/company/maxline-global-logistics-solutions/" },
+      { title: "instagram", href: "https://www.instagram.com/maxlineglobal/" },
+      { title: "facebook", href: "https://www.facebook.com/maxlineglobal/" },
     ],
   },
 ];

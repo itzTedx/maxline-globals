@@ -111,6 +111,14 @@ export const Footer = () => {
                       <Link
                         href={link.href}
                         className="font-grotesk text-sm font-black sm:text-base"
+                        target={
+                          section.header === "social" ? "_blank" : undefined
+                        }
+                        rel={
+                          section.header === "social"
+                            ? "noopener noreferrer"
+                            : undefined
+                        }
                       >
                         <CenterUnderline label={t(link.title as FooterKey)} />
                       </Link>
