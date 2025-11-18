@@ -20,6 +20,7 @@ interface HeroHeaderProps {
   subtitleClassName?: string
   className?: string
   isLogo?: boolean
+  children?: React.ReactNode
 }
 
 export function HeroHeader({
@@ -31,6 +32,7 @@ export function HeroHeader({
   subtitleClassName,
   className,
   isLogo = true,
+  children,
 }: HeroHeaderProps) {
   const renderTitle = () => {
     if (typeof title === 'string') {
@@ -102,7 +104,7 @@ export function HeroHeader({
         {description && (
           <p
             className={cn(
-              'mb-16 text-balance font-light text-brand-gray md:text-xl',
+              'text-balance font-light text-brand-gray md:text-xl',
               descriptionClassName
             )}
             role="doc-subtitle"
@@ -114,11 +116,12 @@ export function HeroHeader({
             />
           </p>
         )}
+        {children}
       </div>
       {isLogo && (
         <XIcon
           aria-hidden="true"
-          className="-translate-1/2 absolute top-1/2 left-1/2 opacity-60"
+          className="-translate-1/2 pointer-events-none absolute top-1/2 left-1/2 opacity-60"
         />
       )}
     </section>

@@ -5,10 +5,12 @@ import Script from 'next/script'
 
 import { Locale } from 'next-intl'
 
+import { StaggeredText } from '@/components/animation/staggered-text'
 import { HeroHeader } from '@/components/hero-header'
 import MDXContent from '@/components/markdown/mdx-component'
 
 import { getInsightBySlug } from '@/feature/insights/actions/query'
+import { formatInsightDate } from '@/lib/utils'
 
 // Generate metadata for the page
 export async function generateMetadata(): Promise<Metadata> {
@@ -89,7 +91,15 @@ export default async function InsightsSlugPage({ params }: Props) {
           subtitle={insight.metadata.category ?? 'Insights & News'}
           title={insight.metadata.title}
           titleClassName="lg:text-6xl text-balance"
-        />
+        >
+          <p className="mt-4">
+            <StaggeredText
+              duration={0.7}
+              staggerChildren={0.03}
+              text={formatInsightDate(insight.metadata.date, locale)}
+            />
+          </p>
+        </HeroHeader>
         <figure className="-mt-12 container relative mb-20 aspect-video max-w-7xl overflow-hidden rounded-3xl">
           <Image
             alt="Transport and logistics products being handled in a warehouse"
