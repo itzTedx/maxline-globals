@@ -1,0 +1,33 @@
+import { Route } from 'next'
+import Link from 'next/link'
+
+import { IconArrowRight } from '@tabler/icons-react'
+import { useTranslations } from 'next-intl'
+
+import { Button } from '../ui/button'
+
+export default function AnnouncementBanner() {
+  const t = useTranslations('banner')
+
+  return (
+    <div className="relative z-1000 bg-primary px-4 py-2 text-foreground md:py-3">
+      <div className="flex items-center justify-center gap-4">
+        <p className="font-medium text-xs sm:text-base">{t('title')}</p>
+        <Button
+          asChild
+          className="text-sm max-sm:size-7"
+          size="sm"
+          variant="secondary"
+        >
+          <Link
+            href={'/insights/maxline-global-automechanika-dubai-2025' as Route}
+            title="Maxline Global Logistics at Automechanika Dubai 2025"
+          >
+            <span className="hidden sm:block">{t('buttonText')}</span>
+            <IconArrowRight className="size-3 sm:size-4" />
+          </Link>
+        </Button>
+      </div>
+    </div>
+  )
+}

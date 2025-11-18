@@ -146,7 +146,7 @@ export default async function ServicePage({ params }: { params: Params }) {
           features={{
             title: t(`${serviceKey}.features.features.title`),
             description: t(`${serviceKey}.features.features.description`),
-            items: service.features.features.items.map((item, i) => ({
+            items: service.features.features.items.map((_, i) => ({
               title: t(`${serviceKey}.features.features.items.${i}.title`),
               description: t(
                 `${serviceKey}.features.features.items.${i}.description`

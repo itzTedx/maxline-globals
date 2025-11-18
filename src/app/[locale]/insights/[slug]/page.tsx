@@ -87,7 +87,7 @@ export default async function InsightsSlugPage({ params }: Props) {
         <HeroHeader
           className="mx-auto max-w-6xl"
           description={insight.metadata.description}
-          descriptionClassName="text-lg"
+          descriptionClassName="text-sm sm:text-lg md:text-xl"
           subtitle={insight.metadata.category ?? 'Insights & News'}
           title={insight.metadata.title}
           titleClassName="lg:text-6xl text-balance"
@@ -110,7 +110,7 @@ export default async function InsightsSlugPage({ params }: Props) {
             src={insight.metadata.thumbnail}
           />
         </figure>
-        <article className="prose lg:prose-xl mx-auto max-w-prose prose-headings:text-brand-dark prose-li:marker:text-brand-gray/50">
+        <article className="prose sm:prose-lg prose-base lg:prose-xl mx-auto max-w-prose prose-headings:text-brand-dark prose-li:marker:text-brand-gray/50">
           <MDXContent
             components={{
               Image: (props) => (

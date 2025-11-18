@@ -31,7 +31,7 @@ export function InsightCard({ data }: { data: InsightMetadata }) {
         title={data.title}
       />
       <CardContent className="relative px-0">
-        <div className="relative flex aspect-4/3 items-end overflow-hidden p-4">
+        <div className="relative flex aspect-video items-end overflow-hidden p-4 sm:aspect-4/3">
           <div className="relative z-10 flex w-full items-center justify-between gap-2">
             <Badge variant="ghost">{data.category}</Badge>
             <Badge variant="secondary">
@@ -49,10 +49,10 @@ export function InsightCard({ data }: { data: InsightMetadata }) {
           />
         </div>
         <CardHeader className="p-4 sm:p-6">
-          <CardTitle className="font-grotesk font-normal text-base text-brand-dark max-sm:leading-tight sm:text-2xl">
+          <CardTitle className="font-grotesk font-normal text-brand-dark text-xl max-sm:leading-tight sm:text-2xl">
             {data.title}
           </CardTitle>
-          <CardDescription className="line-clamp-3 font-light text-brand-gray text-xs sm:text-base">
+          <CardDescription className="line-clamp-3 font-light text-base text-brand-gray">
             {data.description}
           </CardDescription>
         </CardHeader>

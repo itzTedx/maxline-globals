@@ -123,11 +123,11 @@ const nextConfig: NextConfig = {
   },
 };
 
-const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
+// const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
-// const withNextIntl = createNextIntlPlugin({
-//   // experimental: {
-//   //   createMessagesDeclaration: './src/dictionaries/en.json'
-//   // }
-// });
+const withNextIntl = createNextIntlPlugin({
+  // experimental: {
+  //   createMessagesDeclaration: "./src/dictionaries/en.json",
+  // },
+});
 export default withNextIntl(nextConfig);
