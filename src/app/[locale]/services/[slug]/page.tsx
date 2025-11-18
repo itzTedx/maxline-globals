@@ -6,6 +6,7 @@ import { getLocale } from 'next-intl/server'
 
 import SpotlightCard from '@/components/animation/spotlight-card'
 import { StaggeredText } from '@/components/animation/staggered-text'
+import MarqueeSection, { ServiceMessages } from '@/components/MarqueeSection'
 
 import { Cta } from '@/feature/cta'
 import { InsightsCarousel } from '@/feature/insights/components/insights-carousel'
@@ -157,11 +158,11 @@ export default async function ServicePage({ params }: { params: Params }) {
             description: t(`${serviceKey}.features.overview.description`),
           }}
         />
-        {/* <MarqueeSection
+        <MarqueeSection
           industries={service.industries}
           messages={messages as Record<string, ServiceMessages>}
           serviceKey={serviceKey}
-          /> */}
+        />
         <section className="container py-10 md:py-20">
           <h4
             className="container relative z-10 mb-3 max-w-6xl text-balance text-center font-grotesk text-3xl text-brand-gray tracking-tight md:text-6xl/16"

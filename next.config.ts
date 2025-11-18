@@ -14,7 +14,6 @@ const nextConfig: NextConfig = {
   },
 
   experimental: {
-    optimizePackageImports: ["@tabler/icons-react", "lucide-react", "date-fns", "@radix-ui", "lodash"],
     serverActions: {
       bodySizeLimit: "2mb",
     },
