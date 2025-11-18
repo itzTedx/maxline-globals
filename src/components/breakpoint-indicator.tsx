@@ -6,7 +6,7 @@ const BreakpointIndicator = () => {
   }
 
   return (
-    <div className="bg-foreground/50 text-primary-foreground fixed right-2 bottom-2 z-[999999] flex size-6 items-center justify-center rounded-full font-mono text-xs font-bold backdrop-blur-md">
+    <div className="fixed right-2 bottom-2 z-[999999] flex size-6 items-center justify-center rounded-full bg-foreground/50 font-bold font-mono text-primary-foreground text-xs backdrop-blur-md">
       <div className="sm:hidden">XS</div>
       <div className="hidden sm:block md:hidden">SM</div>
       <div className="hidden md:block lg:hidden">MD</div>

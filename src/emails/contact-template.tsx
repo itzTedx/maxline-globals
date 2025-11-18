@@ -1,14 +1,4 @@
-import {
-  Body,
-  Container,
-  Head,
-  Hr,
-  Html,
-  Img,
-  Link,
-  Section,
-  Text,
-} from "@react-email/components";
+import { Body, Container, Head, Hr, Html, Img, Link, Section, Text } from "@react-email/components";
 
 import { ContactFormData } from "@/feature/forms/schema/contact-schema";
 
@@ -42,15 +32,14 @@ export default function ContactFormSubmission(props: Props) {
           {/* Header with Company Logo */}
           <Section style={header}>
             <Img
-              src={companyLogo}
-              width="60"
-              height="60"
               alt="Company Logo"
-              style={logo as React.CSSProperties}
+              height="60"
               onError={(e) => {
-                (e.target as HTMLImageElement).src =
-                  "https://v0.dev/placeholder.svg?height=60&width=60";
+                (e.target as HTMLImageElement).src = "https://v0.dev/placeholder.svg?height=60&width=60";
               }}
+              src={companyLogo}
+              style={logo as React.CSSProperties}
+              width="60"
             />
           </Section>
 
@@ -58,8 +47,7 @@ export default function ContactFormSubmission(props: Props) {
           <Section style={content}>
             <Text style={heading}>New Contact Form Submission</Text>
             <Text style={introText}>
-              You have received a new message from your website&apos;s contact
-              form. Details are provided below:
+              You have received a new message from your website&apos;s contact form. Details are provided below:
             </Text>
 
             {/* Personal Details Section */}
@@ -107,19 +95,13 @@ export default function ContactFormSubmission(props: Props) {
               <Text style={sectionTitle}>Additional Information</Text>
               <Hr style={divider} />
               <Section style={detailRow}>
-                <Text style={detailLabel as React.CSSProperties}>
-                  Privacy Policy Consent:
-                </Text>
-                <Text style={detailValue as React.CSSProperties}>
-                  {privacyPolicyConsent ? "Yes" : "No"}
-                </Text>
+                <Text style={detailLabel as React.CSSProperties}>Privacy Policy Consent:</Text>
+                <Text style={detailValue as React.CSSProperties}>{privacyPolicyConsent ? "Yes" : "No"}</Text>
               </Section>
 
               {hasAttachment && (
                 <Section style={detailRow as React.CSSProperties}>
-                  <Text style={detailLabel as React.CSSProperties}>
-                    Attached File:
-                  </Text>
+                  <Text style={detailLabel as React.CSSProperties}>Attached File:</Text>
                   <Text style={detailValue as React.CSSProperties}>
                     {fileName} ({fileType})
                   </Text>
@@ -127,17 +109,13 @@ export default function ContactFormSubmission(props: Props) {
               )}
             </Section>
 
-            <Text style={closingText}>
-              Please respond to the sender at your earliest convenience.
-            </Text>
+            <Text style={closingText}>Please respond to the sender at your earliest convenience.</Text>
           </Section>
 
           {/* Footer */}
           <Hr style={hr} />
           <Section style={footer}>
-            <Text style={footerText}>
-              This email was sent from your website&apos;s contact form.
-            </Text>
+            <Text style={footerText}>This email was sent from your website&apos;s contact form.</Text>
             <Text style={footerText}>
               <Link href="#" style={footerLink}>
                 Manage your website
@@ -147,9 +125,7 @@ export default function ContactFormSubmission(props: Props) {
                 Support
               </Link>
             </Text>
-            <Text style={footerText}>
-              © 2024 Your Company. All rights reserved.
-            </Text>
+            <Text style={footerText}>© 2024 Your Company. All rights reserved.</Text>
           </Section>
         </Container>
       </Body>
@@ -185,8 +161,7 @@ const content = {
   backgroundColor: "#ffffff",
   borderRadius: "12px",
   padding: "36px 32px",
-  boxShadow:
-    "0 6px 16px -4px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06)",
+  boxShadow: "0 6px 16px -4px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06)",
 };
 
 const heading = {

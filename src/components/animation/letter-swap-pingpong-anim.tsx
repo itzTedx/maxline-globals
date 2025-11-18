@@ -45,9 +45,7 @@ const LetterSwapPingPong = ({
     let dir: "ltr" | "rtl" = "ltr";
     if (containerRef.current) {
       // Try to get direction from the DOM
-      const domDir =
-        containerRef.current.dir ||
-        getComputedStyle(containerRef.current).direction;
+      const domDir = containerRef.current.dir || getComputedStyle(containerRef.current).direction;
       if (domDir === "rtl" || domDir === "ltr") {
         dir = domDir;
       } else if (isRTL(label)) {
@@ -82,11 +80,7 @@ const LetterSwapPingPong = ({
       if (isHovered) return;
       setIsHovered(true);
 
-      animate(
-        ".letter",
-        { y: reverse ? "100%" : "-100%" },
-        mergeTransition(transition)
-      );
+      animate(".letter", { y: reverse ? "100%" : "-100%" }, mergeTransition(transition));
 
       animate(
         ".letter-secondary",
@@ -126,53 +120,38 @@ const LetterSwapPingPong = ({
 
   return (
     <motion.span
-      className={cn(
-        className,
-        "relative flex items-center justify-center overflow-hidden",
-        flexDirection
-      )}
+      className={cn(className, "relative flex items-center justify-center overflow-hidden", flexDirection)}
+      onClick={onClick}
+      onHoverEnd={hoverEnd}
+      onHoverStart={hoverStart}
       ref={(el) => {
         // Assign to both refs
         if (el) {
-          (scope as React.MutableRefObject<HTMLSpanElement | null>).current =
-            el;
+          (scope as React.MutableRefObject<HTMLSpanElement | null>).current = el;
           containerRef.current = el;
         }
       }}
-      onHoverStart={hoverStart}
-      onHoverEnd={hoverEnd}
-      onClick={onClick}
       {...props}
     >
       <span className="sr-only">{label}</span>
 
       {direction === "rtl" ? (
-        <span className="relative flex whitespace-pre" aria-hidden={true}>
-          <motion.span className={`letter relative`} style={{ top: 0 }}>
+        <span aria-hidden={true} className="relative flex whitespace-pre">
+          <motion.span className={"letter relative"} style={{ top: 0 }}>
             {label}
           </motion.span>
-          <motion.span
-            className="letter-secondary absolute"
-            style={{ top: reverse ? "-100%" : "100%" }}
-          >
+          <motion.span className="letter-secondary absolute" style={{ top: reverse ? "-100%" : "100%" }}>
             {label}
           </motion.span>
         </span>
       ) : (
         label.split("").map((letter: string, i: number) => {
           return (
-            <span
-              className="relative flex whitespace-pre"
-              key={i}
-              aria-hidden={true}
-            >
-              <motion.span className={`letter relative`} style={{ top: 0 }}>
+            <span aria-hidden={true} className="relative flex whitespace-pre" key={i}>
+              <motion.span className={"letter relative"} style={{ top: 0 }}>
                 {letter}
               </motion.span>
-              <motion.span
-                className="letter-secondary absolute"
-                style={{ top: reverse ? "-100%" : "100%" }}
-              >
+              <motion.span className="letter-secondary absolute" style={{ top: reverse ? "-100%" : "100%" }}>
                 {letter}
               </motion.span>
             </span>

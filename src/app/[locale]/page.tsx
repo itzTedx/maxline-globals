@@ -23,36 +23,19 @@ export default function Home({ params }: Props) {
 
   return (
     <>
-      <main
-        className="bg-background relative z-10 rounded-b-3xl pb-20"
-        role="main"
-      >
+      <main className="relative z-10 rounded-b-3xl bg-background pb-20" role="main">
         <HeroSection />
 
         <AboutSection />
 
-        <Suspense
-          fallback={
-            <div
-              className="h-96 w-full animate-pulse bg-gray-200"
-              aria-label="Loading content"
-            />
-          }
-        >
+        <Suspense fallback={<div aria-label="Loading content" className="h-96 w-full animate-pulse bg-gray-200" />}>
           <ServicesSection />
         </Suspense>
 
         <FaqSection />
         <CertificatesSection />
 
-        <Suspense
-          fallback={
-            <div
-              className="h-96 w-full animate-pulse bg-gray-200"
-              aria-label="Loading content"
-            />
-          }
-        >
+        <Suspense fallback={<div aria-label="Loading content" className="h-96 w-full animate-pulse bg-gray-200" />}>
           <InsightsCarousel />
         </Suspense>
 
@@ -60,7 +43,6 @@ export default function Home({ params }: Props) {
       </main>
 
       <script
-        type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
@@ -80,6 +62,7 @@ export default function Home({ params }: Props) {
             },
           }),
         }}
+        type="application/ld+json"
       />
     </>
   );

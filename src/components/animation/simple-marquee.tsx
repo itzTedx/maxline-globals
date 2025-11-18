@@ -3,8 +3,8 @@
 import { RefObject, useRef } from "react";
 
 import {
-  SpringOptions,
   motion,
+  SpringOptions,
   useAnimationFrame,
   useMotionValue,
   useScroll,
@@ -69,8 +69,7 @@ const SimpleMarquee = ({
   const baseY = useMotionValue(0);
 
   const { scrollY } = useScroll({
-    container:
-      (scrollContainer as RefObject<HTMLDivElement>) || innerContainer.current,
+    container: (scrollContainer as RefObject<HTMLDivElement>) || innerContainer.current,
   });
 
   const scrollVelocity = useVelocity(scrollY);
@@ -88,21 +87,15 @@ const SimpleMarquee = ({
   const smoothHoverFactor = useSpring(hoverFactorValue, slowDownSpringConfig);
 
   // Transform scroll velocity into a factor that affects marquee speed
-  const velocityFactor = useTransform(
-    useScrollVelocity ? smoothVelocity : defaultVelocity,
-    [0, 1000],
-    [0, 5],
-    {
-      clamp: false,
-    }
-  );
+  const velocityFactor = useTransform(useScrollVelocity ? smoothVelocity : defaultVelocity, [0, 1000], [0, 5], {
+    clamp: false,
+  });
 
   // Determine if movement is horizontal or vertical.
   const isHorizontal = direction === "left" || direction === "right";
 
   // Convert baseVelocity to the correct direction
-  const actualBaseVelocity =
-    direction === "left" || direction === "up" ? -baseVelocity : baseVelocity;
+  const actualBaseVelocity = direction === "left" || direction === "up" ? -baseVelocity : baseVelocity;
 
   // Reference to track if mouse is hovering
   const isHovered = useRef(false);
@@ -151,11 +144,7 @@ const SimpleMarquee = ({
     }
 
     // Calculate regular movement
-    let moveBy =
-      directionFactor.current *
-      actualBaseVelocity *
-      (delta / 1000) *
-      smoothHoverFactor.get();
+    let moveBy = directionFactor.current * actualBaseVelocity * (delta / 1000) * smoothHoverFactor.get();
 
     // Adjust movement based on scroll velocity if scrollAwareDirection is enabled
     if (scrollAwareDirection && !isDragging.current) {
@@ -247,25 +236,21 @@ const SimpleMarquee = ({
   return (
     <motion.div
       className={cn("flex", isHorizontal ? "flex-row" : "flex-col", className)}
-      onHoverStart={() => (isHovered.current = true)}
+      dir="ltr"
       onHoverEnd={() => (isHovered.current = false)}
+      onHoverStart={() => (isHovered.current = true)}
+      onPointerCancel={handlePointerUp}
       onPointerDown={handlePointerDown}
       onPointerMove={handlePointerMove}
       onPointerUp={handlePointerUp}
-      onPointerCancel={handlePointerUp}
       ref={innerContainer}
-      dir="ltr"
     >
       {Array.from({ length: repeat }, (_, i) => i).map((i) => (
         <motion.div
-          key={i}
-          className={cn(
-            "shrink-0",
-            isHorizontal && "flex",
-            draggable && grabCursor && "cursor-grab"
-          )}
-          style={isHorizontal ? { x } : { y }}
           aria-hidden={i > 0}
+          className={cn("shrink-0", isHorizontal && "flex", draggable && grabCursor && "cursor-grab")}
+          key={i}
+          style={isHorizontal ? { x } : { y }}
         >
           {children}
         </motion.div>

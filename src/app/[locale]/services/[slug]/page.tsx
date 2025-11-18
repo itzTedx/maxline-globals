@@ -5,6 +5,7 @@ import { getLocale } from "next-intl/server";
 
 import SpotlightCard from "@/components/animation/spotlight-card";
 import { StaggeredText } from "@/components/animation/staggered-text";
+
 import { Cta } from "@/feature/cta";
 import { InsightsCarousel } from "@/feature/insights/components/insights-carousel";
 import { Commitment } from "@/feature/services/commitment";
@@ -32,11 +33,7 @@ const getServiceMessages = async (locale: string) => {
   return (await import("@/dictionaries/services.en.json")).default;
 };
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Params;
-}): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const { slug } = await params;
   const locale = await getLocale();
   const messages = await getServiceMessages(locale);
@@ -105,7 +102,6 @@ export default async function ServicePage({ params }: { params: Params }) {
   return (
     <>
       <script
-        type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
@@ -117,15 +113,7 @@ export default async function ServicePage({ params }: { params: Params }) {
               name: "Maxline Global",
               url: "https://maxlineglobal.com",
             },
-            areaServed: [
-              "UAE",
-              "Saudi Arabia",
-              "Oman",
-              "Kuwait",
-              "Bahrain",
-              "Qatar",
-              "United Kingdom",
-            ],
+            areaServed: ["UAE", "Saudi Arabia", "Oman", "Kuwait", "Bahrain", "Qatar", "United Kingdom"],
             serviceType: ["FTL", "LTL", "Oversized Cargo", "Project Cargo"],
             hasOfferCatalog: {
               "@type": "OfferCatalog",
@@ -140,32 +128,28 @@ export default async function ServicePage({ params }: { params: Params }) {
             },
           }),
         }}
+        type="application/ld+json"
       />
-      <main
-        className="bg-background relative z-10 rounded-b-3xl pb-20 shadow-xl"
-        aria-labelledby="page-title"
-      >
+      <main aria-labelledby="page-title" className="relative z-10 rounded-b-3xl bg-background pb-20 shadow-xl">
         <Hero
-          title={t(`${serviceKey}.hero.title`)}
-          description={t(`${serviceKey}.hero.description`)}
-          image={service.hero.image}
           ctaLink={service.hero.ctaLink}
           ctaText={service.hero.ctaText}
+          description={t(`${serviceKey}.hero.description`)}
+          image={service.hero.image}
+          title={t(`${serviceKey}.hero.title`)}
         />
         <Features
-          overview={{
-            title: t(`${serviceKey}.features.overview.title`),
-            description: t(`${serviceKey}.features.overview.description`),
-          }}
           features={{
             title: t(`${serviceKey}.features.features.title`),
             description: t(`${serviceKey}.features.features.description`),
             items: service.features.features.items.map((item, i) => ({
               title: t(`${serviceKey}.features.features.items.${i}.title`),
-              description: t(
-                `${serviceKey}.features.features.items.${i}.description`
-              ),
+              description: t(`${serviceKey}.features.features.items.${i}.description`),
             })),
+          }}
+          overview={{
+            title: t(`${serviceKey}.features.overview.title`),
+            description: t(`${serviceKey}.features.overview.description`),
           }}
         />
         {/* <MarqueeSection
@@ -175,35 +159,33 @@ export default async function ServicePage({ params }: { params: Params }) {
         /> */}
         <section className="container py-10 md:py-20">
           <h4
+            className="container relative z-10 mb-3 max-w-6xl text-balance text-center font-grotesk text-3xl text-brand-gray tracking-tight md:text-6xl/16"
             id="hero-title"
-            className="font-grotesk text-brand-gray relative z-10 container mb-3 max-w-6xl text-center text-3xl tracking-tight text-balance md:text-6xl/16"
           >
             <StaggeredText
+              className="[&>span:nth-child(2)]:text-secondary [&>span:nth-child(3)]:text-secondary [&>span:nth-child(4)]:text-secondary"
+              duration={0.7}
+              staggerChildren={0.03}
               text={
                 t(`${serviceKey}.capabilitiesTitle`) ||
                 "Expanded Land Freight Capabilities for Faster, Smarter Delivery"
               }
-              staggerChildren={0.03}
-              duration={0.7}
-              className="[&>span:nth-child(2)]:text-secondary [&>span:nth-child(3)]:text-secondary [&>span:nth-child(4)]:text-secondary"
             />
           </h4>
           <ul className="grid grid-cols-1 gap-4 pt-6 md:grid-cols-2 md:gap-2 md:pt-9 lg:grid-cols-3">
             {service.capabilities.map((item, i) => (
               <SpotlightCard
+                className="overflow-hidden rounded-xl bg-white p-6 md:p-10"
                 key={i}
                 spotlightColor="rgba(0, 200, 255, 0.3)"
-                className="overflow-hidden rounded-xl bg-white p-6 md:p-10"
               >
-                <div className="bg-muted flex size-16 items-center justify-center rounded-full md:size-20">
-                  <item.icon className="text-brand-gray size-8 stroke-[1.5] md:size-12" />
+                <div className="flex size-16 items-center justify-center rounded-full bg-muted md:size-20">
+                  <item.icon className="size-8 stroke-[1.5] text-brand-gray md:size-12" />
                 </div>
-                <h5 className="font-grotesk text-brand-dark mt-8 mb-2 text-2xl md:mt-12 md:mb-3 md:text-4xl">
+                <h5 className="mt-8 mb-2 font-grotesk text-2xl text-brand-dark md:mt-12 md:mb-3 md:text-4xl">
                   {t(`${serviceKey}.capabilities.${i}.title`)}
                 </h5>
-                <p className="text-sm md:text-base">
-                  {t(`${serviceKey}.capabilities.${i}.description`)}
-                </p>
+                <p className="text-sm md:text-base">{t(`${serviceKey}.capabilities.${i}.description`)}</p>
               </SpotlightCard>
             ))}
           </ul>

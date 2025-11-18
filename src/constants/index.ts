@@ -16,7 +16,7 @@ const SERVICES_LINKS = [
     href: "/services/air-freight",
     img: "/images/air-freight.webp",
   },
- 
+
   {
     title: "landFreight",
     href: "/services/land-freight",
@@ -276,8 +276,7 @@ export const PRINCIPLES = [
 export const HEAD_LOCATION = [
   {
     title: "Head Office (UAE)",
-    address:
-      "MO 0753, Jafza North  Dubai - United Arab Emirates",
+    address: "MO 0753, Jafza North  Dubai - United Arab Emirates",
     phone: "+971 4 282 2022",
     mobile: "+971 4 282 2022",
     email: "reception@maxlineglobal.com",
@@ -298,8 +297,7 @@ export const HEAD_LOCATION = [
 export const LOCATIONS = [
   {
     title: "Maxline Oman",
-    address:
-      "Unit No 24, 2nd floor Building 537, Way No 5016,  Ghala Heights Azaibaa South, Muscat, Sultanate Of Oman",
+    address: "Unit No 24, 2nd floor Building 537, Way No 5016,  Ghala Heights Azaibaa South, Muscat, Sultanate Of Oman",
     phone: "+971 4 282 2022 EXT 401",
     mobile: "+971 4 282 2022",
     email: "reception@maxlineglobal.com",
@@ -308,8 +306,7 @@ export const LOCATIONS = [
   },
   {
     title: "Maxline Bahrain",
-    address:
-      "Office No 58, Building 2568, Road/Street 4450, Block 744, Al Ramli, Kingdom of Bahrain",
+    address: "Office No 58, Building 2568, Road/Street 4450, Block 744, Al Ramli, Kingdom of Bahrain",
     phone: "+971 4 282 2022 EXT 702",
     mobile: "+971 4 282 2022",
     email: "reception@maxlineglobal.com",
@@ -327,8 +324,7 @@ export const LOCATIONS = [
   },
   {
     title: "Maxline KSA",
-    address:
-      "Shiny Gulf, Abu ishaq Al Rifay street, Khalidiya Al Janubiyyah, Port Road, Saudi Arabia",
+    address: "Shiny Gulf, Abu ishaq Al Rifay street, Khalidiya Al Janubiyyah, Port Road, Saudi Arabia",
     phone: "+971 4 282 2022 EXT 801",
     mobile: "+971 4 282 2022",
     email: "reception@maxlineglobal.com",

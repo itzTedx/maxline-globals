@@ -1,7 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import React, { Fragment, useEffect, useRef, useState } from "react";
+
+import Image from "next/image";
 
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
@@ -29,20 +30,18 @@ const PrincipleImage = React.memo(
     isVisible: boolean;
   }) => (
     <motion.div
-      key={image}
+      animate={{
+        clipPath: index === currentImage && isVisible ? "inset(0% 0% 0% 0%)" : "inset(50% 50% 50% 50%)",
+        scale: index === currentImage && isVisible ? 1.1 : 1,
+        zIndex: index === currentImage ? 2 : 1,
+      }}
+      className="absolute inset-0"
       initial={{
         clipPath: "inset(50% 50% 50% 50%)",
         scale: 1,
         zIndex: index === currentImage ? 2 : 1,
       }}
-      animate={{
-        clipPath:
-          index === currentImage && isVisible
-            ? "inset(0% 0% 0% 0%)"
-            : "inset(50% 50% 50% 50%)",
-        scale: index === currentImage && isVisible ? 1.1 : 1,
-        zIndex: index === currentImage ? 2 : 1,
-      }}
+      key={image}
       transition={{
         clipPath: {
           duration: 1.2,
@@ -54,16 +53,15 @@ const PrincipleImage = React.memo(
           delay: 0.2,
         },
       }}
-      className="absolute inset-0"
     >
       <Image
-        src={image}
         alt={`Principle ${index + 1} illustration`}
-        fill
         className="object-cover"
+        fill
         priority={index === currentImage}
         quality={100}
         sizes="(max-width: 768px) 100vw,  75vw"
+        src={image}
       />
     </motion.div>
   )
@@ -91,9 +89,7 @@ export const Principles = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const index = elementRefs.current.findIndex(
-              (ref) => ref === entry.target
-            );
+            const index = elementRefs.current.findIndex((ref) => ref === entry.target);
             if (index !== -1) {
               setCurrentImage(index);
             }
@@ -139,29 +135,29 @@ export const Principles = () => {
   }, []);
 
   return (
-    <section className="relative container grid gap-36 py-20 md:grid-cols-2">
+    <section className="container relative grid gap-36 py-20 md:grid-cols-2">
       <div className="space-y-12 md:space-y-20 lg:space-y-28" ref={sectionRef}>
-        <h2 className="font-grotesk text-brand-dark text-3xl md:max-w-xs md:text-5xl lg:text-6xl/18">
+        <h2 className="font-grotesk text-3xl text-brand-dark md:max-w-xs md:text-5xl lg:text-6xl/18">
           <StaggeredText text={t("principles.title")} />
         </h2>
         <Separator />
         {principles.map((p: Principle, index: number) => (
           <Fragment key={p.label}>
             <div
+              className="grid grid-cols-4 gap-3 md:grid-cols-3"
               ref={(el) => {
                 if (el) elementRefs.current[index] = el;
               }}
-              className="grid grid-cols-4 gap-3 md:grid-cols-3"
             >
-              <h3 className="text-secondary mt-2.5 text-xs font-medium uppercase md:text-lg md:font-light lg:text-xl">
+              <h3 className="mt-2.5 font-medium text-secondary text-xs uppercase md:font-light md:text-lg lg:text-xl">
                 <StaggeredText text={p.label} />
               </h3>
               <div className="col-span-3 md:col-span-2">
-                <h4 className="font-grotesk text-brand-dark text-3xl text-balance md:text-4xl lg:text-5xl/16">
-                  <StaggeredText text={p.title} delay={0.2} />
+                <h4 className="text-balance font-grotesk text-3xl text-brand-dark md:text-4xl lg:text-5xl/16">
+                  <StaggeredText delay={0.2} text={p.title} />
                 </h4>
-                <p className="pt-4 text-lg leading-relaxed font-light md:text-xl lg:text-2xl">
-                  <StaggeredText text={p.description} delay={0.35} />
+                <p className="pt-4 font-light text-lg leading-relaxed md:text-xl lg:text-2xl">
+                  <StaggeredText delay={0.35} text={p.description} />
                 </p>
               </div>
             </div>
@@ -170,18 +166,12 @@ export const Principles = () => {
         ))}
       </div>
       <div
+        className="sticky top-[15vh] hidden h-fit text-balance font-light text-3xl text-brand-gray leading-normal tracking-tight md:block"
         ref={imageSectionRef}
-        className="text-brand-gray sticky top-[15vh] hidden h-fit text-3xl leading-normal font-light tracking-tight text-balance md:block"
       >
         <div className="relative aspect-square overflow-hidden rounded-2xl">
           {images.map((image, index) => (
-            <PrincipleImage
-              key={image}
-              image={image}
-              index={index}
-              currentImage={currentImage}
-              isVisible={isVisible}
-            />
+            <PrincipleImage currentImage={currentImage} image={image} index={index} isVisible={isVisible} key={image} />
           ))}
         </div>
       </div>

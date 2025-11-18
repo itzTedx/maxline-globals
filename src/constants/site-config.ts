@@ -17,8 +17,7 @@ export const siteConfig = {
     "project cargo",
   ],
   title: {
-    default:
-      "Maxline Global | Freight Forwarding, Logistics & Supply Chain Solutions",
+    default: "Maxline Global | Freight Forwarding, Logistics & Supply Chain Solutions",
     template: "%s | Maxline Global",
   },
 

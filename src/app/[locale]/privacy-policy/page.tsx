@@ -4,189 +4,81 @@ export default function PrivacyPolicyPage() {
   const t = useTranslations("PrivacyPolicy");
 
   return (
-    <main className="bg-background relative z-10 container rounded-b-3xl pb-20 shadow-xl">
+    <main className="container relative z-10 rounded-b-3xl bg-background pb-20 shadow-xl">
       <div className="mx-auto max-w-prose px-4 py-8">
-        <h1 className="font-grotesk text-brand-dark mb-8 text-3xl font-bold md:text-4xl lg:text-5xl">
-          {t("title")}
-        </h1>
+        <h1 className="mb-8 font-bold font-grotesk text-3xl text-brand-dark md:text-4xl lg:text-5xl">{t("title")}</h1>
         <div className="space-y-8">
           <section>
-            <h2 className="font-grotesk text-brand-dark mb-4 text-2xl font-semibold">
-              {t("introduction.title")}
-            </h2>
+            <h2 className="mb-4 font-grotesk font-semibold text-2xl text-brand-dark">{t("introduction.title")}</h2>
             <p className="mb-4 font-light">{t("introduction.text1")}</p>
             <p className="font-light">{t("introduction.text2")}</p>
           </section>
           <section>
-            <h2 className="font-grotesk text-brand-dark mb-4 text-2xl font-semibold">
+            <h2 className="mb-4 font-grotesk font-semibold text-2xl text-brand-dark">
               {t("informationWeCollect.title")}
             </h2>
-            <h3 className="text-secondary mb-3 text-xl font-medium">
+            <h3 className="mb-3 font-medium text-secondary text-xl">
               {t("informationWeCollect.informationYouProvide.title")}
             </h3>
-            <p className="mb-4 font-light">
-              {t("informationWeCollect.informationYouProvide.text")}
-            </p>
+            <p className="mb-4 font-light">{t("informationWeCollect.informationYouProvide.text")}</p>
             <ul className="list-disc space-y-2 pl-6 font-light">
               <li>
-                {t(
-                  "informationWeCollect.informationYouProvide.personalInformation.title"
-                )}
+                {t("informationWeCollect.informationYouProvide.personalInformation.title")}
                 <ul className="mt-2 list-disc pl-6">
-                  <li>
-                    {t(
-                      "informationWeCollect.informationYouProvide.personalInformation.fullName"
-                    )}
-                  </li>
-                  <li>
-                    {t(
-                      "informationWeCollect.informationYouProvide.personalInformation.companyName"
-                    )}
-                  </li>
-                  <li>
-                    {t(
-                      "informationWeCollect.informationYouProvide.personalInformation.emailAddress"
-                    )}
-                  </li>
-                  <li>
-                    {t(
-                      "informationWeCollect.informationYouProvide.personalInformation.phoneNumber"
-                    )}
-                  </li>
+                  <li>{t("informationWeCollect.informationYouProvide.personalInformation.fullName")}</li>
+                  <li>{t("informationWeCollect.informationYouProvide.personalInformation.companyName")}</li>
+                  <li>{t("informationWeCollect.informationYouProvide.personalInformation.emailAddress")}</li>
+                  <li>{t("informationWeCollect.informationYouProvide.personalInformation.phoneNumber")}</li>
                 </ul>
               </li>
               <li>
-                {t(
-                  "informationWeCollect.informationYouProvide.shippingInformation.title"
-                )}
+                {t("informationWeCollect.informationYouProvide.shippingInformation.title")}
                 <ul className="mt-2 list-disc pl-6">
-                  <li>
-                    {t(
-                      "informationWeCollect.informationYouProvide.shippingInformation.senderRecipient"
-                    )}
-                  </li>
-                  <li>
-                    {t(
-                      "informationWeCollect.informationYouProvide.shippingInformation.shippingAddresses"
-                    )}
-                  </li>
-                  <li>
-                    {t(
-                      "informationWeCollect.informationYouProvide.shippingInformation.packageDescriptions"
-                    )}
-                  </li>
-                  <li>
-                    {t(
-                      "informationWeCollect.informationYouProvide.shippingInformation.weightVolume"
-                    )}
-                  </li>
-                  <li>
-                    {t(
-                      "informationWeCollect.informationYouProvide.shippingInformation.preferredDates"
-                    )}
-                  </li>
-                  <li>
-                    {t(
-                      "informationWeCollect.informationYouProvide.shippingInformation.transportMode"
-                    )}
-                  </li>
-                  <li>
-                    {t(
-                      "informationWeCollect.informationYouProvide.shippingInformation.customsDocumentation"
-                    )}
-                  </li>
+                  <li>{t("informationWeCollect.informationYouProvide.shippingInformation.senderRecipient")}</li>
+                  <li>{t("informationWeCollect.informationYouProvide.shippingInformation.shippingAddresses")}</li>
+                  <li>{t("informationWeCollect.informationYouProvide.shippingInformation.packageDescriptions")}</li>
+                  <li>{t("informationWeCollect.informationYouProvide.shippingInformation.weightVolume")}</li>
+                  <li>{t("informationWeCollect.informationYouProvide.shippingInformation.preferredDates")}</li>
+                  <li>{t("informationWeCollect.informationYouProvide.shippingInformation.transportMode")}</li>
+                  <li>{t("informationWeCollect.informationYouProvide.shippingInformation.customsDocumentation")}</li>
                 </ul>
               </li>
               <li>
-                {t(
-                  "informationWeCollect.informationYouProvide.serviceInformation.title"
-                )}
+                {t("informationWeCollect.informationYouProvide.serviceInformation.title")}
                 <ul className="mt-2 list-disc pl-6">
-                  <li>
-                    {t(
-                      "informationWeCollect.informationYouProvide.serviceInformation.serviceType"
-                    )}
-                  </li>
-                  <li>
-                    {t(
-                      "informationWeCollect.informationYouProvide.serviceInformation.industryRequirements"
-                    )}
-                  </li>
-                  <li>
-                    {t(
-                      "informationWeCollect.informationYouProvide.serviceInformation.customLogistics"
-                    )}
-                  </li>
-                  <li>
-                    {t(
-                      "informationWeCollect.informationYouProvide.serviceInformation.additionalSpecs"
-                    )}
-                  </li>
+                  <li>{t("informationWeCollect.informationYouProvide.serviceInformation.serviceType")}</li>
+                  <li>{t("informationWeCollect.informationYouProvide.serviceInformation.industryRequirements")}</li>
+                  <li>{t("informationWeCollect.informationYouProvide.serviceInformation.customLogistics")}</li>
+                  <li>{t("informationWeCollect.informationYouProvide.serviceInformation.additionalSpecs")}</li>
                 </ul>
               </li>
               <li>
-                {t(
-                  "informationWeCollect.informationYouProvide.documentation.title"
-                )}
+                {t("informationWeCollect.informationYouProvide.documentation.title")}
                 <ul className="mt-2 list-disc pl-6">
-                  <li>
-                    {t(
-                      "informationWeCollect.informationYouProvide.documentation.attachedFiles"
-                    )}
-                  </li>
-                  <li>
-                    {t(
-                      "informationWeCollect.informationYouProvide.documentation.projectDocumentation"
-                    )}
-                  </li>
-                  <li>
-                    {t(
-                      "informationWeCollect.informationYouProvide.documentation.customRequirements"
-                    )}
-                  </li>
-                  <li>
-                    {t(
-                      "informationWeCollect.informationYouProvide.documentation.certificatesPermits"
-                    )}
-                  </li>
+                  <li>{t("informationWeCollect.informationYouProvide.documentation.attachedFiles")}</li>
+                  <li>{t("informationWeCollect.informationYouProvide.documentation.projectDocumentation")}</li>
+                  <li>{t("informationWeCollect.informationYouProvide.documentation.customRequirements")}</li>
+                  <li>{t("informationWeCollect.informationYouProvide.documentation.certificatesPermits")}</li>
                 </ul>
               </li>
             </ul>
-            <h3 className="text-secondary mt-6 mb-3 text-xl font-medium">
+            <h3 className="mt-6 mb-3 font-medium text-secondary text-xl">
               {t("informationWeCollect.automaticallyCollected.title")}
             </h3>
-            <p className="mb-4 font-light">
-              {t("informationWeCollect.automaticallyCollected.text")}
-            </p>
+            <p className="mb-4 font-light">{t("informationWeCollect.automaticallyCollected.text")}</p>
             <ul className="list-disc space-y-2 pl-6 font-light">
-              <li>
-                {t("informationWeCollect.automaticallyCollected.deviceInfo")}
-              </li>
-              <li>
-                {t("informationWeCollect.automaticallyCollected.usageData")}
-              </li>
-              <li>
-                {t("informationWeCollect.automaticallyCollected.locationInfo")}
-              </li>
-              <li>
-                {t(
-                  "informationWeCollect.automaticallyCollected.referralSource"
-                )}
-              </li>
-              <li>
-                {t(
-                  "informationWeCollect.automaticallyCollected.deviceIdentifiers"
-                )}
-              </li>
+              <li>{t("informationWeCollect.automaticallyCollected.deviceInfo")}</li>
+              <li>{t("informationWeCollect.automaticallyCollected.usageData")}</li>
+              <li>{t("informationWeCollect.automaticallyCollected.locationInfo")}</li>
+              <li>{t("informationWeCollect.automaticallyCollected.referralSource")}</li>
+              <li>{t("informationWeCollect.automaticallyCollected.deviceIdentifiers")}</li>
             </ul>
           </section>
           <section>
-            <h2 className="font-grotesk text-brand-dark mb-4 text-2xl font-semibold">
+            <h2 className="mb-4 font-grotesk font-semibold text-2xl text-brand-dark">
               {t("howWeUseYourInformation.title")}
             </h2>
-            <p className="mb-4 font-light">
-              {t("howWeUseYourInformation.text")}
-            </p>
+            <p className="mb-4 font-light">{t("howWeUseYourInformation.text")}</p>
             <ul className="list-disc space-y-2 pl-6 font-light">
               <li>{t("howWeUseYourInformation.processRequests")}</li>
               <li>{t("howWeUseYourInformation.provideSolutions")}</li>
@@ -201,7 +93,7 @@ export default function PrivacyPolicyPage() {
             </ul>
           </section>
           <section>
-            <h2 className="font-grotesk text-brand-dark mb-4 text-2xl font-semibold">
+            <h2 className="mb-4 font-grotesk font-semibold text-2xl text-brand-dark">
               {t("informationSharing.title")}
             </h2>
             <p className="mb-4 font-light">{t("informationSharing.text")}</p>
@@ -215,9 +107,7 @@ export default function PrivacyPolicyPage() {
             </ul>
           </section>
           <section>
-            <h2 className="font-grotesk text-brand-dark mb-4 text-2xl font-semibold">
-              {t("dataSecurity.title")}
-            </h2>
+            <h2 className="mb-4 font-grotesk font-semibold text-2xl text-brand-dark">{t("dataSecurity.title")}</h2>
             <p className="mb-4 font-light">{t("dataSecurity.text")}</p>
             <ul className="list-disc space-y-2 pl-6 font-light">
               <li>{t("dataSecurity.encryption")}</li>
@@ -229,9 +119,7 @@ export default function PrivacyPolicyPage() {
             <p className="mt-4 font-light">{t("dataSecurity.disclaimer")}</p>
           </section>
           <section>
-            <h2 className="font-grotesk text-brand-dark mb-4 text-2xl font-semibold">
-              {t("yourRights.title")}
-            </h2>
+            <h2 className="mb-4 font-grotesk font-semibold text-2xl text-brand-dark">{t("yourRights.title")}</h2>
             <p className="mb-4 font-light">{t("yourRights.text")}</p>
             <ul className="list-disc space-y-2 pl-6 font-light">
               <li>{t("yourRights.access")}</li>
@@ -244,33 +132,26 @@ export default function PrivacyPolicyPage() {
             <p className="mt-4 font-light">{t("yourRights.contact")}</p>
           </section>
           <section>
-            <h2 className="font-grotesk text-brand-dark mb-4 text-2xl font-semibold">
+            <h2 className="mb-4 font-grotesk font-semibold text-2xl text-brand-dark">
               {t("internationalTransfers.title")}
             </h2>
             <p className="font-light">{t("internationalTransfers.text")}</p>
           </section>
           <section>
-            <h2 className="font-grotesk text-brand-dark mb-4 text-2xl font-semibold">
-              {t("changesToPolicy.title")}
-            </h2>
+            <h2 className="mb-4 font-grotesk font-semibold text-2xl text-brand-dark">{t("changesToPolicy.title")}</h2>
             <p className="font-light">{t("changesToPolicy.text")}</p>
           </section>
           <section>
-            <h2 className="font-grotesk text-brand-dark mb-4 text-2xl font-semibold">
-              {t("contactUs.title")}
-            </h2>
+            <h2 className="mb-4 font-grotesk font-semibold text-2xl text-brand-dark">{t("contactUs.title")}</h2>
             <p className="font-light">
               {t("contactUs.text")}
               <br />
-              <a
-                href="mailto:info@maxlineglobal.com"
-                className="text-primary hover:underline"
-              >
+              <a className="text-primary hover:underline" href="mailto:info@maxlineglobal.com">
                 info@maxlineglobal.com
               </a>
             </p>
           </section>
-          <p className="mt-8 text-sm font-light">{t("lastUpdated")}</p>
+          <p className="mt-8 font-light text-sm">{t("lastUpdated")}</p>
         </div>
       </div>
     </main>

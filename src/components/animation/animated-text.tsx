@@ -9,12 +9,7 @@ interface AnimatedTextProps {
   className?: string;
 }
 
-export const AnimatedText = ({
-  text,
-  variant = "fadeIn",
-  delay = 0,
-  className = "",
-}: AnimatedTextProps) => {
+export const AnimatedText = ({ text, variant = "fadeIn", delay = 0, className = "" }: AnimatedTextProps) => {
   const variants = {
     fadeIn: {
       initial: { opacity: 0 },
@@ -33,10 +28,10 @@ export const AnimatedText = ({
   return (
     <motion.span
       className={className}
-      variants={variants[variant]}
       initial="initial"
-      whileInView="animate"
+      variants={variants[variant]}
       viewport={{ once: true }}
+      whileInView="animate"
     >
       {text}
     </motion.span>

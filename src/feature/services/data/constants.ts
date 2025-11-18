@@ -41,23 +41,19 @@ export const SERVICES = [
           },
           {
             title: "FTL & LTL Services",
-            description:
-              "Flexible shipping options tailored to the size and urgency of your cargo.",
+            description: "Flexible shipping options tailored to the size and urgency of your cargo.",
           },
           {
             title: "Oversized & Project Cargo Expertise",
-            description:
-              "Equipped to handle out-of-gauge, heavy lift, and high-value cargo with precision and care.",
+            description: "Equipped to handle out-of-gauge, heavy lift, and high-value cargo with precision and care.",
           },
           {
             title: "GPS-Enabled Vehicles",
-            description:
-              "Real-time tracking and visibility throughout the journey.",
+            description: "Real-time tracking and visibility throughout the journey.",
           },
           {
             title: "Customs Bonded Transport",
-            description:
-              "Smooth cross-border movements with proper documentation and compliance.",
+            description: "Smooth cross-border movements with proper documentation and compliance.",
           },
           {
             title: "Hazardous Goods Handling",
@@ -106,8 +102,7 @@ export const SERVICES = [
       {
         icon: IconClock,
         title: "Express Delivery Options",
-        description:
-          "Priority transport services for time-critical shipments with guaranteed fast delivery windows.",
+        description: "Priority transport services for time-critical shipments with guaranteed fast delivery windows.",
       },
       {
         icon: IconUserHexagon,
@@ -156,28 +151,23 @@ export const SERVICES = [
           },
           {
             title: "Priority & Express Shipping",
-            description:
-              "Time-critical shipments handled with high priority to meet tight delivery windows.",
+            description: "Time-critical shipments handled with high priority to meet tight delivery windows.",
           },
           {
             title: "Perishable & Temperature-Controlled Cargo",
-            description:
-              "Safe transport for pharmaceuticals, food, and other temperature-sensitive goods.",
+            description: "Safe transport for pharmaceuticals, food, and other temperature-sensitive goods.",
           },
           {
             title: "Advanced Cargo Tracking",
-            description:
-              "Real-time tracking and notifications ensure complete visibility from origin to destination.",
+            description: "Real-time tracking and notifications ensure complete visibility from origin to destination.",
           },
           {
             title: "Customs & Compliance Management",
-            description:
-              "End-to-end support with documentation and international trade compliance.",
+            description: "End-to-end support with documentation and international trade compliance.",
           },
           {
             title: "Special Handling & High-Value Cargo",
-            description:
-              "Secure and monitored handling for fragile, hazardous, or high-value freight.",
+            description: "Secure and monitored handling for fragile, hazardous, or high-value freight.",
           },
         ],
       },
@@ -206,38 +196,32 @@ export const SERVICES = [
       {
         icon: IconDoor,
         title: "Door-to-Airport & Door-to-Door",
-        description:
-          "Flexible pickup and delivery options to match your international shipping requirements.",
+        description: "Flexible pickup and delivery options to match your international shipping requirements.",
       },
       {
         icon: IconMap2,
         title: "Global Route Optimization",
-        description:
-          "Optimized flight schedules and cargo connections for the fastest possible transit times.",
+        description: "Optimized flight schedules and cargo connections for the fastest possible transit times.",
       },
       {
         icon: IconSnowflake,
         title: "Cold Chain Air Freight",
-        description:
-          "Temperature integrity maintained through certified cold chain logistics and packaging.",
+        description: "Temperature integrity maintained through certified cold chain logistics and packaging.",
       },
       {
         icon: IconClock,
         title: "Time-Definite Deliveries",
-        description:
-          "Guaranteed delivery times for critical shipments across continents.",
+        description: "Guaranteed delivery times for critical shipments across continents.",
       },
       {
         icon: IconUserHexagon,
         title: "Airside Cargo Supervision",
-        description:
-          "Trained personnel ensuring proper handling and loading at every airport touchpoint.",
+        description: "Trained personnel ensuring proper handling and loading at every airport touchpoint.",
       },
       {
         icon: IconFileDescription,
         title: "Air Freight Documentation Support",
-        description:
-          "Accurate and compliant airway bills, customs declarations, and import/export documents.",
+        description: "Accurate and compliant airway bills, customs declarations, and import/export documents.",
       },
     ],
   },
@@ -269,8 +253,7 @@ export const SERVICES = [
         items: [
           {
             title: "FCL & LCL Shipping",
-            description:
-              "Flexible container options tailored to your cargo volume, cost, and schedule.",
+            description: "Flexible container options tailored to your cargo volume, cost, and schedule.",
           },
           {
             title: "Global Port Access",
@@ -284,18 +267,15 @@ export const SERVICES = [
           },
           {
             title: "Ro-Ro & Vehicle Shipping",
-            description:
-              "Efficient roll-on/roll-off shipping for automobiles, machinery, and wheeled cargo.",
+            description: "Efficient roll-on/roll-off shipping for automobiles, machinery, and wheeled cargo.",
           },
           {
             title: "Cargo Consolidation Services",
-            description:
-              "Group multiple shipments into one container to optimize cost and efficiency.",
+            description: "Group multiple shipments into one container to optimize cost and efficiency.",
           },
           {
             title: "Port Handling & Documentation",
-            description:
-              "End-to-end management of port clearance, customs, and compliance paperwork.",
+            description: "End-to-end management of port clearance, customs, and compliance paperwork.",
           },
         ],
       },
@@ -324,32 +304,27 @@ export const SERVICES = [
       {
         icon: IconDoor,
         title: "Port-to-Port & Door-to-Door",
-        description:
-          "Flexible delivery options with first- and last-mile connectivity across global markets.",
+        description: "Flexible delivery options with first- and last-mile connectivity across global markets.",
       },
       {
         icon: IconMap2,
         title: "Route Optimization & Transit Planning",
-        description:
-          "Strategic route mapping and scheduling to reduce ocean transit time and costs.",
+        description: "Strategic route mapping and scheduling to reduce ocean transit time and costs.",
       },
       {
         icon: IconSnowflake,
         title: "Reefer Containers for Temperature Control",
-        description:
-          "Transport perishable goods in controlled environments with refrigerated containers.",
+        description: "Transport perishable goods in controlled environments with refrigerated containers.",
       },
       {
         icon: IconClock,
         title: "Scheduled Sailings & Reliable ETAs",
-        description:
-          "Timely shipments with predictable sailing schedules and milestone visibility.",
+        description: "Timely shipments with predictable sailing schedules and milestone visibility.",
       },
       {
         icon: IconUserHexagon,
         title: "Cargo Supervision & Port Handling",
-        description:
-          "Experienced personnel oversee cargo loading, unloading, and port logistics.",
+        description: "Experienced personnel oversee cargo loading, unloading, and port logistics.",
       },
       {
         icon: IconFileDescription,
@@ -397,8 +372,7 @@ export const SERVICES = [
           },
           {
             title: "Route Surveys & Risk Assessments",
-            description:
-              "Detailed route feasibility studies, permits, and escort arrangements to ensure safe passage.",
+            description: "Detailed route feasibility studies, permits, and escort arrangements to ensure safe passage.",
           },
           {
             title: "Custom Crating & Lashing",
@@ -412,8 +386,7 @@ export const SERVICES = [
           },
           {
             title: "Onsite Supervision & Crane Handling",
-            description:
-              "Professional teams at loading/unloading sites with lifting equipment and safety compliance.",
+            description: "Professional teams at loading/unloading sites with lifting equipment and safety compliance.",
           },
         ],
       },
@@ -448,32 +421,27 @@ export const SERVICES = [
       {
         icon: IconMap2,
         title: "Route Engineering & Escort Planning",
-        description:
-          "Identify best-fit routes, secure permits, and arrange escort vehicles for oversized moves.",
+        description: "Identify best-fit routes, secure permits, and arrange escort vehicles for oversized moves.",
       },
       {
         icon: IconSnowflake,
         title: "Climate-Sensitive Packaging",
-        description:
-          "Special crating and wrapping for weather-sensitive or corrosion-prone project materials.",
+        description: "Special crating and wrapping for weather-sensitive or corrosion-prone project materials.",
       },
       {
         icon: IconClock,
         title: "Milestone-Based Execution",
-        description:
-          "Time-specific planning to ensure timely arrival aligned with your overall project timeline.",
+        description: "Time-specific planning to ensure timely arrival aligned with your overall project timeline.",
       },
       {
         icon: IconUserHexagon,
         title: "On-Ground Technical Teams",
-        description:
-          "Certified engineers and supervisors at origin and destination to oversee lifting and handling.",
+        description: "Certified engineers and supervisors at origin and destination to oversee lifting and handling.",
       },
       {
         icon: IconFileDescription,
         title: "Regulatory & Customs Compliance",
-        description:
-          "Full assistance with import/export licenses, special handling approvals, and local regulations.",
+        description: "Full assistance with import/export licenses, special handling approvals, and local regulations.",
       },
     ],
   },
@@ -510,8 +478,7 @@ export const SERVICES = [
           },
           {
             title: "Export-Compliant Packaging",
-            description:
-              "ISPM-15 certified wood packing and documentation for hassle-free global shipping.",
+            description: "ISPM-15 certified wood packing and documentation for hassle-free global shipping.",
           },
           {
             title: "Shock & Vibration Protection",
@@ -520,8 +487,7 @@ export const SERVICES = [
           },
           {
             title: "Moisture & Corrosion Control",
-            description:
-              "Vacuum sealing, desiccants, and anti-rust packaging for metal and moisture-sensitive goods.",
+            description: "Vacuum sealing, desiccants, and anti-rust packaging for metal and moisture-sensitive goods.",
           },
           {
             title: "Hazardous Cargo Packaging",
@@ -530,8 +496,7 @@ export const SERVICES = [
           },
           {
             title: "Labeling & Documentation",
-            description:
-              "Proper labeling for handling, destination, and compliance with shipping regulations.",
+            description: "Proper labeling for handling, destination, and compliance with shipping regulations.",
           },
         ],
       },
@@ -575,14 +540,12 @@ export const SERVICES = [
       {
         icon: IconSnowflake,
         title: "Temperature-Sensitive Packaging",
-        description:
-          "Special packing for pharmaceuticals, perishables, and climate-sensitive products.",
+        description: "Special packing for pharmaceuticals, perishables, and climate-sensitive products.",
       },
       {
         icon: IconClock,
         title: "Time-Critical Packing",
-        description:
-          "Rapid packing turnaround for urgent shipments without compromising quality or compliance.",
+        description: "Rapid packing turnaround for urgent shipments without compromising quality or compliance.",
       },
       {
         icon: IconUserHexagon,
@@ -593,8 +556,7 @@ export const SERVICES = [
       {
         icon: IconFileDescription,
         title: "Compliance & Export Documentation",
-        description:
-          "Full support for packing lists, certifications, and customs-ready documentation.",
+        description: "Full support for packing lists, certifications, and customs-ready documentation.",
       },
     ],
   },
@@ -636,8 +598,7 @@ export const SERVICES = [
           },
           {
             title: "Inventory Management Systems",
-            description:
-              "Real-time stock monitoring, reporting, and integration with your ERP or sales platforms.",
+            description: "Real-time stock monitoring, reporting, and integration with your ERP or sales platforms.",
           },
           {
             title: "Value-Added Services",
@@ -651,8 +612,7 @@ export const SERVICES = [
           },
           {
             title: "High-Security Facilities",
-            description:
-              "24/7 CCTV surveillance, fire suppression systems, and access control to protect your goods.",
+            description: "24/7 CCTV surveillance, fire suppression systems, and access control to protect your goods.",
           },
         ],
       },
@@ -687,26 +647,22 @@ export const SERVICES = [
       {
         icon: IconSnowflake,
         title: "Cold Chain Storage",
-        description:
-          "Temperature-controlled zones within warehouses for food, medicine, and sensitive goods.",
+        description: "Temperature-controlled zones within warehouses for food, medicine, and sensitive goods.",
       },
       {
         icon: IconClock,
         title: "24/7 Operations & Access",
-        description:
-          "Around-the-clock warehouse operations to keep your supply chain moving—day or night.",
+        description: "Around-the-clock warehouse operations to keep your supply chain moving—day or night.",
       },
       {
         icon: IconUserHexagon,
         title: "Dedicated Warehouse Staff",
-        description:
-          "Trained warehouse personnel for handling, sorting, and managing specialized goods with care.",
+        description: "Trained warehouse personnel for handling, sorting, and managing specialized goods with care.",
       },
       {
         icon: IconFileDescription,
         title: "Integrated Inventory Reporting",
-        description:
-          "Detailed tracking, analytics, and inventory reporting via our warehouse management system (WMS).",
+        description: "Detailed tracking, analytics, and inventory reporting via our warehouse management system (WMS).",
       },
     ],
   },
@@ -743,8 +699,7 @@ export const SERVICES = [
           },
           {
             title: "Pre & Post Event Storage",
-            description:
-              "Temporary warehousing before and after events to manage returns or multiple show schedules.",
+            description: "Temporary warehousing before and after events to manage returns or multiple show schedules.",
           },
           {
             title: "Venue Access & Scheduling",
@@ -753,8 +708,7 @@ export const SERVICES = [
           },
           {
             title: "Customs Clearance for Temporary Imports",
-            description:
-              "ATA Carnet and temporary import/export documentation support for international exhibitions.",
+            description: "ATA Carnet and temporary import/export documentation support for international exhibitions.",
           },
           {
             title: "Fragile & High-Value Cargo Handling",
@@ -763,8 +717,7 @@ export const SERVICES = [
           },
           {
             title: "Return Logistics & Reverse Shipping",
-            description:
-              "Post-event pickup and shipment back to origin or to the next exhibition destination.",
+            description: "Post-event pickup and shipment back to origin or to the next exhibition destination.",
           },
         ],
       },
@@ -790,8 +743,7 @@ export const SERVICES = [
       {
         icon: IconDoor,
         title: "Booth-to-Booth Handling",
-        description:
-          "We manage logistics between consecutive exhibitions or events, including repacking and routing.",
+        description: "We manage logistics between consecutive exhibitions or events, including repacking and routing.",
       },
       {
         icon: IconMap2,
@@ -802,26 +754,22 @@ export const SERVICES = [
       {
         icon: IconSnowflake,
         title: "Climate-Controlled Transport",
-        description:
-          "Protect temperature-sensitive displays or equipment during transit and storage.",
+        description: "Protect temperature-sensitive displays or equipment during transit and storage.",
       },
       {
         icon: IconClock,
         title: "Time-Sensitive Delivery Windows",
-        description:
-          "Timed unloading and entry to match venue access slots and strict exhibitor schedules.",
+        description: "Timed unloading and entry to match venue access slots and strict exhibitor schedules.",
       },
       {
         icon: IconUserHexagon,
         title: "Onsite Support Staff",
-        description:
-          "Experienced personnel at venue for supervision, unloading, and booth coordination.",
+        description: "Experienced personnel at venue for supervision, unloading, and booth coordination.",
       },
       {
         icon: IconFileDescription,
         title: "ATA Carnet & Temporary Clearance",
-        description:
-          "Expert handling of temporary admission paperwork, re-export formalities, and customs compliance.",
+        description: "Expert handling of temporary admission paperwork, re-export formalities, and customs compliance.",
       },
     ],
   },
@@ -863,8 +811,7 @@ export const SERVICES = [
           },
           {
             title: "ISPM-15 Certified Wood Blocking",
-            description:
-              "Treated wood chocking, bracing, and dunnage that meets international shipping standards.",
+            description: "Treated wood chocking, bracing, and dunnage that meets international shipping standards.",
           },
           {
             title: "Personal & Office Relocation",
@@ -878,8 +825,7 @@ export const SERVICES = [
           },
           {
             title: "Rigging & Crating Services",
-            description:
-              "Lifting, hoisting, and securing of large or awkward loads using proper tools and equipment.",
+            description: "Lifting, hoisting, and securing of large or awkward loads using proper tools and equipment.",
           },
         ],
       },
@@ -908,14 +854,12 @@ export const SERVICES = [
       {
         icon: IconSnowflake,
         title: "Delicate Equipment Handling",
-        description:
-          "Soft lashing and shock absorption for sensitive instruments and precision machinery.",
+        description: "Soft lashing and shock absorption for sensitive instruments and precision machinery.",
       },
       {
         icon: IconClock,
         title: "Quick Turnaround & Emergency Moves",
-        description:
-          "Rapid deployment for urgent relocation, export, or site transfer needs with full support.",
+        description: "Rapid deployment for urgent relocation, export, or site transfer needs with full support.",
       },
       {
         icon: IconUserHexagon,
@@ -926,8 +870,7 @@ export const SERVICES = [
       {
         icon: IconFileDescription,
         title: "Lashing Certificates & Inspection Reports",
-        description:
-          "Documentation provided for customs, shipping lines, or compliance requirements.",
+        description: "Documentation provided for customs, shipping lines, or compliance requirements.",
       },
     ],
   },

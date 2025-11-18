@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 
-import { ValueAnimationTransition, motion } from "motion/react";
+import { motion, ValueAnimationTransition } from "motion/react";
 
 interface UnderlineProps {
   label: string;
@@ -29,17 +29,11 @@ const UnderlineToBackground = ({
   useEffect(() => {
     const updateUnderlineStyles = () => {
       if (textRef.current) {
-        const fontSize = parseFloat(getComputedStyle(textRef.current).fontSize);
+        const fontSize = Number.parseFloat(getComputedStyle(textRef.current).fontSize);
         const underlineHeight = fontSize * underlineHeightRatio;
         const underlinePadding = fontSize * underlinePaddingRatio;
-        textRef.current.style.setProperty(
-          "--underline-height",
-          `${underlineHeight}px`
-        );
-        textRef.current.style.setProperty(
-          "--underline-padding",
-          `${underlinePadding}px`
-        );
+        textRef.current.style.setProperty("--underline-height", `${underlineHeight}px`);
+        textRef.current.style.setProperty("--underline-padding", `${underlinePadding}px`);
       }
     };
 
@@ -72,21 +66,21 @@ const UnderlineToBackground = ({
   return (
     <motion.span
       className={`relative inline-block cursor-pointer ${className}`}
-      whileHover="target"
       onClick={onClick}
       ref={textRef}
+      whileHover="target"
       {...props}
     >
       <motion.span
+        aria-hidden="true"
         className="absolute w-full bg-current"
         style={{
           height: "var(--underline-height)",
           bottom: "calc(-1 * var(--underline-padding))",
         }}
         variants={underlineVariants}
-        aria-hidden="true"
       />
-      <motion.span variants={textVariants} className="relative text-current">
+      <motion.span className="relative text-current" variants={textVariants}>
         {label}
       </motion.span>
     </motion.span>

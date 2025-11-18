@@ -20,10 +20,7 @@ export const contactSchema = z.object({
 
   phoneNumber: z
     .string()
-    .regex(
-      /^(\+\d{1,3}[- ]?)?\(?\d{3}\)?[- ]?\d{3}[- ]?\d{4}$/,
-      "Please enter a valid phone number"
-    ),
+    .regex(/^(\+\d{1,3}[- ]?)?\(?\d{3}\)?[- ]?\d{3}[- ]?\d{4}$/, "Please enter a valid phone number"),
 
   serviceType: z.enum(
     [

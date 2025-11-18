@@ -10,10 +10,7 @@ interface InsightsListProps {
   pageSize?: number;
 }
 
-export function InsightsList({
-  initialInsights,
-  pageSize = 6,
-}: InsightsListProps) {
+export function InsightsList({ initialInsights, pageSize = 6 }: InsightsListProps) {
   const [insights, setInsights] = useState<InsightCardProps[]>(initialInsights);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -62,12 +59,12 @@ export function InsightsList({
       {/* Loading indicator */}
       {loading && (
         <div className="flex justify-center py-4">
-          <div className="border-primary h-8 w-8 animate-spin rounded-full border-4 border-t-transparent" />
+          <div className="h-8 w-8 animate-spin rounded-full border-4 border-primary border-t-transparent" />
         </div>
       )}
 
       {/* Intersection observer target */}
-      <div ref={loadMoreRef} className="h-4" />
+      <div className="h-4" ref={loadMoreRef} />
     </div>
   );
 }

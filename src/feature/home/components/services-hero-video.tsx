@@ -6,6 +6,7 @@ import { Volume2, VolumeX } from "lucide-react";
 import { motion, useScroll, useTransform } from "motion/react";
 
 import { Button } from "@/components/ui/button";
+
 import { cn } from "@/lib/utils";
 
 const useDeviceType = () => {
@@ -81,10 +82,7 @@ export const ServicesHeroVideo = () => {
 
       try {
         if (isVisible) {
-          const playPromises = [
-            videoRef.current.play(),
-            blurVideoRef.current.play(),
-          ];
+          const playPromises = [videoRef.current.play(), blurVideoRef.current.play()];
           await Promise.all(playPromises);
         } else {
           videoRef.current.pause();
@@ -129,9 +127,7 @@ export const ServicesHeroVideo = () => {
       preload: "metadata",
       loop: true,
       playsInline: true,
-      className: cn(
-        "relative z-10 h-full w-full rounded-lg border object-cover sm:rounded-xl md:rounded-2xl"
-      ),
+      className: cn("relative z-10 h-full w-full rounded-lg border object-cover sm:rounded-xl md:rounded-2xl"),
       onClick: handleInteraction,
     }),
     [hasInteracted, isMuted, handleInteraction]
@@ -140,10 +136,7 @@ export const ServicesHeroVideo = () => {
   const blurVideoProps = useMemo(
     () => ({
       ...videoProps,
-      className: cn(
-        "absolute inset-0 h-full w-full object-cover",
-        isMobile ? "blur-lg" : "blur-2xl sm:blur-3xl"
-      ),
+      className: cn("absolute inset-0 h-full w-full object-cover", isMobile ? "blur-lg" : "blur-2xl sm:blur-3xl"),
       "aria-hidden": true,
     }),
     [videoProps, isMobile]
@@ -151,22 +144,15 @@ export const ServicesHeroVideo = () => {
 
   return (
     <div
-      ref={containerRef}
-      className="relative z-40 container max-w-7xl px-4 py-9 sm:py-24 md:py-32 lg:py-36"
+      className="container relative z-40 max-w-7xl px-4 py-9 sm:py-24 md:py-32 lg:py-36"
       onClick={handleInteraction}
+      ref={containerRef}
     >
       <motion.div
-        className={cn(
-          "relative transition-opacity duration-1000",
-          !isLoaded && "opacity-0"
-        )}
+        className={cn("relative transition-opacity duration-1000", !isLoaded && "opacity-0")}
         style={!isMobile ? { scale, y } : undefined}
       >
-        <video
-          ref={videoRef}
-          {...videoProps}
-          aria-label="Maxline logistics services showcase video"
-        >
+        <video ref={videoRef} {...videoProps} aria-label="Maxline logistics services showcase video">
           <source src="/videos/maxline-web.webm" type="video/webm" />
           Your browser does not support the video tag.
         </video>
@@ -175,23 +161,19 @@ export const ServicesHeroVideo = () => {
         </video>
 
         <Button
-          onClick={toggleMute}
           aria-label={isMuted ? "Unmute video" : "Mute video"}
+          className="absolute right-4 bottom-4 z-20"
+          onClick={toggleMute}
           size="iconLarge"
           variant="icon"
-          className="absolute right-4 bottom-4 z-20"
         >
-          {isMuted ? (
-            <VolumeX className="size-6 shrink-0" />
-          ) : (
-            <Volume2 className="size-6 shrink-0" />
-          )}
+          {isMuted ? <VolumeX className="size-6 shrink-0" /> : <Volume2 className="size-6 shrink-0" />}
         </Button>
       </motion.div>
 
       {!isLoaded && (
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="border-primary h-12 w-12 animate-spin rounded-full border-4 border-t-transparent sm:h-16 sm:w-16" />
+          <div className="h-12 w-12 animate-spin rounded-full border-4 border-primary border-t-transparent sm:h-16 sm:w-16" />
         </div>
       )}
     </div>

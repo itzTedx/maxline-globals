@@ -9,10 +9,7 @@ interface ScrollRevealTextProps {
   className?: string;
 }
 
-export const ScrollRevealText = ({
-  children,
-  className = "",
-}: ScrollRevealTextProps) => {
+export const ScrollRevealText = ({ children, className = "" }: ScrollRevealTextProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -24,11 +21,7 @@ export const ScrollRevealText = ({
   const blur = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [10, 0, 0, 10]);
 
   return (
-    <motion.div
-      ref={ref}
-      style={{ opacity, y, filter: `blur(${blur}px)` }}
-      className={className}
-    >
+    <motion.div className={className} ref={ref} style={{ opacity, y, filter: `blur(${blur}px)` }}>
       {children}
     </motion.div>
   );

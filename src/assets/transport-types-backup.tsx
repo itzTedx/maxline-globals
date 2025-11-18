@@ -2,11 +2,9 @@
 
 import React, { useEffect, useRef } from "react";
 
-import { SVGMotionProps, motion, useAnimationControls } from "framer-motion";
+import { motion, SVGMotionProps, useAnimationControls } from "framer-motion";
 
-export const TransportTypes = (
-  props: React.JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>
-) => {
+export const TransportTypes = (props: React.JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>) => {
   const circleRef = useRef<SVGCircleElement>(null);
   const controls = useAnimationControls();
 
@@ -102,34 +100,34 @@ export const TransportTypes = (
   return (
     <motion.svg
       {...(props as SVGMotionProps<SVGSVGElement>)}
-      width="395"
-      height="334"
-      viewBox="0 0 395 334"
       fill="none"
-      xmlns="http://www.w3.org/2000/svg"
+      height="334"
       initial="hidden"
-      whileInView="visible"
+      viewBox="0 0 395 334"
       viewport={{ once: true }}
+      whileInView="visible"
+      width="395"
+      xmlns="http://www.w3.org/2000/svg"
     >
       <image
+        clipPath="url(#circleClip)"
+        height="300"
         href="/images/transportation-types.jpg"
+        preserveAspectRatio="xMidYMid slice"
+        width="300"
         x="83"
         y="21"
-        width="300"
-        height="300"
-        preserveAspectRatio="xMidYMid slice"
-        clipPath="url(#circleClip)"
       />
 
       <motion.circle
         cx="232"
         cy="171"
+        fill="none"
         r="162.5"
         stroke="url(#paint0_linear_3_6)"
         strokeWidth="1"
-        fill="none"
-        variants={largeCircleVariants}
         style={{ pathLength: 0 }}
+        variants={largeCircleVariants}
       />
 
       {/* <motion.g variants={containerVariants}>
@@ -265,14 +263,7 @@ export const TransportTypes = (
         <clipPath id="circleClip">
           <circle cx="233" cy="171" r="150" />
         </clipPath>
-        <linearGradient
-          id="paint0_linear_3_6"
-          x1="68"
-          y1="175"
-          x2="395"
-          y2="175"
-          gradientUnits="userSpaceOnUse"
-        >
+        <linearGradient gradientUnits="userSpaceOnUse" id="paint0_linear_3_6" x1="68" x2="395" y1="175" y2="175">
           <stop stopColor="white" />
           <stop offset="1" stopColor="white" stopOpacity="0" />
         </linearGradient>

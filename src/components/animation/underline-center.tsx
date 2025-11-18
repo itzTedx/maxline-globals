@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 
-import { ValueAnimationTransition, motion } from "motion/react";
+import { motion, ValueAnimationTransition } from "motion/react";
 
 interface UnderlineProps {
   label: string;
@@ -27,17 +27,11 @@ const CenterUnderline = ({
   useEffect(() => {
     const updateUnderlineStyles = () => {
       if (textRef.current) {
-        const fontSize = parseFloat(getComputedStyle(textRef.current).fontSize);
+        const fontSize = Number.parseFloat(getComputedStyle(textRef.current).fontSize);
         const underlineHeight = fontSize * underlineHeightRatio;
         const underlinePadding = fontSize * underlinePaddingRatio;
-        textRef.current.style.setProperty(
-          "--underline-height",
-          `${underlineHeight}px`
-        );
-        textRef.current.style.setProperty(
-          "--underline-padding",
-          `${underlinePadding}px`
-        );
+        textRef.current.style.setProperty("--underline-height", `${underlineHeight}px`);
+        textRef.current.style.setProperty("--underline-padding", `${underlinePadding}px`);
       }
     };
 
@@ -61,9 +55,9 @@ const CenterUnderline = ({
   return (
     <motion.span
       className={`relative inline-block cursor-pointer ${className}`}
-      whileHover="visible"
       onClick={onClick}
       ref={textRef}
+      whileHover="visible"
       {...props}
     >
       <span>{label}</span>

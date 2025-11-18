@@ -8,11 +8,7 @@ interface UseInfiniteScrollProps {
   loading: boolean;
 }
 
-export function useInfiniteScroll({
-  onLoadMore,
-  hasMore,
-  loading,
-}: UseInfiniteScrollProps) {
+export function useInfiniteScroll({ onLoadMore, hasMore, loading }: UseInfiniteScrollProps) {
   const [isIntersecting, setIsIntersecting] = useState(false);
   const observerRef = useRef<IntersectionObserver | null>(null);
   const loadMoreRef = useRef<HTMLDivElement>(null);

@@ -3,6 +3,8 @@ import type { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
 
 const nextConfig: NextConfig = {
+  typedRoutes: true,
+
   images: {
     formats: ["image/avif", "image/webp"],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
@@ -11,13 +13,7 @@ const nextConfig: NextConfig = {
   },
 
   experimental: {
-    optimizePackageImports: [
-      "@tabler/icons-react",
-      "lucide-react",
-      "date-fns",
-      "@radix-ui",
-      "lodash",
-    ],
+    optimizePackageImports: ["@tabler/icons-react", "lucide-react", "date-fns", "@radix-ui", "lodash"],
     serverActions: {
       bodySizeLimit: "2mb",
     },

@@ -1,7 +1,6 @@
 import { IconMenu2 } from "@tabler/icons-react";
 import { useTranslations } from "next-intl";
 
-import { Logo } from "@/assets/logo";
 import { Button } from "@/components/ui/button";
 import {
   Drawer,
@@ -14,6 +13,9 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 import { ScrollArea } from "@/components/ui/scroll-area";
+
+import { Logo } from "@/assets/logo";
+
 import { NavLink } from "@/constants";
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
@@ -29,12 +31,8 @@ export const MobileNav = ({ links }: Props) => {
   const t = useTranslations("Navigation");
   return (
     <Drawer>
-      <DrawerTrigger
-        className="lg:hidden"
-        aria-label="Toggle mobile menu"
-        asChild
-      >
-        <Button variant="outline" size="icon" className="z-[9999]">
+      <DrawerTrigger aria-label="Toggle mobile menu" asChild className="lg:hidden">
+        <Button className="z-[9999]" size="icon" variant="outline">
           <IconMenu2 />
         </Button>
       </DrawerTrigger>
@@ -43,9 +41,7 @@ export const MobileNav = ({ links }: Props) => {
         <DrawerHeader className="border-b">
           <Logo className="mx-auto" />
           <DrawerTitle className="sr-only">Maxline</DrawerTitle>
-          <DrawerDescription className="sr-only">
-            Global Logistics Solutions
-          </DrawerDescription>
+          <DrawerDescription className="sr-only">Global Logistics Solutions</DrawerDescription>
         </DrawerHeader>
 
         <ScrollArea className="h-96">
@@ -54,13 +50,11 @@ export const MobileNav = ({ links }: Props) => {
               <li key={link.href}>
                 <DrawerClose asChild>
                   <Link
-                    href={link.href}
                     className={cn(
                       "block",
-                      link.submenu
-                        ? "text-brand-gray pt-2 text-sm font-light"
-                        : "py-2 font-medium"
+                      link.submenu ? "pt-2 font-light text-brand-gray text-sm" : "py-2 font-medium"
                     )}
+                    href={link.href}
                   >
                     {t(link.title as Parameters<typeof t>[0])}
                   </Link>
@@ -70,10 +64,7 @@ export const MobileNav = ({ links }: Props) => {
                     {link.submenu.map((submenu) => (
                       <li key={submenu.href}>
                         <DrawerClose asChild>
-                          <Link
-                            href={submenu.href}
-                            className="block p-2 font-medium"
-                          >
+                          <Link className="block p-2 font-medium" href={submenu.href}>
                             {t(submenu.title as Parameters<typeof t>[0])}
                           </Link>
                         </DrawerClose>

@@ -2,12 +2,7 @@
 
 import React, { useEffect, useRef } from "react";
 
-import {
-  SVGMotionProps,
-  easeInOut,
-  motion,
-  useAnimationControls,
-} from "motion/react";
+import { easeInOut, motion, SVGMotionProps, useAnimationControls } from "motion/react";
 
 type TransportTypesProps = React.SVGProps<SVGSVGElement> & { rtl?: boolean };
 
@@ -44,57 +39,48 @@ export const TransportTypes = (props: TransportTypesProps) => {
   return (
     <motion.svg
       {...(svgProps as SVGMotionProps<SVGSVGElement>)}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
-      width="326"
-      height="326"
-      viewBox="0 0 326 326"
       fill="none"
+      height="326"
+      initial="hidden"
+      viewBox="0 0 326 326"
+      viewport={{ once: true }}
+      whileInView="visible"
+      width="326"
       xmlns="http://www.w3.org/2000/svg"
     >
       <motion.circle
-        variants={largeCircleVariants}
-        style={{ pathLength: 0 }}
         cx="163"
         cy="163"
-        r="147"
         fill="url(#pattern0_503_1621)"
+        r="147"
+        style={{ pathLength: 0 }}
+        variants={largeCircleVariants}
       />
       <motion.circle
-        variants={largeCircleVariants}
-        style={{ pathLength: 0 }}
         cx="163"
         cy="163"
         r="162.5"
         stroke="url(#paint0_linear_503_1621)"
+        style={{ pathLength: 0 }}
+        variants={largeCircleVariants}
       />
       <image
+        clipPath="url(#circleClip)"
+        height="320"
         href="/images/transportation-types.jpg"
+        preserveAspectRatio="xMidYMid slice"
+        width="320"
         x="5"
         y="5"
-        width="320"
-        height="320"
-        preserveAspectRatio="xMidYMid slice"
-        clipPath="url(#circleClip)"
       />
       <defs>
         <clipPath id="circleClip">
           <circle cx="163" cy="163" r="150" />
         </clipPath>
-        <pattern
-          id="pattern0_503_1621"
-          patternContentUnits="objectBoundingBox"
-          width="1"
-          height="1"
-        >
-          <use xlinkHref="#image0_503_1621" transform="scale(0.000308642)" />
+        <pattern height="1" id="pattern0_503_1621" patternContentUnits="objectBoundingBox" width="1">
+          <use transform="scale(0.000308642)" xlinkHref="#image0_503_1621" />
         </pattern>
-        <linearGradient
-          id="paint0_linear_503_1621"
-          {...gradientProps}
-          gradientUnits="userSpaceOnUse"
-        >
+        <linearGradient id="paint0_linear_503_1621" {...gradientProps} gradientUnits="userSpaceOnUse">
           <stop stopColor="white" />
           <stop offset="1" stopColor="white" stopOpacity="0" />
         </linearGradient>

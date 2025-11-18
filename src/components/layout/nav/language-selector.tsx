@@ -1,13 +1,13 @@
 "use client";
 
-import { useParams } from "next/navigation";
 import { useTransition } from "react";
+
+import { useParams } from "next/navigation";
 
 import { IconArrowDown } from "@tabler/icons-react";
 import { motion } from "motion/react";
 import { Locale } from "next-intl";
 
-import { FlagEn, FlagUae } from "@/assets/flags";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -15,6 +15,9 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+
+import { FlagEn, FlagUae } from "@/assets/flags";
+
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 
@@ -52,42 +55,37 @@ export function LanguageSelector({ className }: Props) {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <motion.button
-          type="button"
           className={cn(
-            "text-brand-dark flex h-11 cursor-pointer items-center justify-center gap-2.5 rounded-md bg-white pr-1.5 pl-4 rtl:pr-4 rtl:pl-1.5",
+            "flex h-11 cursor-pointer items-center justify-center gap-2.5 rounded-md bg-white pr-1.5 pl-4 text-brand-dark rtl:pr-4 rtl:pl-1.5",
             isPending && "pointer-events-none opacity-50",
             className
           )}
-          role="button"
           disabled={isPending}
+          role="button"
+          type="button"
         >
-          <span className="text-sm font-semibold">{currentLang?.label}</span>
-          <div className="bg-background flex size-8 shrink-0 items-center justify-center rounded">
+          <span className="font-semibold text-sm">{currentLang?.label}</span>
+          <div className="flex size-8 shrink-0 items-center justify-center rounded bg-background">
             <IconArrowDown className={cn("size-4 transition-transform")} />
           </div>
         </motion.button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="md:min-w-fit" align="start">
+      <DropdownMenuContent align="start" className="md:min-w-fit">
         <DropdownMenuGroup className="flex flex-col gap-1">
           {LANGUAGES.map((lang) => (
-            <DropdownMenuItem
-              key={lang.code}
-              className="max-md:px-3 max-md:py-2.5"
-            >
+            <DropdownMenuItem className="max-md:px-3 max-md:py-2.5" key={lang.code}>
               <button
                 className={cn(
                   "flex cursor-pointer items-center gap-2 rounded-md text-left transition md:gap-1.5",
-                  currentLocale === lang.code && "text-brand-dark font-bold"
+                  currentLocale === lang.code && "font-bold text-brand-dark"
                 )}
+                disabled={isPending}
                 onClick={() => handleSelect(lang.code)}
                 role="menuitem"
-                disabled={isPending}
               >
                 <lang.Icon className="size-5" />
                 {lang.title}
-                {currentLocale === lang.code && (
-                  <span className="bg-muted absolute inset-0 -z-1 rounded-sm" />
-                )}
+                {currentLocale === lang.code && <span className="-z-1 absolute inset-0 rounded-sm bg-muted" />}
               </button>
             </DropdownMenuItem>
           ))}

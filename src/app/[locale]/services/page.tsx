@@ -4,6 +4,7 @@ import Script from "next/script";
 import { getTranslations } from "next-intl/server";
 
 import { HeroHeader } from "@/components/hero-header";
+
 import { SERVICES } from "@/constants";
 import { siteConfig } from "@/constants/site-config";
 import { Cta } from "@/feature/cta";
@@ -58,8 +59,6 @@ export default async function ServicesPage() {
   return (
     <>
       <Script
-        id="services-schema"
-        type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
@@ -86,26 +85,28 @@ export default async function ServicesPage() {
             },
           }),
         }}
+        id="services-schema"
+        type="application/ld+json"
       />
       <main
-        className="bg-background relative z-10 overflow-hidden rounded-b-3xl pb-20 shadow-xl"
+        className="relative z-10 overflow-hidden rounded-b-3xl bg-background pb-20 shadow-xl"
         itemScope
         itemType="https://schema.org/WebPage"
       >
         <article>
           <HeroHeader
-            subtitle={t("subtitle")}
             className="container"
-            title={t("mainTitle")}
             description={t("description")}
+            subtitle={t("subtitle")}
+            title={t("mainTitle")}
           />
           <section
-            className="container max-w-7xl"
             aria-label={t("ourServices")}
+            className="container max-w-7xl"
             itemScope
             itemType="https://schema.org/ItemList"
           >
-            <ServicesGrid services={SERVICES} isExpanded />
+            <ServicesGrid isExpanded services={SERVICES} />
           </section>
           <Cta />
         </article>

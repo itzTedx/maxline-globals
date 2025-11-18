@@ -13,29 +13,13 @@ import { toast } from "sonner";
 import LetterSwapPingPong from "@/components/animation/letter-swap-pingpong-anim";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
 import { Textarea } from "@/components/ui/textarea";
+
 import { sendQuote } from "@/feature/forms/sendQuote";
 import { cn } from "@/lib/utils";
 
@@ -51,17 +35,8 @@ const FormSection = ({
   children: React.ReactNode;
   className?: string;
 }) => (
-  <div
-    className={cn(
-      "space-y-6 rounded-2xl bg-white p-4 sm:p-6 md:p-10",
-      className
-    )}
-  >
-    {title && (
-      <h3 className="text-secondary text-2xl sm:text-3xl md:text-4xl">
-        {title}
-      </h3>
-    )}
+  <div className={cn("space-y-6 rounded-2xl bg-white p-4 sm:p-6 md:p-10", className)}>
+    {title && <h3 className="text-2xl text-secondary sm:text-3xl md:text-4xl">{title}</h3>}
     {children}
   </div>
 );
@@ -90,15 +65,11 @@ const FormInput = <T extends FieldValues>({
         <FormLabel>{label}</FormLabel>
         <FormControl>
           <Input
-            type={type}
             placeholder={placeholder}
+            type={type}
             {...field}
+            onChange={type === "number" ? (e) => field.onChange(Number(e.target.value)) : field.onChange}
             value={field.value as string}
-            onChange={
-              type === "number"
-                ? (e) => field.onChange(Number(e.target.value))
-                : field.onChange
-            }
           />
         </FormControl>
         <FormMessage />
@@ -128,12 +99,7 @@ const FormTextarea = <T extends FieldValues>({
       <FormItem className={className}>
         <FormLabel>{label}</FormLabel>
         <FormControl>
-          <Textarea
-            placeholder={placeholder}
-            className="resize-none"
-            {...field}
-            value={field.value as string}
-          />
+          <Textarea className="resize-none" placeholder={placeholder} {...field} value={field.value as string} />
         </FormControl>
         <FormMessage />
       </FormItem>
@@ -161,30 +127,24 @@ const FormDatePicker = <T extends FieldValues>({
           <PopoverTrigger asChild>
             <FormControl>
               <Button
-                variant={"outline"}
                 className={cn(
-                  "border-muted-foreground/20 bg-muted w-full pl-3 text-left font-normal",
+                  "w-full border-muted-foreground/20 bg-muted pl-3 text-left font-normal",
                   !field.value && "text-muted-foreground"
                 )}
+                variant={"outline"}
               >
-                {field.value ? (
-                  format(field.value as Date, "PPP")
-                ) : (
-                  <span>Pick a date</span>
-                )}
+                {field.value ? format(field.value as Date, "PPP") : <span>Pick a date</span>}
                 <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
               </Button>
             </FormControl>
           </PopoverTrigger>
-          <PopoverContent className="w-auto p-0" align="start">
+          <PopoverContent align="start" className="w-auto p-0">
             <Calendar
-              mode="single"
-              selected={field.value as Date}
-              onSelect={field.onChange}
-              disabled={(date) =>
-                date < new Date() || date < new Date("1900-01-01")
-              }
+              disabled={(date) => date < new Date() || date < new Date("1900-01-01")}
               initialFocus
+              mode="single"
+              onSelect={field.onChange}
+              selected={field.value as Date}
             />
           </PopoverContent>
         </Popover>
@@ -214,12 +174,9 @@ const FormSelect = <T extends FieldValues>({
     render={({ field }) => (
       <FormItem className="w-full">
         <FormLabel>{label}</FormLabel>
-        <Select
-          onValueChange={field.onChange}
-          defaultValue={field.value as string}
-        >
+        <Select defaultValue={field.value as string} onValueChange={field.onChange}>
           <FormControl>
-            <SelectTrigger className="border-muted-foreground/20 bg-muted !h-11 w-full">
+            <SelectTrigger className="!h-11 w-full border-muted-foreground/20 bg-muted">
               <SelectValue placeholder={placeholder} />
             </SelectTrigger>
           </FormControl>
@@ -282,20 +239,14 @@ export const QuoteForm = () => {
           Object.entries(res.error).forEach(([field, messages]) => {
             form.setError(field as keyof QuoteFormData, {
               type: "server",
-              message: Array.isArray(messages)
-                ? messages.join(", ")
-                : String(messages),
+              message: Array.isArray(messages) ? messages.join(", ") : String(messages),
             });
           });
-          toast.error(
-            "There was an error with your submission. Please check the form for details."
-          );
+          toast.error("There was an error with your submission. Please check the form for details.");
         } else if (typeof res.error === "string") {
           toast.error(res.error);
         } else {
-          toast.error(
-            "There was an error sending your quote request. Please try again."
-          );
+          toast.error("There was an error sending your quote request. Please try again.");
         }
         setResult(res);
       }
@@ -304,10 +255,7 @@ export const QuoteForm = () => {
 
   return (
     <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="container max-w-7xl space-y-3 px-4 sm:px-6 md:px-8"
-      >
+      <form className="container max-w-7xl space-y-3 px-4 sm:px-6 md:px-8" onSubmit={form.handleSubmit(onSubmit)}>
         {result && (
           <div className={result.success ? "text-green-600" : "text-red-600"}>
             {result.success
@@ -317,41 +265,37 @@ export const QuoteForm = () => {
         )}
         <FormSection>
           <div className="space-y-4">
-            <h2 className="font-grotesk text-brand-dark text-3xl tracking-tight text-balance sm:text-4xl md:text-5xl">
+            <h2 className="text-balance font-grotesk text-3xl text-brand-dark tracking-tight sm:text-4xl md:text-5xl">
               {t("main.title")}
             </h2>
-            <p className="text-brand-gray text-lg leading-normal font-light sm:text-xl">
-              {t("main.description")}
-            </p>
+            <p className="font-light text-brand-gray text-lg leading-normal sm:text-xl">{t("main.description")}</p>
             <Separator />
-            <h3 className="text-secondary text-2xl sm:text-3xl md:text-4xl">
-              {t("basicInfo.sectionTitle")}
-            </h3>
+            <h3 className="text-2xl text-secondary sm:text-3xl md:text-4xl">{t("basicInfo.sectionTitle")}</h3>
           </div>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <FormInput<QuoteFormData>
               control={form.control}
-              name="customerName"
               label={t("basicInfo.customerName.label")}
+              name="customerName"
               placeholder={t("basicInfo.customerName.placeholder")}
             />
             <FormInput<QuoteFormData>
               control={form.control}
-              name="companyName"
               label={t("basicInfo.companyName.label")}
+              name="companyName"
               placeholder={t("basicInfo.companyName.placeholder")}
             />
             <FormInput<QuoteFormData>
               control={form.control}
-              name="email"
               label={t("basicInfo.email.label")}
+              name="email"
               placeholder={t("basicInfo.email.placeholder")}
               type="email"
             />
             <FormInput<QuoteFormData>
               control={form.control}
-              name="phone"
               label={t("basicInfo.phone.label")}
+              name="phone"
               placeholder={t("basicInfo.phone.placeholder")}
             />
           </div>
@@ -361,14 +305,14 @@ export const QuoteForm = () => {
           <FormSection title={t("senderInfo.sectionTitle")}>
             <FormInput<QuoteFormData>
               control={form.control}
-              name="senderName"
               label={t("senderInfo.senderName.label")}
+              name="senderName"
               placeholder={t("senderInfo.senderName.placeholder")}
             />
             <FormTextarea<QuoteFormData>
               control={form.control}
-              name="senderAddress"
               label={t("senderInfo.senderAddress.label")}
+              name="senderAddress"
               placeholder={t("senderInfo.senderAddress.placeholder")}
             />
           </FormSection>
@@ -376,14 +320,14 @@ export const QuoteForm = () => {
           <FormSection title={t("recipientInfo.sectionTitle")}>
             <FormInput<QuoteFormData>
               control={form.control}
-              name="recipientName"
               label={t("recipientInfo.recipientName.label")}
+              name="recipientName"
               placeholder={t("recipientInfo.recipientName.placeholder")}
             />
             <FormTextarea<QuoteFormData>
               control={form.control}
-              name="recipientAddress"
               label={t("recipientInfo.recipientAddress.label")}
+              name="recipientAddress"
               placeholder={t("recipientInfo.recipientAddress.placeholder")}
             />
           </FormSection>
@@ -393,16 +337,13 @@ export const QuoteForm = () => {
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
             <FormDatePicker<QuoteFormData>
               control={form.control}
-              name="preferredDeliveryDate"
               label={t("shippingInfo.preferredDeliveryDate.label")}
+              name="preferredDeliveryDate"
             />
             <FormSelect<QuoteFormData>
               control={form.control}
-              name="preferredModeOfTransport"
               label={t("shippingInfo.preferredModeOfTransport.label")}
-              placeholder={t(
-                "shippingInfo.preferredModeOfTransport.placeholder"
-              )}
+              name="preferredModeOfTransport"
               options={[
                 {
                   value: "air",
@@ -414,17 +355,15 @@ export const QuoteForm = () => {
                 },
                 {
                   value: "land",
-                  label: t(
-                    "shippingInfo.preferredModeOfTransport.options.land"
-                  ),
+                  label: t("shippingInfo.preferredModeOfTransport.options.land"),
                 },
               ]}
+              placeholder={t("shippingInfo.preferredModeOfTransport.placeholder")}
             />
             <FormSelect<QuoteFormData>
               control={form.control}
-              name="typeOfPackaging"
               label={t("shippingInfo.typeOfPackaging.label")}
-              placeholder={t("shippingInfo.typeOfPackaging.placeholder")}
+              name="typeOfPackaging"
               options={[
                 {
                   value: "standard",
@@ -443,11 +382,12 @@ export const QuoteForm = () => {
                   label: t("shippingInfo.typeOfPackaging.options.custom"),
                 },
               ]}
+              placeholder={t("shippingInfo.typeOfPackaging.placeholder")}
             />
             <FormDatePicker<QuoteFormData>
               control={form.control}
-              name="shippingDate"
               label={t("shippingInfo.shippingDate.label")}
+              name="shippingDate"
             />
           </div>
         </FormSection>
@@ -455,41 +395,41 @@ export const QuoteForm = () => {
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
             <FormInput<QuoteFormData>
               control={form.control}
-              name="pieces"
               label={t("packageInfo.pieces.label")}
+              name="pieces"
               placeholder={t("packageInfo.pieces.placeholder")}
               type="number"
             />
             <FormInput<QuoteFormData>
               control={form.control}
-              name="weight"
               label={t("packageInfo.weight.label")}
+              name="weight"
               placeholder={t("packageInfo.weight.placeholder")}
               type="number"
             />
             <FormInput<QuoteFormData>
               control={form.control}
-              name="volume"
               label={t("packageInfo.volume.label")}
+              name="volume"
               placeholder={t("packageInfo.volume.placeholder")}
               type="number"
             />
           </div>
 
           <FormTextarea<QuoteFormData>
-            control={form.control}
-            name="packageDescription"
-            label={t("packageInfo.packageDescription.label")}
-            placeholder={t("packageInfo.packageDescription.placeholder")}
             className="col-span-1 sm:col-span-2"
+            control={form.control}
+            label={t("packageInfo.packageDescription.label")}
+            name="packageDescription"
+            placeholder={t("packageInfo.packageDescription.placeholder")}
           />
 
           <FormTextarea<QuoteFormData>
-            control={form.control}
-            name="additionalInformation"
-            label={t("packageInfo.additionalInformation.label")}
-            placeholder={t("packageInfo.additionalInformation.placeholder")}
             className="col-span-1 sm:col-span-2"
+            control={form.control}
+            label={t("packageInfo.additionalInformation.label")}
+            name="additionalInformation"
+            placeholder={t("packageInfo.additionalInformation.placeholder")}
           />
 
           <FormField
@@ -500,9 +440,9 @@ export const QuoteForm = () => {
                 <FormLabel>{t("packageInfo.attachFiles.label")}</FormLabel>
                 <FormControl>
                   <Input
-                    type="file"
                     accept=".jpg,.jpeg,.png,.pdf"
                     onChange={(e) => onChange(e.target.files?.[0])}
+                    type="file"
                     {...field}
                     value={undefined}
                   />
@@ -513,20 +453,20 @@ export const QuoteForm = () => {
           />
         </FormSection>
         <Button
-          size="btnIcon"
-          variant="secondary"
-          className="bg-secondary text-background h-16 w-full pr-1 pl-6 text-xl"
-          type="submit"
+          className="h-16 w-full bg-secondary pr-1 pl-6 text-background text-xl"
           disabled={isPending}
+          size="btnIcon"
+          type="submit"
+          variant="secondary"
         >
           <LetterSwapPingPong
-            label={t("submit")}
-            staggerFrom="first"
-            reverse={false}
             className="w-full justify-start font-semibold"
+            label={t("submit")}
+            reverse={false}
+            staggerFrom="first"
           />
 
-          <div className="bg-background text-brand-dark group-hover:bg-background pointer-events-none ml-auto flex size-14 shrink-0 touch-none items-center justify-center rounded transition-colors select-none">
+          <div className="pointer-events-none ml-auto flex size-14 shrink-0 touch-none select-none items-center justify-center rounded bg-background text-brand-dark transition-colors group-hover:bg-background">
             <IconArrowRight className="size-6 stroke-[1.5]" />
           </div>
         </Button>

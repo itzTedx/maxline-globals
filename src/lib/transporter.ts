@@ -13,14 +13,9 @@ const SCOPES = ["https://graph.microsoft.com/.default"];
 
 const cca = new ConfidentialClientApplication(config);
 
-export async function sendMicrosoftEmail(data: {
-    subject: string;
-    html: string;
-    replyToEmail: string,
-    name: string
-}) {
-    try {
-      const {subject, html, replyToEmail, name} = data;
+export async function sendMicrosoftEmail(data: { subject: string; html: string; replyToEmail: string; name: string }) {
+  try {
+    const { subject, html, replyToEmail, name } = data;
 
     const tokenResponse = await cca.acquireTokenByClientCredential({ scopes: SCOPES });
     const accessToken = tokenResponse?.accessToken;
@@ -33,7 +28,7 @@ export async function sendMicrosoftEmail(data: {
           contentType: "HTML",
           content: html,
         },
-        toRecipients: [{ emailAddress: { address: process.env.CONTACT_RECEIVER_EMAIL!} }],
+        toRecipients: [{ emailAddress: { address: process.env.CONTACT_RECEIVER_EMAIL! } }],
         from: { emailAddress: { address: "enquires@maxlineglobal.com" } },
         replyTo: [{ emailAddress: { address: replyToEmail, name } }],
       },
@@ -53,12 +48,11 @@ export async function sendMicrosoftEmail(data: {
     if (response.status === 202) {
       console.log("📨 Email sent successfully!");
       return { success: true };
-    } else {
-      console.error(`❌ Failed to send email: ${response.statusText}`);
-      return { success: false, error: response.statusText };
     }
+    console.error(`❌ Failed to send email: ${response.statusText}`);
+    return { success: false, error: response.statusText };
   } catch (err) {
-        console.error("Error sending mail via Microsoft Graph:", err);
-        return { success: false, error: err };
+    console.error("Error sending mail via Microsoft Graph:", err);
+    return { success: false, error: err };
   }
 }

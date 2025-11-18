@@ -72,20 +72,16 @@ export const StaggeredText = ({
   return (
     <AnimatePresence mode="wait">
       <motion.span
+        className={cn("overflow-hidden", className)}
+        exit="exit"
+        initial="hidden"
         key={text}
         variants={container}
-        initial="hidden"
-        whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
-        exit="exit"
-        className={cn("overflow-hidden", className)}
+        whileInView="visible"
       >
         {words.map((word, index) => (
-          <motion.span
-            variants={child}
-            key={index}
-            className="inline-block whitespace-pre"
-          >
+          <motion.span className="inline-block whitespace-pre" key={index} variants={child}>
             {word}{" "}
           </motion.span>
         ))}

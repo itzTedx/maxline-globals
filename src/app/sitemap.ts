@@ -3,7 +3,16 @@ import type { MetadataRoute } from "next";
 import { siteConfig } from "@/constants/site-config";
 import { routing } from "@/i18n/routing";
 
-const serviceSlugs = ["air-freight", "sea-freight", "land-freight", "project-cargo", "packing", "warehousing", "exhibition-cargo", "movers-lashing"];
+const serviceSlugs = [
+  "air-freight",
+  "sea-freight",
+  "land-freight",
+  "project-cargo",
+  "packing",
+  "warehousing",
+  "exhibition-cargo",
+  "movers-lashing",
+];
 const insightSlugs = ["logistics-trends-2024", "supply-chain-innovation"];
 
 export default function sitemap(): MetadataRoute.Sitemap {

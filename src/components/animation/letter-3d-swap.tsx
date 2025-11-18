@@ -2,11 +2,7 @@
 
 import React, { ElementType, useCallback, useMemo, useState } from "react";
 
-import {
-  AnimationOptions,
-  ValueAnimationTransition,
-  useAnimate,
-} from "motion/react";
+import { AnimationOptions, useAnimate, ValueAnimationTransition } from "motion/react";
 
 import { cn } from "@/lib/utils";
 
@@ -175,15 +171,14 @@ const Letter3DSwap = ({
         characters: [word], // treat the whole word as a single animation unit
         needsSpace: i !== words.length - 1,
       }));
-    } else {
-      // For LTR: split by characters as before
-      const t = text.split(" ");
-      const result = t.map((word: string, i: number) => ({
-        characters: splitIntoCharacters(word),
-        needsSpace: i !== t.length - 1,
-      }));
-      return result;
     }
+    // For LTR: split by characters as before
+    const t = text.split(" ");
+    const result = t.map((word: string, i: number) => ({
+      characters: splitIntoCharacters(word),
+      needsSpace: i !== t.length - 1,
+    }));
+    return result;
   }, [text, rtl]);
 
   // Helper function to calculate stagger delay for each text segment
@@ -213,10 +208,7 @@ const Letter3DSwap = ({
     setIsHovering(true);
     setIsAnimating(true);
 
-    const totalChars = characters.reduce(
-      (sum: number, word: WordObject) => sum + word.characters.length,
-      0
-    );
+    const totalChars = characters.reduce((sum: number, word: WordObject) => sum + word.characters.length, 0);
 
     // Create delays array based on staggerFrom
     const delays = Array.from({ length: totalChars }, (_, i) => {
@@ -234,22 +226,10 @@ const Letter3DSwap = ({
     );
 
     // Reset all boxes
-    await animate(
-      ".letter-3d-swap-char-box-item",
-      { transform: "rotateX(0deg) rotateY(0deg)" },
-      { duration: 0 }
-    );
+    await animate(".letter-3d-swap-char-box-item", { transform: "rotateX(0deg) rotateY(0deg)" }, { duration: 0 });
 
     setIsAnimating(false);
-  }, [
-    isAnimating,
-    isHovering,
-    characters,
-    transition,
-    getStaggerDelay,
-    rotationTransform,
-    animate,
-  ]);
+  }, [isAnimating, isHovering, characters, transition, getStaggerDelay, rotationTransform, animate]);
 
   // Handle hover end
   const handleHoverEnd = useCallback(() => {
@@ -268,35 +248,30 @@ const Letter3DSwap = ({
     >
       <span className="sr-only">{text}</span>
 
-      {characters.map(
-        (wordObj: WordObject, wordIndex: number, array: WordObject[]) => {
-          const previousCharsCount = array
-            .slice(0, wordIndex)
-            .reduce(
-              (sum: number, word: WordObject) => sum + word.characters.length,
-              0
-            );
+      {characters.map((wordObj: WordObject, wordIndex: number, array: WordObject[]) => {
+        const previousCharsCount = array
+          .slice(0, wordIndex)
+          .reduce((sum: number, word: WordObject) => sum + word.characters.length, 0);
 
-          return (
-            <span key={wordIndex} className="inline-flex">
-              {wordObj.characters.map((char: string, charIndex: number) => {
-                const totalIndex = previousCharsCount + charIndex;
+        return (
+          <span className="inline-flex" key={wordIndex}>
+            {wordObj.characters.map((char: string, charIndex: number) => {
+              const totalIndex = previousCharsCount + charIndex;
 
-                return (
-                  <CharBox
-                    key={totalIndex}
-                    char={char}
-                    frontFaceClassName={frontFaceClassName}
-                    secondFaceClassName={secondFaceClassName}
-                    rotateDirection={rotateDirection}
-                  />
-                );
-              })}
-              {wordObj.needsSpace && <span className="whitespace-pre"> </span>}
-            </span>
-          );
-        }
-      )}
+              return (
+                <CharBox
+                  char={char}
+                  frontFaceClassName={frontFaceClassName}
+                  key={totalIndex}
+                  rotateDirection={rotateDirection}
+                  secondFaceClassName={secondFaceClassName}
+                />
+              );
+            })}
+            {wordObj.needsSpace && <span className="whitespace-pre"> </span>}
+          </span>
+        );
+      })}
     </ElementTag>
   );
 };
@@ -308,25 +283,20 @@ interface CharBoxProps {
   rotateDirection: "top" | "right" | "bottom" | "left";
 }
 
-const CharBox = ({
-  char,
-  frontFaceClassName,
-  secondFaceClassName,
-  rotateDirection,
-}: CharBoxProps) => {
+const CharBox = ({ char, frontFaceClassName, secondFaceClassName, rotateDirection }: CharBoxProps) => {
   // Get the transform for the second face based on rotation direction
   const getSecondFaceTransform = () => {
     switch (rotateDirection) {
       case "top":
-        return `rotateX(-90deg) translateZ(0.5lh)`;
+        return "rotateX(-90deg) translateZ(0.5lh)";
       case "right":
-        return `rotateY(90deg) translateX(50%) rotateY(-90deg) translateX(-50%) rotateY(-90deg) translateX(50%)`;
+        return "rotateY(90deg) translateX(50%) rotateY(-90deg) translateX(-50%) rotateY(-90deg) translateX(50%)";
       case "bottom":
-        return `rotateX(90deg) translateZ(0.5lh)`;
+        return "rotateX(90deg) translateZ(0.5lh)";
       case "left":
-        return `rotateY(90deg) translateX(50%) rotateY(-90deg) translateX(50%) rotateY(-90deg) translateX(50%)`;
+        return "rotateY(90deg) translateX(50%) rotateY(-90deg) translateX(50%) rotateY(-90deg) translateX(50%)";
       default:
-        return `rotateY(90deg) translateZ(1ch)`;
+        return "rotateY(90deg) translateZ(1ch)";
     }
   };
 
@@ -344,7 +314,7 @@ const CharBox = ({
     >
       {/* Front face */}
       <span
-        className={cn("relative h-[1lh] backface-hidden", frontFaceClassName)}
+        className={cn("backface-hidden relative h-[1lh]", frontFaceClassName)}
         style={{
           transform: `${
             rotateDirection === "top" || rotateDirection === "bottom"
@@ -360,10 +330,7 @@ const CharBox = ({
 
       {/* Second face - positioned based on rotation direction */}
       <span
-        className={cn(
-          "absolute top-0 left-0 h-[1lh] backface-hidden",
-          secondFaceClassName
-        )}
+        className={cn("backface-hidden absolute top-0 left-0 h-[1lh]", secondFaceClassName)}
         style={{
           transform: secondFaceTransform,
         }}

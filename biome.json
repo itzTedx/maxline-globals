@@ -15,7 +15,7 @@
     "indentStyle": "space",
     "indentWidth": 2,
     "lineEnding": "lf",
-    "lineWidth": 80,
+    "lineWidth": 120,
     "attributePosition": "auto",
     "bracketSameLine": false,
     "bracketSpacing": true,
@@ -40,6 +40,7 @@
       },
       "correctness": {
         "recommended": true,
+        "noUnknownFunction": "off",
         "noUnusedImports": {
           "level": "warn",
           "fix": "safe"
@@ -114,6 +115,7 @@
             "groups": [
               ":TYPES:",
               ["react", "react/**"],
+              ":BLANK_LINE:",
               ["next", "next/**"],
               ":BLANK_LINE:",
 

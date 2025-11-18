@@ -20,17 +20,8 @@ export async function sendContactEmail(values: {
   privacyPolicyConsent: boolean;
   fileUpload?: File | null;
 }): Promise<ContactActionResult> {
-  const {
-    fullName,
-    companyName,
-    email,
-    phoneNumber,
-    serviceType,
-    subject,
-    message,
-    privacyPolicyConsent,
-    fileUpload,
-  } = values;
+  const { fullName, companyName, email, phoneNumber, serviceType, subject, message, privacyPolicyConsent, fileUpload } =
+    values;
   const file = fileUpload ?? null;
 
   console.log("[sendContactEmail] Extracted fields:", {
@@ -57,23 +48,14 @@ export async function sendContactEmail(values: {
     privacyPolicyConsent,
     fileUpload: file,
   });
-  console.log(
-    "[sendContactEmail] Validation result:",
-    parsed.success,
-    parsed.success ? undefined : parsed.error
-  );
+  console.log("[sendContactEmail] Validation result:", parsed.success, parsed.success ? undefined : parsed.error);
   if (!parsed.success) {
     return { success: false, error: "Invalid form data" };
   }
 
   // Validate file attachment (only one file, jpg/jpeg/png/pdf, max 4MB)
   if (file) {
-    const allowedTypes = [
-      "image/jpeg",
-      "image/jpg",
-      "image/png",
-      "application/pdf",
-    ];
+    const allowedTypes = ["image/jpeg", "image/jpg", "image/png", "application/pdf"];
     const maxSize = 4 * 1024 * 1024; // 4MB
     if (!allowedTypes.includes(file.type)) {
       return {
@@ -104,17 +86,14 @@ export async function sendContactEmail(values: {
     });
 
     if (result.success) {
-      console.log(
-        "[sendContactEmail] Email sent successfully via Microsoft Graph API"
-      );
+      console.log("[sendContactEmail] Email sent successfully via Microsoft Graph API");
       return { success: true };
-    } else {
-      console.error("[sendContactEmail] Failed to send email:", result.error);
-      return {
-        success: false,
-        error: (result.error as string) || "Failed to send email",
-      };
     }
+    console.error("[sendContactEmail] Failed to send email:", result.error);
+    return {
+      success: false,
+      error: (result.error as string) || "Failed to send email",
+    };
   } catch (error) {
     console.error("[sendContactEmail] Failed to send email:", error);
     return { success: false, error: "Failed to send email" };

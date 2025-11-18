@@ -11,26 +11,16 @@ import { toast } from "sonner";
 import LetterSwapPingPong from "@/components/animation/letter-swap-pingpong-anim";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Textarea } from "@/components/ui/textarea";
+
 import { Link } from "@/i18n/navigation";
 
 import { sendContactEmail } from "./contact-action";
-import {
-  ContactFormData,
-  SERVICE_TYPE_LABELS,
-  contactSchema,
-} from "./schema/contact-schema";
+import { ContactFormData, contactSchema, SERVICE_TYPE_LABELS } from "./schema/contact-schema";
 
 export function ContactForm() {
   const t = useTranslations("ContactForm");
@@ -68,16 +58,12 @@ export function ContactForm() {
   return (
     <Form {...form}>
       <form
-        onSubmit={form.handleSubmit(onSubmit)}
         className="relative z-10 space-y-6 rounded-2xl bg-white p-4 sm:p-6 md:space-y-8 md:p-9"
+        onSubmit={form.handleSubmit(onSubmit)}
       >
         <div>
-          <h3 className="font-grotesk text-secondary text-2xl sm:text-3xl md:text-4xl">
-            {t("heading")}
-          </h3>
-          <p className="text-brand-gray mt-2 text-base font-light sm:text-lg md:text-xl">
-            {t("description")}
-          </p>
+          <h3 className="font-grotesk text-2xl text-secondary sm:text-3xl md:text-4xl">{t("heading")}</h3>
+          <p className="mt-2 font-light text-base text-brand-gray sm:text-lg md:text-xl">{t("description")}</p>
         </div>
 
         <FormField
@@ -115,11 +101,7 @@ export function ContactForm() {
               <FormItem>
                 <FormLabel>{t("emailLabel")}</FormLabel>
                 <FormControl>
-                  <Input
-                    type="email"
-                    placeholder={t("emailPlaceholder")}
-                    {...field}
-                  />
+                  <Input placeholder={t("emailPlaceholder")} type="email" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -151,24 +133,22 @@ export function ContactForm() {
               <FormControl>
                 <RadioGroup
                   className="grid grid-cols-1 items-center gap-2 sm:grid-cols-2 lg:flex lg:flex-wrap"
-                  onValueChange={field.onChange}
                   defaultValue={field.value}
+                  onValueChange={field.onChange}
                 >
                   {Object.entries(SERVICE_TYPE_LABELS).map(([value]) => (
                     <div
+                      className="relative flex items-center justify-center gap-2 rounded-md border border-muted-foreground/20 bg-muted p-2 text-brand-gray outline-none has-data-[state=checked]:border-secondary/50 has-data-[state=checked]:bg-primary/10"
                       key={value}
-                      className="border-muted-foreground/20 bg-muted has-data-[state=checked]:border-secondary/50 has-data-[state=checked]:bg-primary/10 text-brand-gray relative flex items-center justify-center gap-2 rounded-md border p-2 outline-none"
                     >
                       <Label htmlFor={field.name}>
-                        {t(
-                          `serviceType.${value}` as `serviceType.${keyof typeof SERVICE_TYPE_LABELS}`
-                        )}
+                        {t(`serviceType.${value}` as `serviceType.${keyof typeof SERVICE_TYPE_LABELS}`)}
                       </Label>
                       <div className="flex justify-between gap-2">
                         <RadioGroupItem
+                          className="order-1 after:absolute after:inset-0"
                           id={field.name}
                           value={value}
-                          className="order-1 after:absolute after:inset-0"
                         />
                       </div>
                     </div>
@@ -202,11 +182,7 @@ export function ContactForm() {
             <FormItem>
               <FormLabel>{t("messageLabel")}</FormLabel>
               <FormControl>
-                <Textarea
-                  placeholder={t("messagePlaceholder")}
-                  className="min-h-[100px] sm:min-h-[120px]"
-                  {...field}
-                />
+                <Textarea className="min-h-[100px] sm:min-h-[120px]" placeholder={t("messagePlaceholder")} {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -217,21 +193,15 @@ export function ContactForm() {
           control={form.control}
           name="privacyPolicyConsent"
           render={({ field }) => (
-            <FormItem className="flex flex-row items-start space-y-0 space-x-1">
+            <FormItem className="flex flex-row items-start space-x-1 space-y-0">
               <FormControl className="mt-1">
-                <Checkbox
-                  checked={field.value}
-                  onCheckedChange={field.onChange}
-                />
+                <Checkbox checked={field.value} onCheckedChange={field.onChange} />
               </FormControl>
               <div>
-                <FormLabel className="block text-sm leading-snug font-light sm:text-base">
+                <FormLabel className="block font-light text-sm leading-snug sm:text-base">
                   {t.rich("privacyPolicyConsent", {
                     privacyPolicy: (chunks) => (
-                      <Link
-                        href="/privacy-policy"
-                        className="text-secondary hover:underline"
-                      >
+                      <Link className="text-secondary hover:underline" href="/privacy-policy">
                         {chunks}
                       </Link>
                     ),
@@ -243,23 +213,23 @@ export function ContactForm() {
           )}
         />
         <Button
-          size="btnIcon"
-          variant="secondary"
-          className="bg-secondary text-background h-16 w-full pr-1 pl-6 text-xl"
-          type="submit"
+          className="h-16 w-full bg-secondary pr-1 pl-6 text-background text-xl"
           disabled={isPending}
+          size="btnIcon"
+          type="submit"
+          variant="secondary"
         >
           {isPending ? (
             <span>Sending...</span>
           ) : (
             <>
               <LetterSwapPingPong
-                label={t("sendMessage")}
-                staggerFrom="first"
-                reverse={false}
                 className="w-full justify-start font-semibold"
+                label={t("sendMessage")}
+                reverse={false}
+                staggerFrom="first"
               />
-              <div className="bg-background text-brand-dark group-hover:bg-background pointer-events-none ml-auto flex size-14 shrink-0 touch-none items-center justify-center rounded transition-colors select-none">
+              <div className="pointer-events-none ml-auto flex size-14 shrink-0 touch-none select-none items-center justify-center rounded bg-background text-brand-dark transition-colors group-hover:bg-background">
                 <IconArrowRight className="size-6 stroke-[1.5]" />
               </div>
             </>

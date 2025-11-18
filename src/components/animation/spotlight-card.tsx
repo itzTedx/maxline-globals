@@ -61,13 +61,13 @@ const SpotlightCard: React.FC<SpotlightCardProps> = ({
 
   return (
     <li
-      ref={divRef}
-      onMouseMove={handleMouseMove}
-      onFocus={handleFocus}
+      className={`relative overflow-hidden ${className}`}
       onBlur={handleBlur}
+      onFocus={handleFocus}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className={`relative overflow-hidden ${className}`}
+      onMouseMove={handleMouseMove}
+      ref={divRef}
       {...props}
     >
       <div

@@ -12,26 +12,18 @@ export const HeroSection = memo(() => {
   return (
     <header className="py-10 md:py-16 lg:py-20" role="banner">
       <div className="container mx-auto px-4">
-        <h1 className="text-brand-dark font-grotesk mx-auto max-w-5xl text-center text-4xl tracking-tight sm:text-5xl md:text-6xl lg:text-[4.95rem]">
-          <StaggeredText
-            text={t("hero.title.firstLine")}
-            staggerChildren={0.01}
-            duration={0.3}
-          />
+        <h1 className="mx-auto max-w-5xl text-center font-grotesk text-4xl text-brand-dark tracking-tight sm:text-5xl md:text-6xl lg:text-[4.95rem]">
+          <StaggeredText duration={0.3} staggerChildren={0.01} text={t("hero.title.firstLine")} />
           <span className="text-secondary">
-            <StaggeredText
-              text={t("hero.title.secondLine")}
-              staggerChildren={0.01}
-              duration={0.3}
-            />
+            <StaggeredText duration={0.3} staggerChildren={0.01} text={t("hero.title.secondLine")} />
           </span>
         </h1>
 
-        <div className="mt-8" role="search" aria-label="Track your shipment">
+        <div aria-label="Track your shipment" className="mt-8" role="search">
           <TrackingInput />
         </div>
 
-        <div className="mt-12" aria-label="Hero illustration">
+        <div aria-label="Hero illustration" className="mt-12">
           <HeroImage />
         </div>
       </div>

@@ -1,6 +1,7 @@
+import { Suspense } from "react";
+
 import { Metadata } from "next";
 import Script from "next/script";
-import { Suspense } from "react";
 
 import { getTranslations } from "next-intl/server";
 
@@ -14,11 +15,7 @@ import { WhoWeAre } from "@/feature/about/sections/who-we-are";
 import { Cta } from "@/feature/cta";
 
 // Dynamic metadata generation based on locale
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations("meta.about");
 
@@ -81,8 +78,6 @@ export default function AboutPage() {
   return (
     <>
       <Script
-        id="about-schema"
-        type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
@@ -117,8 +112,10 @@ export default function AboutPage() {
             },
           }),
         }}
+        id="about-schema"
+        type="application/ld+json"
       />
-      <main className="bg-background relative z-10 rounded-b-3xl pb-20 shadow-xl">
+      <main className="relative z-10 rounded-b-3xl bg-background pb-20 shadow-xl">
         <article>
           <AboutHeroSection />
 

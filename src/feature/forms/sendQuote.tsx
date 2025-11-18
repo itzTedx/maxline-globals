@@ -31,12 +31,7 @@ export async function sendQuote(data: QuoteFormData) {
   }
 
   // Handle file attachment if any
-  const ALLOWED_TYPES = [
-    "application/pdf",
-    "image/jpeg",
-    "image/png",
-    "image/jpg",
-  ];
+  const ALLOWED_TYPES = ["application/pdf", "image/jpeg", "image/png", "image/jpg"];
   const MAX_SIZE = 4 * 1024 * 1024; // 4MB
 
   const file = data.attachFiles;
@@ -49,9 +44,7 @@ export async function sendQuote(data: QuoteFormData) {
       return {
         success: false,
         error: {
-          attachFiles: [
-            "Only PDF, JPG, JPEG, PNG files under 4MB are allowed.",
-          ],
+          attachFiles: ["Only PDF, JPG, JPEG, PNG files under 4MB are allowed."],
         },
       };
     }
@@ -72,14 +65,11 @@ export async function sendQuote(data: QuoteFormData) {
     });
 
     if (result.success) {
-      console.log(
-        "[sendQuote] Email sent successfully via Microsoft Graph API"
-      );
+      console.log("[sendQuote] Email sent successfully via Microsoft Graph API");
       return { success: true };
-    } else {
-      console.error("[sendQuote] Failed to send email:", result.error);
-      return { success: false, error: result.error || "Failed to send email" };
     }
+    console.error("[sendQuote] Failed to send email:", result.error);
+    return { success: false, error: result.error || "Failed to send email" };
   } catch (error) {
     console.log("[sendQuote] Error sending email:", error);
     return {

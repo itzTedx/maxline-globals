@@ -17,36 +17,28 @@ interface NavLinkProps {
   onClick?: () => void;
 }
 
-export const NavLink = ({
-  title,
-  href,
-  hasSubmenu,
-  isActive,
-  onMouseEnter,
-  onMouseLeave,
-  onClick,
-}: NavLinkProps) => {
+export const NavLink = ({ title, href, hasSubmenu, isActive, onMouseEnter, onMouseLeave, onClick }: NavLinkProps) => {
   return (
     <Link
-      href={href}
+      aria-expanded={isActive}
       className={cn(
-        "text-brand-dark hover:bg-primary flex h-11 items-center justify-center gap-2.5 rounded-md bg-white font-medium transition duration-500",
+        "flex h-11 items-center justify-center gap-2.5 rounded-md bg-white font-medium text-brand-dark transition duration-500 hover:bg-primary",
         hasSubmenu ? "pr-1.5 pl-4 rtl:pr-7 rtl:pl-1.5" : "px-4 rtl:px-7"
       )}
+      href={href}
+      onClick={onClick}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
-      onClick={onClick}
-      aria-expanded={isActive}
     >
       <LetterSwapPingPong
-        label={title}
-        staggerFrom="first"
-        reverse={false}
         className="w-full justify-start font-semibold rtl:text-lg"
+        label={title}
+        reverse={false}
+        staggerFrom="first"
       />
 
       {hasSubmenu && (
-        <div className="bg-background flex size-8 shrink-0 items-center justify-center rounded">
+        <div className="flex size-8 shrink-0 items-center justify-center rounded bg-background">
           <IconArrowDown className="size-4" />
         </div>
       )}

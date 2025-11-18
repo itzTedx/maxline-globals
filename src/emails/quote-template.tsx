@@ -1,16 +1,6 @@
 import React from "react";
 
-import {
-  Body,
-  Container,
-  Head,
-  Hr,
-  Html,
-  Img,
-  Link,
-  Section,
-  Text,
-} from "@react-email/components";
+import { Body, Container, Head, Hr, Html, Img, Link, Section, Text } from "@react-email/components";
 
 import { QuoteFormData } from "@/feature/forms/schema/quote-schema";
 
@@ -64,22 +54,17 @@ export function QuoteRequestEmail(props: QuoteRequestEmailProps) {
           {/* Header */}
           <Section style={header as React.CSSProperties}>
             <Img
-              src="https://maxlineglobal.com/maxline-global-logo.png"
-              width="50"
-              height="50"
               alt="Maxline Logo"
-              style={logo as React.CSSProperties}
+              height="50"
               onError={(e) => {
-                (e.target as HTMLImageElement).src =
-                  "https://v0.dev/placeholder.svg?height=50&width=50";
+                (e.target as HTMLImageElement).src = "https://v0.dev/placeholder.svg?height=50&width=50";
               }}
+              src="https://maxlineglobal.com/maxline-global-logo.png"
+              style={logo as React.CSSProperties}
+              width="50"
             />
-            <Text style={heading as React.CSSProperties}>
-              New Quote Request
-            </Text>
-            <Text style={subheading as React.CSSProperties}>
-              A new quote request has been submitted.
-            </Text>
+            <Text style={heading as React.CSSProperties}>New Quote Request</Text>
+            <Text style={subheading as React.CSSProperties}>A new quote request has been submitted.</Text>
           </Section>
 
           {/* Quote Details */}
@@ -119,12 +104,10 @@ export function QuoteRequestEmail(props: QuoteRequestEmailProps) {
               <strong>Recipient Address:</strong> {recipientAddress}
             </Text>
             <Text style={detailText}>
-              <strong>Preferred Delivery Date:</strong>{" "}
-              {formatDate(preferredDeliveryDate)}
+              <strong>Preferred Delivery Date:</strong> {formatDate(preferredDeliveryDate)}
             </Text>
             <Text style={detailText}>
-              <strong>Preferred Mode of Transport:</strong>{" "}
-              {preferredModeOfTransport}
+              <strong>Preferred Mode of Transport:</strong> {preferredModeOfTransport}
             </Text>
             <Text style={detailText}>
               <strong>Type of Packaging:</strong> {typeOfPackaging}

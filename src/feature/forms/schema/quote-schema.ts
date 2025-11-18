@@ -72,12 +72,7 @@ export const quoteSchema = z.object({
     .refine(
       (file) => {
         if (!file) return true;
-        const allowedTypes = [
-          "image/jpeg",
-          "image/jpg",
-          "image/png",
-          "application/pdf",
-        ];
+        const allowedTypes = ["image/jpeg", "image/jpg", "image/png", "application/pdf"];
         const maxSize = 4 * 1024 * 1024; // 4MB
         return allowedTypes.includes(file.type) && file.size <= maxSize;
       },

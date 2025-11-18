@@ -2,15 +2,17 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Script from "next/script";
 
-import { NextIntlClientProvider, hasLocale } from "next-intl";
+import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 
-import { geistSans, ibmPlexSansArabic, radioGrostek } from "@/assets/fonts";
 import BreakpointIndicator from "@/components/breakpoint-indicator";
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
 import Providers from "@/components/providers";
 import { Toaster } from "@/components/ui/sonner";
+
+import { geistSans, ibmPlexSansArabic, radioGrostek } from "@/assets/fonts";
+
 import { siteConfig } from "@/constants/site-config";
 import { routing } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
@@ -22,11 +24,7 @@ export function generateStaticParams() {
 }
 
 // Dynamic metadata generation based on locale
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
 
   if (!hasLocale(routing.locales, locale)) {
@@ -109,29 +107,18 @@ export default async function RootLayout({
   const messages = (await import(`@/dictionaries/${locale}.json`)).default;
 
   return (
-    <html
-      lang={locale}
-      className="scroll-smooth"
-      dir={locale === "ar" ? "rtl" : "ltr"}
-    >
+    <html className="scroll-smooth" dir={locale === "ar" ? "rtl" : "ltr"} lang={locale}>
       <head>
         <Script
-          id="schema-org"
-          type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
               name: "Maxline Global",
               description:
-                locale === "ar"
-                  ? "مزود حلول لوجستية وشحن عالمية"
-                  : "Global logistics and freight solutions provider",
+                locale === "ar" ? "مزود حلول لوجستية وشحن عالمية" : "Global logistics and freight solutions provider",
               url: "https://maxlineglobal.com",
-              sameAs: [
-                "https://twitter.com/maxlineglobal",
-                "https://linkedin.com/company/maxlineglobal",
-              ],
+              sameAs: ["https://twitter.com/maxlineglobal", "https://linkedin.com/company/maxlineglobal"],
               address: {
                 "@type": "PostalAddress",
                 addressCountry: "UAE",
@@ -143,35 +130,33 @@ export default async function RootLayout({
               },
             }),
           }}
+          id="schema-org"
+          type="application/ld+json"
         />
         <Script
-          id="video-schema"
-          type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "VideoObject",
-              name:
-                locale === "ar"
-                  ? "خدمات ماكسلاين جلوبال اللوجستية"
-                  : "Maxline Global Logistics Services",
+              name: locale === "ar" ? "خدمات ماكسلاين جلوبال اللوجستية" : "Maxline Global Logistics Services",
               description:
                 locale === "ar"
                   ? "نظرة عامة على حلول ماكسلاين جلوبال الشاملة للوجستية والشحن"
                   : "Overview of Maxline Global's comprehensive logistics and freight solutions",
-              thumbnailUrl:
-                "https://maxlineglobal.com/images/video-thumbnail.jpg",
+              thumbnailUrl: "https://maxlineglobal.com/images/video-thumbnail.jpg",
               uploadDate: "2024-03-20",
               duration: "PT2M30S",
               contentUrl: "https://maxlineglobal.com/video/your-video.mp4",
               embedUrl: "https://maxlineglobal.com/embed/video",
             }),
           }}
+          id="video-schema"
+          type="application/ld+json"
         />
       </head>
       <body
         className={cn(
-          "rtl:font-ibm-plex antialiased",
+          "antialiased rtl:font-ibm-plex",
           geistSans.className,
           radioGrostek.variable,
           ibmPlexSansArabic.variable

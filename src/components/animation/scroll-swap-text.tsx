@@ -11,13 +11,7 @@ interface TextProps {
   className?: string;
 }
 
-const ScrollAndSwapText = ({
-  label,
-  offset = ["0 0", "0 1"],
-  className,
-  containerRef,
-  ...props
-}: TextProps) => {
+const ScrollAndSwapText = ({ label, offset = ["0 0", "0 1"], className, containerRef, ...props }: TextProps) => {
   const ref = useRef<HTMLSpanElement>(null);
 
   const { scrollYProgress } = useScroll({
@@ -32,22 +26,14 @@ const ScrollAndSwapText = ({
   const bottom = useTransform(scrollYProgress, [0, 1], ["100%", "0%"]);
 
   return (
-    <span
-      className={`relative flex items-center justify-center overflow-hidden p-0 ${className}`}
-      ref={ref}
-      {...props}
-    >
-      <span className="relative text-transparent" aria-hidden="true">
+    <span className={`relative flex items-center justify-center overflow-hidden p-0 ${className}`} ref={ref} {...props}>
+      <span aria-hidden="true" className="relative text-transparent">
         {label}
       </span>
       <motion.span className="absolute" style={{ top: top }}>
         {label}
       </motion.span>
-      <motion.span
-        className="absolute"
-        style={{ top: bottom }}
-        aria-hidden="true"
-      >
+      <motion.span aria-hidden="true" className="absolute" style={{ top: bottom }}>
         {label}
       </motion.span>
     </span>

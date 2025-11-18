@@ -3,6 +3,7 @@ import { memo } from "react";
 import { useTranslations } from "next-intl";
 
 import { StaggeredText } from "@/components/animation/staggered-text";
+
 import { SERVICES } from "@/constants";
 
 import { ServicesGrid } from "../../services/services-grid";
@@ -16,12 +17,7 @@ export const ServicesSection = memo(() => {
   return (
     <>
       <ServicesSchema services={SERVICES} />
-      <section
-        className="relative"
-        aria-labelledby="services-heading"
-        itemScope
-        itemType="https://schema.org/Service"
-      >
+      <section aria-labelledby="services-heading" className="relative" itemScope itemType="https://schema.org/Service">
         <div className="relative overflow-hidden">
           <ServicesHeroVideo />
           <ServicesCenteredContent />
@@ -29,15 +25,15 @@ export const ServicesSection = memo(() => {
 
         <div className="relative z-30">
           <h2
+            className="mx-auto max-w-3xl text-balance pb-10 text-center font-medium text-4xl text-[#5C5E70] tracking-tight max-md:pt-10 md:text-5xl lg:pb-20 lg:text-6xl rtl:leading-snug"
             id="services-heading"
-            className="mx-auto max-w-3xl pb-10 text-center text-4xl font-medium tracking-tight text-balance text-[#5C5E70] max-md:pt-10 md:text-5xl lg:pb-20 lg:text-6xl rtl:leading-snug"
             itemProp="name"
           >
             <StaggeredText
-              text={t("services.title")}
               className="[&>span:nth-last-child(-n+2)]:text-secondary"
-              staggerChildren={0.02}
               duration={0.5}
+              staggerChildren={0.02}
+              text={t("services.title")}
             />
           </h2>
 
@@ -45,18 +41,14 @@ export const ServicesSection = memo(() => {
             <ServicesGrid services={SERVICES} />
           </div>
 
-          <div
-            itemProp="provider"
-            itemScope
-            itemType="https://schema.org/Organization"
-          >
+          <div itemProp="provider" itemScope itemType="https://schema.org/Organization">
             <ServicesBottomCTA />
           </div>
         </div>
 
-        <meta itemProp="serviceType" content="Logistics and Freight Services" />
-        <meta itemProp="areaServed" content="Worldwide" />
-        <meta itemProp="provider" content="Maxline Global" />
+        <meta content="Logistics and Freight Services" itemProp="serviceType" />
+        <meta content="Worldwide" itemProp="areaServed" />
+        <meta content="Maxline Global" itemProp="provider" />
       </section>
     </>
   );
