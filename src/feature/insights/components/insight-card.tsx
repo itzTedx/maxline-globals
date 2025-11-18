@@ -4,6 +4,7 @@ import { IconArrowRight } from '@tabler/icons-react'
 import { useTranslations } from 'next-intl'
 
 import LetterSwapPingPong from '@/components/animation/letter-swap-pingpong-anim'
+import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import {
   Card,
@@ -18,17 +19,33 @@ import { Link } from '@/i18n/navigation'
 
 import { InsightMetadata } from '../actions/types'
 
+function formatInsightDate(date: string) {
+  const parsedDate = new Date(date)
+  if (Number.isNaN(parsedDate.getTime())) {
+    return date
+  }
+  return new Intl.DateTimeFormat('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  }).format(parsedDate)
+}
+
 export function InsightCard({ data }: { data: InsightMetadata }) {
   const t = useTranslations('HomePage')
   return (
-    <Card className="group relative gap-0 overflow-hidden p-0 md:gap-4">
+    <Card className="group relative gap-0 overflow-hidden p-0">
       <Link
         className="absolute inset-0 z-10"
         href={`/insights/${data.slug}`}
         title={data.title}
       />
       <CardContent className="relative px-0">
-        <div className="relative aspect-4/3 overflow-hidden">
+        <div className="relative flex aspect-4/3 items-end overflow-hidden p-4">
+          <div className="relative z-10 flex w-full items-center justify-between gap-2">
+            <Badge variant="ghost">{data.category}</Badge>
+            <Badge variant="secondary">{formatInsightDate(data.date)}</Badge>
+          </div>
           <Image
             alt={`Illustration for article: ${data.title}`}
             className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"

@@ -4,12 +4,11 @@ export type Insight = {
 };
 
 export type InsightMetadata = {
-  id: number;
   title: string;
   slug: string;
   description: string;
   date: string;
-  author: string;
+  category: string;
   thumbnail: string;
   keywords: string[];
   readingTime: string;

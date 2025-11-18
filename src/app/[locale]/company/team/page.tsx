@@ -127,7 +127,7 @@ export default async function TeamPage() {
                     fill
                     src={team.image}
                   />
-                  <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-brand-dark to-transparent" />
+                  <div className="absolute inset-x-0 bottom-0 h-1/4 bg-linear-to-t from-brand-dark to-transparent" />
                 </div>
                 <div className="p-2 text-center text-background">
                   <h3 className="font-grotesk text-4xl">

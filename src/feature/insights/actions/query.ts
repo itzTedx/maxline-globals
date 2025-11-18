@@ -32,8 +32,12 @@ export async function getInsights({ limit, locale }: { limit?: number; locale: L
 
   let insights = files.map((file) => getInsightMetadata(file, locale));
 
-  // Sort by id in ascending order
-  insights.sort((a, b) => (a.id ?? 0) - (b.id ?? 0));
+  insights.sort((a, b) => {
+    const aDate = new Date(a.date).getTime();
+    const bDate = new Date(b.date).getTime();
+
+    return bDate - aDate;
+  });
 
   if (limit) {
     return insights.slice(0, limit);
