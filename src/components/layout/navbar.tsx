@@ -1,64 +1,75 @@
-"use client";
+'use client'
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from 'react'
+import Image from 'next/image'
 
-import { useTranslations } from "next-intl";
+import { useTranslations } from 'next-intl'
 
-import { Logo } from "@/assets/logo";
-import { NAVLINKS } from "@/constants";
-import { Link } from "@/i18n/navigation";
+import { Logo } from '@/assets/logo'
 
-import { LanguageSelector } from "./nav/language-selector";
-import { MobileNav } from "./nav/mobile-nav";
-import { NavLink } from "./nav/nav-link";
-import { NavSubmenu } from "./nav/nav-submenu";
-import { QuoteButton } from "./nav/quote-button";
+import { NAVLINKS } from '@/constants'
+import { Link } from '@/i18n/navigation'
+
+import { LanguageSelector } from './nav/language-selector'
+import { MobileNav } from './nav/mobile-nav'
+import { NavLink } from './nav/nav-link'
+import { NavSubmenu } from './nav/nav-submenu'
+import { QuoteButton } from './nav/quote-button'
 
 export const Navbar = () => {
-  const t = useTranslations("Navigation");
-  const [activeMenu, setActiveMenu] = useState<string | null>(null);
+  const t = useTranslations('Navigation')
+  const [activeMenu, setActiveMenu] = useState<string | null>(null)
   const [submenuHeights, setSubmenuHeights] = useState<Map<string, number>>(
     new Map()
-  );
-  const submenuRefs = useRef<Map<string, HTMLDivElement>>(new Map());
+  )
+  const submenuRefs = useRef<Map<string, HTMLDivElement>>(new Map())
 
   // Update submenu height when active menu changes
   useEffect(() => {
     if (activeMenu && submenuRefs.current.has(activeMenu)) {
-      const submenuElement = submenuRefs.current.get(activeMenu);
+      const submenuElement = submenuRefs.current.get(activeMenu)
       if (
         submenuElement &&
         submenuElement.scrollHeight > (submenuHeights.get(activeMenu) || 0)
       ) {
         setSubmenuHeights((prev) =>
           new Map(prev).set(activeMenu, submenuElement.scrollHeight)
-        );
+        )
       }
     }
-  }, [activeMenu, submenuHeights]);
+  }, [activeMenu, submenuHeights])
 
   const handleMouseEnter = (title: string) => {
-    setActiveMenu(title);
-  };
+    setActiveMenu(title)
+  }
 
   const handleMouseLeave = () => {
-    setActiveMenu(null);
-  };
+    setActiveMenu(null)
+  }
 
   return (
     <nav
+      aria-label="Main navigation"
       className="sticky top-0 z-50 py-4 transition-all duration-300 ease-in-out"
       role="navigation"
-      aria-label="Main navigation"
     >
       <div
-        className="from-background to-background/0 absolute top-0 z-10 h-full w-full bg-gradient-to-b"
         aria-hidden="true"
+        className="absolute top-0 z-10 h-full w-full bg-gradient-to-b from-background to-background/0"
       />
-      <div className="relative z-50 container flex items-center justify-between gap-3 md:grid md:grid-cols-4 md:justify-center">
-        <Link href="/" aria-label="Maxline Global - Home">
-          <Logo className="text-[#231F20]" />
-        </Link>
+      <div className="container relative z-50 flex items-center justify-between gap-3 md:grid md:grid-cols-4 md:justify-center">
+        <div className="flex items-center gap-2">
+          <Link aria-label="Maxline Global - Home" href="/">
+            <Logo className="shrink-0 text-[#231F20]" />
+          </Link>
+          <span className="text-destructive">x</span>
+          <Image
+            alt="Automechanika Dubai Logo"
+            height={30}
+            src="/images/events/automechanika.svg"
+            width={144}
+          />
+        </div>
 
         {/* Desktop Navigation */}
         <ul
@@ -67,23 +78,23 @@ export const Navbar = () => {
         >
           {NAVLINKS.map((link) => (
             <li
-              key={link.title}
               className="group"
-              role="none"
+              key={link.title}
               onMouseEnter={() => handleMouseEnter(link.title)}
               onMouseLeave={handleMouseLeave}
+              role="none"
             >
               <NavLink
-                title={t(link.title as Parameters<typeof t>[0])}
-                href={link.href}
                 hasSubmenu={!!link.submenu}
+                href={link.href}
                 isActive={activeMenu === link.title}
+                title={t(link.title as Parameters<typeof t>[0])}
               />
 
               {link.submenu && (
                 <div
                   ref={(el) => {
-                    if (el) submenuRefs.current.set(link.title, el);
+                    if (el) submenuRefs.current.set(link.title, el)
                   }}
                 >
                   <NavSubmenu
@@ -114,13 +125,13 @@ export const Navbar = () => {
       </div>
 
       <div className="gradient-blur">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
+        <div />
+        <div />
+        <div />
+        <div />
+        <div />
+        <div />
       </div>
     </nav>
-  );
-};
+  )
+}

@@ -1,20 +1,13 @@
 {
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll": "always",
-    "source.organizeImports": "always"
+    "source.organizeImports.biome": "explicit",
+    "source.fixAll.biome": "explicit"
   },
   "files.associations": {
     "*.css": "tailwindcss"
   },
   "typescript.tsdk": "node_modules/typescript/lib",
-  "cSpell.words": [
-    "NAVLINKS",
-    "ziron",
-    "zustand",
-    "maxline"
-  ],
-  "i18n-ally.localesPaths": [
-    "src/i18n"
-  ]
+  "cSpell.words": ["NAVLINKS", "ziron", "zustand", "maxline"],
+  "i18n-ally.localesPaths": ["src/i18n"]
 }

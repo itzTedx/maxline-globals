@@ -22,14 +22,11 @@ const nextConfig: NextConfig = {
       bodySizeLimit: "2mb",
     },
   },
-    // Compression settings
+  // Compression settings
   compress: true,
-    
+
   typescript: {
     ignoreBuildErrors: true,
-  },
-  eslint: {
-    ignoreDuringBuilds: true,
   },
 
   logging: {
@@ -38,7 +35,6 @@ const nextConfig: NextConfig = {
     },
   },
 
-  
   // Redirects for SEO
   async redirects() {
     return [
@@ -127,14 +123,15 @@ const nextConfig: NextConfig = {
         destination: "/en/services/movers-lashing",
         permanent: true,
       },
-      
     ];
   },
 };
 
-const withNextIntl = createNextIntlPlugin({
-  // experimental: {
-  //   createMessagesDeclaration: './src/dictionaries/en.json'
-  // }
-});
+const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
+
+// const withNextIntl = createNextIntlPlugin({
+//   // experimental: {
+//   //   createMessagesDeclaration: './src/dictionaries/en.json'
+//   // }
+// });
 export default withNextIntl(nextConfig);
