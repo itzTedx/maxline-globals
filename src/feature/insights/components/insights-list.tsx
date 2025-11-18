@@ -1,52 +1,55 @@
-"use client";
+'use client'
 
-import { useState } from "react";
+import { useState } from 'react'
 
-import { useInfiniteScroll } from "../hooks/use-infinite-scroll";
-import { InsightCard, InsightCardProps } from "./insight-card";
+import { useInfiniteScroll } from '../hooks/use-infinite-scroll'
+import { InsightCard, InsightCardProps } from './insight-card'
 
 interface InsightsListProps {
-  initialInsights: InsightCardProps[];
-  pageSize?: number;
+  initialInsights: InsightCardProps[]
+  pageSize?: number
 }
 
-export function InsightsList({ initialInsights, pageSize = 6 }: InsightsListProps) {
-  const [insights, setInsights] = useState<InsightCardProps[]>(initialInsights);
-  const [page, setPage] = useState(1);
-  const [loading, setLoading] = useState(false);
-  const [hasMore, setHasMore] = useState(true);
+export function InsightsList({
+  initialInsights,
+  pageSize = 6,
+}: InsightsListProps) {
+  const [insights, setInsights] = useState<InsightCardProps[]>(initialInsights)
+  const [page, setPage] = useState(1)
+  const [loading, setLoading] = useState(false)
+  const [hasMore, setHasMore] = useState(true)
 
   const { loadMoreRef } = useInfiniteScroll({
     onLoadMore: async () => {
-      if (loading || !hasMore) return;
+      if (loading || !hasMore) return
 
-      setLoading(true);
+      setLoading(true)
       try {
         // Simulate API call delay
-        await new Promise((resolve) => setTimeout(resolve, 1000));
+        await new Promise((resolve) => setTimeout(resolve, 1000))
 
         // In a real application, you would fetch the next page from your API
-        const nextPage = page + 1;
-        const startIndex = (nextPage - 1) * pageSize;
-        const endIndex = startIndex + pageSize;
-        const newInsights = initialInsights.slice(startIndex, endIndex);
+        const nextPage = page + 1
+        const startIndex = (nextPage - 1) * pageSize
+        const endIndex = startIndex + pageSize
+        const newInsights = initialInsights.slice(startIndex, endIndex)
 
         if (newInsights.length === 0) {
-          setHasMore(false);
-          return;
+          setHasMore(false)
+          return
         }
 
-        setInsights((prev) => [...prev, ...newInsights]);
-        setPage(nextPage);
+        setInsights((prev) => [...prev, ...newInsights])
+        setPage(nextPage)
       } catch (error) {
-        console.error("Error loading more insights:", error);
+        console.error('Error loading more insights:', error)
       } finally {
-        setLoading(false);
+        setLoading(false)
       }
     },
     hasMore,
     loading,
-  });
+  })
 
   return (
     <div className="space-y-6">
@@ -66,5 +69,5 @@ export function InsightsList({ initialInsights, pageSize = 6 }: InsightsListProp
       {/* Intersection observer target */}
       <div className="h-4" ref={loadMoreRef} />
     </div>
-  );
+  )
 }

@@ -1,30 +1,34 @@
-import { Suspense } from "react";
+import { Suspense } from 'react'
 
-import { Metadata } from "next";
-import Script from "next/script";
+import { Metadata } from 'next'
+import Script from 'next/script'
 
-import { getTranslations } from "next-intl/server";
+import { getTranslations } from 'next-intl/server'
 
-import { siteConfig } from "@/constants/site-config";
-import { CertificatesSection } from "@/feature/about/sections/certificates";
-import { CompanySection } from "@/feature/about/sections/company";
-import { AboutHeroSection } from "@/feature/about/sections/hero";
-import { LeaderWords } from "@/feature/about/sections/leader-words";
-import { Principles } from "@/feature/about/sections/principles";
-import { WhoWeAre } from "@/feature/about/sections/who-we-are";
-import { Cta } from "@/feature/cta";
+import { siteConfig } from '@/constants/site-config'
+import { CertificatesSection } from '@/feature/about/sections/certificates'
+import { CompanySection } from '@/feature/about/sections/company'
+import { AboutHeroSection } from '@/feature/about/sections/hero'
+import { LeaderWords } from '@/feature/about/sections/leader-words'
+import { Principles } from '@/feature/about/sections/principles'
+import { WhoWeAre } from '@/feature/about/sections/who-we-are'
+import { Cta } from '@/feature/cta'
 
 // Dynamic metadata generation based on locale
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
-  const { locale } = await params;
-  const t = await getTranslations("meta.about");
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}): Promise<Metadata> {
+  const { locale } = await params
+  const t = await getTranslations('meta.about')
 
-  const title = t("title");
-  const description = t("description");
-  const keywords = t("keywords");
+  const title = t('title')
+  const description = t('description')
+  const keywords = t('keywords')
 
-  const ogTitle = t("title");
-  const ogDescription = t("description");
+  const ogTitle = t('title')
+  const ogDescription = t('description')
 
   return {
     title,
@@ -33,10 +37,10 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     openGraph: {
       title: ogTitle,
       description: ogDescription,
-      type: "website",
+      type: 'website',
       url: `${siteConfig.site}/${locale}/company/about`,
-      locale: locale === "ar" ? "ar_SA" : "en_US",
-      alternateLocale: ["ar_SA", "en_US"],
+      locale: locale === 'ar' ? 'ar_SA' : 'en_US',
+      alternateLocale: ['ar_SA', 'en_US'],
       siteName: siteConfig.name,
       images: [
         {
@@ -48,7 +52,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       ],
     },
     twitter: {
-      card: "summary_large_image",
+      card: 'summary_large_image',
       title: ogTitle,
       description: ogDescription,
       images: [siteConfig.image.url],
@@ -66,55 +70,52 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       googleBot: {
         index: true,
         follow: true,
-        "max-video-preview": -1,
-        "max-image-preview": "large",
-        "max-snippet": -1,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
       },
     },
-  };
+  }
 }
 
 export default function AboutPage() {
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'AboutPage',
+    name: 'About Maxline Global',
+    description:
+      "Learn about Maxline Global's history, leadership, values, and commitment to excellence in logistics and freight forwarding.",
+    url: `${siteConfig.site}/company/about`,
+    publisher: {
+      '@type': 'Organization',
+      name: siteConfig.name,
+      url: siteConfig.site,
+      logo: {
+        '@type': 'ImageObject',
+        url: `${siteConfig.site}/logo.png`,
+      },
+    },
+    mainEntity: {
+      '@type': 'Organization',
+      name: siteConfig.name,
+      description: siteConfig.description,
+      url: siteConfig.site,
+      foundingDate: '2010', // Replace with actual founding date
+      address: {
+        '@type': 'PostalAddress',
+        addressCountry: 'UAE',
+      },
+      contactPoint: {
+        '@type': 'ContactPoint',
+        contactType: 'customer service',
+      },
+    },
+  }
   return (
     <>
-      <Script
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "AboutPage",
-            name: "About Maxline Global",
-            description:
-              "Learn about Maxline Global's history, leadership, values, and commitment to excellence in logistics and freight forwarding.",
-            url: `${siteConfig.site}/company/about`,
-            publisher: {
-              "@type": "Organization",
-              name: siteConfig.name,
-              url: siteConfig.site,
-              logo: {
-                "@type": "ImageObject",
-                url: `${siteConfig.site}/logo.png`,
-              },
-            },
-            mainEntity: {
-              "@type": "Organization",
-              name: siteConfig.name,
-              description: siteConfig.description,
-              url: siteConfig.site,
-              foundingDate: "2010", // Replace with actual founding date
-              address: {
-                "@type": "PostalAddress",
-                addressCountry: "UAE",
-              },
-              contactPoint: {
-                "@type": "ContactPoint",
-                contactType: "customer service",
-              },
-            },
-          }),
-        }}
-        id="about-schema"
-        type="application/ld+json"
-      />
+      <Script id="about-schema" type="application/ld+json">
+        {JSON.stringify(structuredData)}
+      </Script>
       <main className="relative z-10 rounded-b-3xl bg-background pb-20 shadow-xl">
         <article>
           <AboutHeroSection />
@@ -145,5 +146,5 @@ export default function AboutPage() {
         </article>
       </main>
     </>
-  );
+  )
 }
