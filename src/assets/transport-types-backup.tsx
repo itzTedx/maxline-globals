@@ -1,20 +1,24 @@
-"use client";
+'use client'
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from 'react'
 
-import { motion, SVGMotionProps, useAnimationControls } from "framer-motion";
+import { motion, SVGMotionProps, useAnimationControls } from 'motion/react'
 
-export const TransportTypes = (props: React.JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>) => {
-  const circleRef = useRef<SVGCircleElement>(null);
-  const controls = useAnimationControls();
+const easeInOut = (t: number) => 0.5 * (1 - Math.cos(Math.PI * t))
+
+export const TransportTypes = (
+  props: React.JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>
+) => {
+  const circleRef = useRef<SVGCircleElement>(null)
+  const controls = useAnimationControls()
 
   useEffect(() => {
     if (circleRef.current) {
-      const circumference = 2 * Math.PI * 162.5; // 2πr where r is 162.5
-      circleRef.current.style.strokeDasharray = `${circumference}`;
-      controls.set({ strokeDashoffset: circumference });
+      const circumference = 2 * Math.PI * 162.5 // 2πr where r is 162.5
+      circleRef.current.style.strokeDasharray = `${circumference}`
+      controls.set({ strokeDashoffset: circumference })
     }
-  }, [controls]);
+  }, [controls])
 
   // const containerVariants = {
   //   hidden: {},
@@ -41,10 +45,10 @@ export const TransportTypes = (props: React.JSX.IntrinsicAttributes & React.SVGP
       pathLength: 1,
       transition: {
         duration: 0.8,
-        ease: "easeInOut",
+        ease: easeInOut,
       },
     },
-  };
+  }
 
   // const circleVariants = {
   //   hidden: { scale: 0 },
@@ -263,11 +267,18 @@ export const TransportTypes = (props: React.JSX.IntrinsicAttributes & React.SVGP
         <clipPath id="circleClip">
           <circle cx="233" cy="171" r="150" />
         </clipPath>
-        <linearGradient gradientUnits="userSpaceOnUse" id="paint0_linear_3_6" x1="68" x2="395" y1="175" y2="175">
+        <linearGradient
+          gradientUnits="userSpaceOnUse"
+          id="paint0_linear_3_6"
+          x1="68"
+          x2="395"
+          y1="175"
+          y2="175"
+        >
           <stop stopColor="white" />
           <stop offset="1" stopColor="white" stopOpacity="0" />
         </linearGradient>
       </defs>
     </motion.svg>
-  );
-};
+  )
+}

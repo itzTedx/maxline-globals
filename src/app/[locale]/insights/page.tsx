@@ -1,11 +1,12 @@
 import { Metadata } from 'next'
 import Script from 'next/script'
 
-import { useTranslations } from 'next-intl'
+import { Locale, useTranslations } from 'next-intl'
 
 import { HeroHeader } from '@/components/hero-header'
 
-import { InsightsList } from '@/feature/insights/components/insights-list'
+import { getInsights } from '@/feature/insights/actions/query'
+import { InsightCard } from '@/feature/insights/components/insight-card'
 
 // Dynamic metadata generation based on locale
 export async function generateMetadata({
@@ -126,9 +127,14 @@ interface Blog {
   datePublished?: string
   author?: string
 }
+interface Props {
+  params: Promise<{ locale: Locale }>
+}
 
-export default function InsightsPage() {
+export default async function InsightsPage({ params }: Props) {
   const t = useTranslations('HomePage')
+  const { locale } = await params
+  const insights = await getInsights({ locale })
 
   // Try to get translated blogs, fallback to mockBlogs if not present
   let blogs: Blog[] = []
@@ -177,8 +183,13 @@ export default function InsightsPage() {
           subtitle={t('insights.label')}
           title={t.rich('insights.title')}
         />
-        <section aria-label="Insights and Articles">
-          <InsightsList initialInsights={blogs} />
+        <section
+          aria-label="Insights and Articles"
+          className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
+        >
+          {insights.map((insight) => (
+            <InsightCard data={insight} key={insight.id} />
+          ))}
         </section>
       </main>
     </>

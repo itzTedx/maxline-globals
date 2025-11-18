@@ -1,16 +1,28 @@
-"use client";
+'use client'
 
-import { AnimatePresence, motion } from "framer-motion";
+import type { Easing } from 'motion'
+import { AnimatePresence, motion } from 'motion/react'
 
-import { cn } from "@/lib/utils";
+import { cn } from '@/lib/utils'
 
 interface StaggeredTextProps {
-  text: string;
-  className?: string;
-  delay?: number;
-  duration?: number;
-  staggerChildren?: number;
-  ease?: string;
+  text: string
+  className?: string
+  delay?: number
+  duration?: number
+  staggerChildren?: number
+  ease?: string
+}
+
+const easingMap: Record<string, Easing> = {
+  linear: (t) => t,
+  easeIn: (t) => t * t,
+  easeOut: (t) => 1 - (1 - t) * (1 - t),
+  easeInOut: (t) => (t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2),
+}
+
+function resolveEase(easeKey?: string): Easing {
+  return easingMap[easeKey ?? 'easeOut'] ?? easingMap.easeOut
 }
 
 export const StaggeredText = ({
@@ -19,10 +31,10 @@ export const StaggeredText = ({
   delay = 0,
   duration = 0.5,
   staggerChildren = 0.02,
-  ease = "easeOut",
+  ease = 'easeOut',
 }: StaggeredTextProps) => {
   // Split text into words
-  const words = text.split(" ");
+  const words = text.split(' ')
 
   // Container animation
   const container = {
@@ -32,7 +44,7 @@ export const StaggeredText = ({
       transition: {
         staggerChildren,
         delayChildren: delay,
-        ease,
+        ease: resolveEase(ease),
       },
     }),
     exit: {
@@ -42,7 +54,7 @@ export const StaggeredText = ({
         staggerDirection: -1,
       },
     },
-  };
+  }
 
   // Word animation
   const child = {
@@ -50,7 +62,7 @@ export const StaggeredText = ({
       opacity: 1,
       y: 0,
       transition: {
-        type: "spring",
+        type: 'spring' as const,
         damping: 12,
         stiffness: 100,
         duration,
@@ -67,12 +79,12 @@ export const StaggeredText = ({
         duration: duration / 2,
       },
     },
-  };
+  }
 
   return (
     <AnimatePresence mode="wait">
       <motion.span
-        className={cn("overflow-hidden", className)}
+        className={cn('overflow-hidden', className)}
         exit="exit"
         initial="hidden"
         key={text}
@@ -81,11 +93,15 @@ export const StaggeredText = ({
         whileInView="visible"
       >
         {words.map((word, index) => (
-          <motion.span className="inline-block whitespace-pre" key={index} variants={child}>
-            {word}{" "}
+          <motion.span
+            className="inline-block whitespace-pre"
+            key={index}
+            variants={child}
+          >
+            {word}{' '}
           </motion.span>
         ))}
       </motion.span>
     </AnimatePresence>
-  );
-};
+  )
+}
