@@ -126,7 +126,7 @@ export const SERVICES = [
   {
     title: "movingLashing",
     description: "Professional Relocation and Cargo Securing for Safe Transit.",
-    href: "/services/project-cargo",
+    href: "/services/movers-lashing",
     image: "/images/movers.webp",
   },
 ];

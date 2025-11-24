@@ -60,9 +60,9 @@ const ServiceCard = memo(
             itemProp="name"
           >
             {t(
-              `services.service.${service.title as Parameters<typeof t>[0]}.title` as unknown as Parameters<
-                typeof t
-              >[0]
+              `services.service.${
+                service.title as Parameters<typeof t>[0]
+              }.title` as unknown as Parameters<typeof t>[0]
             )}
           </h3>
           <p
@@ -70,14 +70,14 @@ const ServiceCard = memo(
             itemProp="description"
           >
             {t(
-              `services.service.${service.title as Parameters<typeof t>[0]}.description` as unknown as Parameters<
-                typeof t
-              >[0]
+              `services.service.${
+                service.title as Parameters<typeof t>[0]
+              }.description` as unknown as Parameters<typeof t>[0]
             )}
           </p>
         </div>
 
-        <div className="absolute inset-0 z-20 from-input to-transparent md:group-nth-last-[1]:bg-gradient-to-r" />
+        <div className="absolute inset-0 z-20 from-input to-transparent md:group-nth-last-[1]:bg-linear-to-r" />
         <Button
           aria-label={`Learn more about ${service.title}`}
           asChild

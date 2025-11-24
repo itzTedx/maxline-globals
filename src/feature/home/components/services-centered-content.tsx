@@ -86,7 +86,7 @@ export const ServicesCenteredContent = ({
 
         <div className="grid grid-cols-2 gap-4 md:gap-8">
           <motion.div
-            className="relative aspect-[4/3] overflow-hidden rounded-lg md:aspect-video"
+            className="relative aspect-4/3 overflow-hidden rounded-lg md:aspect-video"
             style={{ x: leftX, clipPath }}
           >
             <Image
@@ -97,7 +97,7 @@ export const ServicesCenteredContent = ({
             />
           </motion.div>
           <motion.div
-            className="relative aspect-[4/3] overflow-hidden rounded-lg md:aspect-video"
+            className="relative aspect-4/3 overflow-hidden rounded-lg md:aspect-video"
             style={{ x: rightX, clipPath }}
           >
             <Image
