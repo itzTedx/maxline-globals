@@ -4,7 +4,8 @@
 declare const messages: {
   "banner": {
     "title": " Maxline Global Logistics at Automechanika Dubai 2025",
-    "buttonText": "Learn more"
+    "buttonText": "Learn more",
+    "register": "Get free pass"
   },
   "meta": {
     "home": {

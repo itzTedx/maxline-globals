@@ -19,7 +19,7 @@ import { cn } from '@/lib/utils'
 
 import './globals.css'
 
-import AnnouncementBanner from '@/components/layout/banner'
+import AnnouncementBanner from '@/components/layout/announcement'
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }))

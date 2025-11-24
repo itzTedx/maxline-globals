@@ -15,7 +15,7 @@ export default function AnnouncementBanner() {
         <p className="font-medium text-xs sm:text-base">{t('title')}</p>
         <Button
           asChild
-          className="text-sm max-sm:size-7"
+          className="text-sm hover:bg-brand-dark hover:text-white max-sm:size-7"
           size="sm"
           variant="secondary"
         >
@@ -24,7 +24,23 @@ export default function AnnouncementBanner() {
             title="Maxline Global Logistics at Automechanika Dubai 2025"
           >
             <span className="hidden sm:block">{t('buttonText')}</span>
-            <IconArrowRight className="size-3 sm:size-4" />
+            {/* <IconArrowRight className="size-3 sm:size-4" /> */}
+          </Link>
+        </Button>
+        <Button
+          asChild
+          className="group text-sm hover:bg-brand-dark hover:text-white max-sm:size-7"
+          size="sm"
+          variant="default"
+        >
+          <Link
+            href="https://www.messefrankfurtme-registration.com/MF_Shop/AMDU25/PublicRegistration?assortment=00000000-0000-0000-0000-000000000000"
+            rel="noreferrer noopener"
+            target="_blank"
+            title="Maxline Global Logistics at Automechanika Dubai 2025"
+          >
+            <span className="hidden sm:block">{t('register')}</span>
+            <IconArrowRight className="rtl:group-hover:-translate-x-1 size-3 transition-transform duration-300 group-hover:translate-x-1" />
           </Link>
         </Button>
       </div>

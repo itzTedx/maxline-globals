@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import Image from 'next/image'
+import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import Script from 'next/script'
 
@@ -8,6 +9,7 @@ import { Locale } from 'next-intl'
 import { StaggeredText } from '@/components/animation/staggered-text'
 import { HeroHeader } from '@/components/hero-header'
 import MDXContent from '@/components/markdown/mdx-component'
+import { Button } from '@/components/ui/button'
 
 import { getInsightBySlug } from '@/feature/insights/actions/query'
 import { formatInsightDate } from '@/lib/utils'
@@ -115,6 +117,18 @@ export default async function InsightsSlugPage({ params }: Props) {
             components={{
               Image: (props) => (
                 <Image {...props} className="rounded-lg shadow-lg" />
+              ),
+              Button: (props) => (
+                <Button asChild {...props}>
+                  <Link
+                    className="not-prose"
+                    href={props.href}
+                    rel="noreferrer noopener"
+                    target="_blank"
+                  >
+                    {props.children}
+                  </Link>
+                </Button>
               ),
             }}
             source={insight.content}
