@@ -6,7 +6,9 @@ import { getTranslations } from 'next-intl/server'
 
 import { HeroHeader } from '@/components/hero-header'
 
+import { siteConfig } from '@/constants/site-config'
 import { getInsights } from '@/feature/insights/actions/query'
+import type { InsightMetadata } from '@/feature/insights/actions/types'
 import { InsightCard } from '@/feature/insights/components/insight-card'
 
 // Dynamic metadata generation based on locale
@@ -68,37 +70,19 @@ export default async function InsightsPage({ params }: Props) {
   const { locale } = await params
   const insights = await getInsights({ locale })
 
-  const structuredData = {
-    '@context': 'https://schema.org',
-    '@type': 'Blog',
-    name: 'Maxline Global Logistics Insights',
+  const structuredData = buildInsightsStructuredData({
     description: t('insights.description'),
-    url: 'https://maxline.global/insights',
-    publisher: {
-      '@type': 'Organization',
-      name: 'Maxline Global Logistics',
-      logo: {
-        '@type': 'ImageObject',
-        url: 'https://maxline.global/logo.png',
-      },
-    },
-    // blogPost: blogs.map((blog: Blog) => ({
-    //   '@type': 'BlogPosting',
-    //   headline: blog.title,
-    //   description: blog.description,
-    //   image: blog.image,
-    //   datePublished: blog.datePublished,
-    //   author: {
-    //     '@type': 'Person',
-    //     name: blog.author,
-    //   },
-    //   url: `https://maxline.global/insights/${blog.slug}`,
-    // })),
-  }
+    insights,
+    locale,
+  })
+  const sectionDescriptionId = 'insights-grid-description'
 
   return (
     <>
-      <Script id="structured-data" type="application/ld+json">
+      <Script
+        id={`insights-collection-schema-${locale}`}
+        type="application/ld+json"
+      >
         {JSON.stringify(structuredData)}
       </Script>
       <main className="container relative z-10 rounded-b-3xl bg-background pb-20 shadow-xl">
@@ -107,7 +91,11 @@ export default async function InsightsPage({ params }: Props) {
           subtitle={t('insights.label')}
           title={t.rich('insights.title')}
         />
+        <p className="sr-only" id={sectionDescriptionId}>
+          {`${t('insights.label')} (${insights.length})`}
+        </p>
         <section
+          aria-describedby={sectionDescriptionId}
           aria-label="Insights and Articles"
           className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
         >
@@ -118,4 +106,41 @@ export default async function InsightsPage({ params }: Props) {
       </main>
     </>
   )
+}
+
+function buildInsightsStructuredData({
+  description,
+  insights,
+  locale,
+}: {
+  description: string
+  insights: InsightMetadata[]
+  locale: Locale
+}) {
+  const pageUrl = `${siteConfig.site}/${locale}/insights`
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Blog',
+    name: `${siteConfig.name} Insights`,
+    description,
+    url: pageUrl,
+    inLanguage: locale,
+    publisher: {
+      '@type': 'Organization',
+      name: siteConfig.name,
+      logo: {
+        '@type': 'ImageObject',
+        url: `${siteConfig.site}/logo.png`,
+      },
+    },
+    blogPost: insights.map((insight) => ({
+      '@type': 'BlogPosting',
+      headline: insight.title,
+      description: insight.description,
+      image: insight.thumbnail,
+      keywords: insight.keywords,
+      datePublished: new Date(insight.date).toISOString(),
+      url: `${pageUrl}/${insight.slug}`,
+    })),
+  }
 }

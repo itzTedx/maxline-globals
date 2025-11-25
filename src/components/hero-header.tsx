@@ -20,6 +20,7 @@ interface HeroHeaderProps {
   subtitleClassName?: string
   className?: string
   isLogo?: boolean
+  breadcrumb?: React.ReactNode
   children?: React.ReactNode
 }
 
@@ -32,6 +33,7 @@ export function HeroHeader({
   subtitleClassName,
   className,
   isLogo = true,
+  breadcrumb,
   children,
 }: HeroHeaderProps) {
   const renderTitle = () => {
@@ -72,10 +74,11 @@ export function HeroHeader({
     <section
       aria-labelledby="hero-title"
       className={cn(
-        'relative overflow-hidden py-6 text-center sm:py-12 md:py-14 lg:py-20',
+        'relative overflow-hidden py-6 text-center sm:py-12 md:py-14 lg:py-16',
         className
       )}
     >
+      {breadcrumb && breadcrumb}
       <div className="relative z-10">
         {subtitle && (
           <p
@@ -121,7 +124,7 @@ export function HeroHeader({
       {isLogo && (
         <XIcon
           aria-hidden="true"
-          className="-translate-1/2 pointer-events-none absolute top-1/2 left-1/2 opacity-60"
+          className="-translate-1/2 pointer-events-none absolute top-1/2 left-1/2 scale-75 opacity-40"
         />
       )}
     </section>
