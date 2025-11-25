@@ -6,7 +6,7 @@ import { getTranslations } from 'next-intl/server'
 
 import { HeroHeader } from '@/components/hero-header'
 
-import { siteConfig } from '@/constants/site-config'
+import { siteConfig, socialLinks } from '@/constants/site-config'
 import { getInsights } from '@/feature/insights/actions/query'
 import type { InsightMetadata } from '@/feature/insights/actions/types'
 import { InsightCard } from '@/feature/insights/components/insight-card'
@@ -133,6 +133,7 @@ function buildInsightsStructuredData({
         url: `${siteConfig.site}/logo.png`,
       },
     },
+    sameAs: [socialLinks.map((link) => link.href)],
     blogPost: insights.map((insight) => ({
       '@type': 'BlogPosting',
       headline: insight.title,

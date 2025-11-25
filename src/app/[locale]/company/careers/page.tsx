@@ -9,8 +9,8 @@ import {
   IconStar,
   IconUsers,
 } from '@tabler/icons-react'
-import { useTranslations } from 'next-intl'
-import { getTranslations } from 'next-intl/server'
+import { Locale } from 'next-intl'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
 
 import LetterSwapPingPong from '@/components/animation/letter-swap-pingpong-anim'
 import SpotlightCard from '@/components/animation/spotlight-card'
@@ -85,8 +85,14 @@ export async function generateMetadata({
   }
 }
 
-export default function CareersPage() {
-  const t = useTranslations('CareersPage')
+interface Props {
+  params: Promise<{ locale: Locale }>
+}
+export default async function CareersPage({ params }: Props) {
+  const { locale } = await params
+  setRequestLocale(locale)
+
+  const t = await getTranslations('CareersPage')
 
   const benefits = t.raw('benefits.list')
 

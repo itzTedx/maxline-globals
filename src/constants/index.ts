@@ -1,3 +1,5 @@
+import { socialLinks } from "./site-config";
+
 type SubMenuItem = {
   title: string;
   href: string;
@@ -231,11 +233,7 @@ export const FOOTER_LINKS = [
   },
   {
     header: "social",
-    links: [
-      { title: "linkedin", href: "https://www.linkedin.com/company/maxline-global-logistics-solutions/" },
-      { title: "instagram", href: "https://www.instagram.com/maxlineglobal/" },
-      { title: "facebook", href: "https://www.facebook.com/maxlineglobal/" },
-    ],
+    links: socialLinks,
   },
 ];
 

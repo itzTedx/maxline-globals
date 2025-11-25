@@ -91,6 +91,7 @@ export async function generateMetadata({
         ar: `${siteConfig.site}/ar`,
       },
     },
+
     metadataBase: new URL(siteConfig.site),
   }
 }

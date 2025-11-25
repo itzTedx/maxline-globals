@@ -29,4 +29,11 @@ export const siteConfig = {
   },
 } as const;
 
+export const socialLinks = [
+  { title: "linkedin", href: "https://www.linkedin.com/company/maxline-global-logistics-solutions/" },
+  { title: "instagram", href: "https://www.instagram.com/maxlineglobal/" },
+  { title: "facebook", href: "https://www.facebook.com/maxlineglobal/" },
+] as const;
+
 export type SiteConfig = typeof siteConfig;
+export type SocialLink = (typeof socialLinks)[number];

@@ -5,6 +5,7 @@ import Script from 'next/script'
 import { Locale } from 'next-intl'
 import { setRequestLocale } from 'next-intl/server'
 
+import { socialLinks } from '@/constants/site-config'
 import { CertificatesSection } from '@/feature/about/sections/certificates'
 import { Cta } from '@/feature/cta'
 import { AboutSection } from '@/feature/home/sections/about'
@@ -29,6 +30,7 @@ const structuredData = {
     '@type': 'PostalAddress',
     addressCountry: 'US',
   },
+  sameAs: [socialLinks.map((link) => link.href)],
   contactPoint: {
     '@type': 'ContactPoint',
     contactType: 'customer service',

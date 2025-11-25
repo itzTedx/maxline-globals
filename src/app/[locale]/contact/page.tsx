@@ -2,7 +2,8 @@ import { Metadata } from 'next'
 import Image from 'next/image'
 import Script from 'next/script'
 
-import { getTranslations } from 'next-intl/server'
+import { Locale } from 'next-intl'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
 
 import { StaggeredText } from '@/components/animation/staggered-text'
 import { HeroHeader } from '@/components/hero-header'
@@ -11,7 +12,7 @@ import { Button } from '@/components/ui/custom-button'
 import { XIcon } from '@/assets/x-icon'
 
 import { HEAD_LOCATION, LOCATIONS } from '@/constants'
-import { siteConfig } from '@/constants/site-config'
+import { siteConfig, socialLinks } from '@/constants/site-config'
 import { Cta } from '@/feature/cta'
 import { ContactForm } from '@/feature/forms/contact-form'
 
@@ -85,7 +86,14 @@ export async function generateMetadata({
   }
 }
 
-export default async function ContactPage() {
+export default async function ContactPage({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>
+}) {
+  const { locale } = await params
+  setRequestLocale(locale)
+
   const t = await getTranslations('ContactPage')
 
   const SITE_URL = siteConfig.site
@@ -113,10 +121,7 @@ export default async function ContactPage() {
       addressLocality: 'Dubai',
       addressCountry: 'AE',
     },
-    sameAs: [
-      'https://www.linkedin.com/company/maxline-global',
-      'https://twitter.com/maxlineglobal',
-    ],
+    sameAs: [socialLinks.map((link) => link.href)],
   }
 
   return (

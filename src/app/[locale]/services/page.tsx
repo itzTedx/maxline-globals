@@ -1,12 +1,13 @@
 import { Metadata } from 'next'
 import Script from 'next/script'
 
-import { getTranslations } from 'next-intl/server'
+import { Locale } from 'next-intl'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
 
 import { HeroHeader } from '@/components/hero-header'
 
 import { SERVICES } from '@/constants'
-import { siteConfig } from '@/constants/site-config'
+import { siteConfig, socialLinks } from '@/constants/site-config'
 import { Cta } from '@/feature/cta'
 import { ServicesGrid } from '@/feature/services/services-grid'
 
@@ -54,8 +55,14 @@ export async function generateMetadata(): Promise<Metadata> {
   } satisfies Metadata
 }
 
-export default async function ServicesPage() {
+export default async function ServicesPage({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>
+}) {
   const t = await getTranslations('ServicesPage')
+  const { locale } = await params
+  setRequestLocale(locale)
 
   const structuredData = {
     '@context': 'https://schema.org',
@@ -69,6 +76,7 @@ export default async function ServicesPage() {
       url: siteConfig.site,
       logo: `${siteConfig.site}/logo.png`,
     },
+    sameAs: [socialLinks.map((link) => link.href)],
     mainEntity: {
       '@type': 'ItemList',
       itemListElement: SERVICES.map((service, index) => ({

@@ -4,14 +4,15 @@ import { Metadata } from 'next'
 import Image from 'next/image'
 import Script from 'next/script'
 
-import { getTranslations } from 'next-intl/server'
+import { Locale } from 'next-intl'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
 
 import { StaggeredText } from '@/components/animation/staggered-text'
 import { HeroHeader } from '@/components/hero-header'
 import { Button } from '@/components/ui/custom-button'
 
 import { TEAMS } from '@/constants'
-import { siteConfig } from '@/constants/site-config'
+import { siteConfig, socialLinks } from '@/constants/site-config'
 import { CompanySection } from '@/feature/about/sections/company'
 import { Cta } from '@/feature/cta'
 
@@ -19,9 +20,10 @@ import { Cta } from '@/feature/cta'
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ locale: string }>
+  params: Promise<{ locale: Locale }>
 }): Promise<Metadata> {
   const { locale } = await params
+  setRequestLocale(locale)
 
   const t = await getTranslations('meta.team')
 
@@ -78,10 +80,7 @@ export default async function TeamPage() {
     description: t('heroDescription'),
     url: `${siteConfig.site}/company/team`,
     logo: `${siteConfig.site}/logo.png`,
-    sameAs: [
-      'https://linkedin.com/company/maxlineglobal',
-      'https://twitter.com/maxlineglobal',
-    ],
+    sameAs: [socialLinks.map((link) => link.href)],
     department: {
       '@type': 'Organization',
       name: t('departmentName'),

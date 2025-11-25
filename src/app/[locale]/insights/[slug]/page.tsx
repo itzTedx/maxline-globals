@@ -12,7 +12,7 @@ import { HeroHeader } from '@/components/hero-header'
 import MDXContent from '@/components/markdown/mdx-component'
 import { Button } from '@/components/ui/button'
 
-import { siteConfig } from '@/constants/site-config'
+import { siteConfig, socialLinks } from '@/constants/site-config'
 import { getInsightBySlug } from '@/feature/insights/actions/query'
 import type { Insight } from '@/feature/insights/actions/types'
 import { routing } from '@/i18n/routing'
@@ -80,6 +80,7 @@ interface Props {
 export default async function InsightsSlugPage({ params }: Props) {
   const { slug, locale } = await params
   setRequestLocale(locale)
+
   const navigationT = await getTranslations('Navigation')
   const insight = await getInsightBySlug(slug, { locale })
 
@@ -133,11 +134,12 @@ export default async function InsightsSlugPage({ params }: Props) {
                   </Link>
                 </li>
                 <li aria-hidden="true">/</li>
-                <li aria-hidden="true">{insight.metadata.category}</li>
-                <li aria-hidden="true" className="hidden">
-                  /
-                </li>
-                <li aria-current="page" className="hidden text-foreground">
+                <li>Event</li>
+                <li
+                  aria-current="page"
+                  className="hidden"
+                  title={insight.metadata.title}
+                >
                   {insight.metadata.title}
                 </li>
               </ol>
@@ -146,6 +148,8 @@ export default async function InsightsSlugPage({ params }: Props) {
           className="mx-auto max-w-6xl"
           description={insight.metadata.description}
           descriptionClassName="text-sm sm:text-lg md:text-xl"
+          // subtitle={insight.metadata.category ?? 'Insights & News'}
+          // subtitleClassName="text-xs text-muted-foreground uppercase tracking-wide sm:text-sm"
           title={insight.metadata.title}
           titleClassName="lg:text-6xl text-balance"
         >
@@ -244,6 +248,7 @@ function buildArticleStructuredData(insight: Insight, locale: Locale) {
       '@type': 'Organization',
       name: siteConfig.name,
     },
+    sameAs: [socialLinks.map((link) => link.href)],
     publisher: {
       '@type': 'Organization',
       name: siteConfig.name,

@@ -3,9 +3,10 @@ import { Suspense } from 'react'
 import { Metadata } from 'next'
 import Script from 'next/script'
 
-import { getTranslations } from 'next-intl/server'
+import { Locale } from 'next-intl'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
 
-import { siteConfig } from '@/constants/site-config'
+import { siteConfig, socialLinks } from '@/constants/site-config'
 import { CertificatesSection } from '@/feature/about/sections/certificates'
 import { CompanySection } from '@/feature/about/sections/company'
 import { AboutHeroSection } from '@/feature/about/sections/hero'
@@ -78,7 +79,14 @@ export async function generateMetadata({
   }
 }
 
-export default function AboutPage() {
+interface Props {
+  params: Promise<{ locale: Locale }>
+}
+
+export default async function AboutPage({ params }: Props) {
+  const { locale } = await params
+  setRequestLocale(locale)
+
   const structuredData = {
     '@context': 'https://schema.org',
     '@type': 'AboutPage',
@@ -95,6 +103,7 @@ export default function AboutPage() {
         url: `${siteConfig.site}/logo.png`,
       },
     },
+    sameAs: [socialLinks.map((link) => link.href)],
     mainEntity: {
       '@type': 'Organization',
       name: siteConfig.name,

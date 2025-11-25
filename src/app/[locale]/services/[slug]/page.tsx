@@ -2,12 +2,14 @@ import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Script from 'next/script'
 
-import { getLocale } from 'next-intl/server'
+import { Locale } from 'next-intl'
+import { getLocale, setRequestLocale } from 'next-intl/server'
 
 import SpotlightCard from '@/components/animation/spotlight-card'
 import { StaggeredText } from '@/components/animation/staggered-text'
 import MarqueeSection, { ServiceMessages } from '@/components/MarqueeSection'
 
+import { socialLinks } from '@/constants/site-config'
 import { Cta } from '@/feature/cta'
 import { InsightsCarousel } from '@/feature/insights/components/insights-carousel'
 import { Commitment } from '@/feature/services/commitment'
@@ -15,7 +17,7 @@ import { SERVICES } from '@/feature/services/data/constants'
 import { Features } from '@/feature/services/features'
 import { Hero } from '@/feature/services/hero'
 
-type Params = Promise<{ slug: string }>
+type Params = Promise<{ slug: string; locale: Locale }>
 
 const slugToKey: Record<string, string> = {
   'land-freight': 'landFreight',
@@ -89,8 +91,9 @@ export async function generateStaticParams() {
 }
 
 export default async function ServicePage({ params }: { params: Params }) {
-  const { slug } = await params
-  const locale = await getLocale()
+  const { slug, locale } = await params
+  setRequestLocale(locale)
+
   const messages: Record<string, unknown> = await getServiceMessages(locale)
   const t = (key: string) => {
     const keys = key.split('.')
@@ -116,6 +119,7 @@ export default async function ServicePage({ params }: { params: Params }) {
       name: 'Maxline Global',
       url: 'https://maxlineglobal.com',
     },
+    sameAs: [socialLinks.map((link) => link.href)],
     areaServed: [
       'UAE',
       'Saudi Arabia',
