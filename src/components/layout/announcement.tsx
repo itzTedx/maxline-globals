@@ -23,11 +23,11 @@ export default function AnnouncementBanner() {
             href={'/insights/maxline-global-automechanika-dubai-2025' as Route}
             title="Maxline Global Logistics at Automechanika Dubai 2025"
           >
-            <span className="hidden sm:block">{t('buttonText')}</span>
-            {/* <IconArrowRight className="size-3 sm:size-4" /> */}
+            <span className="hidden sm:block">{t('register')}</span>
+            <IconArrowRight className="rtl:group-hover:-translate-x-1 size-3 transition-transform duration-300 group-hover:translate-x-1" />
           </Link>
         </Button>
-        <Button
+        {/* <Button
           asChild
           className="group text-sm hover:bg-brand-dark hover:text-white max-sm:size-7"
           size="sm"
@@ -42,7 +42,7 @@ export default function AnnouncementBanner() {
             <span className="hidden sm:block">{t('register')}</span>
             <IconArrowRight className="rtl:group-hover:-translate-x-1 size-3 transition-transform duration-300 group-hover:translate-x-1" />
           </Link>
-        </Button>
+        </Button> */}
       </div>
     </div>
   )
