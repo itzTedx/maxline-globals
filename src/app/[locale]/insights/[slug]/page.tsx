@@ -13,10 +13,14 @@ import MDXContent from '@/components/markdown/mdx-component'
 import { Button } from '@/components/ui/button'
 
 import { siteConfig, socialLinks } from '@/constants/site-config'
-import { getInsightBySlug } from '@/feature/insights/actions/query'
+import { getInsightBySlug, getInsights } from '@/feature/insights/actions/query'
 import type { Insight } from '@/feature/insights/actions/types'
 import { routing } from '@/i18n/routing'
 import { formatInsightDate } from '@/lib/utils'
+
+interface Props {
+  params: Promise<{ slug: string; locale: Locale }>
+}
 
 // Generate metadata for the page
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -73,8 +77,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-interface Props {
-  params: Promise<{ slug: string; locale: Locale }>
+export async function generateStaticParams({ params }: Props) {
+  const { locale } = await params
+  const insights = await getInsights({ locale })
+
+  return insights.map((insight) => ({
+    slug: insight.slug,
+    locale,
+  }))
 }
 
 export default async function InsightsSlugPage({ params }: Props) {

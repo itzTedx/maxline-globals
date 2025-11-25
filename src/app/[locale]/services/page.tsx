@@ -60,9 +60,10 @@ export default async function ServicesPage({
 }: {
   params: Promise<{ locale: Locale }>
 }) {
-  const t = await getTranslations('ServicesPage')
   const { locale } = await params
   setRequestLocale(locale)
+
+  const t = await getTranslations('ServicesPage')
 
   const structuredData = {
     '@context': 'https://schema.org',

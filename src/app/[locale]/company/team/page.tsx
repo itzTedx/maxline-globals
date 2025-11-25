@@ -23,7 +23,6 @@ export async function generateMetadata({
   params: Promise<{ locale: Locale }>
 }): Promise<Metadata> {
   const { locale } = await params
-  setRequestLocale(locale)
 
   const t = await getTranslations('meta.team')
 
@@ -71,8 +70,16 @@ export async function generateMetadata({
   }
 }
 
-export default async function TeamPage() {
+export default async function TeamPage({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>
+}) {
+  const { locale } = await params
+  setRequestLocale(locale)
+
   const t = await getTranslations('TeamPage')
+
   const structuredData = {
     '@context': 'https://schema.org',
     '@type': 'Organization',

@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 import Script from 'next/script'
 
 import { Locale } from 'next-intl'
-import { getTranslations } from 'next-intl/server'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
 
 import { HeroHeader } from '@/components/hero-header'
 
@@ -66,8 +66,10 @@ interface Props {
 }
 
 export default async function InsightsPage({ params }: Props) {
-  const t = await getTranslations('HomePage')
   const { locale } = await params
+  setRequestLocale(locale)
+
+  const t = await getTranslations('HomePage')
   const insights = await getInsights({ locale })
 
   const structuredData = buildInsightsStructuredData({
