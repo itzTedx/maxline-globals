@@ -12,7 +12,13 @@ export default function AnnouncementBanner() {
   return (
     <div className="relative z-1000 bg-primary px-4 py-2 text-foreground md:py-3">
       <div className="flex items-center justify-center gap-4">
-        <p className="font-medium text-xs sm:text-base">{t('title')}</p>
+        <Link
+          className="hover:underline"
+          href={'/insights/maxline-global-automechanika-dubai-2025' as Route}
+          title="Maxline Global Logistics at Automechanika Dubai 2025"
+        >
+          <p className="font-medium text-xs sm:text-base">{t('title')}</p>
+        </Link>
         <Button
           asChild
           className="text-sm hover:bg-brand-dark hover:text-white max-sm:size-7"
