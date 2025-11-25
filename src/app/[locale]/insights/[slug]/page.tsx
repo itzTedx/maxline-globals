@@ -15,33 +15,28 @@ import { getInsightBySlug } from '@/feature/insights/actions/query'
 import { formatInsightDate } from '@/lib/utils'
 
 // Generate metadata for the page
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug, locale } = await params
+  const insight = await getInsightBySlug(slug, { locale })
+
+  if (!insight)
+    return {
+      title: 'Insight not found',
+    }
+
   return {
-    title:
-      'What is cross-trade shipping and when is it the best option? | Maxline Global',
-    description:
-      "Learn about cross-trade shipping, its benefits, and when it's the best option for your business. Expert insights from Maxline Global on international logistics.",
+    title: insight.metadata.title,
+    description: insight.metadata.description,
     openGraph: {
-      title:
-        'What is cross-trade shipping and when is it the best option? | Maxline Global',
-      description:
-        "Learn about cross-trade shipping, its benefits, and when it's the best option for your business. Expert insights from Maxline Global on international logistics.",
-      images: [
-        {
-          url: '/images/blogs/transport-logistics-products.jpg',
-          width: 1200,
-          height: 630,
-          alt: 'Transport and logistics products',
-        },
-      ],
+      title: insight.metadata.title,
+      description: insight.metadata.description,
+      images: [insight.metadata.thumbnail],
     },
     twitter: {
       card: 'summary_large_image',
-      title:
-        'What is cross-trade shipping and when is it the best option? | Maxline Global',
-      description:
-        "Learn about cross-trade shipping, its benefits, and when it's the best option for your business. Expert insights from Maxline Global on international logistics.",
-      images: ['/images/blogs/transport-logistics-products.jpg'],
+      title: insight.metadata.title,
+      description: insight.metadata.description,
+      images: [insight.metadata.thumbnail],
     },
   }
 }
