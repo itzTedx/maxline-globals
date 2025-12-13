@@ -394,7 +394,7 @@ const TextAnimateBase = ({
               segmentClassName
             )}
             custom={i * staggerTimings[by]}
-            key={`${by}-${segment}-${i}`}
+            key={`${by}-${segment}-${i + 1}`}
             variants={finalVariants.item}
           >
             {segment}

@@ -89,7 +89,7 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply from-background to-brand-dark text-foreground bg-gradient-to-b from-80% to-80%;
+    @apply from-background to-brand-dark text-foreground bg-linear-to-b from-80% to-80%;
   }
 }
 
@@ -195,12 +195,7 @@
 .gradient-blur > div:nth-of-type(6) {
   z-index: 7;
   backdrop-filter: blur(32px);
-  mask: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 0) 75%,
-    rgba(0, 0, 0, 1) 87.5%,
-    rgba(0, 0, 0, 1) 100%
-  );
+  mask: linear-gradient(to top, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 1) 87.5%, rgba(0, 0, 0, 1) 100%);
 }
 .gradient-blur::after {
   content: "";

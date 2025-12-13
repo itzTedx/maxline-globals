@@ -1,26 +1,26 @@
-'use client'
+"use client";
 
-import { FormEvent, useState } from 'react'
+import { FormEvent, useState } from "react";
 
-import { useRouter } from 'next/navigation'
+import { useRouter } from "next/navigation";
 
-import { IconArrowRight } from '@tabler/icons-react'
-import { motion } from 'motion/react'
-import { useTranslations } from 'next-intl'
+import { IconArrowRight } from "@tabler/icons-react";
+import { motion } from "motion/react";
+import { useTranslations } from "next-intl";
 
-import { Input } from '@/components/ui/input'
+import { Input } from "@/components/ui/input";
 
 export const TrackingInput = () => {
-  const t = useTranslations('HomePage')
-  const router = useRouter()
-  const [trackingId, setTrackingId] = useState('')
+  const t = useTranslations("HomePage");
+  const router = useRouter();
+  const [trackingId, setTrackingId] = useState("");
 
   const handleSubmit = (e: FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
     if (trackingId.trim()) {
-      router.push(`/track-shipment?id=${encodeURIComponent(trackingId.trim())}`)
+      router.push(`/track-shipment?id=${encodeURIComponent(trackingId.trim())}`);
     }
-  }
+  };
 
   return (
     <motion.div
@@ -31,11 +31,11 @@ export const TrackingInput = () => {
     >
       <form onSubmit={handleSubmit}>
         <Input
-          aria-label={t('hero.inputPlaceholder')}
+          aria-label={t("hero.inputPlaceholder")}
           className="bg-white pe-9 font-semibold text-sm shadow-none placeholder:text-brand-dark/50 md:text-base"
           id="track"
           onChange={(e) => setTrackingId(e.target.value)}
-          placeholder={t('hero.inputPlaceholder')}
+          placeholder={t("hero.inputPlaceholder")}
           type="text"
           value={trackingId}
         />
@@ -46,13 +46,9 @@ export const TrackingInput = () => {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          <IconArrowRight
-            aria-hidden="true"
-            className="rtl:rotate-180"
-            size={16}
-          />
+          <IconArrowRight aria-hidden="true" className="rtl:rotate-180" size={16} />
         </motion.button>
       </form>
     </motion.div>
-  )
-}
+  );
+};

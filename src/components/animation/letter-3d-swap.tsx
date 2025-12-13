@@ -254,7 +254,7 @@ const Letter3DSwap = ({
           .reduce((sum: number, word: WordObject) => sum + word.characters.length, 0);
 
         return (
-          <span className="inline-flex" key={wordIndex}>
+          <span className="inline-flex" key={`${wordIndex + 1}-word`}>
             {wordObj.characters.map((char: string, charIndex: number) => {
               const totalIndex = previousCharsCount + charIndex;
 
@@ -314,7 +314,7 @@ const CharBox = ({ char, frontFaceClassName, secondFaceClassName, rotateDirectio
     >
       {/* Front face */}
       <span
-        className={cn("backface-hidden relative h-[1lh]", frontFaceClassName)}
+        className={cn("backface-hidden relative h-lh", frontFaceClassName)}
         style={{
           transform: `${
             rotateDirection === "top" || rotateDirection === "bottom"
@@ -330,7 +330,7 @@ const CharBox = ({ char, frontFaceClassName, secondFaceClassName, rotateDirectio
 
       {/* Second face - positioned based on rotation direction */}
       <span
-        className={cn("backface-hidden absolute top-0 left-0 h-[1lh]", secondFaceClassName)}
+        className={cn("backface-hidden absolute top-0 left-0 h-lh", secondFaceClassName)}
         style={{
           transform: secondFaceTransform,
         }}

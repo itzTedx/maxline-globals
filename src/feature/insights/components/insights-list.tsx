@@ -1,3 +1,3 @@
 export function InsightsList() {
-  return null
+  return null;
 }

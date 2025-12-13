@@ -1,3 +1,5 @@
+import Script from "next/script";
+
 import type { Service } from "@/types";
 
 export const ServicesSchema = ({ services }: { services: Service[] }) => {
@@ -18,5 +20,9 @@ export const ServicesSchema = ({ services }: { services: Service[] }) => {
     })),
   };
 
-  return <script dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} type="application/ld+json" />;
+  return (
+    <Script id="services-schema" type="application/ld+json">
+      {JSON.stringify(schema)}
+    </Script>
+  );
 };

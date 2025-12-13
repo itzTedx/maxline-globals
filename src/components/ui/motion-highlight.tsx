@@ -34,7 +34,7 @@ type MotionHighlightContextType<T extends string> = {
 };
 
 const MotionHighlightContext = React.createContext<
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // biome-ignore lint/suspicious/noExplicitAny: We cant explicitly type this
   MotionHighlightContextType<any> | undefined
 >(undefined);
 
@@ -132,40 +132,37 @@ function MotionHighlight<T extends string>({ ref, ...props }: MotionHighlightPro
     [activeValue, onValueChange]
   );
 
-  const safeSetBounds = React.useCallback(
-    (bounds: DOMRect) => {
-      if (!localRef.current) return;
+  const safeSetBounds = React.useCallback((bounds: DOMRect) => {
+    if (!localRef.current) return;
 
-      const boundsOffset = (props as ParentModeMotionHighlightProps)?.boundsOffset ?? {
-        top: 0,
-        left: 0,
-        width: 0,
-        height: 0,
-      };
+    const boundsOffset = (props as ParentModeMotionHighlightProps)?.boundsOffset ?? {
+      top: 0,
+      left: 0,
+      width: 0,
+      height: 0,
+    };
 
-      const containerRect = localRef.current.getBoundingClientRect();
-      const newBounds: Bounds = {
-        top: bounds.top - containerRect.top + (boundsOffset.top ?? 0),
-        left: bounds.left - containerRect.left + (boundsOffset.left ?? 0),
-        width: bounds.width + (boundsOffset.width ?? 0),
-        height: bounds.height + (boundsOffset.height ?? 0),
-      };
+    const containerRect = localRef.current.getBoundingClientRect();
+    const newBounds: Bounds = {
+      top: bounds.top - containerRect.top + (boundsOffset.top ?? 0),
+      left: bounds.left - containerRect.left + (boundsOffset.left ?? 0),
+      width: bounds.width + (boundsOffset.width ?? 0),
+      height: bounds.height + (boundsOffset.height ?? 0),
+    };
 
-      setBoundsState((prev) => {
-        if (
-          prev &&
-          prev.top === newBounds.top &&
-          prev.left === newBounds.left &&
-          prev.width === newBounds.width &&
-          prev.height === newBounds.height
-        ) {
-          return prev;
-        }
-        return newBounds;
-      });
-    },
-    [props]
-  );
+    setBoundsState((prev) => {
+      if (
+        prev &&
+        prev.top === newBounds.top &&
+        prev.left === newBounds.left &&
+        prev.width === newBounds.width &&
+        prev.height === newBounds.height
+      ) {
+        return prev;
+      }
+      return newBounds;
+    });
+  }, []);
 
   const clearBounds = React.useCallback(() => {
     setBoundsState((prev) => (prev === null ? prev : null));
@@ -239,7 +236,7 @@ function MotionHighlight<T extends string>({ ref, ...props }: MotionHighlightPro
 
       return children;
     },
-    [mode, props, boundsState, transition, exitDelay, className, activeClassNameState]
+    [mode, boundsState, transition, exitDelay, className, activeClassNameState]
   );
 
   return (
@@ -267,7 +264,7 @@ function MotionHighlight<T extends string>({ ref, ...props }: MotionHighlightPro
           ? render(children)
           : render(
               React.Children.map(children, (child, index) => (
-                <MotionHighlightItem className={props?.itemsClassName} key={index}>
+                <MotionHighlightItem className={props?.itemsClassName} key={`${index + 1}-motion-highlight-item`}>
                   {child}
                 </MotionHighlightItem>
               ))
@@ -465,7 +462,7 @@ function MotionHighlightItem({
             )}
           </AnimatePresence>
 
-          <div className={cn("relative z-[1]", className)} data-slot="motion-highlight-item" {...dataAttributes}>
+          <div className={cn("relative z-1", className)} data-slot="motion-highlight-item" {...dataAttributes}>
             {children}
           </div>
         </>

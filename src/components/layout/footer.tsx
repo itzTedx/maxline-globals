@@ -1,22 +1,22 @@
-import { IconArrowRight, IconMapPin } from '@tabler/icons-react'
-import { useTranslations } from 'next-intl'
+import { IconArrowRight, IconMapPin } from "@tabler/icons-react";
+import { useTranslations } from "next-intl";
 
-import LetterSwapPingPong from '@/components/animation/letter-swap-pingpong-anim'
-import CenterUnderline from '@/components/animation/underline-center'
+import LetterSwapPingPong from "@/components/animation/letter-swap-pingpong-anim";
+import CenterUnderline from "@/components/animation/underline-center";
 
-import { Logo } from '@/assets/logo'
-import { XSolidIcon } from '@/assets/x-icon'
+import { Logo } from "@/assets/logo";
+import { XSolidIcon } from "@/assets/x-icon";
 
-import type { FooterKey } from '@/constants'
-import { FOOTER_LINKS } from '@/constants'
-import { Link } from '@/i18n/navigation'
+import type { FooterKey } from "@/constants";
+import { FOOTER_LINKS } from "@/constants";
+import { Link } from "@/i18n/navigation";
 
-import VerticalCutReveal from '../animation/vertical-cut-reveal'
-import { Button } from '../ui/button'
-import { Separator } from '../ui/separator'
+import VerticalCutReveal from "../animation/vertical-cut-reveal";
+import { Button } from "../ui/button";
+import { Separator } from "../ui/separator";
 
 export const Footer = () => {
-  const t = useTranslations('Footer')
+  const t = useTranslations("Footer");
   return (
     <footer className="relative z-0 w-full overflow-hidden bg-brand-dark text-background">
       <div className="container relative z-10 grid grid-cols-1 gap-6 py-10 md:grid-cols-12 md:gap-12 md:py-20">
@@ -26,12 +26,12 @@ export const Footer = () => {
             staggerDuration={0.025}
             staggerFrom="first"
             transition={{
-              type: 'spring',
+              type: "spring",
               stiffness: 200,
               damping: 21,
             }}
           >
-            {t('slogan1')}
+            {t("slogan1")}
           </VerticalCutReveal>
           <VerticalCutReveal
             containerClassName="text-primary"
@@ -40,12 +40,12 @@ export const Footer = () => {
             staggerFrom="first"
             transition={{
               delay: 1,
-              type: 'spring',
+              type: "spring",
               stiffness: 200,
               damping: 21,
             }}
           >
-            {t('slogan2')}
+            {t("slogan2")}
           </VerticalCutReveal>
         </h5>
 
@@ -59,17 +59,10 @@ export const Footer = () => {
             >
               <IconMapPin className="size-5 stroke-1" />
               <p className="font-light text-sm sm:text-base">
-                {t('locationLabel')}{' '}
-                <span
-                  itemProp="address"
-                  itemScope
-                  itemType="https://schema.org/PostalAddress"
-                >
+                {t("locationLabel")}{" "}
+                <span itemProp="address" itemScope itemType="https://schema.org/PostalAddress">
                   <span itemProp="streetAddress">
-                    <CenterUnderline
-                      className="font-medium"
-                      label={t('locationAddress')}
-                    />
+                    <CenterUnderline className="font-medium" label={t("locationAddress")} />
                   </span>
                   <meta content="Dubai" itemProp="addressLocality" />
                   <meta content="UAE" itemProp="addressCountry" />
@@ -77,16 +70,11 @@ export const Footer = () => {
                 </span>
               </p>
             </Link>
-            <Button
-              asChild
-              className="w-full sm:w-auto"
-              size="btnIcon"
-              variant="secondary"
-            >
+            <Button asChild className="w-full sm:w-auto" size="btnIcon" variant="secondary">
               <Link className="group text-brand-dark" href="/quote">
                 <LetterSwapPingPong
                   className="w-full justify-start font-semibold"
-                  label={t('getQuote')}
+                  label={t("getQuote")}
                   reverse={false}
                   staggerFrom="first"
                 />
@@ -112,14 +100,8 @@ export const Footer = () => {
                       <Link
                         className="font-black font-grotesk text-sm sm:text-base"
                         href={link.href}
-                        rel={
-                          section.header === 'social'
-                            ? 'noopener noreferrer'
-                            : undefined
-                        }
-                        target={
-                          section.header === 'social' ? '_blank' : undefined
-                        }
+                        rel={section.header === "social" ? "noopener noreferrer" : undefined}
+                        target={section.header === "social" ? "_blank" : undefined}
                       >
                         <CenterUnderline label={t(link.title as FooterKey)} />
                       </Link>
@@ -137,17 +119,14 @@ export const Footer = () => {
       <div className="container z-10 flex flex-col items-center justify-between gap-4 py-6 sm:flex-row sm:py-9">
         <Logo className="text-background" />
         <p className="text-center text-sm sm:text-left sm:text-base">
-          {t('copyright', { year: String(new Date().getFullYear()) })}
+          {t("copyright", { year: String(new Date().getFullYear()) })}
         </p>
-        <Link
-          className="font-light text-muted-foreground text-xs"
-          href="https://www.zironmedia.com"
-        >
-          {t('designedBy', { agency: t('agencyName') })}
+        <Link className="font-light text-muted-foreground text-xs" href="https://www.zironmedia.com">
+          {t("designedBy", { agency: t("agencyName") })}
         </Link>
       </div>
 
       <XSolidIcon className="-bottom-[30%] -translate-x-1/2 pointer-events-none absolute left-1/2 select-none opacity-50 sm:opacity-100" />
     </footer>
-  )
-}
+  );
+};

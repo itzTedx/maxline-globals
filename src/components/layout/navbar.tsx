@@ -1,52 +1,45 @@
-'use client'
+"use client";
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from "react";
 
-import Image from 'next/image'
+import Image from "next/image";
 
-import { useTranslations } from 'next-intl'
+import { useTranslations } from "next-intl";
 
-import { Logo } from '@/assets/logo'
+import { Logo } from "@/assets/logo";
 
-import { NAVLINKS } from '@/constants'
-import { Link } from '@/i18n/navigation'
+import { NAVLINKS } from "@/constants";
+import { Link } from "@/i18n/navigation";
 
-import { LanguageSelector } from './nav/language-selector'
-import { MobileNav } from './nav/mobile-nav'
-import { NavLink } from './nav/nav-link'
-import { NavSubmenu } from './nav/nav-submenu'
-import { QuoteButton } from './nav/quote-button'
+import { LanguageSelector } from "./nav/language-selector";
+import { MobileNav } from "./nav/mobile-nav";
+import { NavLink } from "./nav/nav-link";
+import { NavSubmenu } from "./nav/nav-submenu";
+import { QuoteButton } from "./nav/quote-button";
 
 export const Navbar = () => {
-  const t = useTranslations('Navigation')
-  const [activeMenu, setActiveMenu] = useState<string | null>(null)
-  const [submenuHeights, setSubmenuHeights] = useState<Map<string, number>>(
-    new Map()
-  )
-  const submenuRefs = useRef<Map<string, HTMLDivElement>>(new Map())
+  const t = useTranslations("Navigation");
+  const [activeMenu, setActiveMenu] = useState<string | null>(null);
+  const [submenuHeights, setSubmenuHeights] = useState<Map<string, number>>(new Map());
+  const submenuRefs = useRef<Map<string, HTMLDivElement>>(new Map());
 
   // Update submenu height when active menu changes
   useEffect(() => {
     if (activeMenu && submenuRefs.current.has(activeMenu)) {
-      const submenuElement = submenuRefs.current.get(activeMenu)
-      if (
-        submenuElement &&
-        submenuElement.scrollHeight > (submenuHeights.get(activeMenu) || 0)
-      ) {
-        setSubmenuHeights((prev) =>
-          new Map(prev).set(activeMenu, submenuElement.scrollHeight)
-        )
+      const submenuElement = submenuRefs.current.get(activeMenu);
+      if (submenuElement && submenuElement.scrollHeight > (submenuHeights.get(activeMenu) || 0)) {
+        setSubmenuHeights((prev) => new Map(prev).set(activeMenu, submenuElement.scrollHeight));
       }
     }
-  }, [activeMenu, submenuHeights])
+  }, [activeMenu, submenuHeights]);
 
   const handleMouseEnter = (title: string) => {
-    setActiveMenu(title)
-  }
+    setActiveMenu(title);
+  };
 
   const handleMouseLeave = () => {
-    setActiveMenu(null)
-  }
+    setActiveMenu(null);
+  };
 
   return (
     <nav
@@ -65,20 +58,12 @@ export const Navbar = () => {
           </Link>
           <span className="text-muted">x</span>
           <Link href="/insights/maxline-global-automechanika-dubai-2025">
-            <Image
-              alt="Automechanika Dubai Logo"
-              height={30}
-              src="/images/events/automechanika.svg"
-              width={144}
-            />
+            <Image alt="Automechanika Dubai Logo" height={30} src="/images/events/automechanika.svg" width={144} />
           </Link>
         </div>
 
         {/* Desktop Navigation */}
-        <ul
-          className="relative col-span-2 hidden items-center justify-center gap-2 lg:flex"
-          role="menubar"
-        >
+        <ul className="relative col-span-2 hidden items-center justify-center gap-2 lg:flex" role="menubar">
           {NAVLINKS.map((link) => (
             <li
               className="group"
@@ -97,7 +82,7 @@ export const Navbar = () => {
               {link.submenu && (
                 <div
                   ref={(el) => {
-                    if (el) submenuRefs.current.set(link.title, el)
+                    if (el) submenuRefs.current.set(link.title, el);
                   }}
                 >
                   <NavSubmenu
@@ -136,5 +121,5 @@ export const Navbar = () => {
         <div />
       </div>
     </nav>
-  )
-}
+  );
+};

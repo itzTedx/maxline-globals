@@ -22,6 +22,7 @@ export function useElasticLineEvents(
     y: dimensions.height / 2,
   });
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: We don't need to re-run the effect for mousePosition and dimensions changes
   useEffect(() => {
     if (containerRef.current) {
       const { width, height } = dimensions;

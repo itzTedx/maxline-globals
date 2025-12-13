@@ -1,42 +1,29 @@
-import Image from 'next/image'
+import Image from "next/image";
 
-import { IconArrowRight } from '@tabler/icons-react'
-import { useLocale, useTranslations } from 'next-intl'
+import { IconArrowRight } from "@tabler/icons-react";
+import { useLocale, useTranslations } from "next-intl";
 
-import LetterSwapPingPong from '@/components/animation/letter-swap-pingpong-anim'
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card'
+import LetterSwapPingPong from "@/components/animation/letter-swap-pingpong-anim";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 
-import { Link } from '@/i18n/navigation'
-import { formatInsightDate } from '@/lib/utils'
+import { Link } from "@/i18n/navigation";
+import { formatInsightDate } from "@/lib/utils";
 
-import { InsightMetadata } from '../actions/types'
+import { InsightMetadata } from "../actions/types";
 
 export function InsightCard({ data }: { data: InsightMetadata }) {
-  const t = useTranslations('HomePage')
-  const locale = useLocale()
+  const t = useTranslations("HomePage");
+  const locale = useLocale();
   return (
     <Card className="group relative gap-0 overflow-hidden p-0">
-      <Link
-        className="absolute inset-0 z-10"
-        href={`/insights/${data.slug}`}
-        title={data.title}
-      />
+      <Link className="absolute inset-0 z-10" href={`/insights/${data.slug}`} title={data.title} />
       <CardContent className="relative px-0">
         <div className="relative flex aspect-video items-end overflow-hidden p-4 sm:aspect-4/3">
           <div className="relative z-10 flex w-full items-center justify-between gap-2">
             <Badge variant="ghost">{data.category}</Badge>
-            <Badge variant="secondary">
-              {formatInsightDate(data.date, locale)}
-            </Badge>
+            <Badge variant="secondary">{formatInsightDate(data.date, locale)}</Badge>
           </div>
           <Image
             alt={`Illustration for article: ${data.title}`}
@@ -65,9 +52,9 @@ export function InsightCard({ data }: { data: InsightMetadata }) {
         >
           <LetterSwapPingPong
             className="w-full justify-start font-semibold text-sm sm:text-base"
-            label={t('insights.readBtn')}
+            label={t("insights.readBtn")}
             reverse={false}
-            staggerFrom={'first'}
+            staggerFrom={"first"}
           />
           <div className="pointer-events-none ml-auto flex size-7 shrink-0 touch-none select-none items-center justify-center rounded bg-primary text-brand-dark transition-colors group-hover:bg-background sm:size-8">
             <IconArrowRight aria-hidden="true" className="size-4 sm:size-5" />
@@ -75,5 +62,5 @@ export function InsightCard({ data }: { data: InsightMetadata }) {
         </Button>
       </CardFooter>
     </Card>
-  )
+  );
 }

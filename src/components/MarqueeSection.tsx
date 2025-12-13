@@ -49,7 +49,7 @@ export default function MarqueeSection({
         useScrollVelocity={true}
       >
         {industries.map((item, i) => (
-          <MarqueeItem key={i}>
+          <MarqueeItem key={`${i + 1}-item`}>
             <div
               className="relative aspect-4/3 h-60 overflow-hidden rounded-2xl p-6 font-grotesk text-2xl text-background md:h-80 md:p-9 md:text-4xl"
               dir={locale === "ar" ? "rtl" : "ltr"}
@@ -57,7 +57,7 @@ export default function MarqueeSection({
               <h4 className="relative z-20 flex h-full items-end">
                 {((messages[serviceKey] as Record<string, unknown>)?.industries as string[])[i]}
               </h4>
-              <div className="absolute bottom-0 left-0 z-10 h-1/2 w-full bg-gradient-to-t from-secondary/80 to-transparent" />
+              <div className="absolute bottom-0 left-0 z-10 h-1/2 w-full bg-linear-to-t from-secondary/80 to-transparent" />
               <div className="absolute inset-0 z-10 bg-secondary mix-blend-hue" />
               <Image
                 alt={((messages[serviceKey] as Record<string, unknown>)?.industries as string[])[i]}

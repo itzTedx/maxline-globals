@@ -7,6 +7,11 @@
   "files.associations": {
     "*.css": "tailwindcss"
   },
+  "tailwindCSS.experimental.configFile": "src/app/globals.css",
+  "tailwindCSS.experimental.classRegex": [
+    ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
+    ["cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
+  ],
   "typescript.tsdk": "node_modules/typescript/lib",
   "cSpell.words": ["NAVLINKS", "ziron", "zustand", "maxline"],
   "i18n-ally.localesPaths": ["src/i18n"]

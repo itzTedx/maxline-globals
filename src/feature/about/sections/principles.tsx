@@ -1,21 +1,21 @@
-'use client'
+"use client";
 
-import React, { Fragment, useEffect, useRef, useState } from 'react'
+import React, { Fragment, useEffect, useRef, useState } from "react";
 
-import Image from 'next/image'
+import Image from "next/image";
 
-import { motion } from 'motion/react'
-import { useTranslations } from 'next-intl'
+import { motion } from "motion/react";
+import { useTranslations } from "next-intl";
 
-import { StaggeredText } from '@/components/animation/staggered-text'
-import { Separator } from '@/components/ui/separator'
+import { StaggeredText } from "@/components/animation/staggered-text";
+import { Separator } from "@/components/ui/separator";
 
 const images = [
-  '/images/carousel/technological-futuristic-holograms-logistics-means-transport.jpg',
-  '/images/carousel/scene-with-photorealistic-logistics-operations-proceedings.jpg',
-  '/images/carousel/transport-logistics-products.jpg',
-  '/images/carousel/logistics-means-transport-together-with-technological-futuristic-holograms copy.jpg',
-]
+  "/images/carousel/technological-futuristic-holograms-logistics-means-transport.jpg",
+  "/images/carousel/scene-with-photorealistic-logistics-operations-proceedings.jpg",
+  "/images/carousel/transport-logistics-products.jpg",
+  "/images/carousel/logistics-means-transport-together-with-technological-futuristic-holograms copy.jpg",
+];
 
 const PrincipleImage = React.memo(
   ({
@@ -24,23 +24,20 @@ const PrincipleImage = React.memo(
     currentImage,
     isVisible,
   }: {
-    image: string
-    index: number
-    currentImage: number
-    isVisible: boolean
+    image: string;
+    index: number;
+    currentImage: number;
+    isVisible: boolean;
   }) => (
     <motion.div
       animate={{
-        clipPath:
-          index === currentImage && isVisible
-            ? 'inset(0% 0% 0% 0%)'
-            : 'inset(50% 50% 50% 50%)',
+        clipPath: index === currentImage && isVisible ? "inset(0% 0% 0% 0%)" : "inset(50% 50% 50% 50%)",
         scale: index === currentImage && isVisible ? 1.1 : 1,
         zIndex: index === currentImage ? 2 : 1,
       }}
       className="absolute inset-0"
       initial={{
-        clipPath: 'inset(50% 50% 50% 50%)',
+        clipPath: "inset(50% 50% 50% 50%)",
         scale: 1,
         zIndex: index === currentImage ? 2 : 1,
       }}
@@ -68,82 +65,81 @@ const PrincipleImage = React.memo(
       />
     </motion.div>
   )
-)
+);
 
-PrincipleImage.displayName = 'PrincipleImage'
+PrincipleImage.displayName = "PrincipleImage";
 
 type Principle = {
-  label: string
-  title: string
-  description: string
-}
+  label: string;
+  title: string;
+  description: string;
+};
 
 export const Principles = () => {
-  const t = useTranslations('AboutPage')
-  const principles = t.raw('principles.list') as Principle[]
-  const [currentImage, setCurrentImage] = useState(0)
-  const [isVisible, setIsVisible] = useState(false)
-  const sectionRef = useRef<HTMLDivElement>(null)
-  const imageSectionRef = useRef<HTMLDivElement>(null)
-  const elementRefs = useRef<(HTMLDivElement | null)[]>([])
+  const t = useTranslations("AboutPage");
+  const principles = t.raw("principles.list") as Principle[];
+  const [currentImage, setCurrentImage] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const imageSectionRef = useRef<HTMLDivElement>(null);
+  const elementRefs = useRef<(HTMLDivElement | null)[]>([]);
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: We don't need to re-run the effect for currentImage changes
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const index = elementRefs.current.findIndex(
-              (ref) => ref === entry.target
-            )
+            const index = elementRefs.current.findIndex((ref) => ref === entry.target);
             if (index !== -1) {
-              setCurrentImage(index)
+              setCurrentImage(index);
             }
           }
-        })
+        });
       },
       {
         root: null,
-        rootMargin: '-50% 0px -50% 0px',
+        rootMargin: "-50% 0px -50% 0px",
         threshold: 0,
       }
-    )
+    );
     elementRefs.current.forEach((ref) => {
-      if (ref) observer.observe(ref)
-    })
+      if (ref) observer.observe(ref);
+    });
 
     return () => {
-      observer.disconnect()
-    }
-  }, [currentImage])
+      observer.disconnect();
+    };
+  }, [currentImage]);
 
   useEffect(() => {
     const imageObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setIsVisible(true)
+            setIsVisible(true);
           }
-        })
+        });
       },
       {
         threshold: 0.2,
       }
-    )
+    );
 
     if (imageSectionRef.current) {
-      imageObserver.observe(imageSectionRef.current)
+      imageObserver.observe(imageSectionRef.current);
     }
 
     return () => {
-      imageObserver.disconnect()
-    }
-  }, [])
+      imageObserver.disconnect();
+    };
+  }, []);
 
   return (
     <section className="container relative grid gap-36 py-20 md:grid-cols-2">
       <div className="space-y-12 md:space-y-20 lg:space-y-28" ref={sectionRef}>
         <h2 className="font-grotesk text-3xl text-brand-dark md:max-w-xs md:text-5xl lg:text-6xl/18">
-          <StaggeredText text={t('principles.title')} />
+          <StaggeredText text={t("principles.title")} />
         </h2>
         <Separator />
         {principles.map((p: Principle, index: number) => (
@@ -151,7 +147,7 @@ export const Principles = () => {
             <div
               className="grid grid-cols-4 gap-3 md:grid-cols-3"
               ref={(el) => {
-                if (el) elementRefs.current[index] = el
+                if (el) elementRefs.current[index] = el;
               }}
             >
               <h3 className="mt-2.5 font-medium text-secondary text-xs uppercase md:font-light md:text-lg lg:text-xl">
@@ -176,16 +172,10 @@ export const Principles = () => {
       >
         <div className="relative aspect-square overflow-hidden rounded-2xl">
           {images.map((image, index) => (
-            <PrincipleImage
-              currentImage={currentImage}
-              image={image}
-              index={index}
-              isVisible={isVisible}
-              key={image}
-            />
+            <PrincipleImage currentImage={currentImage} image={image} index={index} isVisible={isVisible} key={image} />
           ))}
         </div>
       </div>
     </section>
-  )
-}
+  );
+};

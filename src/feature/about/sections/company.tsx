@@ -46,7 +46,13 @@ export const CompanySection = () => {
 
       <div className="container relative w-full max-w-4xl">
         {items.map((logos, index) => (
-          <LogoRow activeIndex={activeIndex} index={index} key={index} logos={logos} />
+          <LogoRow
+            activeIndex={activeIndex}
+            index={index}
+            // biome-ignore lint/suspicious/noArrayIndexKey: index is unique
+            key={index}
+            logos={logos}
+          />
         ))}
       </div>
     </section>
@@ -76,6 +82,7 @@ const LogoRow = ({ logos, index, activeIndex }: LogoRowProps) => {
               className="grid scale-75 place-content-center sm:scale-90"
               exit={{ y: -40, opacity: 0, filter: "blur(10px)" }}
               initial={{ y: 40, opacity: 0, filter: "blur(10px)" }}
+              // biome-ignore lint/suspicious/noArrayIndexKey: logoIndex is unique
               key={logoIndex}
               transition={{
                 duration: 1.5,

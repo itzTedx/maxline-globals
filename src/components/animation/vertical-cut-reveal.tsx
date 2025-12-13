@@ -72,6 +72,7 @@ const VerticalCutReveal = forwardRef<VerticalCutRevealRef, TextProps>(
     };
 
     // Split text based on splitBy parameter
+    // biome-ignore lint/correctness/useExhaustiveDependencies: we don't need to re-run the effect for text changes
     const elements = useMemo(() => {
       const words = text.split(" ");
       if (splitBy === "characters") {
@@ -84,6 +85,7 @@ const VerticalCutReveal = forwardRef<VerticalCutRevealRef, TextProps>(
     }, [text, splitBy]);
 
     // Calculate stagger delays based on staggerFrom
+    // biome-ignore lint/correctness/useExhaustiveDependencies: we don't need to re-run the effect for elements changes
     const getStaggerDelay = useCallback(
       (index: number) => {
         const total =
@@ -121,6 +123,7 @@ const VerticalCutReveal = forwardRef<VerticalCutRevealRef, TextProps>(
     }));
 
     // Auto start animation
+    // biome-ignore lint/correctness/useExhaustiveDependencies: We don't need to re-run the effect for startAnimation function changes
     useEffect(() => {
       if (autoStart) {
         startAnimation();
@@ -157,9 +160,16 @@ const VerticalCutReveal = forwardRef<VerticalCutRevealRef, TextProps>(
           const previousCharsCount = array.slice(0, wordIndex).reduce((sum, word) => sum + word.characters.length, 0);
 
           return (
-            <span aria-hidden="true" className={cn("inline-flex overflow-hidden", wordLevelClassName)} key={wordIndex}>
+            <span
+              aria-hidden="true"
+              className={cn("inline-flex overflow-hidden", wordLevelClassName)}
+              key={`${wordIndex + 1}-word`}
+            >
               {wordObj.characters.map((char, charIndex) => (
-                <span className={cn(elementLevelClassName, "relative whitespace-pre-wrap")} key={charIndex}>
+                <span
+                  className={cn(elementLevelClassName, "relative whitespace-pre-wrap")}
+                  key={`${charIndex + 1}-char`}
+                >
                   <motion.span
                     animate={isAnimating ? "visible" : "hidden"}
                     className="inline-block"

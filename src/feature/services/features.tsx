@@ -55,7 +55,7 @@ export const Features = ({ overview, features }: FeaturesProps) => {
               itemProp="itemListElement"
               itemScope
               itemType="https://schema.org/Service"
-              key={index}
+              key={`${index + 1}-feature`}
             >
               <meta content={String(index + 1)} itemProp="position" />
               <h4 className="mb-3 font-grotesk text-2xl text-secondary md:mb-4 md:text-3xl" itemProp="name">

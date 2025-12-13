@@ -43,7 +43,7 @@ export function QuoteRequestEmail(props: QuoteRequestEmailProps) {
 
   const formatNumber = (num: number | undefined, unit = "") => {
     if (typeof num !== "number") return "N/A";
-    return `${num.toLocaleString()}${unit ? " " + unit : ""}`;
+    return `${num.toLocaleString()}${unit ? ` ${unit}` : ""}`;
   };
 
   return (

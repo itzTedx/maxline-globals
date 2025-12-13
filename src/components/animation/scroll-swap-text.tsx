@@ -17,9 +17,8 @@ const ScrollAndSwapText = ({ label, offset = ["0 0", "0 1"], className, containe
   const { scrollYProgress } = useScroll({
     container: containerRef,
     target: ref,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    offset: offset as any, // framer motion doesnt export the type, so we have to cast it, sorry :/
-    layoutEffect: false,
+    // biome-ignore lint/suspicious/noExplicitAny: framer motion doesn't export the type, so we have to cast it
+    offset: offset as any,
   });
 
   const top = useTransform(scrollYProgress, [0, 1], ["0%", "-100%"]);

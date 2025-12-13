@@ -1,44 +1,44 @@
-import { Metadata } from 'next'
-import Image from 'next/image'
-import Link from 'next/link'
-import { notFound } from 'next/navigation'
-import Script from 'next/script'
+import { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import Script from "next/script";
 
-import { Locale } from 'next-intl'
-import { getTranslations, setRequestLocale } from 'next-intl/server'
+import { Locale } from "next-intl";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
-import { StaggeredText } from '@/components/animation/staggered-text'
-import { HeroHeader } from '@/components/hero-header'
-import MDXContent from '@/components/markdown/mdx-component'
-import { Button } from '@/components/ui/button'
+import { StaggeredText } from "@/components/animation/staggered-text";
+import { HeroHeader } from "@/components/hero-header";
+import MDXContent from "@/components/markdown/mdx-component";
+import { Button } from "@/components/ui/button";
 
-import { siteConfig, socialLinks } from '@/constants/site-config'
-import { getInsightBySlug, getInsights } from '@/feature/insights/actions/query'
-import type { Insight } from '@/feature/insights/actions/types'
-import { routing } from '@/i18n/routing'
-import { formatInsightDate } from '@/lib/utils'
+import { siteConfig, socialLinks } from "@/constants/site-config";
+import { getInsightBySlug, getInsights } from "@/feature/insights/actions/query";
+import type { Insight } from "@/feature/insights/actions/types";
+import { routing } from "@/i18n/routing";
+import { formatInsightDate } from "@/lib/utils";
 
 interface Props {
-  params: Promise<{ slug: string; locale: Locale }>
+  params: Promise<{ slug: string; locale: Locale }>;
 }
 
 // Generate metadata for the page
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug, locale } = await params
-  const insight = await getInsightBySlug(slug, { locale })
+  const { slug, locale } = await params;
+  const insight = await getInsightBySlug(slug, { locale });
 
   if (!insight)
     return {
-      title: 'Insight not found',
-    }
+      title: "Insight not found",
+    };
 
-  const pageUrl = `${siteConfig.site}/${locale}/insights/${slug}`
-  const openGraphLocale = getOpenGraphLocale(locale)
-  const languages = buildLanguageAlternates(slug)
-  const publishedTime = new Date(insight.metadata.date).toISOString()
+  const pageUrl = `${siteConfig.site}/${locale}/insights/${slug}`;
+  const openGraphLocale = getOpenGraphLocale(locale);
+  const languages = buildLanguageAlternates(slug);
+  const publishedTime = new Date(insight.metadata.date).toISOString();
   const alternateLocale = routing.locales
     .filter((value) => value !== locale)
-    .map((value) => getOpenGraphLocale(value as Locale))
+    .map((value) => getOpenGraphLocale(value as Locale));
 
   return {
     title: insight.metadata.title,
@@ -55,7 +55,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       siteName: siteConfig.name,
       locale: openGraphLocale,
       alternateLocale,
-      type: 'article',
+      type: "article",
       publishedTime,
       modifiedTime: publishedTime,
       images: [
@@ -66,55 +66,52 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       ],
     },
     twitter: {
-      card: 'summary_large_image',
+      card: "summary_large_image",
       title: insight.metadata.title,
       description: insight.metadata.description,
       images: [insight.metadata.thumbnail],
     },
     other: {
-      'article:section': insight.metadata.category,
+      "article:section": insight.metadata.category,
     },
-  }
+  };
 }
 
 export async function generateStaticParams({ params }: Props) {
-  const { locale } = await params
-  const insights = await getInsights({ locale })
+  const { locale } = await params;
+  const insights = await getInsights({ locale });
 
   return insights.map((insight) => ({
     slug: insight.slug,
     locale,
-  }))
+  }));
 }
 
 export default async function InsightsSlugPage({ params }: Props) {
-  const { slug, locale } = await params
-  setRequestLocale(locale)
+  const { slug, locale } = await params;
+  setRequestLocale(locale);
 
-  const navigationT = await getTranslations('Navigation')
-  const insight = await getInsightBySlug(slug, { locale })
+  const navigationT = await getTranslations("Navigation");
+  const insight = await getInsightBySlug(slug, { locale });
 
-  if (!insight) return notFound()
+  if (!insight) return notFound();
 
-  const articleStructuredData = buildArticleStructuredData(insight, locale)
+  const articleStructuredData = buildArticleStructuredData(insight, locale);
   const breadcrumbStructuredData = buildBreadcrumbStructuredData({
     locale,
     slug,
     title: insight.metadata.title,
-    homeLabel: navigationT('home'),
-    insightsLabel: navigationT('insights'),
-  })
-  const gridDescriptionId = 'article-content-description'
+    homeLabel: navigationT("home"),
+    insightsLabel: navigationT("insights"),
+  });
+  const gridDescriptionId = "article-content-description";
 
   return (
     <>
       <Script id={`insight-article-schema-${slug}`} type="application/ld+json">
         {JSON.stringify(articleStructuredData)}
       </Script>
-      <Script
-        id={`insight-breadcrumb-schema-${slug}`}
-        type="application/ld+json"
-      >
+      <Script id={`insight-breadcrumb-schema-${slug}`} type="application/ld+json">
         {JSON.stringify(breadcrumbStructuredData)}
       </Script>
 
@@ -131,7 +128,7 @@ export default async function InsightsSlugPage({ params }: Props) {
                     className="transition hover:text-brand-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                     href={`/${locale}`}
                   >
-                    {navigationT('home')}
+                    {navigationT("home")}
                   </Link>
                 </li>
                 <li aria-hidden="true">/</li>
@@ -140,16 +137,12 @@ export default async function InsightsSlugPage({ params }: Props) {
                     className="transition hover:text-brand-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                     href={`/${locale}/insights`}
                   >
-                    {navigationT('insights')}
+                    {navigationT("insights")}
                   </Link>
                 </li>
                 <li aria-hidden="true">/</li>
                 <li>Event</li>
-                <li
-                  aria-current="page"
-                  className="hidden"
-                  title={insight.metadata.title}
-                >
+                <li aria-current="page" className="hidden" title={insight.metadata.title}>
                   {insight.metadata.title}
                 </li>
               </ol>
@@ -195,27 +188,14 @@ export default async function InsightsSlugPage({ params }: Props) {
           <meta content={insight.metadata.title} itemProp="headline" />
           <meta content={insight.metadata.description} itemProp="description" />
           <meta content={insight.metadata.thumbnail} itemProp="image" />
-          <meta
-            content={new Date(insight.metadata.date).toISOString()}
-            itemProp="datePublished"
-          />
-          <meta
-            content={new Date(insight.metadata.date).toISOString()}
-            itemProp="dateModified"
-          />
+          <meta content={new Date(insight.metadata.date).toISOString()} itemProp="datePublished" />
+          <meta content={new Date(insight.metadata.date).toISOString()} itemProp="dateModified" />
           <MDXContent
             components={{
-              Image: (props) => (
-                <Image {...props} className="rounded-lg shadow-lg" />
-              ),
+              Image: (props) => <Image {...props} className="rounded-lg shadow-lg" />,
               Button: (props) => (
                 <Button asChild {...props}>
-                  <Link
-                    className="not-prose"
-                    href={props.href}
-                    rel="noreferrer noopener"
-                    target="_blank"
-                  >
+                  <Link className="not-prose" href={props.href} rel="noreferrer noopener" target="_blank">
                     {props.children}
                   </Link>
                 </Button>
@@ -226,25 +206,25 @@ export default async function InsightsSlugPage({ params }: Props) {
         </article>
       </main>
     </>
-  )
+  );
 }
 
 function buildLanguageAlternates(slug: string) {
   return routing.locales.reduce<Record<string, string>>((acc, locale) => {
-    acc[locale] = `${siteConfig.site}/${locale}/insights/${slug}`
-    return acc
-  }, {})
+    acc[locale] = `${siteConfig.site}/${locale}/insights/${slug}`;
+    return acc;
+  }, {});
 }
 
 function getOpenGraphLocale(locale: Locale) {
-  return locale === 'ar' ? 'ar_SA' : 'en_US'
+  return locale === "ar" ? "ar_SA" : "en_US";
 }
 
 function buildArticleStructuredData(insight: Insight, locale: Locale) {
-  const url = `${siteConfig.site}/${locale}/insights/${insight.metadata.slug}`
+  const url = `${siteConfig.site}/${locale}/insights/${insight.metadata.slug}`;
   return {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
+    "@context": "https://schema.org",
+    "@type": "Article",
     mainEntityOfPage: url,
     headline: insight.metadata.title,
     description: insight.metadata.description,
@@ -255,19 +235,19 @@ function buildArticleStructuredData(insight: Insight, locale: Locale) {
     datePublished: new Date(insight.metadata.date).toISOString(),
     dateModified: new Date(insight.metadata.date).toISOString(),
     author: {
-      '@type': 'Organization',
+      "@type": "Organization",
       name: siteConfig.name,
     },
     sameAs: [socialLinks.map((link) => link.href)],
     publisher: {
-      '@type': 'Organization',
+      "@type": "Organization",
       name: siteConfig.name,
       logo: {
-        '@type': 'ImageObject',
+        "@type": "ImageObject",
         url: `${siteConfig.site}/logo.png`,
       },
     },
-  }
+  };
 }
 
 function buildBreadcrumbStructuredData({
@@ -277,35 +257,35 @@ function buildBreadcrumbStructuredData({
   homeLabel,
   insightsLabel,
 }: {
-  locale: Locale
-  slug: string
-  title: string
-  homeLabel: string
-  insightsLabel: string
+  locale: Locale;
+  slug: string;
+  title: string;
+  homeLabel: string;
+  insightsLabel: string;
 }) {
-  const baseLocaleUrl = `${siteConfig.site}/${locale}`
+  const baseLocaleUrl = `${siteConfig.site}/${locale}`;
   return {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
     itemListElement: [
       {
-        '@type': 'ListItem',
+        "@type": "ListItem",
         position: 1,
         name: homeLabel,
         item: baseLocaleUrl,
       },
       {
-        '@type': 'ListItem',
+        "@type": "ListItem",
         position: 2,
         name: insightsLabel,
         item: `${baseLocaleUrl}/insights`,
       },
       {
-        '@type': 'ListItem',
+        "@type": "ListItem",
         position: 3,
         name: title,
         item: `${baseLocaleUrl}/insights/${slug}`,
       },
     ],
-  }
+  };
 }

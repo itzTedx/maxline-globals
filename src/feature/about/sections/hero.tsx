@@ -46,7 +46,7 @@ export const AboutHeroSection = () => {
             useScrollVelocity={true}
           >
             {CAROUSEL_IMAGES.map((src, i) => (
-              <MarqueeItem key={i}>
+              <MarqueeItem key={`${i + 1}-item`}>
                 <div className="relative aspect-4/3 h-60 md:h-96">
                   <Image
                     alt={`Logistics and supply chain image ${i + 1}`}

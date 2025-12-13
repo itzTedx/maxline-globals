@@ -1,35 +1,31 @@
-import { Suspense } from 'react'
+import { Suspense } from "react";
 
-import { Metadata } from 'next'
-import Script from 'next/script'
+import { Metadata } from "next";
+import Script from "next/script";
 
-import { Locale } from 'next-intl'
-import { getTranslations, setRequestLocale } from 'next-intl/server'
+import { Locale } from "next-intl";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
-import { siteConfig, socialLinks } from '@/constants/site-config'
-import { CertificatesSection } from '@/feature/about/sections/certificates'
-import { CompanySection } from '@/feature/about/sections/company'
-import { AboutHeroSection } from '@/feature/about/sections/hero'
-import { LeaderWords } from '@/feature/about/sections/leader-words'
-import { Principles } from '@/feature/about/sections/principles'
-import { WhoWeAre } from '@/feature/about/sections/who-we-are'
-import { Cta } from '@/feature/cta'
+import { siteConfig, socialLinks } from "@/constants/site-config";
+import { CertificatesSection } from "@/feature/about/sections/certificates";
+import { CompanySection } from "@/feature/about/sections/company";
+import { AboutHeroSection } from "@/feature/about/sections/hero";
+import { LeaderWords } from "@/feature/about/sections/leader-words";
+import { Principles } from "@/feature/about/sections/principles";
+import { WhoWeAre } from "@/feature/about/sections/who-we-are";
+import { Cta } from "@/feature/cta";
 
 // Dynamic metadata generation based on locale
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>
-}): Promise<Metadata> {
-  const { locale } = await params
-  const t = await getTranslations('meta.about')
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations("meta.about");
 
-  const title = t('title')
-  const description = t('description')
-  const keywords = t('keywords')
+  const title = t("title");
+  const description = t("description");
+  const keywords = t("keywords");
 
-  const ogTitle = t('title')
-  const ogDescription = t('description')
+  const ogTitle = t("title");
+  const ogDescription = t("description");
 
   return {
     title,
@@ -38,10 +34,10 @@ export async function generateMetadata({
     openGraph: {
       title: ogTitle,
       description: ogDescription,
-      type: 'website',
+      type: "website",
       url: `${siteConfig.site}/${locale}/company/about`,
-      locale: locale === 'ar' ? 'ar_SA' : 'en_US',
-      alternateLocale: ['ar_SA', 'en_US'],
+      locale: locale === "ar" ? "ar_SA" : "en_US",
+      alternateLocale: ["ar_SA", "en_US"],
       siteName: siteConfig.name,
       images: [
         {
@@ -53,7 +49,7 @@ export async function generateMetadata({
       ],
     },
     twitter: {
-      card: 'summary_large_image',
+      card: "summary_large_image",
       title: ogTitle,
       description: ogDescription,
       images: [siteConfig.image.url],
@@ -71,55 +67,55 @@ export async function generateMetadata({
       googleBot: {
         index: true,
         follow: true,
-        'max-video-preview': -1,
-        'max-image-preview': 'large',
-        'max-snippet': -1,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
       },
     },
-  }
+  };
 }
 
 interface Props {
-  params: Promise<{ locale: Locale }>
+  params: Promise<{ locale: Locale }>;
 }
 
 export default async function AboutPage({ params }: Props) {
-  const { locale } = await params
-  setRequestLocale(locale)
+  const { locale } = await params;
+  setRequestLocale(locale);
 
   const structuredData = {
-    '@context': 'https://schema.org',
-    '@type': 'AboutPage',
-    name: 'About Maxline Global',
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    name: "About Maxline Global",
     description:
       "Learn about Maxline Global's history, leadership, values, and commitment to excellence in logistics and freight forwarding.",
     url: `${siteConfig.site}/company/about`,
     publisher: {
-      '@type': 'Organization',
+      "@type": "Organization",
       name: siteConfig.name,
       url: siteConfig.site,
       logo: {
-        '@type': 'ImageObject',
+        "@type": "ImageObject",
         url: `${siteConfig.site}/logo.png`,
       },
     },
     sameAs: [socialLinks.map((link) => link.href)],
     mainEntity: {
-      '@type': 'Organization',
+      "@type": "Organization",
       name: siteConfig.name,
       description: siteConfig.description,
       url: siteConfig.site,
-      foundingDate: '2010', // Replace with actual founding date
+      foundingDate: "2010", // Replace with actual founding date
       address: {
-        '@type': 'PostalAddress',
-        addressCountry: 'UAE',
+        "@type": "PostalAddress",
+        addressCountry: "UAE",
       },
       contactPoint: {
-        '@type': 'ContactPoint',
-        contactType: 'customer service',
+        "@type": "ContactPoint",
+        contactType: "customer service",
       },
     },
-  }
+  };
   return (
     <>
       <Script id="about-schema" type="application/ld+json">
@@ -155,5 +151,5 @@ export default async function AboutPage({ params }: Props) {
         </article>
       </main>
     </>
-  )
+  );
 }

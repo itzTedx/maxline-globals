@@ -49,8 +49,8 @@ export const CertificatesSection = () => {
         </p>
       </div>
       <div className="grid grid-cols-2 items-center justify-items-center gap-8 md:grid-cols-3 lg:grid-cols-6">
-        {logos.map((logo, index) => (
-          <CertificateLogo alt={logo.alt} key={index} src={logo.src} />
+        {logos.map((logo) => (
+          <CertificateLogo alt={logo.alt} key={`${logo.src}-${logo.alt}`} src={logo.src} />
         ))}
       </div>
     </section>
