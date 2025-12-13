@@ -132,6 +132,7 @@ function MotionHighlight<T extends string>({ ref, ...props }: MotionHighlightPro
     [activeValue, onValueChange]
   );
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: We need to pass the props to the container
   const safeSetBounds = React.useCallback((bounds: DOMRect) => {
     if (!localRef.current) return;
 
@@ -190,6 +191,7 @@ function MotionHighlight<T extends string>({ ref, ...props }: MotionHighlightPro
     return () => container.removeEventListener("scroll", onScroll);
   }, [mode, activeValue, safeSetBounds]);
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: We need to pass the props to the container
   const render = React.useCallback(
     (children: React.ReactNode) => {
       if (mode === "parent") {

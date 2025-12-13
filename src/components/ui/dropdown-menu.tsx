@@ -43,6 +43,7 @@ function DropdownMenu({
     if (props?.open !== undefined) setIsOpen(props.open);
   }, [props?.open]);
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies:  we don't need to rerender while props change
   const handleOpenChange = React.useCallback((open: boolean) => {
     setIsOpen(open);
     props.onOpenChange?.(open);
