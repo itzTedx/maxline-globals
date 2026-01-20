@@ -2,8 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 
-import Image from "next/image";
-
 import { useTranslations } from "next-intl";
 
 import { Logo } from "@/assets/logo";
@@ -55,10 +53,6 @@ export const Navbar = () => {
         <div className="flex items-center gap-2">
           <Link aria-label="Maxline Global - Home" href="/">
             <Logo className="shrink-0 text-[#231F20]" />
-          </Link>
-          <span className="text-muted">x</span>
-          <Link href="/insights/maxline-global-automechanika-dubai-2025">
-            <Image alt="Automechanika Dubai Logo" height={30} src="/images/events/automechanika.svg" width={144} />
           </Link>
         </div>
 

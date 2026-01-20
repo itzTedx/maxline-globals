@@ -19,8 +19,6 @@ import { cn } from "@/lib/utils";
 
 import "@/app/globals.css";
 
-import AnnouncementBanner from "@/components/layout/announcement";
-
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
@@ -162,7 +160,7 @@ export default async function RootLayout({
       >
         <NextIntlClientProvider locale={locale} messages={messages}>
           <Providers>
-            <AnnouncementBanner />
+            {/* <AnnouncementBanner /> */}
             <Navbar />
             {children}
             <Toaster />
