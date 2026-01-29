@@ -6,6 +6,7 @@ import { StaggeredText } from "@/components/animation/staggered-text";
 import { Button } from "@/components/ui/button";
 
 import { IconArrowRightTag } from "@/assets/icons/arrow";
+import { IconCaretRight } from "@/assets/icons/caret";
 
 import { HeroImage } from "../components/hero-image";
 
@@ -37,10 +38,12 @@ export const HeroSection = memo(() => {
 							worldwide.
 						</p>
 						<div className="mt-3 flex items-center justify-center gap-4">
-							<Button variant="secondary">
+							<Button size="lg" variant="secondary">
 								Get a Quote <IconArrowRightTag className="ml-4" />
 							</Button>
-							<Button variant="outline">Explore our services</Button>
+							<Button size="lg" variant="outline">
+								Explore our services
+							</Button>
 						</div>
 					</div>
 
@@ -49,8 +52,16 @@ export const HeroSection = memo(() => {
 							aria-label="Hero illustration"
 							className="border-8 border-white/10 border-b-0 bg-card/10 p-1 pb-0"
 						>
-							<div className="flex aspect-video items-center justify-center overflow-hidden rounded-t-2xl bg-card">
+							<div className="relative flex aspect-video items-center justify-center overflow-hidden rounded-t-2xl bg-card">
 								<HeroImage />
+								<div className="absolute right-9 bottom-9 flex items-center gap-3 rounded-md bg-accent-tertiary/30 p-3 backdrop-blur-md">
+									<div className="flex h-8 w-12 items-center justify-center rounded-md bg-accent text-accent-tertiary">
+										<IconCaretRight className="size-4" />
+									</div>
+									<p className="w-40 text-sm">
+										See How Maxline Global Moves the World
+									</p>
+								</div>
 							</div>
 						</div>
 					</div>
