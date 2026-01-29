@@ -59,7 +59,7 @@ export const Navbar = () => {
 			<div className="container relative z-50 flex items-center justify-between gap-3">
 				<div className="flex items-center gap-8">
 					<Link aria-label="Maxline Global - Home" href="/">
-						<Logo className="shrink-0 text-[#231F20]" />
+						<Logo className="h-10 shrink-0 text-[#231F20]" />
 					</Link>
 					{/* Desktop Navigation */}
 					<ul
@@ -102,27 +102,18 @@ export const Navbar = () => {
 					</ul>
 				</div>
 
-				<menu className="hidden items-center justify-end gap-2 lg:flex">
+				<menu className="hidden items-center justify-end gap-3 lg:flex">
 					<li>
 						<LanguageSelector />
 					</li>
 					<li>
-						<QuoteButton />
+						<QuoteButton className="w-48 justify-between" />
 					</li>
 				</menu>
 
 				{/* Mobile Menu Button */}
 				<MobileNav links={NAVLINKS} />
 			</div>
-
-			{/* <div className="gradient-blur">
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-      </div> */}
 		</nav>
 	);
 };

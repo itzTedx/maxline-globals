@@ -5,6 +5,8 @@ import { useTranslations } from "next-intl";
 import { StaggeredText } from "@/components/animation/staggered-text";
 import { Button } from "@/components/ui/button";
 
+import { IconArrowRightTag } from "@/assets/icons/arrow";
+
 import { HeroImage } from "../components/hero-image";
 
 export const HeroSection = memo(() => {
@@ -35,7 +37,9 @@ export const HeroSection = memo(() => {
 							worldwide.
 						</p>
 						<div className="mt-3 flex items-center justify-center gap-4">
-							<Button variant="secondary">Get a Quote</Button>
+							<Button variant="secondary">
+								Get a Quote <IconArrowRightTag className="ml-4" />
+							</Button>
 							<Button variant="outline">Explore our services</Button>
 						</div>
 					</div>

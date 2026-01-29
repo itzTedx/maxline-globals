@@ -4,7 +4,6 @@ import { useTransition } from "react";
 
 import { useParams } from "next/navigation";
 
-import { IconArrowDown } from "@tabler/icons-react";
 import { motion } from "motion/react";
 import { Locale } from "next-intl";
 
@@ -56,7 +55,7 @@ export function LanguageSelector({ className }: Props) {
 			<DropdownMenuTrigger asChild>
 				<motion.button
 					className={cn(
-						"flex h-11 cursor-pointer items-center justify-center gap-2.5 rounded-md bg-white pr-1.5 pl-4 text-brand-dark rtl:pr-4 rtl:pl-1.5",
+						"flex h-11 cursor-pointer items-center justify-center gap-2.5 rounded-md bg-white p-3 text-primary hover:bg-muted",
 						isPending && "pointer-events-none opacity-50",
 						className
 					)}
@@ -64,10 +63,8 @@ export function LanguageSelector({ className }: Props) {
 					role="button"
 					type="button"
 				>
-					<span className="font-semibold text-sm">{currentLang?.label}</span>
-					<div className="flex size-8 shrink-0 items-center justify-center rounded bg-background">
-						<IconArrowDown className={cn("size-4 transition-transform")} />
-					</div>
+					{currentLang && <currentLang.Icon className="h-auto w-5 rounded" />}
+					<span className="text-sm">{currentLang?.title}</span>
 				</motion.button>
 			</DropdownMenuTrigger>
 			<DropdownMenuContent align="start" className="md:min-w-fit">

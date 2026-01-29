@@ -35,7 +35,7 @@ export const NavSubmenu = ({ isOpen, items, parentTitle }: NavSubmenuProps) => {
 							opacity: { duration: 0.3 },
 						},
 					}}
-					className={cn("absolute top-full left-0 w-full overflow-hidden")}
+					className={cn("absolute top-full left-0 w-[150%] overflow-hidden")}
 					exit={{
 						opacity: 0,
 						height: 0,
@@ -113,14 +113,16 @@ export const NavSubmenu = ({ isOpen, items, parentTitle }: NavSubmenuProps) => {
 										<p
 											className={cn(
 												"z-10 font-medium",
-												sub.href === "/company/about" ? "text-2xl" : "text-base"
+												sub.href === "/company/about"
+													? "font-semibold text-lg"
+													: "text-base"
 											)}
 										>
 											{sub.title}
 										</p>
-										<div className="absolute bottom-0 left-0 h-full w-full bg-gradient-to-t from-secondary/80 to-transparent" />
+										<div className="absolute bottom-0 left-0 h-1/2 w-full bg-gradient-to-t from-accent-tertiary/80" />
 									</div>
-									<div className="absolute inset-0 z-10 bg-secondary/5 mix-blend-color" />
+									<div className="absolute inset-0 z-10 bg-accent-secondary/50 mix-blend-multiply" />
 									<Image
 										alt={`${sub.title} services at Maxline Global`}
 										className="object-cover transition-[filter] group-hover/submenu:brightness-110"

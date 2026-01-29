@@ -37,6 +37,39 @@
 	--radius-md: calc(var(--radius) - 2px);
 	--radius-lg: var(--radius);
 	--radius-xl: calc(var(--radius) + 4px);
+
+	--shadow-button-primary:
+		inset 0 1px 1.5px --alpha(var(--color-white) / 16%),
+		0 0 0 0.5px var(--color-accent),
+		0 3px 3px -1.5px --alpha(#000 / 12%),
+		0 6px 6px -3px --alpha(#000 / 9%),
+		0 12px 12px -6px --alpha(#000 / 6%),
+		0 24px 24px -12px --alpha(#000 / 3%),
+		0 48px 48px -24px --alpha(#000 / 2%);
+
+	--shadow-sm:
+		0 3px 3px -1.5px --alpha(#000 / 9%), 0 6px 6px -3px --alpha(#000 / 6%),
+		0 12px 12px -6px --alpha(#000 / 6%);
+
+	--shadow-md:
+		0 3px 3px -1.5px --alpha(#000 / 9%),
+		0 6px 6px -3px --alpha(#000 / 6%),
+		0 12px 12px -6px --alpha(#000 / 6%),
+		0 24px 24px -12px --alpha(#000 / 6%);
+
+	--shadow-lg:
+		0 48px 48px -24px --alpha(#000 / 9%),
+		0 24px 24px -12px --alpha(#000 / 10%),
+		0 12px 12px -6px --alpha(#000 / 9%),
+		0 6px 6px -3px --alpha(#000 / 9%),
+		0 3px 3px -1.5px --alpha(#000 / 9%);
+
+	--shadow-dark:
+		inset 0 1.5px 1.5px --alpha(var(--stone-100) / 20%),
+		0 12px 12px -6px --alpha(#000 / 9%),
+		0 6px 6px -3px --alpha(#000 / 9%),
+		0 3px 3px -1.5px --alpha(#000 / 12%),
+		0 0 0 0.5px --alpha(#000 / 12%);
 }
 
 :root {

@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation";
 
-import { IconArrowDown } from "@tabler/icons-react";
+import { IconCaretDown } from "@/assets/icons/caret";
 
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
@@ -28,16 +28,13 @@ export const NavLink = ({
 }: NavLinkProps) => {
 	const pathname = usePathname();
 
-	const activePage = pathname === href;
+	const activePage = pathname.includes(href);
 
-	console.log("active page: ", pathname);
 	return (
 		<Link
 			aria-expanded={isActive}
 			className={cn(
-				"flex h-18 items-center justify-center gap-2.5 font-medium text-brand-dark transition duration-500 hover:bg-background",
-				hasSubmenu ? "pr-1.5 pl-4 rtl:pr-7 rtl:pl-1.5" : "px-4 rtl:px-7",
-				activePage ? "border-blue-500 border-b" : ""
+				"relative flex h-16 items-center justify-center gap-1.5 px-3 font-medium text-primary transition duration-500 hover:bg-background"
 			)}
 			href={href}
 			onClick={onClick}
@@ -47,9 +44,10 @@ export const NavLink = ({
 			{title}
 
 			{hasSubmenu && (
-				<div className="flex size-8 shrink-0 items-center justify-center rounded bg-background">
-					<IconArrowDown className="size-4" />
-				</div>
+				<IconCaretDown className="size-3 text-muted-foreground/50" />
+			)}
+			{activePage && (
+				<span className="absolute inset-x-0 -bottom-px h-0.5 w-full rounded-full bg-accent" />
 			)}
 		</Link>
 	);
