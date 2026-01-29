@@ -5,76 +5,91 @@ import path from "path";
 
 import { Insight, InsightMetadata } from "./types";
 
-const root = (locale: Locale) => path.join(process.cwd(), "src", "contents", "insights", locale);
+const root = (locale: Locale) =>
+	path.join(process.cwd(), "src", "contents", "insights", locale);
 
-export async function getInsightBySlug(slug: string, { locale }: { locale: Locale }): Promise<Insight | null> {
-  try {
-    const filePath = path.join(root(locale), `${slug}.mdx`);
-    const fileContent = fs.readFileSync(filePath, { encoding: "utf8" });
-    const { data, content } = matter(fileContent);
+export async function getInsightBySlug(
+	slug: string,
+	{ locale }: { locale: Locale }
+): Promise<Insight | null> {
+	try {
+		const filePath = path.join(root(locale), `${slug}.mdx`);
+		const fileContent = fs.readFileSync(filePath, { encoding: "utf8" });
+		const { data, content } = matter(fileContent);
 
-    const metadata = data as InsightMetadata;
+		const metadata = data as InsightMetadata;
 
-    return {
-      metadata: {
-        ...metadata,
-        slug,
-      },
-      content,
-    };
-  } catch {
-    return null;
-  }
+		return {
+			metadata: {
+				...metadata,
+				slug,
+			},
+			content,
+		};
+	} catch {
+		return null;
+	}
 }
 
-export async function getInsights({ limit, locale }: { limit?: number; locale: Locale }): Promise<InsightMetadata[]> {
-  const files = fs.readdirSync(root(locale));
+export async function getInsights({
+	limit,
+	locale,
+}: {
+	limit?: number;
+	locale: Locale;
+}): Promise<InsightMetadata[]> {
+	const files = fs.readdirSync(root(locale));
 
-  let insights = files.map((file) => getInsightMetadata(file, locale));
+	let insights = files.map((file) => getInsightMetadata(file, locale));
 
-  insights.sort((a, b) => {
-    const aDate = new Date(a.date).getTime();
-    const bDate = new Date(b.date).getTime();
+	insights.sort((a, b) => {
+		const aDate = new Date(a.date).getTime();
+		const bDate = new Date(b.date).getTime();
 
-    return bDate - aDate;
-  });
+		return bDate - aDate;
+	});
 
-  if (limit) {
-    return insights.slice(0, limit);
-  }
+	if (limit) {
+		return insights.slice(0, limit);
+	}
 
-  return insights;
+	return insights;
 }
 
-export function getInsightMetadata(filepath: string, locale: Locale): InsightMetadata & { slug: string } {
-  const slug = filepath.replace(/\.mdx$/, "");
+export function getInsightMetadata(
+	filepath: string,
+	locale: Locale
+): InsightMetadata & { slug: string } {
+	const slug = filepath.replace(/\.mdx$/, "");
 
-  const filePath = path.join(root(locale), filepath);
+	const filePath = path.join(root(locale), filepath);
 
-  const fileContent = fs.readFileSync(filePath, { encoding: "utf8" });
-  const { data } = matter(fileContent);
+	const fileContent = fs.readFileSync(filePath, { encoding: "utf8" });
+	const { data } = matter(fileContent);
 
-  const metadata = data as InsightMetadata;
+	const metadata = data as InsightMetadata;
 
-  return { ...metadata, slug };
+	return { ...metadata, slug };
 }
 
 export async function getRelatedInsights({
-  tags,
-  limit,
-  locale,
+	tags,
+	limit,
+	locale,
 }: {
-  tags: string[];
-  limit?: number;
-  locale: Locale;
+	tags: string[];
+	limit?: number;
+	locale: Locale;
 }): Promise<InsightMetadata[]> {
-  const result = await getInsights({ locale });
+	const result = await getInsights({ locale });
 
-  const insights = result.filter((insight) => insight.tags.some((tag) => tags.includes(tag)));
+	const insights = result.filter((insight) =>
+		insight.tags.some((tag) => tags.includes(tag))
+	);
 
-  if (limit) {
-    return insights.slice(0, limit);
-  }
+	if (limit) {
+		return insights.slice(0, limit);
+	}
 
-  return insights;
+	return insights;
 }

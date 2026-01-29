@@ -45,7 +45,10 @@ export default function Home({ params }: Props) {
 
 	return (
 		<>
-			<main className="pb-20" role="main">
+			<main
+				className="relative z-10 rounded-b-3xl bg-background pb-20"
+				role="main"
+			>
 				<HeroSection />
 
 				<AboutSection />

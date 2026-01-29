@@ -1,681 +1,681 @@
 {
-  "banner": {
-    "title": " Maxline Global Logistics at Automechanika Dubai 2025",
-    "buttonText": "Learn more",
-    "register": "Get free pass"
-  },
-  "meta": {
-    "home": {
-      "title": "Maxline Global | Freight Forwarding, Logistics & Supply Chain Solutions",
-      "description": "We delivers reliable freight forwarding, warehousing, and logistics services across the GCC and beyond, ensuring efficiency, compliance, and end-to-end visibility",
-      "keywords": "freight forwarding, logistics services, GCC logistics, land freight, air freight, sea freight, customs clearance, Maxline Global, supply chain solutions, warehousing Dubai, project cargo"
-    },
-    "about": {
-      "title": "About Maxline Global - Leading Freight Forwarding & Logistics Company",
-      "description": "Discover Maxline Global's journey as a premier freight forwarding and logistics provider. Learn about our leadership, values, certifications, and commitment to excellence in global supply chain solutions.",
-      "keywords": "about us, company history, Dubai, freight forwarding, logistics services, GCC logistics, land freight, air freight, sea freight, customs clearance, Maxline Global, supply chain solutions, warehousing Dubai, project cargo"
-    },
-    "careers": {
-      "title": "Careers at Maxline Global | Build Your Future in Logistics & Technology",
-      "description": "Join Maxline Global and be part of a global logistics and technology powerhouse. Discover career opportunities that empower innovation, growth, and impact across international markets.",
-      "keywords": "careers, jobs at Maxline Global, logistics careers, technology jobs, freight forwarding careers, supply chain jobs, Dubai logistics company, international opportunities, Maxline Global careers, join our team"
-    },
+	"banner": {
+		"title": " Maxline Global Logistics at Automechanika Dubai 2025",
+		"buttonText": "Learn more",
+		"register": "Get free pass"
+	},
+	"meta": {
+		"home": {
+			"title": "Maxline Global | Freight Forwarding, Logistics & Supply Chain Solutions",
+			"description": "We delivers reliable freight forwarding, warehousing, and logistics services across the GCC and beyond, ensuring efficiency, compliance, and end-to-end visibility",
+			"keywords": "freight forwarding, logistics services, GCC logistics, land freight, air freight, sea freight, customs clearance, Maxline Global, supply chain solutions, warehousing Dubai, project cargo"
+		},
+		"about": {
+			"title": "About Maxline Global - Leading Freight Forwarding & Logistics Company",
+			"description": "Discover Maxline Global's journey as a premier freight forwarding and logistics provider. Learn about our leadership, values, certifications, and commitment to excellence in global supply chain solutions.",
+			"keywords": "about us, company history, Dubai, freight forwarding, logistics services, GCC logistics, land freight, air freight, sea freight, customs clearance, Maxline Global, supply chain solutions, warehousing Dubai, project cargo"
+		},
+		"careers": {
+			"title": "Careers at Maxline Global | Build Your Future in Logistics & Technology",
+			"description": "Join Maxline Global and be part of a global logistics and technology powerhouse. Discover career opportunities that empower innovation, growth, and impact across international markets.",
+			"keywords": "careers, jobs at Maxline Global, logistics careers, technology jobs, freight forwarding careers, supply chain jobs, Dubai logistics company, international opportunities, Maxline Global careers, join our team"
+		},
 
-    "team": {
-      "title": "Meet the Maxline Global Team - Logistics Experts Driving Supply Chain Excellence",
-      "description": "Get to know the expert team behind Maxline Global. Our logistics professionals deliver innovative, efficient, and reliable supply chain solutions across the globe.",
-      "keywords": "Maxline Global team, logistics experts, freight forwarding team, supply chain professionals, logistics specialists, freight solutions team, GCC logistics experts, customs clearance team, warehousing specialists, project cargo experts"
-    },
-    "contact": {
-      "title": "Contact Maxline Global | Freight Forwarding, Logistics & Supply Chain Solutions",
-      "description": "Get in touch with Maxline Global to start your logistics project or partnership. Reach our Dubai headquarters or any of our branches in Oman, Bahrain, Qatar, or Saudi Arabia for freight forwarding, warehousing, and supply chain solutions.",
-      "keywords": "contact Maxline Global, logistics contact, freight forwarding Dubai, logistics company UAE, supply chain contact, Maxline Global branches, Jebel Ali logistics, Oman logistics, Bahrain freight, Qatar shipping, Saudi Arabia logistics, warehousing Dubai"
-    }
-  },
-  "Common": {
-    "title": "Logistics Services | Maxline Global",
-    "templateTitle": "| Maxline Global",
-    "description": "Explore our full suite of global logistics services—from air, sea, and road freight to warehousing, customs clearance, and project cargo management. Maxline Global delivers reliable, scalable, and end-to-end solutions for every supply chain challenge.",
-    "keywords": "logistics services, global logistics, air freight, sea freight, road freight, warehousing, customs clearance, project cargo, supply chain solutions"
-  },
-  "Navigation": {
-    "home": "Home",
-    "company": "Company",
-    "aboutUs": "About Us",
-    "leadershipTeam": "Leadership Team",
-    "insights": "Insights & News",
-    "careers": "Careers",
-    "airFreight": "Air Freight",
-    "seaFreight": "Sea Freight",
-    "landFreight": "Land Freight",
-    "projectCargo": "Project Cargo",
-    "packing": "Packing",
-    "warehousing": "Warehousing",
-    "exhibitionCargo": "Exhibition Cargo",
-    "MovingLashing": "Moving & Lashing",
-    "services": "Services",
-    "trackShipment": "Track Shipment",
-    "contact": "Contact",
-    "getQuote": "Get a Quote",
-    "exploreServices": "The Right Solution for Every Challenge - See What's Next"
-  },
-  "HomePage": {
-    "hero": {
-      "title": {
-        "firstLine": "Your Trusted Partner in",
-        "secondLine": "Logistics and Freight Delivery"
-      },
-      "inputPlaceholder": "Track your shipment"
-    },
-    "about": {
-      "title": "Reliable Logistics Partner Across the Globe",
-      "description": "At Maxline Global, we connect businesses to markets across the world. With our comprehensive logistics partner and commitment to service excellence, we ensure your cargo moves with speed, safety, and precision.",
-      "type": {
-        "air": "Air / 01",
-        "sea": "Sea / 02",
-        "road": "Road / 03"
-      }
-    },
-    "services": {
-      "heading": {
-        "first": "Built to Empower",
-        "second": "Efficiency"
-      },
-      "description": "Maxline turns fragmented workflows into unified strategies. Whether you're in the office or across the globe, we're one connected force",
-      "btnText": "Explore our services",
-      "title": "Integrated freight solutions tailored to your exact specifications.",
-      "service": {
-        "landFreight": {
-          "title": "Land Freight",
-          "description": "Efficient and Secure Road Transportation Across the GCC."
-        },
-        "airFreight": {
-          "title": "Air Freight",
-          "description": "Swift Air Freight Solutions for Global Reach."
-        },
-        "seaFreight": {
-          "title": "Sea Freight",
-          "description": "Reliable Sea Freight Services Across Continents."
-        },
-        "projectCargo": {
-          "title": "Project Cargo",
-          "description": "Specialized Handling for Heavy and Oversized Cargo."
-        },
-        "warehousing": {
-          "title": "Warehousing",
-          "description": "Strategic Warehousing and Distribution Solutions."
-        },
-        "movingLashing": {
-          "title": "Moving & Lashing",
-          "description": "Professional Relocation and Cargo Securing for Safe Transit.."
-        }
-      },
-      "cta": {
-        "title": "Logistics Without Limits",
-        "description": "Our tailored freight solutions are engineered to meet the demands of  modern trade - ensuring every shipment arrives on time, on budget, and without compromise.",
-        "btnText": "Explore more"
-      }
-    },
-    "faq": {
-      "title": "Frequently Asked Questions",
-      "description": "Discover quick answers to the questions our clients ask most. From shipment tracking to specialized cargo handling, our FAQ section covers everything you need to know about Maxline Global's services, capabilities, and commitment to smooth, secure, and on-time delivery."
-    },
-    "faqList": [
-      {
-        "question": "What logistics services does Maxline Global offer?",
-        "answer": "Maxline Global provides a full range of logistics solutions including sea, air, and land freight, customs clearance, warehousing, project cargo handling, chartering, and more — tailored to your business needs across the GCC and beyond."
-      },
-      {
-        "question": "Which regions or countries does Maxline Global serve?",
-        "answer": "We operate globally with a strong presence across the GCC countries, Asia, Europe, Africa, and the Americas. Our network enables seamless international trade and efficient cargo movement across all major trade lanes."
-      },
-      {
-        "question": "Do you handle dangerous or hazardous cargo?",
-        "answer": "Yes. Maxline Global is certified and experienced in handling hazardous and non-hazardous materials, including chemicals and reefer (temperature-controlled) cargo. Our team follows strict safety standards and international regulations."
-      },
-      {
-        "question": "Can you manage oversized or project cargo?",
-        "answer": "Absolutely. We offer project logistics solutions including heavy lift transport, Ro/Ro services, aircraft/ship chartering, and military or government shipment handling. We also provide port supervision and route planning for complex cargo."
-      },
-      {
-        "question": "Do you provide warehousing and distribution services?",
-        "answer": "Yes. We operate modern warehousing facilities in and around Jebel Ali Free Zone (JAFZA) with services like palletizing, shrink wrapping, labeling, and web-based inventory management. We also offer local and international distribution services."
-      },
-      {
-        "question": "How can I track my shipment?",
-        "answer": "We provide an easy-to-use Track & Trace system for real-time shipment updates. Clients can log in to our portal to view current location, estimated delivery time, and shipment history."
-      },
-      {
-        "question": "Do you provide door-to-door logistics services?",
-        "answer": "Yes. We offer door-to-door, door-to-port, and port-to-door services for both LCL (Less than Container Load) and FCL (Full Container Load) shipments. This includes document handling, customs clearance, and final delivery."
-      },
-      {
-        "question": "How do I get a quote for freight services?",
-        "answer": "Our team is available Monday to Friday, from 9:00 AM to 6:00 PM (UAE time). We are closed on weekends and public holidays. For urgent shipments, we can make special arrangements."
-      },
-      {
-        "question": "What are your business hours?",
-        "answer": "Our team is available Monday to Friday, from 9:00 AM to 6:00 PM (UAE time). We are closed on weekends and public holidays. For urgent shipments, we can make special arrangements."
-      },
-      {
-        "question": "Why should I choose Maxline Global as my logistics partner?",
-        "answer": "Maxline Global combines deep industry experience, a global network, and advanced logistics technology to offer flexible, scalable, and cost-effective supply chain solutions. We prioritize customer satisfaction, accuracy, and on-time delivery for every shipment."
-      },
-      {
-        "question": "What types of cargo does Maxline Global handle?",
-        "answer": "Maxline Global handles a wide range of cargo, including general freight, hazardous and non-hazardous goods, temperature-sensitive shipments, oversized project cargo, and time-critical deliveries by land, sea, and air."
-      },
-      {
-        "question": "Do you provide customs clearance services?",
-        "answer": "Yes, we offer comprehensive customs brokerage services for import, export, and transshipment across sea and air freight. Our team ensures compliance and smooth clearance through all major ports."
-      }
-    ],
-    "insights": {
-      "label": "Maxline Insights & Updates",
-      "title": "Explore the Ideas Driving Global Logistics Forward",
-      "description": "Stay ahead with the latest in logistics, trade, and global supply chain trends.",
-      "btnText": "More",
-      "readBtn": "Read Article",
-      "exploreBtn": "Explore More"
-    },
-    "insightsList": [
-      {
-        "id": 1,
-        "title": "What is cross-trade shipping and when is it the best option?",
-        "description": "A quick look at how cross-trade shipping works, when to use it, and how Maxline Global makes it seamless.",
-        "image": "/images/blogs/scene-with-photorealistic-logistics-operations-proceedings.jpg",
-        "slug": "cross-trade-shipping-guide"
-      },
-      {
-        "id": 2,
-        "title": "What is cross-trade shipping and when is it the best option?",
-        "description": "A quick look at how cross-trade shipping works, when to use it, and how Maxline Global makes it seamless.",
-        "image": "/images/blogs/transport-logistics-products (2).jpg",
-        "slug": "cross-trade-shipping-guide"
-      },
-      {
-        "id": 3,
-        "title": "What is cross-trade shipping and when is it the best option?",
-        "description": "A quick look at how cross-trade shipping works, when to use it, and how Maxline Global makes it seamless.",
-        "image": "/images/blogs/transport-logistics-products.jpg",
-        "slug": "cross-trade-shipping-guide"
-      },
-      {
-        "id": 4,
-        "title": "What is cross-trade shipping and when is it the best option?",
-        "description": "A quick look at how cross-trade shipping works, when to use it, and how Maxline Global makes it seamless.",
-        "image": "/images/blogs/truck-logistics-operation-dusk.jpg",
-        "slug": "cross-trade-shipping-guide"
-      },
-      {
-        "id": 5,
-        "title": "What is cross-trade shipping and when is it the best option?",
-        "description": "A quick look at how cross-trade shipping works, when to use it, and how Maxline Global makes it seamless.",
-        "image": "/images/blogs/scene-with-photorealistic-logistics-operations-proceedings.jpg",
-        "slug": "cross-trade-shipping-guide"
-      },
-      {
-        "id": 6,
-        "title": "What is cross-trade shipping and when is it the best option?",
-        "description": "A quick look at how cross-trade shipping works, when to use it, and how Maxline Global makes it seamless.",
-        "image": "/images/blogs/scene-with-photorealistic-logistics-operations-proceedings.jpg",
-        "slug": "cross-trade-shipping-guide"
-      }
-    ]
-  },
-  "Cta": {
-    "title": "Ready to move your business forward?",
-    "description": "Partner with Maxline Global for reliable logistics solutions.",
-    "call": "Call for enquiry",
-    "email": "Send us email",
-    "phone": "+971 4 282 2022",
-    "emailAddress": "enquires@maxlineglobal.com"
-  },
-  "Footer": {
-    "slogan1": "Your trusted logistics partner, moving forward,",
-    "slogan2": "every day.",
-    "locationLabel": "Location:",
-    "locationAddress": "Jebel Ali Free Zone, Dubai.",
-    "getQuote": "Get A Quote",
-    "general": "General",
-    "about": "About",
-    "home": "Home",
-    "team": "Team",
-    "insights": "Insights & Updates",
-    "contact": "Contact",
-    "services": "Services",
-    "support": "Support",
-    "trackShipment": "Track your Shipment",
-    "getQuoteShort": "Get Quote",
-    "technicalSupport": "Technical Support",
-    "social": "Social",
-    "linkedin": "Linkedin",
-    "instagram": "Instagram",
-    "facebook": "Facebook",
-    "x": "X",
-    "copyright": "© {year} Maxline Global. All Rights Reserved.",
-    "designedBy": "Designed & Developed by {agency}",
-    "agencyName": "Ziron Media",
-    "airFreight": "Air Freight",
-    "seaFreight": "Sea Freight",
-    "landFreight": "Land Freight",
-    "projectCargo": "Project Cargo",
-    "packing": "Packing",
-    "warehousing": "Warehousing",
-    "exhibitionCargo": "Exhibition Cargo",
-    "MovingLashing": "Moving & Lashing"
-  },
-  "AboutPage": {
-    "badge": "About us",
-    "heroTitle": "Building Smarter Supply Chains for a Connected World.",
-    "whatWeDo": {
-      "title": "What we do?",
-      "description": "At <span>Maxline global</span> logistics solutions, our mission is to provide exceptional logistics services to our clients, enabling them to streamline their supply chain and focus on their core business operations. We have been serving our clients with top-notch freight forwarding end-to-end service from its inception."
-    },
-    "principles": {
-      "title": "Our Core Principles:",
-      "list": [
-        {
-          "label": "Vision",
-          "title": "Leading with Vision, Moving with Purpose.",
-          "description": "Our vision is to be the foremost leader in the freight forwarding industry, renowned for our innovative, sustainable, and customer-centric logistics solutions that redefine industry standards."
-        },
-        {
-          "label": "Mission",
-          "title": "Driven by Purpose. Defined by Progress.",
-          "description": "Our mission is to deliver unparalleled excellence in freight forwarding by providing innovative, sustainable, and customer-focused solutions. We strive to exceed expectations, create lasting value for our clients, and drive progress in the logistics sector."
-        },
-        {
-          "label": "Fast Service",
-          "title": "Logistics at the Speed of Business.",
-          "description": "We are committed to providing fast and reliable logistics services, ensuring the timely and efficient delivery of your goods. Our focus is on meeting and exceeding your expectations, helping your business thrive in today's fast-paced market. Experience the speed and efficiency of our logistics solutions."
-        },
-        {
-          "label": "100% Accuracy",
-          "title": "Delivering Accuracy, Every Time.",
-          "description": "We guarantee 100% accuracy in every shipment through meticulous planning, streamlined processes, and efficient communication. Leveraging advanced technologies like real-time tracking and automation, we ensure precision and reliability, giving you peace of mind with every delivery. Trust us for accurate and dependable logistics solutions."
-        }
-      ]
-    },
-    "clients": {
-      "label": "Our clients",
-      "title": "These Companies Trust Us to Deliver Their Vision"
-    },
-    "words": "In a world where delays and cost overruns are common, Maxline Global Logistics delivers with precision. We commit to timelines and budgets—and we deliver. This promise drives how we train our teams, apply smart logistics technology, and serve clients worldwide.",
-    "certification": {
-      "title": "Certified for Excellence in Global Logistics",
-      "description": "Maxline Global's certifications demonstrate our commitment to safe, efficient, and compliant logistics across air, sea, and land. We meet international standards in freight forwarding, warehousing, customs, and hazardous cargo-ensuring trust and reliability throughout the supply chain."
-    }
-  },
-  "ServicesPage": {
-    "title": "Logistics Services | Maxline Global",
-    "description": "Explore our full suite of global logistics services—from air, sea, and road freight to warehousing, customs clearance, and project cargo management. Maxline Global delivers reliable, scalable, and end-to-end solutions for every supply chain challenge.",
-    "keywords": "logistics services, global logistics, air freight, sea freight, road freight, warehousing, customs clearance, project cargo, supply chain solutions",
-    "subtitle": "Services",
-    "mainTitle": "Logistics Solutions That Move Business Forward",
-    "ourServices": "Our Services"
-  },
-  "TeamPage": {
-    "heroSubtitle": "Our Team",
-    "heroTitle": "Here's the team that works hard to Deliver your vision, faster",
-    "heroDescription": "Get to know the expert team behind Maxline Global. Our logistics professionals deliver innovative, efficient, and reliable supply chain solutions across the globe.",
-    "leadershipTitle": "Leadership That Moves the World",
-    "specialistsTitle": "Specialists in Motion",
-    "personName": "Person Name",
-    "designation": "Designation",
-    "linkedinProfile": "Linkedin Profile",
-    "departmentName": "Logistics Department",
-    "departmentDescription": "Expert team handling freight forwarding, customs clearance, and supply chain solutions",
-    "AjithKumar": "Ajith Kumar",
-    "PadmaAjith": "Padma Ajith",
-    "SajiThomas": "Saji Thomas",
-    "PrakashMadhavan": "Prakash Madhavan",
-    "ChairmanAndMD": "Chairman and Managing Director",
-    "Director": "Director",
-    "CFO": "CFO",
-    "GeneralManager": "General Manager"
-  },
-  "ContactPage": {
-    "subtitle": "Contact us",
-    "heroTitle1": "Let's Move Your Business",
-    "heroTitle2": "Forward,",
-    "heroTitle3": "Together",
-    "heroDescription": "Get in touch to start a logistics project, explore partnership opportunities, or learn how Maxline Global delivers supply chain solutions with precision, speed, and care. We're here to support your business - every step of the way.",
-    "contactLocations": "Contact Locations",
-    "corporateHeadquarters": "Corporate Headquarters",
-    "hqAddress": "MO 0753, Jafza North, Dubai, United Arab Emirates",
-    "hqImageAlt": "Maxline Global Corporate Headquarters in Dubai",
-    "branchOffice": "Branch Office",
-    "branchAddress": "MO 0753, JAFZA North, Dubai, UAE ",
-    "branchImageAlt": "Maxline Global Branch Office in Dubai",
-    "contactForm": "Contact Form",
-    "contactImageAlt": "Maxline Global Logistics Operations",
-    "contactImageCaption": "Maxline Global Logistics Operations Center",
-    "aroundWorldTitle": "Maxline Global Around the World",
-    "aroundWorldDescription": "Our strategically located offices empower us to manage international shipments with local insight. Wherever you are, Maxline is never far.",
-    "phoneLabel": "Phone",
-    "mobileLabel": "Mobile",
-    "emailLabel": "Email",
-    "viewInMap": "View in map",
-    "branchesTitle": "Branches"
-  },
-  "ContactForm": {
-    "heading": "Have a Question? We're Here to Help",
-    "description": "Have a shipment, question, or custom logistics need? Fill out the form and our team will get back to you with the right solution - fast, reliable, and tailored to your goals.",
-    "fullNameLabel": "Full Name",
-    "fullNamePlaceholder": "Enter your full name",
-    "companyNameLabel": "Company Name",
-    "companyNamePlaceholder": "Enter your company name",
-    "emailLabel": "Email",
-    "emailPlaceholder": "Enter your email",
-    "phoneLabel": "Phone Number",
-    "phonePlaceholder": "Enter your phone number",
-    "serviceTypeLabel": "Service Type",
-    "serviceType": {
-      "general_inquiry": "General Inquiry",
-      "freight_forwarding": "Freight forwarding",
-      "warehousing_distribution": "Warehousing & Distribution",
-      "customs_brokerage": "Customs brokerage",
-      "project_cargo": "Project Cargo",
-      "partnership_inquiry": " Partnership Inquiry",
-      "other": "Other"
-    },
-    "subjectLabel": "Subject",
-    "subjectPlaceholder": "Enter subject",
-    "messageLabel": "Message",
-    "messagePlaceholder": "Enter your message",
-    "fileUploadLabel": "File Upload (Optional - for RFPs, project docs, etc.)",
-    "privacyPolicyConsent": "I agree to the <privacyPolicy>Privacy Policy</privacyPolicy> and consent to having this website store my submitted information.",
-    "sendMessage": "Send Message",
-    "successMessage": "Your message has been sent!",
-    "errorMessage": "There was an error sending your message. Please try again later."
-  },
-  "PrivacyPolicy": {
-    "title": "Privacy Policy",
-    "introduction": {
-      "title": "Introduction",
-      "text1": "This Privacy Policy describes how Maxline Global, a premier freight forwarding and logistics provider, collects, uses, processes, and discloses your information when you use our website and services. We specialize in providing integrated freight solutions across air, sea, and land transportation, warehousing, and project forwarding services.",
-      "text2": "By using our website and submitting information through our forms, you agree to the collection and use of information in accordance with this policy. If you do not agree with our policies and practices, please do not use our website or submit information through our forms."
-    },
-    "informationWeCollect": {
-      "title": "Information We Collect",
-      "informationYouProvide": {
-        "title": "Information You Provide",
-        "text": "When you use our contact and quote request forms, we collect:",
-        "personalInformation": {
-          "title": "Personal Information:",
-          "fullName": "Full name",
-          "companyName": "Company name",
-          "emailAddress": "Email address",
-          "phoneNumber": "Phone number"
-        },
-        "shippingInformation": {
-          "title": "Shipping Information:",
-          "senderRecipient": "Sender and recipient details",
-          "shippingAddresses": "Shipping addresses",
-          "packageDescriptions": "Package descriptions",
-          "weightVolume": "Weight and volume specifications",
-          "preferredDates": "Preferred delivery dates",
-          "transportMode": "Transport mode preferences (Air, Sea, Land)",
-          "customsDocumentation": "Customs documentation"
-        },
-        "serviceInformation": {
-          "title": "Service Information:",
-          "serviceType": "Service type preferences (FTL, LTL, Project Cargo)",
-          "industryRequirements": "Industry-specific requirements",
-          "customLogistics": "Custom logistics needs",
-          "additionalSpecs": "Additional specifications"
-        },
-        "documentation": {
-          "title": "Documentation:",
-          "attachedFiles": "Attached files (up to 5MB per file)",
-          "projectDocumentation": "Project documentation",
-          "customRequirements": "Custom requirements",
-          "certificatesPermits": "Certificates and permits"
-        }
-      },
-      "automaticallyCollected": {
-        "title": "Automatically Collected Information",
-        "text": "When you visit our website, we automatically collect:",
-        "deviceInfo": "Device information (IP address, browser type, operating system)",
-        "usageData": "Usage data (pages visited, time spent, links clicked)",
-        "locationInfo": "Location information (if permitted by your device settings)",
-        "referralSource": "Referral source",
-        "deviceIdentifiers": "Device identifiers"
-      }
-    },
-    "howWeUseYourInformation": {
-      "title": "How We Use Your Information",
-      "text": "We use the information we collect to:",
-      "processRequests": "Process and respond to your quote requests and inquiries",
-      "provideSolutions": "Provide personalized logistics solutions across air, sea, and land transportation",
-      "manageWarehousing": "Manage warehousing and distribution services",
-      "handleProjectForwarding": "Handle project forwarding and specialized cargo",
-      "facilitateCustoms": "Facilitate customs clearance and documentation",
-      "communicateShipments": "Communicate with you about your shipments and services",
-      "sendNotices": "Send you technical notices, updates, and support messages",
-      "improveServices": "Improve our services and customer experience",
-      "complyLegal": "Comply with legal and regulatory requirements",
-      "protectFraud": "Protect against fraud and unauthorized transactions"
-    },
-    "informationSharing": {
-      "title": "Information Sharing and Disclosure",
-      "text": "We may share your information with:",
-      "logisticsPartners": "Our logistics partners and service providers",
-      "customsAuthorities": "Customs and regulatory authorities",
-      "shippingCarriers": "Shipping carriers and transportation providers",
-      "warehousingPartners": "Warehousing and distribution partners",
-      "professionalAdvisors": "Professional advisors (lawyers, accountants, etc.)",
-      "lawEnforcement": "Law enforcement when required by law"
-    },
-    "dataSecurity": {
-      "title": "Data Security",
-      "text": "We implement appropriate technical and organizational measures to protect your personal information, including:",
-      "encryption": "Encryption of data in transit and at rest",
-      "secureSubmission": "Secure form submission and data processing",
-      "accessControls": "Access controls and authentication procedures",
-      "securityAssessments": "Regular security assessments and audits",
-      "employeeTraining": "Employee training on data security",
-      "disclaimer": "While we strive to protect your information, no method of transmission over the Internet or electronic storage is 100% secure. We cannot guarantee absolute security."
-    },
-    "yourRights": {
-      "title": "Your Rights and Choices",
-      "text": "You have certain rights regarding your personal information:",
-      "access": "Access your personal information",
-      "correct": "Correct inaccurate information",
-      "delete": "Request deletion of your information",
-      "object": "Object to processing of your information",
-      "withdraw": "Withdraw consent at any time",
-      "optOut": "Opt-out of marketing communications",
-      "contact": "To exercise these rights, please contact us using the information provided below."
-    },
-    "internationalTransfers": {
-      "title": "International Data Transfers",
-      "text": "As a global logistics provider operating across multiple countries including the UAE, Saudi Arabia, Oman, Kuwait, Bahrain, Qatar, and the United Kingdom, your information may be transferred to and processed in countries other than your country of residence. These countries may have different data protection laws. We ensure appropriate safeguards are in place to protect your information when transferred internationally."
-    },
-    "changesToPolicy": {
-      "title": "Changes to This Policy",
-      "text": "We may update this privacy policy from time to time. We will notify you of any changes by posting the new privacy policy on this page and updating the \"Last Updated\" date. We encourage you to review this policy periodically."
-    },
-    "contactUs": {
-      "title": "Contact Us",
-      "text": "If you have any questions, concerns, or requests regarding this Privacy Policy or our privacy practices, please contact us at:"
-    },
-    "lastUpdated": "Last Updated: 8/6/2025"
-  },
-  "QuotePage": {
-    "meta": {
-      "title": "Get a Logistics Quote | Maxline Global",
-      "description": "Get a personalized logistics quote from Maxline Global. Fast, safe, and smart cargo solutions for land, air, and sea freight with expert guidance.",
-      "keywords": "logistics quote, cargo shipping, freight services, customs support, warehousing, air freight, sea freight, land freight"
-    },
-    "hero": {
-      "subtitle": "Get a Quote",
-      "title1": "Let's Move Your Cargo -",
-      "title2": "Fast, Safe, and Smart",
-      "description": "Get a personalized logistics quote from Maxline Global. Whether it's land, air, or sea freight, our team will provide you with a tailored, cost-effective solution that fits your schedule, cargo type, and destination. Start your journey with a trusted logistics partner today."
-    },
-    "features": {
-      "sectionTitle": "What sets us apart",
-      "allInOne": {
-        "title": "All-In-One Logistics",
-        "description": "Integrated land, air, and sea freight services with warehousing and customs support."
-      },
-      "fastResponse": {
-        "title": "Fast Response Times",
-        "description": "Get detailed quotes within 24 hours, based on your exact shipment requirements."
-      },
-      "expertGuidance": {
-        "title": "Expert Guidance",
-        "description": "Our team will guide you through customs, documentation, and cargo-specific needs."
-      }
-    }
-  },
-  "QuoteForm": {
-    "main": {
-      "title": "Request Your Logistics Quote",
-      "description": "Get a personalized logistics quote from Maxline Global. Whether it's land, air, or sea freight, our team will provide you with a tailored, cost-effective solution that fits your schedule, cargo type, and destination. Start your journey with a trusted logistics partner today."
-    },
-    "basicInfo": {
-      "sectionTitle": "Basic Information",
-      "customerName": {
-        "label": "Customer Name",
-        "placeholder": "Enter customer name"
-      },
-      "companyName": {
-        "label": "Company Name (Optional)",
-        "placeholder": "Enter company name"
-      },
-      "email": { "label": "Email", "placeholder": "Enter email" },
-      "phone": { "label": "Phone", "placeholder": "Enter phone number" }
-    },
-    "senderInfo": {
-      "sectionTitle": "Sender Information",
-      "senderName": {
-        "label": "Sender Name",
-        "placeholder": "Enter sender name"
-      },
-      "senderAddress": {
-        "label": "Sender Address",
-        "placeholder": "Enter sender address"
-      }
-    },
-    "recipientInfo": {
-      "sectionTitle": "Recipient Information",
-      "recipientName": {
-        "label": "Recipient Name",
-        "placeholder": "Enter recipient name"
-      },
-      "recipientAddress": {
-        "label": "Recipient Address",
-        "placeholder": "Enter recipient address"
-      }
-    },
-    "shippingInfo": {
-      "sectionTitle": "Shipping information",
-      "preferredDeliveryDate": {
-        "label": "Preferred Delivery Date",
-        "placeholder": "Pick a date"
-      },
-      "preferredModeOfTransport": {
-        "label": "Preferred Mode of Transport",
-        "placeholder": "Select transport mode",
-        "options": {
-          "air": "Air",
-          "sea": "Sea",
-          "land": "Land"
-        }
-      },
-      "typeOfPackaging": {
-        "label": "Type of Packaging",
-        "placeholder": "Select packaging type",
-        "options": {
-          "standard": "Standard",
-          "express": "Express",
-          "fragile": "Fragile",
-          "custom": "Custom"
-        }
-      },
-      "shippingDate": { "label": "Shipping Date", "placeholder": "Pick a date" }
-    },
-    "packageInfo": {
-      "sectionTitle": "Package Information",
-      "pieces": { "label": "Pieces", "placeholder": "Enter number of pieces" },
-      "weight": { "label": "Weight (kg)", "placeholder": "Enter weight" },
-      "volume": { "label": "Volume (m³)", "placeholder": "Enter volume" },
-      "packageDescription": {
-        "label": "Package Description",
-        "placeholder": "Enter package description"
-      },
-      "additionalInformation": {
-        "label": "Additional Information (Optional)",
-        "placeholder": "Enter any additional information"
-      },
-      "attachFiles": { "label": "Attach Files (Optional)" }
-    },
-    "submit": "Get A Quote"
-  },
-  "CareersPage": {
-    "hero": {
-      "subtitle": "Join Our Team",
-      "title": {
-        "first": "Careers at ",
-        "second": "Maxline",
-        "third": " Global"
-      },
-      "description": "Join a team that's powering the future of technology and logistics."
-    },
-    "mission": {
-      "title": "Building Careers, Not Just Jobs",
-      "description1": "At Maxline Global, we don't just offer jobs—we build careers. As a leading provider of cutting-edge technology solutions, logistics innovations, and global distribution, we're on a mission to simplify and transform industries through smart, scalable solutions.",
-      "description2": "We believe that our success is driven by the talent, passion, and innovation of our people. If you're looking for a place where your ideas are valued, your growth is supported, and your work truly matters—you're in the right place.",
-      "whyChoose": {
-        "title": "Why Choose Maxline?",
-        "benefits": [
-          "Innovation-driven culture",
-          "Global team collaboration",
-          "International opportunities",
-          "Work-life balance focus"
-        ]
-      }
-    },
-    "benefits": {
-      "title": "Why Work with Us?",
-      "list": [
-        {
-          "title": "Innovative Environment",
-          "description": "Work on forward-thinking projects in tech, logistics, and global distribution."
-        },
-        {
-          "title": "Career Growth",
-          "description": "Get the support and tools to advance your skills and grow within the company."
-        },
-        {
-          "title": "Inclusive Culture",
-          "description": "Join a diverse, collaborative team that values transparency and integrity."
-        },
-        {
-          "title": "Global Impact",
-          "description": "Be part of a company making waves across international markets."
-        },
-        {
-          "title": "Work-Life Balance",
-          "description": "We value your well-being and offer flexible working opportunities where possible."
-        }
-      ]
-    },
-    "cta": {
-      "title": "Ready to Power the Future?",
-      "description": "Whether you're an experienced professional or just starting out, Maxline Global is a place to grow, innovate, and lead. Join us in shaping the future.",
-      "applyNow": "Apply Now",
-      "emailUs": "Email Us",
-      "resumeText": "Send your resume to",
-      "email": "enquires@maxlineglobal.com"
-    }
-  },
-  "TrackingPage": {
-    "title": "Tracking page is under development",
-    "description": "We're currently working on bringing you a powerful, real-time tracking experience to monitor your shipments with precision and ease. Our new tracking system is under development and will be launching soon.",
-    "assistance": "For immediate assistance or tracking inquiries, please contact our support team below"
-  }
+		"team": {
+			"title": "Meet the Maxline Global Team - Logistics Experts Driving Supply Chain Excellence",
+			"description": "Get to know the expert team behind Maxline Global. Our logistics professionals deliver innovative, efficient, and reliable supply chain solutions across the globe.",
+			"keywords": "Maxline Global team, logistics experts, freight forwarding team, supply chain professionals, logistics specialists, freight solutions team, GCC logistics experts, customs clearance team, warehousing specialists, project cargo experts"
+		},
+		"contact": {
+			"title": "Contact Maxline Global | Freight Forwarding, Logistics & Supply Chain Solutions",
+			"description": "Get in touch with Maxline Global to start your logistics project or partnership. Reach our Dubai headquarters or any of our branches in Oman, Bahrain, Qatar, or Saudi Arabia for freight forwarding, warehousing, and supply chain solutions.",
+			"keywords": "contact Maxline Global, logistics contact, freight forwarding Dubai, logistics company UAE, supply chain contact, Maxline Global branches, Jebel Ali logistics, Oman logistics, Bahrain freight, Qatar shipping, Saudi Arabia logistics, warehousing Dubai"
+		}
+	},
+	"Common": {
+		"title": "Logistics Services | Maxline Global",
+		"templateTitle": "| Maxline Global",
+		"description": "Explore our full suite of global logistics services—from air, sea, and road freight to warehousing, customs clearance, and project cargo management. Maxline Global delivers reliable, scalable, and end-to-end solutions for every supply chain challenge.",
+		"keywords": "logistics services, global logistics, air freight, sea freight, road freight, warehousing, customs clearance, project cargo, supply chain solutions"
+	},
+	"Navigation": {
+		"home": "Home",
+		"company": "Company",
+		"aboutUs": "About Us",
+		"leadershipTeam": "Leadership Team",
+		"insights": "Insights & News",
+		"careers": "Careers",
+		"airFreight": "Air Freight",
+		"seaFreight": "Sea Freight",
+		"landFreight": "Land Freight",
+		"projectCargo": "Project Cargo",
+		"packing": "Packing",
+		"warehousing": "Warehousing",
+		"exhibitionCargo": "Exhibition Cargo",
+		"MovingLashing": "Moving & Lashing",
+		"services": "Services",
+		"trackShipment": "Track Shipment",
+		"contact": "Contact",
+		"getQuote": "Get a Quote",
+		"exploreServices": "The Right Solution for Every Challenge - See What's Next"
+	},
+	"HomePage": {
+		"hero": {
+			"title": {
+				"firstLine": "Your Trusted Partner in",
+				"secondLine": "Logistics and Freight Delivery"
+			},
+			"inputPlaceholder": "Track your shipment"
+		},
+		"about": {
+			"title": "Reliable Logistics Partner Across the Globe",
+			"description": "At Maxline Global, we connect businesses to markets across the world. With our comprehensive logistics partner and commitment to service excellence, we ensure your cargo moves with speed, safety, and precision.",
+			"type": {
+				"air": "Air / 01",
+				"sea": "Sea / 02",
+				"road": "Road / 03"
+			}
+		},
+		"services": {
+			"heading": {
+				"first": "Built to Empower",
+				"second": "Efficiency"
+			},
+			"description": "Maxline turns fragmented workflows into unified strategies. Whether you're in the office or across the globe, we're one connected force",
+			"btnText": "Explore our services",
+			"title": "Integrated freight solutions tailored to your exact specifications.",
+			"service": {
+				"landFreight": {
+					"title": "Land Freight",
+					"description": "Efficient and Secure Road Transportation Across the GCC."
+				},
+				"airFreight": {
+					"title": "Air Freight",
+					"description": "Swift Air Freight Solutions for Global Reach."
+				},
+				"seaFreight": {
+					"title": "Sea Freight",
+					"description": "Reliable Sea Freight Services Across Continents."
+				},
+				"projectCargo": {
+					"title": "Project Cargo",
+					"description": "Specialized Handling for Heavy and Oversized Cargo."
+				},
+				"warehousing": {
+					"title": "Warehousing",
+					"description": "Strategic Warehousing and Distribution Solutions."
+				},
+				"movingLashing": {
+					"title": "Moving & Lashing",
+					"description": "Professional Relocation and Cargo Securing for Safe Transit.."
+				}
+			},
+			"cta": {
+				"title": "Logistics Without Limits",
+				"description": "Our tailored freight solutions are engineered to meet the demands of  modern trade - ensuring every shipment arrives on time, on budget, and without compromise.",
+				"btnText": "Explore more"
+			}
+		},
+		"faq": {
+			"title": "Frequently Asked Questions",
+			"description": "Discover quick answers to the questions our clients ask most. From shipment tracking to specialized cargo handling, our FAQ section covers everything you need to know about Maxline Global's services, capabilities, and commitment to smooth, secure, and on-time delivery."
+		},
+		"faqList": [
+			{
+				"question": "What logistics services does Maxline Global offer?",
+				"answer": "Maxline Global provides a full range of logistics solutions including sea, air, and land freight, customs clearance, warehousing, project cargo handling, chartering, and more — tailored to your business needs across the GCC and beyond."
+			},
+			{
+				"question": "Which regions or countries does Maxline Global serve?",
+				"answer": "We operate globally with a strong presence across the GCC countries, Asia, Europe, Africa, and the Americas. Our network enables seamless international trade and efficient cargo movement across all major trade lanes."
+			},
+			{
+				"question": "Do you handle dangerous or hazardous cargo?",
+				"answer": "Yes. Maxline Global is certified and experienced in handling hazardous and non-hazardous materials, including chemicals and reefer (temperature-controlled) cargo. Our team follows strict safety standards and international regulations."
+			},
+			{
+				"question": "Can you manage oversized or project cargo?",
+				"answer": "Absolutely. We offer project logistics solutions including heavy lift transport, Ro/Ro services, aircraft/ship chartering, and military or government shipment handling. We also provide port supervision and route planning for complex cargo."
+			},
+			{
+				"question": "Do you provide warehousing and distribution services?",
+				"answer": "Yes. We operate modern warehousing facilities in and around Jebel Ali Free Zone (JAFZA) with services like palletizing, shrink wrapping, labeling, and web-based inventory management. We also offer local and international distribution services."
+			},
+			{
+				"question": "How can I track my shipment?",
+				"answer": "We provide an easy-to-use Track & Trace system for real-time shipment updates. Clients can log in to our portal to view current location, estimated delivery time, and shipment history."
+			},
+			{
+				"question": "Do you provide door-to-door logistics services?",
+				"answer": "Yes. We offer door-to-door, door-to-port, and port-to-door services for both LCL (Less than Container Load) and FCL (Full Container Load) shipments. This includes document handling, customs clearance, and final delivery."
+			},
+			{
+				"question": "How do I get a quote for freight services?",
+				"answer": "Our team is available Monday to Friday, from 9:00 AM to 6:00 PM (UAE time). We are closed on weekends and public holidays. For urgent shipments, we can make special arrangements."
+			},
+			{
+				"question": "What are your business hours?",
+				"answer": "Our team is available Monday to Friday, from 9:00 AM to 6:00 PM (UAE time). We are closed on weekends and public holidays. For urgent shipments, we can make special arrangements."
+			},
+			{
+				"question": "Why should I choose Maxline Global as my logistics partner?",
+				"answer": "Maxline Global combines deep industry experience, a global network, and advanced logistics technology to offer flexible, scalable, and cost-effective supply chain solutions. We prioritize customer satisfaction, accuracy, and on-time delivery for every shipment."
+			},
+			{
+				"question": "What types of cargo does Maxline Global handle?",
+				"answer": "Maxline Global handles a wide range of cargo, including general freight, hazardous and non-hazardous goods, temperature-sensitive shipments, oversized project cargo, and time-critical deliveries by land, sea, and air."
+			},
+			{
+				"question": "Do you provide customs clearance services?",
+				"answer": "Yes, we offer comprehensive customs brokerage services for import, export, and transshipment across sea and air freight. Our team ensures compliance and smooth clearance through all major ports."
+			}
+		],
+		"insights": {
+			"label": "Maxline Insights & Updates",
+			"title": "Explore the Ideas Driving Global Logistics Forward",
+			"description": "Stay ahead with the latest in logistics, trade, and global supply chain trends.",
+			"btnText": "More",
+			"readBtn": "Read Article",
+			"exploreBtn": "Explore More"
+		},
+		"insightsList": [
+			{
+				"id": 1,
+				"title": "What is cross-trade shipping and when is it the best option?",
+				"description": "A quick look at how cross-trade shipping works, when to use it, and how Maxline Global makes it seamless.",
+				"image": "/images/blogs/scene-with-photorealistic-logistics-operations-proceedings.jpg",
+				"slug": "cross-trade-shipping-guide"
+			},
+			{
+				"id": 2,
+				"title": "What is cross-trade shipping and when is it the best option?",
+				"description": "A quick look at how cross-trade shipping works, when to use it, and how Maxline Global makes it seamless.",
+				"image": "/images/blogs/transport-logistics-products (2).jpg",
+				"slug": "cross-trade-shipping-guide"
+			},
+			{
+				"id": 3,
+				"title": "What is cross-trade shipping and when is it the best option?",
+				"description": "A quick look at how cross-trade shipping works, when to use it, and how Maxline Global makes it seamless.",
+				"image": "/images/blogs/transport-logistics-products.jpg",
+				"slug": "cross-trade-shipping-guide"
+			},
+			{
+				"id": 4,
+				"title": "What is cross-trade shipping and when is it the best option?",
+				"description": "A quick look at how cross-trade shipping works, when to use it, and how Maxline Global makes it seamless.",
+				"image": "/images/blogs/truck-logistics-operation-dusk.jpg",
+				"slug": "cross-trade-shipping-guide"
+			},
+			{
+				"id": 5,
+				"title": "What is cross-trade shipping and when is it the best option?",
+				"description": "A quick look at how cross-trade shipping works, when to use it, and how Maxline Global makes it seamless.",
+				"image": "/images/blogs/scene-with-photorealistic-logistics-operations-proceedings.jpg",
+				"slug": "cross-trade-shipping-guide"
+			},
+			{
+				"id": 6,
+				"title": "What is cross-trade shipping and when is it the best option?",
+				"description": "A quick look at how cross-trade shipping works, when to use it, and how Maxline Global makes it seamless.",
+				"image": "/images/blogs/scene-with-photorealistic-logistics-operations-proceedings.jpg",
+				"slug": "cross-trade-shipping-guide"
+			}
+		]
+	},
+	"Cta": {
+		"title": "Ready to move your business forward?",
+		"description": "Partner with Maxline Global for reliable logistics solutions.",
+		"call": "Call for enquiry",
+		"email": "Send us email",
+		"phone": "+971 4 282 2022",
+		"emailAddress": "enquires@maxlineglobal.com"
+	},
+	"Footer": {
+		"slogan1": "Your trusted logistics partner, moving forward,",
+		"slogan2": "every day.",
+		"locationLabel": "Location:",
+		"locationAddress": "Jebel Ali Free Zone, Dubai.",
+		"getQuote": "Get A Quote",
+		"general": "General",
+		"about": "About",
+		"home": "Home",
+		"team": "Team",
+		"insights": "Insights & Updates",
+		"contact": "Contact",
+		"services": "Services",
+		"support": "Support",
+		"trackShipment": "Track your Shipment",
+		"getQuoteShort": "Get Quote",
+		"technicalSupport": "Technical Support",
+		"social": "Social",
+		"linkedin": "Linkedin",
+		"instagram": "Instagram",
+		"facebook": "Facebook",
+		"x": "X",
+		"copyright": "© {year} Maxline Global. All Rights Reserved.",
+		"designedBy": "Designed & Developed by {agency}",
+		"agencyName": "Ziron Media",
+		"airFreight": "Air Freight",
+		"seaFreight": "Sea Freight",
+		"landFreight": "Land Freight",
+		"projectCargo": "Project Cargo",
+		"packing": "Packing",
+		"warehousing": "Warehousing",
+		"exhibitionCargo": "Exhibition Cargo",
+		"MovingLashing": "Moving & Lashing"
+	},
+	"AboutPage": {
+		"badge": "About us",
+		"heroTitle": "Building Smarter Supply Chains for a Connected World.",
+		"whatWeDo": {
+			"title": "What we do?",
+			"description": "At <span>Maxline global</span> logistics solutions, our mission is to provide exceptional logistics services to our clients, enabling them to streamline their supply chain and focus on their core business operations. We have been serving our clients with top-notch freight forwarding end-to-end service from its inception."
+		},
+		"principles": {
+			"title": "Our Core Principles:",
+			"list": [
+				{
+					"label": "Vision",
+					"title": "Leading with Vision, Moving with Purpose.",
+					"description": "Our vision is to be the foremost leader in the freight forwarding industry, renowned for our innovative, sustainable, and customer-centric logistics solutions that redefine industry standards."
+				},
+				{
+					"label": "Mission",
+					"title": "Driven by Purpose. Defined by Progress.",
+					"description": "Our mission is to deliver unparalleled excellence in freight forwarding by providing innovative, sustainable, and customer-focused solutions. We strive to exceed expectations, create lasting value for our clients, and drive progress in the logistics sector."
+				},
+				{
+					"label": "Fast Service",
+					"title": "Logistics at the Speed of Business.",
+					"description": "We are committed to providing fast and reliable logistics services, ensuring the timely and efficient delivery of your goods. Our focus is on meeting and exceeding your expectations, helping your business thrive in today's fast-paced market. Experience the speed and efficiency of our logistics solutions."
+				},
+				{
+					"label": "100% Accuracy",
+					"title": "Delivering Accuracy, Every Time.",
+					"description": "We guarantee 100% accuracy in every shipment through meticulous planning, streamlined processes, and efficient communication. Leveraging advanced technologies like real-time tracking and automation, we ensure precision and reliability, giving you peace of mind with every delivery. Trust us for accurate and dependable logistics solutions."
+				}
+			]
+		},
+		"clients": {
+			"label": "Our clients",
+			"title": "These Companies Trust Us to Deliver Their Vision"
+		},
+		"words": "In a world where delays and cost overruns are common, Maxline Global Logistics delivers with precision. We commit to timelines and budgets—and we deliver. This promise drives how we train our teams, apply smart logistics technology, and serve clients worldwide.",
+		"certification": {
+			"title": "Certified for Excellence in Global Logistics",
+			"description": "Maxline Global's certifications demonstrate our commitment to safe, efficient, and compliant logistics across air, sea, and land. We meet international standards in freight forwarding, warehousing, customs, and hazardous cargo-ensuring trust and reliability throughout the supply chain."
+		}
+	},
+	"ServicesPage": {
+		"title": "Logistics Services | Maxline Global",
+		"description": "Explore our full suite of global logistics services—from air, sea, and road freight to warehousing, customs clearance, and project cargo management. Maxline Global delivers reliable, scalable, and end-to-end solutions for every supply chain challenge.",
+		"keywords": "logistics services, global logistics, air freight, sea freight, road freight, warehousing, customs clearance, project cargo, supply chain solutions",
+		"subtitle": "Services",
+		"mainTitle": "Logistics Solutions That Move Business Forward",
+		"ourServices": "Our Services"
+	},
+	"TeamPage": {
+		"heroSubtitle": "Our Team",
+		"heroTitle": "Here's the team that works hard to Deliver your vision, faster",
+		"heroDescription": "Get to know the expert team behind Maxline Global. Our logistics professionals deliver innovative, efficient, and reliable supply chain solutions across the globe.",
+		"leadershipTitle": "Leadership That Moves the World",
+		"specialistsTitle": "Specialists in Motion",
+		"personName": "Person Name",
+		"designation": "Designation",
+		"linkedinProfile": "Linkedin Profile",
+		"departmentName": "Logistics Department",
+		"departmentDescription": "Expert team handling freight forwarding, customs clearance, and supply chain solutions",
+		"AjithKumar": "Ajith Kumar",
+		"PadmaAjith": "Padma Ajith",
+		"SajiThomas": "Saji Thomas",
+		"PrakashMadhavan": "Prakash Madhavan",
+		"ChairmanAndMD": "Chairman and Managing Director",
+		"Director": "Director",
+		"CFO": "CFO",
+		"GeneralManager": "General Manager"
+	},
+	"ContactPage": {
+		"subtitle": "Contact us",
+		"heroTitle1": "Let's Move Your Business",
+		"heroTitle2": "Forward,",
+		"heroTitle3": "Together",
+		"heroDescription": "Get in touch to start a logistics project, explore partnership opportunities, or learn how Maxline Global delivers supply chain solutions with precision, speed, and care. We're here to support your business - every step of the way.",
+		"contactLocations": "Contact Locations",
+		"corporateHeadquarters": "Corporate Headquarters",
+		"hqAddress": "MO 0753, Jafza North, Dubai, United Arab Emirates",
+		"hqImageAlt": "Maxline Global Corporate Headquarters in Dubai",
+		"branchOffice": "Branch Office",
+		"branchAddress": "MO 0753, JAFZA North, Dubai, UAE ",
+		"branchImageAlt": "Maxline Global Branch Office in Dubai",
+		"contactForm": "Contact Form",
+		"contactImageAlt": "Maxline Global Logistics Operations",
+		"contactImageCaption": "Maxline Global Logistics Operations Center",
+		"aroundWorldTitle": "Maxline Global Around the World",
+		"aroundWorldDescription": "Our strategically located offices empower us to manage international shipments with local insight. Wherever you are, Maxline is never far.",
+		"phoneLabel": "Phone",
+		"mobileLabel": "Mobile",
+		"emailLabel": "Email",
+		"viewInMap": "View in map",
+		"branchesTitle": "Branches"
+	},
+	"ContactForm": {
+		"heading": "Have a Question? We're Here to Help",
+		"description": "Have a shipment, question, or custom logistics need? Fill out the form and our team will get back to you with the right solution - fast, reliable, and tailored to your goals.",
+		"fullNameLabel": "Full Name",
+		"fullNamePlaceholder": "Enter your full name",
+		"companyNameLabel": "Company Name",
+		"companyNamePlaceholder": "Enter your company name",
+		"emailLabel": "Email",
+		"emailPlaceholder": "Enter your email",
+		"phoneLabel": "Phone Number",
+		"phonePlaceholder": "Enter your phone number",
+		"serviceTypeLabel": "Service Type",
+		"serviceType": {
+			"general_inquiry": "General Inquiry",
+			"freight_forwarding": "Freight forwarding",
+			"warehousing_distribution": "Warehousing & Distribution",
+			"customs_brokerage": "Customs brokerage",
+			"project_cargo": "Project Cargo",
+			"partnership_inquiry": " Partnership Inquiry",
+			"other": "Other"
+		},
+		"subjectLabel": "Subject",
+		"subjectPlaceholder": "Enter subject",
+		"messageLabel": "Message",
+		"messagePlaceholder": "Enter your message",
+		"fileUploadLabel": "File Upload (Optional - for RFPs, project docs, etc.)",
+		"privacyPolicyConsent": "I agree to the <privacyPolicy>Privacy Policy</privacyPolicy> and consent to having this website store my submitted information.",
+		"sendMessage": "Send Message",
+		"successMessage": "Your message has been sent!",
+		"errorMessage": "There was an error sending your message. Please try again later."
+	},
+	"PrivacyPolicy": {
+		"title": "Privacy Policy",
+		"introduction": {
+			"title": "Introduction",
+			"text1": "This Privacy Policy describes how Maxline Global, a premier freight forwarding and logistics provider, collects, uses, processes, and discloses your information when you use our website and services. We specialize in providing integrated freight solutions across air, sea, and land transportation, warehousing, and project forwarding services.",
+			"text2": "By using our website and submitting information through our forms, you agree to the collection and use of information in accordance with this policy. If you do not agree with our policies and practices, please do not use our website or submit information through our forms."
+		},
+		"informationWeCollect": {
+			"title": "Information We Collect",
+			"informationYouProvide": {
+				"title": "Information You Provide",
+				"text": "When you use our contact and quote request forms, we collect:",
+				"personalInformation": {
+					"title": "Personal Information:",
+					"fullName": "Full name",
+					"companyName": "Company name",
+					"emailAddress": "Email address",
+					"phoneNumber": "Phone number"
+				},
+				"shippingInformation": {
+					"title": "Shipping Information:",
+					"senderRecipient": "Sender and recipient details",
+					"shippingAddresses": "Shipping addresses",
+					"packageDescriptions": "Package descriptions",
+					"weightVolume": "Weight and volume specifications",
+					"preferredDates": "Preferred delivery dates",
+					"transportMode": "Transport mode preferences (Air, Sea, Land)",
+					"customsDocumentation": "Customs documentation"
+				},
+				"serviceInformation": {
+					"title": "Service Information:",
+					"serviceType": "Service type preferences (FTL, LTL, Project Cargo)",
+					"industryRequirements": "Industry-specific requirements",
+					"customLogistics": "Custom logistics needs",
+					"additionalSpecs": "Additional specifications"
+				},
+				"documentation": {
+					"title": "Documentation:",
+					"attachedFiles": "Attached files (up to 5MB per file)",
+					"projectDocumentation": "Project documentation",
+					"customRequirements": "Custom requirements",
+					"certificatesPermits": "Certificates and permits"
+				}
+			},
+			"automaticallyCollected": {
+				"title": "Automatically Collected Information",
+				"text": "When you visit our website, we automatically collect:",
+				"deviceInfo": "Device information (IP address, browser type, operating system)",
+				"usageData": "Usage data (pages visited, time spent, links clicked)",
+				"locationInfo": "Location information (if permitted by your device settings)",
+				"referralSource": "Referral source",
+				"deviceIdentifiers": "Device identifiers"
+			}
+		},
+		"howWeUseYourInformation": {
+			"title": "How We Use Your Information",
+			"text": "We use the information we collect to:",
+			"processRequests": "Process and respond to your quote requests and inquiries",
+			"provideSolutions": "Provide personalized logistics solutions across air, sea, and land transportation",
+			"manageWarehousing": "Manage warehousing and distribution services",
+			"handleProjectForwarding": "Handle project forwarding and specialized cargo",
+			"facilitateCustoms": "Facilitate customs clearance and documentation",
+			"communicateShipments": "Communicate with you about your shipments and services",
+			"sendNotices": "Send you technical notices, updates, and support messages",
+			"improveServices": "Improve our services and customer experience",
+			"complyLegal": "Comply with legal and regulatory requirements",
+			"protectFraud": "Protect against fraud and unauthorized transactions"
+		},
+		"informationSharing": {
+			"title": "Information Sharing and Disclosure",
+			"text": "We may share your information with:",
+			"logisticsPartners": "Our logistics partners and service providers",
+			"customsAuthorities": "Customs and regulatory authorities",
+			"shippingCarriers": "Shipping carriers and transportation providers",
+			"warehousingPartners": "Warehousing and distribution partners",
+			"professionalAdvisors": "Professional advisors (lawyers, accountants, etc.)",
+			"lawEnforcement": "Law enforcement when required by law"
+		},
+		"dataSecurity": {
+			"title": "Data Security",
+			"text": "We implement appropriate technical and organizational measures to protect your personal information, including:",
+			"encryption": "Encryption of data in transit and at rest",
+			"secureSubmission": "Secure form submission and data processing",
+			"accessControls": "Access controls and authentication procedures",
+			"securityAssessments": "Regular security assessments and audits",
+			"employeeTraining": "Employee training on data security",
+			"disclaimer": "While we strive to protect your information, no method of transmission over the Internet or electronic storage is 100% secure. We cannot guarantee absolute security."
+		},
+		"yourRights": {
+			"title": "Your Rights and Choices",
+			"text": "You have certain rights regarding your personal information:",
+			"access": "Access your personal information",
+			"correct": "Correct inaccurate information",
+			"delete": "Request deletion of your information",
+			"object": "Object to processing of your information",
+			"withdraw": "Withdraw consent at any time",
+			"optOut": "Opt-out of marketing communications",
+			"contact": "To exercise these rights, please contact us using the information provided below."
+		},
+		"internationalTransfers": {
+			"title": "International Data Transfers",
+			"text": "As a global logistics provider operating across multiple countries including the UAE, Saudi Arabia, Oman, Kuwait, Bahrain, Qatar, and the United Kingdom, your information may be transferred to and processed in countries other than your country of residence. These countries may have different data protection laws. We ensure appropriate safeguards are in place to protect your information when transferred internationally."
+		},
+		"changesToPolicy": {
+			"title": "Changes to This Policy",
+			"text": "We may update this privacy policy from time to time. We will notify you of any changes by posting the new privacy policy on this page and updating the \"Last Updated\" date. We encourage you to review this policy periodically."
+		},
+		"contactUs": {
+			"title": "Contact Us",
+			"text": "If you have any questions, concerns, or requests regarding this Privacy Policy or our privacy practices, please contact us at:"
+		},
+		"lastUpdated": "Last Updated: 8/6/2025"
+	},
+	"QuotePage": {
+		"meta": {
+			"title": "Get a Logistics Quote | Maxline Global",
+			"description": "Get a personalized logistics quote from Maxline Global. Fast, safe, and smart cargo solutions for land, air, and sea freight with expert guidance.",
+			"keywords": "logistics quote, cargo shipping, freight services, customs support, warehousing, air freight, sea freight, land freight"
+		},
+		"hero": {
+			"subtitle": "Get a Quote",
+			"title1": "Let's Move Your Cargo -",
+			"title2": "Fast, Safe, and Smart",
+			"description": "Get a personalized logistics quote from Maxline Global. Whether it's land, air, or sea freight, our team will provide you with a tailored, cost-effective solution that fits your schedule, cargo type, and destination. Start your journey with a trusted logistics partner today."
+		},
+		"features": {
+			"sectionTitle": "What sets us apart",
+			"allInOne": {
+				"title": "All-In-One Logistics",
+				"description": "Integrated land, air, and sea freight services with warehousing and customs support."
+			},
+			"fastResponse": {
+				"title": "Fast Response Times",
+				"description": "Get detailed quotes within 24 hours, based on your exact shipment requirements."
+			},
+			"expertGuidance": {
+				"title": "Expert Guidance",
+				"description": "Our team will guide you through customs, documentation, and cargo-specific needs."
+			}
+		}
+	},
+	"QuoteForm": {
+		"main": {
+			"title": "Request Your Logistics Quote",
+			"description": "Get a personalized logistics quote from Maxline Global. Whether it's land, air, or sea freight, our team will provide you with a tailored, cost-effective solution that fits your schedule, cargo type, and destination. Start your journey with a trusted logistics partner today."
+		},
+		"basicInfo": {
+			"sectionTitle": "Basic Information",
+			"customerName": {
+				"label": "Customer Name",
+				"placeholder": "Enter customer name"
+			},
+			"companyName": {
+				"label": "Company Name (Optional)",
+				"placeholder": "Enter company name"
+			},
+			"email": { "label": "Email", "placeholder": "Enter email" },
+			"phone": { "label": "Phone", "placeholder": "Enter phone number" }
+		},
+		"senderInfo": {
+			"sectionTitle": "Sender Information",
+			"senderName": {
+				"label": "Sender Name",
+				"placeholder": "Enter sender name"
+			},
+			"senderAddress": {
+				"label": "Sender Address",
+				"placeholder": "Enter sender address"
+			}
+		},
+		"recipientInfo": {
+			"sectionTitle": "Recipient Information",
+			"recipientName": {
+				"label": "Recipient Name",
+				"placeholder": "Enter recipient name"
+			},
+			"recipientAddress": {
+				"label": "Recipient Address",
+				"placeholder": "Enter recipient address"
+			}
+		},
+		"shippingInfo": {
+			"sectionTitle": "Shipping information",
+			"preferredDeliveryDate": {
+				"label": "Preferred Delivery Date",
+				"placeholder": "Pick a date"
+			},
+			"preferredModeOfTransport": {
+				"label": "Preferred Mode of Transport",
+				"placeholder": "Select transport mode",
+				"options": {
+					"air": "Air",
+					"sea": "Sea",
+					"land": "Land"
+				}
+			},
+			"typeOfPackaging": {
+				"label": "Type of Packaging",
+				"placeholder": "Select packaging type",
+				"options": {
+					"standard": "Standard",
+					"express": "Express",
+					"fragile": "Fragile",
+					"custom": "Custom"
+				}
+			},
+			"shippingDate": { "label": "Shipping Date", "placeholder": "Pick a date" }
+		},
+		"packageInfo": {
+			"sectionTitle": "Package Information",
+			"pieces": { "label": "Pieces", "placeholder": "Enter number of pieces" },
+			"weight": { "label": "Weight (kg)", "placeholder": "Enter weight" },
+			"volume": { "label": "Volume (m³)", "placeholder": "Enter volume" },
+			"packageDescription": {
+				"label": "Package Description",
+				"placeholder": "Enter package description"
+			},
+			"additionalInformation": {
+				"label": "Additional Information (Optional)",
+				"placeholder": "Enter any additional information"
+			},
+			"attachFiles": { "label": "Attach Files (Optional)" }
+		},
+		"submit": "Get A Quote"
+	},
+	"CareersPage": {
+		"hero": {
+			"subtitle": "Join Our Team",
+			"title": {
+				"first": "Careers at ",
+				"second": "Maxline",
+				"third": " Global"
+			},
+			"description": "Join a team that's powering the future of technology and logistics."
+		},
+		"mission": {
+			"title": "Building Careers, Not Just Jobs",
+			"description1": "At Maxline Global, we don't just offer jobs—we build careers. As a leading provider of cutting-edge technology solutions, logistics innovations, and global distribution, we're on a mission to simplify and transform industries through smart, scalable solutions.",
+			"description2": "We believe that our success is driven by the talent, passion, and innovation of our people. If you're looking for a place where your ideas are valued, your growth is supported, and your work truly matters—you're in the right place.",
+			"whyChoose": {
+				"title": "Why Choose Maxline?",
+				"benefits": [
+					"Innovation-driven culture",
+					"Global team collaboration",
+					"International opportunities",
+					"Work-life balance focus"
+				]
+			}
+		},
+		"benefits": {
+			"title": "Why Work with Us?",
+			"list": [
+				{
+					"title": "Innovative Environment",
+					"description": "Work on forward-thinking projects in tech, logistics, and global distribution."
+				},
+				{
+					"title": "Career Growth",
+					"description": "Get the support and tools to advance your skills and grow within the company."
+				},
+				{
+					"title": "Inclusive Culture",
+					"description": "Join a diverse, collaborative team that values transparency and integrity."
+				},
+				{
+					"title": "Global Impact",
+					"description": "Be part of a company making waves across international markets."
+				},
+				{
+					"title": "Work-Life Balance",
+					"description": "We value your well-being and offer flexible working opportunities where possible."
+				}
+			]
+		},
+		"cta": {
+			"title": "Ready to Power the Future?",
+			"description": "Whether you're an experienced professional or just starting out, Maxline Global is a place to grow, innovate, and lead. Join us in shaping the future.",
+			"applyNow": "Apply Now",
+			"emailUs": "Email Us",
+			"resumeText": "Send your resume to",
+			"email": "enquires@maxlineglobal.com"
+		}
+	},
+	"TrackingPage": {
+		"title": "Tracking page is under development",
+		"description": "We're currently working on bringing you a powerful, real-time tracking experience to monitor your shipments with precision and ease. Our new tracking system is under development and will be launching soon.",
+		"assistance": "For immediate assistance or tracking inquiries, please contact our support team below"
+	}
 }

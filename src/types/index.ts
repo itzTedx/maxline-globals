@@ -1,6 +1,6 @@
 export interface Service {
-  title: string;
-  description: string;
-  href: string;
-  image: string;
+	title: string;
+	description: string;
+	href: string;
+	image: string;
 }
