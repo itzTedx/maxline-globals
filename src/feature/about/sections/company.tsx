@@ -7,7 +7,7 @@ import { useTranslations } from "next-intl";
 
 import { StaggeredText } from "@/components/animation/staggered-text";
 
-import { Logo1, Logo2, Logo3, Logo4, Logo5, Logo6 } from "@/assets/mock-logos";
+import { Logo1, Logo2, Logo3, Logo4, Logo5, Logo6 } from "@/assets/clients";
 
 interface LogoRowProps {
 	logos: (typeof items)[number][number][];

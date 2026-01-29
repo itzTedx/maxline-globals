@@ -5,10 +5,13 @@ import { useTranslations } from "next-intl";
 import { StaggeredText } from "@/components/animation/staggered-text";
 import { Button } from "@/components/ui/button";
 
+import { Toyoto } from "@/assets/clients";
 import { IconArrowRightTag } from "@/assets/icons/arrow";
 import { IconCaretRight } from "@/assets/icons/caret";
 
 import { HeroImage } from "../components/hero-image";
+
+const items = [{ Icon: Toyoto }];
 
 export const HeroSection = memo(() => {
 	const t = useTranslations("HomePage");
@@ -54,11 +57,11 @@ export const HeroSection = memo(() => {
 						>
 							<div className="relative flex aspect-video items-center justify-center overflow-hidden rounded-t-2xl bg-card">
 								<HeroImage />
-								<div className="absolute right-9 bottom-9 flex items-center gap-3 rounded-md bg-accent-tertiary/30 p-3 backdrop-blur-md">
+								<div className="absolute right-9 bottom-9 flex items-center gap-3 rounded-xl bg-accent-tertiary/20 p-3 backdrop-blur-md">
 									<div className="flex h-8 w-12 items-center justify-center rounded-md bg-accent text-accent-tertiary">
 										<IconCaretRight className="size-4" />
 									</div>
-									<p className="w-40 text-sm">
+									<p className="w-40 text-sm leading-4">
 										See How Maxline Global Moves the World
 									</p>
 								</div>
@@ -76,8 +79,8 @@ export const HeroSection = memo(() => {
 					src="/videos/home-hero.webm"
 				/>
 			</div>
-			<section className="container relative z-10 grid grid-cols-1 gap-20 py-12 sm:py-14 md:grid-cols-2 md:py-16 lg:py-20">
-				<div>
+			<section className="container relative z-10 grid grid-cols-1 gap-24 py-12 sm:py-14 md:grid-cols-2 md:py-16 lg:py-20">
+				<div className="space-y-4">
 					<h2 className="font-medium text-5xl text-primary">
 						Recognized by{" "}
 						<span className="text-accent-secondary">
@@ -88,7 +91,20 @@ export const HeroSection = memo(() => {
 						FIATA certified, ISO compliant, trusted by Fortune 500 companies
 						across continents
 					</p>
+					<Button className="bg-primary text-secondary" variant="secondary">
+						Know more about Maxline <IconCaretRight className="ml-3" />
+					</Button>
 				</div>
+				<ul className="grid grid-cols-2 gap-4">
+					{items.map(({ Icon }, i) => (
+						<li
+							className="flex items-center justify-center bg-background p-3"
+							key={`client-${i + 1}`}
+						>
+							<Icon className="w-28" />
+						</li>
+					))}
+				</ul>
 			</section>
 			<div className="pointer-events-none absolute inset-0 bg-linear-0 from-white" />
 		</header>
