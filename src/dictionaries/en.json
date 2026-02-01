@@ -68,7 +68,7 @@
 			"inputPlaceholder": "Track your shipment"
 		},
 		"about": {
-			"title": "Reliable Logistics Partner Across the Globe",
+			"title": "Your Reliable Logistics Partner Across the Globe",
 			"description": "At Maxline Global, we connect businesses to markets across the world. With our comprehensive logistics partner and commitment to service excellence, we ensure your cargo moves with speed, safety, and precision.",
 			"type": {
 				"air": "Air / 01",
@@ -101,9 +101,17 @@
 					"title": "Project Cargo",
 					"description": "Specialized Handling for Heavy and Oversized Cargo."
 				},
+				"packaging": {
+					"title": "Packaging",
+					"description": "Export-grade packing to protect cargo during transit."
+				},
 				"warehousing": {
 					"title": "Warehousing",
 					"description": "Strategic Warehousing and Distribution Solutions."
+				},
+				"exhibition": {
+					"title": "Exhibition Cargo",
+					"description": "End-to-end logistics for exhibitions, events, and trade shows."
 				},
 				"movingLashing": {
 					"title": "Moving & Lashing",
@@ -225,7 +233,7 @@
 	},
 	"Cta": {
 		"title": "Ready to move your business forward?",
-		"description": "Partner with Maxline Global for reliable logistics solutions.",
+		"description": "Partner with Maxline Global for dependable logistics solutions tailored to your business needs locally and globally.",
 		"call": "Call for enquiry",
 		"email": "Send us email",
 		"phone": "+971 4 282 2022",

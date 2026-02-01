@@ -1,3 +1,7 @@
+import { Route } from "next";
+
+import { Service } from "@/types";
+
 import { socialLinks } from "./site-config";
 
 type SubMenuItem = {
@@ -98,44 +102,59 @@ export const NAVLINKS: NavLink[] = [
 	},
 ];
 
-export const SERVICES = [
+export const SERVICES: Service[] = [
 	{
 		title: "landFreight",
 		description: "Efficient and Secure Road Transportation Across the GCC.",
-		href: "/services/land-freight",
+		href: "/services/land-freight" as Route,
 		image: "/images/truck.webp",
 	},
 	{
 		title: "airFreight",
-		description: "Swift Air Freight Solutions for Global Reach.",
-		href: "/services/air-freight",
+		description: "Fast and reliable air cargo for time-critical shipments.",
+		href: "/services/air-freight" as Route,
 		image: "/images/plane.webp",
 	},
 	{
 		title: "seaFreight",
-		description: "Reliable Sea Freight Services Across Continents.",
-		href: "/services/sea-freight",
+		description: "Cost-effective sea freight connecting major global ports.",
+		href: "/services/sea-freight" as Route,
 		image: "/images/ship.webp",
 	},
 	{
 		title: "projectCargo",
-		description: "Specialized Handling for Heavy and Oversized Cargo.",
-		href: "/services/project-cargo",
+		description:
+			"Specialized handling for heavy, oversized, and complex cargo.",
+		href: "/services/project-cargo" as Route,
 		image: "/images/container.webp",
 	},
 	{
+		title: "packaging",
+		description: "Export-grade packing to protect cargo during transit.",
+		href: "/services/warehousing-and-distribution" as Route,
+		image: "/images/lifter.webp",
+	},
+	{
 		title: "warehousing",
-		description: "Strategic Warehousing and Distribution Solutions.",
-		href: "/services/warehousing-and-distribution",
+		description:
+			"Secure warehousing and distribution for streamlined supply chains.",
+		href: "/services/warehousing-and-distribution" as Route,
+		image: "/images/lifter.webp",
+	},
+	{
+		title: "exhibition",
+		description:
+			"End-to-end logistics for exhibitions, events, and trade shows.",
+		href: "/services/warehousing-and-distribution" as Route,
 		image: "/images/lifter.webp",
 	},
 	{
 		title: "movingLashing",
 		description: "Professional Relocation and Cargo Securing for Safe Transit.",
-		href: "/services/movers-lashing",
+		href: "/services/movers-lashing" as Route,
 		image: "/images/movers.webp",
 	},
-];
+] as const;
 
 export const FAQS = [
 	{

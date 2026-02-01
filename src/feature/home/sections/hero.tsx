@@ -5,21 +5,28 @@ import { useTranslations } from "next-intl";
 import { StaggeredText } from "@/components/animation/staggered-text";
 import { Button } from "@/components/ui/button";
 
-import { Toyoto } from "@/assets/clients";
+import { Hyundai, Kia, Lg, Samsung, Sony, Toyoto } from "@/assets/clients";
 import { IconArrowRightTag } from "@/assets/icons/arrow";
 import { IconCaretRight } from "@/assets/icons/caret";
 
 import { HeroImage } from "../components/hero-image";
 
-const items = [{ Icon: Toyoto }];
+const items = [
+	{ Icon: Kia },
+	{ Icon: Hyundai },
+	{ Icon: Samsung },
+	{ Icon: Toyoto },
+	{ Icon: Sony },
+	{ Icon: Lg },
+];
 
 export const HeroSection = memo(() => {
 	const t = useTranslations("HomePage");
 	return (
-		<header className="relative px-6 py-10 md:py-14" role="banner">
-			<div className="relative overflow-hidden rounded-3xl">
-				<div className="container relative z-10 max-w-6xl">
-					<div className="mx-auto max-w-5xl">
+		<div className="relative px-6" role="banner">
+			<section className="relative overflow-hidden rounded-3xl">
+				<div className="container relative z-10 max-w-7xl">
+					<div className="mx-auto py-12 sm:py-14 md:py-16 lg:py-20">
 						<h1 className="text-center font-semibold text-4xl text-primary tracking-tight sm:text-5xl md:text-6xl">
 							<StaggeredText
 								duration={0.3}
@@ -50,7 +57,7 @@ export const HeroSection = memo(() => {
 						</div>
 					</div>
 
-					<div className="mt-12 rounded-t-3xl border border-card border-b-0">
+					<div className="rounded-t-3xl border border-card border-b-0">
 						<div
 							aria-label="Hero illustration"
 							className="border-8 border-white/10 border-b-0 bg-card/10 p-1 pb-0"
@@ -78,8 +85,8 @@ export const HeroSection = memo(() => {
 					preload="auto"
 					src="/videos/home-hero.webm"
 				/>
-			</div>
-			<section className="container relative z-10 grid grid-cols-1 gap-24 py-12 sm:py-14 md:grid-cols-2 md:py-16 lg:py-20">
+			</section>
+			<section className="container relative z-10 grid max-w-7xl grid-cols-1 gap-24 py-12 sm:py-14 md:grid-cols-2 md:py-16 lg:py-20">
 				<div className="space-y-4">
 					<h2 className="font-medium text-5xl text-primary">
 						Recognized by{" "}
@@ -87,27 +94,27 @@ export const HeroSection = memo(() => {
 							industry leaders worldwide
 						</span>
 					</h2>
-					<p className="text-xl leading-relaxed">
+					<p className="text-balance text-xl leading-relaxed">
 						FIATA certified, ISO compliant, trusted by Fortune 500 companies
 						across continents
 					</p>
 					<Button className="bg-primary text-secondary" variant="secondary">
-						Know more about Maxline <IconCaretRight className="ml-3" />
+						Know more about Maxline <IconCaretRight className="ml-4" />
 					</Button>
 				</div>
 				<ul className="grid grid-cols-2 gap-4">
 					{items.map(({ Icon }, i) => (
 						<li
-							className="flex items-center justify-center bg-background p-3"
+							className="flex aspect-16/4 items-center justify-center bg-background p-3"
 							key={`client-${i + 1}`}
 						>
-							<Icon className="w-28" />
+							<Icon className="w-28 text-muted-foreground" />
 						</li>
 					))}
 				</ul>
 			</section>
 			<div className="pointer-events-none absolute inset-0 bg-linear-0 from-white" />
-		</header>
+		</div>
 	);
 });
 

@@ -1,31 +1,27 @@
 "use client";
 
-import Image from "next/image";
-
 import { useTranslations } from "next-intl";
 
-import CenterUnderline from "@/components/animation/underline-center";
 import VerticalCutReveal from "@/components/animation/vertical-cut-reveal";
+import { Button } from "@/components/ui/button";
 
-import { XIcon } from "@/assets/x-icon";
-
-import { Link } from "@/i18n/navigation";
+import { Bucket } from "./ui/bucket";
 
 export const Cta = () => {
 	const t = useTranslations("Cta");
 	return (
 		<section
 			aria-label="Call to Action"
-			className="container relative overflow-hidden text-background"
+			className="container relative mt-20 text-background"
 			id="cta"
 			itemScope
 			itemType="https://schema.org/Organization"
 		>
-			<div className="relative overflow-hidden rounded-3xl">
-				<div className="absolute z-0 flex h-full w-full overflow-hidden rtl:-scale-x-100">
+			<div className="relative overflow-hidden rounded-3xl bg-accent-tertiary">
+				{/* <div className="absolute z-0 flex h-full w-full overflow-hidden">
 					<Image
 						alt="Maxline Global logistics facility with modern shipping containers and trucks"
-						className="object-cover object-left md:object-right"
+						className="object-cover object-left md:object-right rtl:-scale-x-100"
 						fetchPriority="high"
 						fill
 						loading="eager"
@@ -34,11 +30,11 @@ export const Cta = () => {
 						sizes="(max-width: 768px) 100vw, "
 						src="/images/cta-bg-v2.jpg"
 					/>
-				</div>
-				<div className="relative z-10 grid grid-cols-1 items-center gap-4 p-8 sm:p-12 md:grid-cols-3 md:gap-2 md:px-12 md:py-20 lg:px-24 lg:py-20">
-					<div className="col-span-1 space-y-2 md:col-span-2 md:space-y-4">
+				</div> */}
+				<div className="relative z-10 grid grid-cols-1 items-center gap-4 p-8 sm:p-12 md:grid-cols-2 md:gap-2 md:px-12 md:py-20 lg:px-24 lg:py-20">
+					<div className="space-y-2 md:space-y-4">
 						<h4
-							className="font-black font-grotesk text-4xl leading-tighter md:text-5xl lg:text-6xl"
+							className="font-semibold text-4xl leading-tighter md:text-5xl lg:text-6xl"
 							itemProp="name"
 						>
 							<VerticalCutReveal
@@ -54,13 +50,10 @@ export const Cta = () => {
 								{t("title")}
 							</VerticalCutReveal>
 						</h4>
-						<p
-							className="font-grotesk font-light text-lg md:text-xl"
-							itemProp="description"
-						>
+						<p className="font-light text-lg md:text-xl" itemProp="description">
 							<VerticalCutReveal
 								splitBy="characters"
-								staggerDuration={0.025}
+								staggerDuration={0.015}
 								staggerFrom="first"
 								transition={{
 									delay: 0.5,
@@ -72,30 +65,18 @@ export const Cta = () => {
 								{t("description")}
 							</VerticalCutReveal>
 						</p>
+						<div>
+							<Button>
+								Get started - <span>it’s free</span>
+							</Button>
+						</div>
 					</div>
-					<ul className="flex flex-col gap-4 md:gap-2">
-						<li className="rounded-md bg-background/70 p-4 backdrop-blur-xl md:p-6">
-							<h5 className="font-light text-secondary">{t("call")}</h5>
-							<Link
-								className="font-bold text-brand-dark text-lg md:text-xl"
-								dir="ltr"
-								href={`tel:${t("phone")}`}
-							>
-								<CenterUnderline label={t("phone")} />
-							</Link>
-						</li>
-						<li className="rounded-md bg-background/70 p-4 backdrop-blur-xl md:p-6">
-							<h5 className="font-light text-secondary">{t("email")}</h5>
-							<Link
-								className="font-bold text-brand-dark text-lg md:text-xl"
-								href={`mailto:${t("emailAddress")}`}
-							>
-								<CenterUnderline label={t("emailAddress")} />
-							</Link>
-						</li>
-					</ul>
+					<div className="flex h-full w-full flex-1 items-end justify-end max-sm:items-end max-sm:justify-end max-md:pb-2 max-lg:items-center max-lg:justify-center md:items-center md:justify-center lg:items-end lg:justify-end max-md:landscape:hidden">
+						<div className="w-full max-w-[600px] lg:max-w-none">
+							<Bucket />
+						</div>
+					</div>
 				</div>
-				<XIcon className="absolute top-1/2 right-0 h-[300px] w-[400px] -translate-y-1/2 opacity-50 md:h-[400px] md:w-[500px] md:opacity-100 lg:h-[530px] lg:w-[710px]" />
 			</div>
 		</section>
 	);

@@ -1,5 +1,3 @@
-import { Suspense } from "react";
-
 import { Metadata } from "next";
 import Script from "next/script";
 
@@ -129,29 +127,17 @@ export default async function AboutPage({ params }: Props) {
 				<article>
 					<AboutHeroSection />
 
-					<Suspense fallback={<div>Loading...</div>}>
-						<WhoWeAre />
-					</Suspense>
+					<WhoWeAre />
 
-					<Suspense fallback={<div>Loading...</div>}>
-						<Principles />
-					</Suspense>
+					<Principles />
 
-					<Suspense fallback={<div>Loading...</div>}>
-						<CompanySection />
-					</Suspense>
+					<CompanySection />
 
-					<Suspense fallback={<div>Loading...</div>}>
-						<LeaderWords />
-					</Suspense>
+					<LeaderWords />
 
-					<Suspense fallback={<div>Loading...</div>}>
-						<CertificatesSection />
-					</Suspense>
+					<CertificatesSection />
 
-					<Suspense fallback={<div>Loading...</div>}>
-						<Cta />
-					</Suspense>
+					<Cta />
 				</article>
 			</main>
 		</>

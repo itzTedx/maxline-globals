@@ -1,4 +1,4 @@
-import { Suspense, use } from "react";
+import { use } from "react";
 
 import Script from "next/script";
 
@@ -6,13 +6,10 @@ import { Locale } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 
 import { socialLinks } from "@/constants/site-config";
-import { CertificatesSection } from "@/feature/about/sections/certificates";
 import { Cta } from "@/feature/cta";
-import { AboutSection } from "@/feature/home/sections/about";
-import { FaqSection } from "@/feature/home/sections/faq";
 import { HeroSection } from "@/feature/home/sections/hero";
-import { ServicesSection } from "@/feature/home/sections/services";
-import { InsightsCarousel } from "@/feature/insights/components/insights-carousel";
+import { Services } from "@/feature/home/sections/services";
+import WhoWeAre from "@/feature/home/sections/who-we-are";
 
 type Props = {
 	params: Promise<{ locale: Locale }>;
@@ -48,32 +45,18 @@ export default function Home({ params }: Props) {
 			<main className="pb-20" role="main">
 				<HeroSection />
 
-				<AboutSection />
+				<WhoWeAre />
+				<Services />
 
-				<Suspense
-					fallback={
-						<div
-							aria-label="Loading content"
-							className="h-96 w-full animate-pulse bg-gray-200"
-						/>
-					}
-				>
-					<ServicesSection />
-				</Suspense>
+				{/* <AboutSection />
+
+				<Services />
 
 				<FaqSection />
 				<CertificatesSection />
 
-				<Suspense
-					fallback={
-						<div
-							aria-label="Loading content"
-							className="h-96 w-full animate-pulse bg-gray-200"
-						/>
-					}
-				>
-					<InsightsCarousel />
-				</Suspense>
+				<InsightsCarousel />
+				*/}
 
 				<Cta />
 			</main>

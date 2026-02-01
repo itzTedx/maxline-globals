@@ -1,6 +1,8 @@
+import { Route } from "next";
+
 export interface Service {
 	title: string;
 	description: string;
-	href: string;
+	href: Route;
 	image: string;
 }
