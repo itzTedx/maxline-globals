@@ -9,7 +9,7 @@ import { HeroHeader } from "@/components/hero-header";
 
 import { Cta } from "@/feature/cta";
 import { QuoteForm } from "@/feature/forms/quote-form";
-import { FaqSection } from "@/feature/home/sections/faq";
+import { Faqs } from "@/feature/home/sections/faq";
 
 // Dynamic metadata generation based on locale
 export async function generateMetadata({
@@ -133,7 +133,7 @@ export default async function QuotePage({
 				</ul>
 			</section>
 
-			<FaqSection />
+			<Faqs />
 
 			<Cta />
 		</main>
