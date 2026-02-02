@@ -107,52 +107,52 @@ export const SERVICES: Service[] = [
 		title: "landFreight",
 		description: "Efficient and Secure Road Transportation Across the GCC.",
 		href: "/services/land-freight" as Route,
-		image: "/images/truck.png",
+		image: "/images/services/truck.png",
 	},
 	{
 		title: "airFreight",
 		description: "Fast and reliable air cargo for time-critical shipments.",
 		href: "/services/air-freight" as Route,
-		image: "/images/plane.png",
+		image: "/images/services/air.png",
 	},
 	{
 		title: "seaFreight",
 		description: "Cost-effective sea freight connecting major global ports.",
 		href: "/services/sea-freight" as Route,
-		image: "/images/ship.png",
+		image: "/images/services/sea.png",
 	},
 	{
 		title: "projectCargo",
 		description:
 			"Specialized handling for heavy, oversized, and complex cargo.",
 		href: "/services/project-cargo" as Route,
-		image: "/images/container.png",
+		image: "/images/services/project-cargo.png",
 	},
 	{
 		title: "packaging",
 		description: "Export-grade packing to protect cargo during transit.",
-		href: "/services/warehousing-and-distribution" as Route,
-		image: "/images/lifter.png",
+		href: "/services/packing" as Route,
+		image: "/images/services/packing.png",
 	},
 	{
 		title: "warehousing",
 		description:
 			"Secure warehousing and distribution for streamlined supply chains.",
-		href: "/services/warehousing-and-distribution" as Route,
-		image: "/images/lifter.png",
+		href: "/services/warehousing" as Route,
+		image: "/images/services/warehousing.png",
 	},
 	{
 		title: "exhibition",
 		description:
 			"End-to-end logistics for exhibitions, events, and trade shows.",
-		href: "/services/warehousing-and-distribution" as Route,
-		image: "/images/lifter.png",
+		href: "/services/exhibition-cargo" as Route,
+		image: "/images/services/crane.png",
 	},
 	{
 		title: "movingLashing",
 		description: "Professional Relocation and Cargo Securing for Safe Transit.",
 		href: "/services/movers-lashing" as Route,
-		image: "/images/movers.png",
+		image: "/images/services/movers.png",
 	},
 ] as const;
 
