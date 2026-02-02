@@ -98,7 +98,7 @@ export default function WhoWeAre() {
 	};
 
 	return (
-		<section className="container w-full max-w-7xl py-8 md:py-16 lg:py-20">
+		<section className="mx-auto w-full max-w-7xl py-8 md:py-16 lg:py-20">
 			<div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-12 lg:gap-16">
 				{/* Left Column: Content */}
 				<div className="order-2 flex flex-col justify-center pt-4 lg:order-1 lg:col-span-5">
@@ -107,12 +107,12 @@ export default function WhoWeAre() {
 							<IconDocument />
 							Who We Are
 						</span>
-						<h2 className="text-balance font-medium text-3xl text-primary md:text-4xl lg:text-5xl">
+						<h2 className="text-balance font-display font-semibold text-3xl text-primary uppercase md:text-4xl lg:text-6xl">
 							Your Reliable Logistics Partner{" "}
 							<span className="text-accent-secondary">Across the Globe</span>
 						</h2>
 
-						<p className="text-muted-foreground text-sm leading-relaxed">
+						<p className="text-muted-foreground leading-relaxed">
 							At Maxline Global, we simplify global trade by delivering
 							reliable, compliant, and cost‑effective logistics solutions. From
 							routine freight movements to complex project cargo, we help
@@ -130,7 +130,7 @@ export default function WhoWeAre() {
 							return (
 								<button
 									className={cn(
-										"group relative flex items-start gap-4 border-border/50 border-t py-2 text-left transition-all duration-500 first:border-0 md:py-4",
+										"group relative flex cursor-pointer items-start gap-4 border-border/50 border-t py-2 text-left transition-all duration-500 first:border-0 md:py-4",
 										isActive
 											? "text-foreground"
 											: "text-muted-foreground/60 hover:text-foreground"
@@ -190,7 +190,7 @@ export default function WhoWeAre() {
 						</div>
 
 						<div className="rounded-2xl bg-secondary p-2 shadow-sm">
-							<div className="relative aspect-4/5 overflow-hidden rounded-2xl border border-border/40 bg-muted/30 md:aspect-4/3">
+							<div className="relative aspect-4/5 overflow-hidden rounded-2xl border border-border/40 bg-muted/30 md:aspect-6/4">
 								<AnimatePresence
 									custom={direction}
 									initial={false}

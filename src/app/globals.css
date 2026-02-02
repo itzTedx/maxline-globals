@@ -8,7 +8,7 @@
 	--color-background: var(--background);
 	--color-foreground: var(--foreground);
 	--font-sans: var(--font-geist-sans);
-	--font-grotesk: var(--font-radio-grostek);
+	--font-display: var(--font-metrify);
 	--font-ibm-plex: var(--font-ibm-plex);
 	--color-brand-dark: var(--brand-dark);
 	--color-brand-gray: var(--brand-gray);

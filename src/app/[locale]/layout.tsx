@@ -11,7 +11,7 @@ import { Navbar } from "@/components/layout/navbar";
 import Providers from "@/components/providers";
 import { Toaster } from "@/components/ui/sonner";
 
-import { ibmPlexSansArabic, inter, radioGrostek } from "@/assets/fonts";
+import { ibmPlexSansArabic, inter, metrify } from "@/assets/fonts";
 
 import { siteConfig } from "@/constants/site-config";
 import { routing } from "@/i18n/routing";
@@ -171,7 +171,7 @@ export default async function RootLayout({
 				className={cn(
 					"antialiased rtl:font-ibm-plex",
 					inter.className,
-					radioGrostek.variable,
+					metrify.variable,
 					ibmPlexSansArabic.variable
 				)}
 			>

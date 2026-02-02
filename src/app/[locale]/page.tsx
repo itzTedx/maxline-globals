@@ -10,6 +10,7 @@ import { XIcon } from "@/assets/x-icon";
 import { socialLinks } from "@/constants/site-config";
 import { Certifications } from "@/feature/about/sections/certificates";
 import { Cta } from "@/feature/cta";
+import { Clients } from "@/feature/home/sections/clients";
 import { Faqs } from "@/feature/home/sections/faq";
 import { HeroSection } from "@/feature/home/sections/hero";
 import { Industries } from "@/feature/home/sections/industries";
@@ -50,7 +51,7 @@ export default function Home({ params }: Props) {
 		<>
 			<main>
 				<HeroSection />
-
+				<Clients />
 				<WhoWeAre />
 				<Services />
 

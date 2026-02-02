@@ -30,6 +30,31 @@ export const radioGrostek = localFont({
 	],
 });
 
+export const metrify = localFont({
+	variable: "--font-metrify",
+	display: "swap",
+	preload: true,
+	fallback: ["system-ui", "arial"],
+	src: [
+		{
+			weight: "400",
+			path: "./metrify/metrify-regular.ttf",
+		},
+		{
+			weight: "500",
+			path: "./metrify/metrify-medium.ttf",
+		},
+		{
+			weight: "800",
+			path: "./metrify/metrify-extrabold.ttf",
+		},
+		{
+			weight: "900",
+			path: "./metrify/metrify-black.ttf",
+		},
+	],
+});
+
 export const ibmPlexSansArabic = IBM_Plex_Sans_Arabic({
 	variable: "--font-ibm-plex",
 	weight: ["300", "400", "500", "600", "700"],
