@@ -69,6 +69,7 @@ export default function WhoWeAre() {
 		setIsPaused(false);
 	};
 
+	// biome-ignore lint/correctness/useExhaustiveDependencies: No need to re-run when handleNext changes
 	useEffect(() => {
 		if (isPaused) return;
 
@@ -188,7 +189,7 @@ export default function WhoWeAre() {
 							</p>
 						</div>
 
-						<div className="rounded-2xl bg-muted p-2">
+						<div className="rounded-2xl bg-secondary p-2 shadow-sm">
 							<div className="relative aspect-4/5 overflow-hidden rounded-2xl border border-border/40 bg-muted/30 md:aspect-4/3">
 								<AnimatePresence
 									custom={direction}
@@ -223,23 +224,23 @@ export default function WhoWeAre() {
 								<div className="absolute right-6 bottom-6 z-20 flex gap-2 md:right-8 md:bottom-8 md:gap-3">
 									<button
 										aria-label="Previous"
-										className="flex h-10 w-10 items-center justify-center rounded-full border border-border/50 bg-background/80 text-foreground backdrop-blur-md transition-all hover:bg-background active:scale-90 md:h-12 md:w-12"
+										className="flex size-10 items-center justify-center rounded-md border border-border/50 bg-background/80 text-foreground backdrop-blur-md transition-all hover:bg-background active:scale-90"
 										onClick={(e) => {
 											e.stopPropagation();
 											handlePrev();
 										}}
 									>
-										<IconArrowLeft size={20} />
+										<IconArrowLeft className="size-4" />
 									</button>
 									<button
 										aria-label="Next"
-										className="flex h-10 w-10 items-center justify-center rounded-full border border-border/50 bg-background/80 text-foreground backdrop-blur-md transition-all hover:bg-background active:scale-90 md:h-12 md:w-12"
+										className="flex size-10 items-center justify-center rounded-md border border-border/50 bg-background/80 text-foreground backdrop-blur-md transition-all hover:bg-background active:scale-90"
 										onClick={(e) => {
 											e.stopPropagation();
 											handleNext();
 										}}
 									>
-										<IconArrowRight size={20} />
+										<IconArrowRight className="size-4" />
 									</button>
 								</div>
 							</div>
@@ -247,12 +248,12 @@ export default function WhoWeAre() {
 					</div>
 					<video
 						autoPlay
-						className="mask-linear-to-80% absolute inset-0 h-full w-full scale-105 object-cover object-center"
+						className="mask-linear-to-80% absolute inset-0 h-full w-full scale-105 object-cover object-center opacity-50"
 						loop
 						muted
 						playsInline
 						preload="auto"
-						src="/videos/home-about.mp4"
+						src="/videos/about-bg.webm"
 					/>
 				</div>
 			</div>

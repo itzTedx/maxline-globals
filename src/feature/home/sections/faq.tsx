@@ -95,12 +95,12 @@ export const Faqs = () => {
 				</div>
 				<video
 					autoPlay
-					className="absolute inset-0 h-full w-full object-cover object-center"
+					className="absolute inset-x-0 bottom-0 aspect-video w-full object-cover object-center opacity-20"
 					loop
 					muted
 					playsInline
 					preload="auto"
-					src="/videos/faq.mp4"
+					src="/videos/faq-bg.webm"
 				/>
 			</div>
 			<div className="absolute inset-0 bg-linear-to-b from-secondary" />

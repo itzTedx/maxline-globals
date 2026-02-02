@@ -72,14 +72,11 @@ export default function Home({ params }: Props) {
 				{/* <Features /> */}
 				<Faqs />
 				<InsightsCarousel />
+
 				{/* <AboutSection />
 
-				<Services />
-
-				<FaqSection />
-				
-
-				
+					<Services />
+					<FaqSection />
 				*/}
 
 				<Cta />
