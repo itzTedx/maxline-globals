@@ -121,7 +121,7 @@ export default async function InsightsSlugPage({ params }: Props) {
 				{JSON.stringify(breadcrumbStructuredData)}
 			</Script>
 
-			<main className="container relative z-10 rounded-b-3xl bg-background pb-20 shadow-xl">
+			<main className="container relative z-10 pb-20">
 				<HeroHeader
 					breadcrumb={
 						<nav
@@ -211,6 +211,7 @@ export default async function InsightsSlugPage({ params }: Props) {
 							Image: (props) => (
 								<Image {...props} className="rounded-lg shadow-lg" />
 							),
+							Link,
 							Button: (props) => (
 								<Button asChild {...props}>
 									<Link

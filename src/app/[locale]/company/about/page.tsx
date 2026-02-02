@@ -5,7 +5,7 @@ import { Locale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { siteConfig, socialLinks } from "@/constants/site-config";
-import { CertificatesSection } from "@/feature/about/sections/certificates";
+import { Certifications } from "@/feature/about/sections/certificates";
 import { CompanySection } from "@/feature/about/sections/company";
 import { AboutHeroSection } from "@/feature/about/sections/hero";
 import { LeaderWords } from "@/feature/about/sections/leader-words";
@@ -135,7 +135,7 @@ export default async function AboutPage({ params }: Props) {
 
 					<LeaderWords />
 
-					<CertificatesSection />
+					<Certifications />
 
 					<Cta />
 				</article>

@@ -5,20 +5,12 @@ import { useTranslations } from "next-intl";
 import { StaggeredText } from "@/components/animation/staggered-text";
 import { Button } from "@/components/ui/button";
 
-import { Hyundai, Kia, Lg, Samsung, Sony, Toyoto } from "@/assets/clients";
 import { IconArrowRightTag } from "@/assets/icons/arrow";
 import { IconCaretRight } from "@/assets/icons/caret";
 
-import { HeroImage } from "../components/hero-image";
+import { CLIENTS } from "@/constants/clients";
 
-const items = [
-	{ Icon: Kia },
-	{ Icon: Hyundai },
-	{ Icon: Samsung },
-	{ Icon: Toyoto },
-	{ Icon: Sony },
-	{ Icon: Lg },
-];
+import { HeroImage } from "../components/hero-image";
 
 export const HeroSection = memo(() => {
 	const t = useTranslations("HomePage");
@@ -33,7 +25,7 @@ export const HeroSection = memo(() => {
 								staggerChildren={0.01}
 								text={t("hero.title.firstLine")}
 							/>
-							<br />
+							<br className="hidden md:block" />
 							<span className="text-accent-secondary">
 								<StaggeredText
 									duration={0.3}
@@ -42,7 +34,7 @@ export const HeroSection = memo(() => {
 								/>
 							</span>
 						</h1>
-						<p className="text-balance pt-4 text-center text-2xl text-muted-foreground">
+						<p className="text-balance pt-4 text-center text-muted-foreground text-xl md:text-2xl">
 							We connect businesses to markets across the world. Explore our
 							logistics services built to move cargo faster, safer, and smarter
 							worldwide.
@@ -64,7 +56,7 @@ export const HeroSection = memo(() => {
 						>
 							<div className="relative flex aspect-video items-center justify-center overflow-hidden rounded-t-2xl bg-card">
 								<HeroImage />
-								<div className="absolute right-9 bottom-9 flex items-center gap-3 rounded-xl bg-accent-tertiary/20 p-3 backdrop-blur-md">
+								<div className="absolute right-9 bottom-9 hidden items-center gap-3 rounded-xl bg-accent-tertiary/20 p-3 backdrop-blur-md md:flex">
 									<div className="flex h-8 w-12 items-center justify-center rounded-md bg-accent text-accent-tertiary">
 										<IconCaretRight className="size-4" />
 									</div>
@@ -88,7 +80,7 @@ export const HeroSection = memo(() => {
 			</section>
 			<section className="container relative z-10 grid max-w-7xl grid-cols-1 gap-24 py-12 sm:py-14 md:grid-cols-2 md:py-16 lg:py-20">
 				<div className="space-y-4">
-					<h2 className="font-medium text-5xl text-primary">
+					<h2 className="font-medium text-3xl text-primary md:text-5xl">
 						Recognized by{" "}
 						<span className="text-accent-secondary">
 							industry leaders worldwide
@@ -103,9 +95,9 @@ export const HeroSection = memo(() => {
 					</Button>
 				</div>
 				<ul className="grid grid-cols-2 gap-4">
-					{items.map(({ Icon }, i) => (
+					{CLIENTS.map(({ Icon }, i) => (
 						<li
-							className="flex aspect-16/4 items-center justify-center bg-background p-3"
+							className="flex aspect-16/7 w-full items-center justify-center bg-background p-3 md:aspect-16/5"
 							key={`client-${i + 1}`}
 						>
 							<Icon className="w-28 text-muted-foreground" />

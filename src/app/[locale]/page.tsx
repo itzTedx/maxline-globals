@@ -5,11 +5,17 @@ import Script from "next/script";
 import { Locale } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 
+import { XIcon } from "@/assets/x-icon";
+
 import { socialLinks } from "@/constants/site-config";
+import { Certifications } from "@/feature/about/sections/certificates";
 import { Cta } from "@/feature/cta";
+import { Faqs } from "@/feature/home/sections/faq";
 import { HeroSection } from "@/feature/home/sections/hero";
+import { Industries } from "@/feature/home/sections/industries";
 import { Services } from "@/feature/home/sections/services";
 import WhoWeAre from "@/feature/home/sections/who-we-are";
+import { InsightsCarousel } from "@/feature/insights/components/insights";
 
 type Props = {
 	params: Promise<{ locale: Locale }>;
@@ -42,20 +48,38 @@ export default function Home({ params }: Props) {
 
 	return (
 		<>
-			<main className="pb-20" role="main">
+			<main>
 				<HeroSection />
 
 				<WhoWeAre />
 				<Services />
 
+				<section className="relative overflow-hidden py-12 sm:py-16 md:py-20">
+					<div className="container max-w-4xl space-y-4 text-center">
+						<h2 className="font-semibold text-4xl text-accent-tertiary sm:text-5xl md:text-6xl lg:text-7xl">
+							Built to Empower Efficiency
+						</h2>
+						<p className="text-balance text-base text-muted-foreground sm:text-lg md:text-xl">
+							Maxline turns fragmented workflows into unified strategies.
+							Whether you're in the office or across the globe, we're one
+							connected force
+						</p>
+					</div>
+					<XIcon className="pointer-events-none absolute top-0 left-1/2 -z-10 -translate-x-1/2 text-muted-foreground/50" />
+				</section>
+				<Certifications />
+				<Industries />
+				{/* <Features /> */}
+				<Faqs />
+				<InsightsCarousel />
 				{/* <AboutSection />
 
 				<Services />
 
 				<FaqSection />
-				<CertificatesSection />
+				
 
-				<InsightsCarousel />
+				
 				*/}
 
 				<Cta />

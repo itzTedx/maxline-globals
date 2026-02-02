@@ -5,7 +5,6 @@ import LetterSwapPingPong from "@/components/animation/letter-swap-pingpong-anim
 import CenterUnderline from "@/components/animation/underline-center";
 
 import { Logo } from "@/assets/logo";
-import { XSolidIcon } from "@/assets/x-icon";
 
 import type { FooterKey } from "@/constants";
 import { FOOTER_LINKS } from "@/constants";
@@ -18,7 +17,7 @@ import { Separator } from "../ui/separator";
 export const Footer = () => {
 	const t = useTranslations("Footer");
 	return (
-		<footer className="relative z-0 w-full overflow-hidden bg-brand-dark text-background">
+		<footer className="relative z-0 w-full overflow-hidden bg-foreground text-background">
 			<div className="container relative z-10 grid grid-cols-1 gap-6 py-10 md:grid-cols-12 md:gap-12 md:py-20">
 				<h5 className="col-span-1 font-grotesk text-4xl leading-tight md:col-span-5 md:text-7xl rtl:md:text-6xl">
 					<VerticalCutReveal
@@ -80,7 +79,7 @@ export const Footer = () => {
 						<Button
 							asChild
 							className="w-full sm:w-auto"
-							size="btnIcon"
+							size="icon"
 							variant="secondary"
 						>
 							<Link className="group text-brand-dark" href="/quote">
@@ -146,8 +145,6 @@ export const Footer = () => {
 					{t("designedBy", { agency: t("agencyName") })}
 				</Link>
 			</div>
-
-			<XSolidIcon className="pointer-events-none absolute -bottom-[30%] left-1/2 -translate-x-1/2 select-none opacity-50 sm:opacity-100" />
 		</footer>
 	);
 };

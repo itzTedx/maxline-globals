@@ -11,7 +11,7 @@ import MarqueeSection, { ServiceMessages } from "@/components/MarqueeSection";
 
 import { socialLinks } from "@/constants/site-config";
 import { Cta } from "@/feature/cta";
-import { InsightsCarousel } from "@/feature/insights/components/insights-carousel";
+import { InsightsCarousel } from "@/feature/insights/components/insights";
 import { Commitment } from "@/feature/services/commitment";
 import { SERVICES } from "@/feature/services/data/constants";
 import { Features } from "@/feature/services/features";

@@ -35,7 +35,7 @@
 	"Common": {
 		"title": "Logistics Services | Maxline Global",
 		"templateTitle": "| Maxline Global",
-		"description": "Explore our full suite of global logistics services—from air, sea, and road freight to warehousing, customs clearance, and project cargo management. Maxline Global delivers reliable, scalable, and end-to-end solutions for every supply chain challenge.",
+		"description": "Explore our full suite of global logistics services-from air, sea, and road freight to warehousing, customs clearance, and project cargo management. Maxline Global delivers reliable, scalable, and end-to-end solutions for every supply chain challenge.",
 		"keywords": "logistics services, global logistics, air freight, sea freight, road freight, warehousing, customs clearance, project cargo, supply chain solutions"
 	},
 	"Navigation": {
@@ -131,7 +131,7 @@
 		"faqList": [
 			{
 				"question": "What logistics services does Maxline Global offer?",
-				"answer": "Maxline Global provides a full range of logistics solutions including sea, air, and land freight, customs clearance, warehousing, project cargo handling, chartering, and more — tailored to your business needs across the GCC and beyond."
+				"answer": "Maxline Global provides a full range of logistics solutions including sea, air, and land freight, customs clearance, warehousing, project cargo handling, chartering, and more - tailored to your business needs across the GCC and beyond."
 			},
 			{
 				"question": "Which regions or countries does Maxline Global serve?",
@@ -180,11 +180,12 @@
 		],
 		"insights": {
 			"label": "Maxline Insights & Updates",
-			"title": "Explore the Ideas Driving Global Logistics Forward",
-			"description": "Stay ahead with the latest in logistics, trade, and global supply chain trends.",
+			"title": "Insights Driving Global Logistics Forward",
+			"description": "Explore industry trends, company updates, and expert insights shaping the future of logistics and global trade.",
 			"btnText": "More",
 			"readBtn": "Read Article",
-			"exploreBtn": "Explore More"
+			"exploreBtn": "Explore More",
+			"by": "by:"
 		},
 		"insightsList": [
 			{
@@ -309,7 +310,7 @@
 			"label": "Our clients",
 			"title": "These Companies Trust Us to Deliver Their Vision"
 		},
-		"words": "In a world where delays and cost overruns are common, Maxline Global Logistics delivers with precision. We commit to timelines and budgets—and we deliver. This promise drives how we train our teams, apply smart logistics technology, and serve clients worldwide.",
+		"words": "In a world where delays and cost overruns are common, Maxline Global Logistics delivers with precision. We commit to timelines and budgets-and we deliver. This promise drives how we train our teams, apply smart logistics technology, and serve clients worldwide.",
 		"certification": {
 			"title": "Certified for Excellence in Global Logistics",
 			"description": "Maxline Global's certifications demonstrate our commitment to safe, efficient, and compliant logistics across air, sea, and land. We meet international standards in freight forwarding, warehousing, customs, and hazardous cargo-ensuring trust and reliability throughout the supply chain."
@@ -317,7 +318,7 @@
 	},
 	"ServicesPage": {
 		"title": "Logistics Services | Maxline Global",
-		"description": "Explore our full suite of global logistics services—from air, sea, and road freight to warehousing, customs clearance, and project cargo management. Maxline Global delivers reliable, scalable, and end-to-end solutions for every supply chain challenge.",
+		"description": "Explore our full suite of global logistics services-from air, sea, and road freight to warehousing, customs clearance, and project cargo management. Maxline Global delivers reliable, scalable, and end-to-end solutions for every supply chain challenge.",
 		"keywords": "logistics services, global logistics, air freight, sea freight, road freight, warehousing, customs clearance, project cargo, supply chain solutions",
 		"subtitle": "Services",
 		"mainTitle": "Logistics Solutions That Move Business Forward",
@@ -635,8 +636,8 @@
 		},
 		"mission": {
 			"title": "Building Careers, Not Just Jobs",
-			"description1": "At Maxline Global, we don't just offer jobs—we build careers. As a leading provider of cutting-edge technology solutions, logistics innovations, and global distribution, we're on a mission to simplify and transform industries through smart, scalable solutions.",
-			"description2": "We believe that our success is driven by the talent, passion, and innovation of our people. If you're looking for a place where your ideas are valued, your growth is supported, and your work truly matters—you're in the right place.",
+			"description1": "At Maxline Global, we don't just offer jobs-we build careers. As a leading provider of cutting-edge technology solutions, logistics innovations, and global distribution, we're on a mission to simplify and transform industries through smart, scalable solutions.",
+			"description2": "We believe that our success is driven by the talent, passion, and innovation of our people. If you're looking for a place where your ideas are valued, your growth is supported, and your work truly matters-you're in the right place.",
 			"whyChoose": {
 				"title": "Why Choose Maxline?",
 				"benefits": [

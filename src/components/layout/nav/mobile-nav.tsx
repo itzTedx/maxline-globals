@@ -36,7 +36,7 @@ export const MobileNav = ({ links }: Props) => {
 				asChild
 				className="lg:hidden"
 			>
-				<Button className="z-[9999]" size="icon" variant="outline">
+				<Button className="z-9999" size="icon" variant="outline">
 					<IconMenu2 />
 				</Button>
 			</DrawerTrigger>

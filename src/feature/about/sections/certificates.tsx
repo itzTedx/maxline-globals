@@ -1,5 +1,3 @@
-import React from "react";
-
 import Image from "next/image";
 
 import { useTranslations } from "next-intl";
@@ -16,56 +14,44 @@ const logos = [
 	{ src: "/images/logos/iso.png", alt: "ISO Certification" },
 ];
 
-const CertificateLogo = React.memo(
-	({ src, alt }: { src: string; alt: string }) => (
-		<div className="relative h-16 w-32 brightness-75 grayscale transition-all duration-300 hover:brightness-100 hover:grayscale-0">
-			<Image
-				alt={alt}
-				className="object-contain"
-				fill
-				loading="lazy"
-				sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 16vw"
-				src={src}
-			/>
-		</div>
-	)
+const CertificateLogo = ({ src, alt }: { src: string; alt: string }) => (
+	<div className="relative h-12 w-20 sm:h-14 sm:w-24 md:h-16 md:w-30">
+		<Image
+			alt={alt}
+			className="object-contain"
+			fill
+			loading="lazy"
+			sizes="(max-width: 768px) 80px, (max-width: 1200px) 120px, 160px"
+			src={src}
+		/>
+	</div>
 );
 
-CertificateLogo.displayName = "CertificateLogo";
-
-export const CertificatesSection = () => {
+export const Certifications = () => {
 	const t = useTranslations("AboutPage");
 	return (
 		<section
 			aria-label="Certifications"
-			className="container max-w-7xl py-12 md:py-16 lg:py-20"
+			className="bg-secondary py-8 sm:py-10 md:py-12 lg:py-14"
 		>
-			<div className="container mb-9 text-center">
-				<h2 className="container relative z-10 mx-auto mb-4 max-w-4xl font-grotesk text-3xl text-brand-dark tracking-tight md:text-4xl lg:text-6xl/16">
+			<div className="container flex flex-col items-center gap-6 text-center sm:flex-row sm:items-center sm:justify-between sm:gap-8 sm:text-left">
+				<h2 className="font-medium text-lg sm:text-xl">
 					<StaggeredText
-						className="[&>span:nth-last-child(n+4)]:text-secondary"
 						duration={0.7}
 						staggerChildren={0.03}
 						text={t("certification.title")}
 					/>
 				</h2>
-				<p className="font-light text-brand-gray md:text-lg">
-					<StaggeredText
-						className=""
-						duration={0.7}
-						staggerChildren={0.03}
-						text={t("certification.description")}
-					/>
-				</p>
-			</div>
-			<div className="grid grid-cols-2 items-center justify-items-center gap-8 md:grid-cols-3 lg:grid-cols-6">
-				{logos.map((logo) => (
-					<CertificateLogo
-						alt={logo.alt}
-						key={`${logo.src}-${logo.alt}`}
-						src={logo.src}
-					/>
-				))}
+
+				<div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 md:gap-8">
+					{logos.map((logo) => (
+						<CertificateLogo
+							alt={logo.alt}
+							key={`${logo.src}-${logo.alt}`}
+							src={logo.src}
+						/>
+					))}
+				</div>
 			</div>
 		</section>
 	);

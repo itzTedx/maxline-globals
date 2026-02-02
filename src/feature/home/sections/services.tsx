@@ -18,18 +18,18 @@ export const Services = memo(() => {
 			<ServicesSchema services={SERVICES} />
 			<section
 				aria-labelledby="services-heading"
-				className="relative bg-secondary py-20"
+				className="relative bg-secondary py-12 sm:py-16 md:py-20"
 				itemScope
 				itemType="https://schema.org/Service"
 			>
 				<div className="container relative z-30">
-					<span className="flex items-center gap-2 font-medium text-muted-foreground text-sm">
-						<IconHeadphone className="size-4" />
+					<span className="flex items-center gap-2 font-medium text-muted-foreground text-xs sm:text-sm">
+						<IconHeadphone className="size-3 sm:size-4" />
 						Services
 					</span>
-					<div className="grid grid-cols-2 gap-6">
+					<div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 lg:gap-8">
 						<h2
-							className="text-balance pb-10 font-semibold text-4xl text-primary md:text-5xl lg:pb-20 rtl:leading-snug"
+							className="text-balance pb-6 font-semibold text-2xl text-primary sm:pb-8 sm:text-3xl md:pb-10 md:text-4xl lg:pb-20 lg:text-5xl rtl:leading-snug"
 							id="services-heading"
 							itemProp="name"
 						>
@@ -40,15 +40,15 @@ export const Services = memo(() => {
 								text="Integrated Freight & Logistics Services"
 							/>
 						</h2>
-						<div className="space-y-4">
-							<p className="text-muted-foreground text-xl">
+						<div className="space-y-3 sm:space-y-4">
+							<p className="text-base text-muted-foreground sm:text-lg md:text-xl">
 								Our end-to-end logistics services are designed to support modern
 								supply chains flexible, scalable, and tailored to your exact
 								requirements.
 							</p>
-							<Button variant="secondary">
+							<Button className="w-full sm:w-auto" variant="secondary">
 								Explore services
-								<IconArrowRightTag className="ml-4 size-4" />
+								<IconArrowRightTag className="ml-2 size-4 sm:ml-4" />
 							</Button>
 						</div>
 					</div>

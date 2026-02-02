@@ -120,7 +120,7 @@ export const NavSubmenu = ({ isOpen, items, parentTitle }: NavSubmenuProps) => {
 										>
 											{sub.title}
 										</p>
-										<div className="absolute bottom-0 left-0 h-1/2 w-full bg-gradient-to-t from-accent-tertiary/80" />
+										<div className="absolute bottom-0 left-0 h-1/2 w-full bg-linear-to-t from-accent-tertiary/80" />
 									</div>
 									<div className="absolute inset-0 z-10 bg-accent-secondary/50 mix-blend-multiply" />
 									<Image

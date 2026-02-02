@@ -9,15 +9,11 @@ import { HeroHeader } from "@/components/hero-header";
 
 import { CAROUSEL_IMAGES } from "@/constants";
 
-const MarqueeItem = React.memo(
-	({ children }: { children: React.ReactNode }) => (
-		<div className="mx-2.5 cursor-pointer duration-300 ease-in-out hover:scale-105">
-			{children}
-		</div>
-	)
+const MarqueeItem = ({ children }: { children: React.ReactNode }) => (
+	<div className="mx-2.5 cursor-pointer duration-300 ease-in-out hover:scale-105">
+		{children}
+	</div>
 );
-
-MarqueeItem.displayName = "MarqueeItem";
 
 export const AboutHeroSection = () => {
 	const t = useTranslations("AboutPage");

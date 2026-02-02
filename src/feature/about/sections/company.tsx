@@ -7,10 +7,10 @@ import { useTranslations } from "next-intl";
 
 import { StaggeredText } from "@/components/animation/staggered-text";
 
-import { ClLIENTS } from "@/constants/clients";
+import { CLIENTS } from "@/constants/clients";
 
 interface LogoRowProps {
-	logos: typeof ClLIENTS;
+	logos: typeof CLIENTS;
 }
 
 export const CompanySection = () => {
@@ -32,7 +32,7 @@ export const CompanySection = () => {
 			</div>
 
 			<div className="container relative w-full max-w-4xl">
-				<LogoRow logos={ClLIENTS} />
+				<LogoRow logos={CLIENTS} />
 			</div>
 		</section>
 	);

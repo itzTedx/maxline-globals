@@ -2,13 +2,17 @@
 
 import * as React from "react";
 
+import { EmblaCarouselType } from "embla-carousel";
+import Autoplay from "embla-carousel-autoplay";
 import useEmblaCarousel, {
 	type UseEmblaCarouselType,
 } from "embla-carousel-react";
 import { WheelGesturesPlugin } from "embla-carousel-wheel-gestures";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { motion, type Transition } from "motion/react";
 
 import { Button } from "@/components/ui/button";
+
+import { IconCaretLeft, IconCaretRight } from "@/assets/icons/caret";
 
 import { cn } from "@/lib/utils";
 
@@ -45,6 +49,83 @@ function useCarousel() {
 	return context;
 }
 
+type EmblaControls = {
+	selectedIndex: number;
+	scrollSnaps: number[];
+	prevDisabled: boolean;
+	nextDisabled: boolean;
+	onDotClick: (index: number) => void;
+	onPrev: () => void;
+	onNext: () => void;
+};
+
+type DotButtonProps = {
+	selected?: boolean;
+	onClick: () => void;
+};
+
+const TRANSITION: Transition = {
+	type: "spring",
+	stiffness: 240,
+	damping: 24,
+	mass: 1,
+};
+
+const useEmblaControls = (
+	emblaApi: EmblaCarouselType | undefined
+): EmblaControls => {
+	const [selectedIndex, setSelectedIndex] = React.useState(0);
+	const [scrollSnaps, setScrollSnaps] = React.useState<number[]>([]);
+	const [prevDisabled, setPrevDisabled] = React.useState(true);
+	const [nextDisabled, setNextDisabled] = React.useState(true);
+
+	const onDotClick = React.useCallback(
+		(index: number) => emblaApi?.scrollTo(index),
+		[emblaApi]
+	);
+
+	const onPrev = React.useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
+	const onNext = React.useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
+
+	const updateSelectionState = (api: EmblaCarouselType) => {
+		setSelectedIndex(api.selectedScrollSnap());
+		setPrevDisabled(!api.canScrollPrev());
+		setNextDisabled(!api.canScrollNext());
+	};
+
+	// biome-ignore lint/correctness/useExhaustiveDependencies: No need to re-render when api prop changes
+	const onInit = React.useCallback((api: EmblaCarouselType) => {
+		setScrollSnaps(api.scrollSnapList());
+		updateSelectionState(api);
+	}, []);
+
+	// biome-ignore lint/correctness/useExhaustiveDependencies: No need to re-render when api prop changes
+	const onSelect = React.useCallback((api: EmblaCarouselType) => {
+		updateSelectionState(api);
+	}, []);
+
+	React.useEffect(() => {
+		if (!emblaApi) return;
+
+		onInit(emblaApi);
+		emblaApi.on("reInit", onInit).on("select", onSelect);
+
+		return () => {
+			emblaApi.off("reInit", onInit).off("select", onSelect);
+		};
+	}, [emblaApi, onInit, onSelect]);
+
+	return {
+		selectedIndex,
+		scrollSnaps,
+		prevDisabled,
+		nextDisabled,
+		onDotClick,
+		onPrev,
+		onNext,
+	};
+};
+
 function Carousel({
 	orientation = "horizontal",
 	opts,
@@ -60,8 +141,12 @@ function Carousel({
 			axis: orientation === "horizontal" ? "x" : "y",
 		},
 		[
-			...(plugins ? (Array.isArray(plugins) ? plugins : [plugins]) : []),
+			Autoplay({
+				delay: 2000,
+			}),
+
 			WheelGesturesPlugin(),
+			...(plugins || []),
 		]
 	);
 	const [canScrollPrev, setCanScrollPrev] = React.useState(false);
@@ -180,7 +265,7 @@ function CarouselItem({ className, ...props }: React.ComponentProps<"div">) {
 function CarouselPrevious({
 	className,
 	variant = "outline",
-	size = "icon",
+	size = "icon-sm",
 	...props
 }: React.ComponentProps<typeof Button>) {
 	const { orientation, scrollPrev, canScrollPrev } = useCarousel();
@@ -188,7 +273,7 @@ function CarouselPrevious({
 	return (
 		<Button
 			className={cn(
-				"absolute size-8 rounded-full",
+				"absolute touch-manipulation rounded-full",
 				orientation === "horizontal"
 					? "top-1/2 -left-12 -translate-y-1/2"
 					: "-top-12 left-1/2 -translate-x-1/2 rotate-90",
@@ -201,8 +286,10 @@ function CarouselPrevious({
 			variant={variant}
 			{...props}
 		>
-			<ArrowLeft />
-			<span className="sr-only">Previous slide</span>
+			<>
+				<IconCaretLeft />
+				<span className="sr-only">Previous slide</span>
+			</>
 		</Button>
 	);
 }
@@ -210,7 +297,7 @@ function CarouselPrevious({
 function CarouselNext({
 	className,
 	variant = "outline",
-	size = "icon",
+	size = "icon-sm",
 	...props
 }: React.ComponentProps<typeof Button>) {
 	const { orientation, scrollNext, canScrollNext } = useCarousel();
@@ -218,7 +305,7 @@ function CarouselNext({
 	return (
 		<Button
 			className={cn(
-				"absolute size-8 rounded-full",
+				"absolute touch-manipulation rounded-full",
 				orientation === "horizontal"
 					? "top-1/2 -right-12 -translate-y-1/2"
 					: "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",
@@ -231,17 +318,51 @@ function CarouselNext({
 			variant={variant}
 			{...props}
 		>
-			<ArrowRight />
-			<span className="sr-only">Next slide</span>
+			<>
+				<IconCaretRight />
+				<span className="sr-only">Next slide</span>
+			</>
 		</Button>
 	);
 }
 
+function DotButton({ selected = false, onClick }: DotButtonProps) {
+	return (
+		<motion.button
+			className={cn(
+				"flex cursor-pointer select-none items-center justify-center rounded-full border-none bg-primary shadow-sm transition-colors",
+				selected ? "bg-white" : "bg-surface"
+			)}
+			initial={false}
+			layout
+			onClick={onClick}
+			transition={TRANSITION}
+			type="button"
+		>
+			<motion.span
+				animate={{
+					opacity: selected ? 1 : 0,
+					scale: selected ? 1 : 0,
+					filter: selected ? "blur(0)" : "blur(4px)",
+				}}
+				className="block size-3 whitespace-nowrap"
+				initial={false}
+				layout
+				transition={TRANSITION}
+			/>
+		</motion.button>
+	);
+}
+
 export {
+	type CarouselApi,
 	Carousel,
 	CarouselContent,
 	CarouselItem,
-	CarouselNext,
 	CarouselPrevious,
-	type CarouselApi,
+	CarouselNext,
+	useCarousel,
+	useEmblaControls,
+	DotButton,
+	TRANSITION,
 };

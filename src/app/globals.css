@@ -55,8 +55,8 @@
 	--shadow-md:
 		0 3px 3px -1.5px --alpha(#000 / 9%),
 		0 6px 6px -3px --alpha(#000 / 6%),
-		0 12px 12px -6px --alpha(#000 / 6%),
-		0 24px 24px -12px --alpha(#000 / 6%);
+		0 12px 12px -6px --alpha(#000 / 5%),
+		0 24px 24px -12px --alpha(#000 / 4%);
 
 	--shadow-lg:
 		0 48px 48px -24px --alpha(#000 / 9%),
@@ -104,7 +104,7 @@
 		@apply border-border outline-ring/50;
 	}
 	body {
-		@apply from-background to-brand-dark text-foreground bg-linear-to-b from-80% to-80%;
+		@apply bg-background text-foreground;
 	}
 }
 
@@ -125,6 +125,23 @@
 		padding-inline: 6rem;
 		max-width: 98rem;
 	}
+}
+
+@utility dashed {
+	height: 3px; /* Defines the thickness of the line */
+	/* 1. The "dashes" pattern (repeating linear gradient) */
+	background-image: repeating-linear-gradient(
+		90deg,
+		transparent,
+		transparent 5px /* Transparent segment */,
+		var(--border) 5px,
+		var(--border) 10px /* White segment (or the color of your dashes) */
+	);
+
+	background-size:
+		20px 3px,
+		100% 3px; /* Controls the dash/gap length and line thickness */
+	border: none; /* Ensure no standard border interferes */
 }
 
 .gradient-blur {

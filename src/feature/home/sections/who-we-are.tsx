@@ -247,7 +247,7 @@ export default function WhoWeAre() {
 					</div>
 					<video
 						autoPlay
-						className="absolute inset-0 h-full w-full scale-105 object-cover object-center"
+						className="mask-linear-to-80% absolute inset-0 h-full w-full scale-105 object-cover object-center"
 						loop
 						muted
 						playsInline
