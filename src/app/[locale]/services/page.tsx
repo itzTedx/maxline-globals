@@ -96,7 +96,7 @@ export default async function ServicesPage({
 				{JSON.stringify(structuredData)}
 			</Script>
 			<main
-				className="relative z-10 overflow-hidden rounded-b-3xl bg-background pb-20 shadow-xl"
+				className="relative z-10 overflow-hidden"
 				itemScope
 				itemType="https://schema.org/WebPage"
 			>
@@ -109,11 +109,11 @@ export default async function ServicesPage({
 					/>
 					<section
 						aria-label={t("ourServices")}
-						className="container max-w-7xl"
+						className="container"
 						itemScope
 						itemType="https://schema.org/ItemList"
 					>
-						<ServicesGrid isExpanded services={SERVICES} />
+						<ServicesGrid services={SERVICES} />
 					</section>
 					<Cta />
 				</article>

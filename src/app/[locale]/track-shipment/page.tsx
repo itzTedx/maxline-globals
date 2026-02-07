@@ -61,7 +61,7 @@ export default async function TrackingRedirect({
 			itemType="https://schema.org/WebPage"
 		>
 			<div className="py-10 md:py-16">
-				<h1 className="mx-auto max-w-4xl text-center font-grotesk text-4xl text-brand-dark tracking-tight sm:text-5xl md:text-6xl lg:text-8xl">
+				<h1 className="mx-auto max-w-4xl text-center font-grotesk text-4xl text-accent-tertiary tracking-tight sm:text-5xl md:text-6xl lg:text-8xl">
 					<StaggeredText
 						duration={0.3}
 						staggerChildren={0.01}

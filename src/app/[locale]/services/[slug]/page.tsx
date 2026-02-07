@@ -7,10 +7,10 @@ import { getLocale, setRequestLocale } from "next-intl/server";
 
 import SpotlightCard from "@/components/animation/spotlight-card";
 import { StaggeredText } from "@/components/animation/staggered-text";
-import MarqueeSection, { ServiceMessages } from "@/components/MarqueeSection";
 
 import { socialLinks } from "@/constants/site-config";
 import { Cta } from "@/feature/cta";
+import { Industries } from "@/feature/home/sections/industries";
 import { InsightsCarousel } from "@/feature/insights/components/insights";
 import { Commitment } from "@/feature/services/commitment";
 import { SERVICES } from "@/feature/services/data/constants";
@@ -136,10 +136,7 @@ export default async function ServicePage({ params }: { params: Params }) {
 			<Script id="structured-data" type="application/ld+json">
 				{JSON.stringify(structuredData)}
 			</Script>
-			<main
-				aria-labelledby="page-title"
-				className="relative z-10 rounded-b-3xl bg-background pb-20 shadow-xl"
-			>
+			<main aria-labelledby="page-title" className="relative z-10">
 				<Hero
 					ctaLink={service.hero.ctaLink}
 					ctaText={service.hero.ctaText}
@@ -163,18 +160,19 @@ export default async function ServicePage({ params }: { params: Params }) {
 						description: t(`${serviceKey}.features.overview.description`),
 					}}
 				/>
-				<MarqueeSection
+				{/* <MarqueeSection
 					industries={service.industries}
 					messages={messages as Record<string, ServiceMessages>}
 					serviceKey={serviceKey}
-				/>
+				/> */}
+				<Industries />
 				<section className="container py-10 md:py-20">
 					<h4
-						className="container relative z-10 mb-3 max-w-6xl text-balance text-center font-grotesk text-3xl text-brand-gray tracking-tight md:text-6xl/16"
+						className="container relative z-10 mb-3 max-w-6xl text-balance text-center font-display font-semibold text-3xl text-accent-tertiary uppercase md:text-7xl"
 						id="hero-title"
 					>
 						<StaggeredText
-							className="[&>span:nth-child(2)]:text-secondary [&>span:nth-child(3)]:text-secondary [&>span:nth-child(4)]:text-secondary"
+							className="[&>span:nth-child(2)]:text-accent-secondary [&>span:nth-child(3)]:text-accent-secondary [&>span:nth-child(4)]:text-accent-secondary"
 							duration={0.7}
 							staggerChildren={0.03}
 							text={
@@ -193,10 +191,10 @@ export default async function ServicePage({ params }: { params: Params }) {
 								<div className="flex size-16 items-center justify-center rounded-full bg-muted md:size-20">
 									<item.icon className="size-8 stroke-[1.5] text-brand-gray md:size-12" />
 								</div>
-								<h5 className="mt-8 mb-2 font-grotesk text-2xl text-brand-dark md:mt-12 md:mb-3 md:text-4xl">
+								<h5 className="mt-8 mb-2 font-semibold text-2xl text-accent-tertiary md:mt-12 md:mb-3 md:text-4xl">
 									{t(`${serviceKey}.capabilities.${i}.title`)}
 								</h5>
-								<p className="text-sm md:text-base">
+								<p className="text-balance font-light text-muted-foreground text-sm md:text-lg">
 									{t(`${serviceKey}.capabilities.${i}.description`)}
 								</p>
 							</SpotlightCard>

@@ -107,7 +107,7 @@ export const NavSubmenu = ({ isOpen, items, parentTitle }: NavSubmenuProps) => {
 									href={sub.href}
 								>
 									<div className="relative z-50 flex h-full flex-col justify-between p-3">
-										<div className="flex size-8 items-center justify-center self-end rounded bg-white/80 text-brand-dark backdrop-blur-2xl">
+										<div className="flex size-8 items-center justify-center self-end rounded bg-white/80 text-accent-tertiary backdrop-blur-2xl">
 											<IconArrowUpRight className="size-4 transition-transform ease-out group-hover/submenu:rotate-45" />
 										</div>
 										<p
@@ -167,7 +167,7 @@ export const NavSubmenu = ({ isOpen, items, parentTitle }: NavSubmenuProps) => {
 									<p className={cn("z-10 font-medium")}>
 										{t("exploreServices")}
 									</p>
-									<div className="flex size-8 items-center justify-center self-end rounded bg-white/80 text-brand-dark backdrop-blur-2xl">
+									<div className="flex size-8 items-center justify-center self-end rounded bg-white/80 text-accent-tertiary backdrop-blur-2xl">
 										<IconArrowUpRight className="size-4 transition-transform ease-out group-hover/submenu:rotate-45" />
 									</div>
 								</div>

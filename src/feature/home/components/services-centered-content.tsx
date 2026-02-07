@@ -67,7 +67,7 @@ export const ServicesCenteredContent = ({
 		>
 			<div className="mx-auto max-w-4xl">
 				<motion.h2
-					className="mb-6 font-grotesk font-medium text-3xl text-brand-dark tracking-tight md:mb-12 md:text-5xl lg:text-7xl"
+					className="mb-6 font-grotesk font-medium text-3xl text-accent-tertiary tracking-tight md:mb-12 md:text-5xl lg:text-7xl"
 					style={{
 						y: useTransform(
 							scrollYProgress,
@@ -125,14 +125,14 @@ export const ServicesCenteredContent = ({
 					}}
 				>
 					<Button asChild size="btnIcon">
-						<Link className="group gap-3 text-brand-dark" href="/services">
+						<Link className="group gap-3 text-accent-tertiary" href="/services">
 							<LetterSwapPingPong
 								className="w-full justify-start font-semibold"
 								label={t("services.btnText")}
 								reverse={false}
 								staggerFrom="first"
 							/>
-							<div className="flex size-8 shrink-0 items-center justify-center rounded bg-primary text-brand-dark transition duration-500 group-hover:bg-background">
+							<div className="flex size-8 shrink-0 items-center justify-center rounded bg-primary text-accent-tertiary transition duration-500 group-hover:bg-background">
 								<IconArrowRight />
 							</div>
 						</Link>

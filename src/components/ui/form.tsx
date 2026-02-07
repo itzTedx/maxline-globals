@@ -97,7 +97,7 @@ function FormLabel({
 	return (
 		<Label
 			className={cn(
-				"text-brand-gray data-[error=true]:text-destructive",
+				"text-muted-foreground data-[error=true]:text-destructive",
 				className
 			)}
 			data-error={!!error}

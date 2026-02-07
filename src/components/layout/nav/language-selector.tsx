@@ -77,7 +77,8 @@ export function LanguageSelector({ className }: Props) {
 							<button
 								className={cn(
 									"flex cursor-pointer items-center gap-2 rounded-md text-left transition md:gap-1.5",
-									currentLocale === lang.code && "font-bold text-brand-dark"
+									currentLocale === lang.code &&
+										"font-bold text-accent-tertiary"
 								)}
 								disabled={isPending}
 								onClick={() => handleSelect(lang.code)}

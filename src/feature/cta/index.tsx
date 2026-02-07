@@ -24,7 +24,7 @@ export const Cta = () => {
 					<div className="relative z-10 grid grid-cols-1 items-center gap-4 p-8 sm:p-12 md:grid-cols-2 md:gap-2 md:px-12 md:py-20 lg:px-24 lg:py-20">
 						<div className="mb-20 space-y-3 md:mb-0 md:space-y-4">
 							<h4
-								className="font-semibold text-4xl md:text-5xl lg:text-6xl"
+								className="font-display font-semibold text-4xl uppercase md:text-5xl lg:text-6xl"
 								itemProp="name"
 							>
 								<VerticalCutReveal

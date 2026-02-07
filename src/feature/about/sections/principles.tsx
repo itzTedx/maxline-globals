@@ -143,7 +143,7 @@ export const Principles = () => {
 	return (
 		<section className="container relative grid gap-36 py-20 md:grid-cols-2">
 			<div className="space-y-12 md:space-y-20 lg:space-y-28" ref={sectionRef}>
-				<h2 className="font-grotesk text-3xl text-brand-dark md:max-w-xs md:text-5xl lg:text-6xl/18">
+				<h2 className="font-display font-semibold text-4xl text-accent-tertiary uppercase md:text-6xl/16">
 					<StaggeredText text={t("principles.title")} />
 				</h2>
 				<Separator />
@@ -155,11 +155,11 @@ export const Principles = () => {
 								if (el) elementRefs.current[index] = el;
 							}}
 						>
-							<h3 className="mt-2.5 font-medium text-secondary text-xs uppercase md:font-light md:text-lg lg:text-xl">
+							<h3 className="mt-2.5 font-medium text-accent-secondary text-xs uppercase md:font-light md:text-lg lg:text-xl">
 								<StaggeredText text={p.label} />
 							</h3>
 							<div className="col-span-3 md:col-span-2">
-								<h4 className="text-balance font-grotesk text-3xl text-brand-dark md:text-4xl lg:text-5xl/16">
+								<h4 className="text-balance font-display font-semibold text-3xl text-accent-tertiary uppercase md:text-4xl lg:text-5xl">
 									<StaggeredText delay={0.2} text={p.title} />
 								</h4>
 								<p className="pt-4 font-light text-lg leading-relaxed md:text-xl lg:text-2xl">
@@ -167,7 +167,7 @@ export const Principles = () => {
 								</p>
 							</div>
 						</div>
-						<Separator />
+						<Separator className="bg-primary/20" />
 					</Fragment>
 				))}
 			</div>

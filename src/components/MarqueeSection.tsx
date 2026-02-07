@@ -37,7 +37,7 @@ export default function MarqueeSection({
 	const isRTL = locale === "ar";
 	return (
 		<section className="relative overflow-hidden pb-10 md:pb-20">
-			<h3 className="container mx-0 mb-8 max-w-4xl text-balance font-grotesk text-4xl text-brand-dark md:mb-12 md:text-6xl">
+			<h3 className="container mx-0 mb-8 max-w-4xl text-balance font-grotesk text-4xl text-accent-tertiary md:mb-12 md:text-6xl">
 				{messages[serviceKey]?.industriesTitle ||
 					"Industries we move the Maxline Global way"}
 			</h3>

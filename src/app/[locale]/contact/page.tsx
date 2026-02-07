@@ -7,7 +7,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { StaggeredText } from "@/components/animation/staggered-text";
 import { HeroHeader } from "@/components/hero-header";
-import { Button } from "@/components/ui/custom-button";
+import { LocationCard } from "@/components/location-card";
 
 import { XIcon } from "@/assets/x-icon";
 
@@ -129,10 +129,7 @@ export default async function ContactPage({
 			<Script id="structured-data" type="application/ld+json">
 				{JSON.stringify(organizationSchema)}
 			</Script>
-			<main
-				className="relative z-10 rounded-b-3xl bg-background pb-20 shadow-xl"
-				role="main"
-			>
+			<main className="relative z-10" role="main">
 				<article className="container grid grid-cols-1 gap-4 py-10 md:py-20 lg:grid-cols-2">
 					<header className="z-10 h-fit px-0 py-0 text-start md:sticky md:top-[20vh]">
 						<HeroHeader
@@ -144,7 +141,7 @@ export default async function ContactPage({
 								{ text: t("heroTitle1") },
 								{
 									text: t("heroTitle2"),
-									className: "text-secondary",
+									className: "text-accent-secondary",
 								},
 								{ text: t("heroTitle3") },
 							]}
@@ -162,13 +159,11 @@ export default async function ContactPage({
 
 						<article className="relative overflow-hidden rounded-2xl p-6 md:p-12">
 							<div className="relative z-10">
-								<h3 className="mb-1 text-primary text-xl md:text-2xl">
+								<h3 className="mb-1 font-display font-semibold text-2xl text-accent uppercase tracking-wide md:text-3xl">
 									{t("corporateHeadquarters")}
 								</h3>
 								<address className="font-medium text-lg text-white not-italic md:text-2xl">
 									{t("hqAddress")}
-									{/* Maxline LLC, Mina Jebel Ali, Dubai Aid City, Dubai - United
-                  Arab Emirates */}
 								</address>
 							</div>
 							<Image
@@ -190,7 +185,7 @@ export default async function ContactPage({
 
 						<XIcon
 							aria-hidden="true"
-							className="absolute right-0 -bottom-1/4 hidden -translate-y-1/4 md:block"
+							className="absolute right-0 -bottom-1/4 hidden -translate-y-1/4 opacity-20 md:block"
 						/>
 					</section>
 				</article>
@@ -208,9 +203,9 @@ export default async function ContactPage({
 					</figcaption>
 				</figure>
 				<section className="container md:max-w-6xl">
-					<h3 className="mx-auto max-w-lg text-center font-grotesk text-2xl text-brand-dark md:text-4xl lg:text-6xl">
+					<h3 className="mx-auto max-w-lg text-center font-display font-semibold text-2xl text-accent-tertiary uppercase tracking-wide md:text-4xl lg:text-6xl">
 						<StaggeredText
-							className="[&>span:nth-child(-n+2)]:text-secondary"
+							className="[&>span:nth-child(-n+2)]:text-accent-secondary"
 							text={t("aroundWorldTitle")}
 						/>
 					</h3>
@@ -219,119 +214,36 @@ export default async function ContactPage({
 					</p>
 					<ul className="grid grid-cols-1 gap-9 pt-12 sm:grid-cols-2">
 						{HEAD_LOCATION.map((loc, index) => (
-							<li
-								className="group overflow-hidden rounded-2xl bg-white"
+							<LocationCard
 								key={`${loc.title}-${index}`}
-							>
-								<div className="relative aspect-video overflow-hidden">
-									<Image
-										alt=""
-										className="object-cover transition-transform duration-500 group-hover:scale-125"
-										fill
-										src={loc.image}
-									/>
-								</div>
-								<div className="p-2 text-center">
-									<p className="pb-2 font-light text-brand-dark" dir="ltr">
-										<StaggeredText text={loc.title} />
-									</p>
-									<h4
-										className="px-4 pb-4 font-grotesk text-2xl text-secondary"
-										dir="ltr"
-									>
-										<StaggeredText text={loc.address} />
-									</h4>
-									<ul className="mb-4 divide-y divide-primary/20">
-										<li className="py-1" dir="ltr">
-											<StaggeredText
-												delay={0.1}
-												text={`${t("phoneLabel")}: ${loc.phone}`}
-											/>
-										</li>
-										<li className="py-1" dir="ltr">
-											<StaggeredText
-												delay={0.1}
-												text={`${t("mobileLabel")}: ${loc.mobile}`}
-											/>
-										</li>
-										<li className="py-1">
-											<StaggeredText
-												delay={0.1}
-												text={`${t("emailLabel")}: ${loc.email}`}
-											/>
-										</li>
-									</ul>
-									<Button
-										className="w-full"
-										href={loc.link}
-										label={t("viewInMap")}
-									/>
-								</div>
-							</li>
+								labels={{
+									emailLabel: t("emailLabel"),
+									mobileLabel: t("mobileLabel"),
+									phoneLabel: t("phoneLabel"),
+									viewInMap: t("viewInMap"),
+								}}
+								location={loc}
+							/>
 						))}
 					</ul>
 				</section>
 				<section className="container py-20">
-					<h3 className="mx-auto max-w-lg text-center font-grotesk text-2xl text-secondary md:text-4xl lg:text-6xl">
+					<h3 className="mx-auto max-w-lg text-center font-display font-semibold text-2xl text-accent-tertiary uppercase tracking-wide md:text-4xl lg:text-6xl">
 						<StaggeredText text={t("branchesTitle")} />
 					</h3>
 
 					<ul className="grid grid-cols-1 gap-4 pt-12 sm:grid-cols-2 md:grid-cols-3">
 						{LOCATIONS.map((loc, index) => (
-							<li
-								className="group relative flex h-full flex-col overflow-hidden rounded-2xl bg-white"
+							<LocationCard
 								key={`${loc.title}-${index}`}
-							>
-								<div className="relative aspect-video shrink-0 overflow-hidden">
-									<Image
-										alt=""
-										className="object-cover transition-transform duration-500 group-hover:scale-125"
-										fill
-										src={loc.image}
-									/>
-								</div>
-								<div className="flex h-full flex-col items-center justify-between p-2 text-center">
-									<div>
-										<p
-											className="text-balance pb-2 font-light text-brand-dark"
-											dir="ltr"
-										>
-											<StaggeredText text={loc.title} />
-										</p>
-										<h4
-											className="px-4 pb-4 font-grotesk text-2xl text-secondary"
-											dir="ltr"
-										>
-											<StaggeredText text={loc.address} />
-										</h4>
-										<ul className="mb-4 divide-y divide-primary/20">
-											<li className="py-1">
-												<StaggeredText
-													delay={0.1}
-													text={`${t("phoneLabel")}: ${loc.phone}`}
-												/>
-											</li>
-											<li className="py-1">
-												<StaggeredText
-													delay={0.1}
-													text={`${t("mobileLabel")}: ${loc.mobile}`}
-												/>
-											</li>
-											<li className="py-1">
-												<StaggeredText
-													delay={0.1}
-													text={`${t("emailLabel")}: ${loc.email}`}
-												/>
-											</li>
-										</ul>
-									</div>
-									<Button
-										className="w-full"
-										href={loc.link}
-										label={t("viewInMap")}
-									/>
-								</div>
-							</li>
+								labels={{
+									emailLabel: t("emailLabel"),
+									mobileLabel: t("mobileLabel"),
+									phoneLabel: t("phoneLabel"),
+									viewInMap: t("viewInMap"),
+								}}
+								location={loc}
+							/>
 						))}
 					</ul>
 				</section>

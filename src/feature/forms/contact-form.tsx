@@ -3,7 +3,6 @@
 import { useTransition } from "react";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { IconArrowRight } from "@tabler/icons-react";
 import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
@@ -23,6 +22,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Textarea } from "@/components/ui/textarea";
+
+import { IconArrowRightTag } from "@/assets/icons/arrow";
 
 import { Link } from "@/i18n/navigation";
 
@@ -73,7 +74,7 @@ export function ContactForm() {
 				onSubmit={form.handleSubmit(onSubmit)}
 			>
 				<div>
-					<h3 className="font-grotesk text-2xl text-secondary sm:text-3xl md:text-4xl">
+					<h3 className="font-display font-semibold text-2xl text-accent uppercase tracking-wide sm:text-3xl md:text-4xl">
 						{t("heading")}
 					</h3>
 					<p className="mt-2 font-light text-base text-brand-gray sm:text-lg md:text-xl">
@@ -230,7 +231,7 @@ export function ContactForm() {
 									{t.rich("privacyPolicyConsent", {
 										privacyPolicy: (chunks) => (
 											<Link
-												className="text-secondary hover:underline"
+												className="text-accent-secondary hover:underline"
 												href="/privacy-policy"
 											>
 												{chunks}
@@ -243,13 +244,7 @@ export function ContactForm() {
 						</FormItem>
 					)}
 				/>
-				<Button
-					className="h-16 w-full bg-secondary pr-1 pl-6 text-background text-xl"
-					disabled={isPending}
-					size="btnIcon"
-					type="submit"
-					variant="secondary"
-				>
+				<Button className="w-full" disabled={isPending} size="lg" type="submit">
 					{isPending ? (
 						<span>Sending...</span>
 					) : (
@@ -260,9 +255,7 @@ export function ContactForm() {
 								reverse={false}
 								staggerFrom="first"
 							/>
-							<div className="pointer-events-none ml-auto flex size-14 shrink-0 touch-none select-none items-center justify-center rounded bg-background text-brand-dark transition-colors group-hover:bg-background">
-								<IconArrowRight className="size-6 stroke-[1.5]" />
-							</div>
+							<IconArrowRightTag className="ml-4 size-5 text-secondary" />
 						</>
 					)}
 				</Button>

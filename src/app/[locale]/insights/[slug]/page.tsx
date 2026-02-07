@@ -131,7 +131,7 @@ export default async function InsightsSlugPage({ params }: Props) {
 							<ol className="flex flex-wrap items-center gap-2">
 								<li>
 									<Link
-										className="transition hover:text-brand-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+										className="transition hover:text-accent-tertiary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
 										href={`/${locale}`}
 									>
 										{navigationT("home")}
@@ -140,7 +140,7 @@ export default async function InsightsSlugPage({ params }: Props) {
 								<li aria-hidden="true">/</li>
 								<li>
 									<Link
-										className="transition hover:text-brand-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+										className="transition hover:text-accent-tertiary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
 										href={`/${locale}/insights`}
 									>
 										{navigationT("insights")}
@@ -191,7 +191,7 @@ export default async function InsightsSlugPage({ params }: Props) {
 					</figcaption>
 				</figure>
 				<article
-					className="prose sm:prose-lg prose-base lg:prose-xl mx-auto max-w-prose prose-headings:text-brand-dark prose-li:marker:text-brand-gray/50"
+					className="prose sm:prose-lg prose-base lg:prose-xl mx-auto max-w-prose prose-headings:text-accent-tertiary prose-li:marker:text-brand-gray/50"
 					itemScope
 					itemType="https://schema.org/Article"
 				>

@@ -7,6 +7,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { HeroHeader } from "@/components/hero-header";
 
 import { siteConfig, socialLinks } from "@/constants/site-config";
+import { Cta } from "@/feature/cta";
 import { getInsights } from "@/feature/insights/actions/query";
 import type { InsightMetadata } from "@/feature/insights/actions/types";
 import { InsightCard } from "@/feature/insights/components/insight-card";
@@ -87,7 +88,7 @@ export default async function InsightsPage({ params }: Props) {
 			>
 				{JSON.stringify(structuredData)}
 			</Script>
-			<main className="container relative z-10 rounded-b-3xl bg-background pb-20 shadow-xl">
+			<main className="relative z-10">
 				<HeroHeader
 					description={t("insights.description")}
 					subtitle={t("insights.label")}
@@ -99,12 +100,13 @@ export default async function InsightsPage({ params }: Props) {
 				<section
 					aria-describedby={sectionDescriptionId}
 					aria-label="Insights and Articles"
-					className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
+					className="container grid grid-cols-1 gap-6 pb-12 md:grid-cols-2 md:pb-32 lg:grid-cols-3"
 				>
 					{insights.map((insight) => (
 						<InsightCard data={insight} key={insight.slug} />
 					))}
 				</section>
+				<Cta />
 			</main>
 		</>
 	);

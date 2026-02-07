@@ -79,11 +79,11 @@ export function HeroHeader({
 			)}
 		>
 			{breadcrumb && breadcrumb}
-			<div className="relative z-10">
+			<div className="relative z-10 mx-auto max-w-5xl">
 				{subtitle && (
 					<p
 						className={cn(
-							"z-10 mb-2 text-base text-secondary md:text-xl lg:text-2xl",
+							"z-10 mb-2 text-accent text-base md:text-xl lg:text-2xl",
 							subtitleClassName
 						)}
 						role="doc-subtitle"
@@ -97,7 +97,7 @@ export function HeroHeader({
 				)}
 				<h1
 					className={cn(
-						"relative z-10 mb-3 text-balance font-grotesk text-3xl text-brand-dark tracking-tight sm:text-5xl md:text-7xl/18",
+						"relative z-10 mb-3 text-balance font-display font-semibold text-3xl text-accent-tertiary uppercase sm:text-5xl md:text-8xl",
 						titleClassName
 					)}
 					id="hero-title"
@@ -124,7 +124,7 @@ export function HeroHeader({
 			{isLogo && (
 				<XIcon
 					aria-hidden="true"
-					className="-translate-1/2 pointer-events-none absolute top-1/2 left-1/2 scale-75 opacity-40"
+					className="-translate-1/2 pointer-events-none absolute top-1/2 left-1/2 scale-75 opacity-20"
 				/>
 			)}
 		</section>

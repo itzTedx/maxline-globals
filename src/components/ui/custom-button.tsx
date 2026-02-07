@@ -1,7 +1,8 @@
-import { IconArrowRight } from "@tabler/icons-react";
 import { type VariantProps } from "class-variance-authority";
 
 import LetterSwapPingPong from "@/components/animation/letter-swap-pingpong-anim";
+
+import { IconArrowRightTag } from "@/assets/icons/arrow";
 
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
@@ -35,8 +36,10 @@ export const Button = ({
 	return (
 		<ShadBtn
 			asChild
-			className={cn("group/btn gap-3", className)}
-			size="btnIcon"
+			className={cn(
+				"group/btn flex w-full items-center justify-between gap-3",
+				className
+			)}
 			{...props}
 		>
 			<Link
@@ -48,7 +51,7 @@ export const Button = ({
 				{label && (
 					<LetterSwapPingPong
 						className={cn(
-							"w-full justify-start font-semibold text-background",
+							"justify-start font-semibold text-background",
 							textClassName
 						)}
 						label={label}
@@ -57,14 +60,9 @@ export const Button = ({
 					/>
 				)}
 				{showIcon && (
-					<div
-						className={cn(
-							"flex size-8 shrink-0 items-center justify-center rounded bg-primary text-brand-dark transition duration-500 group-hover/btn:bg-background",
-							iconClassName
-						)}
-					>
-						<IconArrowRight />
-					</div>
+					<IconArrowRightTag
+						className={cn("size-5 text-secondary", iconClassName)}
+					/>
 				)}
 			</Link>
 		</ShadBtn>

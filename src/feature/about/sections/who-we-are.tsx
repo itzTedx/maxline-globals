@@ -11,13 +11,13 @@ export const WhoWeAre = () => {
 	const third = rest.join("").trim();
 	return (
 		<section className="container grid gap-4 py-12 md:grid-cols-3 md:gap-6 md:py-14 lg:py-20">
-			<h2 className="font-grotesk text-3xl text-brand-dark md:max-w-xs md:text-5xl lg:text-6xl/18">
+			<h2 className="font-display font-semibold text-4xl text-accent-tertiary uppercase md:text-6xl/16">
 				<StaggeredText text={t("whatWeDo.title")} />
 			</h2>
-			<div className="text-balance font-light text-brand-gray text-xl leading-normal tracking-tight md:col-span-2 md:text-2xl lg:text-3xl">
+			<div className="text-balance font-light text-muted-foreground text-xl leading-normal tracking-tight md:col-span-2 md:text-2xl lg:text-3xl">
 				<StaggeredText delay={0.2} text={first.trim()} />
 				<StaggeredText
-					className="text-secondary"
+					className="text-accent-secondary"
 					delay={0.25}
 					text={second.trim()}
 				/>

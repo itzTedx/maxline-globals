@@ -2,7 +2,6 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 import {
-	IconArrowRight,
 	IconClock,
 	IconGlobe,
 	IconHeart,
@@ -18,6 +17,8 @@ import { StaggeredText } from "@/components/animation/staggered-text";
 import { HeroHeader } from "@/components/hero-header";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+
+import { IconArrowRightTag } from "@/assets/icons/arrow";
 
 import { siteConfig } from "@/constants/site-config";
 
@@ -104,7 +105,7 @@ export default async function CareersPage({ params }: Props) {
 				subtitle={t("hero.subtitle")}
 				title={[
 					{ text: t("hero.title.first") },
-					{ text: t("hero.title.second"), className: "text-secondary" },
+					{ text: t("hero.title.second"), className: "text-accent-secondary" },
 					{ text: t("hero.title.third") },
 				]}
 			/>
@@ -113,7 +114,7 @@ export default async function CareersPage({ params }: Props) {
 			<section className="container py-12 md:py-20">
 				<div className="grid gap-8 md:grid-cols-3 md:gap-12">
 					<div className="col-span-2 space-y-6">
-						<h2 className="font-grotesk text-3xl text-brand-dark md:text-4xl lg:text-5xl">
+						<h2 className="font-grotesk text-3xl text-accent-tertiary md:text-4xl lg:text-5xl">
 							<StaggeredText text={t("mission.title")} />
 						</h2>
 						<p className="font-light text-brand-gray text-lg leading-relaxed md:text-xl">
@@ -125,7 +126,7 @@ export default async function CareersPage({ params }: Props) {
 					</div>
 					<div className="rounded-2xl bg-muted p-8 md:p-12">
 						<div className="space-y-4">
-							<h3 className="font-grotesk text-2xl text-brand-dark md:text-3xl">
+							<h3 className="font-display font-semibold text-2xl text-accent-tertiary uppercase md:text-3xl">
 								{t("mission.whyChoose.title")}
 							</h3>
 							<ul className="grid gap-4">
@@ -133,7 +134,7 @@ export default async function CareersPage({ params }: Props) {
 									.raw("mission.whyChoose.benefits")
 									.map((benefit: string, index: number) => (
 										<li className="flex items-start gap-3" key={benefit}>
-											<div className="rounded-full bg-secondary p-2 text-white">
+											<div className="rounded-full bg-accent p-2 text-white">
 												{index === 0 && <IconStar className="size-4" />}
 												{index === 1 && <IconUsers className="size-4" />}
 												{index === 2 && <IconGlobe className="size-4" />}
@@ -155,7 +156,7 @@ export default async function CareersPage({ params }: Props) {
 			{/* Benefits Section */}
 			<section className="container py-12 md:py-20">
 				<div className="mb-12 text-center md:mb-16">
-					<h2 className="mb-4 font-grotesk text-3xl text-brand-dark md:text-4xl lg:text-5xl">
+					<h2 className="mb-4 font-grotesk text-3xl text-accent-tertiary md:text-4xl lg:text-5xl">
 						<StaggeredText text={t("benefits.title")} />
 					</h2>
 				</div>
@@ -187,7 +188,7 @@ export default async function CareersPage({ params }: Props) {
 										<IconClock className="size-8 stroke-[1.5] text-brand-gray md:size-12" />
 									)}
 								</div>
-								<h5 className="mt-8 mb-2 font-grotesk text-2xl text-brand-dark md:mt-12 md:mb-3 md:text-4xl">
+								<h5 className="mt-8 mb-2 font-grotesk text-2xl text-accent-tertiary md:mt-12 md:mb-3 md:text-4xl">
 									{benefit.title}
 								</h5>
 								<p className="text-sm md:text-base">{benefit.description}</p>
@@ -200,16 +201,16 @@ export default async function CareersPage({ params }: Props) {
 			{/* CTA Section */}
 			<section className="container py-12 md:py-20">
 				<div className="mx-auto max-w-4xl text-center">
-					<h2 className="mb-6 font-grotesk text-3xl text-brand-dark md:text-4xl lg:text-5xl">
+					<h2 className="mb-6 font-grotesk text-3xl text-accent-tertiary md:text-4xl lg:text-5xl">
 						<StaggeredText text={t("cta.title")} />
 					</h2>
 					<p className="mb-8 font-light text-brand-gray text-lg leading-relaxed md:text-xl">
 						{t("cta.description")}
 					</p>
 					<div className="flex flex-col justify-center gap-4 sm:flex-row">
-						<Button asChild size="btnIcon">
+						<Button asChild>
 							<Link
-								className="group gap-3 text-brand-dark"
+								className="group gap-3 text-accent-tertiary"
 								href={`mailto:${t("cta.email")}`}
 							>
 								<LetterSwapPingPong
@@ -218,19 +219,12 @@ export default async function CareersPage({ params }: Props) {
 									reverse={false}
 									staggerFrom="first"
 								/>
-								<div className="flex size-8 shrink-0 items-center justify-center rounded bg-primary text-brand-dark transition duration-500 group-hover:bg-background">
-									<IconArrowRight />
-								</div>
+								<IconArrowRightTag className="ml-4 size-5 text-secondary" />
 							</Link>
 						</Button>
-						<Button
-							asChild
-							className="bg-white"
-							size="btnIcon"
-							variant="secondary"
-						>
+						<Button asChild variant="secondary">
 							<Link
-								className="group gap-3 text-brand-dark"
+								className="group gap-3 text-accent-tertiary"
 								href={`mailto:${t("cta.email")}`}
 							>
 								<LetterSwapPingPong
@@ -239,20 +233,18 @@ export default async function CareersPage({ params }: Props) {
 									reverse={false}
 									staggerFrom="first"
 								/>
-								<div className="flex size-8 shrink-0 items-center justify-center rounded bg-primary text-brand-dark transition duration-500 group-hover:bg-background">
-									<IconArrowRight />
-								</div>
+								<IconArrowRightTag className="ml-4 size-5 text-secondary" />
 							</Link>
 						</Button>
 					</div>
 					<p className="mt-4 text-brand-gray text-sm">
 						{t("cta.resumeText")}{" "}
-						<a
-							className="text-secondary hover:underline"
+						<Link
+							className="text-accent-secondary hover:underline"
 							href={`mailto:${t("cta.email")}`}
 						>
 							{t("cta.email")}
-						</a>
+						</Link>
 					</p>
 				</div>
 			</section>

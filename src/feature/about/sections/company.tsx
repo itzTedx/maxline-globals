@@ -21,7 +21,7 @@ export const CompanySection = () => {
 				<p className="z-10 text-lg text-secondary md:text-2xl">
 					{t("clients.label")}
 				</p>
-				<h2 className="relative z-10 mb-16 font-grotesk text-3xl text-brand-dark tracking-tight md:text-4xl lg:text-6xl/16">
+				<h2 className="relative z-10 mb-16 font-grotesk text-3xl text-accent-tertiary tracking-tight md:text-4xl lg:text-6xl/16">
 					<StaggeredText
 						className="[&>span:nth-last-child(-n+2)]:text-secondary"
 						duration={0.7}

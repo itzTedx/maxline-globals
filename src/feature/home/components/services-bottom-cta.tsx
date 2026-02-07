@@ -31,7 +31,7 @@ export const ServicesBottomCTA = () => {
 			</p>
 
 			<Button asChild size="btnIcon">
-				<Link className="group z-10 text-brand-dark" href="/services">
+				<Link className="group z-10 text-accent-tertiary" href="/services">
 					<LetterSwapPingPong
 						className="w-full justify-start font-semibold"
 						label={t("services.cta.btnText")}
@@ -39,7 +39,7 @@ export const ServicesBottomCTA = () => {
 						staggerFrom="first"
 					/>
 
-					<div className="flex size-8 shrink-0 items-center justify-center rounded bg-primary text-brand-dark group-hover:bg-background">
+					<div className="flex size-8 shrink-0 items-center justify-center rounded bg-primary text-accent-tertiary group-hover:bg-background">
 						<IconArrowRight />
 					</div>
 				</Link>

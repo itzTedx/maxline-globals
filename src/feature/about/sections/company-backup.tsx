@@ -8,7 +8,7 @@ export const CompanySection = () => {
 		<section className="overflow-hidden py-12 md:py-16 lg:py-20">
 			<div className="container max-w-5xl text-center">
 				<p className="z-10 text-lg text-secondary md:text-2xl">Our clients</p>
-				<h2 className="relative z-10 mb-16 font-grotesk text-3xl text-brand-dark tracking-tight md:text-4xl lg:text-6xl/16">
+				<h2 className="relative z-10 mb-16 font-grotesk text-3xl text-accent-tertiary tracking-tight md:text-4xl lg:text-6xl/16">
 					<StaggeredText
 						className="[&>span:nth-last-child(-n+2)]:text-secondary"
 						duration={0.7}

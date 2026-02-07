@@ -36,7 +36,7 @@ export const ServicesGrid = ({ services }: ServicesGridProps) => {
 // 	return (
 // 		<SpotlightCard
 // 			className={cn(
-// 				"bg-input text-brand-dark first:bg-brand-dark first:text-background",
+// 				"bg-input text-accent-tertiary first:bg-brand-dark first:text-background",
 // 				"group relative transition-colors",
 // 				"cursor-pointer overflow-hidden",
 // 				"col-span-2 flex items-center justify-between gap-3",

@@ -25,7 +25,7 @@ export function RedirectWithLoading() {
 	return (
 		<main className="container flex min-h-[60vh] flex-col items-center justify-center py-20">
 			<div className="w-full max-w-2xl space-y-8 text-center">
-				<h1 className="font-grotesk text-4xl text-brand-dark tracking-tight md:text-5xl lg:text-6xl">
+				<h1 className="font-grotesk text-4xl text-accent-tertiary tracking-tight md:text-5xl lg:text-6xl">
 					<StaggeredText
 						className="[&>span:nth-last-child(-n+3)]:text-secondary"
 						duration={0.7}

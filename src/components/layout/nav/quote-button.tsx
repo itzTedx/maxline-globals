@@ -15,7 +15,7 @@ export const QuoteButton = ({ className }: Props) => {
 	const t = useTranslations("Navigation");
 	return (
 		<Button asChild className={cn(className)} size="lg">
-			<Link className="group text-brand-dark" href="/quote">
+			<Link className="group text-accent-tertiary" href="/quote">
 				<span>
 					{t("getQuote")}{" "}
 					<span className="font-normal text-accent">- it's free</span>

@@ -34,7 +34,7 @@ export const TrackingInput = () => {
 			<form onSubmit={handleSubmit}>
 				<Input
 					aria-label={t("hero.inputPlaceholder")}
-					className="bg-white pe-9 font-semibold text-sm shadow-none placeholder:text-brand-dark/50 md:text-base"
+					className="bg-white pe-9 font-semibold text-sm shadow-none placeholder:text-accent-tertiary/50 md:text-base"
 					id="track"
 					onChange={(e) => setTrackingId(e.target.value)}
 					placeholder={t("hero.inputPlaceholder")}
@@ -43,7 +43,7 @@ export const TrackingInput = () => {
 				/>
 				<motion.button
 					aria-label="Track Shipment"
-					className="absolute inset-y-1/2 end-1.5 flex size-8 -translate-y-1/2 items-center justify-center rounded bg-primary text-brand-dark outline-none transition-[color,box-shadow] hover:text-foreground focus:z-10 focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:size-9"
+					className="absolute inset-y-1/2 end-1.5 flex size-8 -translate-y-1/2 items-center justify-center rounded bg-primary text-accent-tertiary outline-none transition-[color,box-shadow] hover:text-foreground focus:z-10 focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:size-9"
 					type="submit"
 					whileHover={{ scale: 1.05 }}
 					whileTap={{ scale: 0.95 }}

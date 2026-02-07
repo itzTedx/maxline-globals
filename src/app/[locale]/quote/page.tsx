@@ -84,7 +84,7 @@ export default async function QuotePage({
 	];
 
 	return (
-		<main className="relative z-10 rounded-b-3xl bg-background pb-20 shadow-xl">
+		<main className="relative z-10">
 			<header className="container grid grid-cols-1 gap-3 pb-3 md:grid-cols-3">
 				<HeroHeader
 					className="col-span-1 mx-0 px-0 py-0 text-start md:col-span-2 lg:py-0 lg:pt-20 lg:pb-6"
@@ -96,7 +96,7 @@ export default async function QuotePage({
 						{ text: t("hero.title1") },
 						{
 							text: t("hero.title2"),
-							className: "text-secondary",
+							className: "text-accent-secondary",
 						},
 					]}
 					titleClassName="text-3xl lg:text-[4.5rem] mb-6 max-w-xl"
@@ -107,11 +107,11 @@ export default async function QuotePage({
 				<QuoteForm />
 			</section>
 
-			<section aria-label="Our Features" className="container">
-				<h2 className="pt-10 pb-6 text-center font-grotesk text-4xl text-brand-dark md:pt-20 md:pb-9 md:text-6xl">
+			<section aria-label="Our Features" className="relative z-10">
+				<h2 className="pt-10 pb-6 text-center font-display font-semibold text-2xl text-accent-tertiary uppercase tracking-wide md:pt-20 md:pb-9 md:text-6xl">
 					{t("features.sectionTitle")}
 				</h2>
-				<ul className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3">
+				<ul className="container relative z-10 grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3">
 					{features.map((item) => (
 						<SpotlightCard
 							className="overflow-hidden rounded-xl bg-white p-6 md:p-10"
@@ -124,13 +124,14 @@ export default async function QuotePage({
 									className="size-10 stroke-[1.5] text-brand-gray md:size-12"
 								/>
 							</div>
-							<h3 className="mt-8 mb-3 font-grotesk text-2xl text-brand-dark md:mt-12 md:text-4xl">
+							<h3 className="mt-8 mb-3 font-display font-semibold text-2xl text-accent-tertiary uppercase tracking-wide md:mt-12 md:text-4xl">
 								{item.title}
 							</h3>
 							<p className="text-sm md:text-base">{item.description}</p>
 						</SpotlightCard>
 					))}
 				</ul>
+				<div className="absolute inset-0 bg-linear-to-t from-secondary" />
 			</section>
 
 			<Faqs />

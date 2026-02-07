@@ -7,9 +7,9 @@ export const Commitment = () => {
 			itemScope
 			itemType="https://schema.org/Organization"
 		>
-			<div className="relative overflow-hidden rounded-3xl bg-brand-dark px-6 py-16 text-center text-background sm:px-12 sm:py-20 md:px-16 md:py-24 lg:px-24 lg:py-32">
+			<div className="relative overflow-hidden rounded-3xl bg-brand-dark px-6 py-16 text-center text-background sm:px-12 sm:py-20 md:px-16 md:py-24 lg:px-24">
 				<h5
-					className="relative z-10 mb-4 font-grotesk text-3xl sm:mb-5 sm:text-4xl md:mb-6 md:text-5xl"
+					className="relative z-10 mb-4 font-display font-semibold text-3xl text-accent-foreground uppercase sm:mb-5 sm:text-4xl md:mb-6 md:text-7xl"
 					itemProp="name"
 				>
 					Your Cargo. Our Commitment.
@@ -20,7 +20,7 @@ export const Commitment = () => {
 				>
 					With decades of experience and a deep understanding of the
 					region&apos;s logistics landscape,{" "}
-					<span className="text-primary" itemProp="name">
+					<span className="text-accent" itemProp="name">
 						Maxline Global
 					</span>{" "}
 					is your trusted partner for road freight services. From single
@@ -29,7 +29,7 @@ export const Commitment = () => {
 				</p>
 				<XIcon
 					aria-hidden="true"
-					className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-60"
+					className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-20"
 				/>
 			</div>
 		</section>

@@ -57,7 +57,7 @@ export default function Home({ params }: Props) {
 
 				<section className="relative overflow-hidden py-12 sm:py-16 md:py-20">
 					<div className="container max-w-4xl space-y-4 text-center">
-						<h2 className="font-semibold text-4xl text-accent-tertiary sm:text-5xl md:text-6xl lg:text-7xl">
+						<h2 className="font-display font-semibold text-4xl text-accent-tertiary uppercase sm:text-5xl md:text-6xl lg:text-7xl">
 							Built to Empower Efficiency
 						</h2>
 						<p className="text-balance text-base text-muted-foreground sm:text-lg md:text-xl">
@@ -66,7 +66,7 @@ export default function Home({ params }: Props) {
 							connected force
 						</p>
 					</div>
-					<XIcon className="pointer-events-none absolute top-0 left-1/2 -z-10 -translate-x-1/2 text-muted-foreground/50" />
+					<XIcon className="pointer-events-none absolute top-1/2 left-1/2 -z-10 -translate-x-1/2 -translate-y-1/2 scale-80 text-muted-foreground/40" />
 				</section>
 				<Certifications />
 				<Industries />

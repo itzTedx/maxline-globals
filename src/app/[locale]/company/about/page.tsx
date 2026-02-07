@@ -6,12 +6,12 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { siteConfig, socialLinks } from "@/constants/site-config";
 import { Certifications } from "@/feature/about/sections/certificates";
-import { CompanySection } from "@/feature/about/sections/company";
 import { AboutHeroSection } from "@/feature/about/sections/hero";
-import { LeaderWords } from "@/feature/about/sections/leader-words";
 import { Principles } from "@/feature/about/sections/principles";
 import { WhoWeAre } from "@/feature/about/sections/who-we-are";
 import { Cta } from "@/feature/cta";
+import { Clients } from "@/feature/home/sections/clients";
+import { Faqs } from "@/feature/home/sections/faq";
 
 // Dynamic metadata generation based on locale
 export async function generateMetadata({
@@ -123,19 +123,19 @@ export default async function AboutPage({ params }: Props) {
 			<Script id="about-schema" type="application/ld+json">
 				{JSON.stringify(structuredData)}
 			</Script>
-			<main className="relative z-10 rounded-b-3xl bg-background pb-20 shadow-xl">
+			<main className="relative z-10">
 				<article>
 					<AboutHeroSection />
 
 					<WhoWeAre />
 
 					<Principles />
-
-					<CompanySection />
-
-					<LeaderWords />
-
+					<Clients />
 					<Certifications />
+					{/* <CompanySection /> */}
+
+					{/* <LeaderWords /> */}
+					<Faqs />
 
 					<Cta />
 				</article>

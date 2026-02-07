@@ -14,19 +14,19 @@ export default async function PrivacyPolicyPage({
 	return (
 		<main className="container relative z-10 rounded-b-3xl bg-background pb-20 shadow-xl">
 			<div className="mx-auto max-w-prose px-4 py-8">
-				<h1 className="mb-8 font-bold font-grotesk text-3xl text-brand-dark md:text-4xl lg:text-5xl">
+				<h1 className="mb-8 font-bold font-grotesk text-3xl text-accent-tertiary md:text-4xl lg:text-5xl">
 					{t("title")}
 				</h1>
 				<div className="space-y-8">
 					<section>
-						<h2 className="mb-4 font-grotesk font-semibold text-2xl text-brand-dark">
+						<h2 className="mb-4 font-grotesk font-semibold text-2xl text-accent-tertiary">
 							{t("introduction.title")}
 						</h2>
 						<p className="mb-4 font-light">{t("introduction.text1")}</p>
 						<p className="font-light">{t("introduction.text2")}</p>
 					</section>
 					<section>
-						<h2 className="mb-4 font-grotesk font-semibold text-2xl text-brand-dark">
+						<h2 className="mb-4 font-grotesk font-semibold text-2xl text-accent-tertiary">
 							{t("informationWeCollect.title")}
 						</h2>
 						<h3 className="mb-3 font-medium text-secondary text-xl">
@@ -189,7 +189,7 @@ export default async function PrivacyPolicyPage({
 						</ul>
 					</section>
 					<section>
-						<h2 className="mb-4 font-grotesk font-semibold text-2xl text-brand-dark">
+						<h2 className="mb-4 font-grotesk font-semibold text-2xl text-accent-tertiary">
 							{t("howWeUseYourInformation.title")}
 						</h2>
 						<p className="mb-4 font-light">
@@ -209,7 +209,7 @@ export default async function PrivacyPolicyPage({
 						</ul>
 					</section>
 					<section>
-						<h2 className="mb-4 font-grotesk font-semibold text-2xl text-brand-dark">
+						<h2 className="mb-4 font-grotesk font-semibold text-2xl text-accent-tertiary">
 							{t("informationSharing.title")}
 						</h2>
 						<p className="mb-4 font-light">{t("informationSharing.text")}</p>
@@ -223,7 +223,7 @@ export default async function PrivacyPolicyPage({
 						</ul>
 					</section>
 					<section>
-						<h2 className="mb-4 font-grotesk font-semibold text-2xl text-brand-dark">
+						<h2 className="mb-4 font-grotesk font-semibold text-2xl text-accent-tertiary">
 							{t("dataSecurity.title")}
 						</h2>
 						<p className="mb-4 font-light">{t("dataSecurity.text")}</p>
@@ -237,7 +237,7 @@ export default async function PrivacyPolicyPage({
 						<p className="mt-4 font-light">{t("dataSecurity.disclaimer")}</p>
 					</section>
 					<section>
-						<h2 className="mb-4 font-grotesk font-semibold text-2xl text-brand-dark">
+						<h2 className="mb-4 font-grotesk font-semibold text-2xl text-accent-tertiary">
 							{t("yourRights.title")}
 						</h2>
 						<p className="mb-4 font-light">{t("yourRights.text")}</p>
@@ -252,19 +252,19 @@ export default async function PrivacyPolicyPage({
 						<p className="mt-4 font-light">{t("yourRights.contact")}</p>
 					</section>
 					<section>
-						<h2 className="mb-4 font-grotesk font-semibold text-2xl text-brand-dark">
+						<h2 className="mb-4 font-grotesk font-semibold text-2xl text-accent-tertiary">
 							{t("internationalTransfers.title")}
 						</h2>
 						<p className="font-light">{t("internationalTransfers.text")}</p>
 					</section>
 					<section>
-						<h2 className="mb-4 font-grotesk font-semibold text-2xl text-brand-dark">
+						<h2 className="mb-4 font-grotesk font-semibold text-2xl text-accent-tertiary">
 							{t("changesToPolicy.title")}
 						</h2>
 						<p className="font-light">{t("changesToPolicy.text")}</p>
 					</section>
 					<section>
-						<h2 className="mb-4 font-grotesk font-semibold text-2xl text-brand-dark">
+						<h2 className="mb-4 font-grotesk font-semibold text-2xl text-accent-tertiary">
 							{t("contactUs.title")}
 						</h2>
 						<p className="font-light">

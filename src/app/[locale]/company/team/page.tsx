@@ -1,5 +1,3 @@
-import { Suspense } from "react";
-
 import { Metadata } from "next";
 import Image from "next/image";
 import Script from "next/script";
@@ -13,8 +11,8 @@ import { Button } from "@/components/ui/custom-button";
 
 import { TEAMS } from "@/constants";
 import { siteConfig, socialLinks } from "@/constants/site-config";
-import { CompanySection } from "@/feature/about/sections/company";
 import { Cta } from "@/feature/cta";
+import { Clients } from "@/feature/home/sections/clients";
 
 // Dynamic metadata generation based on locale
 export async function generateMetadata({
@@ -101,7 +99,7 @@ export default async function TeamPage({
 			</Script>
 			<main
 				aria-label="Team Information"
-				className="relative z-10 rounded-b-3xl bg-background pb-20 shadow-xl"
+				className="relative z-10"
 				itemScope
 				itemType="https://schema.org/Organization"
 				role="main"
@@ -117,7 +115,7 @@ export default async function TeamPage({
 				<meta content={`${siteConfig.site}/company/team`} itemProp="url" />
 				<meta content={`${siteConfig.site}/logo.png`} itemProp="logo" />
 				<section className="container">
-					<h2 className="text-center font-grotesk text-5xl text-secondary">
+					<h2 className="text-center font-grotesk text-5xl text-accent-secondary">
 						<StaggeredText text={t("leadershipTitle")} />
 					</h2>
 					<ul className="grid grid-cols-1 gap-4 pt-12 sm:grid-cols-2 lg:grid-cols-4">
@@ -135,23 +133,23 @@ export default async function TeamPage({
 									/>
 									<div className="absolute inset-x-0 bottom-0 h-1/4 bg-linear-to-t from-brand-dark to-transparent" />
 								</div>
-								<div className="p-2 text-center text-background">
-									<h3 className="font-grotesk text-4xl">
+								<div className="p-6 text-center text-background">
+									<h3 className="font-semibold text-3xl">
 										{t(team.nameKey as unknown as Parameters<typeof t>[0])}
 									</h3>
 
-									<p className="font-grotesk text-primary text-xl sm:text-lg">
+									<p className="font-display text-muted/60 text-xl uppercase">
 										{t(
 											team.designationKey as unknown as Parameters<typeof t>[0]
 										)}
 									</p>
 									{team.link && (
 										<Button
-											className="mt-2 w-full text-brand-dark"
+											className="mt-2 w-full text-accent-tertiary"
 											href={team.link}
 											label={t("linkedinProfile")}
 											openExternal
-											textClassName="text-brand-dark"
+											textClassName="text-secondary"
 											variant="secondary"
 										/>
 									)}
@@ -160,42 +158,9 @@ export default async function TeamPage({
 						))}
 					</ul>
 				</section>
-				{/* <section className="container py-20">
-          <h2 className="font-grotesk text-secondary text-center text-5xl">
-            <StaggeredText text={t("specialistsTitle")} />
-          </h2>
-          <ul className="grid grid-cols-4 gap-6 pt-12">
-            {Array.from({ length: 14 }).map((item, i) => (
-              <li key={i} className="bg-brand-dark overflow-hidden rounded-xl">
-                <div className="relative aspect-5/6">
-                  <Image
-                    src="/images/placeholder.jpg"
-                    fill
-                    alt=""
-                    className="object-cover"
-                  />
-                  <div className="from-brand-dark absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t to-transparent" />
-                </div>
-                <div className="text-background p-2 text-center">
-                  <h3 className="font-grotesk text-4xl">{t("personName")}</h3>
-                  <p className="font-grotesk text-primary pb-6 text-xl">
-                    {t("designation")}
-                  </p>
-                  <Button
-                    label={t("linkedinProfile")}
-                    href="/"
-                    variant="secondary"
-                    className="text-brand-dark w-full"
-                    textClassName="text-brand-dark"
-                  />
-                </div>
-              </li>
-            ))}
-          </ul>
-        </section> */}
-				<Suspense fallback={<div>Loading...</div>}>
-					<CompanySection />
-				</Suspense>
+
+				<Clients />
+
 				<div className="pt-20">
 					<Cta />
 				</div>

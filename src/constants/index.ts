@@ -317,6 +317,16 @@ export const HEAD_LOCATION = [
 
 export const LOCATIONS = [
 	{
+		title: "India Operations Office",
+		address:
+			"Max Line Global Vaahika Limited, F 602, Rashmi Residency, New Link Road,  Nalasopara East, Palghar, Mumbai, Maharashtra, India. 401 209. Land Mark – Above Punjab National Bank.",
+		phone: "+91 9322303214",
+		mobile: "+91 8421811174",
+		email: "mgmt@maxlineglobal.com",
+		link: "https://maps.app.goo.gl/NKv7BZdvjXhfWujx5",
+		image: "/images/mumbai.jpg",
+	},
+	{
 		title: "Maxline Oman",
 		address:
 			"Unit No 24, 2nd floor Building 537, Way No 5016,  Ghala Heights Azaibaa South, Muscat, Sultanate Of Oman",

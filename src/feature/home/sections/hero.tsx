@@ -82,31 +82,3 @@ export const PlayVideoButton = () => {
 		</div>
 	);
 };
-
-{
-	/* <video
-	autoPlay
-	className="mask-t-from-50% absolute inset-0 h-full w-full object-cover object-center"
-	loop
-	muted
-	playsInline
-	preload="auto"
-	src="/videos/home-hero.webm"
-/>; */
-}
-
-{
-	/* <p className="text-balance pt-4 text-center text-muted-foreground text-xl md:text-2xl">
-						We connect businesses to markets across the world. Explore our
-						logistics services built to move cargo faster, safer, and smarter
-						worldwide.
-</p>
-				<div className="mt-3 flex items-center justify-center gap-4">
-						<Button size="lg" variant="secondary">
-							Get a Quote <IconArrowRightTag className="ml-4" />
-						</Button>
-						<Button size="lg" variant="outline">
-							Explore our services
-						</Button>
-					</div> */
-}

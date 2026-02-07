@@ -3,7 +3,6 @@
 import { useState, useTransition } from "react";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { IconArrowRight } from "@tabler/icons-react";
 import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
@@ -37,6 +36,8 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { Textarea } from "@/components/ui/textarea";
 
+import { IconArrowRightTag } from "@/assets/icons/arrow";
+
 import { sendQuote } from "@/feature/forms/sendQuote";
 import { cn } from "@/lib/utils";
 
@@ -59,7 +60,7 @@ const FormSection = ({
 		)}
 	>
 		{title && (
-			<h3 className="text-2xl text-secondary sm:text-3xl md:text-4xl">
+			<h3 className="font-medium text-2xl text-accent-tertiary sm:text-3xl md:text-4xl">
 				{title}
 			</h3>
 		)}
@@ -318,14 +319,14 @@ export const QuoteForm = () => {
 				)}
 				<FormSection>
 					<div className="space-y-4">
-						<h2 className="text-balance font-grotesk text-3xl text-brand-dark tracking-tight sm:text-4xl md:text-5xl">
+						<h2 className="text-balance font-grotesk text-3xl text-accent-tertiary tracking-tight sm:text-4xl md:text-5xl">
 							{t("main.title")}
 						</h2>
-						<p className="font-light text-brand-gray text-lg leading-normal sm:text-xl">
+						<p className="font-light text-lg text-muted-foreground leading-normal sm:text-xl">
 							{t("main.description")}
 						</p>
 						<Separator />
-						<h3 className="text-2xl text-secondary sm:text-3xl md:text-4xl">
+						<h3 className="font-medium text-2xl text-accent-tertiary sm:text-3xl md:text-4xl">
 							{t("basicInfo.sectionTitle")}
 						</h3>
 					</div>
@@ -512,25 +513,17 @@ export const QuoteForm = () => {
 							</FormItem>
 						)}
 					/>
-				</FormSection>
-				<Button
-					className="h-16 w-full bg-secondary pr-1 pl-6 text-background text-xl"
-					disabled={isPending}
-					size="btnIcon"
-					type="submit"
-					variant="secondary"
-				>
-					<LetterSwapPingPong
-						className="w-full justify-start font-semibold"
-						label={t("submit")}
-						reverse={false}
-						staggerFrom="first"
-					/>
+					<Button className="h-12 w-full" disabled={isPending} type="submit">
+						<LetterSwapPingPong
+							className="w-full justify-start font-semibold"
+							label={t("submit")}
+							reverse={false}
+							staggerFrom="first"
+						/>
 
-					<div className="pointer-events-none ml-auto flex size-14 shrink-0 touch-none select-none items-center justify-center rounded bg-background text-brand-dark transition-colors group-hover:bg-background">
-						<IconArrowRight className="size-6 stroke-[1.5]" />
-					</div>
-				</Button>
+						<IconArrowRightTag className="ml-4 size-5 text-secondary" />
+					</Button>
+				</FormSection>
 			</form>
 		</Form>
 	);
