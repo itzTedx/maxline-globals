@@ -221,7 +221,7 @@ const FormSelect = <T extends FieldValues>({
 					onValueChange={field.onChange}
 				>
 					<FormControl>
-						<SelectTrigger className="!h-11 w-full border-muted-foreground/20 bg-muted">
+						<SelectTrigger className="h-11! w-full border-muted-foreground/20 bg-muted">
 							<SelectValue placeholder={placeholder} />
 						</SelectTrigger>
 					</FormControl>
