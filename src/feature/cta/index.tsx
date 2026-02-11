@@ -62,7 +62,7 @@ export const Cta = () => {
 							<div className="flex flex-col items-center gap-4 md:flex-row">
 								<Button className="w-full md:w-auto">
 									Get started <span>- it’s free</span>{" "}
-									<IconArrowRightTag className="ml-4" />
+									<IconArrowRightTag className="ms-4 rtl:rotate-180" />
 								</Button>
 
 								<Button className="w-full md:w-auto" variant="secondary">

@@ -2,6 +2,8 @@ import { memo } from "react";
 
 import Link from "next/link";
 
+import { useTranslations } from "next-intl";
+
 import { StaggeredText } from "@/components/animation/staggered-text";
 import { Button } from "@/components/ui/button";
 
@@ -14,7 +16,8 @@ import { ServicesGrid } from "../../services/services-grid";
 import { ServicesSchema } from "../schema/services-schema";
 
 export const Services = memo(() => {
-	// const t = useTranslations("HomePage");
+	const t = useTranslations("HomePage");
+	const navT = useTranslations("Navigation");
 	return (
 		<>
 			<ServicesSchema services={SERVICES} />
@@ -27,7 +30,7 @@ export const Services = memo(() => {
 				<div className="container relative z-30">
 					<span className="flex items-center gap-2 font-medium text-muted-foreground text-xs sm:text-sm">
 						<IconHeadphone className="size-3 sm:size-4" />
-						Services
+						{navT("services")}
 					</span>
 					<div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 lg:gap-8">
 						<h2
@@ -39,19 +42,17 @@ export const Services = memo(() => {
 								className="[&>span:nth-last-child(-n+1)]:text-primary! [&>span:nth-last-child(-n+4)]:text-accent-secondary"
 								duration={0.5}
 								staggerChildren={0.02}
-								text="Integrated Freight & Logistics Services"
+								text={t("services.title")}
 							/>
 						</h2>
 						<div className="space-y-3 sm:space-y-4">
 							<p className="text-base text-muted-foreground sm:text-lg md:text-xl">
-								Our end-to-end logistics services are designed to support modern
-								supply chains flexible, scalable, and tailored to your exact
-								requirements.
+								{t("services.description")}
 							</p>
 							<Button asChild className="w-full sm:w-auto" variant="secondary">
 								<Link href="/services">
-									Explore services{" "}
-									<IconArrowRightTag className="ml-2 size-4 sm:ml-4" />
+									{t("services.btnText")}{" "}
+									<IconArrowRightTag className="ms-2 size-4 sm:ms-4 rtl:rotate-180" />
 								</Link>
 							</Button>
 						</div>

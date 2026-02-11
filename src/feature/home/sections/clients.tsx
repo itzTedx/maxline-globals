@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import { useTranslations } from "next-intl";
+
 import { Button } from "@/components/ui/button";
 
 import { IconCaretRight } from "@/assets/icons/caret";
@@ -7,19 +9,20 @@ import { IconCaretRight } from "@/assets/icons/caret";
 import { CLIENTS } from "@/constants/clients";
 
 export const Clients = () => {
+	const t = useTranslations("HomePage");
+
 	return (
 		<section className="relative">
 			<div className="container relative z-10 grid grid-cols-1 gap-9 py-12 sm:gap-12 sm:py-14 md:grid-cols-2 md:gap-30 md:py-16 lg:py-20">
 				<div className="space-y-4">
 					<h2 className="font-medium text-3xl text-primary md:text-5xl">
-						Recognized by{" "}
+						{t("clients.title.first")}{" "}
 						<span className="text-accent-secondary">
-							industry leaders worldwide
+							{t("clients.title.second")}
 						</span>
 					</h2>
 					<p className="text-balance text-xl leading-relaxed">
-						FIATA certified, ISO compliant, trusted by Fortune 500 companies
-						across continents
+						{t("clients.description")}
 					</p>
 					<Button
 						asChild
@@ -27,7 +30,8 @@ export const Clients = () => {
 						variant="secondary"
 					>
 						<Link href="/about">
-							Know more about Maxline <IconCaretRight className="ml-4" />
+							{t("clients.cta")}{" "}
+							<IconCaretRight className="ms-4 rtl:rotate-180" />
 						</Link>
 					</Button>
 				</div>

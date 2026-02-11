@@ -92,7 +92,8 @@ export const Faqs = () => {
 					</Accordion>
 					<Button asChild className="mt-3" variant="secondary">
 						<Link href="/contact">
-							Get Started <IconArrowRightTag className="ml-4" />
+							Get Started
+							<IconArrowRightTag className="ms-4 rtl:rotate-180" />
 						</Link>
 					</Button>
 				</div>

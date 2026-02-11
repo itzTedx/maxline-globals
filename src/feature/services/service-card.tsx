@@ -47,17 +47,16 @@ export const ServiceCard = ({
 					className="max-w-48 text-balance font-light text-shadow-accent-tertiary/50 text-shadow-sm text-sm sm:text-base md:max-w-xs md:text-lg lg:text-xl"
 					itemProp="description"
 				>
-					{service.description}
-					{/* {t(
+					{t(
 						`services.service.${service.title as Parameters<typeof t>[0]}.description` as unknown as Parameters<
 							typeof t
 						>[0]
-					)} */}
+					)}
 				</p>
 
 				<Button className="mt-6 sm:mt-7 md:mt-9">
-					Explore more{" "}
-					<IconArrowRightTag className="ml-2 size-4 sm:ml-4 sm:size-5" />
+					{t("services.cta.btnText")}{" "}
+					<IconArrowRightTag className="ms-2 size-4 sm:ms-4 sm:size-5 rtl:rotate-180" />
 				</Button>
 			</div>
 

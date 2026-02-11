@@ -9,37 +9,39 @@ import {
 } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { AnimatePresence, motion } from "motion/react";
+import { useTranslations } from "next-intl";
 
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const INITIAL_CHIPS = [
 	{
 		id: 1,
-		title: "Global Reach",
-		description: "Connect to markets worldwide",
+		titleKey: "chips.globalReach.title",
+		descriptionKey: "chips.globalReach.description",
 		icon: SecurityCheckIcon,
 	},
 	{
 		id: 2,
-		title: "Reliable Logistics",
-		description: "Fast, safe, precise delivery",
+		titleKey: "chips.reliableLogistics.title",
+		descriptionKey: "chips.reliableLogistics.description",
 		icon: ZapIcon,
 	},
 	{
 		id: 3,
-		title: "Seamless Experience",
-		description: "Easy tracking and management",
+		titleKey: "chips.seamlessExperience.title",
+		descriptionKey: "chips.seamlessExperience.description",
 		icon: UserStoryIcon,
 	},
 	{
 		id: 4,
-		title: "End-to-End Support",
-		description: "Complete delivery coverage",
+		titleKey: "chips.endToEndSupport.title",
+		descriptionKey: "chips.endToEndSupport.description",
 		icon: SparklesIcon,
 	},
 ];
 
 export const Bucket = () => {
+	const t = useTranslations("Cta");
 	const [items, setItems] = useState(INITIAL_CHIPS);
 
 	const isMobile = useIsMobile();
@@ -875,10 +877,10 @@ export const Bucket = () => {
 										</div>
 										<div className="flex flex-col gap-0.5">
 											<span className="font-medium text-foreground text-sm leading-none">
-												{chip.title}
+												{t(chip.titleKey)}
 											</span>
 											<span className="text-muted-foreground text-xs">
-												{chip.description}
+												{t(chip.descriptionKey)}
 											</span>
 										</div>
 									</motion.div>

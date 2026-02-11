@@ -65,7 +65,11 @@
 				"firstLine": "Your Trusted Partner in",
 				"secondLine": "Logistics and Freight Delivery"
 			},
-			"inputPlaceholder": "Track your shipment"
+			"inputPlaceholder": "Track your shipment",
+			"body": "We connect <highlight>businesses to markets across the world.</highlight> Explore our logistics services built to move cargo faster, safer, and smarter worldwide.",
+			"primaryCta": "Get a Quote",
+			"secondaryCta": "Explore our services",
+			"playVideoLabel": "See How Maxline Global Moves the World"
 		},
 		"about": {
 			"title": "Your Reliable Logistics Partner Across the Globe",
@@ -91,15 +95,15 @@
 				},
 				"airFreight": {
 					"title": "Air Freight",
-					"description": "Swift Air Freight Solutions for Global Reach."
+					"description": "Fast and reliable air cargo for time-critical shipments."
 				},
 				"seaFreight": {
 					"title": "Sea Freight",
-					"description": "Reliable Sea Freight Services Across Continents."
+					"description": "Cost-effective sea freight connecting major global ports."
 				},
 				"projectCargo": {
 					"title": "Project Cargo",
-					"description": "Specialized Handling for Heavy and Oversized Cargo."
+					"description": "Specialized handling for heavy, oversized, and complex cargo."
 				},
 				"packaging": {
 					"title": "Packaging",
@@ -107,7 +111,7 @@
 				},
 				"warehousing": {
 					"title": "Warehousing",
-					"description": "Strategic Warehousing and Distribution Solutions."
+					"description": "Secure warehousing and distribution for streamlined supply chains."
 				},
 				"exhibition": {
 					"title": "Exhibition Cargo",
@@ -115,7 +119,7 @@
 				},
 				"movingLashing": {
 					"title": "Moving & Lashing",
-					"description": "Professional Relocation and Cargo Securing for Safe Transit.."
+					"description": "Professional Relocation and Cargo Securing for Safe Transit."
 				}
 			},
 			"cta": {
@@ -127,6 +131,72 @@
 		"faq": {
 			"title": "Frequently Asked Questions",
 			"description": "Discover quick answers to the questions our clients ask most. From shipment tracking to specialized cargo handling, our FAQ section covers everything you need to know about Maxline Global's services, capabilities, and commitment to smooth, secure, and on-time delivery."
+		},
+		"industries": {
+			"label": "Industries we serve",
+			"title": "Serving Diverse <accent>Industries Worldwide</accent>",
+			"description": "From automotive plants to energy projects, our solutions fit the demands of your industry.",
+			"list": [
+				{
+					"name": "Automotive",
+					"description": "Specialized logistics for automotive parts and vehicles"
+				},
+				{
+					"name": "Oil & Energy",
+					"description": "Reliable supply chain for energy sector projects"
+				},
+				{
+					"name": "Construction Equipment",
+					"description": "End-to-end manufacturing logistics solutions"
+				},
+				{
+					"name": "Chemical & Pharmaceutical",
+					"description": "Efficient distribution for retail and consumer goods"
+				},
+				{
+					"name": "Healthcare & Medical",
+					"description": "Temperature-controlled logistics for medical supplies"
+				},
+				{
+					"name": "Military & Defense",
+					"description": "Secure logistics support for military operations"
+				}
+			]
+		},
+		"clients": {
+			"title": {
+				"first": "Recognized by",
+				"second": "industry leaders worldwide"
+			},
+			"description": "FIATA certified, ISO compliant, trusted by Fortune 500 companies across continents",
+			"cta": "Know more about Maxline"
+		},
+		"whoWeAre": {
+			"label": "Who We Are",
+			"title": {
+				"first": "Your Reliable Logistics Partner",
+				"highlight": "Across the Globe"
+			},
+			"description": "At Maxline Global, we simplify global trade by delivering reliable, compliant, and cost‑effective logistics solutions. From routine freight movements to complex project cargo, we help businesses move goods confidently across borders.",
+			"cta": "Get Started",
+			"items": {
+				"01": {
+					"title": "Global reach with local expertise",
+					"description": "We operate through a strong international partner network combined with deep local market expertise. Enables efficient navigation of regional regulations, ports, and customs ensuring smooth cross-border movements with minimal delays."
+				},
+				"02": {
+					"title": "Compliance‑driven operations",
+					"description": "Every shipment is handled in strict alignment with international logistics, safety, and trade compliance standards. Our certified processes reduce risk, prevent costly errors, and ensure your cargo moves securely through customs, ports, and borders."
+				},
+				"03": {
+					"title": "Proactive communication",
+					"description": "We believe transparency builds trust. Our team provides regular updates, milestone notifications, and real‑time shipment visibility so you’re always informed and never left guessing about your cargo status."
+				},
+				"04": {
+					"title": "On‑Time, On‑Budget Delivery",
+					"description": "With precise planning, reliable carrier partnerships, and experienced logistics coordination, we deliver shipments as promised meeting timelines and controlling costs without compromising safety or service quality."
+				}
+			}
 		},
 		"faqList": [
 			{
@@ -238,7 +308,29 @@
 		"call": "Call for enquiry",
 		"email": "Send us email",
 		"phone": "+971 4 282 2022",
-		"emailAddress": "enquires@maxlineglobal.com"
+		"emailAddress": "enquires@maxlineglobal.com",
+		"buttons": {
+			"getStarted": "Get started - it’s free",
+			"contactSales": "Contact sales team"
+		},
+		"chips": {
+			"globalReach": {
+				"title": "Global Reach",
+				"description": "Connect to markets worldwide"
+			},
+			"reliableLogistics": {
+				"title": "Reliable Logistics",
+				"description": "Fast, safe, precise delivery"
+			},
+			"seamlessExperience": {
+				"title": "Seamless Experience",
+				"description": "Easy tracking and management"
+			},
+			"endToEndSupport": {
+				"title": "End-to-End Support",
+				"description": "Complete delivery coverage"
+			}
+		}
 	},
 	"Footer": {
 		"slogan1": "Your trusted logistics partner, moving forward,",

@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 import Autoplay from "embla-carousel-autoplay";
 import useEmblaCarousel from "embla-carousel-react";
@@ -11,7 +12,18 @@ import { TRANSITION, useEmblaControls } from "@/components/ui/carousel";
 
 import { INDUSTRIES } from "@/constants/industries";
 
+type IndustryCopy = {
+	name: string;
+	description: string;
+};
+
 export const IndustriesCarousel = () => {
+	const t = useTranslations("HomePage");
+
+	const industriesCopy: IndustryCopy[] = t.raw
+		? (t.raw("industries.list") as IndustryCopy[])
+		: [];
+
 	const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [
 		Autoplay({
 			delay: 1500,
@@ -27,6 +39,10 @@ export const IndustriesCarousel = () => {
 			<div className="overflow-hidden pt-8 pb-4" ref={emblaRef}>
 				<div className="flex touch-pan-y touch-pinch-zoom">
 					{INDUSTRIES.map((item, index) => {
+						const copy = industriesCopy[index];
+						const name = copy?.name ?? item.name;
+						const description = copy?.description ?? item.description;
+
 						const isActive = index === selectedIndex;
 						return (
 							<motion.div
@@ -43,15 +59,15 @@ export const IndustriesCarousel = () => {
 								>
 									<div className="absolute bottom-0 left-0 z-20 px-9 py-6">
 										<h4 className="font-medium text-white text-xl tracking-wide">
-											{item.name}
+											{name}
 										</h4>
 
-										<p>{item.description}</p>
+										<p>{description}</p>
 									</div>
 
 									<div className="absolute inset-x-0 bottom-0 z-10 h-1/3 bg-linear-to-t from-primary" />
 									<Image
-										alt={item.name}
+										alt={name}
 										className="object-cover transition-transform duration-300 ease-in-out group-hover/industry:scale-110"
 										fill
 										src={item.image}

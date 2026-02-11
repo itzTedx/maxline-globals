@@ -7,6 +7,7 @@ import Link from "next/link";
 
 import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
 import { AnimatePresence, motion } from "motion/react";
+import { useTranslations } from "next-intl";
 
 import { Button } from "@/components/ui/button";
 
@@ -15,33 +16,26 @@ import { IconDocument } from "@/assets/icons/document";
 
 import { cn } from "@/lib/utils";
 
-const WHO_WE_ARE = [
+type WhoWeAreItem = {
+	id: string;
+	image: string;
+};
+
+const WHO_WE_ARE_ITEMS: WhoWeAreItem[] = [
 	{
 		id: "01",
-		title: "Global reach with local expertise",
-		description:
-			"We operate through a strong international partner network combined with deep local market expertise. Enables efficient navigation of regional regulations, ports, and customs ensuring smooth cross-border movements with minimal delays.",
 		image: "/images/who-we-are/global-reach.webp",
 	},
 	{
 		id: "02",
-		title: "Compliance‑driven operations",
-		description:
-			"Every shipment is handled in strict alignment with international logistics, safety, and trade compliance standards. Our certified processes reduce risk, prevent costly errors, and ensure your cargo moves securely through customs, ports, and borders.",
 		image: "/images/who-we-are/compliance.webp",
 	},
 	{
 		id: "03",
-		title: "Proactive communication",
-		description:
-			"We believe transparency builds trust. Our team provides regular updates, milestone notifications, and real‑time shipment visibility so you’re always informed and never left guessing about your cargo status.",
 		image: "/images/who-we-are/proactive.webp",
 	},
 	{
 		id: "04",
-		title: "On‑Time, On‑Budget Delivery",
-		description:
-			"With precise planning, reliable carrier partnerships, and experienced logistics coordination, we deliver shipments as promised meeting timelines and controlling costs without compromising safety or service quality.",
 		image: "/images/who-we-are/on-time.webp",
 	},
 ];
@@ -49,19 +43,21 @@ const WHO_WE_ARE = [
 const AUTO_PLAY_DURATION = 5000;
 
 export function WhoWeAre() {
+	const t = useTranslations("HomePage");
+
 	const [activeIndex, setActiveIndex] = useState(0);
 	const [direction, setDirection] = useState(0);
 	const [isPaused, setIsPaused] = useState(false);
 
 	const handleNext = useCallback(() => {
 		setDirection(1);
-		setActiveIndex((prev) => (prev + 1) % WHO_WE_ARE.length);
+		setActiveIndex((prev) => (prev + 1) % WHO_WE_ARE_ITEMS.length);
 	}, []);
 
 	const handlePrev = useCallback(() => {
 		setDirection(-1);
 		setActiveIndex(
-			(prev) => (prev - 1 + WHO_WE_ARE.length) % WHO_WE_ARE.length
+			(prev) => (prev - 1 + WHO_WE_ARE_ITEMS.length) % WHO_WE_ARE_ITEMS.length
 		);
 	}, []);
 
@@ -108,18 +104,17 @@ export function WhoWeAre() {
 					<div className="mb-6 space-y-3 md:mb-12">
 						<span className="flex items-center gap-3 text-muted-foreground">
 							<IconDocument />
-							Who We Are
+							{t("whoWeAre.label")}
 						</span>
 						<h2 className="text-balance font-display font-semibold text-3xl text-primary uppercase md:text-4xl lg:text-6xl">
-							Your Reliable Logistics Partner{" "}
-							<span className="text-accent-secondary">Across the Globe</span>
+							{t("whoWeAre.title.first")}{" "}
+							<span className="text-accent-secondary">
+								{t("whoWeAre.title.highlight")}
+							</span>
 						</h2>
 
 						<p className="text-muted-foreground leading-relaxed">
-							At Maxline Global, we simplify global trade by delivering
-							reliable, compliant, and cost‑effective logistics solutions. From
-							routine freight movements to complex project cargo, we help
-							businesses move goods confidently across borders.
+							{t("whoWeAre.description")}
 						</p>
 
 						<Button
@@ -128,13 +123,14 @@ export function WhoWeAre() {
 							variant="secondary"
 						>
 							<Link href="/quote">
-								Get Started <IconCaretRight className="ml-4" />
+								{t("whoWeAre.cta")}{" "}
+								<IconCaretRight className="ms-4 rtl:rotate-180" />
 							</Link>
 						</Button>
 					</div>
 
 					<div className="flex flex-col space-y-0">
-						{WHO_WE_ARE.map((service, index) => {
+						{WHO_WE_ARE_ITEMS.map((item, index) => {
 							const isActive = activeIndex === index;
 							return (
 								<button
@@ -144,7 +140,7 @@ export function WhoWeAre() {
 											? "text-foreground"
 											: "text-muted-foreground/60 hover:text-foreground"
 									)}
-									key={service.id}
+									key={item.id}
 									onClick={() => handleTabClick(index)}
 								>
 									<div className="absolute top-0 bottom-0 left-[-16px] w-[2px] bg-muted md:left-[-24px]">
@@ -165,7 +161,7 @@ export function WhoWeAre() {
 									</div>
 
 									<span className="mt-2 font-medium text-[9px] tabular-nums opacity-50 md:text-[10px]">
-										{service.id}
+										{item.id}
 									</span>
 
 									<span
@@ -174,7 +170,7 @@ export function WhoWeAre() {
 											isActive ? "font-medium text-foreground" : ""
 										)}
 									>
-										{service.title}
+										{t(`whoWeAre.items.${item.id}.title`)}
 									</span>
 								</button>
 							);
@@ -190,11 +186,13 @@ export function WhoWeAre() {
 					>
 						<div className="space-y-2 p-6">
 							<h3 className="font-medium text-3xl text-accent-secondary">
-								{WHO_WE_ARE[activeIndex].title}
+								{t(`whoWeAre.items.${WHO_WE_ARE_ITEMS[activeIndex].id}.title`)}
 							</h3>
 
 							<p className="font-normal text-lg text-muted-foreground leading-relaxed md:text-xl">
-								{WHO_WE_ARE[activeIndex].description}
+								{t(
+									`whoWeAre.items.${WHO_WE_ARE_ITEMS[activeIndex].id}.description`
+								)}
 							</p>
 						</div>
 
@@ -220,10 +218,12 @@ export function WhoWeAre() {
 										variants={variants}
 									>
 										<Image
-											alt={WHO_WE_ARE[activeIndex].title}
+											alt={t(
+												`whoWeAre.items.${WHO_WE_ARE_ITEMS[activeIndex].id}.title`
+											)}
 											className="m-0! block h-full w-full object-cover p-0! transition-transform duration-700 hover:scale-105"
 											fill
-											src={WHO_WE_ARE[activeIndex].image}
+											src={WHO_WE_ARE_ITEMS[activeIndex].image}
 										/>
 
 										<div className="absolute inset-x-0 bottom-0 h-1/3 bg-linear-to-t from-black/20 via-transparent to-transparent opacity-60" />
