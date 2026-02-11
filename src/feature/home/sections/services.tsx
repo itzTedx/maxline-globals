@@ -29,7 +29,7 @@ export const Services = memo(() => {
 					</span>
 					<div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 lg:gap-8">
 						<h2
-							className="text-balance pb-6 font-semibold text-2xl text-primary sm:pb-8 sm:text-3xl md:pb-10 md:text-4xl lg:pb-20 lg:text-5xl rtl:leading-snug"
+							className="text-balance font-semibold text-2xl text-primary sm:pb-6 sm:text-3xl md:pb-10 md:text-4xl lg:pb-20 lg:text-5xl rtl:leading-snug"
 							id="services-heading"
 							itemProp="name"
 						>
@@ -52,7 +52,12 @@ export const Services = memo(() => {
 							</Button>
 						</div>
 					</div>
-					<div itemProp="offers" itemScope itemType="https://schema.org/Offer">
+					<div
+						className="mt-8 md:mt-0"
+						itemProp="offers"
+						itemScope
+						itemType="https://schema.org/Offer"
+					>
 						<ServicesGrid services={SERVICES} />
 					</div>
 				</div>

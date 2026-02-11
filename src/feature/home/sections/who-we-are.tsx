@@ -14,52 +14,54 @@ import { IconDocument } from "@/assets/icons/document";
 
 import { cn } from "@/lib/utils";
 
-const SERVICES = [
+const WHO_WE_ARE = [
 	{
 		id: "01",
 		title: "Global reach with local expertise",
 		description:
 			"We operate through a strong international partner network combined with deep local market expertise. Enables efficient navigation of regional regulations, ports, and customs ensuring smooth cross-border movements with minimal delays.",
-		image: "/images/warehouse.webp",
+		image: "/images/who-we-are/global-reach.webp",
 	},
 	{
 		id: "02",
 		title: "Compliance‑driven operations",
 		description:
 			"Every shipment is handled in strict alignment with international logistics, safety, and trade compliance standards. Our certified processes reduce risk, prevent costly errors, and ensure your cargo moves securely through customs, ports, and borders.",
-		image: "/images/warehouse.webp",
+		image: "/images/who-we-are/compliance.webp",
 	},
 	{
 		id: "03",
 		title: "Proactive communication",
 		description:
 			"We believe transparency builds trust. Our team provides regular updates, milestone notifications, and real‑time shipment visibility so you’re always informed and never left guessing about your cargo status.",
-		image: "/images/warehouse.webp",
+		image: "/images/airplane-container.webp",
 	},
 	{
 		id: "04",
 		title: "On‑Time, On‑Budget Delivery",
 		description:
 			"With precise planning, reliable carrier partnerships, and experienced logistics coordination, we deliver shipments as promised meeting timelines and controlling costs without compromising safety or service quality.",
-		image: "/images/warehouse.webp",
+		image: "/images/who-we-are/on-time.webp",
 	},
 ];
 
 const AUTO_PLAY_DURATION = 5000;
 
-export default function WhoWeAre() {
+export function WhoWeAre() {
 	const [activeIndex, setActiveIndex] = useState(0);
 	const [direction, setDirection] = useState(0);
 	const [isPaused, setIsPaused] = useState(false);
 
 	const handleNext = useCallback(() => {
 		setDirection(1);
-		setActiveIndex((prev) => (prev + 1) % SERVICES.length);
+		setActiveIndex((prev) => (prev + 1) % WHO_WE_ARE.length);
 	}, []);
 
 	const handlePrev = useCallback(() => {
 		setDirection(-1);
-		setActiveIndex((prev) => (prev - 1 + SERVICES.length) % SERVICES.length);
+		setActiveIndex(
+			(prev) => (prev - 1 + WHO_WE_ARE.length) % WHO_WE_ARE.length
+		);
 	}, []);
 
 	const handleTabClick = (index: number) => {
@@ -99,10 +101,10 @@ export default function WhoWeAre() {
 
 	return (
 		<section className="mx-auto w-full max-w-7xl py-8 md:py-16 lg:py-20">
-			<div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-12 lg:gap-16">
+			<div className="grid grid-cols-1 items-start gap-4 sm:gap-6 md:gap-12 lg:grid-cols-12 lg:gap-16">
 				{/* Left Column: Content */}
-				<div className="order-2 flex flex-col justify-center pt-4 lg:order-1 lg:col-span-5">
-					<div className="mb-12 space-y-3">
+				<div className="order-2 flex flex-col justify-center px-6 pt-4 md:px-0 lg:order-1 lg:col-span-5">
+					<div className="mb-6 space-y-3 md:mb-12">
 						<span className="flex items-center gap-3 text-muted-foreground">
 							<IconDocument />
 							Who We Are
@@ -125,7 +127,7 @@ export default function WhoWeAre() {
 					</div>
 
 					<div className="flex flex-col space-y-0">
-						{SERVICES.map((service, index) => {
+						{WHO_WE_ARE.map((service, index) => {
 							const isActive = activeIndex === index;
 							return (
 								<button
@@ -144,7 +146,7 @@ export default function WhoWeAre() {
 												animate={
 													isPaused ? { height: "0%" } : { height: "100%" }
 												}
-												className="absolute top-0 left-0 w-full origin-top bg-foreground"
+												className="absolute top-0 left-0 w-full origin-top bg-accent"
 												initial={{ height: "0%" }}
 												key={`progress-${index}-${isPaused}`}
 												transition={{
@@ -179,18 +181,18 @@ export default function WhoWeAre() {
 						onMouseEnter={() => setIsPaused(true)}
 						onMouseLeave={() => setIsPaused(false)}
 					>
-						<div className="p-6">
-							<h3 className="font-semibold text-2xl">
-								{SERVICES[activeIndex].title}
+						<div className="space-y-2 p-6">
+							<h3 className="font-medium text-3xl text-accent-secondary">
+								{WHO_WE_ARE[activeIndex].title}
 							</h3>
 
-							<p className="font-normal text-muted-foreground text-sm leading-relaxed md:text-xl">
-								{SERVICES[activeIndex].description}
+							<p className="font-normal text-lg text-muted-foreground leading-relaxed md:text-xl">
+								{WHO_WE_ARE[activeIndex].description}
 							</p>
 						</div>
 
 						<div className="rounded-2xl bg-secondary p-2 shadow-sm">
-							<div className="relative aspect-4/5 overflow-hidden rounded-2xl border border-border/40 bg-muted/30 md:aspect-6/4">
+							<div className="relative aspect-5/4 overflow-hidden rounded-2xl border border-border/40 bg-muted/30 md:aspect-6/4">
 								<AnimatePresence
 									custom={direction}
 									initial={false}
@@ -211,10 +213,10 @@ export default function WhoWeAre() {
 										variants={variants}
 									>
 										<Image
-											alt={SERVICES[activeIndex].title}
+											alt={WHO_WE_ARE[activeIndex].title}
 											className="m-0! block h-full w-full object-cover p-0! transition-transform duration-700 hover:scale-105"
 											fill
-											src={SERVICES[activeIndex].image}
+											src={WHO_WE_ARE[activeIndex].image}
 										/>
 
 										<div className="absolute inset-x-0 bottom-0 h-1/3 bg-linear-to-t from-black/20 via-transparent to-transparent opacity-60" />

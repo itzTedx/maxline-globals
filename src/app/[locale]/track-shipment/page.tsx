@@ -56,7 +56,7 @@ export default async function TrackingRedirect({
 	const t = await getTranslations("TrackingPage");
 	return (
 		<main
-			className="relative z-10 overflow-hidden rounded-b-3xl bg-background pb-20 shadow-xl"
+			className="relative z-10 overflow-hidden"
 			itemScope
 			itemType="https://schema.org/WebPage"
 		>

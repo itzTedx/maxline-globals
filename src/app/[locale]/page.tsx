@@ -15,7 +15,7 @@ import { Faqs } from "@/feature/home/sections/faq";
 import { HeroSection } from "@/feature/home/sections/hero";
 import { Industries } from "@/feature/home/sections/industries";
 import { Services } from "@/feature/home/sections/services";
-import WhoWeAre from "@/feature/home/sections/who-we-are";
+import {WhoWeAre} from "@/feature/home/sections/who-we-are";
 import { InsightsCarousel } from "@/feature/insights/components/insights";
 
 type Props = {

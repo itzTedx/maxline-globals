@@ -7,7 +7,7 @@ import { CLIENTS } from "@/constants/clients";
 export const Clients = () => {
 	return (
 		<section className="relative">
-			<div className="container relative z-10 grid grid-cols-1 gap-30 py-12 sm:py-14 md:grid-cols-2 md:py-16 lg:py-20">
+			<div className="container relative z-10 grid grid-cols-1 gap-9 py-12 sm:gap-12 sm:py-14 md:grid-cols-2 md:gap-30 md:py-16 lg:py-20">
 				<div className="space-y-4">
 					<h2 className="font-medium text-3xl text-primary md:text-5xl">
 						Recognized by{" "}

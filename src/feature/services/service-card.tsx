@@ -34,7 +34,7 @@ export const ServiceCard = ({
 			/>
 			<div className="relative z-11 p-6 text-secondary sm:p-8 md:p-10 lg:p-14">
 				<h3
-					className="mb-2 font-grotesk text-xl sm:text-2xl md:text-3xl lg:text-4xl"
+					className="mb-2 font-display font-semibold text-3xl text-shadow-accent-tertiary/50 text-shadow-sm uppercase tracking-wide lg:text-4xl"
 					itemProp="name"
 				>
 					{t(
@@ -44,7 +44,7 @@ export const ServiceCard = ({
 					)}
 				</h3>
 				<p
-					className="max-w-xs text-balance font-light text-sm sm:text-base md:text-lg lg:text-xl"
+					className="max-w-48 text-balance font-light text-shadow-accent-tertiary/50 text-shadow-sm text-sm sm:text-base md:max-w-xs md:text-lg lg:text-xl"
 					itemProp="description"
 				>
 					{service.description}
@@ -55,13 +55,13 @@ export const ServiceCard = ({
 					)} */}
 				</p>
 
-				<Button className="mt-6 w-full sm:mt-7 sm:w-auto md:mt-9">
+				<Button className="mt-6 sm:mt-7 md:mt-9">
 					Explore more{" "}
 					<IconArrowRightTag className="ml-2 size-4 sm:ml-4 sm:size-5" />
 				</Button>
 			</div>
 
-			<div className="absolute top-0 right-0 z-10 aspect-square h-full">
+			<div className="absolute -end-12 top-0 z-10 aspect-square h-full md:end-0">
 				<Image
 					alt={`${service.title} service illustration`}
 					className="object-contain transition-transform duration-500 ease-out ltr:scale-110 ltr:group-hover:scale-100 rtl:-scale-x-100"

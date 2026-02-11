@@ -53,7 +53,7 @@ export const Faqs = () => {
 					itemType="https://schema.org/Question"
 				>
 					<h2
-						className="font-medium text-primary text-xl md:text-2xl"
+						className="font-display font-semibold text-3xl text-primary uppercase md:text-4xl"
 						id="faq-heading"
 					>
 						<StaggeredText

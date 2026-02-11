@@ -11,10 +11,10 @@ import { IconCaretRight } from "@/assets/icons/caret";
 export const HeroSection = () => {
 	const t = useTranslations("HomePage");
 	return (
-		<section className="relative z-10 flex min-h-[calc(100svh-calc(var(--spacing)*16))] items-end overflow-hidden">
+		<section className="relative z-10 flex min-h-[75svh] items-end overflow-hidden md:min-h-[calc(100svh-calc(var(--spacing)*16))]">
 			<div className="relative z-10 px-6 py-12 sm:py-14 md:px-12 md:py-16 lg:px-24 lg:py-32">
-				<div className="grid grid-cols-[1fr_0.5fr] gap-16">
-					<h1 className="font-bold font-display text-3xl text-secondary uppercase sm:text-4xl md:text-5xl lg:text-8xl">
+				<div className="grid gap-4 sm:gap-8 md:grid-cols-[1fr_0.5fr] md:gap-16">
+					<h1 className="font-bold font-display text-5xl text-secondary uppercase sm:text-6xl md:text-7xl lg:text-8xl">
 						<StaggeredText
 							duration={0.3}
 							staggerChildren={0.01}
@@ -65,7 +65,7 @@ export const HeroSection = () => {
 				preload="auto"
 				src="/videos/hero-reel.webm"
 			/>
-			<div className="pointer-events-none absolute inset-x-0 bottom-0 z-1 h-[75%] bg-linear-0 from-foreground" />
+			<div className="pointer-events-none absolute inset-x-0 bottom-0 z-1 h-full bg-linear-0 from-foreground md:h-[75%]" />
 		</section>
 	);
 };
