@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 
 import Image from "next/image";
+import Link from "next/link";
 
 import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
 import { AnimatePresence, motion } from "motion/react";
@@ -121,8 +122,14 @@ export function WhoWeAre() {
 							businesses move goods confidently across borders.
 						</p>
 
-						<Button className="bg-primary text-secondary" variant="secondary">
-							Get Started <IconCaretRight className="ml-4" />
+						<Button
+							asChild
+							className="bg-primary text-secondary"
+							variant="secondary"
+						>
+							<Link href="/quote">
+								Get Started <IconCaretRight className="ml-4" />
+							</Link>
 						</Button>
 					</div>
 

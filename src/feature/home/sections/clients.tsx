@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { Button } from "@/components/ui/button";
 
 import { IconCaretRight } from "@/assets/icons/caret";
@@ -19,8 +21,14 @@ export const Clients = () => {
 						FIATA certified, ISO compliant, trusted by Fortune 500 companies
 						across continents
 					</p>
-					<Button className="bg-primary text-secondary" variant="secondary">
-						Know more about Maxline <IconCaretRight className="ml-4" />
+					<Button
+						asChild
+						className="bg-primary text-secondary"
+						variant="secondary"
+					>
+						<Link href="/about">
+							Know more about Maxline <IconCaretRight className="ml-4" />
+						</Link>
 					</Button>
 				</div>
 				<ul className="grid grid-cols-2 gap-4">

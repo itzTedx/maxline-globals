@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Script from "next/script";
 
 import { useTranslations } from "next-intl";
@@ -89,8 +90,10 @@ export const Faqs = () => {
 							</AccordionItem>
 						))}
 					</Accordion>
-					<Button className="mt-3" variant="secondary">
-						Get Started <IconArrowRightTag className="ml-4" />
+					<Button asChild className="mt-3" variant="secondary">
+						<Link href="/contact">
+							Get Started <IconArrowRightTag className="ml-4" />
+						</Link>
 					</Button>
 				</div>
 				<video

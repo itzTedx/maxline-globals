@@ -1,5 +1,7 @@
 import { memo } from "react";
 
+import Link from "next/link";
+
 import { StaggeredText } from "@/components/animation/staggered-text";
 import { Button } from "@/components/ui/button";
 
@@ -46,9 +48,11 @@ export const Services = memo(() => {
 								supply chains flexible, scalable, and tailored to your exact
 								requirements.
 							</p>
-							<Button className="w-full sm:w-auto" variant="secondary">
-								Explore services
-								<IconArrowRightTag className="ml-2 size-4 sm:ml-4" />
+							<Button asChild className="w-full sm:w-auto" variant="secondary">
+								<Link href="/services">
+									Explore services{" "}
+									<IconArrowRightTag className="ml-2 size-4 sm:ml-4" />
+								</Link>
 							</Button>
 						</div>
 					</div>
