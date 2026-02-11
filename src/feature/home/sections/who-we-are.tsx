@@ -34,7 +34,7 @@ const WHO_WE_ARE = [
 		title: "Proactive communication",
 		description:
 			"We believe transparency builds trust. Our team provides regular updates, milestone notifications, and real‑time shipment visibility so you’re always informed and never left guessing about your cargo status.",
-		image: "/images/airplane-container.webp",
+		image: "/images/who-we-are/proactive.webp",
 	},
 	{
 		id: "04",
