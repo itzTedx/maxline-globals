@@ -4,6 +4,7 @@ import Link from "next/link";
 
 import { useTranslations } from "next-intl";
 
+import { StaggeredText } from "@/components/animation/staggered-text";
 import { Button } from "@/components/ui/button";
 
 import { IconArrowRightTag } from "@/assets/icons/arrow";
@@ -22,19 +23,18 @@ export const HeroSection = () => {
 			<div className="relative z-10 px-6 py-12 sm:py-14 md:px-12 md:py-16 lg:px-24 lg:py-32">
 				<div className="grid gap-4 sm:gap-8 md:grid-cols-[1fr_0.5fr] md:gap-16">
 					<h1 className="font-bold font-display text-5xl text-secondary uppercase sm:text-6xl md:text-7xl lg:text-8xl">
-						En Shalu ma, En Nilla, En Maanu
-						{/* <StaggeredText
+						<StaggeredText
 							duration={0.3}
 							staggerChildren={0.01}
 							text={t("hero.title.firstLine")}
-						/> 
+						/>
 						<span className="text-accent">
 							<StaggeredText
 								duration={0.3}
 								staggerChildren={0.01}
 								text={t("hero.title.secondLine")}
 							/>
-						</span> */}
+						</span>
 					</h1>
 					<div>
 						<p className="text-balance font-light text-lg text-secondary md:text-xl lg:text-2xl">
