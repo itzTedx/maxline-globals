@@ -139,7 +139,7 @@ export const SERVICES: Service[] = [
 		description:
 			"Secure warehousing and distribution for streamlined supply chains.",
 		href: "/services/warehousing" as Route,
-		image: "/images/services/warehousing.png",
+		image: "/images/services/warehouse.webp",
 	},
 	{
 		title: "exhibition",
@@ -152,7 +152,7 @@ export const SERVICES: Service[] = [
 		title: "movingLashing",
 		description: "Professional Relocation and Cargo Securing for Safe Transit.",
 		href: "/services/movers-lashing" as Route,
-		image: "/images/services/movers.png",
+		image: "/images/services/lashing.webp",
 	},
 ] as const;
 
