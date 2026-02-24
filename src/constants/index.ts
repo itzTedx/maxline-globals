@@ -325,6 +325,7 @@ export const LOCATIONS = [
 		email: "mgmt@maxlineglobal.com",
 		link: "https://maps.app.goo.gl/NKv7BZdvjXhfWujx5",
 		image: "/images/mumbai.jpg",
+		slug: "india",
 	},
 	{
 		title: "Maxline Oman",

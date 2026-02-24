@@ -1,4 +1,6 @@
+import { Route } from "next";
 import Image from "next/image";
+import Link from "next/link";
 
 import { StaggeredText } from "@/components/animation/staggered-text";
 import { Button } from "@/components/ui/custom-button";
@@ -11,6 +13,7 @@ export interface LocationItem {
 	email: string;
 	link: string;
 	image: string;
+	slug?: string;
 }
 
 export interface LocationCardLabels {
@@ -45,12 +48,26 @@ export function LocationCard({ labels, location: loc }: LocationCardProps) {
 					<p className="pb-2 font-light text-accent-tertiary" dir="ltr">
 						<StaggeredText text={loc.title} />
 					</p>
-					<h4
-						className="px-4 pb-4 font-grotesk font-semibold text-2xl text-primary"
-						dir="ltr"
-					>
-						<StaggeredText text={loc.address} />
-					</h4>
+					{loc.slug ? (
+						<Link
+							href={`/company/location/${loc.slug}` as Route}
+							target="_blank"
+						>
+							<h4
+								className="px-4 pb-4 font-grotesk font-semibold text-2xl text-primary"
+								dir="ltr"
+							>
+								<StaggeredText text={loc.address} />
+							</h4>
+						</Link>
+					) : (
+						<h4
+							className="px-4 pb-4 font-grotesk font-semibold text-2xl text-primary"
+							dir="ltr"
+						>
+							<StaggeredText text={loc.address} />
+						</h4>
+					)}
 					<ul className="mb-4 divide-y divide-primary/10 text-muted-foreground">
 						<li className="py-1" dir="ltr">
 							<StaggeredText
