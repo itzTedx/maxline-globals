@@ -247,6 +247,46 @@ export default async function ContactPage({
 						))}
 					</ul>
 				</section>
+
+				<section className="container py-10 md:py-16 lg:py-20">
+					<div className="mx-auto max-w-7xl space-y-3">
+						<h2 className="font-semibold text-accent-secondary text-xs uppercase tracking-[0.18em] md:text-sm">
+							Max Line Global Vaahika Limited
+						</h2>
+						<div className="space-y-3 text-brand-gray text-xs leading-relaxed md:text-sm">
+							<p className="text-justify">
+								Max Line Global Vaahika Limited is a professionally managed
+								logistics and freight solutions organization with a strong
+								operational presence in India. The company originally commenced
+								operations in 2013 under the name Max Line Inc., building a
+								reputation for reliability, service excellence, and
+								customer-focused logistics solutions.
+							</p>
+							<p className="text-justify">
+								In recognition of its sustained business growth, expanding
+								service portfolio, and the continued trust of its clients and
+								partners, the organization was restructured in 2021 and formally
+								incorporated as a Public Limited Company under the name Max Line
+								Global Vaahika Limited. This transition marked a significant
+								milestone in the company&apos;s journey toward greater scale,
+								stronger governance, and enhanced global capabilities.
+							</p>
+							<p className="text-justify">
+								Max Line India is also registered under the Ministry of Micro,
+								Small &amp; Medium Enterprises (MSME), Government of India,
+								holding Udyam Registration No.: Udyam-MH-17-0031335, reflecting
+								its recognized contribution to India&apos;s growing logistics
+								and trade ecosystem.
+							</p>
+							<p className="text-justify">
+								With a commitment to operational excellence, regulatory
+								compliance, and customer satisfaction, Max Line continues to
+								deliver dependable, efficient, and scalable logistics solutions
+								to clients across diverse industries.
+							</p>
+						</div>
+					</div>
+				</section>
 				<Cta />
 			</main>
 		</>
