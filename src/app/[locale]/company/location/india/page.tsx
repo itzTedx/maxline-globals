@@ -1,6 +1,78 @@
+import { Metadata } from "next";
 import Image from "next/image";
+import Script from "next/script";
 
 import { LOCATIONS } from "@/constants";
+import { siteConfig } from "@/constants/site-config";
+
+export async function generateMetadata({
+	params,
+}: {
+	params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+	const { locale } = await params;
+
+	const title = "India Operations Office | Max Line Global Vaahika Limited";
+	const description =
+		"Max Line Global Vaahika Limited's India operations office in Mumbai provides multimodal logistics, end-to-end freight forwarding, and compliance-driven supply chain solutions for domestic and international cargo.";
+	const keywords = [
+		"Max Line Global",
+		"India operations office",
+		"Mumbai logistics",
+		"India freight forwarding",
+		"India supply chain solutions",
+	];
+
+	const pageUrl = `${siteConfig.site}/${locale}/company/location/india`;
+	const imageUrl = "/images/mumbai.jpg";
+
+	return {
+		title,
+		description,
+		keywords: [...siteConfig.keywords, ...keywords],
+		openGraph: {
+			title,
+			description,
+			type: "website",
+			url: pageUrl,
+			locale: locale === "ar" ? "ar_SA" : "en_US",
+			alternateLocale: ["ar_SA", "en_US"],
+			siteName: siteConfig.name,
+			images: [
+				{
+					url: imageUrl,
+					width: siteConfig.image.width,
+					height: siteConfig.image.height,
+					alt: "India Operations Office - Max Line Global Vaahika Limited",
+				},
+			],
+		},
+		twitter: {
+			card: "summary_large_image",
+			title,
+			description,
+			images: [imageUrl],
+		},
+		robots: {
+			index: true,
+			follow: true,
+			googleBot: {
+				index: true,
+				follow: true,
+				"max-video-preview": -1,
+				"max-image-preview": "large",
+				"max-snippet": -1,
+			},
+		},
+		alternates: {
+			canonical: pageUrl,
+			languages: {
+				en: `${siteConfig.site}/en/company/location/india`,
+				ar: `${siteConfig.site}/ar/company/location/india`,
+			},
+		},
+	};
+}
 
 export default function LocationPage() {
 	const indiaLocation = LOCATIONS.find((location) => location.slug === "india");
@@ -9,8 +81,27 @@ export default function LocationPage() {
 		return null;
 	}
 
+	const locationSchema = {
+		"@context": "https://schema.org",
+		"@type": "LocalBusiness",
+		name: indiaLocation.title,
+		description:
+			"India operations office of Max Line Global Vaahika Limited providing multimodal logistics, freight forwarding, and supply chain solutions from Mumbai.",
+		url: `${siteConfig.site}/company/location/india`,
+		telephone: indiaLocation.phone,
+		address: {
+			"@type": "PostalAddress",
+			streetAddress: indiaLocation.address,
+			addressCountry: "IN",
+		},
+	};
+
 	return (
-		<main className="bg-background">
+		<>
+			<Script id="india-location-schema" type="application/ld+json">
+				{JSON.stringify(locationSchema)}
+			</Script>
+			<main className="bg-background">
 			<div className="mx-auto w-full max-w-5xl px-4 py-10 md:px-6 md:py-16 lg:max-w-6xl lg:px-8 lg:py-20">
 				<article className="space-y-10 md:space-y-12">
 					<header className="space-y-4 border-border/60 border-b pb-8">
@@ -152,6 +243,7 @@ export default function LocationPage() {
 					</section>
 				</article>
 			</div>
-		</main>
+			</main>
+		</>
 	);
 }

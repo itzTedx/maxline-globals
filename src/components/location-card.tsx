@@ -54,7 +54,7 @@ export function LocationCard({ labels, location: loc }: LocationCardProps) {
 							target="_blank"
 						>
 							<h4
-								className="px-4 pb-4 font-grotesk font-semibold text-2xl text-primary"
+								className="px-4 pb-4 font-grotesk font-semibold text-2xl text-primary transition-colors hover:text-accent-secondary"
 								dir="ltr"
 							>
 								<StaggeredText text={loc.address} />

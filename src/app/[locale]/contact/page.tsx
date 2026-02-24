@@ -24,7 +24,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
 	const { locale } = await params;
 
-	const t = await getTranslations("meta.about");
+	const t = await getTranslations("meta.contact");
 
 	const title = t("title");
 	const description = t("description");
