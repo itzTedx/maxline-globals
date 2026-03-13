@@ -19,12 +19,12 @@ export const Hero = ({
 		<>
 			<section
 				aria-labelledby="overview-title"
-				className="relative overflow-hidden bg-white"
+				className="relative min-h-[50svh] overflow-hidden bg-white"
 				id="overview"
 				itemScope
 				itemType="https://schema.org/Service"
 			>
-				<div className="container grid min-h-[50svh] grid-cols-1 gap-3 py-8 md:grid-cols-2 md:py-12">
+				<div className="container grid grid-cols-1 gap-3 py-8 md:grid-cols-2 md:py-12">
 					<div className="flex flex-col items-start justify-center">
 						<h2
 							className="font-display font-semibold text-4xl text-accent-tertiary uppercase md:text-6xl/16"
@@ -49,22 +49,19 @@ export const Hero = ({
 							</Link>
 						</Button>
 					</div>
-					<div
-						className="absolute top-0 right-0 h-[150px] md:h-auto"
-						itemProp="image"
-					>
-						<Image
-							alt={image.alt}
-							className="h-full w-full object-contain"
-							height={image.height}
-							loading="eager"
-							priority
-							quality={90}
-							sizes="(max-width: 768px) 100vw, 50vw"
-							src={image.src}
-							width={image.width}
-						/>
-					</div>
+				</div>
+				<div className="top-0 right-0 md:absolute md:h-auto" itemProp="image">
+					<Image
+						alt={image.alt}
+						className="h-full w-full object-contain"
+						height={image.height}
+						loading="eager"
+						priority
+						quality={90}
+						sizes="(max-width: 768px) 100vw, 50vw"
+						src={image.src}
+						width={image.width}
+					/>
 				</div>
 			</section>
 		</>

@@ -130,7 +130,7 @@ export const SERVICES = [
 			description:
 				"Swift air freight solutions for global reach—time-sensitive cargo delivered with precision, speed, and reliability.",
 			image: {
-				src: "/images/services/air.webp",
+				src: "/images/services/air.png",
 				alt: "Maxline Global's air freight services with a cargo aircraft in action",
 				width: 816,
 				height: 626,
@@ -248,7 +248,7 @@ export const SERVICES = [
 			description:
 				"Cost-effective and reliable sea freight solutions—FCL, LCL, and project cargo shipping with global reach and expert handling.",
 			image: {
-				src: "/images/services/sea.webp",
+				src: "/images/services/sea.png",
 				alt: "Maxline Global's sea freight cargo ship representing international ocean shipping capabilities",
 				width: 816,
 				height: 626,
@@ -366,7 +366,7 @@ export const SERVICES = [
 			description:
 				"Specialized project cargo logistics—oversized, heavy-lift, and time-critical shipments delivered with precision and end-to-end coordination.",
 			image: {
-				src: "/images/services/project-cargo.webp",
+				src: "/images/services/project-cargo.png",
 				alt: "Maxline Global handling large project cargo with cranes and specialized equipment",
 				width: 816,
 				height: 626,
@@ -484,7 +484,7 @@ export const SERVICES = [
 			description:
 				"Professional packing and crating solutions—ensuring the safety, compliance, and integrity of your cargo for any mode of transport.",
 			image: {
-				src: "/images/services/packing.webp",
+				src: "/images/services/packing.png",
 				alt: "Maxline Global's expert packing team securing cargo in wooden crates",
 				width: 816,
 				height: 626,
@@ -605,7 +605,7 @@ export const SERVICES = [
 			description:
 				"Strategic warehousing solutions—secure storage, inventory management, and last-mile distribution tailored to your business.",
 			image: {
-				src: "/images/services/warehousing.webp",
+				src: "/images/services/warehouse.webp",
 				alt: "Maxline Global’s secure warehouse facility with racked storage and forklift operations",
 				width: 816,
 				height: 626,
@@ -717,7 +717,7 @@ export const SERVICES = [
 			description:
 				"Reliable and time-critical logistics for exhibitions and events—door-to-stand delivery with full customs and venue coordination.",
 			image: {
-				src: "/images/exhibition-cargo.webp",
+				src: "/images/services/crane.png",
 				alt: "Maxline Global team handling exhibition cargo with booths and crates at an event venue",
 				width: 816,
 				height: 626,
@@ -832,10 +832,10 @@ export const SERVICES = [
 			description:
 				"Secure and professional cargo lashing, securing, and relocation services—ensuring safe transport for local and international moves.",
 			image: {
-				src: "/images/services/movers.webp",
+				src: "/images/services/lashing.webp",
 				alt: "Maxline Global team performing container lashing and industrial moving services",
 				width: 816,
-				height: 800,
+				height: 600,
 			},
 			ctaLink: "#features",
 			ctaText: "Learn More",
