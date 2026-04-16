@@ -216,7 +216,7 @@ declare const messages: {
 		x: "إكس";
 		copyright: "© {year} ماكسلاين جلوبال. جميع الحقوق محفوظة.";
 		designedBy: "تصميم وتطوير بواسطة {agency}";
-		agencyName: "زيرون ميديا";
+		agencyName: "زيرون برو";
 		airFreight: "الشحن الجوي";
 		seaFreight: "الشحن البحري";
 		landFreight: "الشحن البري";

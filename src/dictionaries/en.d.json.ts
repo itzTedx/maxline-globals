@@ -258,7 +258,7 @@ declare const messages: {
 		x: "X";
 		copyright: "© {year} Maxline Global. All Rights Reserved.";
 		designedBy: "Designed & Developed by {agency}";
-		agencyName: "Ziron Media";
+		agencyName: "Ziron Pro";
 		airFreight: "Air Freight";
 		seaFreight: "Sea Freight";
 		landFreight: "Land Freight";

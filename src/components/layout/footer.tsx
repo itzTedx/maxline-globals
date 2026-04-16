@@ -115,7 +115,7 @@ export const Footer = () => {
 				</p>
 				<Link
 					className="font-light text-muted-foreground text-xs"
-					href="https://www.zironmedia.com?utm_source=maxline&utm_medium=website&utm_campaign=footer_credit&utm_content=designed_by"
+					href="https://www.zironpro.ae?utm_source=maxline&utm_medium=website&utm_campaign=footer_credit&utm_content=designed_by"
 				>
 					{t("designedBy", { agency: t("agencyName") })}
 				</Link>
