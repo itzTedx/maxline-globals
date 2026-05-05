@@ -1,9 +1,10 @@
 "use client";
 
-import { lazy, useEffect, useState } from "react";
+import { lazy, useState, useTransition } from "react";
 
 import { Calculator, Package, Scale } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -17,6 +18,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
+
+import { sendLeadEmail } from "../actions/lead-action";
 
 const LazyMotion = lazy(() =>
 	import("motion/react").then((m) => ({ default: m.LazyMotion }))
@@ -34,6 +37,7 @@ export function CalculatorSection() {
 
 	const [isOpen, setIsOpen] = useState(false);
 	const [isLeadSubmitted, setIsLeadSubmitted] = useState(false);
+	const [isPending, startTransition] = useTransition();
 
 	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
@@ -49,16 +53,8 @@ export function CalculatorSection() {
 	const [totalCost, setTotalCost] = useState<number>(0);
 	const [volumeFromWeight, setVolumeFromWeight] = useState<number>(0);
 
-	const [isCalculated, setIsCalculated] = useState(false);
-
 	const RATE_PER_CBM = 235;
 	const DOC_FEE = 150;
-
-	useEffect(() => {
-		if (grossWeight || volume) {
-			setIsCalculated(true);
-		}
-	}, [grossWeight, volume]);
 
 	const handleCalculation = () => {
 		const weight = Number.parseFloat(grossWeight) || 0;
@@ -80,10 +76,35 @@ export function CalculatorSection() {
 	};
 
 	const handleLeadSubmit = () => {
-		setIsOpen(false);
-		setIsLeadSubmitted(true);
+		const weight = Number.parseFloat(grossWeight) || 0;
+		const vol = Number.parseFloat(volume) || 0;
+		const volFromWeight = weight / 500;
+		const chargeable = Math.max(vol, volFromWeight);
+		const freight = chargeable * RATE_PER_CBM;
+		const doc = localDoc ? DOC_FEE : 0;
+		const total = freight + doc;
 
-		handleCalculation();
+		startTransition(async () => {
+			const result = await sendLeadEmail({
+				name,
+				email,
+				phone,
+				grossWeight,
+				volume,
+				chargeableVolume: chargeable,
+				totalCost: total,
+				localDoc,
+			});
+
+			if (result.success) {
+				setIsOpen(false);
+				setIsLeadSubmitted(true);
+				handleCalculation();
+				toast.success("Success! You can now view the breakdown.");
+			} else {
+				toast.error("Something went wrong. Please try again.");
+			}
+		});
 	};
 
 	return (
@@ -144,7 +165,7 @@ export function CalculatorSection() {
 							</div>
 
 							<Label
-								className="flex cursor-pointer items-center justify-between gap-3 rounded-md border bg-muted p-3 font-normal text-base transition-all duration-200 hover:border-accent-secondary hover:bg-accent/20"
+								className="flex cursor-pointer items-center justify-between gap-3 rounded-md border border-border/50 bg-muted p-3 font-normal text-base transition-all duration-200 hover:border-accent-secondary hover:bg-accent/20"
 								htmlFor="local-doc"
 							>
 								{t("localDoc")}
@@ -228,7 +249,9 @@ export function CalculatorSection() {
 												</div>
 											</div>
 											<div className="mt-4 flex justify-end">
-												<Button type="submit">Show Results</Button>
+												<Button disabled={isPending} type="submit">
+													{isPending ? "Sending..." : "Show Results"}
+												</Button>
 											</div>
 										</form>
 									</DialogContent>
@@ -259,15 +282,13 @@ export function CalculatorSection() {
 										<span className="text-sm text-zinc-600">
 											{t("breakdown.volumeFromWeight")}
 										</span>
-										<span className="font-mono">
-											{volumeFromWeight.toFixed(2)} CBM
-										</span>
+										<span className="">{volumeFromWeight.toFixed(2)} CBM</span>
 									</div>
 									<div className="mb-3 flex items-start justify-between">
 										<span className="text-sm text-zinc-600">
 											{t("breakdown.actualVolume")}
 										</span>
-										<span className="font-mono">
+										<span className="">
 											{Number.parseFloat(volume || "0").toFixed(2)} CBM
 										</span>
 									</div>
@@ -278,7 +299,7 @@ export function CalculatorSection() {
 													{t("breakdown.chargeableVolume")}
 												</span>
 											</div>
-											<span className="font-mono text-[#078CD9]">
+											<span className="font-medium text-accent">
 												{chargeableVolume.toFixed(2)} CBM
 											</span>
 										</div>
@@ -291,26 +312,19 @@ export function CalculatorSection() {
 										<span className="text-zinc-700">
 											{t("breakdown.freightCost")}
 										</span>
-										<span className="font-mono text-lg">
-											${freightCost.toFixed(2)}
-										</span>
+										<span className="text-lg">${freightCost.toFixed(2)}</span>
 									</div>
 
 									{localDoc && (
 										<div className="flex items-center justify-between text-zinc-700">
 											<span>{t("breakdown.docFee")}</span>
-											<span className="font-mono">${docFee.toFixed(2)}</span>
+											<span>${docFee.toFixed(2)}</span>
 										</div>
 									)}
 								</div>
 							</div>
 
-							<MotionDiv
-								animate={isCalculated ? { scale: [1, 1.02, 1] } : {}}
-								className="relative overflow-hidden rounded-xl bg-linear-to-br from-[#078CD9] to-[#0566A8] p-6 text-white shadow-lg"
-								initial={{ scale: 1 }}
-								transition={{ duration: 0.4 }}
-							>
+							<div className="relative overflow-hidden rounded-xl bg-linear-to-br from-[#078CD9] to-[#0566A8] p-6 text-white shadow-lg">
 								<div className="absolute top-0 right-0 h-32 w-32 translate-x-1/2 -translate-y-1/2 rounded-full bg-white/5" />
 								<div className="absolute bottom-0 left-0 h-24 w-24 -translate-x-1/2 translate-y-1/2 rounded-full bg-white/5" />
 								<div className="relative z-10 flex justify-between">
@@ -321,7 +335,7 @@ export function CalculatorSection() {
 									<div>
 										<MotionDiv
 											animate={{ opacity: 1, y: 0 }}
-											className="font-mono font-semibold text-4xl"
+											className="font-semibold text-4xl"
 											initial={{ opacity: 0.5, y: 5 }}
 											key={totalCost}
 											transition={{ duration: 0.3 }}
@@ -333,12 +347,12 @@ export function CalculatorSection() {
 										</div>
 									</div>
 								</div>
-							</MotionDiv>
-
-							<p className="mt-4 text-center text-xs text-zinc-600">
-								{t("total.disclaimer")}
-							</p>
+							</div>
 						</MotionDiv>
+
+						<p className="mt-4 text-center text-xs text-zinc-600">
+							{t("total.disclaimer")}
+						</p>
 					</div>
 				</div>
 			</LazyMotion>
