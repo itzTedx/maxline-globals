@@ -51,8 +51,8 @@ export function CalculatorSection() {
 
 	const [isCalculated, setIsCalculated] = useState(false);
 
-	const RATE_PER_CBM = 150; // USD per CBM
-	const DOC_FEE = 150; // USD
+	const RATE_PER_CBM = 235;
+	const DOC_FEE = 150;
 
 	useEffect(() => {
 		if (grossWeight || volume) {
@@ -60,41 +60,16 @@ export function CalculatorSection() {
 		}
 	}, [grossWeight, volume]);
 
-	// useEffect(() => {
-	// 	const weight = Number.parseFloat(grossWeight) || 0;
-	// 	const vol = Number.parseFloat(volume) || 0;
-
-	// 	// Calculate volume from weight (1 CBM = 500 kg)
-	// 	const volFromWeight = weight / 500;
-	// 	setVolumeFromWeight(volFromWeight);
-
-	// 	// Chargeable volume is the higher of actual volume or weight-based volume
-	// 	const chargeable = Math.max(vol, volFromWeight);
-	// 	setChargeableVolume(chargeable);
-
-	// 	// Calculate costs
-	// 	const freight = chargeable * RATE_PER_CBM;
-	// 	setFreightCost(freight);
-
-	// 	const doc = localDoc ? DOC_FEE : 0;
-	// 	setDocFee(doc);
-
-	// 	setTotalCost(freight + doc);
-	// }, [grossWeight, volume, localDoc]);
-
 	const handleCalculation = () => {
 		const weight = Number.parseFloat(grossWeight) || 0;
 		const vol = Number.parseFloat(volume) || 0;
 
-		// Calculate volume from weight (1 CBM = 500 kg)
 		const volFromWeight = weight / 500;
 		setVolumeFromWeight(volFromWeight);
 
-		// Chargeable volume is the higher of actual volume or weight-based volume
 		const chargeable = Math.max(vol, volFromWeight);
 		setChargeableVolume(chargeable);
 
-		// Calculate costs
 		const freight = chargeable * RATE_PER_CBM;
 		setFreightCost(freight);
 
