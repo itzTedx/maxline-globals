@@ -27,6 +27,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 		entries.push({ url: `${base}/${locale}/company/team`, priority: 0.6 });
 		entries.push({ url: `${base}/${locale}/company/about`, priority: 0.8 });
 		entries.push({ url: `${base}/${locale}/company/careers`, priority: 0.6 });
+		entries.push({ url: `${base}/${locale}/calculator`, priority: 0.7 });
 
 		entries.push({ url: `${base}/${locale}/services`, priority: 0.8 });
 		for (const slug of serviceSlugs) {

@@ -2,20 +2,21 @@
 
 import { lazy, useEffect, useState } from "react";
 
-import { Calculator, FileText, Package, Scale } from "lucide-react";
+import { Calculator, Package, Scale } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-
-import { cn } from "@/lib/utils";
+import { Switch } from "@/components/ui/switch";
 
 const LazyMotion = lazy(() =>
 	import("motion/react").then((m) => ({ default: m.LazyMotion }))
 );
 
-const MotionDiv = lazy(() =>import("motion/react").then((m) => ({ default: m.m.div })));
+const MotionDiv = lazy(() =>
+	import("motion/react").then((m) => ({ default: m.m.div }))
+);
 
 const loadFeatures = () => import("@/lib/motion").then((res) => res.default);
 
@@ -85,11 +86,15 @@ export function CalculatorSection() {
 
 						<div className="space-y-6">
 							<div className="space-y-2">
-								<Label>
+								<Label
+									className="flex items-center gap-2"
+									htmlFor="gross-weight"
+								>
 									<Scale className="size-4" />
 									{t("grossWeight.label")}
 								</Label>
 								<Input
+									id="gross-weight"
 									onChange={(e) => setGrossWeight(e.target.value)}
 									placeholder={t("grossWeight.placeholder")}
 									type="number"
@@ -101,11 +106,12 @@ export function CalculatorSection() {
 							</div>
 
 							<div className="space-y-2">
-								<Label>
+								<Label className="flex items-center gap-2" htmlFor="volume">
 									<Package className="size-4" />
 									{t("volume.label")}
 								</Label>
 								<Input
+									id="volume"
 									onChange={(e) => setVolume(e.target.value)}
 									placeholder={t("volume.placeholder")}
 									step="0.1"
@@ -117,26 +123,18 @@ export function CalculatorSection() {
 								</p>
 							</div>
 
-							<div className="flex items-center justify-between rounded-xl bg-zinc-50 p-4 transition-colors duration-200 hover:bg-zinc-100">
-								<div className="flex items-center gap-2">
-									<FileText className="h-4 w-4" />
-									<span className="text-zinc-700">{t("localDoc")}</span>
-								</div>
-								<button
-									className={cn(
-										"relative inline-flex h-7 w-12 items-center rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2",
-										localDoc ? "bg-[#078CD9]" : "bg-zinc-300"
-									)}
-									onClick={() => setLocalDoc(!localDoc)}
-								>
-									<span
-										className={cn(
-											"inline-block h-5 w-5 transform rounded-full bg-white shadow-sm transition-transform duration-300",
-											localDoc ? "translate-x-6" : "translate-x-1"
-										)}
-									/>
-								</button>
-							</div>
+							<Label
+								className="flex cursor-pointer items-center justify-between gap-3 rounded-md border bg-muted p-3 font-normal text-base transition-all duration-200 hover:border-accent-secondary hover:bg-accent/20"
+								htmlFor="local-doc"
+							>
+								{t("localDoc")}
+
+								<Switch
+									checked={localDoc}
+									id="local-doc"
+									onCheckedChange={setLocalDoc}
+								/>
+							</Label>
 
 							<Button className="w-full gap-2" size="lg">
 								<Calculator className="size-5" />
