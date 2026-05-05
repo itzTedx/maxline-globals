@@ -20,6 +20,7 @@ import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 
 import { sendLeadEmail } from "../actions/lead-action";
+import { RouteHeader } from "./components/route-header";
 
 const LazyMotion = lazy(() =>
 	import("motion/react").then((m) => ({ default: m.LazyMotion }))
@@ -112,26 +113,27 @@ export function CalculatorSection() {
 			<LazyMotion features={loadFeatures} strict>
 				<div className="grid gap-8 lg:grid-cols-2">
 					<MotionDiv
-						className="h-fit rounded-2xl border border-border/60 bg-white p-8 shadow-lg transition-shadow duration-300 hover:shadow-xl"
+						className="h-fit rounded-2xl border border-border/40 bg-card p-8 transition-shadow duration-300"
 						initial={{ opacity: 0, x: -30 }}
 						transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
 						viewport={{ once: true, margin: "-100px" }}
 						whileInView={{ opacity: 1, x: 0 }}
 					>
 						<div className="mb-8 flex items-center gap-3">
-							<div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-dark">
-								<Calculator className="size-6 text-white" />
+							<div className="flex size-10 items-center justify-center rounded-md bg-accent/20">
+								<Calculator className="size-6 text-accent" />
 							</div>
 							<h2 className="text-2xl">{t("title")}</h2>
 						</div>
 
 						<div className="space-y-6">
+							<RouteHeader />
 							<div className="space-y-2">
 								<Label
 									className="flex items-center gap-2"
 									htmlFor="gross-weight"
 								>
-									<Scale className="size-4" />
+									<Scale className="size-4 stroke-1 text-muted-foreground" />
 									{t("grossWeight.label")}
 								</Label>
 								<Input
@@ -148,7 +150,7 @@ export function CalculatorSection() {
 
 							<div className="space-y-2">
 								<Label className="flex items-center gap-2" htmlFor="volume">
-									<Package className="size-4" />
+									<Package className="size-4 stroke-1 text-muted-foreground" />
 									{t("volume.label")}
 								</Label>
 								<Input
@@ -328,8 +330,7 @@ export function CalculatorSection() {
 								<div className="absolute top-0 right-0 h-32 w-32 translate-x-1/2 -translate-y-1/2 rounded-full bg-white/5" />
 								<div className="absolute bottom-0 left-0 h-24 w-24 -translate-x-1/2 translate-y-1/2 rounded-full bg-white/5" />
 								<div className="relative z-10 flex justify-between">
-									<div className="mb-2 max-w-xs font-medium text-blue-50 text-xl">
-										{t("total.totalString")} <br />
+									<div className="font-medium text-blue-50 text-xl">
 										{t("total.estimatedCostString")}
 									</div>
 									<div>

@@ -58,37 +58,3 @@ export function HeroSection() {
 		</section>
 	);
 }
-{
-	/* <section className="container my-12">
-	<span className="flex items-center gap-2 font-medium text-muted-foreground text-xs sm:text-sm">
-		<IconCalculator className="size-3 sm:size-4" />
-		Instant Freight Cost Calculator
-	</span>
-	<div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 lg:gap-8">
-		<h2
-			className="text-balance font-semibold text-2xl text-primary sm:pb-6 sm:text-3xl md:pb-10 md:text-4xl lg:pb-20 lg:text-5xl rtl:leading-snug"
-			id="services-heading"
-			itemProp="name"
-		>
-			<StaggeredText
-				className="[&>span:nth-last-child(-n+1)]:text-primary! [&>span:nth-last-child(-n+4)]:text-accent-secondary"
-				duration={0.5}
-				staggerChildren={0.02}
-				text="Freight Cost Calculator"
-			/>
-		</h2>
-		<div className="space-y-3 sm:space-y-4">
-			<p className="text-base text-muted-foreground sm:text-lg md:text-xl">
-				Estimate your shipping cost instantly from Guangzhou to Jebel Ali with
-				our transparent pricing model.
-			</p>
-			<Button asChild className="w-full sm:w-auto" variant="secondary">
-				<Link href="/services">
-					{t("services.btnText")}{" "}
-					<IconArrowRightTag className="ms-2 size-4 sm:ms-4 rtl:rotate-180" />
-				</Link>
-			</Button>
-		</div>
-	</div>
-</section>; */
-}
