@@ -1,4 +1,3 @@
-import React from "react";
 import {
 	Body,
 	Container,
@@ -69,13 +68,16 @@ export function LeadEmail({ data }: LeadEmailProps) {
 							<strong>Volume:</strong> {data.volume} CBM
 						</Text>
 						<Text style={detailText}>
-							<strong>Chargeable Volume:</strong> {data.chargeableVolume.toFixed(2)} CBM
+							<strong>Chargeable Volume:</strong>{" "}
+							{data.chargeableVolume.toFixed(2)} CBM
 						</Text>
 						<Text style={detailText}>
-							<strong>Local Documentation:</strong> {data.localDoc ? "Yes" : "No"}
+							<strong>Local Documentation:</strong>{" "}
+							{data.localDoc ? "Yes" : "No"}
 						</Text>
 						<Text style={detailText}>
-							<strong>Estimated Total Cost:</strong> ${data.totalCost.toFixed(2)}
+							<strong>Estimated Total Cost:</strong> $
+							{data.totalCost.toFixed(2)}
 						</Text>
 					</Section>
 

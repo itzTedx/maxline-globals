@@ -811,7 +811,7 @@ declare const messages: {
 				"helpText": "Cubic meters (length × width × height in meters)"
 			},
 			"localDoc": "Local Documentation Required?",
-			"calculateBtn": "Calculate Cost",
+			"calculateBtn": "Calculate Freight Cost",
 			"breakdown": {
 				"title": "Cost Breakdown",
 				"volumeFromWeight": "Volume from Weight",
@@ -825,8 +825,12 @@ declare const messages: {
 				"title": "Total Estimated Cost",
 				"totalString": "Total",
 				"estimatedCostString": "Estimated Cost",
-				"rate": "Rate: ${rate}/CBM",
+				"rate": "Rate: {rate}/CBM",
 				"disclaimer": "* Estimated pricing. Final quote may vary based on additional factors."
+			},
+			"pending": {
+				"title": "Ready to calculate?",
+				"info": "Enter your cargo details and hit Calculate to get your quote."
 			}
 		},
 		"howItWorks": {

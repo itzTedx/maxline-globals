@@ -1,6 +1,11 @@
 import { IconAnchor } from "@tabler/icons-react";
 import { ShipIcon } from "lucide-react";
 
+import {
+	RotatingText,
+	RotatingTextContainer,
+} from "@/components/animate-ui/primitives/texts/rotating";
+
 export const RouteHeader = () => {
 	return (
 		<div className="flex items-center gap-4">
@@ -37,9 +42,16 @@ export const RouteHeader = () => {
 				<div className="flex size-10 shrink-0 items-center justify-center rounded-md bg-accent-tertiary/5">
 					<ShipIcon className="size-5 text-accent-secondary" />
 				</div>
-				<span className="rounded bg-muted px-2 py-1 font-medium text-xs">
-					14 Days
-				</span>
+				<RotatingTextContainer
+					className="rounded bg-muted px-2 py-1 font-medium text-brand-dark text-xs"
+					delay={10}
+					duration={2000}
+					key={10}
+					text={["14 Days", "~7,000 km", "Sea Freight"]}
+					y={-50}
+				>
+					<RotatingText />
+				</RotatingTextContainer>
 			</div>
 
 			<svg
