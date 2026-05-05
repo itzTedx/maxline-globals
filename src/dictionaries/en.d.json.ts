@@ -784,6 +784,20 @@ declare const messages: {
 			"title": "Freight Cost Calculator",
 			"description": "Get instant, accurate shipping cost estimates for your cargo. Calculate your freight costs in seconds with our transparent pricing tool."
 		},
+		"form": {
+			"name": {
+				"label": "Name",
+				"placeholder": "Enter your name"
+			},
+			"email": {
+				"label": "Email",
+				"placeholder": "Enter email"
+			},
+			"phone": {
+				"label": "Phone",
+				"placeholder": "Enter phone number"
+			}
+		},
 		"calculator": {
 			"title": "Calculate Your Freight",
 			"grossWeight": {
@@ -811,7 +825,7 @@ declare const messages: {
 				"title": "Total Estimated Cost",
 				"totalString": "Total",
 				"estimatedCostString": "Estimated Cost",
-				"rate": "Rate: AED {rate}/CBM",
+				"rate": "Rate: ${rate}/CBM",
 				"disclaimer": "* Estimated pricing. Final quote may vary based on additional factors."
 			}
 		},

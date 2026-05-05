@@ -6,6 +6,14 @@ import { Calculator, Package, Scale } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 import { Button } from "@/components/ui/button";
+import {
+	Dialog,
+	DialogContent,
+	DialogDescription,
+	DialogHeader,
+	DialogTitle,
+	DialogTrigger,
+} from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
@@ -22,6 +30,14 @@ const loadFeatures = () => import("@/lib/motion").then((res) => res.default);
 
 export function CalculatorSection() {
 	const t = useTranslations("CalculatorPage.calculator");
+	const tForm = useTranslations("CalculatorPage.form");
+
+	const [isOpen, setIsOpen] = useState(false);
+	const [isLeadSubmitted, setIsLeadSubmitted] = useState(false);
+
+	const [name, setName] = useState("");
+	const [email, setEmail] = useState("");
+	const [phone, setPhone] = useState("");
 
 	const [grossWeight, setGrossWeight] = useState<string>("");
 	const [volume, setVolume] = useState<string>("");
@@ -44,7 +60,29 @@ export function CalculatorSection() {
 		}
 	}, [grossWeight, volume]);
 
-	useEffect(() => {
+	// useEffect(() => {
+	// 	const weight = Number.parseFloat(grossWeight) || 0;
+	// 	const vol = Number.parseFloat(volume) || 0;
+
+	// 	// Calculate volume from weight (1 CBM = 500 kg)
+	// 	const volFromWeight = weight / 500;
+	// 	setVolumeFromWeight(volFromWeight);
+
+	// 	// Chargeable volume is the higher of actual volume or weight-based volume
+	// 	const chargeable = Math.max(vol, volFromWeight);
+	// 	setChargeableVolume(chargeable);
+
+	// 	// Calculate costs
+	// 	const freight = chargeable * RATE_PER_CBM;
+	// 	setFreightCost(freight);
+
+	// 	const doc = localDoc ? DOC_FEE : 0;
+	// 	setDocFee(doc);
+
+	// 	setTotalCost(freight + doc);
+	// }, [grossWeight, volume, localDoc]);
+
+	const handleCalculation = () => {
 		const weight = Number.parseFloat(grossWeight) || 0;
 		const vol = Number.parseFloat(volume) || 0;
 
@@ -64,7 +102,14 @@ export function CalculatorSection() {
 		setDocFee(doc);
 
 		setTotalCost(freight + doc);
-	}, [grossWeight, volume, localDoc]);
+	};
+
+	const handleLeadSubmit = () => {
+		setIsOpen(false);
+		setIsLeadSubmitted(true);
+
+		handleCalculation();
+	};
 
 	return (
 		<div className="mx-auto max-w-7xl px-6 py-16" id="calculator-section">
@@ -135,11 +180,85 @@ export function CalculatorSection() {
 									onCheckedChange={setLocalDoc}
 								/>
 							</Label>
-
-							<Button className="w-full gap-2" size="lg">
-								<Calculator className="size-5" />
-								{t("calculateBtn")}
-							</Button>
+							{isLeadSubmitted ? (
+								<Button
+									className="w-full gap-2"
+									onClick={handleCalculation}
+									size="lg"
+								>
+									<Calculator className="size-5" />
+									{t("calculateBtn")}
+								</Button>
+							) : (
+								<Dialog onOpenChange={setIsOpen} open={isOpen}>
+									<DialogTrigger asChild>
+										<Button className="w-full gap-2" size="lg">
+											<Calculator className="size-5" />
+											{t("calculateBtn")}
+										</Button>
+									</DialogTrigger>
+									<DialogContent>
+										<form
+											onSubmit={(e) => {
+												e.preventDefault();
+												e.stopPropagation();
+												handleLeadSubmit();
+											}}
+										>
+											<DialogHeader>
+												<DialogTitle>View Cost Breakdown</DialogTitle>
+												<DialogDescription>
+													Please enter your details to view the estimated
+													freight cost breakdown.
+												</DialogDescription>
+											</DialogHeader>
+											<div className="grid gap-4 py-4">
+												<div className="grid gap-2">
+													<Label htmlFor="lead-name">
+														{tForm("name.label")}
+													</Label>
+													<Input
+														id="lead-name"
+														onChange={(e) => setName(e.target.value)}
+														placeholder={tForm("name.placeholder")}
+														required
+														value={name}
+													/>
+												</div>
+												<div className="grid gap-2">
+													<Label htmlFor="lead-email">
+														{tForm("email.label")}
+													</Label>
+													<Input
+														id="lead-email"
+														onChange={(e) => setEmail(e.target.value)}
+														placeholder={tForm("email.placeholder")}
+														required
+														type="email"
+														value={email}
+													/>
+												</div>
+												<div className="grid gap-2">
+													<Label htmlFor="lead-phone">
+														{tForm("phone.label")}
+													</Label>
+													<Input
+														id="lead-phone"
+														onChange={(e) => setPhone(e.target.value)}
+														placeholder={tForm("phone.placeholder")}
+														required
+														type="tel"
+														value={phone}
+													/>
+												</div>
+											</div>
+											<div className="mt-4 flex justify-end">
+												<Button type="submit">Show Results</Button>
+											</div>
+										</form>
+									</DialogContent>
+								</Dialog>
+							)}
 						</div>
 					</MotionDiv>
 
@@ -201,14 +320,14 @@ export function CalculatorSection() {
 											{t("breakdown.freightCost")}
 										</span>
 										<span className="font-mono text-lg">
-											AED {freightCost.toFixed(2)}
+											${freightCost.toFixed(2)}
 										</span>
 									</div>
 
 									{localDoc && (
 										<div className="flex items-center justify-between text-zinc-700">
 											<span>{t("breakdown.docFee")}</span>
-											<span className="font-mono">AED {docFee.toFixed(2)}</span>
+											<span className="font-mono">${docFee.toFixed(2)}</span>
 										</div>
 									)}
 								</div>
@@ -235,7 +354,7 @@ export function CalculatorSection() {
 											key={totalCost}
 											transition={{ duration: 0.3 }}
 										>
-											AED {totalCost.toFixed(2)}
+											${totalCost.toFixed(2)}
 										</MotionDiv>
 										<div className="mt-1 text-end text-blue-100 text-xs tracking-wider">
 											{t("total.rate", { rate: String(RATE_PER_CBM) })}
