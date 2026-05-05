@@ -38,7 +38,7 @@ declare const messages: {
 	Common: {
 		title: "Logistics Services | Maxline Global";
 		templateTitle: "| Maxline Global";
-		description: "Explore our full suite of global logistics services—from air, sea, and road freight to warehousing, customs clearance, and project cargo management. Maxline Global delivers reliable, scalable, and end-to-end solutions for every supply chain challenge.";
+		description: "Explore our full suite of global logistics services-from air, sea, and road freight to warehousing, customs clearance, and project cargo management. Maxline Global delivers reliable, scalable, and end-to-end solutions for every supply chain challenge.";
 		keywords: "logistics services, global logistics, air freight, sea freight, road freight, warehousing, customs clearance, project cargo, supply chain solutions";
 	};
 	Navigation: {
@@ -59,7 +59,8 @@ declare const messages: {
 		services: "Services";
 		trackShipment: "Track Shipment";
 		contact: "Contact";
-		getQuote: "Get a Quote";
+		calculator: "Cost Calculator";
+		getQuote: "Get started";
 		exploreServices: "The Right Solution for Every Challenge - See What's Next";
 	};
 	HomePage: {
@@ -69,9 +70,13 @@ declare const messages: {
 				secondLine: "Logistics and Freight Delivery";
 			};
 			inputPlaceholder: "Track your shipment";
+			body: "We connect <highlight>businesses to markets across the world.</highlight> Explore our logistics services built to move cargo faster, safer, and smarter worldwide.";
+			primaryCta: "Get a Quote";
+			secondaryCta: "Explore our services";
+			playVideoLabel: "See How Maxline Global Moves the World";
 		};
 		about: {
-			title: "Reliable Logistics Partner Across the Globe";
+			title: "Your Reliable Logistics Partner Across the Globe";
 			description: "At Maxline Global, we connect businesses to markets across the world. With our comprehensive logistics partner and commitment to service excellence, we ensure your cargo moves with speed, safety, and precision.";
 			type: {
 				air: "Air / 01";
@@ -94,23 +99,31 @@ declare const messages: {
 				};
 				airFreight: {
 					title: "Air Freight";
-					description: "Swift Air Freight Solutions for Global Reach.";
+					description: "Fast and reliable air cargo for time-critical shipments.";
 				};
 				seaFreight: {
 					title: "Sea Freight";
-					description: "Reliable Sea Freight Services Across Continents.";
+					description: "Cost-effective sea freight connecting major global ports.";
 				};
 				projectCargo: {
 					title: "Project Cargo";
-					description: "Specialized Handling for Heavy and Oversized Cargo.";
+					description: "Specialized handling for heavy, oversized, and complex cargo.";
+				};
+				packaging: {
+					title: "Packaging";
+					description: "Export-grade packing to protect cargo during transit.";
 				};
 				warehousing: {
 					title: "Warehousing";
-					description: "Strategic Warehousing and Distribution Solutions.";
+					description: "Secure warehousing and distribution for streamlined supply chains.";
+				};
+				exhibition: {
+					title: "Exhibition Cargo";
+					description: "End-to-end logistics for exhibitions, events, and trade shows.";
 				};
 				movingLashing: {
 					title: "Moving & Lashing";
-					description: "Professional Relocation and Cargo Securing for Safe Transit..";
+					description: "Professional Relocation and Cargo Securing for Safe Transit.";
 				};
 			};
 			cta: {
@@ -123,10 +136,76 @@ declare const messages: {
 			title: "Frequently Asked Questions";
 			description: "Discover quick answers to the questions our clients ask most. From shipment tracking to specialized cargo handling, our FAQ section covers everything you need to know about Maxline Global's services, capabilities, and commitment to smooth, secure, and on-time delivery.";
 		};
+		industries: {
+			label: "Industries we serve";
+			title: "Serving Diverse <accent>Industries Worldwide</accent>";
+			description: "From automotive plants to energy projects, our solutions fit the demands of your industry.";
+			list: [
+				{
+					name: "Automotive";
+					description: "Specialized logistics for automotive parts and vehicles";
+				},
+				{
+					name: "Oil & Energy";
+					description: "Reliable supply chain for energy sector projects";
+				},
+				{
+					name: "Construction Equipment";
+					description: "End-to-end manufacturing logistics solutions";
+				},
+				{
+					name: "Chemical & Pharmaceutical";
+					description: "Efficient distribution for retail and consumer goods";
+				},
+				{
+					name: "Healthcare & Medical";
+					description: "Temperature-controlled logistics for medical supplies";
+				},
+				{
+					name: "Military & Defense";
+					description: "Secure logistics support for military operations";
+				},
+			];
+		};
+		clients: {
+			title: {
+				first: "Recognized by";
+				second: "industry leaders worldwide";
+			};
+			description: "FIATA certified, ISO compliant, trusted by Fortune 500 companies across continents";
+			cta: "Know more about Maxline";
+		};
+		whoWeAre: {
+			label: "Who We Are";
+			title: {
+				first: "Your Reliable Logistics Partner";
+				highlight: "Across the Globe";
+			};
+			description: "At Maxline Global, we simplify global trade by delivering reliable, compliant, and cost‑effective logistics solutions. From routine freight movements to complex project cargo, we help businesses move goods confidently across borders.";
+			cta: "Get Started";
+			items: {
+				"01": {
+					title: "Global reach with local expertise";
+					description: "We operate through a strong international partner network combined with deep local market expertise. Enables efficient navigation of regional regulations, ports, and customs ensuring smooth cross-border movements with minimal delays.";
+				};
+				"02": {
+					title: "Compliance‑driven operations";
+					description: "Every shipment is handled in strict alignment with international logistics, safety, and trade compliance standards. Our certified processes reduce risk, prevent costly errors, and ensure your cargo moves securely through customs, ports, and borders.";
+				};
+				"03": {
+					title: "Proactive communication";
+					description: "We believe transparency builds trust. Our team provides regular updates, milestone notifications, and real‑time shipment visibility so you’re always informed and never left guessing about your cargo status.";
+				};
+				"04": {
+					title: "On‑Time, On‑Budget Delivery";
+					description: "With precise planning, reliable carrier partnerships, and experienced logistics coordination, we deliver shipments as promised meeting timelines and controlling costs without compromising safety or service quality.";
+				};
+			};
+		};
 		faqList: [
 			{
 				question: "What logistics services does Maxline Global offer?";
-				answer: "Maxline Global provides a full range of logistics solutions including sea, air, and land freight, customs clearance, warehousing, project cargo handling, chartering, and more — tailored to your business needs across the GCC and beyond.";
+				answer: "Maxline Global provides a full range of logistics solutions including sea, air, and land freight, customs clearance, warehousing, project cargo handling, chartering, and more - tailored to your business needs across the GCC and beyond.";
 			},
 			{
 				question: "Which regions or countries does Maxline Global serve?";
@@ -175,11 +254,12 @@ declare const messages: {
 		];
 		insights: {
 			label: "Maxline Insights & Updates";
-			title: "Explore the Ideas Driving Global Logistics Forward";
-			description: "Stay ahead with the latest in logistics, trade, and global supply chain trends.";
+			title: "Insights Driving Global Logistics Forward";
+			description: "Explore industry trends, company updates, and expert insights shaping the future of logistics and global trade.";
 			btnText: "More";
 			readBtn: "Read Article";
 			exploreBtn: "Explore More";
+			by: "by:";
 		};
 		insightsList: [
 			{
@@ -228,11 +308,33 @@ declare const messages: {
 	};
 	Cta: {
 		title: "Ready to move your business forward?";
-		description: "Partner with Maxline Global for reliable logistics solutions.";
+		description: "Partner with Maxline Global for dependable logistics solutions tailored to your business needs locally and globally.";
 		call: "Call for enquiry";
 		email: "Send us email";
 		phone: "+971 4 282 2022";
 		emailAddress: "enquires@maxlineglobal.com";
+		buttons: {
+			getStarted: "Get started - it’s free";
+			contactSales: "Contact sales team";
+		};
+		chips: {
+			globalReach: {
+				title: "Global Reach";
+				description: "Connect to markets worldwide";
+			};
+			reliableLogistics: {
+				title: "Reliable Logistics";
+				description: "Fast, safe, precise delivery";
+			};
+			seamlessExperience: {
+				title: "Seamless Experience";
+				description: "Easy tracking and management";
+			};
+			endToEndSupport: {
+				title: "End-to-End Support";
+				description: "Complete delivery coverage";
+			};
+		};
 	};
 	Footer: {
 		slogan1: "Your trusted logistics partner, moving forward,";
@@ -304,7 +406,7 @@ declare const messages: {
 			label: "Our clients";
 			title: "These Companies Trust Us to Deliver Their Vision";
 		};
-		words: "In a world where delays and cost overruns are common, Maxline Global Logistics delivers with precision. We commit to timelines and budgets—and we deliver. This promise drives how we train our teams, apply smart logistics technology, and serve clients worldwide.";
+		words: "In a world where delays and cost overruns are common, Maxline Global Logistics delivers with precision. We commit to timelines and budgets-and we deliver. This promise drives how we train our teams, apply smart logistics technology, and serve clients worldwide.";
 		certification: {
 			title: "Certified for Excellence in Global Logistics";
 			description: "Maxline Global's certifications demonstrate our commitment to safe, efficient, and compliant logistics across air, sea, and land. We meet international standards in freight forwarding, warehousing, customs, and hazardous cargo-ensuring trust and reliability throughout the supply chain.";
@@ -312,7 +414,7 @@ declare const messages: {
 	};
 	ServicesPage: {
 		title: "Logistics Services | Maxline Global";
-		description: "Explore our full suite of global logistics services—from air, sea, and road freight to warehousing, customs clearance, and project cargo management. Maxline Global delivers reliable, scalable, and end-to-end solutions for every supply chain challenge.";
+		description: "Explore our full suite of global logistics services-from air, sea, and road freight to warehousing, customs clearance, and project cargo management. Maxline Global delivers reliable, scalable, and end-to-end solutions for every supply chain challenge.";
 		keywords: "logistics services, global logistics, air freight, sea freight, road freight, warehousing, customs clearance, project cargo, supply chain solutions";
 		subtitle: "Services";
 		mainTitle: "Logistics Solutions That Move Business Forward";
@@ -630,8 +732,8 @@ declare const messages: {
 		};
 		mission: {
 			title: "Building Careers, Not Just Jobs";
-			description1: "At Maxline Global, we don't just offer jobs—we build careers. As a leading provider of cutting-edge technology solutions, logistics innovations, and global distribution, we're on a mission to simplify and transform industries through smart, scalable solutions.";
-			description2: "We believe that our success is driven by the talent, passion, and innovation of our people. If you're looking for a place where your ideas are valued, your growth is supported, and your work truly matters—you're in the right place.";
+			description1: "At Maxline Global, we don't just offer jobs-we build careers. As a leading provider of cutting-edge technology solutions, logistics innovations, and global distribution, we're on a mission to simplify and transform industries through smart, scalable solutions.";
+			description2: "We believe that our success is driven by the talent, passion, and innovation of our people. If you're looking for a place where your ideas are valued, your growth is supported, and your work truly matters-you're in the right place.";
 			whyChoose: {
 				title: "Why Choose Maxline?";
 				benefits: [
@@ -674,6 +776,67 @@ declare const messages: {
 			emailUs: "Email Us";
 			resumeText: "Send your resume to";
 			email: "enquires@maxlineglobal.com";
+		};
+	};
+	CalculatorPage: {
+		hero: {
+			subtitle: "Instant Freight Estimates";
+			title: "Freight Cost Calculator";
+			description: "Get instant, accurate shipping cost estimates for your cargo. Calculate your freight costs in seconds with our transparent pricing tool.";
+		};
+		calculator: {
+			title: "Calculate Your Freight";
+			grossWeight: {
+				label: "Gross Weight (kg)";
+				placeholder: "e.g., 2000";
+				helpText: "Enter the total weight of your cargo";
+			};
+			volume: {
+				label: "Volume (CBM)";
+				placeholder: "e.g., 2.5";
+				helpText: "Cubic meters (length × width × height in meters)";
+			};
+			localDoc: "Local Documentation Required?";
+			calculateBtn: "Calculate Cost";
+			breakdown: {
+				title: "Cost Breakdown";
+				volumeFromWeight: "Volume from Weight";
+				actualVolume: "Actual Volume";
+				chargeableVolume: "Chargeable Volume";
+				higherValueNote: "Higher of the two values";
+				freightCost: "Freight Cost";
+				docFee: "Documentation Fee";
+			};
+			total: {
+				title: "Total Estimated Cost";
+				totalString: "Total";
+				estimatedCostString: "Estimated Cost";
+				rate: "Rate: AED {rate}/CBM";
+				disclaimer: "* Estimated pricing. Final quote may vary based on additional factors.";
+			};
+		};
+		howItWorks: {
+			title: "How It Works";
+			description: "Our transparent calculation process ensures you get accurate freight estimates every time";
+			stepPrefix: "Step {step}";
+			steps: [
+				{
+					title: "Convert Weight to CBM";
+					description: "We convert your cargo weight to volumetric measurement using the 500kg/CBM ratio";
+				},
+				{
+					title: "Compare Volumes";
+					description: "Compare actual volume with weight-based volume to determine chargeable volume";
+				},
+				{
+					title: "Calculate Freight";
+					description: "Multiply chargeable volume by our competitive rate per CBM";
+				},
+				{
+					title: "Add Documentation";
+					description: "Include local documentation fees if required for your shipment";
+				},
+			];
 		};
 	};
 	TrackingPage: {

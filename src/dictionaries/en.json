@@ -56,6 +56,7 @@
 		"services": "Services",
 		"trackShipment": "Track Shipment",
 		"contact": "Contact",
+		"calculator": "Cost Calculator",
 		"getQuote": "Get started",
 		"exploreServices": "The Right Solution for Every Challenge - See What's Next"
 	},
@@ -772,6 +773,67 @@
 			"emailUs": "Email Us",
 			"resumeText": "Send your resume to",
 			"email": "enquires@maxlineglobal.com"
+		}
+	},
+	"CalculatorPage": {
+		"hero": {
+			"subtitle": "Instant Freight Estimates",
+			"title": "Freight Cost Calculator",
+			"description": "Get instant, accurate shipping cost estimates for your cargo. Calculate your freight costs in seconds with our transparent pricing tool."
+		},
+		"calculator": {
+			"title": "Calculate Your Freight",
+			"grossWeight": {
+				"label": "Gross Weight (kg)",
+				"placeholder": "e.g., 2000",
+				"helpText": "Enter the total weight of your cargo"
+			},
+			"volume": {
+				"label": "Volume (CBM)",
+				"placeholder": "e.g., 2.5",
+				"helpText": "Cubic meters (length × width × height in meters)"
+			},
+			"localDoc": "Local Documentation Required?",
+			"calculateBtn": "Calculate Cost",
+			"breakdown": {
+				"title": "Cost Breakdown",
+				"volumeFromWeight": "Volume from Weight",
+				"actualVolume": "Actual Volume",
+				"chargeableVolume": "Chargeable Volume",
+				"higherValueNote": "Higher of the two values",
+				"freightCost": "Freight Cost",
+				"docFee": "Documentation Fee"
+			},
+			"total": {
+				"title": "Total Estimated Cost",
+				"totalString": "Total",
+				"estimatedCostString": "Estimated Cost",
+				"rate": "Rate: AED {rate}/CBM",
+				"disclaimer": "* Estimated pricing. Final quote may vary based on additional factors."
+			}
+		},
+		"howItWorks": {
+			"title": "How It Works",
+			"description": "Our transparent calculation process ensures you get accurate freight estimates every time",
+			"stepPrefix": "Step {step}",
+			"steps": [
+				{
+					"title": "Convert Weight to CBM",
+					"description": "We convert your cargo weight to volumetric measurement using the 500kg/CBM ratio"
+				},
+				{
+					"title": "Compare Volumes",
+					"description": "Compare actual volume with weight-based volume to determine chargeable volume"
+				},
+				{
+					"title": "Calculate Freight",
+					"description": "Multiply chargeable volume by our competitive rate per CBM"
+				},
+				{
+					"title": "Add Documentation",
+					"description": "Include local documentation fees if required for your shipment"
+				}
+			]
 		}
 	},
 	"TrackingPage": {

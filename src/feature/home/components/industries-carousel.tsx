@@ -1,12 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { useTranslations } from "next-intl";
 
 import Autoplay from "embla-carousel-autoplay";
 import useEmblaCarousel from "embla-carousel-react";
 import WheelGesturesPlugin from "embla-carousel-wheel-gestures";
 import { motion } from "motion/react";
+import { useTranslations } from "next-intl";
 
 import { TRANSITION, useEmblaControls } from "@/components/ui/carousel";
 

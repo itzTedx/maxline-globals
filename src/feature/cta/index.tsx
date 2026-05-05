@@ -61,12 +61,12 @@ export const Cta = () => {
 							</p>
 							<div className="flex flex-col items-center gap-4 md:flex-row">
 								<Button className="w-full md:w-auto">
-									Get started <span>- it’s free</span>{" "}
+									{t("buttons.getStarted")}
 									<IconArrowRightTag className="ms-4 rtl:rotate-180" />
 								</Button>
 
 								<Button className="w-full md:w-auto" variant="secondary">
-									Contact sales team
+									{t("buttons.contactSales")}
 								</Button>
 							</div>
 						</div>

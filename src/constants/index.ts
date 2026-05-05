@@ -97,6 +97,10 @@ export const NAVLINKS: NavLink[] = [
 		href: "/track-shipment",
 	},
 	{
+		title: "calculator",
+		href: "/calculator",
+	},
+	{
 		title: "contact",
 		href: "/contact",
 	},
