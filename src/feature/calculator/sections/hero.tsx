@@ -5,6 +5,10 @@ import { lazy } from "react";
 import { Ship } from "lucide-react";
 import { useTranslations } from "next-intl";
 
+import { Button } from "@/components/ui/button";
+
+import { Link } from "@/i18n/navigation";
+
 const LazyMotion = lazy(() =>
 	import("motion/react").then((m) => ({ default: m.LazyMotion }))
 );
@@ -19,7 +23,7 @@ export function HeroSection() {
 
 	return (
 		<section className="relative overflow-hidden bg-linear-to-br from-[#078CD9] to-[#034577] text-white">
-			<div className="relative mx-auto max-w-7xl px-6 py-16 md:py-24">
+			<div className="container relative py-16 md:py-24">
 				<LazyMotion features={loadFeatures} strict>
 					<div className="flex flex-col items-center justify-between gap-8 md:flex-row">
 						<MotionDiv
@@ -44,13 +48,24 @@ export function HeroSection() {
 								<span className="text-sm">{t("subtitle")}</span>
 							</MotionDiv>
 							<div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 lg:gap-8">
-								<h1 className="text-balance font-semibold text-2xl text-card sm:text-3xl md:text-4xl lg:text-5xl rtl:leading-snug">
-									{t("title")}
-								</h1>
+								<div>
+									<h1 className="text-balance font-semibold text-2xl text-card sm:text-3xl md:text-4xl lg:text-5xl rtl:leading-snug">
+										{t("title")}
+									</h1>
+
+									<Button
+										asChild
+										className="mt-4"
+										size="lg"
+										variant="secondary"
+									>
+										<Link href="/quote">Get a Quote</Link>
+									</Button>
+								</div>
 								<p className="max-w-2xl text-balance text-blue-50 text-lg leading-relaxed md:text-xl">
 									Plan your logistics smarter with our quick and easy freight
 									cost calculator. Whether you're shipping by air, sea, or land,
-									get an accurate estimate in seconds—helping you make faster,
+									get an accurate estimate in seconds helping you make faster,
 									cost-effective decisions for your cargo.
 								</p>
 							</div>

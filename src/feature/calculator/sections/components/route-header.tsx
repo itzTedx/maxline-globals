@@ -33,8 +33,13 @@ export const RouteHeader = () => {
 				</path>
 			</svg>
 
-			<div className="flex size-12 shrink-0 items-center justify-center rounded-md bg-accent-secondary/10">
-				<ShipIcon className="text-accent-secondary" />
+			<div className="flex shrink-0 flex-col items-center justify-center gap-2">
+				<div className="flex size-10 shrink-0 items-center justify-center rounded-md bg-accent-tertiary/5">
+					<ShipIcon className="size-5 text-accent-secondary" />
+				</div>
+				<span className="rounded bg-muted px-2 py-1 font-medium text-xs">
+					14 Days
+				</span>
 			</div>
 
 			<svg

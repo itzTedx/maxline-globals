@@ -121,7 +121,7 @@ export function CalculatorSection() {
 						viewport={{ once: true, margin: "-100px" }}
 						whileInView={{ opacity: 1, x: 0 }}
 					>
-						<div className="p-6">
+						<div className="px-6 py-4">
 							<RouteHeader />
 						</div>
 						<div className="rounded-md border border-border/40 bg-card p-6">
