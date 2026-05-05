@@ -23,8 +23,6 @@ const nextConfig: NextConfig = {
 		// Enable filesystem caching for `next build`
 		turbopackFileSystemCacheForBuild: true,
 	},
-	// Compression settings
-	compress: true,
 
 	typescript: {
 		ignoreBuildErrors: true,

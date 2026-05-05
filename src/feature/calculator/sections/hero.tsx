@@ -7,6 +7,7 @@ import { useTranslations } from "next-intl";
 
 import { Button } from "@/components/ui/button";
 
+import { ServiceCardBG } from "@/feature/services/service-card";
 import { Link } from "@/i18n/navigation";
 
 const LazyMotion = lazy(() =>
@@ -22,8 +23,8 @@ export function HeroSection() {
 	const t = useTranslations("CalculatorPage.hero");
 
 	return (
-		<section className="relative overflow-hidden bg-linear-to-br from-[#078CD9] to-[#034577] text-white">
-			<div className="container relative py-16 md:py-24">
+		<section className="group relative overflow-hidden bg-linear-to-br from-[#078CD9] to-[#034577] text-white">
+			<div className="container relative z-10 py-16 md:py-24">
 				<LazyMotion features={loadFeatures} strict>
 					<div className="flex flex-col items-center justify-between gap-8 md:flex-row">
 						<MotionDiv
@@ -73,6 +74,7 @@ export function HeroSection() {
 					</div>
 				</LazyMotion>
 			</div>
+			<ServiceCardBG className="absolute start-0 top-8 -translate-x-6 scale-110 opacity-20 transition-transform duration-1000 ease-out group-hover/cta:translate-x-12 md:top-0 md:h-full md:scale-150 rtl:-scale-x-100" />
 		</section>
 	);
 }
