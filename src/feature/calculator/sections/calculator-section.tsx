@@ -122,12 +122,14 @@ export function CalculatorSection() {
 						whileInView={{ opacity: 1, x: 0 }}
 					>
 						<div className="px-6 py-4">
-							<RouteHeader />
+							<h2 className="font-semibold text-xl md:text-2xl">
+								{t("title")}
+							</h2>
+							<p className="text-muted-foreground">Direct LCL & FCL Services</p>
 						</div>
 						<div className="rounded-md border border-border/40 bg-card p-6">
-							<h2 className="mb-6 font-medium text-2xl">{t("title")}</h2>
-
 							<div className="space-y-6">
+								<RouteHeader />
 								<div className="space-y-2">
 									<Label
 										className="flex items-center gap-2"
