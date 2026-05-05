@@ -10,9 +10,10 @@ export const RouteHeader = () => {
 				</div>
 				<div className="text-center">
 					<h3 className="font-medium">Guangzhou</h3>
-					<p>China</p>
+					<p className="text-muted-foreground text-sm">China</p>
 				</div>
 			</div>
+
 			<svg
 				className="text-muted-foreground/20"
 				height="1"
@@ -35,6 +36,7 @@ export const RouteHeader = () => {
 			<div className="flex size-12 shrink-0 items-center justify-center rounded-md bg-accent-secondary/10">
 				<ShipIcon className="text-accent-secondary" />
 			</div>
+
 			<svg
 				className="text-muted-foreground/20"
 				height="1"
@@ -53,13 +55,14 @@ export const RouteHeader = () => {
 					/>
 				</path>
 			</svg>
+
 			<div className="flex shrink-0 flex-col items-center gap-1">
 				<div className="flex size-9 items-center justify-center rounded-md bg-accent/10">
 					<IconAnchor className="size-5 text-accent" />
 				</div>
 				<div className="text-center">
 					<h3 className="font-medium">Jebel Ali</h3>
-					<p>UAE</p>
+					<p className="text-muted-foreground text-sm">UAE</p>
 				</div>
 			</div>
 		</div>

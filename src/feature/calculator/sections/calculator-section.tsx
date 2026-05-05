@@ -113,71 +113,72 @@ export function CalculatorSection() {
 			<LazyMotion features={loadFeatures} strict>
 				<div className="grid gap-8 lg:grid-cols-2">
 					<MotionDiv
-						className="h-fit rounded-2xl border border-border/40 bg-card p-8 transition-shadow duration-300"
+						className="t h-fit rounded-xl bg-card/50 p-1"
 						initial={{ opacity: 0, x: -30 }}
 						transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
 						viewport={{ once: true, margin: "-100px" }}
 						whileInView={{ opacity: 1, x: 0 }}
 					>
-						<div className="mb-8 flex items-center gap-3">
-							<div className="flex size-10 items-center justify-center rounded-md bg-accent/20">
-								<Calculator className="size-6 text-accent" />
-							</div>
-							<h2 className="text-2xl">{t("title")}</h2>
-						</div>
-
-						<div className="space-y-6">
+						<div className="p-6">
 							<RouteHeader />
-							<div className="space-y-2">
+						</div>
+						<div className="rounded-md border border-border/40 bg-card p-6">
+							<h2 className="mb-6 font-medium text-2xl">{t("title")}</h2>
+
+							<div className="space-y-6">
+								<div className="space-y-2">
+									<Label
+										className="flex items-center gap-2"
+										htmlFor="gross-weight"
+									>
+										<Scale className="size-4 stroke-1 text-muted-foreground" />
+										{t("grossWeight.label")}
+									</Label>
+									<Input
+										id="gross-weight"
+										onChange={(e) => setGrossWeight(e.target.value)}
+										placeholder={t("grossWeight.placeholder")}
+										type="number"
+										value={grossWeight}
+									/>
+									<p className="text-sm text-zinc-500">
+										{t("grossWeight.helpText")}
+									</p>
+								</div>
+
+								<div className="space-y-2">
+									<Label className="flex items-center gap-2" htmlFor="volume">
+										<Package className="size-4 stroke-1 text-muted-foreground" />
+										{t("volume.label")}
+									</Label>
+									<Input
+										id="volume"
+										onChange={(e) => setVolume(e.target.value)}
+										placeholder={t("volume.placeholder")}
+										step="0.1"
+										type="number"
+										value={volume}
+									/>
+									<p className="mt-1 text-sm text-zinc-500">
+										{t("volume.helpText")}
+									</p>
+								</div>
+
 								<Label
-									className="flex items-center gap-2"
-									htmlFor="gross-weight"
+									className="flex cursor-pointer items-center justify-between gap-3 rounded-md border border-border/50 bg-muted p-3 font-normal text-base transition-all duration-200 hover:border-accent-secondary hover:bg-accent/20"
+									htmlFor="local-doc"
 								>
-									<Scale className="size-4 stroke-1 text-muted-foreground" />
-									{t("grossWeight.label")}
+									{t("localDoc")}
+
+									<Switch
+										checked={localDoc}
+										id="local-doc"
+										onCheckedChange={setLocalDoc}
+									/>
 								</Label>
-								<Input
-									id="gross-weight"
-									onChange={(e) => setGrossWeight(e.target.value)}
-									placeholder={t("grossWeight.placeholder")}
-									type="number"
-									value={grossWeight}
-								/>
-								<p className="text-sm text-zinc-500">
-									{t("grossWeight.helpText")}
-								</p>
 							</div>
-
-							<div className="space-y-2">
-								<Label className="flex items-center gap-2" htmlFor="volume">
-									<Package className="size-4 stroke-1 text-muted-foreground" />
-									{t("volume.label")}
-								</Label>
-								<Input
-									id="volume"
-									onChange={(e) => setVolume(e.target.value)}
-									placeholder={t("volume.placeholder")}
-									step="0.1"
-									type="number"
-									value={volume}
-								/>
-								<p className="mt-1 text-sm text-zinc-500">
-									{t("volume.helpText")}
-								</p>
-							</div>
-
-							<Label
-								className="flex cursor-pointer items-center justify-between gap-3 rounded-md border border-border/50 bg-muted p-3 font-normal text-base transition-all duration-200 hover:border-accent-secondary hover:bg-accent/20"
-								htmlFor="local-doc"
-							>
-								{t("localDoc")}
-
-								<Switch
-									checked={localDoc}
-									id="local-doc"
-									onCheckedChange={setLocalDoc}
-								/>
-							</Label>
+						</div>
+						<div className="p-4">
 							{isLeadSubmitted ? (
 								<Button
 									className="w-full gap-2"
@@ -262,9 +263,9 @@ export function CalculatorSection() {
 						</div>
 					</MotionDiv>
 
-					<div className="h-fit lg:sticky lg:top-8">
+					<div className="h-fit lg:sticky lg:top-24">
 						<MotionDiv
-							className="rounded-2xl border border-zinc-200 bg-linear-to-br from-blue-50 to-cyan-50 p-8 shadow-lg"
+							className="rounded-xl border border-border/10 bg-primary shadow-lg"
 							initial={{ opacity: 0, x: 30 }}
 							transition={{
 								duration: 0.6,
@@ -274,34 +275,39 @@ export function CalculatorSection() {
 							viewport={{ once: true, margin: "-100px" }}
 							whileInView={{ opacity: 1, x: 0 }}
 						>
-							<h3 className="mb-6 text-xl text-zinc-800">
-								{t("breakdown.title")}
-							</h3>
+							<div className="flex items-center gap-3 px-6 pt-6">
+								<div className="flex size-8 items-center justify-center rounded-sm bg-muted/5 text-muted/60">
+									<Calculator className="size-5" />
+								</div>
+								<h3 className="text-card text-xl">{t("breakdown.title")}</h3>
+							</div>
 
-							<div className="mb-6 space-y-4">
-								<div className="rounded-xl border border-zinc-200 bg-white p-4">
+							<div className="space-y-4 p-6">
+								<div className="rounded-sm border border-border/10 bg-muted/10 p-4">
 									<div className="mb-3 flex items-start justify-between">
-										<span className="text-sm text-zinc-600">
+										<span className="text-sm text-zinc-200">
 											{t("breakdown.volumeFromWeight")}
 										</span>
-										<span className="">{volumeFromWeight.toFixed(2)} CBM</span>
+										<span className="text-card">
+											{volumeFromWeight.toFixed(2)} CBM
+										</span>
 									</div>
 									<div className="mb-3 flex items-start justify-between">
-										<span className="text-sm text-zinc-600">
+										<span className="text-sm text-zinc-200">
 											{t("breakdown.actualVolume")}
 										</span>
-										<span className="">
+										<span className="text-card">
 											{Number.parseFloat(volume || "0").toFixed(2)} CBM
 										</span>
 									</div>
-									<div className="border-zinc-200 border-t pt-3">
+									<div className="border-border/10 border-t pt-3">
 										<div className="flex items-center justify-between">
 											<div className="flex items-center gap-2">
-												<span className="text-zinc-700">
+												<span className="text-zinc-200">
 													{t("breakdown.chargeableVolume")}
 												</span>
 											</div>
-											<span className="font-medium text-accent">
+											<span className="font-medium text-accent-foreground">
 												{chargeableVolume.toFixed(2)} CBM
 											</span>
 										</div>
@@ -310,15 +316,13 @@ export function CalculatorSection() {
 
 								{/* Cost Items */}
 								<div className="space-y-3">
-									<div className="flex items-center justify-between">
-										<span className="text-zinc-700">
-											{t("breakdown.freightCost")}
-										</span>
+									<div className="flex items-center justify-between text-zinc-200">
+										<span>{t("breakdown.freightCost")}</span>
 										<span className="text-lg">${freightCost.toFixed(2)}</span>
 									</div>
 
 									{localDoc && (
-										<div className="flex items-center justify-between text-zinc-700">
+										<div className="flex items-center justify-between text-zinc-200">
 											<span>{t("breakdown.docFee")}</span>
 											<span>${docFee.toFixed(2)}</span>
 										</div>
@@ -326,27 +330,25 @@ export function CalculatorSection() {
 								</div>
 							</div>
 
-							<div className="relative overflow-hidden rounded-xl bg-linear-to-br from-[#078CD9] to-[#0566A8] p-6 text-white shadow-lg">
+							<div className="m relative overflow-hidden border-border/10 border-t bg-muted/10 p-6 text-white">
 								<div className="absolute top-0 right-0 h-32 w-32 translate-x-1/2 -translate-y-1/2 rounded-full bg-white/5" />
 								<div className="absolute bottom-0 left-0 h-24 w-24 -translate-x-1/2 translate-y-1/2 rounded-full bg-white/5" />
 								<div className="relative z-10 flex justify-between">
-									<div className="font-medium text-blue-50 text-xl">
-										{t("total.estimatedCostString")}
-									</div>
 									<div>
-										<MotionDiv
-											animate={{ opacity: 1, y: 0 }}
-											className="font-semibold text-4xl"
-											initial={{ opacity: 0.5, y: 5 }}
-											key={totalCost}
-											transition={{ duration: 0.3 }}
-										>
-											${totalCost.toFixed(2)}
-										</MotionDiv>
-										<div className="mt-1 text-end text-blue-100 text-xs tracking-wider">
-											{t("total.rate", { rate: String(RATE_PER_CBM) })}
+										<p className="mb-1 font-medium text-blue-50/50 text-xs uppercase tracking-wider">
+											{t("total.estimatedCostString")}
+										</p>
+										<div className="flex items-center gap-2">
+											<h3 className="font-semibold text-4xl">
+												${totalCost.toFixed(2)}
+											</h3>
+											<p className="text-start text-blue-100 text-xs tracking-wider">
+												{t("total.rate", { rate: String(RATE_PER_CBM) })}
+											</p>
 										</div>
 									</div>
+
+									<Button>Get Started</Button>
 								</div>
 							</div>
 						</MotionDiv>
