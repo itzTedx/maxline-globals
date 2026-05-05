@@ -48,7 +48,10 @@ export function HeroSection() {
 									{t("title")}
 								</h1>
 								<p className="max-w-2xl text-balance text-blue-50 text-lg leading-relaxed md:text-xl">
-									{t("description")}
+									Plan your logistics smarter with our quick and easy freight
+									cost calculator. Whether you're shipping by air, sea, or land,
+									get an accurate estimate in seconds—helping you make faster,
+									cost-effective decisions for your cargo.
 								</p>
 							</div>
 						</MotionDiv>
