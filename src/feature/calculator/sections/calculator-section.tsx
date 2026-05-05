@@ -282,9 +282,6 @@ export function CalculatorSection() {
 												{chargeableVolume.toFixed(2)} CBM
 											</span>
 										</div>
-										<p className="mt-1 text-xs text-zinc-500">
-											{t("breakdown.higherValueNote")}
-										</p>
 									</div>
 								</div>
 
