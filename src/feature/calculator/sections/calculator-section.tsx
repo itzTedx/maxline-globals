@@ -19,6 +19,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 
+import { Link } from "@/i18n/navigation";
+
 import { sendLeadEmail } from "../actions/lead-action";
 import { RouteHeader } from "./components/route-header";
 
@@ -348,7 +350,9 @@ export function CalculatorSection() {
 										</div>
 									</div>
 
-									<Button>Get Started</Button>
+									<Button asChild>
+										<Link href="/quote">Get Started</Link>
+									</Button>
 								</div>
 							</div>
 						</MotionDiv>
