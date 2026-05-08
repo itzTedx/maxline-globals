@@ -364,7 +364,7 @@ export const SERVICES = [
 		hero: {
 			title: "Project Cargo",
 			description:
-				"Specialized project cargo logistics—oversized, heavy-lift, and time-critical shipments delivered with precision and end-to-end coordination.",
+				"Specialized project cargo logistics: oversized, heavy-lift, and time-critical shipments delivered with precision and end-to-end coordination.",
 			image: {
 				src: "/images/services/project-cargo.png",
 				alt: "Maxline Global handling large project cargo with cranes and specialized equipment",
