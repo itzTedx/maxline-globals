@@ -8,7 +8,7 @@ import { getLocale, setRequestLocale } from "next-intl/server";
 import SpotlightCard from "@/components/animation/spotlight-card";
 import { StaggeredText } from "@/components/animation/staggered-text";
 
-import { socialLinks } from "@/constants/site-config";
+import { siteConfig, socialLinks } from "@/constants/site-config";
 import { Cta } from "@/feature/cta";
 import { Industries } from "@/feature/home/sections/industries";
 import { InsightsCarousel } from "@/feature/insights/components/insights";
@@ -82,6 +82,14 @@ export async function generateMetadata({
 			title: t(`${serviceKey}.hero.title`),
 			description: t(`${serviceKey}.hero.description`),
 			images: [service.hero.image.src],
+		},
+
+		alternates: {
+			canonical: `${siteConfig.site}/${locale}/services/${service.slug}`,
+			languages: {
+				en: `${siteConfig.site}/en/services/${service.slug}`,
+				ar: `${siteConfig.site}/ar/services/${service.slug}`,
+			},
 		},
 	};
 }

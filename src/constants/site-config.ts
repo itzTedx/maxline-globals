@@ -1,6 +1,6 @@
 export const siteConfig = {
 	name: "Maxline Global",
-	site: "https://www.maxlineglobal.com",
+	site: "https://maxlineglobal.com",
 	description:
 		"We delivers reliable freight forwarding, warehousing, and logistics services across the GCC and beyond, ensuring efficiency, compliance, and end-to-end visibility",
 	keywords: [

@@ -119,10 +119,11 @@ export default async function RootLayout({
 			locale === "ar"
 				? "مزود حلول لوجستية وشحن عالمية"
 				: "Global logistics and freight solutions provider",
-		url: "https://maxlineglobal.com",
+		url: `https://maxlineglobal.com/${locale}`,
 		sameAs: [
-			"https://twitter.com/maxlineglobal",
-			"https://linkedin.com/company/maxlineglobal",
+			"https://www.instagram.com/maxlineglobal/",
+			"https://www.linkedin.com/company/maxline-global-logistics-solutions/",
+			"https://www.facebook.com/maxlineglobal/",
 		],
 		address: {
 			"@type": "PostalAddress",
@@ -149,7 +150,7 @@ export default async function RootLayout({
 		thumbnailUrl: "https://maxlineglobal.com/images/video-thumbnail.jpg",
 		uploadDate: "2024-03-20",
 		duration: "PT2M30S",
-		contentUrl: "https://maxlineglobal.com/video/your-video.mp4",
+		contentUrl: "https://maxlineglobal.com/videos/maxline-web.webm",
 		embedUrl: "https://maxlineglobal.com/embed/video",
 	};
 
