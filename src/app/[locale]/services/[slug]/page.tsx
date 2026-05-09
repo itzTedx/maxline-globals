@@ -45,6 +45,7 @@ export async function generateMetadata({
 	const { slug } = await params;
 	const locale = await getLocale();
 	const messages = await getServiceMessages(locale);
+
 	const t = (key: string) => {
 		const keys = key.split(".");
 		let value: unknown = messages;
@@ -63,11 +64,11 @@ export async function generateMetadata({
 		};
 
 	return {
-		title: `${t(`${serviceKey}.hero.title`)} - ${t("common.title")}`,
-		description: t(`${serviceKey}.hero.description`),
+		title: t(`${serviceKey}.meta.title`),
+		description: t(`${serviceKey}.meta.description`),
 		openGraph: {
-			title: t(`${serviceKey}.hero.title`),
-			description: t(`${serviceKey}.hero.description`),
+			title: t(`${serviceKey}.meta.title`),
+			description: t(`${serviceKey}.meta.description`),
 			images: [
 				{
 					url: service.hero.image.src,
@@ -79,8 +80,8 @@ export async function generateMetadata({
 		},
 		twitter: {
 			card: "summary_large_image",
-			title: t(`${serviceKey}.hero.title`),
-			description: t(`${serviceKey}.hero.description`),
+			title: t(`${serviceKey}.meta.title`),
+			description: t(`${serviceKey}.meta.description`),
 			images: [service.hero.image.src],
 		},
 
@@ -136,6 +137,7 @@ export default async function ServicePage({ params }: { params: Params }) {
 			"Bahrain",
 			"Qatar",
 			"United Kingdom",
+			"China",
 		],
 	};
 

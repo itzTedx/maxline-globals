@@ -60,8 +60,8 @@ export default function Home({ params }: Props) {
 				<Faqs />
 				<InsightsCarousel />
 
-				{/* <AboutSection />
-
+				{/* 
+					<AboutSection />
 					<Services />
 					<FaqSection />
 				*/}

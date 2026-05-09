@@ -50,7 +50,7 @@ export const Hero = ({
 						</Button>
 					</div>
 				</div>
-				<div className="top-0 right-0 md:absolute md:h-auto" itemProp="image">
+				<div className="end-0 top-0 md:absolute md:h-auto" itemProp="image">
 					<Image
 						alt={image.alt}
 						className="h-full w-full object-contain"
