@@ -17,22 +17,22 @@ export function HeroSection() {
 
 	return (
 		<section className="group relative overflow-hidden bg-linear-to-br from-[#078CD9] to-[#034577] text-white">
-			<div className="container relative z-20 grid gap-4 py-16 text-center md:grid-cols-[.60fr_.40fr] md:py-32 md:text-left">
+			<div className="container relative z-20 grid gap-4 py-12 text-center sm:py-16 md:grid-cols-[.60fr_.40fr] md:py-32 md:text-left">
 				<div className="max-w-xl">
-					<div className="mb-4 inline-flex items-center gap-2">
+					<div className="mb-3 inline-flex items-center gap-2 md:mb-4">
 						<Ship className="size-4" />
 						<span className="text-sm">{t("subtitle")}</span>
 					</div>
 
-					<h1 className="text-balance font-display font-semibold text-2xl text-card sm:text-3xl md:text-4xl lg:text-7xl rtl:leading-snug">
+					<h1 className="text-balance font-display font-semibold text-5xl text-card md:text-6xl lg:text-7xl rtl:leading-snug">
 						{t("title")}
 					</h1>
 
-					<p className="mt-6 max-w-2xl text-balance text-blue-50 text-lg leading-relaxed md:text-xl">
+					<p className="mt-4 max-w-2xl text-balance text-blue-50 text-lg leading-relaxed md:mt-6 md:text-xl">
 						{t("description")}
 					</p>
 
-					<div className="mt-9 flex items-center gap-3">
+					<div className="mt-6 flex items-center justify-center gap-3 sm:justify-start md:mt-9">
 						<Button asChild size="lg">
 							<Link href="/quote">
 								Get a Quote{" "}
@@ -50,7 +50,7 @@ export function HeroSection() {
 						</Button>
 					</div>
 
-					<Separator className="my-12 bg-secondary/20" />
+					<Separator className="my-9 bg-secondary/20 md:my-12" />
 
 					<ul className="grid grid-cols-3 gap-6">
 						<li className="tracking-wider">
@@ -81,7 +81,7 @@ export function HeroSection() {
 
 				<LeadCaptureForm />
 			</div>
-			<div className="absolute inset-0 z-10 bg-linear-to-r from-brand-dark" />
+			<div className="absolute inset-0 z-10 bg-linear-to-b from-brand-dark md:bg-linear-to-r" />
 			<Image
 				alt=""
 				className="object-cover"

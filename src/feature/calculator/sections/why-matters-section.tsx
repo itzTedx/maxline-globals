@@ -29,16 +29,16 @@ export function WhyThisMattersSection() {
 		<section className="container pb-12">
 			<LazyMotion features={loadFeatures} strict>
 				<m.div
-					className="mb-12 grid grid-cols-2 gap-6"
+					className="mb-12 grid gap-4 md:grid-cols-2 md:gap-12"
 					initial={{ opacity: 0, y: 20 }}
 					transition={{ duration: 0.6 }}
 					viewport={{ once: true, margin: "-50px" }}
 					whileInView={{ opacity: 1, y: 0 }}
 				>
-					<h2 className="mb-4 text-balance font-semibold text-3xl md:text-4xl">
+					<h2 className="text-balance font-semibold text-3xl md:text-4xl">
 						Why Accurate Freight Calculation Matters
 					</h2>
-					<p className="mx-auto max-w-3xl text-balance text-gray-600 text-lg leading-relaxed">
+					<p className="mx-auto max-w-3xl text-balance text-gray-600 leading-relaxed sm:text-lg">
 						Choosing the right shipping method isn't just about moving cargo
 						it's about balancing cost, speed, and efficiency. Incorrect
 						estimations can lead to unexpected charges, delays, or logistical
@@ -62,17 +62,17 @@ export function WhyThisMattersSection() {
 					<div className="grid gap-6 sm:grid-cols-2">
 						{benefits.map((benefit, index) => (
 							<m.div
-								className="flex items-start gap-4 rounded-xl bg-white p-6 shadow-sm transition-shadow duration-300 hover:shadow-md"
+								className="flex items-center gap-4 rounded-xl bg-white shadow-sm transition-shadow duration-300 hover:shadow-md md:gap-6"
 								initial={{ opacity: 0, x: -20 }}
 								key={Number(index)}
 								transition={{ duration: 0.5, delay: 0.1 * index }}
 								viewport={{ once: true }}
 								whileInView={{ opacity: 1, x: 0 }}
 							>
-								<div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-linear-to-br from-[#078CD9] to-[#06B6D4] shadow-md">
-									<benefit.icon className="h-6 w-6 text-white" />
+								<div className="flex size-24 shrink-0 items-center justify-center rounded-lg bg-linear-to-br from-[#078CD9] to-[#06B6D4] shadow-md">
+									<benefit.icon className="size-12 text-white" />
 								</div>
-								<p className="pt-2 font-medium text-gray-700 text-lg leading-relaxed">
+								<p className="font-medium text-gray-700 text-lg leading-relaxed sm:text-xl">
 									{benefit.text}
 								</p>
 							</m.div>

@@ -26,7 +26,7 @@ export function HowItWorksSection() {
 
 	return (
 		<div className="mb-12 bg-gray-50 py-16">
-			<div className="mx-auto max-w-7xl px-6">
+			<div className="container">
 				<LazyMotion features={loadFeatures} strict>
 					<MotionDiv
 						className="mb-9 grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 lg:gap-8"
