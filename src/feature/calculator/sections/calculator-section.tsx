@@ -4,6 +4,7 @@ import { lazy, useState, useTransition } from "react";
 
 import { Calculator, Package, Scale } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 
 import { Badge } from "@/components/ui/badge";
@@ -35,6 +36,18 @@ const MotionDiv = lazy(() =>
 
 const loadFeatures = () => import("@/lib/motion").then((res) => res.default);
 
+type CalculatorFormValues = {
+	grossWeight: string;
+	volume: string;
+	localDoc: boolean;
+};
+
+type LeadFormValues = {
+	name: string;
+	email: string;
+	phone: string;
+};
+
 export function CalculatorSection() {
 	const t = useTranslations("CalculatorPage.calculator");
 	const tForm = useTranslations("CalculatorPage.form");
@@ -43,13 +56,21 @@ export function CalculatorSection() {
 	const [isLeadSubmitted, setIsLeadSubmitted] = useState(false);
 	const [isPending, startTransition] = useTransition();
 
-	const [name, setName] = useState("");
-	const [email, setEmail] = useState("");
-	const [phone, setPhone] = useState("");
+	const calculatorForm = useForm<CalculatorFormValues>({
+		defaultValues: {
+			grossWeight: "",
+			volume: "",
+			localDoc: false,
+		},
+	});
 
-	const [grossWeight, setGrossWeight] = useState<string>("");
-	const [volume, setVolume] = useState<string>("");
-	const [localDoc, setLocalDoc] = useState<boolean>(false);
+	const leadForm = useForm<LeadFormValues>({
+		defaultValues: {
+			name: "",
+			email: "",
+			phone: "",
+		},
+	});
 
 	const [chargeableVolume, setChargeableVolume] = useState<number>(0);
 	const [freightCost, setFreightCost] = useState<number>(0);
@@ -60,9 +81,14 @@ export function CalculatorSection() {
 	const RATE_PER_CBM = 235;
 	const DOC_FEE = 150;
 
-	const handleCalculation = () => {
-		const weight = Number.parseFloat(grossWeight) || 0;
-		const vol = Number.parseFloat(volume) || 0;
+	const volume = calculatorForm.watch("volume");
+	const localDoc = calculatorForm.watch("localDoc");
+
+	const handleCalculation = (values?: CalculatorFormValues) => {
+		const nextValues = values ?? calculatorForm.getValues();
+		const weight = Number.parseFloat(nextValues.grossWeight) || 0;
+		const vol = Number.parseFloat(nextValues.volume) || 0;
+		const docEnabled = nextValues.localDoc;
 
 		const volFromWeight = weight / 500;
 		setVolumeFromWeight(volFromWeight);
@@ -73,37 +99,39 @@ export function CalculatorSection() {
 		const freight = chargeable * RATE_PER_CBM;
 		setFreightCost(freight);
 
-		const doc = localDoc ? DOC_FEE : 0;
+		const doc = docEnabled ? DOC_FEE : 0;
 		setDocFee(doc);
 
 		setTotalCost(freight + doc);
 	};
 
-	const handleLeadSubmit = () => {
-		const weight = Number.parseFloat(grossWeight) || 0;
-		const vol = Number.parseFloat(volume) || 0;
+	const handleLeadSubmit = (leadValues: LeadFormValues) => {
+		const calcValues = calculatorForm.getValues();
+		const weight = Number.parseFloat(calcValues.grossWeight) || 0;
+		const vol = Number.parseFloat(calcValues.volume) || 0;
 		const volFromWeight = weight / 500;
 		const chargeable = Math.max(vol, volFromWeight);
 		const freight = chargeable * RATE_PER_CBM;
-		const doc = localDoc ? DOC_FEE : 0;
+		const doc = calcValues.localDoc ? DOC_FEE : 0;
 		const total = freight + doc;
 
 		startTransition(async () => {
 			const result = await sendLeadEmail({
-				name,
-				email,
-				phone,
-				grossWeight,
-				volume,
+				name: leadValues.name,
+				email: leadValues.email,
+				phone: leadValues.phone,
+				grossWeight: calcValues.grossWeight,
+				volume: calcValues.volume,
 				chargeableVolume: chargeable,
 				totalCost: total,
-				localDoc,
+				localDoc: calcValues.localDoc,
 			});
 
 			if (result.success) {
 				setIsOpen(false);
 				setIsLeadSubmitted(true);
-				handleCalculation();
+				leadForm.reset();
+				handleCalculation(calcValues);
 				toast.success("Success! You can now view the breakdown.");
 			} else {
 				toast.error("Something went wrong. Please try again.");
@@ -149,10 +177,9 @@ export function CalculatorSection() {
 									</Label>
 									<Input
 										id="gross-weight"
-										onChange={(e) => setGrossWeight(e.target.value)}
 										placeholder={t("grossWeight.placeholder")}
 										type="number"
-										value={grossWeight}
+										{...calculatorForm.register("grossWeight")}
 									/>
 									<p className="text-sm text-zinc-500">
 										{t("grossWeight.helpText")}
@@ -166,11 +193,10 @@ export function CalculatorSection() {
 									</Label>
 									<Input
 										id="volume"
-										onChange={(e) => setVolume(e.target.value)}
 										placeholder={t("volume.placeholder")}
 										step="0.1"
 										type="number"
-										value={volume}
+										{...calculatorForm.register("volume")}
 									/>
 									<p className="mt-1 text-sm text-zinc-500">
 										{t("volume.helpText")}
@@ -186,7 +212,9 @@ export function CalculatorSection() {
 									<Switch
 										checked={localDoc}
 										id="local-doc"
-										onCheckedChange={setLocalDoc}
+										onCheckedChange={(checked) => {
+											calculatorForm.setValue("localDoc", checked);
+										}}
 									/>
 								</Label>
 							</div>
@@ -195,7 +223,7 @@ export function CalculatorSection() {
 							{isLeadSubmitted ? (
 								<Button
 									className="w-full gap-2"
-									onClick={handleCalculation}
+									onClick={() => handleCalculation()}
 									size="lg"
 								>
 									<Calculator className="size-5" />
@@ -210,13 +238,7 @@ export function CalculatorSection() {
 										</Button>
 									</DialogTrigger>
 									<DialogContent>
-										<form
-											onSubmit={(e) => {
-												e.preventDefault();
-												e.stopPropagation();
-												handleLeadSubmit();
-											}}
-										>
+										<form onSubmit={leadForm.handleSubmit(handleLeadSubmit)}>
 											<DialogHeader>
 												<DialogTitle>View Cost Breakdown</DialogTitle>
 												<DialogDescription>
@@ -231,10 +253,9 @@ export function CalculatorSection() {
 													</Label>
 													<Input
 														id="lead-name"
-														onChange={(e) => setName(e.target.value)}
 														placeholder={tForm("name.placeholder")}
 														required
-														value={name}
+														{...leadForm.register("name", { required: true })}
 													/>
 												</div>
 												<div className="grid gap-2">
@@ -243,11 +264,10 @@ export function CalculatorSection() {
 													</Label>
 													<Input
 														id="lead-email"
-														onChange={(e) => setEmail(e.target.value)}
 														placeholder={tForm("email.placeholder")}
 														required
 														type="email"
-														value={email}
+														{...leadForm.register("email", { required: true })}
 													/>
 												</div>
 												<div className="grid gap-2">
@@ -256,11 +276,10 @@ export function CalculatorSection() {
 													</Label>
 													<Input
 														id="lead-phone"
-														onChange={(e) => setPhone(e.target.value)}
 														placeholder={tForm("phone.placeholder")}
 														required
 														type="tel"
-														value={phone}
+														{...leadForm.register("phone", { required: true })}
 													/>
 												</div>
 											</div>
