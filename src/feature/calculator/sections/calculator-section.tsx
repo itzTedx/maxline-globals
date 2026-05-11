@@ -6,6 +6,7 @@ import { Calculator, Package, Scale } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
 	Dialog,
@@ -121,11 +122,19 @@ export function CalculatorSection() {
 						viewport={{ once: true, margin: "-100px" }}
 						whileInView={{ opacity: 1, x: 0 }}
 					>
-						<div className="px-6 py-4">
-							<h2 className="font-semibold text-xl md:text-2xl">
-								{t("title")}
-							</h2>
-							<p className="text-muted-foreground">Direct LCL & FCL Services</p>
+						<div className="flex items-center justify-between gap-3 px-6 py-4">
+							<div>
+								<h2 className="font-semibold text-xl md:text-2xl">
+									{t("title")}
+								</h2>
+								<p className="text-muted-foreground">
+									Direct LCL & FCL Services
+								</p>
+							</div>
+
+							<Badge className="border-green-200 bg-green-100 text-green-600">
+								Active Route
+							</Badge>
 						</div>
 						<div className="rounded-md border border-border/40 bg-card p-6">
 							<div className="space-y-6">
@@ -391,9 +400,7 @@ function PendingState() {
 				<Package className="size-8 text-muted-foreground/60" />
 			</div>
 			<h3 className="mb-2 font-medium text-xl">{t("pending.title")}</h3>
-			<p className="max-w-[280px] text-muted-foreground">
-				{t("pending.info")}
-			</p>
+			<p className="max-w-[280px] text-muted-foreground">{t("pending.info")}</p>
 		</MotionDiv>
 	);
 }

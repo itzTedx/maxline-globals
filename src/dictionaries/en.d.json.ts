@@ -781,7 +781,7 @@ declare const messages: {
 	"CalculatorPage": {
 		"hero": {
 			"subtitle": "Instant Freight Estimates",
-			"title": "Freight Cost Calculator",
+			"title": "Fast & Reliable Freight: Guangzhou to Jabel Ali",
 			"description": "Get instant, accurate shipping cost estimates for your cargo. Calculate your freight costs in seconds with our transparent pricing tool."
 		},
 		"form": {

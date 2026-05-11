@@ -43,7 +43,6 @@ const structuredData = {
 export default function Home({ params }: Props) {
 	const { locale } = use(params);
 
-	// Enable static rendering
 	setRequestLocale(locale);
 
 	return (
