@@ -36,7 +36,11 @@ export function WhyThisMattersSection() {
 					whileInView={{ opacity: 1, y: 0 }}
 				>
 					<h2 className="text-balance font-semibold text-3xl md:text-4xl">
-						Why Accurate Freight Calculation Matters
+						Why{" "}
+						<span className="text-accent-secondary">
+							Accurate Freight Calculation
+						</span>{" "}
+						Matters
 					</h2>
 					<p className="mx-auto max-w-3xl text-balance text-gray-600 leading-relaxed sm:text-lg">
 						Choosing the right shipping method isn't just about moving cargo
@@ -47,22 +51,14 @@ export function WhyThisMattersSection() {
 				</m.div>
 
 				<div className="rounded-2xl border border-gray-200 bg-linear-to-br from-blue-50 to-cyan-50 p-8 md:p-12">
-					<m.div
-						className="mb-6"
-						initial={{ opacity: 0, y: 20 }}
-						transition={{ duration: 0.5, delay: 0.2 }}
-						viewport={{ once: true }}
-						whileInView={{ opacity: 1, y: 0 }}
-					>
-						<h3 className="mb-2 text-2xl text-gray-800">
-							Our calculator helps you:
-						</h3>
-					</m.div>
+					<h3 className="mb-2 text-2xl text-gray-800">
+						Our calculator helps you:
+					</h3>
 
 					<div className="grid gap-6 sm:grid-cols-2">
 						{benefits.map((benefit, index) => (
 							<m.div
-								className="flex items-center gap-4 rounded-xl bg-white shadow-sm transition-shadow duration-300 hover:shadow-md md:gap-6"
+								className="flex items-center gap-4 rounded-xl bg-card shadow-sm transition-shadow duration-300 hover:shadow-md md:gap-6"
 								initial={{ opacity: 0, x: -20 }}
 								key={Number(index)}
 								transition={{ duration: 0.5, delay: 0.1 * index }}
@@ -70,7 +66,7 @@ export function WhyThisMattersSection() {
 								whileInView={{ opacity: 1, x: 0 }}
 							>
 								<div className="flex size-24 shrink-0 items-center justify-center rounded-lg bg-linear-to-br from-[#078CD9] to-[#06B6D4] shadow-md">
-									<benefit.icon className="size-12 text-white" />
+									<benefit.icon className="size-12 text-card" />
 								</div>
 								<p className="font-medium text-gray-700 text-lg leading-relaxed sm:text-xl">
 									{benefit.text}
