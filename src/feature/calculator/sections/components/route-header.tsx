@@ -4,7 +4,7 @@ import { ShipIcon } from "lucide-react";
 import {
 	RotatingText,
 	RotatingTextContainer,
-} from "@/components/animate-ui/primitives/texts/rotating";
+} from "@/components/animation/rotating";
 
 export const RouteHeader = () => {
 	return (
