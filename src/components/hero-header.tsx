@@ -97,7 +97,7 @@ export function HeroHeader({
 				)}
 				<h1
 					className={cn(
-						"relative z-10 mb-3 text-balance font-display font-semibold text-3xl text-accent-tertiary uppercase sm:text-5xl md:text-8xl",
+						"relative z-10 mb-3 text-balance font-display font-semibold text-4xl text-accent-tertiary uppercase sm:text-7xl md:text-8xl",
 						titleClassName
 					)}
 					id="hero-title"

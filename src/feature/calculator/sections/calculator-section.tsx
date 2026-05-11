@@ -140,12 +140,12 @@ export function CalculatorSection() {
 	};
 
 	return (
-		<div className="mx-auto max-w-7xl px-6 py-16" id="calculator-section">
+		<div id="calculator-section">
 			<LazyMotion features={loadFeatures} strict>
-				<div className="grid gap-8 lg:grid-cols-2">
+				<div className="">
 					<MotionDiv
-						className="t h-fit rounded-xl bg-card/50 p-1"
-						initial={{ opacity: 0, x: -30 }}
+						className="t h-fit rounded-xl bg-card/50 p-1 backdrop-blur-lg"
+						initial={{ opacity: 0, x: 30 }}
 						transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
 						viewport={{ once: true, margin: "-100px" }}
 						whileInView={{ opacity: 1, x: 0 }}
@@ -164,138 +164,7 @@ export function CalculatorSection() {
 								Active Route
 							</Badge>
 						</div>
-						<div className="rounded-md border border-border/40 bg-card p-6">
-							<div className="space-y-6">
-								<RouteHeader />
-								<div className="space-y-2">
-									<Label
-										className="flex items-center gap-2"
-										htmlFor="gross-weight"
-									>
-										<Scale className="size-4 stroke-1 text-muted-foreground" />
-										{t("grossWeight.label")}
-									</Label>
-									<Input
-										id="gross-weight"
-										placeholder={t("grossWeight.placeholder")}
-										type="number"
-										{...calculatorForm.register("grossWeight")}
-									/>
-									<p className="text-sm text-zinc-500">
-										{t("grossWeight.helpText")}
-									</p>
-								</div>
 
-								<div className="space-y-2">
-									<Label className="flex items-center gap-2" htmlFor="volume">
-										<Package className="size-4 stroke-1 text-muted-foreground" />
-										{t("volume.label")}
-									</Label>
-									<Input
-										id="volume"
-										placeholder={t("volume.placeholder")}
-										step="0.1"
-										type="number"
-										{...calculatorForm.register("volume")}
-									/>
-									<p className="mt-1 text-sm text-zinc-500">
-										{t("volume.helpText")}
-									</p>
-								</div>
-
-								<Label
-									className="flex cursor-pointer items-center justify-between gap-3 rounded-md border border-border/50 bg-muted p-3 font-normal text-base transition-all duration-200 hover:border-accent-secondary hover:bg-accent/20"
-									htmlFor="local-doc"
-								>
-									{t("localDoc")}
-
-									<Switch
-										checked={localDoc}
-										id="local-doc"
-										onCheckedChange={(checked) => {
-											calculatorForm.setValue("localDoc", checked);
-										}}
-									/>
-								</Label>
-							</div>
-						</div>
-						<div className="p-4">
-							{isLeadSubmitted ? (
-								<Button
-									className="w-full gap-2"
-									onClick={() => handleCalculation()}
-									size="lg"
-								>
-									<Calculator className="size-5" />
-									{t("calculateBtn")}
-								</Button>
-							) : (
-								<Dialog onOpenChange={setIsOpen} open={isOpen}>
-									<DialogTrigger asChild>
-										<Button className="w-full gap-2" size="lg">
-											<Calculator className="size-5" />
-											{t("calculateBtn")}
-										</Button>
-									</DialogTrigger>
-									<DialogContent>
-										<form onSubmit={leadForm.handleSubmit(handleLeadSubmit)}>
-											<DialogHeader>
-												<DialogTitle>View Cost Breakdown</DialogTitle>
-												<DialogDescription>
-													Please enter your details to view the estimated
-													freight cost breakdown.
-												</DialogDescription>
-											</DialogHeader>
-											<div className="grid gap-4 py-4">
-												<div className="grid gap-2">
-													<Label htmlFor="lead-name">
-														{tForm("name.label")}
-													</Label>
-													<Input
-														id="lead-name"
-														placeholder={tForm("name.placeholder")}
-														required
-														{...leadForm.register("name", { required: true })}
-													/>
-												</div>
-												<div className="grid gap-2">
-													<Label htmlFor="lead-email">
-														{tForm("email.label")}
-													</Label>
-													<Input
-														id="lead-email"
-														placeholder={tForm("email.placeholder")}
-														required
-														type="email"
-														{...leadForm.register("email", { required: true })}
-													/>
-												</div>
-												<div className="grid gap-2">
-													<Label htmlFor="lead-phone">
-														{tForm("phone.label")}
-													</Label>
-													<Input
-														id="lead-phone"
-														placeholder={tForm("phone.placeholder")}
-														required
-														type="tel"
-														{...leadForm.register("phone", { required: true })}
-													/>
-												</div>
-											</div>
-											<div className="mt-4 flex justify-end">
-												<Button disabled={isPending} type="submit">
-													{isPending ? "Sending..." : "Show Results"}
-												</Button>
-											</div>
-										</form>
-									</DialogContent>
-								</Dialog>
-							)}
-						</div>
-					</MotionDiv>
-
-					<div className="h-fit lg:sticky lg:top-24">
 						{isLeadSubmitted ? (
 							<MotionDiv
 								className="rounded-xl border border-border/10 bg-primary shadow-lg"
@@ -388,38 +257,144 @@ export function CalculatorSection() {
 								</div>
 							</MotionDiv>
 						) : (
-							<PendingState />
+							<div className="rounded-md border border-border/40 bg-card p-6">
+								<div className="space-y-6 text-foreground">
+									<RouteHeader />
+									<div className="space-y-2">
+										<Label
+											className="flex items-center gap-2"
+											htmlFor="gross-weight"
+										>
+											<Scale className="size-4 stroke-1 text-muted-foreground" />
+											{t("grossWeight.label")}
+										</Label>
+										<Input
+											id="gross-weight"
+											placeholder={t("grossWeight.placeholder")}
+											type="number"
+											{...calculatorForm.register("grossWeight")}
+										/>
+										<p className="text-sm text-zinc-500">
+											{t("grossWeight.helpText")}
+										</p>
+									</div>
+
+									<div className="space-y-2">
+										<Label className="flex items-center gap-2" htmlFor="volume">
+											<Package className="size-4 stroke-1 text-muted-foreground" />
+											{t("volume.label")}
+										</Label>
+										<Input
+											id="volume"
+											placeholder={t("volume.placeholder")}
+											step="0.1"
+											type="number"
+											{...calculatorForm.register("volume")}
+										/>
+										<p className="mt-1 text-sm text-zinc-500">
+											{t("volume.helpText")}
+										</p>
+									</div>
+
+									<Label
+										className="flex cursor-pointer items-center justify-between gap-3 rounded-md border border-border/50 bg-muted p-3 font-normal text-base transition-all duration-200 hover:border-accent-secondary hover:bg-accent/20"
+										htmlFor="local-doc"
+									>
+										{t("localDoc")}
+
+										<Switch
+											checked={localDoc}
+											id="local-doc"
+											onCheckedChange={(checked) => {
+												calculatorForm.setValue("localDoc", checked);
+											}}
+										/>
+									</Label>
+								</div>
+							</div>
 						)}
 
-						<p className="mt-4 text-center text-xs text-zinc-600">
-							{t("total.disclaimer")}
-						</p>
-					</div>
+						<div className="p-4">
+							{isLeadSubmitted ? (
+								<Button
+									className="w-full gap-2"
+									onClick={() => handleCalculation()}
+									size="lg"
+								>
+									<Calculator className="size-5" />
+									{t("calculateBtn")}
+								</Button>
+							) : (
+								<Dialog onOpenChange={setIsOpen} open={isOpen}>
+									<DialogTrigger asChild>
+										<Button className="w-full gap-2" size="lg">
+											<Calculator className="size-5" />
+											{t("calculateBtn")}
+										</Button>
+									</DialogTrigger>
+									<DialogContent>
+										<form onSubmit={leadForm.handleSubmit(handleLeadSubmit)}>
+											<DialogHeader>
+												<DialogTitle>View Cost Breakdown</DialogTitle>
+												<DialogDescription>
+													Please enter your details to view the estimated
+													freight cost breakdown.
+												</DialogDescription>
+											</DialogHeader>
+											<div className="grid gap-4 py-4">
+												<div className="grid gap-2">
+													<Label htmlFor="lead-name">
+														{tForm("name.label")}
+													</Label>
+													<Input
+														id="lead-name"
+														placeholder={tForm("name.placeholder")}
+														required
+														{...leadForm.register("name", { required: true })}
+													/>
+												</div>
+												<div className="grid gap-2">
+													<Label htmlFor="lead-email">
+														{tForm("email.label")}
+													</Label>
+													<Input
+														id="lead-email"
+														placeholder={tForm("email.placeholder")}
+														required
+														type="email"
+														{...leadForm.register("email", { required: true })}
+													/>
+												</div>
+												<div className="grid gap-2">
+													<Label htmlFor="lead-phone">
+														{tForm("phone.label")}
+													</Label>
+													<Input
+														id="lead-phone"
+														placeholder={tForm("phone.placeholder")}
+														required
+														type="tel"
+														{...leadForm.register("phone", { required: true })}
+													/>
+												</div>
+											</div>
+											<div className="mt-4 flex justify-end">
+												<Button disabled={isPending} type="submit">
+													{isPending ? "Sending..." : "Show Results"}
+												</Button>
+											</div>
+										</form>
+									</DialogContent>
+								</Dialog>
+							)}
+						</div>
+					</MotionDiv>
+
+					<p className="mt-4 text-center text-xs text-zinc-600">
+						{t("total.disclaimer")}
+					</p>
 				</div>
 			</LazyMotion>
 		</div>
-	);
-}
-
-function PendingState() {
-	const t = useTranslations("CalculatorPage.calculator");
-	return (
-		<MotionDiv
-			className="flex h-full min-h-[440px] flex-col items-center justify-center rounded-xl border border-border/40 bg-card p-12 text-center"
-			initial={{ opacity: 0, x: 30 }}
-			transition={{
-				duration: 0.6,
-				delay: 0.2,
-				ease: [0.16, 1, 0.3, 1],
-			}}
-			viewport={{ once: true, margin: "-100px" }}
-			whileInView={{ opacity: 1, x: 0 }}
-		>
-			<div className="mb-6 flex size-16 items-center justify-center rounded-2xl bg-muted/50">
-				<Package className="size-8 text-muted-foreground/60" />
-			</div>
-			<h3 className="mb-2 font-medium text-xl">{t("pending.title")}</h3>
-			<p className="max-w-[280px] text-muted-foreground">{t("pending.info")}</p>
-		</MotionDiv>
 	);
 }

@@ -85,9 +85,9 @@ export default async function QuotePage({
 
 	return (
 		<main className="relative z-10">
-			<header className="container grid grid-cols-1 gap-3 pb-3 md:grid-cols-3">
+			<div className="container grid pt-9 md:grid-cols-3 md:pt-12">
 				<HeroHeader
-					className="col-span-1 mx-0 px-0 py-0 text-start md:col-span-2 lg:py-0 lg:pt-20 lg:pb-6"
+					className="col-span-1 mx-0 h-fit px-0 py-0 text-start md:sticky md:top-28 lg:py-0 lg:pt-6"
 					description={t("hero.description")}
 					descriptionClassName="mb-6"
 					isLogo={false}
@@ -101,11 +101,11 @@ export default async function QuotePage({
 					]}
 					titleClassName="text-3xl lg:text-[4.5rem] mb-6 max-w-xl"
 				/>
-			</header>
 
-			<section aria-label="Quote Form">
-				<QuoteForm />
-			</section>
+				<section aria-label="Quote Form" className="md:col-span-2">
+					<QuoteForm />
+				</section>
+			</div>
 
 			<section aria-label="Our Features" className="relative z-10">
 				<h2 className="pt-10 pb-6 text-center font-display font-semibold text-2xl text-accent-tertiary uppercase tracking-wide md:pt-20 md:pb-9 md:text-6xl">

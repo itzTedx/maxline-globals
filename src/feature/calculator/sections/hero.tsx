@@ -10,7 +10,7 @@ import { IconArrowRightTag } from "@/assets/icons/arrow";
 
 import { Link } from "@/i18n/navigation";
 
-import { LeadCaptureForm } from "./components/lead-capture-form";
+import { CalculatorSection } from "./calculator-section";
 
 export function HeroSection() {
 	const t = useTranslations("CalculatorPage.hero");
@@ -79,7 +79,9 @@ export function HeroSection() {
 					</ul>
 				</div>
 
-				<LeadCaptureForm />
+				{/* <LeadCaptureForm /> */}
+
+				<CalculatorSection />
 			</div>
 			<div className="absolute inset-0 z-10 bg-linear-to-b from-brand-dark md:bg-linear-to-r" />
 			<Image

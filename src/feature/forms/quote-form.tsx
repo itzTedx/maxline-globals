@@ -183,7 +183,6 @@ const FormDatePicker = <T extends FieldValues>({
 							disabled={(date) =>
 								date < new Date() || date < new Date("1900-01-01")
 							}
-							initialFocus
 							mode="single"
 							onSelect={field.onChange}
 							selected={field.value as Date}
@@ -306,10 +305,7 @@ export const QuoteForm = () => {
 
 	return (
 		<Form {...form}>
-			<form
-				className="container max-w-7xl space-y-3 px-4 sm:px-6 md:px-8"
-				onSubmit={form.handleSubmit(onSubmit)}
-			>
+			<form className="space-y-3" onSubmit={form.handleSubmit(onSubmit)}>
 				{result && (
 					<div className={result.success ? "text-green-600" : "text-red-600"}>
 						{result.success
@@ -318,14 +314,14 @@ export const QuoteForm = () => {
 					</div>
 				)}
 				<FormSection>
-					<div className="space-y-4">
-						<h2 className="text-balance font-grotesk text-3xl text-accent-tertiary tracking-tight sm:text-4xl md:text-5xl">
+					<div className="space-y-3">
+						<h2 className="text-balance font-display font-grotesk font-semibold text-3xl text-accent-tertiary uppercase sm:text-4xl md:text-5xl">
 							{t("main.title")}
 						</h2>
-						<p className="font-light text-lg text-muted-foreground leading-normal sm:text-xl">
+						<p className="font-light text-muted-foreground leading-normal">
 							{t("main.description")}
 						</p>
-						<Separator />
+						<Separator className="bg-muted" />
 						<h3 className="font-medium text-2xl text-accent-tertiary sm:text-3xl md:text-4xl">
 							{t("basicInfo.sectionTitle")}
 						</h3>
