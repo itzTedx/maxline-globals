@@ -52,10 +52,6 @@ export const Navbar = () => {
 			className="sticky top-0 z-50 bg-secondary backdrop-blur-lg transition-all duration-300 ease-in-out supports-backdrop-filter:bg-secondary/90"
 			role="navigation"
 		>
-			{/* <div
-        aria-hidden="true"
-        className="absolute top-0 z-10 h-full w-full bg-linear-to-b from-background to-background/0"
-      /> */}
 			<div className="container relative z-50 flex h-16 items-center justify-between gap-3">
 				<div className="flex items-center gap-8">
 					<Link aria-label="Maxline Global - Home" href="/">

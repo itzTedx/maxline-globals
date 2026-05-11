@@ -1,10 +1,8 @@
 "use client";
 
-import { usePathname } from "next/navigation";
-
 import { IconCaretDown } from "@/assets/icons/caret";
 
-import { Link } from "@/i18n/navigation";
+import { Link, usePathname } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 
 interface NavLinkProps {
@@ -28,7 +26,14 @@ export const NavLink = ({
 }: NavLinkProps) => {
 	const pathname = usePathname();
 
-	const activePage = pathname.includes(href);
+	const normalizedPathname = pathname.replace(/\/+$/, "") || "/";
+	const normalizedHref = href.replace(/\/+$/, "") || "/";
+
+	const activePage =
+		normalizedHref === "/"
+			? normalizedPathname === "/"
+			: normalizedPathname === normalizedHref ||
+				normalizedPathname.startsWith(`${normalizedHref}/`);
 
 	return (
 		<Link
