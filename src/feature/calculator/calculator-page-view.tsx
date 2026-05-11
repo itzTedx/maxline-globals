@@ -15,9 +15,6 @@ export const CalculatorPageView = () => {
 			<WhyThisMattersSection />
 			<Services />
 			<BenefitsSection />
-			{/* <ExampleSection /> */}
-			{/* <RouteSection /> */}
-			{/* <CTASection /> */}
 			<Cta />
 		</main>
 	);

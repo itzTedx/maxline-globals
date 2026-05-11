@@ -10,9 +10,6 @@ export default async function CalculatorPage({
 }) {
 	const { locale } = await params;
 	setRequestLocale(locale);
-	return (
-		<main>
-			<CalculatorPageView />
-		</main>
-	);
+
+	return <CalculatorPageView />;
 }
