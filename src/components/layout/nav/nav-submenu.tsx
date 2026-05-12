@@ -35,7 +35,7 @@ export const NavSubmenu = ({ isOpen, items, parentTitle }: NavSubmenuProps) => {
 							opacity: { duration: 0.3 },
 						},
 					}}
-					className={cn("absolute top-full left-0 w-[150%] overflow-hidden")}
+					className={cn("absolute top-full left-0 w-[120%] overflow-hidden")}
 					exit={{
 						opacity: 0,
 						height: 0,
