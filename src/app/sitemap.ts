@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 
 import { siteConfig } from "@/constants/site-config";
+import { getInsights } from "@/feature/insights/actions/query";
 import { routing } from "@/i18n/routing";
 
 const serviceSlugs = [
@@ -28,6 +29,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
 		entries.push({ url: `${base}/${locale}/company/about`, priority: 0.8 });
 		entries.push({ url: `${base}/${locale}/company/careers`, priority: 0.6 });
 		entries.push({ url: `${base}/${locale}/calculator`, priority: 0.7 });
+
+		const insights = getInsights({ locale });
+
+		entries.push();
 
 		entries.push({ url: `${base}/${locale}/services`, priority: 0.8 });
 		for (const slug of serviceSlugs) {

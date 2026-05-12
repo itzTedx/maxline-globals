@@ -11,7 +11,7 @@ export const InsightsCarousel = async () => {
 	const t = await getTranslations("HomePage");
 	const locale = await getLocale();
 
-	const insights = await getInsights({ locale });
+	const insights = getInsights({ locale });
 	return (
 		<section
 			aria-label="Blog posts carousel"

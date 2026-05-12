@@ -8,10 +8,10 @@ import { Insight, InsightMetadata } from "./types";
 const root = (locale: Locale) =>
 	path.join(process.cwd(), "src", "contents", "insights", locale);
 
-export async function getInsightBySlug(
+export function getInsightBySlug(
 	slug: string,
 	{ locale }: { locale: Locale }
-): Promise<Insight | null> {
+): Insight | null {
 	try {
 		const filePath = path.join(root(locale), `${slug}.mdx`);
 		const fileContent = fs.readFileSync(filePath, { encoding: "utf8" });
@@ -31,13 +31,13 @@ export async function getInsightBySlug(
 	}
 }
 
-export async function getInsights({
+export function getInsights({
 	limit,
 	locale,
 }: {
 	limit?: number;
 	locale: Locale;
-}): Promise<InsightMetadata[]> {
+}): InsightMetadata[] {
 	const files = fs.readdirSync(root(locale));
 
 	let insights = files.map((file) => getInsightMetadata(file, locale));
@@ -72,7 +72,7 @@ export function getInsightMetadata(
 	return { ...metadata, slug };
 }
 
-export async function getRelatedInsights({
+export function getRelatedInsights({
 	tags,
 	limit,
 	locale,
@@ -80,8 +80,8 @@ export async function getRelatedInsights({
 	tags: string[];
 	limit?: number;
 	locale: Locale;
-}): Promise<InsightMetadata[]> {
-	const result = await getInsights({ locale });
+}): InsightMetadata[] {
+	const result = getInsights({ locale });
 
 	const insights = result.filter((insight) =>
 		insight.tags.some((tag) => tags.includes(tag))

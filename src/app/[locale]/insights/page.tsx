@@ -71,7 +71,7 @@ export default async function InsightsPage({ params }: Props) {
 	setRequestLocale(locale);
 
 	const t = await getTranslations("HomePage");
-	const insights = await getInsights({ locale });
+	const insights = getInsights({ locale });
 
 	const structuredData = buildInsightsStructuredData({
 		description: t("insights.description"),

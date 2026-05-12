@@ -28,7 +28,7 @@ interface Props {
 // Generate metadata for the page
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	const { slug, locale } = await params;
-	const insight = await getInsightBySlug(slug, { locale });
+	const insight = getInsightBySlug(slug, { locale });
 
 	if (!insight)
 		return {
@@ -95,7 +95,7 @@ export default async function InsightsSlugPage({ params }: Props) {
 	setRequestLocale(locale);
 
 	const navigationT = await getTranslations("Navigation");
-	const insight = await getInsightBySlug(slug, { locale });
+	const insight = getInsightBySlug(slug, { locale });
 
 	if (!insight) return notFound();
 
