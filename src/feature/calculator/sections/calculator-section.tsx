@@ -5,7 +5,6 @@ import { lazy, useState, useTransition } from "react";
 import { Calculator, Package, Scale } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
-import { toast } from "sonner";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -21,9 +20,9 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 
+import { notify } from "@/feature/otp/client";
 import { Link } from "@/i18n/navigation";
 
-import { sendLeadEmail } from "../actions/lead-action";
 import { RouteHeader } from "./components/route-header";
 
 const LazyMotion = lazy(() =>
@@ -116,26 +115,32 @@ export function CalculatorSection() {
 		const total = freight + doc;
 
 		startTransition(async () => {
-			const result = await sendLeadEmail({
-				name: leadValues.name,
-				email: leadValues.email,
-				phone: leadValues.phone,
-				grossWeight: calcValues.grossWeight,
-				volume: calcValues.volume,
-				chargeableVolume: chargeable,
-				totalCost: total,
-				localDoc: calcValues.localDoc,
+			const otpResult = await notify.otpCode.send({
+				to: "+971509961343",
+				input: { code: "482910" },
 			});
 
-			if (result.success) {
-				setIsOpen(false);
-				setIsLeadSubmitted(true);
-				leadForm.reset();
-				handleCalculation(calcValues);
-				toast.success("Success! You can now view the breakdown.");
-			} else {
-				toast.error("Something went wrong. Please try again.");
-			}
+			console.log("otp result: ", otpResult);
+			// const result = await sendLeadEmail({
+			// 	name: leadValues.name,
+			// 	email: leadValues.email,
+			// 	phone: leadValues.phone,
+			// 	grossWeight: calcValues.grossWeight,
+			// 	volume: calcValues.volume,
+			// 	chargeableVolume: chargeable,
+			// 	totalCost: total,
+			// 	localDoc: calcValues.localDoc,
+			// });
+
+			// if (result.success) {
+			// 	setIsOpen(false);
+			// 	setIsLeadSubmitted(true);
+			// 	leadForm.reset();
+			// 	handleCalculation(calcValues);
+			// 	toast.success("Success! You can now view the breakdown.");
+			// } else {
+			// 	toast.error("Something went wrong. Please try again.");
+			// }
 		});
 	};
 
