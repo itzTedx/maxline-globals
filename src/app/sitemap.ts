@@ -14,7 +14,6 @@ const serviceSlugs = [
 	"exhibition-cargo",
 	"movers-lashing",
 ];
-const insightSlugs = ["logistics-trends-2024", "supply-chain-innovation"];
 
 export default function sitemap(): MetadataRoute.Sitemap {
 	const base = siteConfig.site.replace(/\/$/, "");
@@ -32,8 +31,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
 		const insights = getInsights({ locale });
 
-		entries.push();
-
 		entries.push({ url: `${base}/${locale}/services`, priority: 0.8 });
 		for (const slug of serviceSlugs) {
 			entries.push({
@@ -42,9 +39,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
 			});
 		}
 		entries.push({ url: `${base}/${locale}/insights`, priority: 0.8 });
-		for (const slug of insightSlugs) {
+		for (const insight of insights) {
 			entries.push({
-				url: `${base}/${locale}/insights/${slug}`,
+				url: `${base}/${locale}/insights/${insight.slug}`,
 				priority: 0.6,
 			});
 		}
