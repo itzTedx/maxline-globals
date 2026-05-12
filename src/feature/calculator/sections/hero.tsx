@@ -79,8 +79,6 @@ export function HeroSection() {
 					</ul>
 				</div>
 
-				{/* <LeadCaptureForm /> */}
-
 				<CalculatorSection />
 			</div>
 			<div className="absolute inset-0 z-10 bg-linear-to-b from-brand-dark md:bg-linear-to-r" />
