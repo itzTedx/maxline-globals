@@ -86,6 +86,8 @@ export function HeroSection() {
 				alt=""
 				className="object-cover"
 				fill
+				loading="eager"
+				priority
 				src="/images/calculator-hero.webp"
 			/>
 		</section>

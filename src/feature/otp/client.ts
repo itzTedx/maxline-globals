@@ -10,10 +10,12 @@ export const notify = createClient({
 
 	transportsByChannel: {
 		sms: twilioSmsTransport({
-			accountSid: process.env.TWILIO_ACCOUNT_SID as string,
-			authToken: process.env.TWILIO_AUTH_TOKEN as string,
+			accountSid: String(process.env.NEXT_PUBLIC_TWILIO_ACCOUNT_SID),
+			authToken: String(process.env.NEXT_PUBLIC_TWILIO_AUTH_TOKEN),
 			// fromNumber: "+18777804236",
-			messagingServiceSid: "VA1dd6a57cff4e6cc89710ffd274bce444",
+			messagingServiceSid: String(
+				process.env.NEXT_PUBLIC_TWILIO_MESSAGE_SERVICE_SID
+			),
 		}),
 	},
 
