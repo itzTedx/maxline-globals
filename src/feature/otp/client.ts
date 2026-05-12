@@ -13,7 +13,7 @@ export const notify = createClient({
 			accountSid: process.env.TWILIO_ACCOUNT_SID as string,
 			authToken: process.env.TWILIO_AUTH_TOKEN as string,
 			// fromNumber: "+18777804236",
-			messagingServiceSid: process.env.TWILIO_SERVICE_SID as string,
+			messagingServiceSid: "VA1dd6a57cff4e6cc89710ffd274bce444",
 		}),
 	},
 
