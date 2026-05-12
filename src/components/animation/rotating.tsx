@@ -110,10 +110,10 @@ function RotatingText({
 }
 
 export {
-	RotatingTextContainer,
 	RotatingText,
-	useRotatingText,
+	RotatingTextContainer,
 	type RotatingTextContainerProps,
-	type RotatingTextProps,
 	type RotatingTextContextType,
+	type RotatingTextProps,
+	useRotatingText,
 };
