@@ -83,9 +83,9 @@ export default async function TeamPage({
 		"@type": "Organization",
 		name: "Maxline Global Team",
 		description: t("heroDescription"),
-		url: `${siteConfig.site}/company/team`,
+		url: `${siteConfig.site}/${locale}/company/team`,
 		logo: `${siteConfig.site}/logo.png`,
-		sameAs: [socialLinks.map((link) => link.href)],
+		sameAs: socialLinks.map((link) => link.href),
 		department: {
 			"@type": "Organization",
 			name: t("departmentName"),
@@ -122,7 +122,7 @@ export default async function TeamPage({
 						{TEAMS.map((team, i) => (
 							<li
 								className="overflow-hidden rounded-xl bg-brand-dark"
-								key={`${team.nameKey}-${i}`}
+								key={`${team.nameKey}-${Number(i)}`}
 							>
 								<div className="relative aspect-5/6">
 									<Image

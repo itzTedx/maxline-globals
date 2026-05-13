@@ -1,11 +1,13 @@
 import type { MetadataRoute } from "next";
 
+import { siteConfig } from "@/constants/site-config";
+
 export default function robots(): MetadataRoute.Robots {
 	return {
 		rules: {
 			userAgent: "*",
-			allow: "/",
+			disallow: "",
 		},
-		sitemap: "https://www.maxlineglobal.com/sitemap.xml",
+		sitemap: `${siteConfig.site}/sitemap.xml`,
 	};
 }

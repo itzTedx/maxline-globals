@@ -33,10 +33,13 @@ export const siteConfig = {
 export const socialLinks = [
 	{
 		title: "linkedin",
-		href: "https://www.linkedin.com/company/maxline-global-logistics-solutions/",
+		href: "https://www.linkedin.com/company/maxline-global-logistics-solutions",
 	},
-	{ title: "instagram", href: "https://www.instagram.com/maxlineglobal/" },
-	{ title: "facebook", href: "https://www.facebook.com/maxlineglobal/" },
+	{ title: "instagram", href: "https://www.instagram.com/maxlineglobal" },
+	{
+		title: "facebook",
+		href: "https://www.facebook.com/MaxlineGlobalLogistics",
+	},
 ] as const;
 
 export type SiteConfig = typeof siteConfig;

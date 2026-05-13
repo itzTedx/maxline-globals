@@ -13,14 +13,12 @@ import { IconHeadphone } from "@/assets/icons/headphone";
 import { SERVICES } from "@/constants";
 
 import { ServicesGrid } from "../../services/services-grid";
-import { ServicesSchema } from "../schema/services-schema";
 
 export const Services = memo(() => {
 	const t = useTranslations("HomePage");
 	const navT = useTranslations("Navigation");
 	return (
 		<>
-			<ServicesSchema services={SERVICES} />
 			<section
 				aria-labelledby="services-heading"
 				className="relative bg-secondary py-12 sm:py-16 md:py-20"

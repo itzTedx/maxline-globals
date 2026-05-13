@@ -36,23 +36,13 @@ export const Faqs = () => {
 	};
 
 	return (
-		<section
-			aria-labelledby="faq-heading"
-			className="relative py-10 md:py-20"
-			itemScope
-			itemType="https://schema.org/FAQPage"
-		>
+		<section aria-labelledby="faq-heading" className="relative py-10 md:py-20">
 			<Script id="faq-schema" type="application/ld+json">
 				{JSON.stringify(faqSchema)}
 			</Script>
 
 			<div className="relative mx-auto max-w-4xl overflow-hidden rounded-2xl bg-card px-4 py-12 md:px-0">
-				<div
-					className="relative z-10 mx-auto max-w-2xl"
-					itemProp="mainEntity"
-					itemScope
-					itemType="https://schema.org/Question"
-				>
+				<div className="relative z-10 mx-auto max-w-2xl">
 					<h2
 						className="font-display font-semibold text-3xl text-primary uppercase md:text-4xl"
 						id="faq-heading"
@@ -64,28 +54,17 @@ export const Faqs = () => {
 						/>
 					</h2>
 					<Accordion collapsible defaultValue={faqs[0].question} type="single">
-						{faqs.map((item: Faq, idx: number) => (
+						{faqs.map((item: Faq) => (
 							<AccordionItem
 								className="border-border/50 md:py-2"
-								itemProp="mainEntity"
-								itemScope
-								itemType="https://schema.org/Question"
-								key={`${idx + 1}-faq`}
+								key={item.question}
 								value={item.question}
 							>
-								<AccordionTrigger
-									className="cursor-pointer py-2 font-medium text-base hover:no-underline md:text-lg"
-									itemProp="name"
-								>
+								<AccordionTrigger className="cursor-pointer py-2 font-medium text-base hover:no-underline md:text-lg">
 									{item.question}
 								</AccordionTrigger>
-								<AccordionContent
-									className="pb-2 font-light text-base text-muted-foreground md:text-lg"
-									itemProp="acceptedAnswer"
-									itemScope
-									itemType="https://schema.org/Answer"
-								>
-									<span itemProp="text">{item.answer}</span>
+								<AccordionContent className="pb-2 font-light text-base text-muted-foreground md:text-lg">
+									<span>{item.answer}</span>
 								</AccordionContent>
 							</AccordionItem>
 						))}

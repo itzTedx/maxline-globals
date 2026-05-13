@@ -74,7 +74,12 @@ export async function generateMetadata({
 	};
 }
 
-export default function LocationPage() {
+export default async function LocationPage({
+	params,
+}: {
+	params: Promise<{ locale: string }>;
+}) {
+	const { locale } = await params;
 	const indiaLocation = LOCATIONS.find((location) => location.slug === "india");
 
 	if (!indiaLocation) {
@@ -87,7 +92,7 @@ export default function LocationPage() {
 		name: indiaLocation.title,
 		description:
 			"India operations office of Max Line Global Vaahika Limited providing multimodal logistics, freight forwarding, and supply chain solutions from Mumbai.",
-		url: `${siteConfig.site}/company/location/india`,
+		url: `${siteConfig.site}/${locale}/company/location/india`,
 		telephone: indiaLocation.phone,
 		address: {
 			"@type": "PostalAddress",

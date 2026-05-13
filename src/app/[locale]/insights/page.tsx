@@ -6,11 +6,12 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { HeroHeader } from "@/components/hero-header";
 
-import { siteConfig, socialLinks } from "@/constants/site-config";
+import { siteConfig } from "@/constants/site-config";
 import { Cta } from "@/feature/cta";
 import { getInsights } from "@/feature/insights/actions/query";
 import type { InsightMetadata } from "@/feature/insights/actions/types";
 import { InsightCard } from "@/feature/insights/components/insight-card";
+import { organizationSchemaId } from "@/lib/schema/ids";
 
 // Dynamic metadata generation based on locale
 export async function generateMetadata({
@@ -53,10 +54,10 @@ export async function generateMetadata({
 					: "Discover insights, trends, and expert perspectives shaping the future of global logistics.",
 		},
 		alternates: {
-			canonical: `https://www.maxlineglobal.com/${locale}/insights`,
+			canonical: `${siteConfig.site}/${locale}/insights`,
 			languages: {
-				en: "https://www.maxlineglobal.com/en/insights",
-				ar: "https://www.maxlineglobal.com/ar/insights",
+				en: `${siteConfig.site}/en/insights`,
+				ar: `${siteConfig.site}/ar/insights`,
 			},
 		},
 	};
@@ -130,14 +131,8 @@ function buildInsightsStructuredData({
 		url: pageUrl,
 		inLanguage: locale,
 		publisher: {
-			"@type": "Organization",
-			name: siteConfig.name,
-			logo: {
-				"@type": "ImageObject",
-				url: `${siteConfig.site}/logo.png`,
-			},
+			"@id": organizationSchemaId(),
 		},
-		sameAs: [socialLinks.map((link) => link.href)],
 		blogPost: insights.map((insight) => ({
 			"@type": "BlogPosting",
 			headline: insight.title,

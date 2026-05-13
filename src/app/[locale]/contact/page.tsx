@@ -121,7 +121,7 @@ export default async function ContactPage({
 			addressLocality: "Dubai",
 			addressCountry: "AE",
 		},
-		sameAs: [socialLinks.map((link) => link.href)],
+		sameAs: socialLinks.map((link) => link.href),
 	};
 
 	return (

@@ -12,13 +12,14 @@ import { HeroHeader } from "@/components/hero-header";
 import MDXContent from "@/components/markdown/mdx-component";
 import { Button } from "@/components/ui/button";
 
-import { siteConfig, socialLinks } from "@/constants/site-config";
+import { siteConfig } from "@/constants/site-config";
 import {
 	getInsightBySlug,
 	getInsights,
 } from "@/feature/insights/actions/query";
 import type { Insight } from "@/feature/insights/actions/types";
 import { routing } from "@/i18n/routing";
+import { organizationSchemaId } from "@/lib/schema/ids";
 import { formatInsightDate } from "@/lib/utils";
 
 interface Props {
@@ -82,7 +83,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export async function generateStaticParams({ params }: Props) {
 	const { locale } = await params;
-	const insights = await getInsights({ locale });
+	const insights = getInsights({ locale });
 
 	return insights.map((insight) => ({
 		slug: insight.slug,
@@ -99,11 +100,9 @@ export default async function InsightsSlugPage({ params }: Props) {
 
 	if (!insight) return notFound();
 
-	const articleStructuredData = buildArticleStructuredData(insight, locale);
-	const breadcrumbStructuredData = buildBreadcrumbStructuredData({
+	const structuredDataGraph = buildInsightArticleGraph({
+		insight,
 		locale,
-		slug,
-		title: insight.metadata.title,
 		homeLabel: navigationT("home"),
 		insightsLabel: navigationT("insights"),
 	});
@@ -111,14 +110,8 @@ export default async function InsightsSlugPage({ params }: Props) {
 
 	return (
 		<>
-			<Script id={`insight-article-schema-${slug}`} type="application/ld+json">
-				{JSON.stringify(articleStructuredData)}
-			</Script>
-			<Script
-				id={`insight-breadcrumb-schema-${slug}`}
-				type="application/ld+json"
-			>
-				{JSON.stringify(breadcrumbStructuredData)}
+			<Script id={`insight-structured-data-${slug}`} type="application/ld+json">
+				{JSON.stringify(structuredDataGraph)}
 			</Script>
 
 			<main className="container relative z-10 pb-20">
@@ -190,22 +183,7 @@ export default async function InsightsSlugPage({ params }: Props) {
 						{insight.metadata.description}
 					</figcaption>
 				</figure>
-				<article
-					className="prose sm:prose-lg prose-base lg:prose-xl mx-auto max-w-prose prose-headings:text-accent-tertiary prose-li:marker:text-brand-gray/50"
-					itemScope
-					itemType="https://schema.org/Article"
-				>
-					<meta content={insight.metadata.title} itemProp="headline" />
-					<meta content={insight.metadata.description} itemProp="description" />
-					<meta content={insight.metadata.thumbnail} itemProp="image" />
-					<meta
-						content={new Date(insight.metadata.date).toISOString()}
-						itemProp="datePublished"
-					/>
-					<meta
-						content={new Date(insight.metadata.date).toISOString()}
-						itemProp="dateModified"
-					/>
+				<article className="prose sm:prose-lg prose-base lg:prose-xl mx-auto max-w-prose prose-headings:text-accent-tertiary prose-li:marker:text-brand-gray/50">
 					<MDXContent
 						components={{
 							Image: (props) => (
@@ -244,71 +222,77 @@ function getOpenGraphLocale(locale: Locale) {
 	return locale === "ar" ? "ar_SA" : "en_US";
 }
 
-function buildArticleStructuredData(insight: Insight, locale: Locale) {
-	const url = `${siteConfig.site}/${locale}/insights/${insight.metadata.slug}`;
-	return {
-		"@context": "https://schema.org",
-		"@type": "Article",
-		mainEntityOfPage: url,
-		headline: insight.metadata.title,
-		description: insight.metadata.description,
-		image: [insight.metadata.thumbnail],
-		keywords: insight.metadata.keywords,
-		articleSection: insight.metadata.category,
-		inLanguage: locale,
-		datePublished: new Date(insight.metadata.date).toISOString(),
-		dateModified: new Date(insight.metadata.date).toISOString(),
-		author: {
-			"@type": "Organization",
-			name: siteConfig.name,
-		},
-		sameAs: [socialLinks.map((link) => link.href)],
-		publisher: {
-			"@type": "Organization",
-			name: siteConfig.name,
-			logo: {
-				"@type": "ImageObject",
-				url: `${siteConfig.site}/logo.png`,
-			},
-		},
-	};
-}
-
-function buildBreadcrumbStructuredData({
+function buildInsightArticleGraph({
+	insight,
 	locale,
-	slug,
-	title,
 	homeLabel,
 	insightsLabel,
 }: {
+	insight: Insight;
 	locale: Locale;
-	slug: string;
-	title: string;
 	homeLabel: string;
 	insightsLabel: string;
 }) {
+	const pageUrl = `${siteConfig.site}/${locale}/insights/${insight.metadata.slug}`;
+	const webPageId = `${pageUrl}#webpage`;
 	const baseLocaleUrl = `${siteConfig.site}/${locale}`;
+	const published = new Date(insight.metadata.date).toISOString();
+
 	return {
 		"@context": "https://schema.org",
-		"@type": "BreadcrumbList",
-		itemListElement: [
+		"@graph": [
 			{
-				"@type": "ListItem",
-				position: 1,
-				name: homeLabel,
-				item: baseLocaleUrl,
+				"@type": "WebPage",
+				"@id": webPageId,
+				url: pageUrl,
+				name: insight.metadata.title,
+				description: insight.metadata.description,
+				inLanguage: locale,
+				isPartOf: {
+					"@type": "WebSite",
+					"@id": `${baseLocaleUrl}#website`,
+					url: baseLocaleUrl,
+					name: siteConfig.name,
+					publisher: { "@id": organizationSchemaId() },
+				},
 			},
 			{
-				"@type": "ListItem",
-				position: 2,
-				name: insightsLabel,
-				item: `${baseLocaleUrl}/insights`,
+				"@type": "Article",
+				"@id": `${pageUrl}#article`,
+				headline: insight.metadata.title,
+				description: insight.metadata.description,
+				image: [insight.metadata.thumbnail],
+				keywords: insight.metadata.keywords,
+				articleSection: insight.metadata.category,
+				inLanguage: locale,
+				datePublished: published,
+				dateModified: published,
+				mainEntityOfPage: { "@id": webPageId },
+				author: { "@id": organizationSchemaId() },
+				publisher: { "@id": organizationSchemaId() },
 			},
 			{
-				"@type": "ListItem",
-				position: 3,
-				name: title,
-				item: `${baseLocaleUrl}/insights/${slug}`,
+				"@type": "BreadcrumbList",
+				itemListElement: [
+					{
+						"@type": "ListItem",
+						position: 1,
+						name: homeLabel,
+						item: baseLocaleUrl,
+					},
+					{
+						"@type": "ListItem",
+						position: 2,
+						name: insightsLabel,
+						item: `${baseLocaleUrl}/insights`,
+					},
+					{
+						"@type": "ListItem",
+						position: 3,
+						name: insight.metadata.title,
+						item: pageUrl,
+					},
+				],
 			},
 		],
 	};

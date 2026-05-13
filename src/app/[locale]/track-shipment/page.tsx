@@ -5,6 +5,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { StaggeredText } from "@/components/animation/staggered-text";
 
+import { siteConfig } from "@/constants/site-config";
 import { Cta } from "@/feature/cta";
 
 // Dynamic metadata generation based on locale
@@ -36,10 +37,10 @@ export async function generateMetadata({
 			alternateLocale: locale === "ar" ? "en_US" : "ar_SA",
 		},
 		alternates: {
-			canonical: `https://www.maxlineglobal.com/${locale}/track-shipment`,
+			canonical: `${siteConfig.site}/${locale}/track-shipment`,
 			languages: {
-				en: "https://www.maxlineglobal.com/en/track-shipment",
-				ar: "https://www.maxlineglobal.com/ar/track-shipment",
+				en: `${siteConfig.site}/en/track-shipment`,
+				ar: `${siteConfig.site}/ar/track-shipment`,
 			},
 		},
 	};

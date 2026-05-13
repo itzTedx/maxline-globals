@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import Script from "next/script";
 
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
@@ -15,6 +14,7 @@ import { ibmPlexSansArabic, inter, metrify } from "@/assets/fonts";
 
 import { siteConfig } from "@/constants/site-config";
 import { routing } from "@/i18n/routing";
+import { buildOrganizationJsonLd } from "@/lib/schema/organization-json-ld";
 import { cn } from "@/lib/utils";
 
 import "@/app/globals.css";
@@ -111,48 +111,7 @@ export default async function RootLayout({
 
 	const messages = (await import(`@/dictionaries/${locale}.json`)).default;
 
-	const organizationJsonLd = {
-		"@context": "https://schema.org",
-		"@type": "Organization",
-		name: "Maxline Global",
-		description:
-			locale === "ar"
-				? "مزود حلول لوجستية وشحن عالمية"
-				: "Global logistics and freight solutions provider",
-		url: `https://maxlineglobal.com/${locale}`,
-		sameAs: [
-			"https://www.instagram.com/maxlineglobal/",
-			"https://www.linkedin.com/company/maxline-global-logistics-solutions/",
-			"https://www.facebook.com/maxlineglobal/",
-		],
-		address: {
-			"@type": "PostalAddress",
-			addressCountry: "UAE",
-		},
-		contactPoint: {
-			"@type": "ContactPoint",
-			telephone: "+971-XXXXXXXXX",
-			contactType: "customer service",
-		},
-	};
-
-	const videoJsonLd = {
-		"@context": "https://schema.org",
-		"@type": "VideoObject",
-		name:
-			locale === "ar"
-				? "خدمات ماكسلاين جلوبال اللوجستية"
-				: "Maxline Global Logistics Services",
-		description:
-			locale === "ar"
-				? "نظرة عامة على حلول ماكسلاين جلوبال الشاملة للوجستية والشحن"
-				: "Overview of Maxline Global's comprehensive logistics and freight solutions",
-		thumbnailUrl: "https://maxlineglobal.com/images/video-thumbnail.jpg",
-		uploadDate: "2024-03-20",
-		duration: "PT2M30S",
-		contentUrl: "https://maxlineglobal.com/videos/maxline-web.webm",
-		embedUrl: "https://maxlineglobal.com/embed/video",
-	};
+	const organizationJsonLd = buildOrganizationJsonLd(locale);
 
 	return (
 		<html
@@ -161,12 +120,12 @@ export default async function RootLayout({
 			lang={locale}
 		>
 			<head>
-				<Script id="schema-org" type="application/ld+json">
+				<script id="organization-schema" type="application/ld+json">
 					{JSON.stringify(organizationJsonLd)}
-				</Script>
-				<Script id="video-schema" type="application/ld+json">
+				</script>
+				{/* <Script id="video-schema" type="application/ld+json">
 					{JSON.stringify(videoJsonLd)}
-				</Script>
+				</Script> */}
 			</head>
 			<body
 				className={cn(

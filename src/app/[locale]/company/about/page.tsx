@@ -4,7 +4,7 @@ import Script from "next/script";
 import { Locale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
-import { siteConfig, socialLinks } from "@/constants/site-config";
+import { siteConfig } from "@/constants/site-config";
 import { Certifications } from "@/feature/about/sections/certificates";
 import { AboutHeroSection } from "@/feature/about/sections/hero";
 import { Principles } from "@/feature/about/sections/principles";
@@ -12,6 +12,7 @@ import { WhoWeAre } from "@/feature/about/sections/who-we-are";
 import { Cta } from "@/feature/cta";
 import { Clients } from "@/feature/home/sections/clients";
 import { Faqs } from "@/feature/home/sections/faq";
+import { organizationSchemaId } from "@/lib/schema/ids";
 
 // Dynamic metadata generation based on locale
 export async function generateMetadata({
@@ -91,31 +92,12 @@ export default async function AboutPage({ params }: Props) {
 		name: "About Maxline Global",
 		description:
 			"Learn about Maxline Global's history, leadership, values, and commitment to excellence in logistics and freight forwarding.",
-		url: `${siteConfig.site}/company/about`,
+		url: `${siteConfig.site}/${locale}/company/about`,
 		publisher: {
-			"@type": "Organization",
-			name: siteConfig.name,
-			url: siteConfig.site,
-			logo: {
-				"@type": "ImageObject",
-				url: `${siteConfig.site}/logo.png`,
-			},
+			"@id": organizationSchemaId(),
 		},
-		sameAs: [socialLinks.map((link) => link.href)],
 		mainEntity: {
-			"@type": "Organization",
-			name: siteConfig.name,
-			description: siteConfig.description,
-			url: siteConfig.site,
-			foundingDate: "2010", // Replace with actual founding date
-			address: {
-				"@type": "PostalAddress",
-				addressCountry: "UAE",
-			},
-			contactPoint: {
-				"@type": "ContactPoint",
-				contactType: "customer service",
-			},
+			"@id": organizationSchemaId(),
 		},
 	};
 	return (

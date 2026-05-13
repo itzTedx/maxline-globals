@@ -1,11 +1,8 @@
-import { use } from "react";
-
 import Script from "next/script";
 
 import { Locale } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 
-import { socialLinks } from "@/constants/site-config";
 import { Certifications } from "@/feature/about/sections/certificates";
 import { Cta } from "@/feature/cta";
 import { Clients } from "@/feature/home/sections/clients";
@@ -16,34 +13,23 @@ import { Services } from "@/feature/home/sections/services";
 import { ServicesHighlight } from "@/feature/home/sections/services-highlight";
 import { WhoWeAre } from "@/feature/home/sections/who-we-are";
 import { InsightsCarousel } from "@/feature/insights/components/insights";
+import { buildHomeStructuredDataGraph } from "@/lib/schema/home-json-ld";
+import { loadServiceMessages } from "@/lib/schema/load-service-messages";
 
 type Props = {
 	params: Promise<{ locale: Locale }>;
 };
 
-const structuredData = {
-	"@context": "https://schema.org",
-	"@type": "Organization",
-	name: "Maxline Global",
-	url: "https://maxlineglobal.com",
-	logo: "https://maxlineglobal.com/logo.png",
-	description:
-		"Maxline Global provides comprehensive logistics solutions across land, air, and sea. Our integrated freight services ensure your cargo moves with speed, safety, and precision worldwide.",
-	address: {
-		"@type": "PostalAddress",
-		addressCountry: "US",
-	},
-	sameAs: [socialLinks.map((link) => link.href)],
-	contactPoint: {
-		"@type": "ContactPoint",
-		contactType: "customer service",
-	},
-};
-
-export default function Home({ params }: Props) {
-	const { locale } = use(params);
+export default async function Home({ params }: Props) {
+	const { locale } = await params;
 
 	setRequestLocale(locale);
+
+	const serviceMessages = await loadServiceMessages(locale);
+	const homeStructuredData = buildHomeStructuredDataGraph(
+		locale,
+		serviceMessages
+	);
 
 	return (
 		<>
@@ -68,8 +54,8 @@ export default function Home({ params }: Props) {
 				<Cta />
 			</main>
 
-			<Script id="schema-org" type="application/ld+json">
-				{JSON.stringify(structuredData)}
+			<Script id="home-website-offer-catalog-schema" type="application/ld+json">
+				{JSON.stringify(homeStructuredData)}
 			</Script>
 		</>
 	);

@@ -7,12 +7,21 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { HeroHeader } from "@/components/hero-header";
 
 import { SERVICES } from "@/constants";
-import { siteConfig, socialLinks } from "@/constants/site-config";
+import { siteConfig } from "@/constants/site-config";
 import { Cta } from "@/feature/cta";
 import { ServicesGrid } from "@/feature/services/services-grid";
+import { organizationSchemaId } from "@/lib/schema/ids";
+import { loadServiceMessages } from "@/lib/schema/load-service-messages";
+import { serviceDictKeyFromHref } from "@/lib/schema/service-dict-keys";
 
-export async function generateMetadata(): Promise<Metadata> {
-	const t = await getTranslations("ServicesPage");
+export async function generateMetadata({
+	params,
+}: {
+	params: Promise<{ locale: Locale }>;
+}): Promise<Metadata> {
+	const { locale } = await params;
+	const t = await getTranslations({ locale, namespace: "ServicesPage" });
+	const pageUrl = `${siteConfig.site}/${locale}/services`;
 	return {
 		title: t("title"),
 		description: t("description"),
@@ -21,8 +30,9 @@ export async function generateMetadata(): Promise<Metadata> {
 			title: t("title"),
 			description: t("description"),
 			type: "website",
-			locale: "en_US",
+			locale: locale === "ar" ? "ar_SA" : "en_US",
 			siteName: siteConfig.name,
+			url: pageUrl,
 			images: [
 				{
 					url: "/images/services-og.jpg",
@@ -50,7 +60,11 @@ export async function generateMetadata(): Promise<Metadata> {
 			},
 		},
 		alternates: {
-			canonical: `${siteConfig.site}/services`,
+			canonical: pageUrl,
+			languages: {
+				en: `${siteConfig.site}/en/services`,
+				ar: `${siteConfig.site}/ar/services`,
+			},
 		},
 	} satisfies Metadata;
 }
@@ -64,30 +78,52 @@ export default async function ServicesPage({
 	setRequestLocale(locale);
 
 	const t = await getTranslations("ServicesPage");
+	const messages = await loadServiceMessages(locale);
+
+	const pageUrl = `${siteConfig.site}/${locale}/services`;
 
 	const structuredData = {
 		"@context": "https://schema.org",
 		"@type": "WebPage",
 		name: t("title"),
 		description: t("description"),
-		url: `${siteConfig.site}/services`,
+		url: pageUrl,
 		provider: {
-			"@type": "Organization",
-			name: siteConfig.name,
-			url: siteConfig.site,
-			logo: `${siteConfig.site}/logo.png`,
+			"@id": organizationSchemaId(),
 		},
-		sameAs: [socialLinks.map((link) => link.href)],
 		mainEntity: {
 			"@type": "ItemList",
-			itemListElement: SERVICES.map((service, index) => ({
-				"@type": "Service",
-				position: index + 1,
-				name: service.title,
-				description: service.description,
-				url: `${siteConfig.site}${service.href}`,
-				image: `${siteConfig.site}${service.image}`,
-			})),
+			itemListElement: SERVICES.map((service, index) => {
+				const slug = service.href.split("/").filter(Boolean).pop() ?? "";
+				const dictKey = serviceDictKeyFromHref(service.href);
+				const block =
+					dictKey && messages[dictKey] && typeof messages[dictKey] === "object"
+						? (messages[dictKey] as Record<string, unknown>).schema
+						: undefined;
+				const schema =
+					block && typeof block === "object"
+						? (block as Record<string, unknown>)
+						: undefined;
+				const name =
+					(typeof schema?.name === "string" ? schema.name : null) ??
+					service.title;
+				const description =
+					(typeof schema?.description === "string"
+						? schema.description
+						: null) ?? service.description;
+
+				return {
+					"@type": "ListItem",
+					position: index + 1,
+					item: {
+						"@type": "Service",
+						name,
+						description,
+						url: `${siteConfig.site}/${locale}/services/${slug}`,
+						image: `${siteConfig.site}${service.image}`,
+					},
+				};
+			}),
 		},
 	};
 	return (

@@ -7,6 +7,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import SpotlightCard from "@/components/animation/spotlight-card";
 import { HeroHeader } from "@/components/hero-header";
 
+import { siteConfig } from "@/constants/site-config";
 import { Cta } from "@/feature/cta";
 import { QuoteForm } from "@/feature/forms/quote-form";
 import { Faqs } from "@/feature/home/sections/faq";
@@ -46,10 +47,10 @@ export async function generateMetadata({
 			alternateLocale: locale === "ar" ? "en_US" : "ar_SA",
 		},
 		alternates: {
-			canonical: `https://www.maxlineglobal.com/${locale}/quote`,
+			canonical: `${siteConfig.site}/${locale}/quote`,
 			languages: {
-				en: "https://www.maxlineglobal.com/en/quote",
-				ar: "https://www.maxlineglobal.com/ar/quote",
+				en: `${siteConfig.site}/en/quote`,
+				ar: `${siteConfig.site}/ar/quote`,
 			},
 		},
 	};
