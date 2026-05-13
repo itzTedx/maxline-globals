@@ -1,3 +1,12 @@
+import type {
+	Graph,
+	ListItemLeaf,
+	OfferCatalogLeaf,
+	OfferLeaf,
+	ServiceLeaf,
+	WebSiteLeaf,
+} from "schema-dts";
+
 import { SERVICES } from "@/constants";
 import { siteConfig } from "@/constants/site-config";
 
@@ -5,6 +14,11 @@ import { ORGANIZATION_LEGAL_NAME } from "./constants";
 import { organizationSchemaId } from "./ids";
 import type { ServiceMessages } from "./load-service-messages";
 import { serviceDictKeyFromHref } from "./service-dict-keys";
+
+/** schema-dts `OfferCatalogLeaf` omits `provider`; schema.org documents it on OfferCatalog. */
+type OfferCatalogWithProvider = OfferCatalogLeaf & {
+	provider?: { "@id": string };
+};
 
 function getNestedString(
 	obj: Record<string, unknown> | undefined,
@@ -42,14 +56,14 @@ function getSchemaBlock(
 export function buildHomeStructuredDataGraph(
 	locale: string,
 	messages: ServiceMessages
-) {
+): Graph {
 	const base = `${siteConfig.site}/${locale}`;
 	const catalogName =
 		locale === "ar"
 			? `كتالوج خدمات ${ORGANIZATION_LEGAL_NAME}`
 			: `${ORGANIZATION_LEGAL_NAME} — services`;
 
-	const itemListElement = SERVICES.map((service, index) => {
+	const itemListElement: ListItemLeaf[] = SERVICES.map((service, index) => {
 		const dictKey = serviceDictKeyFromHref(service.href);
 		const schema =
 			dictKey !== undefined ? getSchemaBlock(messages, dictKey) : undefined;
@@ -72,40 +86,45 @@ export function buildHomeStructuredDataGraph(
 			]) ??
 			service.description;
 
+		const itemOffered: ServiceLeaf = {
+			"@type": "Service",
+			name,
+			description,
+			url: serviceUrl,
+		};
+
+		const offer: OfferLeaf = {
+			"@type": "Offer",
+			itemOffered,
+		};
+
 		return {
-			"@type": "ListItem" as const,
+			"@type": "ListItem",
 			position: index + 1,
-			item: {
-				"@type": "Offer" as const,
-				itemOffered: {
-					"@type": "Service" as const,
-					name,
-					description,
-					url: serviceUrl,
-				},
-			},
+			item: offer,
 		};
 	});
 
+	const webSite: WebSiteLeaf = {
+		"@type": "WebSite",
+		"@id": `${base}#website`,
+		name: ORGANIZATION_LEGAL_NAME,
+		url: base,
+		inLanguage: locale,
+		publisher: { "@id": organizationSchemaId() },
+	};
+
+	const catalog: OfferCatalogWithProvider = {
+		"@type": "OfferCatalog",
+		"@id": `${base}#service-offer-catalog`,
+		name: catalogName,
+		url: `${base}#service-offer-catalog`,
+		provider: { "@id": organizationSchemaId() },
+		itemListElement,
+	};
+
 	return {
 		"@context": "https://schema.org",
-		"@graph": [
-			{
-				"@type": "WebSite",
-				"@id": `${base}#website`,
-				name: ORGANIZATION_LEGAL_NAME,
-				url: base,
-				inLanguage: locale,
-				publisher: { "@id": organizationSchemaId() },
-			},
-			{
-				"@type": "OfferCatalog",
-				"@id": `${base}#service-offer-catalog`,
-				name: catalogName,
-				url: `${base}#service-offer-catalog`,
-				provider: { "@id": organizationSchemaId() },
-				itemListElement,
-			},
-		],
+		"@graph": [webSite, catalog],
 	};
 }

@@ -1,3 +1,11 @@
+import type {
+	ContactPointLeaf,
+	ImageObjectLeaf,
+	OrganizationLeaf,
+	PostalAddressLeaf,
+	WithContext,
+} from "schema-dts";
+
 import { siteConfig } from "@/constants/site-config";
 
 import {
@@ -12,9 +20,33 @@ import { organizationSchemaId } from "./ids";
 
 type Locale = "en" | "ar";
 
-export function buildOrganizationJsonLd(locale: string) {
+export function buildOrganizationJsonLd(
+	locale: string
+): WithContext<OrganizationLeaf> {
 	const lang: Locale = locale === "ar" ? "ar" : "en";
 	const homeUrl = `${siteConfig.site}/${locale}`;
+
+	const logo: ImageObjectLeaf = {
+		"@type": "ImageObject",
+		url: ORGANIZATION_LOGO_URL,
+	};
+
+	const address: PostalAddressLeaf = {
+		"@type": "PostalAddress",
+		streetAddress: "MO 0753, Jafza North",
+		addressLocality: "Dubai",
+		addressRegion: "Dubai",
+		postalCode: "",
+		addressCountry: "AE",
+	};
+
+	const primaryContact: ContactPointLeaf = {
+		"@type": "ContactPoint",
+		contactType: "customer service",
+		telephone: "+97142822022",
+		email: "reception@maxlineglobal.com",
+		areaServed: "AE",
+	};
 
 	return {
 		"@context": "https://schema.org",
@@ -23,29 +55,11 @@ export function buildOrganizationJsonLd(locale: string) {
 		name: ORGANIZATION_LEGAL_NAME,
 		alternateName: ORGANIZATION_ALTERNATE_NAME,
 		url: homeUrl,
-		logo: {
-			"@type": "ImageObject",
-			url: ORGANIZATION_LOGO_URL,
-		},
+		logo,
 		description: ORGANIZATION_DESCRIPTION[lang],
 		foundingDate: ORGANIZATION_FOUNDING_DATE,
 		sameAs: [...ORGANIZATION_SAME_AS],
-		contactPoint: [
-			{
-				"@type": "ContactPoint",
-				contactType: "customer service",
-				telephone: "+97142822022",
-				email: "reception@maxlineglobal.com",
-				areaServed: "AE",
-			},
-		],
-		address: {
-			"@type": "PostalAddress",
-			streetAddress: "MO 0753, Jafza North",
-			addressLocality: "Dubai",
-			addressRegion: "Dubai",
-			postalCode: "",
-			addressCountry: "AE",
-		},
+		contactPoint: [primaryContact],
+		address,
 	};
 }

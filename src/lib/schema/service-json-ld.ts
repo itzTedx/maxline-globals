@@ -1,3 +1,5 @@
+import type { OfferLeaf, ServiceLeaf, WithContext } from "schema-dts";
+
 import { siteConfig } from "@/constants/site-config";
 
 import { organizationSchemaId } from "./ids";
@@ -24,20 +26,19 @@ export function buildServiceJsonLd({
 	servicePageUrl: string;
 	areaServed?: string[];
 	imageUrls?: string[];
-}) {
-	const hasOffer =
+}): WithContext<ServiceLeaf> {
+	const offers: OfferLeaf[] =
 		schema.items?.map((item) => ({
-			"@type": "Offer" as const,
+			"@type": "Offer",
 			itemOffered: {
-				"@type": "Service" as const,
+				"@type": "Service",
 				name: item.name,
 				description: item.description,
 			},
 		})) ?? [];
 
-	return {
-		"@context": "https://schema.org",
-		"@type": "Service" as const,
+	const node: ServiceLeaf = {
+		"@type": "Service",
 		name: schema.name,
 		serviceType: schema.serviceType,
 		description: schema.description,
@@ -50,8 +51,13 @@ export function buildServiceJsonLd({
 				}
 			: {}),
 		provider: { "@id": organizationSchemaId() },
-		...(hasOffer.length > 0 ? { hasOffer } : {}),
+		...(offers.length > 0 ? { offers } : {}),
 		...(areaServed?.length ? { areaServed } : {}),
+	};
+
+	return {
+		"@context": "https://schema.org",
+		...node,
 	};
 }
 
