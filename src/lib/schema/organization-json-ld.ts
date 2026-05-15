@@ -20,6 +20,30 @@ import { organizationSchemaId } from "./ids";
 
 type Locale = "en" | "ar";
 
+/** Inline Organization on service pages (matches Service rich-result shape). */
+export function buildServiceProviderOrganization(
+	locale: string
+): OrganizationLeaf {
+	const homeUrl = `${siteConfig.site}/${locale}`;
+
+	const contactPoint: ContactPointLeaf = {
+		"@type": "ContactPoint",
+		telephone: "+97142822022",
+		contactType: "customer support",
+		email: "enquires@maxlineglobal.com",
+		areaServed: "Global",
+	};
+
+	return {
+		"@type": "Organization",
+		name: ORGANIZATION_LEGAL_NAME,
+		url: homeUrl,
+		logo: ORGANIZATION_LOGO_URL,
+		sameAs: [...ORGANIZATION_SAME_AS],
+		contactPoint,
+	};
+}
+
 export function buildOrganizationJsonLd(
 	locale: string
 ): WithContext<OrganizationLeaf> {

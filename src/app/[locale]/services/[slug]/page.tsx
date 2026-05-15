@@ -124,16 +124,7 @@ export default async function ServicePage({ params }: { params: Params }) {
 	const structuredData = buildServiceJsonLd({
 		schema,
 		servicePageUrl,
-		areaServed: [
-			"UAE",
-			"Saudi Arabia",
-			"Oman",
-			"Kuwait",
-			"Bahrain",
-			"Qatar",
-			"United Kingdom",
-			"China",
-		],
+		locale,
 		imageUrls: [service.hero.image.src],
 	});
 

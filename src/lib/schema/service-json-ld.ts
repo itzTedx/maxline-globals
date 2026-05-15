@@ -1,8 +1,14 @@
-import type { OfferLeaf, ServiceLeaf, WithContext } from "schema-dts";
+import type {
+	CountryLeaf,
+	OfferCatalogLeaf,
+	OfferLeaf,
+	ServiceLeaf,
+	WithContext,
+} from "schema-dts";
 
 import { siteConfig } from "@/constants/site-config";
 
-import { organizationSchemaId } from "./ids";
+import { buildServiceProviderOrganization } from "./organization-json-ld";
 
 export type ServiceSchemaItem = {
 	name: string;
@@ -13,29 +19,54 @@ export type ServiceSchemaBlock = {
 	name: string;
 	serviceType: string;
 	description: string;
+	catalogName?: string;
 	items?: ServiceSchemaItem[];
 };
+
+function serviceAreaServed(locale: string): CountryLeaf {
+	return {
+		"@type": "Country",
+		name:
+			locale === "ar"
+				? "الإمارات العربية المتحدة"
+				: "United Arab Emirates",
+	};
+}
+
+function offerCatalogName(schema: ServiceSchemaBlock): string {
+	if (schema.catalogName) return schema.catalogName;
+	const base = schema.name.replace(/\s+Logistics$/i, "");
+	return `${base} Services`;
+}
 
 export function buildServiceJsonLd({
 	schema,
 	servicePageUrl,
-	areaServed,
+	locale,
 	imageUrls,
 }: {
 	schema: ServiceSchemaBlock;
 	servicePageUrl: string;
-	areaServed?: string[];
+	locale: string;
 	imageUrls?: string[];
 }): WithContext<ServiceLeaf> {
-	const offers: OfferLeaf[] =
+	const termsOfService = `${siteConfig.site}/${locale}/terms`;
+
+	const catalogOffers: OfferLeaf[] =
 		schema.items?.map((item) => ({
 			"@type": "Offer",
-			itemOffered: {
-				"@type": "Service",
-				name: item.name,
-				description: item.description,
-			},
+			name: item.name,
+			description: item.description,
 		})) ?? [];
+
+	const hasOfferCatalog: OfferCatalogLeaf | undefined =
+		catalogOffers.length > 0
+			? {
+					"@type": "OfferCatalog",
+					name: offerCatalogName(schema),
+					itemListElement: catalogOffers,
+				}
+			: undefined;
 
 	const node: ServiceLeaf = {
 		"@type": "Service",
@@ -50,9 +81,10 @@ export function buildServiceJsonLd({
 					),
 				}
 			: {}),
-		provider: { "@id": organizationSchemaId() },
-		...(offers.length > 0 ? { offers } : {}),
-		...(areaServed?.length ? { areaServed } : {}),
+		provider: buildServiceProviderOrganization(locale),
+		areaServed: serviceAreaServed(locale),
+		termsOfService,
+		...(hasOfferCatalog ? { hasOfferCatalog } : {}),
 	};
 
 	return {
@@ -70,6 +102,8 @@ export function parseServiceSchemaBlock(
 	const description = typeof o.description === "string" ? o.description : "";
 	const serviceType =
 		typeof o.serviceType === "string" ? o.serviceType : "Logistics services";
+	const catalogName =
+		typeof o.catalogName === "string" ? o.catalogName : undefined;
 	const itemsRaw = o.items;
 	let items: ServiceSchemaItem[] | undefined;
 	if (Array.isArray(itemsRaw)) {
@@ -86,5 +120,5 @@ export function parseServiceSchemaBlock(
 		if (parsed.length > 0) items = parsed;
 	}
 	if (!name || !description) return null;
-	return { name, serviceType, description, items };
+	return { name, serviceType, description, catalogName, items };
 }
